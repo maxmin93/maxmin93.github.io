@@ -15,21 +15,24 @@ timezone: Asia/Seoul
 
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
-title: taejoone.jeju.onl                          # the main title
+title: taejoone.jeju.onl
 
-tagline: 나의 SW개발 공부 노트   # it will display as the sub-title
+tagline: 나의 프로그램 개발 공부 노트    # it will display as the sub-title
 
-description: >-                        # used by seo meta and the atom feed
+description: >-
   Java, Python, NLP, GraphAI, QA-KG, etc..
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: ''
+url: 'https://maxmin93.github.io'
 
 github:
-  username: maxmin93             # change to your github username
+  username: maxmin93
 
-twitter:
-  username: maxmin93            # change to your twitter username
+linkedin:
+  username: maxmin93
+
+facebook:
+  username: maxmin93
 
 social:
   # Change to your full name.
@@ -38,11 +41,10 @@ social:
   email: maxmin93@gmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/maxmin93      # change to your twitter homepage
+    # - https://twitter.com/maxmin93      # change to your twitter homepage
     - https://github.com/maxmin93       # change to your github homepage
-    # Uncomment below to add more social links
-    # - https://www.facebook.com/username
-    # - https://www.linkedin.com/in/username
+    - https://www.facebook.com/maxmin93
+    - https://www.linkedin.com/in/maxmin93
 
 google_site_verification: google_meta_tag_verification # change to your verification string
 # --------------------------
