@@ -77,7 +77,7 @@ In [3]:
 Do you really want to exit ([y]/n)? y
 ```
 
-![패스워드 생성 화면](http://media.jeju.onl/2021/04/ipython_password_sha1.png)
+![패스워드 생성 화면](/2021/04/ipython_password_sha1.png)
 
 
 ### jupyter notebook 테스트
@@ -88,9 +88,9 @@ $ ipython notebook --config='~/.ipython/profile_pyspark/ipython_config.py'
 # browser 에서 새 노트 생성 후 파이썬 테스트
 ```
 
-![노트북 콘솔 화면](http://media.jeju.onl/2021/04/ipython_notebook_console_pyspark.png)
+![노트북 콘솔 화면](/2021/04/ipython_notebook_console_pyspark.png)
 
-![노트북 실행 화면](http://media.jeju.onl/2021/04/ipython_notebook_browser_pyspark.png)
+![노트북 실행 화면](/2021/04/ipython_notebook_browser_pyspark.png)
 
 
 ## ipython profile 설정 (5~7단계)
@@ -150,7 +150,7 @@ print(spark.version)
 
 ```
 
-![pyspark 실행 화면](http://media.jeju.onl/2021/04/ipython_pyspark-test.png)
+![pyspark 실행 화면](/2021/04/ipython_pyspark-test.png)
 
 
 ### alias 설정

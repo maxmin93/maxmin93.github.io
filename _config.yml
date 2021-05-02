@@ -23,7 +23,7 @@ description: >-
   Java, Python, NLP, GraphAI, QA-KG, etc..
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://maxmin93.github.io'
+url: 'http://taejoone.jeju.onl'
 
 github:
   username: maxmin93
@@ -77,7 +77,8 @@ theme_mode:   # [light|dark]
 img_cdn: 'http://media.jeju.onl'
 
 # the avatar on sidebar, support local or CORS resources
-avatar: http://media.jeju.onl/about/tonyne-favicon_365x363.png
+# avatar: http://media.jeju.onl/about/tonyne-favicon_365x363.png
+avatar: /about/tonyne-favicon_365x363.png
 
 # boolean type, the global switch for ToC in posts.
 toc: true
