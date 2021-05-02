@@ -39,7 +39,7 @@
 
   {% if site.img_cdn != '' %}
     {% assign img_path_replacement = '<img src="' | append: site.img_cdn | append: '/' %}
-  {% else %}
+  {% elsif site.baseurl != '' %}
     {% assign img_path_replacement = '<img src="' | append: site.baseurl | append: '/' %}
   {% endif %}
 

@@ -77,8 +77,7 @@ theme_mode:   # [light|dark]
 img_cdn: 'http://media.jeju.onl'
 
 # the avatar on sidebar, support local or CORS resources
-# avatar: http://media.jeju.onl/about/tonyne-favicon_365x363.png
-avatar: /about/tonyne-favicon_365x363.png
+avatar: http://media.jeju.onl/about/tonyne-favicon_365x363.png
 
 # boolean type, the global switch for ToC in posts.
 toc: true
