@@ -1,5 +1,5 @@
 ---
-title: "KG 논문 서베이 - A Survey on Knowledge Graphs"
+title: "A Survey on Knowledge Graphs: Representation, Acquisition and Applications (2020.8)"
 date: 2020-12-01 00:00:00 +0000
 categories: ["papers", "KG"]
 tags: ["Knowledge graph", "representation learning", "knowledge graph completion", "relation extraction", "reasoning", "deep learning"]
