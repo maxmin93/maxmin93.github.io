@@ -69,14 +69,14 @@ Moreover, CBOW [10] and Skip-gram [11] are applied in the training process of `K
 
 The contributions of this paper are summarized as follows:
 
-• The original heterogeneous networks are reconstructed, and an entity-relation topology is proposed.
-• A new embedding method for heterogeneous networks is proposed and node2vec is improved. The new walk strategy is applied in the reconstructed heterogeneous networks. A node-degree parameter is also introduced to control the walk times.
+• The original heterogeneous networks are reconstructed, and an entity-relation topology is proposed.<br/>
+• A new embedding method for heterogeneous networks is proposed and node2vec is improved. The new walk strategy is applied in the reconstructed heterogeneous networks. A node-degree parameter is also introduced to control the walk times.<br/>
 • Two training models are proposed for heterogeneous networks: given relations, CBOW is used to predict the context entity; given entities, Skip-gram is used to predict the relation node.
 
 > 이 백서의 기여는 다음과 같이 요약됩니다.
 >
-> • 원래의 이기종 네트워크가 재구성되고 엔티티 관계 토폴로지가 제안됩니다.
-> • 이종 네트워크를위한 새로운 임베딩 방법이 제안되고 node2vec 가 개선됩니다. 새로운 걷기 전략은 재구성 된 이기종 네트워크에 적용됩니다. 걷기 시간을 제어하기 위해 node-degree 매개 변수도 도입되었습니다.
+> • 원래의 이기종 네트워크가 재구성되고 엔티티 관계 토폴로지가 제안됩니다.<br/>
+> • 이종 네트워크를위한 새로운 임베딩 방법이 제안되고 node2vec 가 개선됩니다. 새로운 걷기 전략은 재구성 된 이기종 네트워크에 적용됩니다. 걷기 시간을 제어하기 위해 node-degree 매개 변수도 도입되었습니다.<br/>
 > • 이기종 네트워크에 대해 두 가지 훈련 모델이 제안됩니다. 관계가 주어지면 CBOW 가 컨텍스트 엔티티를 예측하는 데 사용됩니다. 주어진 엔티티에서 Skip-gram 은 관계 노드를 예측하는 데 사용됩니다.
 
 
@@ -114,14 +114,14 @@ Furthermore, Zheng Wang et al. propose TransH, which introduces two additional r
 
 First, we review Word2vec and its extensions. Since Mikolov proposed the concept word embedding in his paper” Efficient Estimation of Word Representation in Vector Space” in 2013, the NLP field enters the world of “embedding”, such as Senternce2Vec [25], Doc2Vec [26], and Everthing2Vec. The word embedding is based on the assumption that the meaning of a word can be inferred from its context, proposing the word distributed representation. Compared with traditional One-hot Representation in NLP, which is high-dimensional and sparse, the word embedding trained by Word2Vec is both low-dimensional and dense. The main idea of Word2Vec is to make use of word context and yield richer semantic information. The current main applications are listed as follows:
 
-1. The trained word embedding is used as the input feature to improve the existing system, for instance the input layer of neural networks such as sentiment analysis, part-of-speech tagging, natural language translation.
+1. The trained word embedding is used as the input feature to improve the existing system, for instance the input layer of neural networks such as sentiment analysis, part-of-speech tagging, natural language translation.<br/>
 2. The word embedding is directly adopted from the perspective of linguistics, for instance, expressing the word similarity based on the distance of embeddings, and the query correlation. Word2vec employs a one-layer neural network (i.e. CBOW) to project the one-hot sparse word embedding to a n-dimensional dense vector.
 
 Later, Word2vec has been transplanted in social networks. A.Grover designed a Node2vec model, which employs a weight parameter α, to control the random walks in Deepwalk, so that the resulting sequence is a combination of DFS and BFS [27]. This model makes use of Skip-gram in Word2vec as basis. The main contribution of Node2vec is considering a graph as a text, where the nodes in the graph can be represented by tokens in the text. Then Word2vec can be directly applied to yield vectors. However, the difference between graphs and texts lies in that texts are linear sequences, as graph has a more complex structure. The algorithm Deepwalk that was put forward before inspires Node2vec, which combines DFS and BFS as walk strategy to sample the nodes in graph. As Figure shows, BFS yields Local microscopic view, as DFS yields global macroscopic view. Node2vec introduces a heuristic approach 2nd-order random walks, namely defining random walks and two hyper parameters [28].
 
 > 먼저 Word2vec과 그 확장을 검토합니다. Mikolov가 2013 년에 그의 논문 "벡터 공간에서 단어 표현의 효율적인 추정"에서 개념 단어 임베딩을 제안한 이후 NLP 필드는 Senternce2Vec, Doc2Vec 및 Everthing2Vec 과 같은 "임베딩"의 세계로 진입합니다. 단어 임베딩은 단어의 의미가 문맥에서 유추 될 수 있다는 가정에 기반하여 단어 분산 표현을 제안합니다. 고차원적이고 희소 한 NLP의 전통적인 One-hot Representation 과 비교할 때 Word2Vec 에서 훈련 된 단어 임베딩은 저 차원이며 밀도가 높습니다. Word2Vec 의 주요 아이디어는 단어 컨텍스트를 사용하고 더 풍부한 의미 정보를 생성하는 것입니다. 현재 주요 응용 프로그램은 다음과 같습니다.
 >
-> 1. 훈련 된 단어 임베딩은 감정 분석, 품사 태깅, 자연어 번역과 같은 신경망의 입력 계층과 같은 기존 시스템을 개선하기위한 입력 기능으로 사용됩니다.
+> 1. 훈련 된 단어 임베딩은 감정 분석, 품사 태깅, 자연어 번역과 같은 신경망의 입력 계층과 같은 기존 시스템을 개선하기위한 입력 기능으로 사용됩니다.<br/>
 > 2. 임베딩이라는 단어는 언어학의 관점에서 직접 채택됩니다. 예를 들어 임베딩 거리 및 쿼리 상관 관계를 기반으로 단어 유사성을 표현합니다. Word2vec은 1- 레이어 신경망 (예 : CBOW)을 사용하여 1-핫 희소 단어 임베딩을 n 차원 밀도 벡터에 투영합니다.
 >
 > 나중에 Word2vec은 소셜 네트워크에 이식되었습니다. A.Grover 는 결과 시퀀스 DFS와 BFS [의 조합되도록, Deepwalk에서 무작위 행보를 제어하기 위해 가중 파라미터 α를 이용하는 Node2vec 모델 설계 (27)]. 이 모델은 Word2vec의 Skip-gram을 기본으로 사용합니다. Node2vec의 주요 기여는 그래프를 텍스트로 고려하는 것입니다. 그래프의 노드는 텍스트의 토큰으로 표시될 수 있습니다. 그런 다음 Word2vec을 직접 적용하여 벡터를 생성할 수 있습니다. 그러나 그래프와 텍스트의 차이점은 그래프가 더 복잡한 구조를 가지고 있기 때문에 텍스트가 선형 시퀀스라는 점에 있습니다. 이전에 제시된 알고리즘 Deepwalk는 DFS와 BFS를 워크 전략으로 결합하여 그래프에서 노드를 샘플링하는 Node2vec에 영감을줍니다. 그림에서 알 수 있듯이 BFS는 DFS가 전역 거시적 보기를 생성하므로 로컬 현미경 보기를 생성합니다. Node2vec은 휴리스틱 방식의 2차 랜덤 워크, 즉 랜덤 워크와 두 개의 하이퍼 매개 변수를 정의합니다.
@@ -324,6 +324,8 @@ Algorithm 1 is the pseudo code of `KG2Vec`. First, the walks Nmax are updated ac
 > 여기서 N max 는 최대 보행 횟수, D p 는 노드 p 의 정도 , D max 는 모든 노드 간의 최대 정도, t 는 임계 값입니다.
 >
 > 알고리즘 1은 `KG2Vec`의 의사 코드입니다. 첫째, Walks N max 는 각 노드 정도에 따라 업데이트 됩니다. 그런 다음 암묵적 편향을 무력화하는 각 노드 u 에서 길이 l 의 N max 로 랜덤 걷기를 시뮬레이션하고 노드 컨텍스트의 선택으로 걷기 시퀀스를 보완하는 전환 확률을 계산하여 학습 프로세스를 최적화 합니다. 그런 다음 엔티티 노드 또는 관계 노드인 현재 노드의 유형에 따라 앞서 논의한대로 적절한 랜덤 워크 전략을 선택합니다. 컨텍스트를 얻은 후 SGD를 적용하여 랜덤 워크를 시뮬레이션하고 프로세스를 최적화합니다. 따라서 알고리즘은 다음과 같이 표시됩니다.
+
+![Algorithm1 The KG2Vec algorithm](/2020/12/KG2Vec_algorithm.png)
 
 
 ### 4. Experiment

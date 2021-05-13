@@ -27,6 +27,9 @@ INCORPORATING human knowledge is one of the research directions of artificial in
 
 > 인간의 지식을 통합하는 것은 인공 지능 (AI)의 연구 방향 중 하나입니다. 인간의 문제 해결에서 영감을 얻은 지식 표현 및 추론은 복잡한 작업을 해결할 수 있는 능력을 얻기 위해 지능형 시스템에 대한 지식을 표현하는 것입니다 [1], [2]. 최근에 구조화 된 인간 지식의 한 형태 인 지식 그래프는 학계와 업계 모두에서 큰 연구 관심을 끌고 있습니다 [3] – [6]. 지식 그래프는 엔티티, 관계 및 의미 론적 설명으로 구성된 사실의 구조화 된 표현입니다. 엔터티는 실제 개체 및 추상 개념 일 수 있으며, 관계는 엔터티 간의 관계 및 엔터티의 의미 론적 설명을 나타내며 해당 관계에는 잘 정의 된 의미를 가진 유형과 속성이 포함됩니다. 노드 및 관계에 속성 또는 속성이 있는 속성 그래프 또는 속성 그래프가 널리 사용됩니다. 지식 그래프의 용어는 약간의 차이가 있는 지식 기반과 동의어입니다. 지식 그래프는 그래프 구조를 고려할 때 그래프로 볼 수 있습니다 [7]. 형식적 의미론을 포함하는 경우, 사실에 대한 해석 및 추론을 위한 지식 기반으로 간주 될 수 있습니다 [8]. 지식 기반과 지식 그래프의 예가 그림 1에 나와 있습니다. 지식은 자원 설명 프레임 워크 (RDF) 하에서 (머리, 관계, 꼬리) 또는 (주제, 술어, 대상)의 형태로 사실적 트리플로 표현 될 수 있습니다. 예 : (Albert Einstein, WinnerOf, Nobel Prize). 노드는 엔티티로, 간선은 관계로 있는 유 방향 그래프로 표현할 수도 있습니다. 단순함과 연구 커뮤니티의 추세를 따르기 위해 이 문서에서는 지식 그래프와 지식 기반이라는 용어를 서로 바꿔서 사용합니다.
 
+![Fig.1](/2020/12/survey_kg_fig01.png)
+
+
 Recent advances in knowledge-graph-based research focus on knowledge representation learning (KRL) or knowledge graph embedding (KGE) by mapping entities and relations into low-dimensional vectors while capturing their semantic meanings [5], [9]. Specific knowledge acquisition tasks include knowledge graph completion (KGC), triple classification, entity recognition, and relation extraction. Knowledge-aware models benefit from the integration of heterogeneous information, rich ontologies and semantics for knowledge representation, and multi-lingual knowledge. Thus, many real-world applications such as recommendation systems and question answering have been brought about prosperity with the ability of commonsense understanding and reasoning. Some real-world products, for example, Microsoft’s Satori and Google’s Knowledge Graph [3], have shown a strong capacity to provide more efficient services.
 
 This paper conducts a comprehensive survey of current literature on knowledge graphs, which enriches graphs with more context, intelligence, and semantics for knowledge acquisition and knowledge-aware applications. Our main contributions are summarized as follows.
@@ -142,6 +145,9 @@ Knowledge-aware Applications include natural language understanding (NLU), quest
 >
 > 지식 인식 응용 프로그램에는 자연어 이해 (NLU), 질문 응답, 추천 시스템 및 기타 실제 작업이 포함되며 표현 학습을 향상시키기 위해 지식을 주입합니다.
 
+![Fig.2](/2020/12/survey_kg_fig02.png)
+
+
 #### D. Related Surveys
 
 Previous survey papers on knowledge graphs mainly focus on statistical relational learning [4], knowledge graph refinement [11], Chinese knowledge graph construction [13], knowledge reasoning [14], KGE [5] or KRL [9]. The latter two surveys are more related to our work. Lin et al. [9] presented KRL in a linear manner, with a concentration on quantitative analysis. Wang et al. [5] categorized KRL according to scoring functions and specifically focused on the type of information utilized in KRL. It provides a general view of current research only from the perspective of scoring metrics. Our survey goes deeper to the flow of KRL and provides a full-scaled view from four-folds, including representation space, scoring function, encoding models, and auxiliary information. Besides, our paper provides a comprehensive review of knowledge acquisition and knowledge-aware applications with several emerging topics such as knowledge-graph-based reasoning and few-shot learning discussed.
@@ -200,6 +206,9 @@ TorusE [30] solves the regularization problem of TransE via embedding in an n-di
 > -c (c> 0) : Bd, c = x ∈ Rd : kxk2 <1c가 일정한 음의 곡률을 갖는 다차원 리만 매니 폴드 인 쌍곡선 공간은 계층 적 정보를 캡처하는 능력으로 주목을 받고 있습니다. MuRP [28]는 쌍곡선 공간의 Poincar ball에서 다중 관계 지식 그래프를 나타냅니다. Bdc = x ∈ Rd : ckxk2 <1. 논리 패턴을 포착하지 못하고 일정한 곡률을 겪고 있습니다. Chami al. [29] 표현 쌍곡선 아이 소메 트리를 활용하고 쌍곡선 공간에서 관계 별 절대 곡률 cr을 학습합니다.
 >
 > TorusE [30]는 콤팩트 한 Lie 그룹 인 n 차원 토러스 공간에 임베딩하여 TransE의 정규화 문제를 해결합니다. 벡터 공간에서 토러스 공간으로의 투영은 π : Rn → Tn, x 7 → [x]로 정의되며 엔티티와 관계는 [h], [r], [t] ∈ Tn으로 표시됩니다. TransE와 유사하게, 토러스 공간, 즉 [h] + [r] ≈ [t]에서 관계형 변환을 따르는 임베딩도 학습합니다. 최근 DihEdral [31]은 2 차원 다각형을 보존하는 2면 대칭군을 제안한다.
+
+![Fig.3](/2020/12/survey_kg_fig03.png)
+
 
 #### B. Scoring Function
 
@@ -304,6 +313,9 @@ The authors further extended it to handle attributes of entities efficiently [49
 > 분해 방법은 KRL 모델을 3 원 텐서 X 분해로 공식화했습니다. 텐서 분해의 일반적인 원리는 Xhrt ≈ h> Mrt로 표시 될 수 있으며 구성 함수는 의미 일치 패턴을 따릅니다. Nickel et al. [48] ​​지식 그래프 텐서의 각 관계형 슬라이스에 대해 3 방향 Rank-r 분해 RESCAL을 제안했습니다. m 관계의 k 번째 관계의 경우 X의 k 번째 슬라이스는 다음과 같이 분해됩니다.
 >
 > 저자는 엔티티의 속성을 효율적으로 처리하기 위해 이를 더욱 확장했습니다 [49]. Jenatton et al. [50] 그런 다음 Rk = Pdi = 1 αki uiv> i를 분해하여 RESCAL을 확장하는 이중 선형 구조화 된 잠재 인자 모델 (LFM)을 제안했습니다. 3 방향 Tucker 텐서 분해를 도입함으로써 TuckER [51]는 코어 텐서를 출력하고 엔티티 및 관계의 벡터를 임베딩하여 임베딩하는 방법을 배웁니다. LowFER [52]는 엔티티와 관계를 더 잘 융합하기 위해 다중 모드 인수 분해 이중 선형 풀링 메커니즘을 제안합니다. TuckER 모델을 일반화하고 낮은 순위 근사를 통해 계산적으로 효율적입니다.
+
+![Fig.5](/2020/12/survey_kg_fig05.png)
+
 
 **3) Neural Networks:**
 
@@ -627,6 +639,8 @@ Logical rules are also studied for temporal reasoning. Chekol et al. [163] explo
 
 > 시간적 추론을 위해 논리적 규칙도 연구됩니다. Chekol et al. [163] 불확실한 시간적 지식 그래프에 대한 추론을 위해 Markov 논리 네트워크와 확률 론적 소프트 논리를 탐색했습니다. RLvLR-Stream [88]은 시간적 근접 경로 규칙을 고려하고 추론을 위해 지식 그래프 스트림에서 규칙의 구조를 학습합니다.
 
+![Table.4](/2020/12/survey_kg_table04.png)
+
 
 ### VI. KNOWLEDGE-AWARE APPLICATIONS
 
@@ -733,6 +747,10 @@ The mainstream research focuses on static knowledge graphs, with several works o
 Knowledge graphs as the ensemble of human knowledge have attracted increasing research attention, with the recent emergence of knowledge representation learning, knowledge acquisition methods, and a wide variety of knowledge-aware applications. The paper conducts a comprehensive survey on the following four scopes: 1) knowledge graph embedding, with a full-scale systematic review from embedding space, scoring metrics, encoding models, embedding with external information, and training strategies; 2) knowledge acquisition of entity discovery, relation extraction, and graph completion from three perspectives of embedding learning, relational path inference and logical rule reasoning; 3) temporal knowledge graph representation learning and completion; 4) real-world knowledge-aware applications on natural language understanding, recommendation systems, question answering and other miscellaneous applications. Besides, some useful resources of datasets and open-source libraries, and future research directions are introduced and discussed. Knowledge graph hosts a large research community and has a wide range of methodologies and applications. We conduct this survey to have a summary of current representative research efforts and trends and expect it can facilitate future research.
 
 > 인간 지식의 앙상블로서의 지식 그래프는 최근 지식 표현 학습, 지식 습득 방법 및 다양한 지식 인식 응용 프로그램의 출현으로 연구 관심을 끌고 있습니다. 이 논문은 다음 네 가지 범위에 대한 포괄적 인 조사를 수행합니다. 1) 지식 그래프 임베딩, 임베딩 공간, 스코어링 메트릭, 인코딩 모델, 외부 정보 임베딩 및 훈련 전략에서 본격적인 체계적인 검토를 통해; 2) 임베딩 학습, 관계 경로 추론 및 논리적 규칙 추론의 세 가지 관점에서 엔티티 발견, 관계 추출 및 그래프 완성에 대한 지식 습득; 3) 시간적 지식 그래프 표현 학습 및 완료; 4) 자연어 이해, 추천 시스템, 질문 응답 및 기타 기타 응용 프로그램에 대한 실제 지식 인식 응용 프로그램. 또한 데이터 세트 및 오픈 소스 라이브러리의 유용한 리소스와 향후 연구 방향을 소개하고 논의합니다. 지식 그래프는 대규모 연구 커뮤니티를 호스팅하며 다양한 방법론과 응용 프로그램을 가지고 있습니다. 이 설문 조사를 수행하여 현재의 대표적인 연구 노력과 동향을 요약하고 향후 연구를 촉진 할 수있을 것으로 기대합니다.
+
+![Fig.10](/2020/12/survey_kg_fig10.png)
+
+![Table.5](/2020/12/survey_kg_table05.png)
 
 
 \[끝\]

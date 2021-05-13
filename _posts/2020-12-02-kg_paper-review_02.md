@@ -194,6 +194,7 @@ We now explain how to compute transition probabilities. A vertex can access its 
 
 > 이제 전환 확률을 계산하는 방법을 설명합니다. 정점은 GraphLite의 바깥 쪽 가장자리 배열에서 나가는 가장자리에 액세스하여 인접 항목과 가장자리 가중치를 가져올 수 있습니다. 랜덤 워크의 단계 s-1이 u에 있고 현재 단계 s가 v에 있다고 가정합니다. v에서 전이 확률을 계산하려고합니다. 그림 2에 따라 거리 dist (u, x)를 계산해야합니다. u와 v의 모든 이웃 x 사이. 알고리즘 1에서 수퍼 단계 s-1에서 u의 계산은 이미 u의 이웃을 v로 보냈습니다 (22 행). 따라서 superstep s에서 compute at v는 수신 메시지에서 u의 이웃을 수신합니다 (12-14 행). 그림 2의 세 가지 거리 사례는 x가 u이고 x가 u와 v의 공통 이웃이며 다른 모든 경우를 의미합니다. 해시 세트를 사용하면 x가 u와 v의 공통 이웃인지 쉽게 알 수 있습니다. 이런 방식으로 우리는 정규화되지 않은 전이 확률을 얻은 다음 v에서 편향된 샘플을 수행하는 데 사용합니다 (18 행).
 
+![Fast-Node2Vec Algorithm](/2020/12/fast_node2vec_algorithm.png)
 
 #### 3.3 Analysis of `Fast-Node2Vec` Computation
 
