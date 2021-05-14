@@ -2,7 +2,7 @@
 title: "Efficient Graph Computation for Node2Vec (2018.5)"
 date: 2020-12-02 00:00:00 +0000
 categories: ["papers", "KG"]
-tags: ["Node2Vec", "`Fast-Node2Vec`", "Spark-Node2Vec", "Pregel-Like", "Big-Graph", "network analysis"]
+tags: ["node2vec", "`Fast-Node2Vec`", "Spark-Node2Vec", "Pregel-Like", "Big-Graph", "network analysis"]
 ---
 
 **Efficient Graph Computation for Node2Vec (2018.5)**
