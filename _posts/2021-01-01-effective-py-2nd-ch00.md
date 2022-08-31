@@ -21,7 +21,7 @@ image:
 
 ### 1장 파이썬답게 생각하기
 
-- 1.  사용중인 파이썬의 버전을 알아두라 [&#9658;link](/posts/posts/effective-py-2nd-ch01#item01)
+- 1.  사용중인 파이썬의 버전을 알아두라 [&#9658;link](/posts/effective-py-2nd-ch01#item01)
 - 2.  PEP 8 스타일 가이드를 따르라 [&#9658;link](/posts/effective-py-2nd-ch01#item02)
 - 3.  3 bytes와 str의 차이를 알아두라 [&#9658;link](/posts/effective-py-2nd-ch01#item03)
 - 4.  C 스타일 형식 문자열을 str.format로 쓰기보다는 f-문자열을 통한 인터폴레이션을 사용하라 [&#9658;link](/posts/effective-py-2nd-ch01#item04)
@@ -129,12 +129,12 @@ image:
 
 ### 10장 협업
 
-- 82. 커뮤니티에서 만든 모듈을 어디서 찾을 수 있는지 알아두라 [&#9658;link](/posts/effective-py-2nd-ch10#item82)
-- 83. 가상 환경을 사용해 의존 관계를 격리하고 반복 생성할 수 있게 하라 [&#9658;link](/posts/effective-py-2nd-ch10#item832)
-- 84. 모든 함수, 클래스, 모듈에 독스트링을 작성하라 [&#9658;link](/posts/effective-py-2nd-ch10#item84)
-- 85. 패키지를 사용해 모듈을 체계화하고 안정적인 API를 제공하라 [&#9658;link](/posts/effective-py-2nd-ch10#item85)
-- 86. 배포 환경을 설정하기 위해 모듈 영역의 코드를 사용하라 [&#9658;link](/posts/effective-py-2nd-ch10#item86)
-- 87. 호출자를 API로부터 보호하기 위해 최상위 Exception을 정의하라 [&#9658;link](/posts/effective-py-2nd-ch10#item87)
-- 88. 순환 의존성을 깨는 방법을 알아두라 [&#9658;link](/posts/effective-py-2nd-ch10#item88)
-- 89. 리팩터링과 마이그레이션 방법을 알려주기 위해 warning을 사용하라 [&#9658;link](/posts/effective-py-2nd-ch10#item89)
-- 90. typing과 정적 분석을 통해 버그를 없애라 [&#9658;link](/posts/effective-py-2nd-ch10#item90)
+- 82. 커뮤니티에서 만든 모듈을 어디서 찾을 수 있는지 알아두라 [&#9658;link] (/posts/effective-py-2nd-ch10#item82)
+- 83. 가상 환경을 사용해 의존 관계를 격리하고 반복 생성할 수 있게 하라 [&#9658;link] (/posts/effective-py-2nd-ch10#item832)
+- 84. 모든 함수, 클래스, 모듈에 독스트링을 작성하라 [&#9658;link] (/posts/effective-py-2nd-ch10#item84)
+- 85. 패키지를 사용해 모듈을 체계화하고 안정적인 API를 제공하라 [&#9658;link] (/posts/effective-py-2nd-ch10#item85)
+- 86. 배포 환경을 설정하기 위해 모듈 영역의 코드를 사용하라 [&#9658;link] (/posts/effective-py-2nd-ch10#item86)
+- 87. 호출자를 API로부터 보호하기 위해 최상위 Exception을 정의하라 [&#9658;link] (/posts/effective-py-2nd-ch10#item87)
+- 88. 순환 의존성을 깨는 방법을 알아두라 [&#9658;link] (/posts/effective-py-2nd-ch10#item88)
+- 89. 리팩터링과 마이그레이션 방법을 알려주기 위해 warning을 사용하라 [&#9658;link] (/posts/effective-py-2nd-ch10#item89)
+- 90. typing과 정적 분석을 통해 버그를 없애라 [&#9658;link] (/posts/effective-py-2nd-ch10#item90)

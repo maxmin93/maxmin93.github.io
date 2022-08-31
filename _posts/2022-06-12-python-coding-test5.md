@@ -456,7 +456,7 @@ Your program should return the number of combinations of climbing num steps.
 
 > 다른 사람의 코드
 
-[피보나치 구하기](/_posts/2022-06-07-python-coding-test1.md#피보나치-구하기) 와 유사한 문제
+[피보나치 구하기] (/\_posts/python-coding-test1.md#피보나치-구하기) 와 유사한 문제
 
 - num 을 1 과 2 의 조합으로 쪼개어 가면 됨
 - 동적 프로그래밍: 점화식 `f(n) = f(n-1) + f(n-2)`

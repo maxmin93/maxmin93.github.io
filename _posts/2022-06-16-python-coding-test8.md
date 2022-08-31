@@ -455,7 +455,7 @@ print(HamiltonianPath(input()))
 
 LCS(longest common subsequence)의 길이를 구하시오
 
-- 참고: [Longest Consecutive 문제](/_posts/2022-06-12-python-coding-test5.md#문제-44)
+- 참고: [Longest Consecutive 문제] (/\_posts/python-coding-test5.md#문제-44)
 - Input: ["abcabb","bacb"]
   - Output: CS("bab", "acb", "bcb") 들의 최대 길이는 3
 - Input: ["abc","cb"]
