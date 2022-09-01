@@ -330,6 +330,20 @@ $ brew install rename
 $ rename 's/-min././' *-min.png
 ```
 
+> Mac 이미지 최적화 앱 [crunch](https://github.com/chrissimpkins/Crunch) 좋아요 (추천)
+
+- 조금 느리다 하는데 충분히 기다릴만한 정도 되고, 압축율을 짱입니다. (평균 3~4배)
+- 드래그-앤-드랍 으로 파일 변환하면 `*-crunch.png` 붙어서 저장됨
+  - jpeg 포맷은 못한다고 뱉어내네요. 흠~
+
+```bash
+# --cask 옵션 붙여야 GUI 애플리케이션이 설치됨
+$ brew install crunch --cask
+
+# 설정 > 보안 > 미확인 다운로드 프로그램 허용 버튼 눌러주고
+# 응용프로그램에서 crunch 시작
+```
+
 ### 2) category, tags 줄이기
 
 쓴 글이 몇개나 된다고, 무슨 태그와 카테고리를 많이 만들었는지 번잡스럽기 짝이 없다. 그만한 글들 인터넷 세상에 천지이니 과감히 통합하자. 심플한게 훨씬 보기 좋더라.
