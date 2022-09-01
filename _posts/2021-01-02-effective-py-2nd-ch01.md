@@ -7,6 +7,9 @@ image:
   src: https://effectivepython.com/images/cover_2ed.jpg
 ---
 
+> Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.
+{: .prompt-tip }
+
 ## 1장 파이썬답게 생각하기
 
 ### 01) 사용중인 파이썬의 버전을 알아두라 <a id="item01" />
@@ -388,6 +391,5 @@ while fresh_fruit := pick_fruit():
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

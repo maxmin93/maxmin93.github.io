@@ -5,6 +5,9 @@ categories: ["nodejs", "nestjs"]
 tags: ["풀스택", "typeorm", "todo", "sqlite", "angular"]
 ---
 
+> 입사지원 과제로 제출한 Todo 프로젝트입니다. 풀스택으로 일주일간 구현했습니다.
+{: .prompt-tip }
+
 <div style="display: flex; justify-content: center;">
   <img src="https://angular.io/assets/images/logos/angular/angular.png" width="120" alt="Angular logo"/>
   <img src="https://nestjs.com/img/logo-small.svg" width="130" alt="Nest Logo" />&nbsp;
@@ -245,6 +248,5 @@ id  name               done  created              updated              todos
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

@@ -7,7 +7,8 @@ tags: ["create-dmg", "ds_store", "icns", "dmg-icon", "pgadmin4"]
 pin: false
 ---
 
-Mac 배포용 dmg 파일을 만들기 위한 pgAdmin4 작업 내용을 기록합니다.
+> Mac 배포용 dmg 파일을 만들기 위해 pgAdmin4 대상으로 연습한 내용을 기록합니다.
+{: .prompt-tip }
 
 ## create-dmg 를 이용한 dmg 생성
 
@@ -102,6 +103,5 @@ rm -R $ICONSET%
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

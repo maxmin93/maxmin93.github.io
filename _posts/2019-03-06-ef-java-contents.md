@@ -7,6 +7,9 @@ image:
   src: http://image.yes24.com/goods/65551284/800x0
 ---
 
+> Java 기초를 다지기 위해 효과적인 자바란 책을 공부 중입니다.
+{: .prompt-tip }
+
 ### 책소개
 
 - 출처 : 도서 [Effective Java 3rd](http://www.yes24.com/Product/Goods/65551284)
@@ -224,6 +227,6 @@ image:
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }
+

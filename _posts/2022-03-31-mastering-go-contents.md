@@ -7,6 +7,9 @@ image:
   src: http://www.acornpub.co.kr/tb/detail/book/fl/sh/1621183964smdDjLWI.jpg
 ---
 
+> 크롤링과 마이크로 서비스 등 백엔드 구현에 널리 쓰이는 Go 언어를 공부합니다.
+{: .prompt-tip }
+
 ## 책소개
 
 - 출처 : 에이콘 [Go 마스터하기 2/e](http://www.acornpub.co.kr/book/mastering-go-2e)
@@ -253,6 +256,5 @@ Go 언어로 HTTPS 트래픽을 다루는 방법, UDP 및 TCP 클라이언트와
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

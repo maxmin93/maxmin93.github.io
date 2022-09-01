@@ -6,7 +6,8 @@ tags: ["깃블로그", "깃허브 블로그", "구글검색등록", "버전업",
 image: "/2022/08/31-jekyll-permanant-url-path-min.png"
 ---
 
-Github pages를 chirpy 5.2.1로 갱신하면서 발생한 오류들과 전체 과정을 설명합니다.
+> Github pages를 chirpy 5.2.1로 갱신하면서 발생한 오류들과 전체 과정을 설명합니다.
+{: .prompt-tip }
 
 ## 1. 기존 블로그 상태와 문제들
 
@@ -353,6 +354,5 @@ $ brew install crunch --cask
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

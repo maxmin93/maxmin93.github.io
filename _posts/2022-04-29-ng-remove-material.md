@@ -5,6 +5,9 @@ categories: ["nodejs", "angular"]
 tags: ["매터리얼", "remove", "material", "angular-material", "초기화"]
 ---
 
+> Angular 프로젝트에서 Material 말고 다른 UI 테마를 쓰고 싶을 때, 초기화 하는 방법을 설명합니다.
+{: .prompt-tip }
+
 ## Angular Material
 
 [Angular Material](https://material.angular.io)는 Angular 용으로 제작된 Material UI 프레임워크입니다.<br/>
@@ -149,6 +152,5 @@ $ npm uninstall @angular/cdk --save
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

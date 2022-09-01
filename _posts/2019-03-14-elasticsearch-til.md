@@ -5,6 +5,9 @@ categories: ["elasticsearch"]
 tags: ["tutorial"]
 ---
 
+> 대용량 데이터 탐색에 Elasticsearch 를 사용하려고 튜토리얼 공부 중입니다.
+{: .prompt-tip }
+
 > 출처 : 도서 [Learning Elastic Stack 6](http://aladin.kr/p/e1tcY)
 
 ## 튜토리얼 따라하기
@@ -282,6 +285,5 @@ POST /twitter/_open
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

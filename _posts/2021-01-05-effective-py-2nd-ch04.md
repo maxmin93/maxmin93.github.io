@@ -7,6 +7,9 @@ image:
   src: https://effectivepython.com/images/cover_2ed.jpg
 ---
 
+> Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.
+{: .prompt-tip }
+
 ## 4장 컴프리헨션과 제너레이터
 
 ### 27) map과 filter 대신 컴프리헨션을 사용하라 <a id="item27" />
@@ -444,6 +447,5 @@ itertools.combinations_with_replacement([1,2,3], 2)
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

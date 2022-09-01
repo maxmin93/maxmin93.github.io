@@ -6,6 +6,9 @@ categories: ["packaging"]
 tags: ["win32", "postgresql", "visual-studio", "윈도우", "exe-파일"]
 ---
 
+> 오픈소스 제품의 윈도우 패키징을 위해 Postgresql 대상으로 배포판을 만들어봅니다.
+{: .prompt-tip }
+
 [Postgresql](https://github.com/postgres/postgres) 소스는 리눅스 기준으로 작성되었기 때문에, 윈도우 실행을 위해서는 Visual Studio 를 사용하여 윈도우 실행 파일인 exe 파일들로 빌드해야 합니다.
 
 ## Postgresql 윈도우 배포판 빌드하기
@@ -79,6 +82,5 @@ vcregress check
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

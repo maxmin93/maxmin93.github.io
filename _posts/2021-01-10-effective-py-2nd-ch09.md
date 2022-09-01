@@ -7,6 +7,9 @@ image:
   src: https://effectivepython.com/images/cover_2ed.jpg
 ---
 
+> Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.
+{: .prompt-tip }
+
 ## 9장 테스트와 디버깅
 
 - 파이썬은 선택적인 타입 애너테이션을 지원하며 이를 활용해 정적 분석을 수행할 수 있다.
@@ -599,6 +602,5 @@ print('\n'.join(top.traceback.format()))
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

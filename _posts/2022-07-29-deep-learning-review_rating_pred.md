@@ -3,8 +3,11 @@ date: 2022-07-29 00:00:00 +0000
 title: 딥러닝 - 리뷰 평점 예측 프로젝트
 categories: ["deep-learning"]
 tags: ["코드스테이츠", "제주ICT", "부트캠프", "딥러닝"]
-pin: false
+image: https://github.com/maxmin93/aib-proj-dacon/raw/main/images/bert-train-acc_loss-linechart.png
 ---
+
+> 데이콘 쇼핑몰 리뷰 평점 예측 대회에 참가하며 분석한 결과와 회고를 기록합니다.
+{: .prompt-tip }
 
 # <img src="https://dacon.io/_nuxt/img/main-logo.aa87261.svg" width="140" style="background-color: lightgray"/> &nbsp;쇼핑몰 분석 프로젝트
 
@@ -350,6 +353,5 @@ pin: false
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

@@ -5,6 +5,9 @@ categories: ["bitnine", "agens-browser"]
 tags: ["agensgraph", "recommendation", "northwind"]
 ---
 
+> 그래프 데이터베이스 제품의 튜토리얼 과정을 Northwind 상품추천 내용으로 만들었습니다.
+{: .prompt-tip }
+
 ### Recommendation based on collaborative filtering
 
 - [콘텐츠 추천 알고리즘의 진화](http://www.kocca.kr/insight/vol05/vol05_04.pdf)
@@ -26,6 +29,5 @@ tags: ["agensgraph", "recommendation", "northwind"]
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

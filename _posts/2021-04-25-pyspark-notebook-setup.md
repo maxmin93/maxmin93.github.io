@@ -5,7 +5,8 @@ categories: ["python"]
 tags: ["jupyter", "pyspark", "setup"]
 ---
 
-ipython profile config 및 kernel 환경 설정
+> 데이터 분석을 위한 작업 환경을 개선하려고 주피터 노트북에 PySpark 를 연동한 작업을 기록합니다.
+{: .prompt-tip }
 
 ## 사전 작업
 
@@ -155,6 +156,5 @@ alias pyspark-notebook="ipython notebook --config='~/.ipython/profile_pyspark/  
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

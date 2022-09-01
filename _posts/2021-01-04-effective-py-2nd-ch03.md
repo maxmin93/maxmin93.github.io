@@ -7,6 +7,9 @@ image:
   src: https://effectivepython.com/images/cover_2ed.jpg
 ---
 
+> Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.
+{: .prompt-tip }
+
 ## 3장 함수
 
 ### 19) 함수가 여러 값을 반환하는 경우 절대로 네 값 이상을 언패킹하지 말라 <a id="item19" />
@@ -328,6 +331,5 @@ def fibonacci(n):
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

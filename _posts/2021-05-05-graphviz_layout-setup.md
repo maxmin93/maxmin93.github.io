@@ -5,6 +5,9 @@ categories: ["python"]
 tags: ["graphviz", "networkx", "matplotlib"]
 ---
 
+> Python 환경에서 그래프 분석을 하기 위해 그래프의 시각화를 제공하는 graphvis 라이브러리에 대해 공부합니다.
+{: .prompt-tip }
+
 ## graphviz 프로그램
 
 [graphviz](https://www.graphviz.org)는 그래프 시각화(graph visualization)를 위한 `layout 계산기`이다.<br>
@@ -168,6 +171,5 @@ plt.close(fig)
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

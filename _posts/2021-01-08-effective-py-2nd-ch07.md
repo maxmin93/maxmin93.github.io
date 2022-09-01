@@ -7,6 +7,9 @@ image:
   src: https://effectivepython.com/images/cover_2ed.jpg
 ---
 
+> Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.
+{: .prompt-tip }
+
 ## 7장 동시성과 병렬성
 
 ### 52) 자식 프로세스를 관리하기 위해 subprocess를 사용하라 <a id="item52" />
@@ -653,6 +656,5 @@ print(f'{done_queue.qsize()} 개의 아이템을 처리했습니다.')
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

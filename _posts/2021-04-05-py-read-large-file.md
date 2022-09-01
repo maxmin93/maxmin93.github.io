@@ -5,6 +5,9 @@ categories: ["python"]
 tags: ["mmap", "threadpoolexecutor"]
 ---
 
+> 텍스트로만 8GB 이상인 대용량 파일을 전처리 하기 위해서 빠르게 읽고 쓰는 방법에 대해 공부했습니다.
+{: .prompt-tip }
+
 ## 대용량 파일 읽고 처리하기
 
 뉴스 JSON 파일 `news.sources` 용량 8.1G 를 읽고 JSON 문자열을 `Document` 개체로 변환하는 작업
@@ -151,6 +154,5 @@ if __name__ == '__main__' :
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

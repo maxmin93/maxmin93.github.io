@@ -5,6 +5,9 @@ categories: ["nodejs", "nestjs"]
 tags: ["백엔드", "typeorm", "todo", "sqlite", "graphql"]
 ---
 
+> 입사지원 과제로 제출한 프로젝트입니다. 백엔드에 GraphQL 구현을 추가했습니다.
+{: .prompt-tip }
+
 <div style="display: flex; justify-content: center;">
   <img src="https://miro.medium.com/max/1400/1*y5Cb_lSRJCg1ixoHbMA_ZA.png" width="120" alt="Apollo GraphQL"/>&nbsp; &nbsp;
   <img src="https://nestjs.com/img/logo-small.svg" width="130" alt="Nest Logo" />&nbsp;
@@ -428,6 +431,5 @@ mutation {
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

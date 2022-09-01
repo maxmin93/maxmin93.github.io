@@ -5,6 +5,9 @@ categories: ["devops"]
 tags: ["TIL", "docker", "compose", "aws", "nginx"]
 ---
 
+> 개발환경과 배포의 필수품이 된 Docker 부터 AWS 자동화까지 알아보겠습니다.
+{: .prompt-tip }
+
 ## Docker Tutorial
 
 ### Docker 설치 (Mac)
@@ -387,6 +390,5 @@ $ docker push <ecr-repo-uri>
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

@@ -3,6 +3,9 @@
  */
 
 @mixin dark-scheme {
+  --default-font-sans: 'Noto Sans KR';
+  --default-font-serif: 'Noto Serif KR';
+
   /* Framework color */
   --body-bg: var(--main-wrapper-bg);
   --mask-bg: rgb(68, 69, 70);

@@ -7,6 +7,9 @@ image:
   src: https://effectivepython.com/images/cover_2ed.jpg
 ---
 
+> Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.
+{: .prompt-tip }
+
 ## 5장 클래스와 인터페이스
 
 ### 37) 내장 타입을 여러 단계로 내포시키기보다는 클래스를 합성하라 <a id="item37" />
@@ -475,6 +478,5 @@ foo = BadType()
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

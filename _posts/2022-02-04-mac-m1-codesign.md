@@ -7,7 +7,8 @@ tags: ["mac", "codesign", "cer", "패키징", "서명", "공증"]
 pin: false
 ---
 
-맥OS용 네이티브 웹앱을 패키징하고 배포하기 위해 필요한 `codesign`(개발자 서명)과 `notarization`(인증기관 공증)에 대해 `pgAdmin4`를 가지고 작업한 내용을 기록합니다.
+> 맥 OS용 네이티브 웹앱을 패키징하고 배포하기 위해 필요한 `codesign`(개발자 서명)과 `notarization`(인증기관 공증)에 대해 `pgAdmin4`를 가지고 연습해 보았습니다.
+{: .prompt-tip }
 
 ## 패키징 예제 [pgAdmin4](https://github.com/postgres/pgadmin4)
 
@@ -157,6 +158,5 @@ $ xcrun altool --notarization-info "${공증 요청 ID}" --username "maxmin93@gm
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

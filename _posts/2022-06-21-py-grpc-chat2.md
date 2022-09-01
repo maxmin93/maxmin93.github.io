@@ -5,6 +5,9 @@ categories: ["python", "gRPC"]
 tags: ["TIL", "channel", "heartbeat", "login", "async"]
 ---
 
+> 마이크로 서비스의 핵심 프로토콜인 gRPC 에 대해 Chat 예제 소스를 분석하며 공부합니다.
+{: .prompt-tip }
+
 ## gRPC 기반 Chat 프로그램
 
 **출처** [chatting](https://github.com/ehei1/chatting)
@@ -547,6 +550,5 @@ if __name__ == '__main__':
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

@@ -5,6 +5,9 @@ categories: ["python", "코딩테스트"]
 tags: ["dmoj"]
 ---
 
+> 파이썬 코딩테스트 준비를 하며 공부한 내용을 기록하고 복습합니다.
+{: .prompt-tip }
+
 ## 코딩테스트 참고자료
 
 - 사이트(무료) [DMOJ](https://dmoj.ca/), [USA Computing Olympiad](http://usaco.org/)
@@ -627,6 +630,5 @@ f.close()
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

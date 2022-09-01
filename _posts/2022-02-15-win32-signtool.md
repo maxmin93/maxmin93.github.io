@@ -17,7 +17,8 @@ tags:
 pin: false
 ---
 
-Windows용 네이티브 웹앱을 패키징하고 배포하기 위해 필요한 `signtool`(개발자 서명)과 `makecert`(서명자 생성)에 대해 `pgAdmin4`를 가지고 작업한 내용을 기록합니다.
+> Windows용 네이티브 웹앱을 패키징하고 배포하기 위해 필요한 `signtool`(개발자 서명)과 `makecert`(서명자 생성)에 대해 `pgAdmin4`를 가지고 작업한 내용을 기록합니다.
+{: .prompt-tip }
 
 ## win32 인증서 및 서명
 
@@ -138,6 +139,5 @@ signtool sign /t http://time.certum.pl /f .\pkg\win32\build_lib\bitnine.pfx /p b
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

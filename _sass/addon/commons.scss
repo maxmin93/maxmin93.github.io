@@ -1,7 +1,8 @@
 /*
   The common styles
 */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Noto+Serif+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Myeongjo&display=swap');
 
 html {
   @media (prefers-color-scheme: light) {
@@ -35,7 +36,7 @@ body {
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   // font-family: 'Source Sans Pro', 'Microsoft Yahei', sans-serif;
-  font-family: 'Noto Sans KR', sans-serif;
+  font-family: var(--default-font-sans), sans-serif;
 }
 
 /* --- Typography --- */
@@ -432,7 +433,7 @@ img[data-src] {
 
 .post-meta {
   font-size: 0.85rem;
-  word-spacing: 1px;
+  word-spacing: 2px;
 
   a {
     &:not(:last-child) {
@@ -1043,7 +1044,7 @@ $sidebar-display: "sidebar-display";
   display: none;
   font-size: 1.1rem;
   font-weight: 600;
-  font-family: sans-serif;
+  font-family: var(--default-font-serif); // sans-serif;
   color: var(--topbar-text-color);
   text-align: center;
   width: 70%;
@@ -1148,7 +1149,7 @@ $sidebar-display: "sidebar-display";
   }
 
   .toast-body {
-    font-family: 'Lato';
+    font-family: var(--default-font-sans);
     line-height: 1.25rem;
 
     button {
@@ -1463,7 +1464,7 @@ $sidebar-display: "sidebar-display";
   }
 
   #breadcrumb {
-    width: 65%;
+    width: 75%;
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: keep-all;

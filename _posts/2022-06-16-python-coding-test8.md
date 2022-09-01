@@ -5,6 +5,9 @@ categories: ["python", "코딩테스트"]
 tags: ["coderbyte"]
 ---
 
+> 파이썬 코딩테스트 준비를 하며 공부한 내용을 기록하고 복습합니다.
+{: .prompt-tip }
+
 ## 참고자료
 
 - [coderbyte](https://coderbyte.com/)
@@ -717,6 +720,5 @@ print(SudokuQuadrantChecker(input()))
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

@@ -5,6 +5,9 @@ categories: ["elasticsearch"]
 tags: ["zombodb", "postgresql"]
 ---
 
+> Postgresql 과 Elasticsearch 를 연동시키는 Zombodb 라는 플러그인을 설치하는 방법을 설명합니다.
+{: .prompt-tip }
+
 > 출처 : Github [zombodb](https://github.com/zombodb/zombodb)
 
 ## Zombodb install
@@ -77,6 +80,5 @@ CREATE DOMAIN korean AS text;      -- nori_analyzer
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }

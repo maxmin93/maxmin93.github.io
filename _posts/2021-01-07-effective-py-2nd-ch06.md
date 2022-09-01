@@ -7,6 +7,9 @@ image:
   src: https://effectivepython.com/images/cover_2ed.jpg
 ---
 
+> Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.
+{: .prompt-tip }
+
 ## 6장 메타클래스와 애트리뷰트
 
 ### 44) 세터와 게터 메서드 대신 평범한 애트리뷰트를 사용하라 <a id="item44" />
@@ -840,6 +843,5 @@ class TraceDict(dict, metaclass=OtherMeta):
 &nbsp; <br />
 &nbsp; <br />
 
-```diff
-+ This is the end. Thank you.
-```
+> **끝!** 읽어주셔서 감사합니다.
+{: .prompt-info }
