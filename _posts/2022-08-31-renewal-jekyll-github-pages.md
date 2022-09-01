@@ -310,6 +310,8 @@ body {
 
 ### 3) 그 밖의 작업
 
+할게 뭐지?
+
 ## 6. 사이트 최적화
 
 ### 1) 이미지 용량 줄이기
@@ -317,6 +319,16 @@ body {
 이미지가 제일 큰 문제다. 문서 하나당 이미지 서너장은 쓰는데, 1MB 짜리면 4~5MB 이다. 이래서야 공짜로 쓰는 입장에서 깃허브에 미안할 따름이다.
 
 [compresspng.com](https://compresspng.com/ko/) 와 같은 이미지 압축 사이트들이 있다. 번거롭더라도 이미지 처리를 하고 나면, 대충 1/2 ~ 1/3 까지 용량이 축소된다.
+
+> `rename` 으로 한번에 (`-min` 패턴을 제거하여) 파일명 변경
+
+```bash
+# rename 명령이 필요하다 (perl 스크립트)
+$ brew install rename
+
+# 하나의 명령어로 본래의 파일명으로 변경 (패턴 제거)
+$ rename 's/-min././' *-min.png
+```
 
 ### 2) category, tags 줄이기
 
@@ -328,5 +340,5 @@ body {
 &nbsp; <br />
 
 ```diff
-+ This is the end of my post. Thank you.
++ This is the end. Thank you.
 ```

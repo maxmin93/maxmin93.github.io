@@ -75,3 +75,10 @@ vcregress check
 - icon 과 sidebar 이미지, LICENSE 파일, `vcredist_x64.exe`을 포함해 패키지 생성
   - `vcredist_x64.exe`는 소스 빌드에 사용된 Visual Studio 버전을 따른다
     - `Microsoft Visual C++ 2017 Redistributable (x64)` 파일
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

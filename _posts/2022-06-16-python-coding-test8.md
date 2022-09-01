@@ -713,3 +713,10 @@ def SudokuQuadrantChecker(strArr):
 # keep this function call here
 print(SudokuQuadrantChecker(input()))
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

@@ -592,3 +592,10 @@ def WildcardCharacters(strParam):
 # keep this function call here
 print(WildcardCharacters(input()))
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

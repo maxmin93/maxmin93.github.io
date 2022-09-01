@@ -383,3 +383,10 @@ $ docker tag <source_image_tag> <target_ecr_repo_uri>
 
 $ docker push <ecr-repo-uri>
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

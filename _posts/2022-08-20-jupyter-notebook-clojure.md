@@ -259,3 +259,10 @@ export JAVA_OPTS="-Xms1g -Xmx1g"
 # lein 관련 설정은 LEIN_JVM_OPTS 으로 정의하자
 export LEIN_JVM_OPTS="-Dmaven.wagon.rto=1800000 -Dclojure.vmargs=\"-d64\""
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

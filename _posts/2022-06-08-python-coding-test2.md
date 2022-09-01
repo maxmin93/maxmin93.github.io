@@ -791,3 +791,10 @@ print(len(pairs)//2, pairs)
 ```python
 
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

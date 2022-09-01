@@ -424,3 +424,10 @@ mutation {
 ## Source
 
 [[github]](https://github.com/maxmin93/wisely-todo-api)
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

@@ -346,3 +346,10 @@ pin: false
 # text in gray
 @@ text in purple (and bold)@@
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

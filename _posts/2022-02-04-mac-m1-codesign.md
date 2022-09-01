@@ -153,3 +153,10 @@ $ xcrun altool --notarize-app -f "$PGADMIN4_SRC/pkg/../dist/pgadmin4-6.4.dmg" --
 # 공증 응답 확인
 $ xcrun altool --notarization-info "${공증 요청 ID}" --username "maxmin93@gmail.com" --password "abcd-efgh-ijkl-mnop"
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

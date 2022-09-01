@@ -145,3 +145,10 @@ $ npm uninstall @angular/cdk --save
 # src/index.html 변경사항 삭제
 # src/styles.css 변경사항 삭제
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

@@ -249,3 +249,10 @@ Go 언어로 HTTPS 트래픽을 다루는 방법, UDP 및 TCP 클라이언트와
 - [아웃라이어 분석] (/posts/mastering-go-ch14#item07)
 - [텐서플로] (/posts/mastering-go-ch14#item08)
 - [카프카] (/posts/mastering-go-ch14#item09)
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

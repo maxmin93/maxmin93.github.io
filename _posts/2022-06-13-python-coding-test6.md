@@ -525,3 +525,10 @@ def LargestRowColumn(strArr):
 # keep this function call here
 print(LargestRowColumn(input()))
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

@@ -251,3 +251,10 @@ src="https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-detail-undone.pn
 ## Source
 
 [[github]](https://github.com/maxmin93/wisely-todo)
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

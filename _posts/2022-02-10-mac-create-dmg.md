@@ -98,3 +98,10 @@ cp $1 $ICONSET/icon_1024x1024@2x.png
 iconutil -c icns $ICONSET
 rm -R $ICONSET%
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

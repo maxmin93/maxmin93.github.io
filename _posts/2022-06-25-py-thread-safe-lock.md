@@ -226,3 +226,10 @@ difference: 0 (0.0 %)
 - [How are thread-safe data types implemented in Python?](https://www.quora.com/How-are-thread-safe-data-types-implemented-in-Python)
 - [Thread](https://hyobins.github.io/2021-08-15-Thread/)
 - [Thread-Safety in Python](https://www.flowdas.com/2013/11/10/thread-safety-in-python.html)
+
+  &nbsp; <br />
+  &nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

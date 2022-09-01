@@ -881,3 +881,10 @@ def quick_sort(array):
 print( selection_sort(array[:]) )
 print( quick_sort(array[:]) )
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

@@ -623,3 +623,10 @@ for line in reader:
 f.close()
 # ==> ['hello', 'my', 'name', 'is', 'Bessie', 'and', 'this', 'is', 'my', 'essay']
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

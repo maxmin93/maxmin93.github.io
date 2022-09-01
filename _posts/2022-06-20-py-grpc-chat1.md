@@ -266,3 +266,10 @@ class Client:
     def __setup_ui(self):
         # 채팅창 UI 생성...
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```
