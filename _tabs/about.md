@@ -7,7 +7,7 @@ order: 4
 > Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
 {: .prompt-tip }
 
-## Block Quote
+## <i class="fa fa-pencil" title="Edit"></i> Block Quote <i class="fa fa-pencil" title="Edit"></i>
 
 > This line shows the _block quote_.
 
@@ -15,7 +15,7 @@ order: 4
 > This line shows the _block quote_.
 ```
 
-## Prompts
+### <i class="fas fa-stream" title="Edit"></i> Prompts <i class="fa fa-stream" title="Edit"></i>
 
 > An example showing the `tip` type prompt.
 {: .prompt-tip }
@@ -24,6 +24,7 @@ order: 4
 > An example showing the `tip` type prompt.
 {: .prompt-tip }
 ```
+### <i class="fas fa-home" title="Edit"></i> home <i class="fa fa-home" title="Edit"></i>
 
 > An example showing the `info` type prompt.
 {: .prompt-info }
@@ -33,6 +34,8 @@ order: 4
 {: .prompt-info }
 ```
 
+### <i class="fas fa-archive" title="Edit"></i> archive <i class="fa fa-archive" title="Edit"></i>
+
 > An example showing the `warning` type prompt.
 {: .prompt-warning }
 
@@ -41,6 +44,7 @@ order: 4
 {: .prompt-warning }
 ```
 
+### <i class="fas fa-info-circle" title="Edit"></i> info-circle <i class="fa fa-info-circle" title="Edit"></i>
 > An example showing the `danger` type prompt.
 {: .prompt-danger }
 

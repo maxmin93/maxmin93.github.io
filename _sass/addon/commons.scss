@@ -1,8 +1,13 @@
 /*
   The common styles
 */
+/* for dark-mode */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Noto+Serif+KR&display=swap');
+/* for light-mode */
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Myeongjo&display=swap');
+
+/* icons - download */
+@import "fontawesome.all.min.css";
 
 html {
   @media (prefers-color-scheme: light) {
@@ -572,6 +577,8 @@ img[data-src] {
 }
 
 .unloaded {
+  /* 아이콘이 안보여서 (관두자! hover 효과가 사라진다) */
+  // display: none;
   display: none !important;
 }
 
@@ -664,6 +671,8 @@ $sidebar-display: "sidebar-display";
     &:hover {
       @include no-text-decoration;
 
+      /* 아이콘 보이게 (.unloaded 때문에 안보임) */
+      display: inline-block !important;
       color: var(--sidebar-active-color) !important;
     }
   }
