@@ -5,11 +5,11 @@ categories: ["nodejs", "nestjs"]
 tags: ["풀스택", "typeorm", "todo", "sqlite", "angular"]
 ---
 
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SQLite370.svg/1280px-SQLite370.svg.png" width="180" alt="Sqlite Logo" />
-  <img src="https://nestjs.com/img/logo-small.svg" width="180" alt="Nest Logo" />
-  <img src="https://angular.io/assets/images/logos/angular/angular.png" width="200" alt="Angular Logo" />
-</p>
+<div style="display: flex; justify-content: center;">
+  <img src="https://angular.io/assets/images/logos/angular/angular.png" width="120" alt="Angular logo"/>
+  <img src="https://nestjs.com/img/logo-small.svg" width="130" alt="Nest Logo" />&nbsp;
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SQLite370.svg/1280px-SQLite370.svg.png" width="150" alt="Sqlite Logo" />
+</div>
 
 - 프론트엔드: [Angular](https://angular.io/)
 - 백엔드 API: [NestJS](http://nestjs.com/)
@@ -193,60 +193,50 @@ id  name               done  created              updated              todos
 - 리스트 상에서 완료된 Todo 는 id 아래에 주황색 표시로 강조됩니다.
 - 하위 항목이 있는 경우 오른쪽에 숫자가 표시됩니다.
 
-<img width="500" alt="todo-list" style="padding-bottom:20px"
-src="https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list.png">
+![todo-list](https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list.png){: width="540"} <br />&nbsp;
 
 상단 입력상자와 `Add todo` 버튼으로 Todo 를 등록할 수 있습니다.<br>
 (추가된 상태를 쉽게 알아보기 위해 리스트 상단에 출력하도록 했습니다)
 
-<img width="500" alt="todo-list-insert" style="padding-bottom:20px"
-src="https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list-insert.png">
+![todo-list-insert](https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list-insert.png){: width="540"} <br />&nbsp;
 
 검색 결과와 pagination 을 연동하였습니다.<br>
 (검색 옵션 변경시 pagination 도 변경됨)
 
-<img width="500" alt="todo-list-pagination" style="padding-bottom:20px"
-src="https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list-pagination.png">
+![todo-list-pagination](https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list-pagination.png){: width="540"} <br />&nbsp;
 
 검색 옵션으로 `done(완료여부)`, `name 검색`, `created 시작일`, `created 종료일` 을 사용할 수 있습니다.<br>
 
 - name 검색어에 대해 특수문자를 삭제 처리 후 매칭
 - created 시작일과 종료일은 "YYYY-MM-DD" 형식을 확인후 매칭
 
-<img width="500" alt="todo-list-search-done" style="padding-bottom:20px"
-src="https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list-search-done.png">
+![todo-list-search-done](https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list-search-done.png){: width="540"} <br />&nbsp;
 
-<img width="500" alt="todo-list-search-name" style="padding-bottom:20px"
-src="https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list-search-name.png">
+![todo-list-search-name](https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list-search-name.png){: width="540"} <br />&nbsp;
 
-<img width="500" alt="todo-list-search-date" style="padding-bottom:20px"
-src="https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list-search-date.png">
+![todo-list-search-date](https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list-search-date.png){: width="540"} <br />&nbsp;
 
 ### Todo 상세 페이지
 
 특정 Todo 에 상세 내용을 조회하고, 하위 Todo 를 추가/삭제합니다.<br>
 하위 Todo 는 다이얼로그 창을 통해 선택합니다.
 
-<img width="500" alt="todo-detail-done" style="padding-bottom:20px"
-src="https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-detail-done.png">
+![todo-detail-done](https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-detail-done.png){: width="540"} <br />&nbsp;
 
 하위 Todo 선택을 위한 다이얼로그 창은 `add sub-todo` 버는을 누르면 나타납니다.<br>
 선택 가능한 하위 Todo의 조건은 미완료 상태이고, 하위 Todo 가 없는 항목들입니다.
 
-<img width="500" alt="todo-detail-dialog" style="padding-bottom:20px"
-src="https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-detail-dialog.png">
+![todo-detail-dialog](https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-detail-dialog.png){: width="540"} <br />&nbsp;
 
 `save` 버튼을 누르면 Todo 의 내용이 변경됩니다.<br>
 (변경 가능한 항목은 name, done, 하위 Todo 리스트 입니다)
 
-<img width="500" alt="todo-detail-update" style="padding-bottom:20px"
-src="https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-detail-update.png">
+![todo-detail-update](https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-detail-update.png){: width="540"} <br />&nbsp;
 
 하위 Todo 항목에 미완료 Todo 가 포함된 경우 `Done 체크박스` 가 비활성화 됩니다.<br>
 (완료 상태이더라도 미완료 Todo 가 추가된 경우 미완료 상태로 변경됩니다)
 
-<img width="500" alt="todo-detail-undone" style="padding-bottom:20px"
-src="https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-detail-undone.png">
+![todo-detail-undone](https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-detail-undone.png){: width="540"} <br />&nbsp;
 
 ## Source
 

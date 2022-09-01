@@ -17,8 +17,15 @@ tags: ["agensgraph", "recommendation", "northwind"]
 
 ### Video
 
-[![Northwind tutorial](https://img.youtube.com/vi/4WI1DkADBN4/0.jpg){: width="540"}](https://youtu.be/4WI1DkADBN4?t=0s)
+[![Northwind tutorial](https://img.youtube.com/vi/4WI1DkADBN4/0.jpg){: width="600"}](https://youtu.be/4WI1DkADBN4?t=0s) <br />&nbsp;
 
 ### Google presentation
 
 [AgensBrowser tutorial](https://docs.google.com/presentation/d/15c1jqXSKH36sXD1b5DZSs4kqUEIKR-5KzcefTU2kYtA/edit?usp=sharing)
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

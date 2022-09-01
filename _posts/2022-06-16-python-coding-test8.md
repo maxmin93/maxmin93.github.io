@@ -391,11 +391,11 @@ print(MatrixDeterminant(input()))
 - 여인수 행렬 구하기: Adj(M)
 - 역행렬 구하기 : `1/det(M) * Adj(M)`
 
-![소행렬의 행렬식](https://www.wikihow.com/images/thumb/e/ea/Find-the-Inverse-of-a-3x3-Matrix-Step-3-Version-2.jpg/v4-728px-Find-the-Inverse-of-a-3x3-Matrix-Step-3-Version-2.jpg.webp)
+![소행렬의 행렬식](https://www.wikihow.com/images/thumb/e/ea/Find-the-Inverse-of-a-3x3-Matrix-Step-3-Version-2.jpg/v4-728px-Find-the-Inverse-of-a-3x3-Matrix-Step-3-Version-2.jpg.webp){: width="400" } <br />&nbsp;
 
-![여인수 행렬](https://www.wikihow.com/images/thumb/a/a2/Find-the-Inverse-of-a-3x3-Matrix-Step-4-Version-2.jpg/v4-728px-Find-the-Inverse-of-a-3x3-Matrix-Step-4-Version-2.jpg.webp)
+![여인수 행렬](https://www.wikihow.com/images/thumb/a/a2/Find-the-Inverse-of-a-3x3-Matrix-Step-4-Version-2.jpg/v4-728px-Find-the-Inverse-of-a-3x3-Matrix-Step-4-Version-2.jpg.webp){: width="400" } <br />&nbsp;
 
-![역행렬 계산](https://www.wikihow.com/images/thumb/7/7b/Find-the-Inverse-of-a-3x3-Matrix-Step-5-Version-2.jpg/v4-728px-Find-the-Inverse-of-a-3x3-Matrix-Step-5-Version-2.jpg.webp)
+![역행렬 계산](https://www.wikihow.com/images/thumb/7/7b/Find-the-Inverse-of-a-3x3-Matrix-Step-5-Version-2.jpg/v4-728px-Find-the-Inverse-of-a-3x3-Matrix-Step-5-Version-2.jpg.webp){: width="400" } <br />&nbsp;
 
 ### 문제 76
 

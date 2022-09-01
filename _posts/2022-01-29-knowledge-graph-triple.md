@@ -172,3 +172,10 @@ NLP(Natural Language Processing)는 자연어 원문을 기계가 이해할 수 
 본 연구에 대한 포스트는 [태주네 블로그](https://taejoone.jeju.onl)에 연재됩니다.
 
 &#91;알림&#93; 본 연구는 **"2019 GCS 창업성장과제"** 의 지원으로 진행된 **"그래프 기술 기반 Graph AI 솔루션 연구개발"** 과제의 연구결과입니다. **AgensKG**의 모든 저작권은 [비트나인](https://bitnine.net/)에 있습니다.<br>
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

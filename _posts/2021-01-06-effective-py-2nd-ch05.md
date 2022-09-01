@@ -471,3 +471,10 @@ class BadType(Sequence):
 foo = BadType()
 # >>> TypeError: 추상 클래스를 초기화 할 수 없음
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

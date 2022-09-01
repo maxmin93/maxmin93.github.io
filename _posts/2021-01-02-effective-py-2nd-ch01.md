@@ -384,3 +384,10 @@ while fresh_fruit := pick_fruit():
 
 [1]: https://stackoverflow.com/a/61834136
 [2]: https://www.toptal.com/designers/htmlarrows/
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

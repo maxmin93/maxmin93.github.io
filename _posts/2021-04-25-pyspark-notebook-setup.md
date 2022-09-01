@@ -151,3 +151,10 @@ print(spark.version)
 alias pyspark-notebook="ipython notebook --config='~/.ipython/profile_pyspark/  ipython_config.py'"
 
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

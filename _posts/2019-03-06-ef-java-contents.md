@@ -220,3 +220,10 @@ image:
 [아이템 89. 인스턴스 수를 통제해야 한다면 readResolve보다는 열거 타입을 사용하라] (\/posts/ef-java-ch12#item89)
 
 [아이템 90. 직렬화된 인스턴스 대신 직렬화 프록시 사용을 검토하라] (\/posts/ef-java-ch12#item90)
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

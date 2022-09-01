@@ -138,3 +138,10 @@ image:
 - 88. 순환 의존성을 깨는 방법을 알아두라 [&#9658;link] (/posts/effective-py-2nd-ch10#item88)
 - 89. 리팩터링과 마이그레이션 방법을 알려주기 위해 warning을 사용하라 [&#9658;link] (/posts/effective-py-2nd-ch10#item89)
 - 90. typing과 정적 분석을 통해 버그를 없애라 [&#9658;link] (/posts/effective-py-2nd-ch10#item90)
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

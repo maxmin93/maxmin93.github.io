@@ -649,3 +649,10 @@ print(f'{done_queue.qsize()} 개의 아이템을 처리했습니다.')
 ```python
 
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

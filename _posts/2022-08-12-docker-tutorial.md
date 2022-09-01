@@ -223,7 +223,7 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 ### 4. Todo App(nodejs) 실행해 보기
 
-<img src="https://docs.docker.com/get-started/images/todo-list-sample.png" width="600"/>
+![Todo App](https://docs.docker.com/get-started/images/todo-list-sample.png){: width="600"} <br />&nbsp;
 
 참고: [Sample application - Todo (nodejs)](https://docs.docker.com/get-started/02_our_app/)
 

@@ -29,7 +29,7 @@ pin: false
 
 #### conda
 
-<img src="https://miro.medium.com/max/1400/1*-_SPidVy1TiaCqhSv7-8Rw.png" width="600"><br/>&nbsp;
+![conda-log](https://miro.medium.com/max/1400/1*-_SPidVy1TiaCqhSv7-8Rw.png){: width="600"} <br />&nbsp;
 
 대표적으로, 지금도 많이 쓰이는 [conda](https://docs.conda.io/en/latest/)가 있다. 다음과 같은 역활을 한다.
 
@@ -43,7 +43,7 @@ pin: false
 
 #### mamba
 
-<img src="https://github.com/mamba-org/mamba/blob/master/docs/assets/mamba_header.png?raw=true" width="600"><br/>&nbsp;
+![mamba-log](https://github.com/mamba-org/mamba/blob/master/docs/assets/mamba_header.png?raw=true){: width="600"} <br />&nbsp;
 
 (anaconda.com 소유의) `conda` 의 대안으로 [mamba](https://github.com/mamba-org/mamba) 가 있다.
 

@@ -517,3 +517,10 @@ print('변경됨:', my_array)  # yello ~
 ```
 
 - memoryview 로 bytearray 를 감싸면 복사에 따른 비용을 추가 부담하지 않고도 수신받은 데이터를 버퍼에서 원하는 위치에 스플라이스 할 수 있다.
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

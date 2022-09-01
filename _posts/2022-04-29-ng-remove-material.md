@@ -2,7 +2,7 @@
 date: 2022-04-29 00:00:00 +0000
 title: "Angular Material 제거하기"
 categories: ["nodejs", "angular"]
-tags: ["ng", "remove", "material", "angular-material", "삭제"]
+tags: ["매터리얼", "remove", "material", "angular-material", "초기화"]
 ---
 
 ## Angular Material

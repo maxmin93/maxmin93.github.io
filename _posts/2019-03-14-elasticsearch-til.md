@@ -278,3 +278,10 @@ PUT /twitter/_settings
 
 POST /twitter/_open
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```

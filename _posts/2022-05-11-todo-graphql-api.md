@@ -5,11 +5,11 @@ categories: ["nodejs", "nestjs"]
 tags: ["백엔드", "typeorm", "todo", "sqlite", "graphql"]
 ---
 
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SQLite370.svg/1280px-SQLite370.svg.png" width="180" alt="Sqlite Logo" />
-  <img src="https://nestjs.com/img/logo-small.svg" width="180" alt="Nest Logo" />
-  <img src="https://miro.medium.com/max/1400/1*y5Cb_lSRJCg1ixoHbMA_ZA.png" width="200" alt="Apollo GraphQL" />
-</p>
+<div style="display: flex; justify-content: center;">
+  <img src="https://miro.medium.com/max/1400/1*y5Cb_lSRJCg1ixoHbMA_ZA.png" width="120" alt="Apollo GraphQL"/>&nbsp; &nbsp;
+  <img src="https://nestjs.com/img/logo-small.svg" width="130" alt="Nest Logo" />&nbsp;
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SQLite370.svg/1280px-SQLite370.svg.png" width="150" alt="Sqlite Logo" />
+</div>
 
 - API: [Apollo GraphQL](https://www.apollographql.com/)
 - 백엔드: [NestJS](http://nestjs.com/)

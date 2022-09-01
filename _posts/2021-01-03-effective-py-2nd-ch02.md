@@ -315,3 +315,10 @@ handle.seek(0)
 image_data = handle.read()
 
 ```
+
+&nbsp; <br />
+&nbsp; <br />
+
+```diff
++ This is the end. Thank you.
+```
