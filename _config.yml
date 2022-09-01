@@ -23,7 +23,7 @@ timezone: Asia/Seoul
 
 title: 태주네 블로그 # the main title
 
-tagline: 풀스택 개발자, 지식그래프<br>데이터 분석/시각화/검색, 제주 # it will display as the sub-title
+tagline: 풀스택 개발자, 지식그래프<br>데이터 분석/시각화/검색 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
   Full-stack, 빅데이터, 한글 전처리, NLP, Knowledge Graph, 백엔드, Java, Spring, Python, FastAPI, 프론트엔드, NestJS, Angular, NLP, Graph Database, 그래프 알고리즘, Elasticsearch, 그래프 데이터베이스, Postgresql, 텍스트 마이닝, 머신러닝, AWS

@@ -28,9 +28,16 @@
   --checkbox-checked-color: var(--link-color);
 
   /* Sidebar */
-  --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
-  --sidebar-muted-color: #6d6c6b;
-  --sidebar-active-color: rgb(255 255 255 / 80%);
+  // --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
+  /* 사이드바 배경 그라데이션 */
+  --sidebar-bg: linear-gradient(45deg, #822259 0%, #784BA0 13%, #2B86C5 36%, #0e0101 100%);
+
+  /* 사이드바 폰트, 버튼 색상 */
+  --sidebar-title-color: #cac7c3                    // 타이틀
+  --sidebar-muted-color: rgba(134, 133, 133, 99%);  // 서브 타이틀
+
+  --sidebar-link-color: rgba(171, 168, 168, 0.9);   // 메뉴 항목
+  --sidebar-active-color: rgb(255 255 255 / 80%); // 메뉴 항목 활성화
   --nav-cursor-color: rgb(183, 182, 182);
   --sidebar-btn-bg: rgb(117 116 116 / 20%);
 

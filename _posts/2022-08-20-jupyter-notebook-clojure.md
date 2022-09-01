@@ -1,7 +1,7 @@
 ---
 date: 2022-08-20 00:00:00 +0000
 title: Clojure 도 Jupyter notebook에서 사용하자
-categories: ["clojure"]
+categories: ["java", "clojure"]
 tags: ["클로저", "주피터", "커널", "jupyter", "clojure-kernel"]
 image: "/2022/08/20-clojupyter-main.png"
 ---

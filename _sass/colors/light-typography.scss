@@ -26,9 +26,13 @@
   --checkbox-checked-color: #07a8f7;
 
   /* Sidebar */
-  --sidebar-bg: #eeeeee;
-  --sidebar-muted-color: #a2a19f;
-  --sidebar-active-color: #424242;
+  // --sidebar-bg: #eeeeee;
+  --sidebar-bg: linear-gradient(180deg, #FFDEE9 0%, #B5FFFC 100%);
+
+  --sidebar-title-color: rgba(134, 133, 133, 99%);  // 타이틀
+  --sidebar-muted-color: #a2a19f;                   // 서브타이틀
+  --sidebar-link-color: rgba(117, 117, 117, 0.9);   // 메뉴 항목
+  --sidebar-active-color: #424242;                  // 메뉴 항목 활성화
   --nav-cursor-color: #757575;
   --sidebar-btn-bg: white;
 
