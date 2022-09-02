@@ -1,6 +1,6 @@
 ---
 date: 2022-09-02 00:00:00 +0000
-title: pyMySQL 과 AioMysql 살펴보기 (Async 실행)
+title: pymysql 과 aiomysql 살펴보기 (async 처리)
 categories: ["python"]
 tags: ["TIL", "mysql", "asyncio", "sqlalchemy", "비동기"]
 image: "/2022/08/31-jekyll-permanant-url-path-min.png"
@@ -13,7 +13,7 @@ image: "/2022/08/31-jekyll-permanant-url-path-min.png"
 
 처리속도가 빠르고 대용량 처리에 용이해서 쇼핑몰 등의 트랜잭션에 적합한 데이터베이스입니다. 멀티 플랫폼에 다중 사용자 관리를 지원합니다.
 
-### MySQL 특징 (3가지)
+### MySQL 특징
 
 큰 특징은 3가지
 
@@ -32,19 +32,17 @@ image: "/2022/08/31-jekyll-permanant-url-path-min.png"
 
 ### Postgresql 과 MySQL 비교
 
-Postgresql 과 비교를 자주 하곤 하는데
-
 - 둘다 C/C++ 구현체인 점이 같고, 성능도 거의 비슷
 - Postgresql 은 오픈소스이고, 
 	+ MySQL 은 오라클이 소유권을 갖고 있습니다.
-- Postgresql 은 확장기능 활용해 GIS 같은 특수 목적용 등에도 사용하지만
-	+ MySQL 은 심플한 구조와 빠른 성능으로 트랜잭션으로 사용
+- Postgresql 은 확장기능 활용해 GIS 같은 특수 목적용 파생 버전이 많음
+	+ MySQL 은 심플한 구조와 빠른 성능으로 트랜잭션용으로 사용
 
 ## MySQL Python Adapter 설명
 
 DB 서버와 클라이언트의 프로그램간 연결과 실행을 제어하는 모듈
 
-![DB-Adapter diagram](https://i.stack.imgur.com/A9E32.png){: width=600}
+![DB-Adapter diagram](https://i.stack.imgur.com/A9E32.png){: width="560"}
 
 DB Adapter 는 다음과 같은 기능을 지원한다 (역활)
 
