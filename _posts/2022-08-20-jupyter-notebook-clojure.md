@@ -264,5 +264,5 @@ export LEIN_JVM_OPTS="-Dmaven.wagon.rto=1800000 -Dclojure.vmargs=\"-d64\""
 &nbsp; <br />
 &nbsp; <br />
 
-> **끝!** 읽어주셔서 감사합니다.
+> **끝!** &nbsp; 읽어주셔서 감사합니다.
 {: .prompt-info }

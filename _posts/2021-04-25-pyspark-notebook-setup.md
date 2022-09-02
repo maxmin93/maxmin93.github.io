@@ -156,5 +156,5 @@ alias pyspark-notebook="ipython notebook --config='~/.ipython/profile_pyspark/  
 &nbsp; <br />
 &nbsp; <br />
 
-> **끝!** 읽어주셔서 감사합니다.
+> **끝!** &nbsp; 읽어주셔서 감사합니다.
 {: .prompt-info }

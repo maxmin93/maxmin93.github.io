@@ -175,5 +175,5 @@ NLP(Natural Language Processing)는 자연어 원문을 기계가 이해할 수 
 &nbsp; <br />
 &nbsp; <br />
 
-> **끝!** 읽어주셔서 감사합니다.
+> **끝!** &nbsp; 읽어주셔서 감사합니다.
 {: .prompt-info }

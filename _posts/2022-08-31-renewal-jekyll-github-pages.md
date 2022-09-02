@@ -11,7 +11,7 @@ image: "/2022/08/31-jekyll-permanant-url-path-min.png"
 
 ## 1. 기존 블로그 상태와 문제들
 
-### 1) 왜 루비 3.x 을 깐거야
+### 1) 왜 Ruby 3.x 을 깐거야?
 
 기존에 `jekyll-theme-chirpy` 4.x 버전을 깃허브 블로그에 설치해 사용중이었다. 사실 내가 쓰는 글이 오래도록 보존하고 널리 읽히게 할 만큼 품질이 좋은 것은 아니라 여겼기에, 나만 보는 개발공부 공책같은 쓰임새였다.
 
@@ -354,5 +354,5 @@ $ brew install crunch --cask
 &nbsp; <br />
 &nbsp; <br />
 
-> **끝!** 읽어주셔서 감사합니다.
+> **끝!** &nbsp; 읽어주셔서 감사합니다.
 {: .prompt-info }
