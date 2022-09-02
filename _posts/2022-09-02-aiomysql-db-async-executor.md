@@ -3,7 +3,7 @@ date: 2022-09-02 00:00:00 +0000
 title: pymysql 과 aiomysql 살펴보기 (async 처리)
 categories: ["python"]
 tags: ["TIL", "mysql", "asyncio", "sqlalchemy", "비동기"]
-image: "/2022/08/31-jekyll-permanant-url-path-min.png"
+image: "https://byline.network/wp-content/uploads/2017/10/mysql-logo.jpg"
 ---
 
 > DB 의 async 처리를 공부하기 위해 aiomysql 소스 코드를 파보려고 합니다.
