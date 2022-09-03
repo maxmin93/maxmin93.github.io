@@ -67,6 +67,7 @@ $code-radius: 6px;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
 
+  /* 포스트 문장 내의 코드 구절 */
   pre {
     margin-bottom: 0;
     font-size: $code-font-size;
@@ -74,6 +75,7 @@ $code-radius: 6px;
     word-wrap: normal; /* Fixed Safari overflow-x */
   }
 
+  /* 포스트 코드 단락(블록) */
   table {
     td pre {
       overflow: visible;  /* Fixed iOS safari overflow-x */

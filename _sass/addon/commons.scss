@@ -1,12 +1,13 @@
 /*
   The common styles
 */
-/* for dark-mode */
+
+/* MODIFY: for dark-mode */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Noto+Serif+KR&display=swap');
-/* for light-mode */
+/* MODIFY: for light-mode */
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Myeongjo&display=swap');
 
-/* icons - download */
+/* MODIFY: icons - download */
 @import "fontawesome.all.min.css";
 
 html {
@@ -437,8 +438,8 @@ img[data-src] {
 }
 
 .post-meta {
-  font-size: 0.85rem;
-  word-spacing: 2px;
+  font-size: 0.92rem;   // MODIFY: 0.85rem --> 0.92rem (글쓴이, 읽는시간)
+  word-spacing: 1px;
 
   a {
     &:not(:last-child) {
@@ -671,8 +672,6 @@ $sidebar-display: "sidebar-display";
     &:hover {
       @include no-text-decoration;
 
-      /* 아이콘 보이게 (.unloaded 때문에 안보임) */
-      display: inline-block !important;
       color: var(--sidebar-active-color) !important;
     }
   }
@@ -1473,7 +1472,7 @@ $sidebar-display: "sidebar-display";
   }
 
   #breadcrumb {
-    width: 75%;
+    width: 75%;               // MODIFY: 65% --> 75% 상단 타이틀 너비
     overflow: hidden;
     text-overflow: ellipsis;
     word-break: keep-all;
