@@ -80,9 +80,9 @@ $ lein clojupyter install --ident clj-1.11
 If there are a lot of uncached dependencies this might take a while ...
 Clojupyter v0.3.5 - Install local
 
-    Installed jar:	./target/clojupyter-0.3.5-standalone.jar
-    Install directory:	~/Library/Jupyter/kernels/clj-1.11
-    Kernel identifier:	clj-1.11
+    Installed jar:  ./target/clojupyter-0.3.5-standalone.jar
+    Install directory:  ~/Library/Jupyter/kernels/clj-1.11
+    Kernel identifier:  clj-1.11
 
     Installation successful.
 
