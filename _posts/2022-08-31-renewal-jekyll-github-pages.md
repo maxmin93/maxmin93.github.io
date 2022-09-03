@@ -351,6 +351,45 @@ $ brew install crunch --cask
 
 - Jekyll 정적사이트 생성기도 할 일이 줄어든다.
 
+### 3) 사용자 WebFonts 설정 (D2Coding)
+
+D2Coding 폰트를 코드 블럭(`code`, `pre`)에 적용하려고 한다
+
+- 문장 내의 코드 구절: `/_sass/addon/syntax.scss`
+  + `code { &.highlighter-rouge {` 안에 `font-family` 설정
+- 별도의 코드 블럭
+  + `html { code { .highlight { table td pre {` 안에 설정
+
+구글의 WebFonts 또는 웹폰트 CDN 사이트를 이용하면 더 좋겠지만, 사용자 폰트를 사용하는 경우에는 `/assets` 디렉토리에 웹폰트를 설치하여야 한다.
+
+폰트 파일은 몇가지 포맷이 있는데,
+
+- eot, svg: 잘 모르겠다.
+- ttf: 트루타입 글꼴 - 일반적으로 컴퓨터에 설치하는 경우 사용
+- woff: 웹폰트 - 압축포맷, 용량이 작다, 브라우저 호환성이 좋다
+- woff2: 웹폰트 v2 - 압축률이 더 좋다, 하지만 브라우저 호환성이 나쁘다
+
+그래서 [D2Coding 의 WebFonts](https://github.com/Joungkyun/font-d2coding) 를 다운받아 `/assets` 에 설치했다. 그리고 하는 김에 FontAwesome 도 설치했다. (CDN 있을텐데, 어딘지 몰라서)
+
+- `/assets/css` : 웹폰트의 명세와 읽어오는 디렉토리를 정의한 스타일 파일
+- `/assets/webfonts` : woff, woff2 파일
+
+이유는 모르겠지만, woff 파일만 넣으니 woff2 파일도 찾으면서 Error 출력함 (서버가 찾는게 아니라 브라우저가 찾는거 같다)
+
+```text
+ERROR `/assets/webfonts/fa-solid-900.woff2' not found.
+ERROR `/assets/webfonts/fa-regular-400.woff2' not found.
+ERROR `/assets/webfonts/fa-brands-400.woff2' not found.
+```
+
+하라는 대로 해주었고 잘 나온다.
+
+나중에 유지보수 쉽게 하려고 `/_sass/addon/variables.scss` 에 폰트명을 변수로 설정하고, dark/light 모드의 font-family 설정에서 사용하니 못읽는다.
+
+- css/scss 읽는 순서가 있는 모양이다. 그래서 폰트명을 직접 설정함
+
+> D2Coding 폰트 파일에 `D2Coding ligature` 패밀리가 있는데, 할 필요없다. 특수기호 등이 축약버전으로 들어있다는데 보기에 헷갈리기만 할뿐. 맥의 시스템 폰트에도 ligature 는 사용안한다.
+
 &nbsp; <br />
 &nbsp; <br />
 
