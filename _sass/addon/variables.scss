@@ -32,3 +32,10 @@ $bottom-min-height: 35rem !default;
 /* syntax highlight */
 
 $code-font-size: 0.92rem !default;  // MODIFY: 0.85rem !default;
+
+/* MODIFY: user defined */
+$code-font-family: 'D2Coding';  // monospace for pre code block
+$dark-font-family-sans: 'Noto Sans KR';  // sans-serif for dark mode
+$dark-font-family-serif: 'Noto Serif KR';  // serif for dark mode
+$light-font-family-sans: 'Nanum Gothic';  // sans-serif for light mode
+$light-font-family-serif: 'Nanum Myeongjo';  // serif for light mode

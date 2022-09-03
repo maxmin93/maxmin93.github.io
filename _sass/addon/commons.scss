@@ -2,13 +2,25 @@
   The common styles
 */
 
+/* MODIFY: 'Font Awesome 5 Free' */
+@import url("/assets/css/fontawesome.all.min.css");
+
+/* MODIFY: for pre code block */
+@font-face {
+  font-family: 'D2Coding', monospace;
+  src: url("/assets/webfonts/D2Coding-subset.woff")
+}
+@font-face {
+  font-family: 'D2Coding', monospace;
+  src: url("/assets/webfonts/D2CodingBold-subset.woff");
+  font-weight: bold;
+}
+
 /* MODIFY: for dark-mode */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Noto+Serif+KR&display=swap');
 /* MODIFY: for light-mode */
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Nanum+Myeongjo&display=swap');
 
-/* MODIFY: icons - download */
-@import "fontawesome.all.min.css";
 
 html {
   @media (prefers-color-scheme: light) {

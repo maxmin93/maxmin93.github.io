@@ -67,7 +67,6 @@ $code-radius: 6px;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
 
-  /* 포스트 문장 내의 코드 구절 */
   pre {
     margin-bottom: 0;
     font-size: $code-font-size;
@@ -80,6 +79,7 @@ $code-radius: 6px;
     td pre {
       overflow: visible;  /* Fixed iOS safari overflow-x */
       word-break: normal; /* Fixed iOS safari linenos code break */
+      font-family: $code-font-family, monospace;
     }
   }
 
@@ -109,7 +109,9 @@ code {
   -moz-hyphens: none;
   hyphens: none;
 
+  /* 포스트 문장 내의 코드 구절 */
   &.highlighter-rouge {
+    font-family: $code-font-family, monospace;  // MODIFY: 추가
     font-size: $code-font-size;
     padding: 3px 5px;
     border-radius: 4px;
