@@ -16,7 +16,9 @@ image: "https://www.conceptdraw.com/solution-park/icons/CN_TOOL_COMPNETDIAGRMS/s
 - 논리적 네트워크 다이어그램 : 물리적 시설을 제외하고 추상화를 통해 시각화
 - 물리적 네트워크 다이어그램 : 실제 거리와 배치 상태를 포함하여 시각화
 
-### 2) 출처: [Network Topology & Mapping Tools](https://www.comparitech.com/net-admin/network-topology-and-mapping/)
+### 2) [Network Topology & Mapping Tools](https://www.comparitech.com/net-admin/network-topology-and-mapping/)
+
+네트워크 다이어그램이 주로 사용되는 관리 도구
 
 - 네트워크 구성을 IP 스캔을 통해 장치들과 연결관계를 탐지해 매핑(Mapping)
 - 네트워크 구성(topology) 형태를 데이터로 저장하고 health 상태를 모니터링
@@ -34,7 +36,8 @@ image: "https://www.conceptdraw.com/solution-park/icons/CN_TOOL_COMPNETDIAGRMS/s
 
 ### 3) Architecture Diagram
 
-- 흔히 말하는 시스템 구성도
+흔히 말하는 시스템 구성도
+
 - 프로그래밍으로 구현되고 변경되는 스택은 과거와 비교해 복잡도가 더 증가
 - 수시로 변경 가능한 아키텍처를 반복적으로 작성하기 위해 다이어그램 생성 도구 필요
 - Docker, Kubernetes 등의 발달로 시스템 아키텍처 관리툴의 수요가 다시 증가
