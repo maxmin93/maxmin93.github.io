@@ -123,7 +123,7 @@ image: "https://www.itfirms.co/wp-content/uploads/2020/12/network-diagram-1.png"
 - 저장 포맷: xml(.drawio), png, svg, html
 - 구글 드라이브로 저장됨
 
-| ![Diagrams editor](/2022/09/07-editor-diagrams-net.png){: width="560"} |
+| ![Diagrams editor](/2022/09/07-editor-diagrams-net-crunch.png){: width="560"} |
 |:--:|
 | &lt;그림&gt; Diagrams Editor |
 
