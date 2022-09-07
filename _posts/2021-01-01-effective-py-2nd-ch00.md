@@ -22,6 +22,8 @@ image:
 
 ## 목차
 
+<a id="item01" />
+
 ### 1장 파이썬답게 생각하기
 
 - 1.  사용중인 파이썬의 버전을 알아두라 [&#9658;link](/posts/2021-01-02-effective-py-2nd-ch01/#item01)
@@ -35,6 +37,8 @@ image:
 - 9.  for나 while 루프 뒤에 else 블록을 사용하지 말라 [&#9658;link](/posts/2021-01-02-effective-py-2nd-ch01/#item09)
 - 10. 대입식을 사용해 반복을 피하라 [&#9658;link](/posts/2021-01-02-effective-py-2nd-ch01/#item10)
 
+<a id="item02" />
+
 ### 2장 리스트와 딕셔너리
 
 - 11. 시퀀스를 슬라이싱하는 방법을 익혀라 [&#9658;link](/posts/2021-01-03-effective-py-2nd-ch02/#item11)
@@ -46,6 +50,8 @@ image:
 - 17. 내부 상태에서 원소가 없는 경우를 처리할 때는 setdefault보다 defaultdict를 사용하라 [&#9658;link](/posts/2021-01-03-effective-py-2nd-ch02/#item17)
 - 18. `__missing__`을 사용해 키에 따라 다른 디폴트 값을 생성하는 방법을 알아두라 [&#9658;link](/posts/2021-01-03-effective-py-2nd-ch02/#item18)
 
+<a id="item03" />
+
 ### 3장 함수
 
 - 19. 함수가 여러 값을 반환하는 경우 절대로 네 값 이상을 언패킹하지 말라 [&#9658;link](/posts/2021-01-04-effective-py-2nd-ch03/#item19)
@@ -56,6 +62,8 @@ image:
 - 24. None과 독스트링을 사용해 동적인 디폴트 인자를 지정하라 [&#9658;link](/posts/2021-01-04-effective-py-2nd-ch03/#item24)
 - 25. 위치로만 인자를 지정하게 하거나 키워드로만 인자를 지정하게 해서 함수 호출을 명확하게 만들라 [&#9658;link](/posts/2021-01-04-effective-py-2nd-ch03/#item25)
 - 26. functools.wrap을 사용해 함수 데코레이터를 정의하라 [&#9658;link](/posts/2021-01-04-effective-py-2nd-ch03/#item26)
+
+<a id="item04" />
 
 ### 4장 컴프리헨션과 제너레이터
 
@@ -70,6 +78,8 @@ image:
 - 35. 제너레이터 안에서 throw로 상태를 변화시키지 말라 [&#9658;link](/posts/2021-01-05-effective-py-2nd-ch04/#item35)
 - 36. 이터레이터나 제너레이터를 다룰 때는 itertools를 사용하라 [&#9658;link](/posts/2021-01-05-effective-py-2nd-ch04/#item36)
 
+<a id="item05" />
+
 ### 5장 클래스와 인터페이스
 
 - 37. 내장 타입을 여러 단계로 내포시키기보다는 클래스를 합성하라 [&#9658;link](/posts/2021-01-06-effective-py-2nd-ch05/#item37)
@@ -79,6 +89,8 @@ image:
 - 41. 기능을 합성할 때는 믹스인 클래스를 사용하라 [&#9658;link](/posts/2021-01-06-effective-py-2nd-ch05/#item41)
 - 42. 비공개 애트리뷰트보다는 공개 애트리뷰트를 사용하라 [&#9658;link](/posts/2021-01-06-effective-py-2nd-ch05/#item42)
 - 43. 커스텀 컨테이너 타입은 `collections.abc`를 상속하라 [&#9658;link](/posts/2021-01-06-effective-py-2nd-ch05/#item43)
+
+<a id="item06" />
 
 ### 6장 메타클래스와 애트리뷰트
 
@@ -90,6 +102,8 @@ image:
 - 49. `__init_subclass__`를 사용해 클래스 확장을 등록하라 [&#9658;link](/posts/2021-01-07-effective-py-2nd-ch06/#item49)
 - 50. `__set_name__`으로 클래스 애트리뷰트를 표시하라 [&#9658;link](/posts/2021-01-07-effective-py-2nd-ch06/#item50)
 - 51. 합성 가능한 클래스 확장이 필요하면 메타클래스보다는 클래스 데코레이터를 사용하라 [&#9658;link](/posts/2021-01-07-effective-py-2nd-ch06/#item51)
+
+<a id="item07" />
 
 ### 7장 동시성과 병렬성
 
@@ -107,6 +121,8 @@ image:
 - 63. 응답성을 최대로 높이려면 asyncio 이벤트 루프를 블록하지 말라 [&#9658;link](/posts/2021-01-08-effective-py-2nd-ch07/#item63)
 - 64. 진정한 병렬성을 살리려면 `concurrent.futures`를 사용하라 [&#9658;link](/posts/2021-01-08-effective-py-2nd-ch07/#item64)
 
+<a id="item08" />
+
 ### 8장 강건성과 성능
 
 - 65. `try/except/else/finally`의 각 블록을 잘 활용하라 [&#9658;link](/posts/2021-01-09-effective-py-2nd-ch08/#item65)
@@ -120,6 +136,8 @@ image:
 - 73. 우선순위 큐로 heapq를 사용하는 방법을 알아두라 [&#9658;link](/posts/2021-01-09-effective-py-2nd-ch08/#item73)
 - 74. bytes를 복사하지 않고 다루려면 memoryview와 bytearray를 사용하라 [&#9658;link](/posts/2021-01-09-effective-py-2nd-ch08/#item74)
 
+<a id="item09" />
+
 ### 9장 테스트와 디버깅
 
 - 75. 디버깅 출력에는 `repr` 문자열을 사용하라 [&#9658;link](/posts/2021-01-10-effective-py-2nd-ch09/#item75)
@@ -129,6 +147,8 @@ image:
 - 79. 의존 관계를 캡슐화해 모킹과 테스트를 쉽게 만들라 [&#9658;link](/posts/2021-01-10-effective-py-2nd-ch09/#item79)
 - 80. pdb를 사용해 대화형으로 디버깅하라 [&#9658;link](/posts/2021-01-10-effective-py-2nd-ch09/#item80)
 - 81. 프로그램이 메모리를 사용하는 방식과 메모리 누수를 이해하기 위해 tracemalloc을 사용하라 [&#9658;link](/posts/2021-01-10-effective-py-2nd-ch09/#item81)
+
+<a id="item10" />
 
 ### 10장 협업
 

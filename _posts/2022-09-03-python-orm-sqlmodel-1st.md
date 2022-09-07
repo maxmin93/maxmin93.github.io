@@ -2,7 +2,7 @@
 date: 2022-09-03 00:00:00 +0000
 title: python ORM - SQLModel - 1일차
 categories: ["python"]
-tags: ["TIL", "pydantic", "orm", "sqlalchemy", "tutorial"]
+tags: ["TIL", "pydantic", "orm", "sqlalchemy2", "tutorial"]
 image: "https://sqlmodel.tiangolo.com/img/logo-margin/logo-margin-vector.svg"
 ---
 

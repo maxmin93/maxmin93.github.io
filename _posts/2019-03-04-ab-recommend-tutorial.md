@@ -20,7 +20,9 @@ tags: ["agensgraph", "recommendation", "northwind"]
 
 ### Video
 
-[![Northwind tutorial](https://img.youtube.com/vi/4WI1DkADBN4/0.jpg){: width="600"}](https://youtu.be/4WI1DkADBN4?t=0s) <br />&nbsp;
+| [![Northwind tutorial](https://img.youtube.com/vi/4WI1DkADBN4/0.jpg){: width="600"}](https://youtu.be/4WI1DkADBN4?t=0s) |
+|:--:|
+| &lt;그림&gt; Youtube - Northwind tutorial |
 
 ### Google presentation
 

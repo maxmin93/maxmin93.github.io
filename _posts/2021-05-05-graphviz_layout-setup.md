@@ -35,7 +35,9 @@ $ pip install pygraphviz
 # <== (오류가 없어도 graphviz 가 제대로 설치 안되면 작동안됨)
 ```
 
-![pip install pygraphviz error](/2021/05/graphviz_install_error_messages.png){: width="540"}
+| ![pip install pygraphviz error](/2021/05/graphviz_install_error_messages.png){: width="540"} |
+|:--:|
+| &lt;그림&gt; pip install pygraphviz error |
 
 #### PyGraphviz requires:
 
@@ -118,7 +120,9 @@ plt.show()
 plt.close()
 ```
 
-![pygraphviz-sample1](/2021/05/graphviz_layout-output1.png){: width="540"}
+| ![pygraphviz-sample1](/2021/05/graphviz_layout-output1.png){: width="540"} |
+|:--:|
+| &lt;그림&gt; pygraphviz-sample1 |
 
 #### sample2
 
@@ -166,7 +170,10 @@ plt.show()
 plt.close(fig)
 ```
 
-![pygraphviz-sample2](/2021/05/graphviz_layout-output2.png){: width="540"}
+| ![pygraphviz-sample2](/2021/05/graphviz_layout-output2.png){: width="540"} |
+|:--:|
+| &lt;그림&gt; pygraphviz-sample2 |
+
 
 &nbsp; <br />
 &nbsp; <br />

@@ -74,7 +74,9 @@ In [3]:
 Do you really want to exit ([y]/n)? y
 ```
 
-![패스워드 생성 화면](/2021/04/ipython_password_sha1.png){: width="540"}
+| ![패스워드 생성 화면](/2021/04/ipython_password_sha1.png){: width="540"} |
+|:--:|
+| &lt;그림&gt;  |
 
 ### jupyter notebook 테스트
 
@@ -84,9 +86,13 @@ $ ipython notebook --config='~/.ipython/profile_pyspark/ipython_config.py'
 # browser 에서 새 노트 생성 후 파이썬 테스트
 ```
 
-![노트북 콘솔 화면](/2021/04/ipython_notebook_console_pyspark.png){: width="540"}
+| ![노트북 콘솔 화면](/2021/04/ipython_notebook_console_pyspark.png){: width="540"} |
+|:--:|
+| &lt;그림&gt;  |
 
-![노트북 실행 화면](/2021/04/ipython_notebook_browser_pyspark.png){: width="540"}
+| ![노트북 실행 화면](/2021/04/ipython_notebook_browser_pyspark.png){: width="540"} |
+|:--:|
+| &lt;그림&gt;  |
 
 ## ipython profile 설정 (5~7단계)
 
@@ -140,10 +146,11 @@ ipykernel 을 이용해 pyspark 연동을 설정했기 때문에, <br>
 ```python
 print(spark.version)
 # >>> 2.4.7
-
 ```
 
-![pyspark 실행 화면](/2021/04/ipython_pyspark-test.png){: width="540"}
+| ![pyspark 실행 화면](/2021/04/ipython_pyspark-test.png){: width="540"} |
+|:--:|
+| &lt;그림&gt; pyspark 실행 화면 |
 
 ### alias 설정
 
