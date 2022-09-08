@@ -26,6 +26,22 @@ image: "https://www.conceptdraw.com/solution-park/icons/CN_TOOL_COMPNETDIAGRMS/s
 - 그 외 네트워크 관리 도구를 제공
 - 대부분 NMS 애플리케이션 형태를 갖추고, 유료버전임
 
+> 시각화 모듈은 내장되어 있어 따로 분리 사용이 어려움 _(제외!)__
+
+#### 참고: [OpenNMS](https://www.opennms.com/)
+
+- 네트워크 상의 모든 장비들을 시각화하고 모니터링 하는 오픈소스 솔루션
+  + 오픈소스 [깃허브 - OpenNMS](https://github.com/OpenNMS)
+  + 다양한 관련 업체들의 HW, SW 들과 호환성 제공
+- 두 개의 벤더에 의해 제공 : [OpenNMS Meridian](https://www.opennms.com/Meridian), [OpenNMS Horizon](https://www.opennms.com/Horizon)
+- 시각화 모듈은 내장
+
+| ![OpenNMS Horizon - Diagram](https://gdm-catalog-fmapi-prod.imgix.net/ProductScreenshot/be1b4c04-2f03-4371-b382-c9a930887f8e.png){: width="580"} |
+|:--:|
+| &lt;그림&gt; OpenNMS Horizon - Diagram |
+
+- 다른 Network 솔루션들 
+
 | ![SolarWinds Network Topology Mapper](https://logicalread.com/wp-content/uploads/2020/12/SolarWinds-Network-Topology-Mapper.png){: width="560"} |
 |:--:|
 | &lt;그림&gt; SolarWinds Network Topology Mapper |
@@ -113,17 +129,45 @@ image: "https://www.conceptdraw.com/solution-park/icons/CN_TOOL_COMPNETDIAGRMS/s
   + 복잡한 구성은 전문 에디터를 사용하고, 모니터링 데이터를 입히는 형태로도 사용
 
 
-### 1) [OpenNMS](https://www.opennms.com/)
+### 1) [plantUML](https://plantuml.com/ko/) 을 이용한 [C4-PlantUML](https://github.com/plantuml-stdlib/C4-PlantUML) - MIT license
 
-- 네트워크 상의 모든 장비들을 시각화하고 모니터링 하는 오픈소스 솔루션
-  + 오픈소스 [깃허브 - OpenNMS](https://github.com/OpenNMS)
-  + 다양한 관련 업체들의 HW, SW 들과 호환성 제공
-- 두 개의 벤더에 의해 제공 : [OpenNMS Meridian](https://www.opennms.com/Meridian), [OpenNMS Horizon](https://www.opennms.com/Horizon)
-- 시각화 모듈은 내장
+- uml 정의 언어로 작성된 텍스트 파일(puml)을 읽어 다이어그램 생성
+- plantuml.jar 을 [다운로드](https://plantuml.com/ko/download) 받아 java 커맨드라인으로 실행
+- 표현이 풍부하고, 사용이 간편하다.
 
-| ![OpenNMS Horizon - Diagram](https://gdm-catalog-fmapi-prod.imgix.net/ProductScreenshot/be1b4c04-2f03-4371-b382-c9a930887f8e.png){: width="580"} |
-|:--:|
-| &lt;그림&gt; OpenNMS Horizon - Diagram |
+- sample-diagram.puml 작성
+
+```uml
+@startuml C4_Elements
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(personAlias, "Label", "Optional Description")
+Container(containerAlias, "Label", "Technology", "Optional Description")
+System(systemAlias, "Label", "Optional Description")
+
+Rel(personAlias, containerAlias, "Label", "Optional Technology")
+@enduml
+```
+
+- 이미지 파일 생성
+
+```bash
+$ java -jar plantuml-1.2022.7.jar ./sample-diagram.puml
+
+$ ls .
+C4_Elements.png
+sample-diagram.puml
+```
+
+| ![C4_Elements.png](/2022/09/07-sample-diagram-crunch.png){: width="360"} |
+| :--: |
+| &lt;그림&gt; 생성된 plantUML 이미지 |
+ 
+- vscode, intellij 확장 모듈을 설치해 내부에서 사용 가능
+
+| ![VS Code 확장 모듈](https://github.com/plantuml-stdlib/C4-PlantUML/raw/master/images/vscode_c4plantuml_snippets.gif){: width="600"} |
+| :--: |
+| &lt;그림&gt; VS Code 확장 모듈 |
 
 
 ### 2) [Mermaid.js](https://mermaid-js.github.io/mermaid/#/)
