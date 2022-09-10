@@ -115,6 +115,8 @@ engine = create_engine(CONN_URL, echo=True, future=True)
 
 - create_all 은 Base 기반으로 선언한 모델들을 DB 에 실체화 수행
   + 테이블, 시퀀스 등의 DB 모델을 생성
+  + 반대로, [drop_all() 함수](/posts/2022-09-05-python-orm-sqlmodel-3rd/#18-개별-또는-전체-테이블-제거drop)도 있음 (선언 모델들만 해당)
+  + 물리적인 foreignKey 는 컬럼을 Key 로 지정해야 생성됨 (user_id)
 
 ```python
 ##############################
@@ -148,6 +150,10 @@ Base.metadata.create_all(engine)
 
 ### 4) 데이터 개체 생성 및 저장
 
+- 트랜잭션 관리를 위해 with 구문 이용 (close 포함)
+  + 여러 개체를 지정할 때는 add_all() 사용
+  + commit() 으로 DB 에 적용 (= flush)
+  
 ```python
 ##############################
 ##  Create Objects and Persist
@@ -169,7 +175,10 @@ INSERT INTO address (email_address, user_id) VALUES (%(email_address)s, %(user_i
 
 from sqlalchemy.orm import Session
 
+# open & close
 with Session(engine) as session:
+
+    # new users
     spongebob = User(
         name="spongebob",
         fullname="Spongebob Squarepants",
@@ -321,11 +330,14 @@ session.commit()
 
 ```
 
-### 9) 좀 더 복잡한 JOIN 질의
+### 9) scalars 질의
+
+- query 대신에 scalars 사용 
+  + scalars : 첫 컬럼만으로 Result 생성
 
 ```python
 ##############################
-##  SELECT with JOIN
+##  SELECT with scalars
 ##
 
 stmt = (
@@ -343,6 +355,7 @@ sandy_address
 ### 10) JOIN 데이터의 update, insert
 
 ```python
+##############################
 ##  Make Changes
 ##
 
@@ -363,6 +376,7 @@ session.commit()
 ### 11) JOIN 데이터 삭제와 cascade 삭제
 
 ```python
+##############################
 ##  Some Deletes
 ##
 
@@ -391,6 +405,7 @@ session.commit()
 ### 1)
 
 ```python
+##############################
 ##  Connecting
 ##
 
@@ -406,6 +421,7 @@ engine = create_engine(CONN_URL, echo=True)
 ### 2)
 
 ```python
+##############################
 ##  Declare a Mapping
 ##
 
@@ -450,6 +466,7 @@ User.__table__
 ### 3)
 
 ```python
+##############################
 ##  Create a Schema
 ##
 
@@ -469,6 +486,7 @@ Base.metadata.create_all(engine)
 ### 4)
 
 ```python
+##############################
 ##  Create an Instance of the Mapped Class
 ##
 
@@ -482,6 +500,7 @@ print("ed_user.id:", str(ed_user.id))
 ### 5)
 
 ```python
+##############################
 ##  Creating a Session
 ##
 
@@ -509,6 +528,7 @@ session  # Session instance
 ### 6)
 
 ```python
+##############################
 ##  Adding and Updating Objects
 ##
 
@@ -561,16 +581,29 @@ print(f"TAIL: new User[id={ed_user.id}]:", ed_user)
 assert ed_user is last_user, "ed is instance before insert, last is instance after insert"
 ```
 
-### 7)
+### 7) scalars() 와 all() 차이
+
+- scalars() : ScalarResult 생성 
+  + 값을 얻으려면 all() 사용 
+  + 1번만 (호출) 가져올 수 있다 (제너레이터 방식)
+- all() : MapResult 를 이용해 List[Any] 생성
+  + 1번만 호출 가능한 것은 동일
+- _cf._ scalar() vs one()
+  + scalar() 한 행의 첫 컬럼만
+  + one() 한 행만 가져오기
 
 ```python
+##############################
+##  scalars() vs all()
+##
+
 from sqlalchemy import text
 query = text("SELECT * FROM users WHERE users.name = :name_1")
 
 # sqlalchemy.engine.result.ScalarResult
 # 첫번째 컬럼 값만 가져와 scalars 생성
 results = session.execute(query, { "name_1":'ed' }).scalars()
-user_ids = results.all()  # all() 을 두번 호출할 수 없다 (임시 데이터라 fetch 이후 사라짐)
+user_ids = results.all()  # all() 을 두번 호출할 수 없다
 print("scalars().all():", user_ids)
 # ==> [1, 2, ..., 8, 9, 10, 11]
 
@@ -586,6 +619,7 @@ print(f"last_user[{last_user.id}]:", User(**last_user))
 ### 8)
 
 ```python
+##############################
 ##  “object states” - transient, pending, and persistent
 ##
 
@@ -623,6 +657,7 @@ print(f"after commit: ed_user[{ed_user.id}]:", ed_user)
 ### 9)
 
 ```python
+##############################
 ##  and, or
 ##
 
@@ -634,6 +669,7 @@ session.commit()
 ### 10)
 
 ```python
+##############################
 ##  Rolling Back
 ##
 
@@ -670,6 +706,7 @@ session.query(User).filter(User.name.in_(['ed', 'fakeuser'])).all()
 ### 11)
 
 ```python
+##############################
 ##  Querying
 ##
 
@@ -709,19 +746,34 @@ for row in session.query(UserClone, UserClone.name).all():
 # FROM users    
 ```
 
-### 12)
+### 12) 컬럼 연산자를 이용한 query
+
+- Result 슬라이스 `[1:3]` : offset() 과 limit() 를 사용할 수도 있음
+- filter_by() vs filter()
+  + filter 가 더 범용적임 (query 의 모든 컬럼을 대상으로 사용)
+- 컬럼 연산자: DB 의 where 조건절 연산자에 해당
+  + eq_, neq_, gt_, lt_ 등의 산술연산 조건
+  + like, ilike, match(contains) 문자열 매칭 조건
+  + in_ 등의 집합연산 조건
 
 ```python
+##############################
+##  Column Operators
+##
+
+# offset & limit
 for u in session.query(User).order_by(User.id)[1:3]:
     print(u)
 
+# filter_by: query 의 class 의 fields 기준으로 컬럼 매핑
 for name, in session.query(User.name).filter_by(fullname='Ed Jones'):
     print(name)
 
+# filter: 기준 class 없이 컬럼 매핑 (Subquery 등에도 이용)
 for name, in session.query(User.name).filter(User.fullname=='Ed Jones'):
     print(name)
 
-# and_
+# multi filters 는 and_ 관계와 동일
 for user in session.query(User).\
          filter(User.name=='ed').\
          filter(User.fullname=='Ed Jones'):
@@ -754,6 +806,7 @@ query.filter(
 ### 13)
 
 ```python
+##############################
 ##  Returning Lists and Scalars
 ##
 
@@ -778,6 +831,7 @@ query.scalar()
 ### 14)
 
 ```python
+##############################
 ##  Using Textual SQL (Literal strings)
 ##
 
@@ -807,6 +861,7 @@ session.query(User).from_statement(stmt).params(name='ed').all()
 ### 15)
 
 ```python
+##############################
 ##  Counting
 ##
 
@@ -825,6 +880,7 @@ session.query(func.count(User.id)).scalar()
 ### 16)
 
 ```python
+##############################
 ##  Building a Relationship
 ##
 
@@ -851,9 +907,13 @@ User.emails = relationship(
     "EmailAddress", order_by=EmailAddress.id, back_populates="user")
 ```
 
-### 17)
+### 17) JOIN 테이블 생성
 
 ```python
+##############################
+##  create JOIN relation table
+##
+
 """
 CREATE TABLE email_addresses (
   id INTEGER NOT NULL AUTO_INCREMENT, 
@@ -870,18 +930,26 @@ for k in Base.metadata.tables:
     print(k)
 ```
 
-### 18)
+### 18) 개별 또는 전체 테이블 제거(drop)
+
+- 개별 제거: metadata.drop_all(engine)
+- 전체 제거: metadata.tables['{테이블 이름}'].drop(engine)
 
 ```python
+##############################
+##  
+##
+
+# Base 로 선언된 모든 테이블
 for k in Base.metadata.tables:
     print(k, type(Base.metadata.tables[k]))
-    
-
-
+   
+# drop users table
 user_table = Base.metadata.tables['users']
 print(user_table, user_table.columns.keys())
 # user_table.drop(engine, checkFirst=True)
 
+# drop email_addresses table
 email_table = Base.metadata.tables['email_addresses']
 print(email_table, email_table.columns.keys())
 # email_table.drop(engine, checkFirst=True)
