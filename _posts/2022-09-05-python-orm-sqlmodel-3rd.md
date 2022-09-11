@@ -152,7 +152,7 @@ Base.metadata.create_all(engine)
 
 - 트랜잭션 관리를 위해 with 구문 이용 (close 포함)
   + 여러 개체를 지정할 때는 add_all() 사용
-  + commit() 으로 DB 에 적용 (= flush)
+  + commit() 으로 DB 에 적용 (= flush + persist)
   
 ```python
 ##############################
@@ -202,6 +202,13 @@ with Session(engine) as session:
 
 ### 5) 간단한 질의(select)
 
+- ScalarResult 는 Row 를 yield 하는 generator 
+  + FilterResult 베이스로 ScalarResult, MappingResult, AsyncResult 있음
+  + 값을 얻으려면 all, one, first 등을 쓰던지, loop 구문 사용
+  + scalars( stmt ) 는 stmt.scalars() 와 같음
+- select 로 질의 대상 지정, where 로 filter 조건 적용
+  + 조건절에 SQL 에 대응하는 다양한 컬럼 연산자 사용
+ 
 ```python
 ##############################
 ##  Simple SELECT
@@ -219,8 +226,10 @@ from sqlalchemy import select
 
 session = Session(engine)
 
+# where 조건절, in_ 컬럼 연산자
 stmt = select(User).where(User.name.in_(["spongebob", "sandy"]))
 
+# ScalarResult: Generator[Row]
 for user in session.scalars(stmt):
     print(user)
 
@@ -230,6 +239,12 @@ for user in session.scalars(stmt):
 ```
 
 ### 6) JOIN 이용한 질의
+
+- 선언된 모델 Address 의 relationship 을 사용해 JOIN 가능
+  + JOIN 의 on 조건을 relationship 설정에서 불러옴
+  + 또는 직접 JOIN 대상 모델(class)을 지정할 수도 있음
+    * ex) `query(Address).join(User, User.id==Address.user_id)`
+- where 조건절은 여러번 반복 가능 (and_ 결합)
 
 ```python
 ##############################
@@ -253,13 +268,11 @@ WHERE
 ==>
 fetchOne(): Address(id=2, email_address='sandy@sqlalchemy.org')
 """
-sandy_address = None
-
 
 stmt = (
-    select(Address)
+    select(Address)  # returnType
     .join(Address.user)
-    # .where(User.name == "sandy")
+    # .where(User.name == "sandy")  # and_
     .where(Address.email_address == "sandy@sqlalchemy.org")
 )
 sandy_address = session.scalars(stmt).one()
@@ -269,6 +282,10 @@ print("fetchOne():", sandy_address)
 ```
 
 ### 7) insert, update, commit
+
+- Model 에 의해 insert, update 변경 사항이 추적된다
+  + execution 대기열에 저장했다가 commit 할 때 실행됨
+  + _cf._ SQLModel 의 경우엔 session.add() 로 명시해야 함
 
 ```python
 ##############################
@@ -285,16 +302,15 @@ UPDATE address SET email_address=%(email_address)s WHERE address.id = %(address_
 INSERT INTO address (email_address, user_id) VALUES (%(email_address)s, %(user_id)s)
 """
 
-
 stmt = select(User).where(User.name == "patrick")
 patrick = session.scalars(stmt).one()
 
-# patrick.addresses += new Address()
+# insert: Address 생성
 patrick.addresses.append(
     Address(email_address="patrickstar@sqlalchemy.org")
 )
 
-# sandy: Address.email_address = ".."
+# update: Address.email_address 값 변경
 sandy_address.email_address = "sandy_cheeks@sqlalchemy.org"
 
 session.commit()
@@ -302,6 +318,18 @@ session.commit()
 ```
 
 ### 8) delete, flush
+
+- session 에서 Pk 값으로 직접 가져오기
+- Model 에서 remove 되면 delete stmt 로 실행 대기줄에 추가
+  + _cf._ session.delete: 직접적으로 delete stmt 추가
+
+> flush 는 DB transaction 에 전달만 한 상태 (persist 이전 단계)
+
+- flush 는 commit 이 아님 (commit 의 부분 동작)
+  + select 한 경우, 자신의 transaction 에는 변경 상태로 읽히지만
+  + 다른 transaction 에는 해당 안됨
+- commit 할 때, flush 상태의 변경들도 함께 commit 됨
+- [autoflush 옵션](https://docs.sqlalchemy.org/en/14/orm/session_api.html#sqlalchemy.orm.Session.params.autoflush) 적용시에는 사용할 필요가 없다
 
 ```python
 ##############################
@@ -318,11 +346,11 @@ SELECT * FROM user_account WHERE user_account.id = %(pk_1)s
 DELETE FROM address WHERE address.id = %(id)s
 """
 
-sandy = session.get(User, 2)
+sandy = session.get(User, 2)  # select by id(Pk)
 
 sandy.addresses.remove(sandy_address)
 
-session.flush()  # alternative command for commit
+session.flush()  # not commit, but applied to session
 
 session.delete(patrick)
 
@@ -332,8 +360,7 @@ session.commit()
 
 ### 9) scalars 질의
 
-- query 대신에 scalars 사용 
-  + scalars : 첫 컬럼만으로 Result 생성
+- 앞의 `7)` 단계에서 등록한 sandy_address 가 삭제된 것을 확인
 
 ```python
 ##############################
@@ -362,18 +389,22 @@ sandy_address
 stmt = select(User).where(User.name == "patrick")
 patrick = session.scalars(stmt).one()
 
-
+# insert: Address(User=patrick)
 patrick.addresses.append(
     Address(email_address="patrickstar@sqlalchemy.org")
 )
 
+# update: Address(User=sandy)
 sandy_address.email_address = "sandy_cheeks@sqlalchemy.org"
 
-session.commit()
+session.commit()  # execution
 
 ```
 
 ### 11) JOIN 데이터 삭제와 cascade 삭제
+
+- patrick User 삭제시, relationship 에 의해 cascade 삭제 실행
+  + User(patrick) 과 모든 Address(User=patrick) 삭제됨
 
 ```python
 ##############################
@@ -382,19 +413,86 @@ session.commit()
 
 sandy = session.get(User, 2)
 
-
+# delete Address(sandy)
 sandy.addresses.remove(sandy_address)
 
 session.flush()
 
+# delete User(patrick)
 session.delete(patrick)
 
 session.commit()
 
 ```
 
+#### 참고: [SQLAlchemy: flush() 과 commit() 은 무엇이 다른가요?](https://stackoverflow.com/a/4202016)
 
-### 3. SQLAlchemy 1.4 의 1.x 스타일 튜토리얼
+- 예제: autoflush = True
+
+```python
+s = Session()    # default: s.autoflush = True
+
+s.add(Foo('A'))  # Foo('A') 객체가 세션에 등록됨
+                 # 아직 DB 에 커밋되지 않았지만
+                 # 쿼리할 때 읽혀지는 상태
+print( 1, s.query(Foo).all() )
+# ==> 1 [<Foo('A')>]
+                 # 아직은 중단 또는 rollback 할 때 사라질 수 있음
+s.commit()       # DB 에 영속적으로 저장된 상태
+```
+
+- 예제: autoflush = False
+
+```python
+s2 = Session()
+s2.autoflush = False
+
+s2.add(Foo('B'))
+print( 2, s2.query(Foo).all() ) # Foo('B') 를 질의할 수 없음
+                                # 아직 flush 안된 상태  
+
+s2.flush()                      # 이제야 flush 된 상태
+                             
+print( 3, s2.query(Foo).all() ) # Foo('B') 가 반환됨
+
+s2.rollback()                   # 아직 커밋 안된 상태이고
+                                # 트랜잭션에서 Foo('B') 가 제거됨
+print( 4, s2.query(Foo).all() ) # Foo('B') 를 질의할 수 없음
+
+# Output:
+# ==> 2 [<Foo('A')>]
+# ==> 3 [<Foo('A')>, <Foo('B')>]
+# ==> 4 [<Foo('A')>]
+```
+
+#### 참고: [중첩된 트랜잭션 - savepoint 사용하기](https://docs.sqlalchemy.org/en/14/orm/session_transaction.html#using-savepoint)
+
+- with 절을 벗어나면 자동 commit
+  + 진행하면서 session.commit 하는 경우, with 절을 쓰지 마시오!
+  + [commit 은 항상 가장 바깥쪽 transaction 에 대해 적용됨](https://groups.google.com/g/sqlalchemy/c/ZdAR03OQGAo/m/KENwGiT1BAAJ)
+- 내부(중첩된) 트랜잭션에 대해 savepoint 사용
+  + savepoint.commit() : 이런건 없다 (의미 없음)
+
+```python
+Session = sessionmaker()
+
+# 트랜잭션 시작
+with Session.begin() as session:
+  session.add(u1)
+  session.add(u2)
+
+  # 중첩된 트랜잭션 시작 (savepoint)
+  savepoint = session.begin_nested()
+  try:
+    session.add(u3)
+  except:
+    savepoint.rollback()  # rolls back u3, keeps u1 and u2
+
+# commits u1 and u2 (and u3)
+```
+
+
+### 3. SQLAlchemy 1.4 의 1.x 스타일 튜토리얼 (클래식 style)
 
 문서: [SQLAlchemy 1.4 Documentation](https://docs.sqlalchemy.org/en/14/index.html)
 
@@ -402,8 +500,10 @@ session.commit()
 - [SQL Expression Language Tutorial (1.x API)](https://docs.sqlalchemy.org/en/14/core/tutorial.html) : 항목별 설명
 
 
-### 1)
+### 1) DB 접속
 
+- create_engine 과정은 동일
+ 
 ```python
 ##############################
 ##  Connecting
@@ -418,7 +518,9 @@ from sqlalchemy import create_engine
 engine = create_engine(CONN_URL, echo=True)
 ```
 
-### 2)
+### 2) Model 선언
+
+- Base 기반으로 Model(class) 선언도 동일
 
 ```python
 ##############################
@@ -442,9 +544,9 @@ from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
-
 from sqlalchemy import Column, Integer, String, Sequence
 
+# Base 기반으로 Model(class) 선언
 class User(Base):
     __tablename__ = 'users'
     # id = Column(Integer, primary_key=True)
@@ -463,7 +565,9 @@ class User(Base):
 User.__table__     
 ```
 
-### 3)
+### 3) 선언한 모든 Table 생성
+
+- create_all 동일
 
 ```python
 ##############################
@@ -483,7 +587,9 @@ CREATE TABLE users (
 Base.metadata.create_all(engine)
 ```
 
-### 4)
+### 4) User 데이터 생성
+
+- 아직 DB 에 commit 안됨 (insert 대기)
 
 ```python
 ##############################
@@ -494,10 +600,14 @@ Base.metadata.create_all(engine)
 ed_user = User(name='ed', fullname='Ed Jones', nickname='edsnickname')
 
 print(ed_user)
-print("ed_user.id:", str(ed_user.id))
+print("ed_user.id:", str(ed_user.id))  # id = None
+
 ```
 
-### 5)
+### 5) session 생성
+
+- 2단계: sessionmaker 팩토리로부터 Session 생성자와 session 개체 생성
+  - _cf._ Future 스타일에서는 바로 Session 통해 session 생성
 
 ```python
 ##############################
@@ -525,7 +635,17 @@ print(type(session))
 session  # Session instance
 ```
 
-### 6)
+### 6) insert, update, autoflush, expire_on_commit (=True)
+
+- User(ed) 에 대한 변경사항들이 select(User) 이벤트 때 flush(적용) 됨
+  + [autoflush](https://docs.sqlalchemy.org/en/14/orm/session_api.html#sqlalchemy.orm.Session.params.autoflush): 명시적으로 flush/commit 안해도 발생 (Session 옵션)
+- commit 이후 User 모델의 instance 에 대해 refresh 실행됨
+  + commit 이전의 User(ed) 의 id 는 None
+  + commit 이후의 User(ed) 에 id 값이 채워져 있음 (refresh)
+
+> Session 의 옵션 `expire_on_commit = True` 에 의해 자동 refresh
+
+- 참고: [Session and sessionmaker](https://docs.sqlalchemy.org/en/14/orm/session_api.html?highlight=expire_on_commit#session-and-sessionmaker)
 
 ```python
 ##############################
@@ -551,7 +671,7 @@ print(f"HEAD: new User[id={ed_user.id}]:", ed_user)
 
 session.add(ed_user)  # pending, not flush
 
-
+# select User 이벤트에 flush 발생
 first_user = session.query(User).filter_by(name='ed').first() 
 print(f"first_user[id={first_user.id}]:", first_user)
 # first_user[id=1]: <User(name='ed', fullname='Ed Jones', nickname='edsnickname')>
@@ -592,6 +712,8 @@ assert ed_user is last_user, "ed is instance before insert, last is instance aft
   + scalar() 한 행의 첫 컬럼만
   + one() 한 행만 가져오기
 
+> 왜 Scalar 가 필요한지 이유는 Result 의 fetch 과정을 단축하기 위해서가 아닌가 짐작해본다. 가령, 컬럼 개수만큼 loop 문이 skip 된다던지.
+
 ```python
 ##############################
 ##  scalars() vs all()
@@ -616,7 +738,14 @@ last_user = results[-1]
 print(f"last_user[{last_user.id}]:", User(**last_user))
 ```
 
-### 8)
+### 8) 변경된 객체의 상태 변화
+
+- change 이벤트 발생시
+  + update 변경 객체는 transient 상태가 되고 (session.dirty)
+  + insert 생성 객체는 pending 상태로 추가됨 (session.new)
+- commit 이벤트 발생시
+  + session 의 dirty/new 변경들이 DB 에 저장되고
+  + transient/pending 상태 객체들은 persistent 상태로 바뀐다
 
 ```python
 ##############################
@@ -651,14 +780,15 @@ session.commit()  # flush
 print(f"after commit: ed_user[{ed_user.id}]:", ed_user)
 # after commit: ed_user[13]: <User(name='ed', fullname='Ed Jones', nickname='eddie')>
 
-
 ```
 
-### 9)
+### 9) filter 조건절과 컬럼 연산자
+
+- where 조건절에 filter 사용 (Future 스타일과 동일)
 
 ```python
 ##############################
-##  and, or
+##  ColumnOperator: and, or
 ##
 
 from sqlalchemy import and_, or_
@@ -666,7 +796,11 @@ session.query(User).filter(and_(User.name=="ed", User.id > 1)).delete()
 session.commit()
 ```
 
-### 10)
+### 10) 트랜잭션의 롤백 (변경 취소)
+
+- rollback: 이전 commit 상태로 되돌리기
+- session 에 fake_user 변경(생성) 내용이 없어짐
+  + session.new 비워짐
 
 ```python
 ##############################
@@ -680,7 +814,6 @@ print("before rollback:", ed_user.name)
 
 # new user
 fake_user = User(name='fakeuser', fullname='Invalid', nickname='12345')
-
 # pending: insert
 session.add(fake_user)
 
@@ -701,30 +834,32 @@ assert fake_user not in session, "fake_user must be absent"
 
 session.query(User).filter(User.name.in_(['ed', 'fakeuser'])).all()
 # name='ed' 만 출력
+
 ```
 
-### 11)
+### 11) 별칭(alias) 사용한 질의
+
+- SQL 출력시 alias 문장이 출력됨
+  + 다른 이름이 필요할 때 사용할 수 있음
 
 ```python
 ##############################
 ##  Querying
 ##
 
-# class
+# cast class
 for instance in session.query(User).order_by(User.id):
     print(instance.name, instance.fullname)
 
-# Map: unpack
+# unpack Result
 for name, fullname in session.query(User.name, User.fullname):
     print(name, fullname)
 
-# Map having class, scalar    
+# MappingResult{ User, name }
 for row in session.query(User, User.name).all():
     print(row.User, row.name)
 
 
-
-# User.clone()
 from sqlalchemy.orm import aliased
 user_alias = aliased(User, name='user_alias')
 print(type(user_alias), user_alias)
@@ -734,17 +869,52 @@ for row in session.query(user_alias, user_alias.name).all():
 
 # SELECT user_alias.*, user_alias.name AS user_alias_name__1 
 # FROM users AS user_alias
-    
-    
-class UserClone(User):
-    pass
-
-for row in session.query(UserClone, UserClone.name).all():
-    print(row.UserClone)
-    
-# SELECT users.*, users.name AS users_name__1 
-# FROM users    
 ```
+
+#### 참고: 컬럼 alias 는 label 사용
+
+```python    
+employees = db.session.query(
+        EmployeeModel.id,
+        EmployeeModel.name.label("emp_name") #we are using emp_name alias for column name
+    ).filter(
+        EmployeeModel.department == 'finance'
+    ).all()
+
+result = db.session.query(
+            SubjectModel.name,
+            func.sum(SubjectModel.score).label("total_score")
+        ).filter(
+            SubjectModel.name== 'Math'
+        ).group_by(
+            SubjectModel.name
+        ).all()
+```
+
+#### 참고: with 절 CTE 사용 (Common Table Expression)
+
+- [2.0 스타일 Subqueries and CTEs](https://docs.sqlalchemy.org/en/14/tutorial/data_select.html#tutorial-subqueries-ctes)
+- [1.x 스타일 CTE](https://docs.sqlalchemy.org/en/14/core/selectable.html#sqlalchemy.sql.expression.CTE)
+
+```python
+"""
+WITH anon_1 AS
+  (INSERT INTO t (c1, c2) VALUES (:param_1, :param_2))
+SELECT t.c1, t.c2
+FROM t
+"""
+
+# insert 한 후 select 출력하기
+
+from sqlalchemy import table, column, select
+t = table('t', column('c1'), column('c2'))
+
+ins = t.insert().values({"c1": "x", "c2": "y"}).cte()
+
+stmt = select(t).add_cte(ins)
+
+```
+
 
 ### 12) 컬럼 연산자를 이용한 query
 
@@ -803,7 +973,9 @@ query.filter(
 )
 ```
 
-### 13)
+### 13) 결과 읽어오기: all, first, one, scalar
+
+- empty 결과에 대해 Error 피하려면 one_or_none() 사용
 
 ```python
 ##############################
@@ -828,7 +1000,11 @@ query.scalar()
 
 ```
 
-### 14)
+### 14) SQL 문장 활용하기
+
+- session.query 의 일부분으로 사용하거나
+- from_statement 로 SQL 문장 전체를 정의할 수 있음
+- params 으로 파라미터 설정
 
 ```python
 ##############################
@@ -858,7 +1034,9 @@ session.query(User).from_statement(stmt).params(name='ed').all()
 
 ```
 
-### 15)
+### 15) Counting 함수
+
+- func.count 외에도 sum, avg, max, min 등 ...
 
 ```python
 ##############################
@@ -867,17 +1045,19 @@ session.query(User).from_statement(stmt).params(name='ed').all()
 
 session.query(User).filter(User.name.like('%ed')).count()
 
-
 from sqlalchemy import func
 session.query(func.count(User.name), User.name).group_by(User.name).all()
-
 
 session.query(func.count('*')).select_from(User).scalar()
 session.query(func.count(User.id)).scalar()
 
 ```
 
-### 16)
+### 16) Relationship 정의 (JOIN)
+
+- User 모델의 하위로 EmailAddress 모델 정의
+  - User.emails
+  - EmailAddress.user => User.emails
 
 ```python
 ##############################
@@ -932,12 +1112,12 @@ for k in Base.metadata.tables:
 
 ### 18) 개별 또는 전체 테이블 제거(drop)
 
-- 개별 제거: metadata.drop_all(engine)
-- 전체 제거: metadata.tables['{테이블 이름}'].drop(engine)
+- 전체 제거: metadata.drop_all(engine)
+- 개별 제거: metadata.tables[ '{테이블 이름}' ].drop(engine)
 
 ```python
 ##############################
-##  
+##  drop, drop_all
 ##
 
 # Base 로 선언된 모든 테이블
@@ -961,9 +1141,10 @@ Base.metadata.drop_all(engine, tables=[user_table, email_table], checkfirst=True
 # DROP TABLE users
 ```
 
-### 19)
+### 19) JOIN 데이터 insert
 
 ```python
+##############################
 ##  Working with Related Objects
 ##
 
@@ -980,11 +1161,13 @@ session.commit()
 
 jack = session.query(User).filter_by(name='jack').one()
 print(jack.id, jack.addresses)
+
 ```
 
-### 20)
+### 20) JOIN 질의
 
 ```python
+##############################
 ##  Querying with Joins
 ##
 
@@ -1009,9 +1192,14 @@ session.query(User).join(Address).\
 # query.outerjoin(User.addresses)   # LEFT OUTER JOIN
 ```
 
-### 21)
+### 21) 서브 쿼리, 라벨(as 키워드)
+
+- 서브 쿼리: subquery
+  + subquery alias: aliased
+- 컬럼 alias: label
 
 ```python
+##############################
 ##  Using Subqueries
 ##
 
@@ -1036,9 +1224,10 @@ for user, address in session.query(User, addr_alias).\
 
 ```
 
-### 22)
+### 22) exists 조건 사용
 
 ```python
+##############################
 ##  Using EXISTS
 ##  - any, has
 ##
@@ -1055,9 +1244,10 @@ for name, in session.query(User.name).\
 
 ```
 
-### 23)
+### 23) 삭제
 
 ```python
+##############################
 ##  Deleting
 ##
 
@@ -1071,9 +1261,10 @@ session.query(Address).filter(
 
 ```
 
-### 24)
+### 24) Delete, 캐스케이드 삭제
 
 ```python
+##############################
 ##  Configuring delete/delete-orphan Cascade
 ##
 
@@ -1099,7 +1290,6 @@ session.query(Address).filter(
 ).count()
 
 
-
 session.delete(jack)
 
 session.query(User).filter_by(name='jack').count()
@@ -1110,11 +1300,9 @@ session.query(Address).filter(
 
 ```
 
-참고문서
+### 참고문서
 
-- [SQLAlchemy 2.0 - Major Migration Guide](https://docs.sqlalchemy.org/en/20/changelog/migration_20.html)
-- [파이썬 개발자를 위한 SQLAlchemy](https://soogoonsoogoonpythonists.github.io/sqlalchemy-for-pythonist/) - 공식 문서 번역
-- [SQLAlchemy 시작하기 – Part 2](https://edykim.com/ko/post/getting-started-with-sqlalchemy-part-2/) 2013년 문서 - 길고 상세
+- [pythonsheets - SQLAlchemy](https://www.pythonsheets.com/notes/python-sqlalchemy.html) 예제 중심으로 나열
 
 &nbsp; <br />
 &nbsp; <br />

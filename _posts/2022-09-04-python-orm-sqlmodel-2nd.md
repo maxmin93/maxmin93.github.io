@@ -296,7 +296,6 @@ class MyClass(Base):
 
 ## 참고문서
 
-- [파이썬 개발자를 위한 SQLAlchemy](https://soogoonsoogoonpythonists.github.io/sqlalchemy-for-pythonist/)
 - [SQLModel - Releases Note](https://github.com/tiangolo/sqlmodel/releases)
 
 &nbsp; <br />

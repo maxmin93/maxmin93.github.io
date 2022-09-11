@@ -137,14 +137,14 @@ SQLModel.metadata.create_all(engine)
 # insert/update
 hero_1 = Hero(name="Rusty-Man", secret_name="Tommy Sharp", age=48)
 with Session(bind=engine) as conn:
-    conn.add(hero_1)
+    conn.add(hero_1)  # execution 대기: insert stmt
     conn.commit()
 
     hero_1.age = 16
-    conn.add(hero_1)
-    conn.commit()    # dirty 상태
+    conn.add(hero_1)  # execution 대기: update stmt
+    conn.commit()    # dirty 상태 (expired)
 
-    conn.refresh(hero_1)
+    conn.refresh(hero_1)  # reload (expired 초기화)
     print("Updated hero:", hero_1)
 
 
