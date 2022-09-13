@@ -539,21 +539,24 @@ $ pm2 monitor nfp-frontend
 
 ### 회고
 
-- 예제를 한토막 두토막 내서 따라가는게 부담스럽지 않아 좋다
+- 예제를 한토막 두토막 내서 따라가는게 부담스럽지 않아 좋다.
+  + 힘들면 건너뛰어 가자
 - 평소 기술 트렌드를 따라갔으면 이처럼 한번에 고생하지 않았을텐데
   + '따라하기'라도 하자!
 - 관련 도구와 관련 기술이 다양해져서, 미리 셋업해 놓지 않으면 필요한 경우에 찾아 쓰기가 어렵다. 여러 기술을 하나의 패키지로 묶어 익혀두는게 좋다.
   + 문서화도 잘 해놓자. (나를 위해서)
-- pm2 는 버전 교체 등을 위한 reload 기능, 클러스터 설정 등이 중요 기능이다.
+- pm2 는 모니터링 외에도 버전 교체 등을 위한 reload 기능, 클러스터 설정 등이 중요 기능이다.
 - next.js 는 정적페이지 방식이지만 jekyll, gatsby 등이랑 많이 다르다.
   + 공식페이지에 예제가 많지만 입문자가 보고 배우기에는 알맞지 않다.
 - next.js 는 실행시 반응 속도를 보면 확실히 가볍고 빠르다.
-- tailwindcss 라는 것을 배운 것도 큰 소득이다. 개발자가 다루기 좋은 css
+- tailwindcss 라는 것을 배운 것도 큰 소득이다. 
+  + 개발자가 다루기 좋은 css 라는데, 클래스 이름에 기능과 규칙이 있다.
+  + 그 많은 기능과 규칙이 눈에 익을 때까지 반복 숙달해야 한다는 것은 문제다.
 
 ### 참고문서
 
 - [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/guides/nextjs)
-- [Hello Tailwind CSS! | 장점, 단점, 사용법](https://wonny.space/writing/dev/hello-tailwind-css)
+- [Hello Tailwind CSS! - 장점, 단점, 사용법](https://wonny.space/writing/dev/hello-tailwind-css)
 - [react 작동원리부터 tailwindcss 사용까지](https://seongil-shin.github.io/posts/react-%EC%9E%91%EB%8F%99%EC%9B%90%EB%A6%AC%EB%B6%80%ED%84%B0-tailwindcss-%EC%82%AC%EC%9A%A9%EA%B9%8C%EC%A7%80/)
 
 &nbsp; <br />
