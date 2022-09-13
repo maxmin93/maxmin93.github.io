@@ -21,7 +21,7 @@ SQLAlchemy의 1.x 스타일은 15년간 유지되고 발전되어 왔습니다. 
 - execute 가 query 와 얽히지 않고 분리되어 바깥에서 감싸게 됩니다.
 - Generic Type 에 대한 처리방식(Stub)에 대해 과거 버전과 호환되지 않습니다.
   + 정확한 뜻을 이해하지는 못했지만
-  + 각각의 DB 데이터 타입을 sqlalchemy 함수와 묶기 위한 타입 변환과 처리 방식에 대한 정의인 것으로 이해됨
+  + 각각의 DB 데이터 타입을 sqlalchemy 함수와 묶기 위한 타입 변환과 처리 방식에 대한 정의인 것으로 짐작됨
 
 
 ## 2. SQLAlchemy 1.4 의 Future(2.0) 스타일 튜토리얼
@@ -88,6 +88,7 @@ class Address(Base):
 
 ```
 
+
 ### 2) DB 연결 : connection url 사용, create_engine, future 옵션
 
 - **Tip** : password 에 특수문자가 섞인 경우, 인터넷 전송용 문자로 변환
@@ -110,6 +111,7 @@ from sqlalchemy import create_engine
 engine = create_engine(CONN_URL, echo=True, future=True)
 
 ```
+
 
 ### 3) 테이블 생성 DDL
 
@@ -492,7 +494,7 @@ with Session.begin() as session:
 ```
 
 
-### 3. SQLAlchemy 1.4 의 1.x 스타일 튜토리얼 (클래식 style)
+## 3. SQLAlchemy 1.4 의 1.x 스타일 튜토리얼 (클래식 style)
 
 문서: [SQLAlchemy 1.4 Documentation](https://docs.sqlalchemy.org/en/14/index.html)
 

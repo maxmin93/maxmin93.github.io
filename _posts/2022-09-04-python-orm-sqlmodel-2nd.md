@@ -72,6 +72,14 @@ SQLAlchemy 2.0 기능은 SQLAlchemy 1.4 에서도 `future=True` 옵션을 통해
 
 > Within the 1.4 series, the “2.0” style of engines and connections is enabled by passing the create_engine.future flag to create_engine():
 
+> `asyncpg` 어댑터를 이용해 `create_async_engine` 이용시 Error 발생
+
+- sqlalchemy 1.4 버전에서도 내장 어댑터 asyncpg 를 사용할 수 있다고 하는데
+  + Mac M1 에 대해서는 `greenlet` 관련 이슈가 아직 해결되지 않은거 같다. 
+    * sqlalchemy 1.4.41 에서는 `util.py` 의 `AsyncDaptedLock()` 가 미구현 상태
+- 그렇기 때문에, async 기능은 아래 2.0.0b1 (pre-release) 버전으로 테스트 해보자
+
+
 #### psycopg 비동기 지원
 
 참고 : [Psycopg3: Powerful Tech Preview with SQLAlchemy 2.0](https://realcode.space/2022/05/10/psycopg3-powerful-tech-preview-with-sqlalchemy-2/)
@@ -95,7 +103,8 @@ export CPPFLAGS="-I/opt/homebrew/opt/openssl@1.1/include -I/opt/homebrew/opt/lib
 - sqlalchemy 2.0.0b1 (pre-release)
   - Apple M1 의 경우 greenlet 모듈이 자동으로 설치되지 않음
     - 참고 : [Asyncio Platform Installation Notes (Including Apple M1)](https://docs.sqlalchemy.org/en/20/orm/extensions/asyncio.html#asyncio-platform-installation-notes-including-apple-m1)
-    - `greenlet` not found module 메시지가 뜨면 `1.1.1` 버전으로 재설치
+    - `greenlet` not found module 메시지가 뜨면 `1.1.1` 버전으로 재설치 
+
 - psycopg : `psycopg-binary` 버전 설치
   - Apple M1 의 경우 `libpq` 와 `psycopg[c]` 설치
   - 참고: [psycopg vs psycopg-binary](https://www.psycopg.org/docs/install.html#psycopg-vs-psycopg-binary)
