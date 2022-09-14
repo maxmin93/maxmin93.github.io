@@ -1,8 +1,8 @@
 ---
-title: AgensBrowser tutorial - northwind recommendation
+title: AgensBrowser tutorial - northwind
 date: 2019-03-04 00:00:00 +0000
 categories: ["bitnine", "agens-browser"]
-tags: ["agensgraph", "recommendation", "northwind"]
+tags: ["agensgraph", "recommendation", "추천", "tutorial"]
 ---
 
 > 그래프 데이터베이스 제품의 튜토리얼 과정을 Northwind 상품추천 내용으로 만들었습니다.

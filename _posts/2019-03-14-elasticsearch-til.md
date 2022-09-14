@@ -2,7 +2,7 @@
 title: Learning Elastic Stack 6
 date: 2019-03-14 00:00:00 +0000
 categories: ["elasticsearch"]
-tags: ["tutorial"]
+tags: ["TIL", "tutorial"]
 ---
 
 > 대용량 데이터 탐색에 Elasticsearch 를 사용하려고 튜토리얼 공부 중입니다.
