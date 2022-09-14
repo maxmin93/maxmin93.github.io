@@ -469,7 +469,9 @@ img[data-src] {
 }
 
 .post-content {
-  font-size: 1.08rem;
+  // font-size: 1.08rem;
+  font-size: 1.02rem;    // MODIFY: 좀 큰거 같아서 줄임
+
   line-height: 1.8;
   margin-top: 2rem;
   overflow-wrap: break-word;
