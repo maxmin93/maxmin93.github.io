@@ -547,6 +547,12 @@ if __name__ == '__main__':
     run()
 ```
 
+> Summary
+
+- grpc 는 python 보다 go 언어와 잘 어울리는거 같다.
+- 채팅 서비스의 구조와 grpc 동작방식에 대한 이해가 필요하다.
+- WebRTC 기반의 p2p 채팅 방식도 최근 기술 트렌드이다. (니꼬쌤 자료 참고)
+
 &nbsp; <br />
 &nbsp; <br />
 

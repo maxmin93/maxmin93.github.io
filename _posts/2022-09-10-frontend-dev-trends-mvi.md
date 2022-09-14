@@ -1,6 +1,6 @@
 ---
 date: 2022-09-10 00:00:00 +0000
-title: (펌) 프론트엔드 개발 트렌드 - MVI
+title: (펌) 프론트엔드 개발 트렌드 - MVI 패턴
 categories: ["nodejs","frontend"]
 tags: ["TIL", "dev-trends", "mvvm", "intent", "참고"]
 image: "https://yozm.wishket.com/media/news/1663/image025.png"
@@ -159,20 +159,16 @@ export const App = (props) => {
 // display(state): View => User
 ```
 
-## Summary
+> Summary
 
-### 회고
+- View 컴포넌트가 비대해진다면, 상태관리 라이브러리를 도입하자.
+  + 덩치 큰 View 컴포넌트가 다 처리하는 방식은 MVC 패턴이다.
+  + Service 컴포넌트는 API 만 담당하는게 아니다. (Action 기술)
+- React 는 현재 전세계적으로 가장 많이 사용되는 프론트 개발 기술이다.
+- MVI 상태관리 라이브러리를 검색하면 안드로이드 분야가 많이 나온다.
+  + 외국어 문서를 검색하고 싶다면 'CQRS' 키워드를 사용하자.
 
-- 참 빨리도, 많이도 바뀐다 싶네요. 
-- 여태 내가 짜던 방식이 MVC 라니.. 
-  + 덩치 큰 View 컴포넌트가 다 처리
-  + Service 컴포넌트는 API 만 담당 (왜 이렇게 볼품없이 썼지)
-- React 는 저 거지같은 상태관리 때문에 배우기 싫었는데
-  + 그 시기가 운나쁘게 저 시기였나보네
-- 이제는 상태관리 라이브러리로부터 배워 들어가야겠음 
-  + kotlin & android 문서가 많네요, Reactdroid??
-
-### 참고문서
+> 참고문서
 
 - [Cycle.js - Basic examples](https://cycle.js.org/basic-examples.html)
 - [Atomic Design Pattern의 Best Practice 여정기 - velog](https://velog.io/@teo?tag=atomic-design-pattern)

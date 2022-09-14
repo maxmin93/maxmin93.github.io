@@ -6,7 +6,7 @@ tags: ["TIL", "pydantic", "orm", "sqlalchemy2", "tutorial"]
 image: "https://sqlmodel.tiangolo.com/img/logo-margin/logo-margin-vector.svg"
 ---
 
-> SQLAlchemy 와 postgresql, mysql 어댑터에 대해 sync, async 접속 방법을 알아보겠습니다.
+> SQLAlchemy 와 postgresql, mysql 어댑터에 대해 sync, async 접속 방법을 알아보겠습니다. 접속 이후 테이블 생성에서는 SQLModel 과 비교합니다.
 {: .prompt-tip }
 
 ## 1. 데이터베이스 URL 접속
@@ -303,7 +303,15 @@ class MyClass(Base):
     )
 ```
 
-## 참고문서
+> Summary
+
+- DB 어댑터에는 관련된 DB, ORM 과의 히스토리가 담겨있다. 
+  + 가끔씩 이슈나 검색으로 새로운 소식을 알아보자.
+- 오픈소스 특성상 새로운 기능이나 오픈소스 코드는 postgresql 기반이 많다.
+  + 반면에 실무는 트랜잭션 처리에 어울리는 mysql 기반이 많다.
+  + ORM 을 사용했다면, 테스트는 메모리 모드에서 SQLite 또는 J2 로 하자
+
+> 참고문서
 
 - [SQLModel - Releases Note](https://github.com/tiangolo/sqlmodel/releases)
 

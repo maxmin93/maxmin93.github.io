@@ -1302,7 +1302,16 @@ session.query(Address).filter(
 
 ```
 
-### 참고문서
+> Summary
+
+- 차이점을 익히고 classic 버전 코드를 future 버전으로 바꿔서 작성하자.
+- 원치 않는 형태로 SQL 작성되지는 않는지 생성되는 Query 를 확인하자.
+- 조만간 언어별로 DB 처리 기술들을 비교 조사해 봐야겠다.
+  + ex) Spring Data JDBC + QueryDSL + POJO 스타일 Entity
+- Spring JPA 를 쓸 당시에는, 사용폭이 좁았던 탓인지 이상함을 느끼지 못했다.
+  + 이전보다 껄끄럼거나 의문점들이 많아 보인다면 재학습이 필요한 시기이다.
+
+> 참고문서
 
 - [pythonsheets - SQLAlchemy](https://www.pythonsheets.com/notes/python-sqlalchemy.html) 예제 중심으로 나열
 

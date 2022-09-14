@@ -246,7 +246,13 @@ class Session(_Session):
     # ...
 ```
 
-참고문서
+> Summary 
+
+- 자신의 말로 설명하는 연습을 하자. 그래서 블로깅 하는거다.
+- 라이브러리 저자의 의도나 목적을 알게된다면 변경사항을 이해하기 쉬워진다.
+  + 어떻게 알 수 있나? 저자의 깃허브 이슈 댓글을 읽어보자.
+
+> 참고문서
 
 - [SQLAlchemy 2.0 - Major Migration Guide](https://docs.sqlalchemy.org/en/20/changelog/migration_20.html)
 - [파이썬 개발자를 위한 SQLAlchemy](https://soogoonsoogoonpythonists.github.io/sqlalchemy-for-pythonist/)

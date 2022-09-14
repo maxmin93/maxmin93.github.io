@@ -221,7 +221,15 @@ difference: 0 (0.0 %)
 """
 ```
 
-### 참고문서
+> Summary 
+
+- 현타가 느껴지는 질문을 받을 때가 있다. 정리한 내용을 다시 보자.
+- 자신의 성향을 바꾸는 것은 옳지 않다. 고쳐서 써야 한다. 계속 공부하자.
+- python 은 싱글 스레드로 동작하도록 만들어졌다. 
+  - 새로운 스레드 작업이 필요하면 쓰고 버리면 된다. (대범하게)
+  - 고성능 병렬처리를 원한다면 go 언어를 추천한다.
+
+> 참고문서
 
 - [Why do we need locks for threads, if we have GIL?](https://stackoverflow.com/a/40072999)
 - [Guido is Right to Leave the GIL in Python, Not for Multicore but for Utility Computing](https://smoothspan.com/2007/09/14/guido-is-right-to-leave-the-gil-in-python-not-for-multicore-but-for-utility-computing/)

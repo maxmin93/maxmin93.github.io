@@ -2,7 +2,7 @@
 date: 2022-02-10 00:00:00 +0000
 title: Mac용 설치패키지 dmg 만들기
 author: maxmin93
-categories: ["packaging"]
+categories: ["packaging", "Mac/Linux"]
 tags: ["create-dmg", "ds_store", "icns", "dmg-icon", "pgadmin4"]
 pin: false
 ---

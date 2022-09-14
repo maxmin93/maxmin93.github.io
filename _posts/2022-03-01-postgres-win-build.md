@@ -2,7 +2,7 @@
 date: 2022-03-01 00:00:00 +0000
 title: Postgresql Windows build
 author: maxmin93
-categories: ["packaging"]
+categories: ["packaging", "Windows"]
 tags: ["win32", "postgresql", "visual-studio", "윈도우", "exe-파일"]
 ---
 

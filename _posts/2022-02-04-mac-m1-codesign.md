@@ -2,7 +2,7 @@
 date: 2022-02-04 00:00:00 +0000
 title: Mac용 App 패키징 할 때 서명 및 공증 (Apple M1)
 author: maxmin93
-categories: ["packaging"]
+categories: ["packaging", "Mac/Linux"]
 tags: ["mac", "codesign", "cer", "패키징", "서명", "공증"]
 pin: false
 ---

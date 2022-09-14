@@ -392,6 +392,10 @@ class Cursor:
 
 ```
 
+> Summary
+
+- python 이라서 그나마 소스 보기가 훨 편하다. (어렵게 생각말자)
+
 &nbsp; <br />
 &nbsp; <br />
 

@@ -387,6 +387,10 @@ $ docker tag <source_image_tag> <target_ecr_repo_uri>
 $ docker push <ecr-repo-uri>
 ```
 
+> Summary
+
+- 아직 다 못했다. 내용이 길어 쉬었다가 다시 작성하자.
+
 &nbsp; <br />
 &nbsp; <br />
 

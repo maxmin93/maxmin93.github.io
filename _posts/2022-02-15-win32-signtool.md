@@ -2,7 +2,7 @@
 date: 2022-02-15 00:00:00 +0000
 title: Windows용 인증서 및 App 서명
 author: maxmin93
-categories: ["packaging"]
+categories: ["packaging", "Windows"]
 tags:
   [
     "windows-kits",
