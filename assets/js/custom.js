@@ -7,6 +7,63 @@
 
 // top module of custom js
 let customScripts = {
+  // utterances theme 
+  customUtteranc: function() {
+    class UttrcUtil {
+      static attrName = "uttrc-theme";
+      static themeMode = ["dark","light"];
+      // save theme value
+      static saveMode(uttSection, mode) {
+        uttSection.attr(this.attrName, mode);
+      }
+      // rotate theme mode
+      static rotateMode(uttSection) {
+        let mode = uttSection.attr(this.attrName);
+        if (this.themeMode.includes(mode)) {
+          return this.themeMode[ (this.themeMode.indexOf(mode)+1)%2 ];
+        }
+        return this.themeMode[0];
+      }     
+      // apply theme
+      static showUtteranc(uttSection, mode){
+        let targetId = mode+"-mode";
+        let target = uttSection.find("#"+targetId);
+        let others = target.parent().children().filter(function(){
+          return $(this).attr("id") != targetId;
+        });
+        others.hide();
+        target.show();
+      }
+    }
+
+    // theme button event
+    $(".mode-toggle").click(function(){      
+      // console.log("themeMode:", $("section#utteranc_box").length, $("section#utteranc_box").attr(UttrcUtil.attrName));
+      if ($("section#utteranc_box").length) {
+        var uttSection = $("section#utteranc_box");
+        var themeMode = UttrcUtil.rotateMode(uttSection);
+        UttrcUtil.showUtteranc(uttSection, themeMode);
+        UttrcUtil.saveMode(uttSection, themeMode);
+      }
+    });
+
+    var uttSection = $("section#utteranc_box");
+    if ( uttSection.length ) {
+      // get theme value
+      let initTheme = "light";
+      if ($("html[data-mode]").length > 0) {
+        if ($("html[data-mode=dark]").length > 0)
+          initTheme = "dark";
+      }
+      else {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+          initTheme = "dark";
+      }
+
+      UttrcUtil.showUtteranc(uttSection, initTheme);
+      UttrcUtil.saveMode(uttSection, initTheme);
+    }
+  },
   // page404 module
   customPage404: function () {
     console.log("load custom scripts: 'customPage404'");

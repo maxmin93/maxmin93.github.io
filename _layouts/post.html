@@ -176,7 +176,7 @@ tail_includes:
     </script>
   </div>
 
-  <script>
+  <!-- script>
     class UttrcUtil {
       static attrName = "uttrc-theme";
       static themeMode = ["dark","light"];
@@ -231,6 +231,15 @@ tail_includes:
       UttrcUtil.showUtteranc(uttSection, initTheme);
       UttrcUtil.saveMode(uttSection, initTheme);
     }
-  </script>
+  </script -->
 
 </section>
+
+<script src="/assets/js/custom.js"></script>
+<script type="text/javascript">
+  $(function(){
+    console.log("utteranc comments, post page");
+    
+    (window.customScripts.customUtteranc)();
+  });
+</script>
