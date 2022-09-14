@@ -2,7 +2,7 @@
 date: 2022-08-31 00:00:00 +0000
 title: 깃허브 블로그 jekyll 갱신하기 (Mac M1)
 categories: ["devops", "jekyll"]
-tags: ["깃블로그", "깃허브 블로그", "구글검색등록", "버전업", "chirpy 테마"]
+tags: ["깃블로그", "utterances", "구글검색등록", "버전업", "chirpy 테마"]
 image: "/2022/08/31-jekyll-permanant-url-path-min.png"
 ---
 
@@ -311,7 +311,98 @@ body {
 
 ### 3) 그 밖의 작업
 
-할게 뭐지?
+할게 뭐지? 아, 댓글!
+
+- [GitHub Apps - utterences](https://github.com/apps/utterances) 설치 하고나니
+- utterences 테마도 jekyll theme 에 맞춰서 변경하고 싶어서
+  + `_layouts/post.html` 하단에 다음과 같이 작성 (자작했습니다)
+    * jQuery 로 두개의 theme 를 모두 출력한 후, show/hide 처리
+
+```html
+<!-- When page loads, determine whether to show light mode or dark mode utterances comments -->
+<section id="utteranc_box">
+
+  <div id="light-mode">
+    <script src="https://utteranc.es/client.js"
+        repo="maxmin93/my-blog-comments"
+        issue-term="pathname"
+        label="comment"
+      theme="github-light"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+  <div id="dark-mode">
+    <script src="https://utteranc.es/client.js"
+        repo="maxmin93/my-blog-comments"
+        issue-term="pathname"
+        label="comment"
+      theme="github-dark"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+
+  <script>
+    class UttrcUtil {
+      static attrName = "uttrc-theme";
+      static themeMode = ["dark","light"];
+      // save theme value
+      static saveMode(uttSection, mode) {
+        uttSection.attr(this.attrName, mode);
+      }
+      // rotate theme mode
+      static rotateMode(uttSection) {
+        let mode = uttSection.attr(this.attrName);
+        if (this.themeMode.includes(mode)) {
+          return this.themeMode[ (this.themeMode.indexOf(mode)+1)%2 ];
+        }
+        return this.themeMode[0];
+      }     
+      // apply theme
+      static showUtteranc(uttSection, mode){
+        let targetId = mode+"-mode";
+        let target = uttSection.find("#"+targetId);
+        let others = target.parent().children().filter(function(){
+          return $(this).attr("id") != targetId;
+        });
+        others.hide();
+        target.show();
+      }
+    }
+
+    // theme button event
+    $(".mode-toggle").click(function(){      
+      // console.log("themeMode:", $("section#utteranc_box").length, $("section#utteranc_box").attr(UttrcUtil.attrName));
+      if ($("section#utteranc_box").length) {
+        var uttSection = $("section#utteranc_box");
+        var themeMode = UttrcUtil.rotateMode(uttSection);
+        UttrcUtil.showUtteranc(uttSection, themeMode);
+        UttrcUtil.saveMode(uttSection, themeMode);
+      }
+    });
+
+    var uttSection = $("section#utteranc_box");
+    if ( uttSection.length ) {
+      // get theme value
+      let initTheme = "light";
+      if ($("html[data-mode]").length > 0) {
+        if ($("html[data-mode=dark]").length > 0)
+          initTheme = "dark";
+      }
+      else {
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches)
+          initTheme = "dark";
+      }
+
+      UttrcUtil.showUtteranc(uttSection, initTheme);
+      UttrcUtil.saveMode(uttSection, initTheme);
+    }
+  </script>
+
+</section>
+
+```
 
 ## 6. 사이트 최적화
 

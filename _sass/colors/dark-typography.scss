@@ -33,10 +33,10 @@
 
   /* Sidebar */
   // --sidebar-bg: radial-gradient(circle, #242424 0%, #1d1f27 100%);
-  /* 사이드바 배경 그라데이션 */
+  /* MODIFY: 사이드바 배경 그라데이션 */
   --sidebar-bg: linear-gradient(45deg, #822259 0%, #784BA0 13%, #2B86C5 36%, #0e0101 100%);
 
-  /* 사이드바 폰트, 버튼 색상 */
+  /* MODIFY: 사이드바 폰트, 버튼 색상 */
   --sidebar-title-color: #cac7c3                    // 타이틀
   --sidebar-muted-color: rgba(134, 133, 133, 99%);  // 서브 타이틀
 
