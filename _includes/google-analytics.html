@@ -19,7 +19,7 @@
     // page.categories.join(), page.tags.join(): 빈문자열 출력
     // --> jekyll 에서는 for 루프를 돌려서 출력
 
-{% if page.layout? and page.layout != 'home' %}
+{% if page.layout != 'home' %}
     // tabs, categories/category, tags/tag, post
     gtag('event', 'blog_meta', {
       'event_category': 'layout',
