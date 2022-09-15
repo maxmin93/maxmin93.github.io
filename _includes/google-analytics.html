@@ -12,32 +12,35 @@
     gtag('config', '{{ site.google_analytics.id }}', {
       'cookie_prefix': 'TaejooneBlogCookie',
       'cookie_domain': 'taejoone.jeju.onl',
-      'cookie_expires': 28 * 24 * 60 * 60
+      'cookie_expires': 28 * 24 * 60 * 60,
+      'cookie_update': true,
+      'app_name': 'taejoone-blog',
     });
 
-    // page.collection : 비어있는 경우가 많다
-    // page.categories.join(), page.tags.join(): 빈문자열 출력
-    // --> jekyll 에서는 for 루프를 돌려서 출력
+    /** page.collection : 비어있는 경우가 많다
+        page.categories.join(), page.tags.join(): 빈문자열 출력
+        --> jekyll 에서는 for 루프를 돌려서 출력
+    **/
 
 {% if page.layout != 'home' %}
-    // tabs, categories/category, tags/tag, post
-    gtag('event', 'blog_meta', {
-      'event_category': 'layout',
-      'event_label': '{{ page.layout }}',
-    });
+    gtag('set', 'content_group', '{{ page.layout }}');
 
-  {% if page.layout=='post' %}
+  {% if page.layout == 'post' %}
     {% if page.categories.size > 0 %}
-        gtag('event', 'blog_meta', {
-          'event_category': 'category',
-          'event_label': '{{ page.categories.first | slugify }}',
-        });
+      gtag('set', 'content_type', '{{ page.categories.first | slugify }}');
+      gtag('event', 'screen_view', {
+        'app_name': '{{ page.layout }}',
+        'screen_name': '{{ page.categories.first | slugify }}',
+      });
     {% endif %}
   {% else %}
-        gtag('event', 'blog_meta', {
-          'event_category': 'category',
-          'event_label': '{{ page.title | slugify }}',
-        });
+    {% if page.layout != page.title.downcase %}
+      gtag('set', 'content_type', '{{ page.title | slugify }}');
+      gtag('event', 'screen_view', {
+        'app_name': '{{ page.layout }}',
+        'screen_name': '{{ page.title | slugify }}',
+      });
+    {% endif %}
   {% endif %}
 {% endif %}
 
