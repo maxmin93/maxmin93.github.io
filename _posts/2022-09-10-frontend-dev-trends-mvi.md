@@ -20,7 +20,7 @@ image: "https://yozm.wishket.com/media/news/1663/image025.png"
 
 > MVC -> MVP -> MVVM -> MVI 아키텍처
 
-### 프론트엔드 트렌드 변천사 8줄 요약
+### 1) 프론트엔드 트렌드 변천사 8줄 요약
 
 1. HTML, CSS, JS 의 탄생: 관심의 분리와 느슨한 결합<br/>
   - 서버가 View 를 전달
@@ -61,7 +61,7 @@ image: "https://yozm.wishket.com/media/news/1663/image025.png"
   - API 를 통한 전역 상태관리로 View 컴포넌트에 바로 전달
     + Composition API (Vue 3.0), Valtio (React), Hookstate 등 ...
 
-### 프론트엔드 상태관리의 변화 3줄 요약
+### 2) 프론트엔드 상태관리의 변화 3줄 요약
 
 1. 컴포넌트의 계층구조가 데이터의 계층구조와 다르고 더 복잡해짐 <br/>
   => 컴포넌트 간 데이터 교환이 어려워짐
@@ -72,9 +72,9 @@ image: "https://yozm.wishket.com/media/news/1663/image025.png"
   2. 간단한 전역 스토어
   3. 서버(API) 기반 상태관리
 
-## MVI 패턴 (MVVM 이후)
+## 2. MVI 패턴 (MVVM 이후)
 
-### 특징
+### 1) 특징
 
 - 앱 전체, 컴포넌트 전체에 적용되는 패턴이라는 점에서 큰 변화점
 - 데이터가 단방향으로 연결되고 전역적으로 구성됨
@@ -84,7 +84,7 @@ image: "https://yozm.wishket.com/media/news/1663/image025.png"
 | :--: |
 | &lt;그림&gt; MVI cyclic flow representation - 테오의 프론트엔드 |
 
-### 아키텍처 방향성
+### 2) 아키텍처 방향성
 
 - 비즈니스 로직을 분리
   + Model: 데이터를 관장
@@ -96,7 +96,7 @@ image: "https://yozm.wishket.com/media/news/1663/image025.png"
   + Query: Model 로부터 데이터 조회
   + Command: 데이터 변화
 
-### Intent 와 Reducer
+### 3) Intent 와 Reducer
 
 - AS-IS
   + Model 과 View 간의 의존성 발생 
@@ -116,7 +116,7 @@ const onClick = () => {
   + View 에서는 의도만을 전달하도록 하고
   + 데이터 변환은 모델에서만 처리하도록 한다
 
-### MVI 패턴의 의사코드 예제
+### 4) MVI 패턴의 의사코드 예제
 
 ```js
 // Action
