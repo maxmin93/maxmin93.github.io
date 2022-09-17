@@ -1,13 +1,43 @@
 /*
   custom.js
   ================
-
+  - js for tags.html
+  - js for post.html
   - js for 404.html
 */
 
 // top module of custom js
 let customScripts = {
-  // utterances theme 
+
+  //////////////////////////////
+  //  sort tags by count (desc)
+  customSortTags: function() {
+    var ary = [];
+    var tags = $("div#tags .tag");
+    for (let i = 0; i < tags.length; i++) {
+        tagRef = $(tags[i]).attr("href");
+        tagCount = $(tags[i]).find("span").text();
+        tagName = $(tags[i]).find("span").remove().end().text().trim();
+        ary.push([tagRef, tagCount, tagName]);
+    }
+    // sort with desc
+    ary.sort(function(a, b){
+      return -1*(a[1] - b[1]) || a[2].localeCompare(b[2]);
+    });
+    // clear tags
+    $("div#tags").empty();
+    // append tags
+    ary.forEach(function(e) {
+      $("div#tags").append(
+        '<div><a class="tag" href="'+e[0]+'">'+
+          e[2]+'<span class="text-muted">'+e[1]+'</span>'+
+        '</a></li>'
+      );
+    });
+  },
+
+  //////////////////////////////
+  //  utterances theme 
   customUtteranc: function() {
     class UttrcUtil {
       static attrName = "uttrc-theme";
@@ -64,7 +94,9 @@ let customScripts = {
       UttrcUtil.saveMode(uttSection, initTheme);
     }
   },
-  // page404 module
+
+  //////////////////////////////
+  //  page404 module
   customPage404: function () {
     console.log("load custom scripts: 'customPage404'");
 

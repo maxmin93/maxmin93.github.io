@@ -1,8 +1,8 @@
 ---
 date: 2022-05-04 00:00:00 +0000
 title: "NestJS 로 Todo App 만들기"
-categories: ["nodejs", "nestjs"]
-tags: ["풀스택", "typeorm", "todo", "sqlite", "angular"]
+categories: ["nodejs", "backend"]
+tags: ["nestjs", "typeorm", "todo", "sqlite", "angular"]
 ---
 
 > 입사지원 과제로 제출한 Todo 프로젝트입니다. 풀스택으로 일주일간 구현했습니다.

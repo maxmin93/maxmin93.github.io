@@ -1,0 +1,40 @@
+---
+layout: page
+# All the Tags of posts.
+---
+
+<div id="tags" class="d-flex flex-wrap ml-xl-2 mr-xl-2">
+
+  {% capture site_tags %}
+    {% for tag in site.tags %}
+      {{ tag | first }}
+      {% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  {% endcapture %} 
+  {% assign tags_list = site_tags | split:',' | sort_natural %}
+
+  {% assign tags = "" | split: "" %}
+  {% for t in site.tags %}
+    {% assign tags = tags | push: t[0] %}
+  {% endfor %}
+
+  {% assign sorted_tags = tags | sort_natural %}
+
+  {% for t in sorted_tags %}
+    <div>
+      <a class="tag" href="{{ t | slugify | url_encode | prepend: '/tags/' | append: '/' | relative_url }}">
+        {{ t }}<span class="text-muted">{{ site.tags[t].size }}</span>
+      </a>
+    </div>
+  {% endfor %}
+
+</div>
+
+<script src="/assets/js/custom.js"></script>
+<script type="text/javascript">
+  $(function(){
+    console.log("tags.html: sort by count (desc)");
+    
+    (window.customScripts.customSortTags)();
+  });
+</script>
