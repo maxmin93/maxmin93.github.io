@@ -90,6 +90,9 @@ avatar: "/tonyne-avatar_360x360.png"
 # boolean type, the global switch for ToC in posts.
 toc: true
 
+# Mermaid enable (not working!)
+mermaid: true
+
 comments:
   active: # The global switch for posts comments, e.g., 'disqus'.  Keep it empty means disable
   # The active options are as follows:
