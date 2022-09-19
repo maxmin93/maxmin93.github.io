@@ -1,11 +1,11 @@
 ---
 date: 2022-08-14 00:00:00 +0000
-title: postresql-14 의 시간대, 로케일 환경 설정과 실행 방법
+title: 도커 postresql 시간대, 언어 설정 방법들의 비교
 categories: ["devops"]
 tags: ["TIL", "docker", "utf8", "마운트", "postgresql", "locale"]
 ---
 
-> 도커 postgresql 의 다양한 환경설정을 실험하며 차이점을 살펴보겠습니다.
+> 도커 postgresql 의 다양한 환경설정 방법들을 실험하며 차이점을 살펴보겠습니다.
 {: .prompt-tip }
 
 
@@ -579,6 +579,8 @@ LOG: received fast shutdown request
 
 `/docker-entrypoint-initdb.d/*` 채운 상태의 이미지가 되도록 만든다
 
+> 핵심은 postgres 생성 과정에 shell script 실행을 끼워넣어야 한다.
+
 ```text
 FROM postgres:14
 
@@ -589,6 +591,15 @@ RUN chmod +x /docker-entrypoint-initdb.d/docker-entrypoint.sh
 ```
 
 #### (미완성) docker-entrypoint.sh
+
+원하는 설정을 bash 스크립트로 수행
+
+- 필수적으로 postgresql 을 설치하는 과정이 있어야 함
+  + initdb
+  + 임시로 내부 postgres server 실행
+  + User, DB, setting 등 설정 적용
+  + 재부팅 이후 설정의 정상 여부를 확인
+  + 재부팅하여 작업 종료 (서비스 시작)
 
 ```bash
 #!/bin/sh
