@@ -36,7 +36,63 @@ tags: ["개발환경", "sqlalchemy", "psycopg", "docker", "poetry", "fastapi"]
 6. 환경변수 연결하고 컨테이너 실행/테스트
 7. 완료된 소스는 문서화 하여 github 업로드
 
-### 2) 완료된 소스: Dockerfile + entrypoint.sh
+### 2) Docker 이미지 빌드 와 컨테이너 실행
+
+#### 도커
+
+-  `-it` 옵션 사용시 실행 로그가 보여서 좋다
+
+```bash
+# 빌드
+$ docker build -t py39-api:latest --no-cache . 
+
+# 실행
+$ docker run -it --rm --name py39-api -p 58000:8000 \
+    -e CONN_URL=postgresql://db_user:db_passwd@192.168.0.x/tempdb \
+    py39-api
+```
+
+#### 실행화면
+
+```bash
+... # (생략)
+
+Step 28/29 : ENTRYPOINT ["/entrypoint.sh"]
+ ---> Running in 5b3a52b39950
+Removing intermediate container 5b3a52b39950
+ ---> 3fba5a2340b4
+Step 29/29 : CMD poetry run uvicorn $APP_MAIN --app-dir $APP_ROOT --reload --host 0.0.0.0 --port $APP_PORT
+ ---> Running in 95c601cb34dc
+Removing intermediate container 95c601cb34dc
+ ---> 3c8147accfe0
+Successfully built 3c8147accfe0
+Successfully tagged py39-api:latest
+
+... # (생략)
+
+#########################
+##  TEST: psycopg2.connect
+
+TEST: psycopg2.connect
+2022-09-20 15:01:27
+==> success!
+
+** OK, ready to FastAPI
+poetry run uvicorn main:app --app-dir app --reload --host 0.0.0.0 --port 8000
+
+INFO:     Will watch for changes in these directories: ['/backend']
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     Started reloader process [113] using StatReload
+INFO:     Started server process [117]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     172.17.0.1:33898 - "GET / HTTP/1.1" 200 OK
+INFO:     192.168.0.50:51905 - "GET / HTTP/1.1" 200 OK
+INFO:     192.168.0.50:51905 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+...
+```
+
+### 3) 완성된 소스: Dockerfile + entrypoint.sh
 
 #### 고정: 설치된 시스템 패키지 (apt)
 
@@ -47,7 +103,7 @@ tags: ["개발환경", "sqlalchemy", "psycopg", "docker", "poetry", "fastapi"]
 - git : 소스 설치용
 - poetry (curl 이용해 설치)
 
-#### Dockerfile: tag=`py39-api`
+#### 소스) Dockerfile
 
 ```dockerfile
 FROM python:3.9-slim
@@ -140,7 +196,11 @@ CMD poetry run uvicorn $APP_MAIN --app-dir $APP_ROOT --reload --host 0.0.0.0 --p
 - requirements.txt 읽어서 설치
   - 주석처리 '^#' 제외
 
-#### entrypoint.sh
+- "fastapi[all]" 은 fastapi + uvicorn 통합 패키지
+  + 참고: [FastAPI 공식문서 - 설치](https://fastapi.tiangolo.com/tutorial/#install-fastapi)
+    * 프레임워크 fastapi 와 서버 uvicorn 도 설치해야 함
+
+#### 소스) entrypoint.sh
 
 ```bash
 #!/bin/bash
