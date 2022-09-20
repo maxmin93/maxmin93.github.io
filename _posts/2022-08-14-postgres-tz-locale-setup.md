@@ -365,7 +365,7 @@ ID=debian
   + "/etc/timezone" 저장
   + "/etc/localtime" 연결
  
-```yml
+```dockerfile
 FROM postgres:14
 
 # https://hub.docker.com/_/postgres
@@ -671,11 +671,13 @@ tail -n1 $PGDATA/pg_hba.conf
 exec "$@"
 ```
 
+<a id="dollar_n_atsign" />
+
 참고: [set -e 와 exec "$@"](https://almostgeneral.tistory.com/4)
 
 - `set -e` : 오류 발생시 스크립트 실행 중단
-- `exec "$@"` : CMD 실행 권한을 docker 에게 되돌려줌
-  - 안하면 Dockerfile 의 CMD 가 안먹히는듯
+- `exec "$@"` : CMD 실행 프로세스를 다음 CMD 에 넘겨줌 
+  - 안하면 새로운 프로세스로 CMD 가 실행되어 그만큼 무겁고 느려짐
 
 ## 3. postgres:14 기반 docker-compose 사용
 
