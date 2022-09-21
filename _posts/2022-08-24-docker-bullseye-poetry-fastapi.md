@@ -1,18 +1,18 @@
 ---
 date: 2022-08-24 00:00:00 +0000
-title: FastAPI + sqlalchemy 도커 배포 이미지 만들기
+title: 도커 bullseye-slim 기반 poetry + FastAPI 이미지 만들기
 categories: ["python"]
-tags: ["개발환경", "sqlalchemy", "psycopg", "docker", "poetry", "fastapi"]
+tags: ["개발환경", "sqlalchemy", "bullseye", "docker", "poetry", "fastapi"]
 ---
 
-> FastAPI 서버 개발을 위한 Docker 이미지를 생성합니다. (poetry, sqlalchemy, psycopg 포함)
+> FastAPI 서버 개발을 위한 Docker 이미지를 생성합니다. (bullseye-slim 버전 기반)
 {: .prompt-tip }
 
 ## 개발환경 Docker 이미지
 
 필요시 app 만 개발해서 바로바로 포팅하여 배포할 수 있는 베이스 이미지가 필요하여 작업을 시작했습니다. 설치되는 기본 구성은 다음과 같습니다.
 
-- bullseye (debian 계열)
+- bullseye-slim (debian 계열)
   + 패키지 관리자: `apt`
   + 기본 shell: `/bin/bash`
 - python 3.9
@@ -193,7 +193,8 @@ CMD poetry run uvicorn $APP_MAIN --app-dir $APP_ROOT --reload --host 0.0.0.0 --p
 
 #### 가변: 설치할 python 패키지 (poetry)
 
-- requirements.txt 읽어서 설치
+- `cat requirements.txt | xargs poetry add`
+  + requirements.txt 읽어서 설치
   - 주석처리 '^#' 제외
 
 - "fastapi[all]" 은 fastapi + uvicorn 통합 패키지
@@ -373,8 +374,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -yq install {your-pkgs}
 
 - 실행 가능 파일이어야 한다: `chmod +x entrypoint.sh`
   - 앞에서 ADD 명령으로 파일을 이미지 내부에 저장
-
-  - `cat requirements.txt | xargs poetry add`
 
 ### 6) psycopg2 Catch Exception
 
