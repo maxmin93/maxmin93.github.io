@@ -8,7 +8,7 @@ tags: ["개발환경", "alpine", "aarch64", "docker", "poetry", "fastapi"]
 > 파이썬 alpine 이미지로 poetry + FastAPI 배포용 Docker 이미지를 생성합니다. (sqlmodel, psycopg2 포함)
 {: .prompt-tip }
 
-## 이전에 만들었던 이미지에 이어서 alpine 버전
+## [이전 작업](/posts/2022-08-24-docker-bullseye-poetry-fastapi/)에 이어서 alpine 버전으로 만들기
 
 그러나 사이즈가 줄지는 않네요. 오히려 더 커졌어요. (뭐 이런~ xx)
 
