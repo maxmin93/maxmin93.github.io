@@ -108,20 +108,20 @@ $ docker compose down -v
 
 | ![docker-compose 프로젝트 구조](/2022/08/28-docker-compose-directory-structure-min.png){: width="580"} |
 | :--: |
-| &lt;그림&gt; docker-compose 프로젝트의 디렉토리 구조 |
+| &lt;그림&gt; 프로젝트의 디렉토리 구조 |
 
 
 ## 2. 시행착오 및 참고 내용
 
 ### 1) alembic 작업 관련 (api 서비스)
 
-#### alembic 작업은 db 가 생성 된 이후에 실행되어야 함
+__alembic 작업은 db 가 생성 된 이후에 실행되어야 함__
 
 - depends_on 조건 필요
 - Dockerfile 내부 작업이 아니라 CMD 명령으로 처리해야 함
   + 환경변수가 적용되고 난 이후, 최종적으로 실행되는 단계
 
-#### alembic 작업 후 exit(0) 처리됨 (연속처리 안됨)
+__alembic 작업 후 exit(0) 처리됨 (연속처리 안됨)__
 
 alembic 작업은 별도의 명령으로 처리해야 함
 
@@ -139,13 +139,13 @@ nfp-api  | load .env: /backend/.env
 nfp-api exited with code 0
 ```
 
-#### db 서비스의 volume 에 변경사항들이 누적됨
+___db 서비스의 volume 에 변경사항들이 누적됨___
 
 - `poetry run alembic upgrade head` 작업이 반영되어
   + 마치 Dockerfile 의 layer 처럼 
 - 다음 fastapi 실행에서 구성이 완료된 db 를 사용하게 됨
 
-#### alembic 의 `env.py` 에서 `sys.path.append(BASE_DIR)` 해야 함
+___alembic 의 `env.py` 에서 `sys.path.append(BASE_DIR)` 해야 함___
 
 - 별도의 python 파일을 import 하기 위해서 필요
   + alembic 실행시 시작 위치를 특정해 주어야 함
@@ -162,14 +162,14 @@ from models import Base
 
 ### 2) network 연결
 
-#### links 설정 (service 이름이 host 로 치환됨)
+___links 설정 (service 이름이 host 로 치환됨)___
 
 - api 서비스에 db 를 link
 - db 서비스를 가리키는 문자열에 대해 적용됨
   + ex) CONN_URL="postgresql://tonyne:tonyne@db:5432/nfp_db"
   + => `db` 의 IP 등을 알 필요 없음
 
-#### 별도의 network 자원 정의 필요 없음
+___별도의 network 자원 정의 필요 없음___
 
 - `networks` 항목을 설정하면 별도의 네트워크가 생성되어 적용됨
   - Host 에서 접속을 못하게 됨
@@ -198,7 +198,7 @@ alembic.ini 에 "sqlalchemy.url" 를 고정시면 안되니깐, 환경변수를 
 
 ### 1) alembic 소스
 
-#### alembic.ini
+___alembic.ini___
 
 ```txt
 [alembic]
@@ -211,7 +211,7 @@ prepend_sys_path = .
 version_path_separator = os  # default: use os.pathsep
 ```
 
-#### env.py
+___env.py___
 
 ```python
 from dotenv import load_dotenv
@@ -387,7 +387,8 @@ volumes:
 
 > Summary
 
-- 끝인가 싶다가도 끝이 아니네요. 바닥까지 파야 하나.
+- 끝인가 싶다가도 끝이 아니네요. 이 바닥이 바닥이 아닌가.
+- 이쯤 되니 뭘 구성해도 편합니다.
 
 &nbsp; <br />
 &nbsp; <br />
