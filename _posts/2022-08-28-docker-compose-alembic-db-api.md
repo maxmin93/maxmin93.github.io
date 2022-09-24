@@ -344,38 +344,31 @@ ENV PORT $APP_PORT
 version: '3'
 
 services:
-  nfp-db:
+  db:
     image: postgres:14
     container_name: nfp-db
-    environment:
-        - POSTGRES_USER=tonyne
-        - POSTGRES_PASSWORD=tonyne
-        - POSTGRES_DB=nfp_db 
-        - TZ=Asia/Seoul
-        - LANG=C.UTF-8
-        - LC_ALL=C.UTF-8
-    # ports:
-    #     - 55432:5432
+    env_file:
+      - db.env
+    ports:
+      - 55432:5432
     volumes:
-        - nfpdb_data:/var/lib/postgresql/data
+      - nfpdb_data:/var/lib/postgresql/data
 
-  nfp-api:
+  api:
     image: py39-alpine
     container_name: nfp-api
-    command: alembic upgrade head && poetry run uvicorn $APP_MAIN --app-dir app --reload --host 0.0.0.0 --port 8000
+    build: ./nfp-api
+    command: poetry run uvicorn main:app --app-dir app --reload --host 0.0.0.0 --port 8000
+    env_file:
+      - api.env
     depends_on:
-      - nfp-db
+      - db
     links:
-      - nfp-db    
-    environment:
-        - TZ=Asia/Seoul
-        - LANG=C.UTF-8
-        - LC_ALL=C.UTF-8
-        - CONN_URL=postgresql://tonyne:tonyne@nfp-db/nfp_db
+      - db
     ports:
-        - 58000:8000
+      - 58000:8000
     volumes:
-        - nfpapi_data:/app
+      - nfpapi_data:/app
 
 
 volumes:
@@ -384,6 +377,30 @@ volumes:
   nfpapi_data:
     name: nfpapi_data
 ```
+
+### 4) .env 파일들
+
+한데 모아도 되지만 분리했음
+
+#### db.env
+
+```ini
+# for db
+POSTGRES_USER=tonyne
+POSTGRES_PASSWORD=tonyne
+POSTGRES_DB=nfp_db
+TZ=Asia/Seoul
+LANG=C.UTF-8
+LC_ALL=C.UTF-8
+```
+
+#### api.env
+
+```ini
+# for api
+CONN_URL="postgresql://tonyne:tonyne@db:5432/nfp_db"
+```
+
 
 > Summary
 
