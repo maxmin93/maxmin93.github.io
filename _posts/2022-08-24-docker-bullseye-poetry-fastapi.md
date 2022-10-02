@@ -94,9 +94,11 @@ INFO:     192.168.0.50:51905 - "GET /favicon.ico HTTP/1.1" 404 Not Found
 
 ### 3) 완성된 소스: Dockerfile + entrypoint.sh
 
+- localdef : 한국어 locale 설정 (언어별 시간, 돈, 메시지 등의 포맷)
+- 생성된 image size = __355 MB__
+
 #### 고정: 설치된 시스템 패키지 (apt)
 
-- locales : 한국어 locale 설정 (언어별 시간, 돈, 메시지 등의 포맷)
 - curl : API 테스트 및 유틸리티 설치용
 - iputils-ping : 네트워크 잡히는지 ping 사용 목적
 - vim : 기본 에디터
@@ -114,37 +116,43 @@ LABEL description="FastAPI + sqlalchemy + psycopg2 with poetry"
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-# for pm2: --build-arg BUILD_DEV_MODE=development
-ARG BUILD_DEV_MODE
-ENV NODE_ENV=${BUILD_DEV_MODE:-production}
+RUN apt-get update && apt-get upgrade -y
+
+# install utils: localedef, curl, sudo, ping, vim, git
+RUN apt-get install -y locales curl sudo iputils-ping vim git
+
+# default env.
+ENV TZ Asia/Seoul
+ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+ENV GRP=pythonapp USR=fastapi
+ENV PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # default value
 ENV APP_PORT ${APP_PORT:-8000}
 ENV APP_ROOT ${APP_ROOT:-app}
 ENV APP_MAIN ${APP_MAIN:-main:app}
-ENV APP_DEPS_INSTALL ${APP_DEPS_INSTALL:-requirements.txt}
+ENV APP_TOML ${APP_TOML:-pyproject.toml}
 
-# multiple ports for concat with blanks
-EXPOSE $APP_PORT
+# for pm2: --build-arg BUILD_DEV_MODE=development
+ARG BUILD_DEV_MODE
+ENV NODE_ENV=${BUILD_DEV_MODE:-production}
 
-# default env.
-ENV TZ Asia/Seoul
-ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
+# add USER as sudoer with GROUP
+RUN groupadd --system -g 1001 $GRP
+RUN useradd --system -m -s /bin/bash -g $GRP -u 1001 -c "Python User" $USR
+RUN usermod -aG sudo $USR
 
-RUN apt-get update -q && apt-get upgrade -qy
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -qy locales curl iputils-ping
 
-# for ko_KR.UTF-8
-RUN localedef -i ko_KR -c -f UTF-8 -A /usr/share/locale/locale.alias ko_KR.UTF-8
-
-# for dev
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -qy vim git
+USER $USR
+ENV HOME "/home/$USR"
+ENV VENV_PATH=$HOME/.local
+ENV EDITOR vim
 
 # for root
 RUN echo $'             \n\
 alias ll="ls -al"       \n\
 alias vi="vim"          \n\
-' > ~/.bashrc
+export PATH=$PATH:$VENV_PATH/bin' >> $HOME/.bashrc
 
 # for vim
 RUN echo $'             \n\
@@ -165,27 +173,34 @@ set mouse-=a            \n\
 set encoding=utf-8      \n\
 set termencoding=utf-8  \n\
 set cursorline          \n\
-set ignorecase          ' > ~/.vimrc
+set ignorecase          ' > $HOME/.vimrc
 
-# install poetry
+# install poetry manually (need gcc libffi-dev)
 RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="${PATH}:/root/.local/bin"
-
+ENV PATH="${PATH}:$VENV_PATH/bin"
 # check python & poetry
 RUN python --version && poetry --version
 
-# makedir '/backend/app' with pyproject.toml
-RUN poetry new backend --name $APP_ROOT
-
-# copy sources
 WORKDIR backend
-COPY *.md *.txt ./$APP_ROOT ./
 
-# cannot use 'poetry shell', but use 'poetry run'
+# copy .env, toml and sources
+COPY --chown=fastapi $APP_TOML ./pyproject.toml
+COPY --chown=fastapi $APP_ROOT ./$APP_ROOT
+# make virtualenv in project
+RUN poetry config virtualenvs.in-project true
 RUN poetry install && poetry run which python
+
+# poetry run alembic upgrade head after launched ALL
+# COPY --chown=fastapi alembic.ini ./
+# COPY --chown=fastapi alembic ./alembic
 
 # for install requirements.txt
 ENTRYPOINT ["/entrypoint.sh"]
+
+
+# multiple ports for concat with blanks
+EXPOSE $APP_PORT
+ENV PORT $APP_PORT
 
 # poetry run fastapi with uvicorn
 CMD poetry run uvicorn $APP_MAIN --app-dir $APP_ROOT --reload --host 0.0.0.0 --port $APP_PORT
