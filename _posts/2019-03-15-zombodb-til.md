@@ -2,7 +2,7 @@
 title: Zombodb - pg10 plugin for es6
 date: 2019-03-15 00:00:00 +0000
 categories: ["elasticsearch"]
-tags: ["TIL", "zombodb", "postgresql"]
+tags: ["plugin", "zombodb", "postgresql"]
 ---
 
 > Postgresql 과 Elasticsearch 를 연동시키는 Zombodb 라는 플러그인을 설치하는 방법을 설명합니다.

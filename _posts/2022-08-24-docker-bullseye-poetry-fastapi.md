@@ -1,8 +1,8 @@
 ---
 date: 2022-08-24 00:00:00 +0000
 title: 도커 bullseye-slim 기반 poetry + FastAPI 이미지 만들기
-categories: ["python"]
-tags: ["개발환경", "sqlalchemy", "bullseye", "docker", "poetry", "fastapi"]
+categories: ["devops", "docker"]
+tags: ["python", "sqlalchemy", "bullseye", "docker", "poetry", "fastapi"]
 ---
 
 > FastAPI 서버 개발을 위한 Docker 이미지를 생성합니다. (bullseye-slim 버전 기반)

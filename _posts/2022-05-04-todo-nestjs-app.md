@@ -1,7 +1,7 @@
 ---
 date: 2022-05-04 00:00:00 +0000
 title: "NestJS 로 Todo App 만들기"
-categories: ["nodejs", "backend"]
+categories: ["nodejs", "full-stack"]
 tags: ["nestjs", "typeorm", "todo", "sqlite", "angular"]
 ---
 

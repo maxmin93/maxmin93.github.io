@@ -2,7 +2,7 @@
 date: 2022-04-29 00:00:00 +0000
 title: "Angular Material 제거하기"
 categories: ["nodejs", "frontend"]
-tags: ["매터리얼", "remove", "material", "angular-material", "초기화"]
+tags: ["styles", "remove", "material", "angular", "초기화"]
 ---
 
 > Angular 프로젝트에서 Material 말고 다른 UI 테마를 쓰고 싶을 때, 초기화 하는 방법을 설명합니다.

@@ -1,8 +1,8 @@
 ---
 date: 2022-09-16 00:00:00 +0000
 title: 깃허브 코파일럿과 함께 Vue3 공부해보기
-categories: ["nodejs","frontend"]
-tags: ["TIL", "github-copilot", "todo-app", "vue3", "tutorial"]
+categories: ["devops"]
+tags: ["github", "copilot", "todo-app", "vue3", "tutorial"]
 image: "/2022/09/16-vue3-my-todo-app-crunch.png"
 ---
 

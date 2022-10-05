@@ -1,8 +1,8 @@
 ---
 date: 2022-08-14 00:00:00 +0000
 title: 도커 postresql 시간대, 언어 설정 방법들의 비교
-categories: ["devops"]
-tags: ["TIL", "docker", "utf8", "마운트", "postgresql", "locale"]
+categories: ["devops", "docker"]
+tags: ["TIL", "utf8", "마운트", "postgresql", "locale"]
 ---
 
 > 도커 postgresql 의 다양한 환경설정 방법들을 실험하며 차이점을 살펴보겠습니다.

@@ -1,8 +1,8 @@
 ---
 date: 2022-08-26 00:00:00 +0000
 title: 맥 M1 alpine 기반 poetry + FastAPI 이미지 만들기
-categories: ["python"]
-tags: ["개발환경", "alpine", "aarch64", "docker", "poetry", "fastapi"]
+categories: ["devops", "docker"]
+tags: ["python", "alpine", "aarch64", "docker", "poetry", "fastapi"]
 ---
 
 > 파이썬 alpine 이미지로 poetry + FastAPI 배포용 Docker 이미지를 생성합니다. (sqlmodel, psycopg2 포함)

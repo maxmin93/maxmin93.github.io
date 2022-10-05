@@ -1,8 +1,8 @@
 ---
 date: 2022-08-28 00:00:00 +0000
 title: Docker-compose 로 alembic + postgres + FastAPI 만들기
-categories: ["python"]
-tags: ["개발환경", "alembic", "postgresql", "docker", "poetry", "fastapi"]
+categories: ["devops", "docker"]
+tags: ["python", "alembic", "postgresql", "docker", "poetry", "fastapi"]
 ---
 
 > alembic 을 이용한 초기 DB 마이그레이션과 함께 api + db 구성을 docker-compose 로 생성합니다.

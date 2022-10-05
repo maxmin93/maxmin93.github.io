@@ -1,8 +1,8 @@
 ---
 title: "Effective PYTHON 2nd - Contents"
 date: 2021-01-01 00:00:00 +0000
-categories: ["python"]
-tags: ["effective-python", "book"]
+categories: ["python","book"]
+tags: ["effective-python"]
 image:
   src: https://effectivepython.com/images/cover_2ed.jpg
 ---

@@ -1,8 +1,8 @@
 ---
 title: Effective Java 3rd - Contents
 date: 2019-03-06 00:00:00 +0000
-categories: ["java"]
-tags: ["effective-java", "book"]
+categories: ["java", "book"]
+tags: ["effective-java"]
 image:
   src: http://image.yes24.com/goods/65551284/800x0
 ---

@@ -1,8 +1,8 @@
 ---
 date: 2022-10-01 00:00:00 +0000
 title: AWS 최소 서비스 - 한달간의 유지비용 측정
-categories: ["devops"]
-tags: ["aws", "한달비용", "최소비용", "ec2", "도메인", "운영비용"]
+categories: ["devops","aws"]
+tags: ["elb", "한달비용", "최소비용", "ec2", "도메인", "운영비용"]
 image: "/2022/10/01-aws-minimal-architecture-crunch.png"
 ---
 

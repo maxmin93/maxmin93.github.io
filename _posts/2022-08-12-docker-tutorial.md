@@ -1,8 +1,8 @@
 ---
 date: 2022-08-12 00:00:00 +0000
 title: 도커 튜토리얼 getting-started
-categories: ["devops"]
-tags: ["TIL", "docker", "compose", "aws", "nginx"]
+categories: ["devops", "docker"]
+tags: ["TIL", "compose", "aws", "nginx"]
 ---
 
 > 개발환경과 배포의 필수품이 된 Docker 부터 AWS 자동화까지 알아보겠습니다.

@@ -1,8 +1,8 @@
 ---
 date: 2022-03-31 00:00:00 +0000
 title: "Mastering Go - Contents"
-categories: ["golang"]
-tags: ["go-mastering", "book"]
+categories: ["golang", "book"]
+tags: ["go-mastering"]
 image:
   src: http://www.acornpub.co.kr/tb/detail/book/fl/sh/1621183964smdDjLWI.jpg
 ---

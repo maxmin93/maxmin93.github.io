@@ -1,8 +1,8 @@
 ---
 date: 2022-09-03 00:00:00 +0000
 title: python ORM - SQLModel - 1일차
-categories: ["python"]
-tags: ["TIL", "pydantic", "orm", "sqlalchemy2", "tutorial"]
+categories: ["python","orm"]
+tags: ["TIL", "pydantic", "sqlmodel", "sqlalchemy2", "tutorial"]
 image: "https://sqlmodel.tiangolo.com/img/logo-margin/logo-margin-vector.svg"
 ---
 
@@ -10,12 +10,6 @@ image: "https://sqlmodel.tiangolo.com/img/logo-margin/logo-margin-vector.svg"
 {: .prompt-tip }
 
 ## ORM 설명
-
-데이터를 다루면서 정보를 저장하는 데이터베이스는 정보처리시스템의 필수 요소이다. 장기간 데이터를 보존하면서 비지니스 규칙에 따라 재사용하기 위해서는 정형화된 데이터 형식이 필요하다. 이를 관계 중심으로 정형화 하고, 데이터의 CRUD 기능들을 제공하는 소프트웨어 제품을 DBMS 라고 한다.
-
-네트워킹 기술과 함께 중앙집중식으로 사용되던 DBMS 는 중요성이 더욱 커지고 사용 목적도 다양해졌다. 보통 3-Layer 구조를 가졌고, 비즈니스 로직은 DB에 집중되던 구조에서 중간층인 서비스 레이어가 나누어 갖는 형태로 변화되었다.
-
-문제는 시스템의 설계와 구현이 DB 와 서비스 SW 에 분산되어, 유지보수나 SW 재사용이 어려웠기 때문에 생산성을 높일 전략이 필요했다. 프레임워크 형태의 SW 가 성장하면서 설계와 구현의 표준화는 서비스 계층에서 DB 와 독립적으로 진행하는 방향으로 변화되었다.
 
 ORM 은 서비스 계층의 관점으로 객체를 정의하고, 이를 관계형 데이터베이스와 맵핑을 시켜주는 설계방식이자 도구이다. ORM 을 통해 RDB 의 자원을 사용할 수 있게 되면서 데이터 모델링은 한층 더 추상적으로 구현할 수 있게 되었다. 서비스의 인터페이스나 서비스 객체간의 상호작용들을 데이터 모델링으로 일관성 있게 다루면서 소프트웨어 품질도 좋아지는 영향을 미치고 있다.
 

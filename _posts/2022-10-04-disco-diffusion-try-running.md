@@ -1,7 +1,7 @@
 ---
 date: 2022-10-04 00:00:00 +0000
 title: Disco Diffusion 실행해보기
-categories: ["ai.dl"]
+categories: ["ai.dl","image"]
 tags: ["python", "dall-e", "TIL", "text-to-image", "ai-art"]
 image: "/2022/10/04-disco-diffusion-output_49-crunch.png"
 ---

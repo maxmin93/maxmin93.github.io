@@ -1,8 +1,8 @@
 ---
 date: 2022-09-05 00:00:00 +0000
 title: python ORM - SQLModel - 3일차
-categories: ["python"]
-tags: ["TIL", "2.0", "orm", "sqlalchemy", "tutorial"]
+categories: ["python","orm"]
+tags: ["TIL", "2.0", "future", "sqlalchemy", "tutorial"]
 image: "https://sqlmodel.tiangolo.com/img/logo-margin/logo-margin-vector.svg"
 ---
 

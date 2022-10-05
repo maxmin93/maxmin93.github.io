@@ -2,8 +2,8 @@
 date: 2022-03-15 00:00:00 +0000
 title: Postgres Exporter
 author: maxmin93
-categories: ["devops", "prometheus"]
-tags: ["postgresql", "metric", "성능지표", "모니터링", "monitoring", "grafana"]
+categories: ["devops", "monitoring"]
+tags: ["postgresql", "metric", "성능지표", "모니터링", "prometheus", "grafana"]
 pin: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 date: 2022-09-06 00:00:00 +0000
 title: "Best API 프레임워크와 Benchmark (2022년)"
-categories: ["golang"]
+categories: ["opensource"]
 tags: ["api-server", "frameworks", "stack", "backend", "benchmark"]
 ---
 
