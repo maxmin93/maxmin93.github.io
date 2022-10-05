@@ -1,8 +1,8 @@
 ---
 date: 2022-09-10 00:00:00 +0000
 title: (펌) 프론트엔드 개발 트렌드 - MVI 패턴
-categories: ["opensource"]
-tags: ["frontend", "dev-trends", "mvvm", "intent", "cqrs"]
+categories: ["software","frontend"]
+tags: ["아키텍처", "트렌드", "mvi", "intent", "cqrs"]
 image: "https://yozm.wishket.com/media/news/1663/image025.png"
 ---
 

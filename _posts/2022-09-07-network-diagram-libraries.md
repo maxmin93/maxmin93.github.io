@@ -1,8 +1,8 @@
 ---
 date: 2022-09-07 00:00:00 +0000
 title: 네트워크 다이어그램 시각화 라이브러리
-categories: ["opensource"]
-tags: ["오픈소스", "topology", "network", "system", "visualization"]
+categories: ["software","visualization"]
+tags: ["오픈소스", "topology", "network", "system", "시각화"]
 image: "https://www.conceptdraw.com/solution-park/icons/CN_TOOL_COMPNETDIAGRMS/spbanner.png"
 ---
 
