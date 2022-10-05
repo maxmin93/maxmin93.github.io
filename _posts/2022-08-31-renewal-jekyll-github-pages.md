@@ -481,7 +481,7 @@ ERROR `/assets/webfonts/fa-brands-400.woff2' not found.
 
 > D2Coding 폰트 파일에 `D2Coding ligature` 패밀리가 있는데, 할 필요없다. 특수기호 등이 축약버전으로 들어있다는데 보기에 헷갈리기만 할뿐. 맥의 시스템 폰트에도 ligature 는 사용안한다.
 
-> Summary 
+## 9. Summary
 
 - 커스터마이징을 어느 선에서 멈출지 잘 판단하자.
   + 블로그일뿐이다. 그래도 이쁜게 좋다. (애착 형성)

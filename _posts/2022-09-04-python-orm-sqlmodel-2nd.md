@@ -303,7 +303,7 @@ class MyClass(Base):
     )
 ```
 
-> Summary
+## 9. Summary
 
 - DB 어댑터에는 관련된 DB, ORM 과의 히스토리가 담겨있다. 
   + 가끔씩 이슈나 검색으로 새로운 소식을 알아보자.

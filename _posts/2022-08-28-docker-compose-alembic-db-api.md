@@ -402,7 +402,7 @@ CONN_URL="postgresql://tonyne:tonyne@db:5432/nfp_db"
 ```
 
 
-> Summary
+## 9. Summary
 
 - 끝인가 싶다가도 끝이 아니네요. 이 바닥이 바닥이 아닌가.
 - 이쯤 되니 뭘 구성해도 편합니다.

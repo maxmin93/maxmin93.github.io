@@ -425,7 +425,7 @@ print("==> success!")
 
 - 참고: [2022-08-14 포스트 - set -e 와 exec "$@"](/posts/2022-08-14-postgres-tz-locale-setup/#dollar_n_atsign)
 
-> Summary
+## 9. Summary
 
 - 휴, 드디어 밀린 숙제(2)를 해치웠다.
   - 필요할 때 처음부터 만들려고 하면 또 얼마나 시간 잡아 먹겠냐!

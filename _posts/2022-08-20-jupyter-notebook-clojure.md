@@ -261,7 +261,7 @@ export JAVA_OPTS="-Xms1g -Xmx1g"
 export LEIN_JVM_OPTS="-Dmaven.wagon.rto=1800000 -Dclojure.vmargs=\"-d64\""
 ```
 
-> Summary
+## 9. Summary
 
 - 이것 외에도 다른 커널들이 있었지만, 최근까지 업데이트 되는 것은 없었다.
 - 커널 설치와 커널 동작 방식에 대해 조금 더 이해하게 되었다.

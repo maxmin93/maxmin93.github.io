@@ -547,7 +547,7 @@ if __name__ == '__main__':
     run()
 ```
 
-> Summary
+## 9. Summary
 
 - grpc 는 python 보다 go 언어와 잘 어울리는거 같다.
 - 채팅 서비스의 구조와 grpc 동작방식에 대한 이해가 필요하다.

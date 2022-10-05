@@ -788,7 +788,7 @@ $ docker run -it --rm --user "$(id -u):$(id -g)" -v /etc/passwd:/etc/passwd:ro -
 The files belonging to this database system will be owned by user "jsmith".
 ```
 
-> Summary
+## 9. Summary
 
 - 휴, 드디어 밀린 숙제를 해치웠다.
 

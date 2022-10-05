@@ -468,7 +468,7 @@ async def read_items():
     return [{"item_id": "Foo"}]
 ```
 
-> Summary
+## 9. Summary
 
 - 성능이 뛰어나다는 것과 생산성이 뛰어난 것은 의미가 다르다.
   + python 버전은 성능은 느릴지라도, 빨리 개발할 수 있어 인기가 높다.
