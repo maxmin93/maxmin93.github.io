@@ -1,7 +1,7 @@
 ---
 date: 2022-07-29 00:00:00 +0000
 title: 딥러닝 - 리뷰 평점 예측 프로젝트
-categories: ["deep-learning"]
+categories: ["ai.dl"]
 tags: ["코드스테이츠", "제주ICT", "부트캠프", "딥러닝"]
 image: https://github.com/maxmin93/aib-proj-dacon/raw/main/images/bert-train-acc_loss-linechart.png
 ---
