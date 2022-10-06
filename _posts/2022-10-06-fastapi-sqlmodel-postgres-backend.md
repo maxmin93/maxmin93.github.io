@@ -3,7 +3,7 @@ date: 2022-10-06 00:00:00 +0000
 title: FastAPI + SQLModel + Postgres 프로젝트
 categories: ["python","backend"]
 tags: ["프로젝트", "orm", "postgres", "tutorial", "docker", "sqlmodel", "fastapi"]
-image: "https://github.com/maxmin93/fastapi-sqlmodel-heroes/blob/main/assets/img/12-fastapi-sqlmodel-pg14-docs-crunch.png?raw=true"
+image: "https://github.com/maxmin93/fastapi-sqlmodel-heroes/blob/main/assets/img/06-fastapi-sqlmodel-pg14-docs-crunch.png?raw=true"
 ---
 
 > SQLModel 의 Hero Tutorial 을 FastAPI 와 Postgresql 로 구현한 프로젝트를 설명합니다. (Docker 포함)
@@ -31,7 +31,7 @@ SqlModel 의 Hero 튜토리얼을 FastAPI 프레임워크로 구현한 프로젝
 
 #### Backend: api
 
-| <img alt="fastapi docs screen" src="https://github.com/maxmin93/fastapi-sqlmodel-heroes/blob/main/assets/img/12-fastapi-sqlmodel-pg14-docs-crunch.png?raw=true" style="width:580px;"/> |
+| <img alt="fastapi docs screen" src="https://github.com/maxmin93/fastapi-sqlmodel-heroes/blob/main/assets/img/06-fastapi-sqlmodel-pg14-docs-crunch.png?raw=true" style="width:580px;"/> |
 | :----: |
 | &lt;그림&gt; FastAPI `/docs` 화면 |
 
@@ -247,9 +247,9 @@ $ curl -X GET "http://localhost:58000/teams/last"
 - delete team "Tutorial Preventers"
   + updated hero with none team
 
-### 4) pytest
+## 3. pytest
 
-#### (1) `tests/main_test.py`
+### 1) `tests/main_test.py`
 
 - test_hello : fastapi 작동 여부
 - test_hero : GET `/heroes/last` 작동 여부와 HeroRead 변환
@@ -276,14 +276,14 @@ tests/main_test.py ......                                                  [100%
 =============================== 6 passed in 0.64s ================================
 ```
 
-#### (2) `tests/hero_test.py`
+### 2) `tests/hero_test.py`
 
 - test_read_items, test_read_item : select 테스트
 - test_create_item : create 테스트
 - test_update_item : update 테스트
 - test_delete_item : delete 테스트
 
-#### (3) `tests/team_test.py`
+### 3) `tests/team_test.py`
 
 - test_read_groups, test_read_group : select 테스트
 - test_create_group : create 테스트
@@ -291,7 +291,7 @@ tests/main_test.py ......                                                  [100%
 - test_delete_group: delete 테스트
 
   
-### 4) docker compose 실행
+## 4. docker compose 실행
 
 ```bash
 # 도커 컴포즈에서 linux/amd64 이미지 생성 (Mac M1)
