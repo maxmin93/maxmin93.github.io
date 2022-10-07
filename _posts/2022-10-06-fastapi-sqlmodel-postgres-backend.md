@@ -43,14 +43,47 @@ Password:
 psql (14.5)
 Type "help" for help.
 
+company_db=# show time zone;
+  TimeZone
+------------
+ Asia/Seoul
+(1 row)
+
+company_db=# \dt
+       List of relations
+ Schema | Name | Type  | Owner
+--------+------+-------+--------
+ public | hero | table | tonyne
+ public | team | table | tonyne
+(2 rows)
+
+company_db=# SELECT conrelid::regclass AS table_name,
+       conname AS foreign_key,
+       pg_get_constraintdef(oid) 
+FROM   pg_constraint
+WHERE  contype = 'f' AND connamespace = 'public'::regnamespace
+ORDER  BY conrelid::regclass::text, contype DESC;
+ table_name |    foreign_key    |           pg_get_constraintdef
+------------+-------------------+-------------------------------------------
+ hero       | hero_team_id_fkey | FOREIGN KEY (team_id) REFERENCES team(id)
+(1 row)
+
 company_db=# select * from hero;
-    name    |   secret_name    | age | id
-------------+------------------+-----+----
- Deadpond   | Dive Wilson      |     |  1
- Rusty-Man  | Tommy Sharp      |  48 |  2
- Dormammu   | Unknown          |     |  3
- Spider-Boy | Pedro Parqueador |  21 |  4
+    name    |   secret_name    | age | team_id | id
+------------+------------------+-----+---------+----
+ Deadpond   | Dive Wilson      |     |       1 |  1
+ Rusty-Man  | Tommy Sharp      |  48 |       1 |  2
+ Dormammu   | Unknown          |     |       2 |  3
+ Spider-Boy | Pedro Parqueador |  21 |         |  4
 (4 rows)
+
+company_db=# select * from team;
+  name  | headquarters | id
+--------+--------------+----
+ 서울팀 | 종로구       |  1
+ 충남팀 | 홍성군       |  2
+ 경북팀 | 울산군       |  3
+(3 rows)
 ```
 
 #### Frontend: web
@@ -319,6 +352,22 @@ $ docker compose down -v
  ⠿ Volume smpdb_data                Removed                          0.0s
  ⠿ Network sqlmodel-pg-api_default  Rem...                           0.1s
 ```
+
+### 1) 소스코드
+
+[https://github.com/maxmin93/fastapi-sqlmodel-heroes](https://github.com/maxmin93/fastapi-sqlmodel-heroes)
+
+### 2) SQLAlchemy 관련 다른 글
+
+- [python ORM - SQLModel - 1일차](/posts/2022-09-03-python-orm-sqlmodel-1st/)
+  + SQLModel 핵심 모델
+- [python ORM - SQLModel - 2일차](/posts/2022-09-04-python-orm-sqlmodel-2nd/)
+  + SQLAlchemy 1.4 - postgresql 접속
+- [python ORM - SQLModel - 3일차](/posts/2022-09-05-python-orm-sqlmodel-3rd/)
+  + SQLAlchemy Future(2.0) 버전
+- [Docker-compose 로 alembic + postgres + FastAPI 만들기](/posts/2022-08-28-docker-compose-alembic-db-api/)
+  + FastAPI 및 postgresql 의 Docker 이미지
+
 
 ## 9. Summary
 
