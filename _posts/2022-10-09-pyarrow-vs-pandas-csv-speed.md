@@ -18,7 +18,9 @@ image: "/2022/10/09-pyarrow-vs-pandas-csv-read-crunch.png"
 
 ## 2. PyArrow vs. Pandas : CSV 읽기 쓰기 시간 측정
 
-출처: [PyArrow vs. Pandas for managing CSV files - How to Speed Up Data Loading | Better Data Science](https://www.youtube.com/watch?v=gFd4I1oXG8E)
+출처: [PyArrow vs. Pandas for managing CSV files - How to Speed Up Data Loading](https://www.youtube.com/watch?v=gFd4I1oXG8E)
+
+- 작성자: [BetterDataScience](https://www.youtube.com/c/BetterDataScience)
 
 ### 1) 준비
 
