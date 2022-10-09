@@ -173,13 +173,57 @@ df_pd_1 = df_pa_1.to_pandas()
 
 ## 3. PyArrow vs. Pandas : CSV 읽기 쓰기 성능 비교
 
-### 1) CSV 읽기 성능 비교
+### 1) CSV 쓰기 성능 비교
+
+![CSV 쓰기 성능 비교](/2022/10/09-pyarrow-vs-pandas-csv-write-crunch.png){: width="580"}
+
+```python
+import matplotlib.pyplot as plt
+
+write_values = [56, 181, 6.04, 82]
+
+mesures = ['Pandas Write (CSV)','Pandas Write(CSV.GZ)','PyArrow Write(CSV)','PyArrow Write(CSV.GZ)']
+
+fig = plt.figure(figsize=(10, 4))
+
+# creating the bar plot
+ax = plt.barh(mesures, write_values, color='maroon')
+plt.bar_label(ax, label_type='edge', padding=5, fmt='%.1f sec')
+
+# plt.xlabel("Courses offered")
+# plt.ylabel("No. of students enrolled")
+plt.title("Pandas vs. PyArrow | Write time in seconds")
+plt.grid(axis='x', color='black', linestyle='-.')
+plt.grid(axis='y')
+#plt.show()
+plt.savefig('temp/09-pyarrow-vs-pandas-csv-write.png')
+```
+
+### 2) CSV 읽기 성능 비교
 
 ![CSV 읽기 성능 비교](/2022/10/09-pyarrow-vs-pandas-csv-read-crunch.png){: width="580"}
 
-### 2) CSV 쓰기 성능 비교
+```python
+import matplotlib.pyplot as plt
 
-![CSV 쓰기 성능 비교](/2022/10/09-pyarrow-vs-pandas-csv-write-crunch.png){: width="580"}
+read_values  = [14.2, 21.8, 1.1, 7.05]
+
+mesures = ['Pandas Read(CSV)','Pandas Read(CSV.GZ)','PyArrow Read(CSV)','PyArrow Read(CSV.GZ)']
+
+fig = plt.figure(figsize=(10, 4))
+
+# creating the bar plot
+ax = plt.barh(mesures, read_values, color='maroon')
+plt.bar_label(ax, label_type='edge', padding=5, fmt='%.1f sec')
+
+# plt.xlabel("Courses offered")
+# plt.ylabel("No. of students enrolled")
+plt.title("Pandas vs. PyArrow | Write time in seconds")
+plt.grid(axis='x', color='black', linestyle='-.')
+plt.grid(axis='y')
+#plt.show()
+plt.savefig('temp/09-pyarrow-vs-pandas-csv-read.png')
+```
 
 ## 9. Summary
 
