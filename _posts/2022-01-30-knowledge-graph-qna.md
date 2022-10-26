@@ -1,7 +1,7 @@
 ---
 date: 2022-01-30 00:00:00 +0000
 title: "AgensKG 지식그래프를 이용한 질의응답"
-categories: ["knowledge-graph"]
+categories: ["knowledge-graph","agens-kg"]
 tags:
   [
     "의존그래프",

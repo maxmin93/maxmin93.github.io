@@ -1,7 +1,7 @@
 ---
 date: 2022-01-28 00:00:00 +0000
 title: "AgensKG 지식그래프 소개"
-categories: ["knowledge-graph"]
+categories: ["knowledge-graph","agens-kg"]
 tags:
   [
     "의존그래프",
@@ -10,7 +10,6 @@ tags:
     "지식그래프",
     "트리플그래프",
     "그래프데이터베이스",
-    "agens-kg",
   ]
 ---
 
