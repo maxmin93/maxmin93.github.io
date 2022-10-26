@@ -1,7 +1,7 @@
 ---
 title: AgensBrowser tutorial - northwind
 date: 2019-03-04 00:00:00 +0000
-categories: ["bitnine", "agens-browser"]
+categories: ["graphdb", "agens"]
 tags: ["agensgraph", "recommendation", "추천", "tutorial"]
 ---
 
