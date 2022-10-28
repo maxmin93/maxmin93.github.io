@@ -2,6 +2,7 @@
 title: Portfolio
 icon: fas fa-info-circle
 order: 4
+sitemap: false
 ---
 
 > 현재 내가 가진 능력과 성과를 정리해보고, 가야할 목표를 살펴보자
@@ -15,6 +16,16 @@ order: 4
 - 딥러닝/NLP, Spring, FastAPI, Nestjs, Angular 프로젝트 경험
 - RDB/SQL, GDB/Tinkerpop, NoSQL, Spark, Elasticsearch, Docker 활용
 - 대기업 Duam/Kakao 7.5년, 스타트업 Bitnine 5.3년 등 개발조직 근무 경험
+
+### 보유 기술
+
+- 프론트엔드 웹개발: [Angular](https://angular.io/), Nodejs/Typescript, [Style](https://npmtrends.com/@angular/material-vs-antd-vs-bootstrap-vs-emotion-vs-styled-components-vs-tailwindcss)
+- 백엔드 웹개발: [Nestjs](https://nestjs.com/)(Node), Spring(Java), FastAPI(Python), Docker
+- 데이터 분석: TF2/Pytorch, 한글 전처리/NLP, Spark(Scala), SAS
+- 데이터 저장/질의: Postgresql, MySQL, MongoDB, [SQLite](https://www.sqlite.org/index.html), [Elasticsearch](https://www.elastic.co/kr/downloads/past-releases/elasticsearch-7-10-2)
+- 데이터 수집/가공: [Scrapy](https://scrapy.org/)(Python), 뉴스 200만건, 카카오 검색/쿼리로그
+- 클라우드/인프라: Google Map/NLP API(GCS), EC2/S3/lambda/LB(AWS)
+- 그래프 데이터베이스: [Neo4j](https://neo4j.com/), [AgensGraph](https://bitnine.net/agensgraph/), [Tinkerpop](https://tinkerpop.apache.org/), [Amazon Neptune](https://aws.amazon.com/ko/neptune/)
 <br/>&nbsp;
 
 ***
@@ -29,7 +40,8 @@ order: 4
 - 최종 51위 acc=0.67 획득 (1위는 acc=0.71)
 - 분석도구 : 한글 전처리/임베딩, pytorch, transformer/huggingface, TF/Keras
 - 분석모델 : LogisticRegression, LightGBM, MLP, RNN, CNN, BERT, ELECTRA
-<br/>&nbsp;
+
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [깃허브/aib-proj-dacon](https://github.com/maxmin93/aib-proj-dacon)<br/>&nbsp;
 
 > 코드스테이츠 부트캠프 - AI 데이터 분석반 수료 2022.7
 {: .prompt-tip }
@@ -52,11 +64,11 @@ order: 4
 
 - 뉴스 120만건의 자연어를 NLP 처리 후 그래프 기반의 지식그래프 구축
 - 질의분석기와 그래프 검색으로 질문에 해당하는 답변을 출력 (+시각화)
-- 자체 정의한 Triple 구조와 node2vec 가중치로 그래프 유사도를 계산
+- 자체 정의한 Triple 구조와 [Node2Vec](https://arxiv.org/abs/1607.00653) 가중치로 그래프 유사도를 계산
 - 이 외에 중복문서 제거 및 유사문서, TFIDF, 단어그래프 탐색 등을 개발
 - Elasticsearch/검색, FastAPI/백엔드, Angular/프론트, GCS/자연어분석
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [AgensKG 최종발표 PPT](https://docs.google.com/presentation/d/1-cDvvfIOAVnIjfBLH8WA5niYOQNtow6E4GEN89U74Uw/edit?usp=sharing),&nbsp; 2) [AgensKG Demo 동영상](https://youtu.be/WHjGfLb7nPE)<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [AgensKG 최종발표 PPT](https://docs.google.com/presentation/d/1-cDvvfIOAVnIjfBLH8WA5niYOQNtow6E4GEN89U74Uw/edit?usp=sharing),&nbsp; 2) [AgensKG Demo 동영상](https://youtu.be/WHjGfLb7nPE),&nbsp; 3) [깃허브/kg-news-front](https://github.com/maxmin93/kg-news-front)(백엔드는 비공개)<br/>&nbsp;
 
 > 그래프 분석을 위한 Spark, Livy 라이브러리 개발 (1인개발)
 {: .prompt-tip }
@@ -65,25 +77,25 @@ order: 4
 - 그래프 쿼리 API 기능을 위해 Apache Livy 플러그인 개발
 - 그래프 쿼리 결과를 Hive 에 Parquet 테이블로 생성하여 JDBC 와 연결
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [JDBC 연결 Demo 동영상]()<br/>&nbsp;  
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [JDBC 연결 Demo 동영상](https://drive.google.com/file/d/1A9pZJVmltzA2aKacyT_hl32hh5C18ZX1/view?usp=sharing),&nbsp; 2) [깃허브/agens-spark-modules](https://github.com/maxmin93/agens-spark-modules)<br/>&nbsp;
 
 > 그래프DB 실시간 모니터링 개발 (1인개발)
 {: .prompt-tip }
 
 - Spring/Kotlin + HTTP Client 로 그래프DB의 Health 정보 수집
-- Angular와 Chart.js로 실시간 차트와 모니터링 구현
-- Electron 으로 Windows 애플리케이션을 빌드하여 배포
+- Angular와 [Chart.js](https://www.chartjs.org/docs/latest/samples/scales/time-line.html) 로 실시간 차트와 모니터링 구현
+- [Electron](https://www.electronjs.org/docs/latest) 으로 Windows 애플리케이션을 빌드하여 배포
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [AAA]()<br/>&nbsp;   
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [깃허브/agenspop-monitor](https://github.com/maxmin93/agenspop-monitor)<br/>&nbsp;
 
 > 대용량 그래프 엔진 및 WebGL(GPU) 시각화 개발 (1인개발+디자이너)
 {: .prompt-info }
 
 - 오픈소스 [Tinkerpop](https://tinkerpop.apache.org/) 에 Elasticsearch 를 통합한 그래프 엔진 개발
-- WebGL + Canvas 라이브러리로 GPU 기반 고성능 시각화 도구 개발
+- [WebGL](https://github.com/maxmin93/ElGrapho) + Canvas 라이브러리로 GPU 기반 고성능 시각화 도구 개발
 - ES 쿼리 최적화, 그래프 Crop 기능 등 대용량 그래프 탐색을 위한 기능 구현
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [GCS 과제보고 PPT - Agenspop](),&nbsp; 2) [Agenspop Demo 동영상]()<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [GCS 과제보고 PPT - Agenspop](https://docs.google.com/presentation/d/1_4gpf9T2hp_PWDyL8xRAzDt5IthC-v1PeS-RBZy-zNY/edit?usp=sharing),&nbsp; 2) [Agenspop Demo 동영상](https://youtu.be/fdpXpsJP2ek),&nbsp; 3) [깃허브/agenspop-es](https://github.com/maxmin93/agenspop-es)<br/>&nbsp;
 
 > 그래프DB 클라이언트 AgensBrowser v1, v2 개발 (1인개발+디자이너)
 {: .prompt-tip }
@@ -92,7 +104,7 @@ order: 4
 - Angular 와 Canvas 를 사용해 그래프 시각화와 그래프 분석 기능을 제공 
 - 2017년 12월 GS 인증 취득 (TTA) - 제품명 Agensgraph
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [AgensBrowser v1 튜토리얼 동영상](),&nbsp; 2) [AgensBrowser v2 개발 PPT]()<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [AgensBrowser v1 튜토리얼 동영상](https://youtu.be/LPR8SV0hXx4),&nbsp; 2) [AgensBrowser v2 개발 PPT](https://docs.google.com/presentation/d/1JUQH1L5eiEIm8PTST1kC4lmiTK1ZThVLQznnPctVrJo/edit?usp=sharing)<br/>&nbsp;
 
 ***
 
@@ -125,7 +137,7 @@ order: 4
 - 관광지역 검색을 위한 Daum/Google/OpenStreet 통합 지도 개발
 - 버스 최단경로 검색 개발 (최대 2회 환승 버스 경로)
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [버스경로검색 Demo 동영상]()<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [버스경로검색 Demo 동영상](https://youtu.be/eN07CTGOB0A)<br/>&nbsp;
 
 ***
 
@@ -160,7 +172,7 @@ order: 4
 - 검색 사용자의 동일 의도의 쿼리 세션 구분과 연관 키워드 추출
 - 검색 서비스별 사용자 이용 패턴에 대한 다양한 분석 요청을 처리
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [AAA]()<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [키워드 분석업무 PPT](https://www.slideshare.net/BGMin/20120909-78297702),&nbsp; 2) [주제별 키워드 수집 PPT](https://www.slideshare.net/BGMin/20131213-78293467)<br/>&nbsp;
 
 > 검색서비스 구축 및 운영, 검색 랭킹 개발 2007.10 ~ 2012.1 (4년 4개월)
 {: .prompt-tip }
@@ -170,12 +182,12 @@ order: 4
 - 검색 랭킹 알고리즘 및 모듈 개발 (검색 품질 개선)
 - 팀 전체의 검색엔진 실서비스 버전 배포 관리
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [AAA]()<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [네비게이션 검색 통합 PPT](https://www.slideshare.net/BGMin/2009-41787418),&nbsp; 2) [검색품질관리툴 PPT](https://www.slideshare.net/BGMin/ss-41786057)<br/>&nbsp;
 
 > 상호정보량을 이용한 카페검색 품질향상 사례 발표 (BI학회) 2008.4
 {: .prompt-info }
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [AAA]()<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [카페명 검색 개선사례 PPT](https://www.linkedin.com/in/maxmin93/details/experience/296791229/multiple-media-viewer/?treasuryMediaId=50108295)<br/>&nbsp;
 
 ***
 
@@ -194,7 +206,13 @@ order: 4
 > 단어연관그래프를 이용한 단어 의미의 자동 군집 기법 (논문)
 {: .prompt-info }
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [AAA]()<br/>&nbsp;
+- 네이버 쇼핑 키워드셋을 이용해 상호정보량(MI) 기준 연관그래프를 구성
+- 특정 단어의 연관단어그래프에 대해 간선을 정점으로 삼아 그래프 재구성
+- 그래프 기반 클러스터링 알고리즘으로 중의성 단어를 고려해 군집화
+- 특정 단어를 기준으로 여러 의미그룹을 군집 최적화하여 생성
+  + ex) '허브' => {네트워크 장비}, {의약품}, {방향제}
+
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [논문발표 2007 PPT](https://drive.google.com/drive/folders/1tbCz_hEsG6aU3lc6oS0pFkY6mfT5XtJ9)<br/>&nbsp;
 
 ***
 
@@ -206,7 +224,7 @@ order: 4
   지인 소개로 들어가게 된 첫번째 대형 개발회사였다. 돈이 많은 회사는 직원에 대한 처우가 이렇게나 다르구나 하는 것을 느꼈다. 게임 업계에 대한 신기한 경험을 한 시기였지만, 한편 수료 상태인 이대로는 개발자든 인생이든 롱런하기 어렵겠다는 생각이 들었다. 게임 개발 과정이 고되기도 했고.
 </p></details><br/>
 
-> 온라인 야구 게임  개발 (캐주얼/소형 게임)
+> 온라인 야구 게임 개발 (캐주얼/소형 게임)
 {: .prompt-warning }
 
 - 야구 게임의 로직을 DB 에 구축 (MySQL)
