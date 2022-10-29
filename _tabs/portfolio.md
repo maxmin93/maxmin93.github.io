@@ -77,7 +77,7 @@ sitemap: false
 - 그래프 쿼리 API 기능을 위해 Apache Livy 플러그인 개발
 - 그래프 쿼리 결과를 Hive 에 Parquet 테이블로 생성하여 JDBC 와 연결
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [JDBC 연결 Demo 동영상](https://drive.google.com/file/d/1A9pZJVmltzA2aKacyT_hl32hh5C18ZX1/view?usp=sharing),&nbsp; 2) [깃허브/agens-spark-modules](https://github.com/maxmin93/agens-spark-modules)<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [JDBC-Spark/Livy Demo 동영상](https://youtu.be/bWRlwWWs1KE),&nbsp; 2) [깃허브/agens-spark-modules](https://github.com/maxmin93/agens-spark-modules)<br/>&nbsp;
 
 > 그래프DB 실시간 모니터링 개발 (1인개발)
 {: .prompt-tip }
@@ -172,7 +172,7 @@ sitemap: false
 - 검색 사용자의 동일 의도의 쿼리 세션 구분과 연관 키워드 추출
 - 검색 서비스별 사용자 이용 패턴에 대한 다양한 분석 요청을 처리
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [키워드 분석업무 PPT](https://www.slideshare.net/BGMin/20120909-78297702),&nbsp; 2) [주제별 키워드 수집 PPT](https://www.slideshare.net/BGMin/20131213-78293467)<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [키워드 분석업무 PPT](https://drive.google.com/file/d/1arXjJeqNdFngU6zbf4R5hnJ1suq8r1gQ/view?usp=share_link),&nbsp; 2) [주제별 키워드 수집 PPT](https://drive.google.com/file/d/1j3gTjYhNmdWlmoUsSh3FH5zU0pC7U-nQ/view?usp=share_link),&nbsp; 3) [뉴스 키워드 링크 서비스](https://drive.google.com/file/d/1UUlAHGkqUMRd0LIObvdqLe0KE42Gqz64/view?usp=share_link)<br/>&nbsp;
 
 > 검색서비스 구축 및 운영, 검색 랭킹 개발 2007.10 ~ 2012.1 (4년 4개월)
 {: .prompt-tip }
@@ -182,12 +182,12 @@ sitemap: false
 - 검색 랭킹 알고리즘 및 모듈 개발 (검색 품질 개선)
 - 팀 전체의 검색엔진 실서비스 버전 배포 관리
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [네비게이션 검색 통합 PPT](https://www.slideshare.net/BGMin/2009-41787418),&nbsp; 2) [검색품질관리툴 PPT](https://www.slideshare.net/BGMin/ss-41786057)<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [토픽맵 통합검색 PPT](https://drive.google.com/file/d/1MKAoVO2W66jwJIZNicA7KfjxC-RY9eM0/view?usp=share_link),&nbsp; 2) [제안-주제검색,오픈검색 PPT](https://drive.google.com/file/d/1BQL3Q69VTulbBcU3MCkFAitBNBpZ-5cb/view?usp=share_link), 3) [카페글-스팸구문탐색 PPT](https://drive.google.com/file/d/1iJefBs0fgnpDYzsF7VpPVG-c96q0SlAy/view?usp=share_link)<br/>&nbsp;
 
 > 상호정보량을 이용한 카페검색 품질향상 사례 발표 (BI학회) 2008.4
 {: .prompt-info }
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [카페명 검색 개선사례 PPT](https://www.linkedin.com/in/maxmin93/details/experience/296791229/multiple-media-viewer/?treasuryMediaId=50108295)<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [카페명 검색 개선사례 PPT](https://drive.google.com/file/d/1NPIXun-I-kIzrx7MkQe-TIXDzk1J7nEA/view?usp=share_link)<br/>&nbsp;
 
 ***
 
@@ -212,7 +212,7 @@ sitemap: false
 - 특정 단어를 기준으로 여러 의미그룹을 군집 최적화하여 생성
   + ex) '허브' => {네트워크 장비}, {의약품}, {방향제}
 
-&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [논문발표 2007 PPT](https://drive.google.com/drive/folders/1tbCz_hEsG6aU3lc6oS0pFkY6mfT5XtJ9)<br/>&nbsp;
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [논문발표 2007 PPT](https://drive.google.com/file/d/15_HGh-h_arPGTVhpNDz0eEA1hKKWHEbs/view?usp=share_link)<br/>&nbsp;
 
 ***
 
@@ -249,7 +249,11 @@ sitemap: false
 - 웹사용 수집과 분석, 리포팅을 위한 DB 구축 및 프로시져 개발
 - 최대 1일 10억 PV 처리, 50여종의 웹분석 리포트 제공
   + 당시 유명 검색회사 [엠파스](https://ko.wikipedia.org/wiki/%EC%97%A0%ED%8C%8C%EC%8A%A4)에 솔루션을 납품하고 유지보수
-<br/>&nbsp;
+
+> 2006 CRM 페어 Fall 발표 - CPA와 효과적인 키워드 광고 운용
+{: .prompt-tip }
+
+&nbsp; &nbsp; <i class="fas fa-archive"></i>&nbsp; 포트폴리오 :&nbsp; 1) [CRM페어-CPA광고효과측정 PPT](https://drive.google.com/file/d/1xQxqct_I-cAELzMzoqFp0UMYsBwBmJv8/view?usp=share_link)<br/>&nbsp;
 
 ***
 
