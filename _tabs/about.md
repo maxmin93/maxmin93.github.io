@@ -134,7 +134,8 @@ order: 5
   + 프론트엔드
     * [Gatsbyjs](https://www.gatsbyjs.com/why-gatsby) 로 정적프레임을 잡고, [React 웹컴포넌트를 사용하자](https://www.gatsbyjs.com/docs/conceptual/building-with-components/)
       - 필요하면 뭐든 사용하자. 쉽게쉽게 가는게 핵심이다.
-      - 1인 개발이면 Tailwind CSS 도 배우자. (협업 기다리다 지친다)
+      - [Tailwind CSS](https://tailwindcss.com/) 도 배우자 (스타일도 코딩이다)
+        + React 에서 [styled-components](https://styled-components.com/) + [twin.macro](https://github.com/ben-rogerson/twin.macro) 조합
 
 - 1인 풀스택이면서, 모바일 퍼스트라면 Flutter 로 간다.
   + 클라우드 Serverless 백엔드와 모바일 App 조합

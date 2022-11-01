@@ -25,7 +25,7 @@ sitemap: false
 - 데이터 저장/질의: Postgresql, MySQL, MongoDB, [SQLite](https://www.sqlite.org/index.html), [Elasticsearch](https://www.elastic.co/kr/downloads/past-releases/elasticsearch-7-10-2)
 - 데이터 수집/가공: [Scrapy](https://scrapy.org/)(Python), 뉴스 200만건, 카카오 검색/쿼리로그
 - 클라우드/인프라: Google Map/NLP API(GCS), EC2/S3/lambda/LB(AWS)
-- 그래프 데이터베이스: [Neo4j](https://neo4j.com/), [AgensGraph](https://bitnine.net/agensgraph/), [Tinkerpop](https://tinkerpop.apache.org/), [Amazon Neptune](https://aws.amazon.com/ko/neptune/)
+- 그래프 데이터베이스: [Neo4j](https://neo4j.com/), [Tinkerpop](https://tinkerpop.apache.org/), [Amazon Neptune](https://aws.amazon.com/ko/neptune/)
 <br/>&nbsp;
 
 ***

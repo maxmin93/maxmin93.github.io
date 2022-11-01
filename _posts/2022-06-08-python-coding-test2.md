@@ -21,63 +21,14 @@ tags: ["dmoj"]
 
 이웃간 거리의 절반이 경계선이다. enumerate 사용이 핵심
 
-> 내가 제출한 코드
-
-```python
-# 마을 개수
-n = int(input())
-# 마을 위치
-positions = []
-for _ in range(n):
-    positions.append(int(input()))
-
-# 정렬: 자기 갱신
-positions.sort()
-
-sizes = []
-for i, p in enumerate(positions):
-    # 양 끝단의 마을은 제외
-    if i == 0 or i == n-1:
-        continue
-    sizes.append((positions[i+1] - positions[i-1])/2)
-
-# 가장 작은 마을의 크기
-# print(positions, '==>', sizes)
-print(f'{min(sizes):.1f}')
-```
-
-> 다른 제출자 코드
-
-```python
-n = int(input()) #take the number of villages
-positions = [] #initialize positions as an empty list
-
-for i in range(n): #for each village
-    positions.append(int(input())) #enter its position
-
-positions.sort() #after all positions enter, sort the positions
-
-# initialize min_size
-left = (positions[1] - positions[0]) / 2
-right = (positions[2] - positions[1]) / 2
-min_size = left + right #min_size initialized to the first village
-
-for i in range(2, n - 1): #for every other village
-    left = (positions[i] - positions[i - 1]) / 2
-    right = (positions[i + 1] - positions[i]) / 2
-    size = left + right #calculate the size
-    if size < min_size: #if it is lower than the actual min
-        min_size = size #we found a new min !!!
-
-print(min_size)
-```
+- 지문에서 '경계선' 단어를 중심으로 문제를 설명했다.
+    + '경계선'의 left, right 를 구한 후 mid 를 계산
 
 ### 문제12
 
 [ECOO '17 R1 P1 - Munch 'n' Brunch](https://dmoj.ca/problem/ecoo17r1p1)
 
-테스트케이스 1,2,3 중에 3번을 통과 못함 (Final score: 4.833/5 points)<br>
-다른 정답 소스를 볼 수 없는 것으로 보아 테스트케이스 잘못인듯
+테스트케이스 1,2,3 중에 3번을 통과 못함 (Final score: 4.833/5 points)
 
 > 내가 제출한 코드
 
@@ -118,18 +69,12 @@ for _ in range(n_trips):
         print('YES')
 ```
 
-> 다른 제출자 코드
-
-```python
-
-```
-
 ### 문제13
 
 [ECOO '17 R3 P1 - Baker Brie](https://dmoj.ca/problem/ecoo17r3p1)
 
-rotated 된 매트릭스를 생성하기 때문에 시간과 메모리에서 사용량 차이가 났다.<br>
-조금 더 손을 본다면, 데이터를 입력 받을 때 rotated 매트릭스를 생성하는 정도?
+rotated 된 매트릭스를 생성하기 때문에 시간과 메모리에서 차이가 났다.<br>
+표현 방식 또는 `열/행` 순회 방법이 잘못된게 아닌지 고민해 봐야한다.
 
 - 내 코드 Resources: 0.320s, 21.45 MB
 - 다른 코드 Resources: 0.295s, 9.50 MB
@@ -189,20 +134,26 @@ for _ in range(n_events):
 ```python
 for data_set in range(10):
     num_franchises, num_days = [int(value) for value in input().split()]
+
     # 프랜차이즈별 합산을 위한 매트릭스 생성
     franchises_total = [0] * num_franchises
     bonus_count = 0
+
     for day in range(num_days):
         day_sales = [int(value) for value in input().split()]
+
         # 일별 dozens 카운트
         if sum(day_sales) % 13 == 0:
             bonus_count += sum(day_sales) // 13
+
         # 일일 판매량에서 프랜차이즈별 합산
         franchises_total = [a + b for a, b in zip(franchises_total, day_sales)]
+
     # 프랜차이즈별 dozens 카운트
     for franchise in franchises_total:
         if franchise % 13 == 0:
             bonus_count += franchise // 13
+
     print(bonus_count)
 ```
 
@@ -210,66 +161,9 @@ for data_set in range(10):
 
 [CCC '99 S1 - Card Game](https://dmoj.ca/problem/ccc99s1)
 
-다른 사람 코드도 볼 수가 없어 책 답안을 참조함
+주의! `slicing` 은 index 가 범위를 벗어난다고 오류를 내지 않음
 
-- 스스로 풀어서 예제를 맞추긴 했는데 테스트는 통과 못함
-  - remaining 조건이 빠져서 points 가 잘못 계산된 탓임
-  - 문제를 잘 읽자!! (슬라이싱은 범위를 벗어난다고 오류를 내지 않음)
-
-> 내가 제출한 코드
-
-```python
-deck = [
-    'three', 'seven', 'queen', 'eight', 'five', 'ten', 'king', 'eight', 'jack', 'queen',
-    'six', 'queen', 'jack', 'eight', 'seven', 'three', 'ten', 'four', 'king', 'nine',
-    'six', 'seven', 'ace', 'four', 'jack', 'ace', 'ten', 'nine', 'ten', 'queen',
-    'ace', 'king', 'seven', 'two', 'five', 'two', 'five', 'nine', 'three', 'king',
-    'six', 'eight', 'jack', 'six', 'five', 'four', 'two', 'ace', 'four', 'three',
-    'two', 'nine'
-]
-
-deck = []
-for _ in range(52):
-    deck.append(input())
-
-high_cards = set(['ace', 'king', 'queen', 'jack'])
-exist_high = lambda x: bool(set(x)&high_cards)
-cur_player = lambda x: "B" if x%2 else "A"
-scores = [0]*2
-for i, card in enumerate(deck):
-    remaining = len(deck) - (i+1)
-    if card == 'ace' and remaining >= 4 and not exist_high(deck[i+1:i+5]):
-        scores[i%2] += 4
-        print(f'Player {cur_player(i)} scores 4 point(s).')
-    elif card == 'king' and remaining >= 3 and not exist_high(deck[i+1:i+4]):
-        scores[i%2] += 3
-        print(f'Player {cur_player(i)} scores 3 point(s).')
-    elif card == 'queen' and remaining >= 2 and not exist_high(deck[i+1:i+3]):
-        scores[i%2] += 2
-        print(f'Player {cur_player(i)} scores 2 point(s).')
-    elif card == 'jack' and remaining >= 1 and not exist_high(deck[i+1:i+2]):
-        scores[i%2] += 1
-        print(f'Player {cur_player(i)} scores 1 point(s).')
-
-print(f'Player A: {scores[0]} point(s).')
-print(f'Player B: {scores[1]} point(s).')
-
-# 결과
-# Player A scores 2 point(s).
-# Player A scores 1 point(s).
-# Player A scores 3 point(s).
-# Player B scores 3 point(s).
-# Player A scores 1 point(s).
-# Player B scores 4 point(s).
-# Player A: 7 point(s).
-# Player B: 7 point(s).
-```
-
-> 다른 제출자 코드 (책 답안)
-
-```python
-
-```
+- 벗어난 index 를 읽어들이는 경우 Exception 발생
 
 ### 문제15
 
@@ -293,12 +187,6 @@ print(f'Player B: {scores[1]} point(s).')
 2 1 3         # 2개의 피규어가 있는  박스: [ 1, 3 ]
 1 2           # 1개의 피규어가 있는  박스: [ 2 ]
 ==> NO
-```
-
-> 내가 제출한 코드
-
-```python
-
 ```
 
 > 다른 제출자 코드 (책 답안)
@@ -499,9 +387,11 @@ input = partial(lambda x: next(x), iter(lines))
 # 풀종자
 grasses = set(range(1,5))
 print(f'grasses={grasses}')
+
 # n=목초지 개수, m=소 마리수
 n, m = list(map(int, input().split()))
 print(f'pastures(n)={n}, cows(m)={m}')
+
 # 소들이 좋아하는 목초지 페어
 favorites = []
 for i in range(m):
@@ -736,12 +626,6 @@ for _ in range(n_dataset):
     find_topn(top_n, words)
 ```
 
-> 다른 제출자 코드
-
-```python
-
-```
-
 ### 문제20
 
 [USACO 2016 December Contest, Silver Problem 2. Cities and States](http://usaco.org/index.php?page=viewproblem2&cpid=667)
@@ -751,6 +635,7 @@ for _ in range(n_dataset):
 - 내 코드는 키를 state 또는 city의 앞 2자인 1차원만 사용했다
   - 두개의 딕셔너리로 상호적으로 사용된 후보군을 찾은 후 쌍을 찾았는데 (2단계)
   - `combination` 을 사용해 모든 조합을 딕셔너리 쌍으로 탐색해야 함
+
 - 다른 코드는 키를 2차원, 즉 `(state, city 앞 2자)` 또는 `(city 앞 2자, state)` 로 구성해 사용했다
   - 하나의 딕셔너리로 키를 바꿔서 카운팅 후 `//2` 로 쌍의 개수를 계산함 (조합)
   - 탐색 횟수는 2번으로 동일하지만 메모리 사용량은 절감됨
@@ -783,16 +668,11 @@ def find_pairs(combo_dict, keys):
     return [ k for k in keys if k in combo_dict ]
 
 pairs = find_pairs(combo_dict, reverse_combo_keys)
+
 # 순방향과 역방향 모두 카운팅 되었기 때문에 //2 수행
 print(len(pairs)//2, pairs)
 ## 결과
 # 1 [('MI', 'FL'), ('FL', 'MI')]
-```
-
-> 다른 제출자 코드
-
-```python
-
 ```
 
 &nbsp; <br />

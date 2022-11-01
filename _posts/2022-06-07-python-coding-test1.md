@@ -21,191 +21,27 @@ tags: ["dmoj"]
 
 문자열을 공백으로 잘라 배열로 만드는 것보다, 공백을 카운팅 하는게 더 빠름
 
-> 내가 제출한 코드
-
-```python
-s = input()
-print(len(s.split()))
-```
-
-> 다른 제출자 코드
-
-```python
-in_string = input()
-word_count = in_string.count(' ') + 1
-print(word_count)
-```
-
-### 문제02
-
-[DMOPC '14 Contest 5 P1 - Core Drill](https://dmoj.ca/problem/dmopc14c5p1)
-
-1 ~ 100 사이의 입력값 처리는 안했고, 정수형(int) 변환이 핵심
-
-> 내가 제출한 코드
-
-```python
-# input 파라미터로 입력창 라벨을 설정할 수 있음
-# ==> 다른 텍스트가 감지되면 채점을 하지 못함
-r = int(input(""))   # int(input("r: "))
-h = int(input(""))   # int(input("h: "))
-
-import math
-v = (math.pi * r**2 * h)/3
-print(f'{v:.2f}')
-```
-
-> 다른 제출자 코드
-
-```python
-PI = 3.141592653589793
-r = int(input(""))
-h = int(input(""))
-print((PI*r**2*h)/3)
-```
-
 ### 문제03
 
 [CCC '19 J1 - Winning Score](https://dmoj.ca/problem/ccc19j1)
 
-`if` 문에 의한 승리팀 판별이 핵심
+가능하면 입력 받으면서 총점을 계산하도록 작성할 것 (속도와 로직)
 
-> 내가 제출한 코드
-
-```python
-# print('Enter Three numbers (0~100)')
-# a_points = list(map(int, input("A points: ").split()))
-# b_points = list(map(int, input("B points: ").split()))
-
-a_p3 = int(input(""))
-a_p2 = int(input(""))
-a_p1 = int(input(""))
-b_p3 = int(input(""))
-b_p2 = int(input(""))
-b_p1 = int(input(""))
-
-a_score = a_p3 * 3 + a_p2 * 2 + a_p1
-b_score = b_p3 * 3 + b_p2 * 2 + b_p1
-if a_score > b_score:
-    print('A')
-elif b_score > a_score:
-    print('B')
-else:
-    print('T')
-```
-
-> 다른 제출자 코드
-
-```python
-# 입력 받으면서 총점을 계산하도록 함수로 정리
-def calculate_score():
-    score = 0
-    i = 3
-    while i > 0:
-        score += int(input()) * i
-        i -= 1
-    return score
-
-# 가독성 Good!
-apple = calculate_score()
-banana = calculate_score()
-
-if apple > banana:
-    print('A')
-elif banana > apple:
-    print('B')
-else:
-    print('T')
-```
+- 데이터 입력과 동시에 자료구조 생성 (대부분 배열로 해결됨)
+- 비교 상황/조건에 대한 데이터 가공
+- 판별 또는 비교로 결과 출력
 
 ### 문제04
 
 [CCC '18 J1 - Telemarketer or not?](https://dmoj.ca/problem/ccc18j1)
 
-모든 테스트를 통과 못함. 왜지? 그리고 다른 이들의 코드를 볼 수 없음
-
-> 내가 제출한 코드
-
-```python
-phonenumber_size = 4
-def get_phonenumber() -> list:
-    global phonenumber_size
-    phonenumber = []
-    for _ in range(phonenumber_size):
-        phonenumber.append(int(input(""))%10)
-    return phonenumber
-
-pn = get_phonenumber()
-
-if len(pn) != 4:
-    raise ValueError('phonenumber must have 4-digit')
-elif pn[0] in (8,9) and pn[-1] in (8,9):
-    if pn[1] == pn[2]:
-        print('ignore')
-else:
-    print('answer')
-```
-
-> 다른 제출자 코드
-
-```python
-
-```
+문자열의 특정 패턴의 추출 유형의 문제는 re 정규식 사용이 옳다.
 
 ### 문제05
 
 [COCI '06 Contest 5 #1 Trik](https://dmoj.ca/problem/coci06c5p1)
 
-쓸데없는 값 체크 코드 넣지 말자! (시간 없다)<br>
-변경된 컵의 배열 상태 또는 볼의 위치를 유지하는게 핵심
-
-> 내가 제출한 코드
-
-```python
-# 새로운 컵 배열을 반환
-def change_ball(cups, c):
-    if c == 'A':
-        cups = [ cups[1], cups[0], cups[2] ]
-    elif c == 'B':
-        cups = [ cups[0], cups[2], cups[1] ]
-    elif c == 'C':
-        cups = [ cups[2], cups[1], cups[0] ]
-    return cups
-
-changes = [x.upper() for x in input() if x.upper() in ('A','B','C')][:50]
-cups = [1, 0, 0]
-
-# 루프 횟수가 정해진 경우 for 문을 사용
-for c in changes:
-    cups = change_ball(cups, c)
-
-# 왼쪽부터 1, 2, 3
-print(cups.index(1)+1)
-```
-
-> 다른 제출자 코드
-
-```python
-swaps = input()
-
-ball_location = 1
-
-for swap_type in swaps:
-    if swap_type == 'A' and ball_location == 1:
-        ball_location = 2
-    elif swap_type == 'A' and ball_location == 2:
-        ball_location = 1
-    elif swap_type == 'B' and ball_location == 2:
-        ball_location = 3
-    elif swap_type == 'B' and ball_location == 3:
-        ball_location = 2
-    elif swap_type == 'C' and ball_location == 1:
-        ball_location = 3
-    elif swap_type == 'C' and ball_location == 3:
-        ball_location = 1
-
-print(ball_location)
-```
+쓸데없는 값 체크 코드 넣지 말자! (시간 없다)
 
 ### 문제06
 
@@ -213,66 +49,20 @@ print(ball_location)
 
 어제, 오늘 모두 주차된 자리의 개수를 출력하는게 포인트 (문제를 잘 읽자)
 
-> 내가 제출한 코드
-
-```python
-n = int(input())
-yesterday = [ 1 if x == 'C' else 0 for x in input()[:n] ]
-today = [ 1 if x == 'C' else 0 for x in input()[:n] ]
-
-checked = [ sum(x) for x in zip(yesterday, today) ]
-print(checked.count(2))
-```
-
-> 다른 제출자 코드
-
-```python
-N = int(input())
-yesterday = input()
-today = input()
-
-occupied = 0
-
-# 동일한 for 문 아래에서 어제와 오늘을 비교하여 바로 카운팅
-for i in range(N):
-    if yesterday [i] == 'C' and today [i] == 'C':
-        occupied = occupied + 1
-
-print(occupied)
-```
+- 상태값을 배열로 표현
+    + 코딩테스트는 시간 제한이 있어서 단순한게 정답
 
 ### 문제07
 
 [COCI '16 Contest 1 #1 Tarifa](https://dmoj.ca/problem/coci16c1p1)
 
-이런 데이터 용량제가 있을리 없다는 생각에 지문 이해가 잘 안되었음.
-
-> 내가 제출한 코드
-
-```python
-d_size = int(input())
-months = int(input())
-
-d_used = []
-d_remains = 0
-for _ in range(months):
-    d_used = int(input())
-    d_remains += d_size - d_used
-
-# 다음달 사용 가능한 데이터량
-print(d_remains + d_size)
-```
-
-> 다른 제출자 코드
+- 계산식 문제는 한 문장으로 기술할 수 있는 정도가 맞다
+    + 단순, 명료하게 생각해라 (문제를 다시 읽어봐라)
 
 ```python
-mb = int(input())
-month = int(input())
-excess = 0
-
 for x in range(month):
     cost = int(input())
-    excess = excess + mb - cost
+    excess = excess + mb - cost  # <== 출제 의도
 print(excess + mb)
 ```
 
@@ -282,132 +72,18 @@ print(excess + mb)
 
 빨리 푸는게 장땡이니깐. (굳이 클래스 안써도)
 
-> 내가 제출한 코드
-
-```python
-class Slotmachine:
-    def __init__(self, limit:int, earn:int):
-        self.limit = limit
-        self.earn = earn
-        self.played = 0
-    def set_played(self, played):
-        self.played = played
-    def play(self):
-        self.played += 1
-        if self.played > 0 and self.played % self.limit == 0:
-            return self.earn
-        return 0
-
-money = int(input())
-machines = [ Slotmachine(35,30), Slotmachine(100,60), Slotmachine(10,9) ]
-for m in machines:
-    m.set_played(int(input()))
-
-played = -1
-while money > 0:
-    money -= 1
-    played += 1
-    money += machines[played%len(machines)].play()
-
-print(f'Martha plays {played+1} times before going broke.')
-```
-
-> 다른 제출자 코드
-
-```python
-quarters = int(input())
-first = int(input())
-second = int(input())
-third = int(input())
-plays = 0
-machine = 0
-
-while quarters >=1:
-    quarters=quarters-1
-    if machine ==0:
-        first = first +1
-        if first ==35:
-            first = 0
-            quarters =quarters+30
-    elif machine ==1:
-        second = second +1
-        if second ==100:
-            second =0
-            quarters =quarters +60
-    elif machine ==2:
-        third = third +1
-        if third ==10:
-            third = 0
-            quarters = quarters+9
-    plays = plays +1
-    machine = machine +1
-    if machine ==3:
-        machine = 0
-print('Martha plays', plays, 'times before going broke.')
-```
+- 슬롯머신의 경우 각각의 상태를 정의하는 자료구조 필요
+    + '배열 + 사전'으로 표현 안되면, 클래스 고려
+- 상태를 조작하는 action 은 대부분 공통으로 적용된다
+    + 난이도 '상' 아닌 이상 바깥에서 처리 가능
 
 ### 문제09
 
 [CCC '08 J2 - Do the Shuffle](https://dmoj.ca/problem/ccc08j2)
 
-가독성 좋으라고 `namedtuple` 사용함 (단순 tuple로 해도 괜춘)<br>
-다른 제출자는 문자열과 슬라이싱을 사용함
+문제에 자료구조가 문자열로 서술된 경우 문자열로 푸는게 옳다.
 
-> 내가 제출한 코드
-
-```python
-from collections import namedtuple
-Button = namedtuple('Button', ['index','count'])
-
-pressed = []
-while True:
-    index = int(input())
-    count = int(input())
-    if index == 4 and count == 1:
-        break
-    pressed.append(Button(index, count))
-
-songs = ['A','B','C','D','E']
-
-for p in pressed:
-    for _ in range(p.count):
-        if p.index == 1:
-            temp = songs.pop(0)
-            songs.append(temp)
-        elif p.index == 2:
-            temp = songs.pop(-1)
-            songs.insert(0,temp)  # 파라미터 위치에 주의
-        elif p.index == 3:
-            temp = songs.pop(1)
-            songs.insert(0,temp)
-        # else: p.index==4
-
-print(' '.join(songs))
-```
-
-> 다른 제출자 코드
-
-```python
-songs = 'ABCDE'
-button = 0
-
-while button != 4:
-    button = int(input())
-    num_times = int(input())
-
-    for i in range(num_times):
-        if button == 1:
-            songs = songs[1:] + songs[0]
-        elif button == 2:
-            songs = songs[-1] + songs[:-1]
-        elif button == 3:
-            songs = songs[1] + songs[0] + songs[2:]
-
-output = ''
-for char in songs:
-    output = output + char + ' '
-print(output)
-```
+- 플레이 순서가 문자열로 표현되었고 배열로 조작하여 풀었음
 
 ### 문제10
 
@@ -415,35 +91,9 @@ print(output)
 
 다른 제출자는 참신한 생각을 했다
 
-> 내가 제출한 코드
-
-```python
-original = input()
-
-vowels = ('a','e','i','o','u',)
-decoded = ''
-index = 0
-while index < len(original):
-    decoded += original[index]
-    # 모음 뒤에 'p+동일모음'이 추가된 형태 ==> +2
-    if original[index] in vowels:
-        index += 2
-    index += 1
-
-print(decoded)
-```
-
-> 다른 제출자 코드
-
-```python
-a=input()
-b=a.replace("apa","a")
-c=b.replace("epe","e")
-d=c.replace("ipi","i")
-e=d.replace("opo","o")
-f=e.replace("upu","u")
-print(f)
-```
+- 문제 상황이 다른 상황과 식별되는 식별자 'p' 가 제시되었다
+- 식별자를 기준으로 처리 대상을 규정하는 것이 포인트
+    + 식별자 'p'가 포함되는 5가지 패턴만 다루면 됨
 
 ### 참고 코드
 
@@ -464,7 +114,10 @@ print( list(map(list, itertools.zip_longest(*list2d, fillvalue=None))) )
 # ==> [[1, 4, 7, 8], [2, 5, None, 9], [3, 6, None, None]]
 ```
 
-> `numpy` 이용하기
+> numpy + pandas 이용하기 
+
+- 3 ~ 5배 정도 느려진다. 하지만 [pandas](https://pandas.pydata.org/docs/) 사용으로 코드가 짧아짐
+    + [arrow](https://arrow.apache.org/docs/python/api.html) 를 연습해보자
 
 ```python
 import numpy as np
@@ -515,13 +168,36 @@ print(fib(5))
 
 ```python
 def fib(n):
-    curr, next = 0, 1
-    for i in range(2,n+1):
-        yield curr
-        curr, next = next, next + 1
+    curr, next = 1, 2
+    for i in range(2, n+1):
+        yield i, curr  # (index, value,)
+        curr, next = next, curr + next
 
-print(fib(10))
-# ==> 55
+###################################
+
+for i, v in fib(10):
+    pass
+    
+print(f"count={i}, result={v}")
+# count=10, result=55
+
+###################################
+
+gen = fib(10)
+
+# StopIteration ==> None
+while (r := next(gen, None)) is not None:
+    print(f"count={r[0]}, result={r[1]}")
+
+# count=2, result=1
+# count=3, result=2
+# count=4, result=3
+# count=5, result=5
+# count=6, result=8
+# count=7, result=13
+# count=8, result=21
+# count=9, result=34
+# count=10, result=55
 ```
 
 > 동적프로그래밍 방식 (하향식)
