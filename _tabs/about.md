@@ -58,9 +58,9 @@ sitemap: false
 
 - Node : (Angular 도 좋지만) 전세계적으로 React 가 압승이다. 
   + 이미 만들어진 웹컴포넌트들을 활용하기 위해서 필요함
-  + 정석적으로는 React 를 배운 후, Nextjs 로 넘어가야 한다.
+  + Nextjs 는 동적 렌더링과 정적 렌더링을 모두 지원한다.
     * 기왕 새로 배울거라면, Vue/Nuxtjs 를 익히는건 기회가 아깝다.
-    * 단, 중급 수준 이상을 오르긴 어렵기 때문에 `우회로`가 필요하다.
+    * 빠른 개발을 위해 Gatsby 를 `우회로`로 삼는 방법도 있다.
 
 - Python : [py-script 태동](https://docs.pyscript.net/latest/index.html)
   + 참고 : [Hello PyScript](https://towardsdatascience.com/hello-pyscript-goodbye-javascript-c8d8fb83a93a) 파이썬 결과를 출력하는 용도로 쓰일 것이다.
@@ -71,32 +71,40 @@ sitemap: false
 
 - 1인 풀스택이면 Flutter 로 간다.
   + 왜냐하면 디자인 요소도 코드로 작성하니깐
-  + 괜찮은 프론트 개발자가 있다면 고려할 필요 없고
+  + 괜찮은 모바일앱 개발자가 있다면 고민할 필요 없고
 
 > 그래서 결론이 뭐냐? 다 할거냐? 그건 아니고..
 {: .prompt-tip }
 
-- 1인 풀스택이면 Nestjs 백엔드에 [Gatsbyjs+React](https://www.gatsbyjs.com/docs/glossary/react/) 프론트엔드 조합
-  + 백엔드
-    * AI 및 데이터 서비스의 경우 FastAPI 백엔드로 간다.
-    * 클라우드 Native 로 갈거면 백엔드는 GO 기반으로 간다.
-  + 프론트엔드
-    * [Gatsbyjs](https://www.gatsbyjs.com/why-gatsby) 로 정적프레임을 잡고, [React 웹컴포넌트를 사용하자](https://www.gatsbyjs.com/docs/conceptual/building-with-components/)
-      - 필요하면 뭐든 사용하자. 쉽게쉽게 가는게 핵심이다.
-      - [Tailwind CSS](https://tailwindcss.com/) 도 배우자 (스타일도 코딩이다)
-        + React 에서 [styled-components](https://styled-components.com/) + [twin.macro](https://github.com/ben-rogerson/twin.macro) 조합
+#### 1인 개발시 Nestjs 백엔드에 Nextjs 프론트엔드 조합
 
-- 1인 풀스택이면서, 모바일 퍼스트라면 Flutter 로 간다.
-  + 클라우드 Serverless 백엔드와 모바일 App 조합
+- 백엔드
+  + AI 및 데이터 서비스의 경우 FastAPI 백엔드로 간다.
+  + 클라우드, 백엔드는 Nodejs 기반으로 간다.
+    * 참고: [How I Created an Event-Driven Backend with RxJS..](https://javascript.plainenglish.io/how-i-created-an-event-driven-backend-with-rxjs-server-sent-events-and-expressjs-9f8be1ffc123)
+  + 특수 목적별로 OpenSource 를 사용하자, ex) 댓글 API
+    * [17 Best Open-source Self-hosted Commenting Systems](https://medevel.com/17-commenting-systems-open-source/)
+- 프론트엔드
+  + SSR : 블로그/쇼핑몰처럼 정적 페이지가 다수인 경우
+    * 매일 1~2회 정적페이지 배포 + 댓글/이벤트 부분 동적콘텐츠
+  + 필요하면 뭐든 사용하자. 쉽게쉽게 가는게 핵심이다.
+    * [Gatsbyjs](https://www.gatsbyjs.com/why-gatsby) : 호스팅 서비스를 지원해 개발과 배포가 편함
+      - 참고: [Comparison of Gatsby vs Next.js](https://www.gatsbyjs.com/features/jamstack/gatsby-vs-nextjs)
+    * [Nextjs](https://launchdarkly.com/blog/whats-so-great-about-nextjs/) : 정적/동적/지연 렌더링을 빠르고 세밀하게 지원
+  + [Tailwind CSS](https://tailwindcss.com/) 도 배우자 (스타일도 코딩이다)
+
+- 1인 개발로, 모바일 퍼스트라면 Flutter 로 간다.
+  + (Firebase 같은) BaaS 백엔드 이용시 개발이 순조롭다
+  + REST API는 검색 같은 경우만 최소로 사용 (노력 낭비 방지)
 
 > 배워야할 것들이 많네
 {: .prompt-warning }
 
 1. 프론트엔드 : Gatsby + React{ [Router](https://www.gatsbyjs.com/docs/how-to/routing/client-only-routes-and-user-authentication), [Components](https://www.gatsbyjs.com/docs/tutorial/part-2/) } + [CSS](https://www.gatsbyjs.com/docs/how-to/styling/built-in-css/)
-2. 백엔드 : Nestjs + Prisma + GraphQL
-3. 네트워크 : Nginx + API Gateway
-4. 데이터 : 입력은 MongoDB, 정제 후 Postgresql 저장, 캐시 Redis 활용
-5. 인프라 : AWS Lightsail + Docker + 로드밸런서 HA
+2. 백엔드 : Nestjs + Prisma + GraphQL (클라우드 GraphQL도 좋다)
+3. 네트워크 : Nginx + API Gateway, CDN
+4. 데이터 : Raw 입력은 MongoDB, 정제 후 RDB 저장, 캐시 활용
+5. 인프라 : AWS EC2/Lightsail + Docker + 로드밸런서 HA
 
 &nbsp; <br/>
 

@@ -125,7 +125,7 @@ pwa:
 
 paginate: 10
 
-# ------------ The following options are not recommended to be modified ------------------
+# ---- The following options are not recommended to be modified ----
 
 kramdown:
   syntax_highlighter: rouge
@@ -142,7 +142,6 @@ collections:
   tabs:
     output: true
     sort_by: order
-    sitemap: false
 
 defaults:
   - scope:

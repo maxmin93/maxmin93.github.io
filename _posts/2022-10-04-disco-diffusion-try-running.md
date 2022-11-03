@@ -13,8 +13,6 @@ image: "/2022/10/04-disco-diffusion-output_49-crunch.png"
 | :----: |
 | &lt;그림&gt; disco diffusion - [sample images](https://replicate.com/nightmareai/disco-diffusion/examples) |
 
-
-
 ## 1. 초거대 AI 를 이용한 이미지 생성기
 
 `text-to-image` 또는 이미지 생성기 중에서 `AI 아트` 라는 장르를 생성하고 있다. 초기 이미지 생성 모델에 속하는데, diffusion 이란 이름으로 몇몇 알고리즘들이 오픈소스로 풀려서 상업적으로 이용이 가능하다. 최근에는 [깃허브 - stable diffusion](https://github.com/CompVis/stable-diffusion) 도 나왔다.
@@ -161,6 +159,23 @@ text_prompts = {
   - 다른 이들은 그럼에도 곧잘 만들어내고 있다.
 - 데코라던지 흥미거리로 그림을 사용할 수준은 된다.
   + 이정도 발전 속도라면 웹소설이 웹툰으로 바뀌는 시대도 멀지 않을듯
+
+### 1) [Stable Diffusion 이미지 생성](https://keras.io/guides/keras_cv/generate_images_with_stable_diffusion/) 추가
+
+- 어지간히 유명한 상징물 아니면 구체적으로 설정하지 못하는군요
+- 제주 사진들을 추가해서 재학습 과정이 필요한듯
+
+#### "제주 판포리 항구에서 스노쿨링 즐기기"
+
+| ![stable diffusion - 판포리](/2022/10/04-stable_diffusion-panpori_ snorkeling-crunch.png){: width="580"} |
+| :----: |
+| &lt;그림&gt; stable diffusion - 제주 판포리 스노쿨링 |
+
+#### "제주도 감귤밭에서 사진 찍기"
+
+| ![stable diffusion - 감귤밭](/2022/10/04-stable_diffusion-jeju-gamgyul-farm-picture-crunch.png){: width="580"} |
+| :----: |
+| &lt;그림&gt; stable diffusion - 제주도 감귤밭 사진 찍기 |
 
 &nbsp; <br />
 &nbsp; <br />
