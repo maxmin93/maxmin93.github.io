@@ -1,6 +1,7 @@
 ---
 layout: tags
 title: Tags
-icon: fas fa-tag
+icon: fa-solid fa-tag
 order: 2
+sitemap: false
 ---

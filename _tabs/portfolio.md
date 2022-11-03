@@ -1,6 +1,6 @@
 ---
 title: Portfolio
-icon: fas fa-info-circle
+icon: fa-solid fa-info-circle
 order: 4
 sitemap: false
 ---
@@ -18,6 +18,32 @@ sitemap: false
 - 대기업 Duam/Kakao 7.5년, 스타트업 Bitnine 5.3년 등 개발조직 근무 경험
 
 ### 보유 기술
+
+- 웹애플리케이션 개발 : 프론트엔드 + 백엔드/API + DB 모델링 + 배포
+  - 프론트엔드 : Angular, Nodejs/Typescript
+  - 백엔드/API : Nestjs(Node), Spring(Java), FastAPI(Python)
+  - DB 모델링 : Spring JPA/JDBC, TypeORM, SQLAlchemy
+  - 배포 : Docker
+
+- 클라우드 : 인프라, API 연동 
+  + 인프라 : AWS EC2/DynamoDB/S3/LB
+  + API : GCS Map, GCS NLP, Google Login
+
+- 데이터 저장/SQL : RDB, NoSQL, GDB
+  - RDB : Postgresql, MySQL, SQLite
+  - NoSQL : MongoDB, Redis, Elasticsearch
+  - GDB : Neo4j (Cypher), Tinkerpop/Amazon Neptune (Gremlin)
+
+- 데이터 수집/가공 : 크롤링, 전처리, ETL
+  - 크롤링 : Scrapy + Splash
+  + 전처리 : 중복제거, 필터링, 분류, 품질 관리
+  - 뉴스 200만건 전처리, 검색서비스 인덱싱, Logstash (PG 연동)
+
+- 데이터 분석 : Spark 프레임워크, 머신러닝, 딥러닝(활용)
+- Spark 프레임워크 : Spark(Scala/PySpark), Hive, Livy
+머신러닝 : 유사도, 분류/군집, NLP, Numpy/Pandas
+딥러닝 : TF/PyTorch 모델 활용 가능
+
 
 - 프론트엔드 웹개발: [Angular](https://angular.io/), Nodejs/Typescript, [Style](https://npmtrends.com/@angular/material-vs-antd-vs-bootstrap-vs-emotion-vs-styled-components-vs-tailwindcss)
 - 백엔드 웹개발: [Nestjs](https://nestjs.com/)(Node), Spring(Java), FastAPI(Python), Docker
