@@ -13,7 +13,11 @@ sitemap: false
 {: .prompt-info }
 
 - 네이버 주식 가격 수집 (scrapy) : 작업중 <span style='font-size:1.5rem;'>&nbsp; &#128187;</span>
-  - [깃허브/naver-stocks-collector](https://github.com/maxmin93/naver-stocks-collector) : 
+  - [깃허브/naver-stocks-collector](https://github.com/maxmin93/naver-stocks-collector) : 국내주식 카테고리별, 테마별 매일 수집
+
+- Nextjs 예제 + Vercel 호스팅 (+ CI/CD) : 작업중 <span style='font-size:1.5rem;'>&nbsp; &#128187;</span>
+  - Vercel 과 Github 연동시 CI/CD 수행
+    + Github Pages, Gatsby Cloud 도 마찬가지
 
 &nbsp;<br/>
 

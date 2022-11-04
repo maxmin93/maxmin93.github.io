@@ -1,12 +1,12 @@
 ---
 date: 2022-10-04 00:00:00 +0000
-title: Disco Diffusion 실행해보기
+title: Disco Diffusion 실행해보기 (Stable 추가)
 categories: ["ai.dl","image"]
-tags: ["python", "dall-e", "TIL", "text-to-image", "ai-art"]
+tags: ["python", "diffusion", "TIL", "text-to-image", "ai-art"]
 image: "/2022/10/04-disco-diffusion-output_49-crunch.png"
 ---
 
-> 텍스트로부터 이미지를 생성하는 오픈소스 disco-diffusion 을 실행해봅니다.
+> 텍스트로부터 이미지를 생성하는 오픈소스 Disco/Stable-Diffusion 을 실행해봅니다.
 {: .prompt-tip }
 
 | ![disco diffusion - sample 이미지](https://replicate.com/api/models/nightmareai/disco-diffusion/files/5800f828-94d5-46a0-9eb2-96b51d7846e3/6af357b1-11dc-4954-ad45-4f17b3bc18890_0.png){: width="580"} |
@@ -151,6 +151,23 @@ text_prompts = {
 | :----: |
 | &lt;그림&gt; disco diffusion - step #49 |
 
+## 4. 추가 : [Stable Diffusion 이미지 생성](https://keras.io/guides/keras_cv/generate_images_with_stable_diffusion/)
+
+- 어지간히 유명한 상징물 아니면 구체적으로 설정하지 못하는군요
+- 제주 사진들을 추가해서 재학습 과정이 필요한듯
+
+### 1) "제주 판포리 항구에서 스노쿨링 즐기기"
+
+| ![stable diffusion - 판포리](/2022/10/04-stable_diffusion-panpori_ snorkeling-crunch.png){: width="580"} |
+| :----: |
+| &lt;그림&gt; stable diffusion - 제주 판포리 스노쿨링 |
+
+### 2) "제주도 감귤밭에서 사진 찍기"
+
+| ![stable diffusion - 감귤밭](/2022/10/04-stable_diffusion-jeju-gamgyul-farm-picture-crunch.png){: width="580"} |
+| :----: |
+| &lt;그림&gt; stable diffusion - 제주도 감귤밭 사진 찍기 |
+
 
 ## 9. Summary
 
@@ -160,22 +177,6 @@ text_prompts = {
 - 데코라던지 흥미거리로 그림을 사용할 수준은 된다.
   + 이정도 발전 속도라면 웹소설이 웹툰으로 바뀌는 시대도 멀지 않을듯
 
-### 1) [Stable Diffusion 이미지 생성](https://keras.io/guides/keras_cv/generate_images_with_stable_diffusion/) 추가
-
-- 어지간히 유명한 상징물 아니면 구체적으로 설정하지 못하는군요
-- 제주 사진들을 추가해서 재학습 과정이 필요한듯
-
-#### "제주 판포리 항구에서 스노쿨링 즐기기"
-
-| ![stable diffusion - 판포리](/2022/10/04-stable_diffusion-panpori_ snorkeling-crunch.png){: width="580"} |
-| :----: |
-| &lt;그림&gt; stable diffusion - 제주 판포리 스노쿨링 |
-
-#### "제주도 감귤밭에서 사진 찍기"
-
-| ![stable diffusion - 감귤밭](/2022/10/04-stable_diffusion-jeju-gamgyul-farm-picture-crunch.png){: width="580"} |
-| :----: |
-| &lt;그림&gt; stable diffusion - 제주도 감귤밭 사진 찍기 |
 
 &nbsp; <br />
 &nbsp; <br />
