@@ -3,6 +3,7 @@ title: AgensBrowser tutorial - northwind
 date: 2019-03-04 00:00:00 +0000
 categories: ["graphdb", "agens"]
 tags: ["agensgraph", "recommendation", "추천", "tutorial"]
+hidden: true
 ---
 
 > 그래프 데이터베이스 제품의 튜토리얼 과정을 Northwind 상품추천 내용으로 만들었습니다.

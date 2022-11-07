@@ -97,10 +97,12 @@ sitemap: false
   + (Firebase 같은) BaaS 백엔드 이용시 개발이 순조롭다
   + REST API는 검색 같은 경우만 최소로 사용 (노력 낭비 방지)
 
+&nbsp; <br/>
+
 > 배워야할 것들이 많네
 {: .prompt-warning }
 
-1. 프론트엔드 : Gatsby + React{ [Router](https://www.gatsbyjs.com/docs/how-to/routing/client-only-routes-and-user-authentication), [Components](https://www.gatsbyjs.com/docs/tutorial/part-2/) } + [CSS](https://www.gatsbyjs.com/docs/how-to/styling/built-in-css/)
+1. 프론트엔드 : [서버리스 플랫폼](https://www.intuz.com/blog/netlify-vs-vercel-serverless-deployment-platform) + Next ([create-t3-app](https://reflect.run/articles/introduction-to-t3-stack-and-create-t3-app/))
 2. 백엔드 : Nestjs + Prisma + GraphQL (클라우드 GraphQL도 좋다)
 3. 네트워크 : Nginx + API Gateway, CDN
 4. 데이터 : Raw 입력은 MongoDB, 정제 후 RDB 저장, 캐시 활용

@@ -125,6 +125,9 @@ pwa:
 
 paginate: 10
 
+future: false  # hide post with future public date
+
+
 # ---- The following options are not recommended to be modified ----
 
 kramdown:
