@@ -7,13 +7,404 @@ image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e25
 hidden: true
 ---
 
-> Go 언어의 기본적인 내용과 다른 언어와 대비해 특징적인 기능 위주로 요약해본다. (2일차)
+> Go 언어의 문법과 예제로 자료구조를 살펴봅니다. 추가로 고루틴 예제를 공부합니다. (2일차)
 {: .prompt-tip }
 
-## 1. Go 언어 개요
+## 1. Go 언어 문법
 
-일단 첫 소감은 C 언어 사용자라면 쉽게 접근할 수 있지 않나 싶다. C 언어를 대체하려고 만든 것인지, 특히 포인터와 레퍼런스 기호가 나오고 struct 타입이 반갑다. 
+### 1) for ... range 반복문
 
+참고 : [4 basic range loop (for-each) patterns](https://yourbasic.org/golang/for-loop-range-array-slice-map-channel/)
+
+```go
+a := []string{"Foo", "Bar"}
+for i, s := range a {
+  fmt.Println(i, s)
+}
+// 0 Foo
+// 1 Bar
+
+
+// 문자값도 함께 출력 "%#U" => U+D55C '한'
+for i, ch := range "한국어" {
+  fmt.Printf("%#U starts at byte position %d\n", ch, i)
+}
+// U+D55C '한' starts at byte position 0
+// U+AD6D '국' starts at byte position 3
+// U+C5B4 '어' starts at byte position 6
+
+
+const s = "golang nice!"
+for i := 0; i < len(s); i++ {
+  fmt.Printf("%c ", s[i])
+}
+// g o l a n g   n i c e ! 
+
+
+m := map[string]int{
+  "one":   1,
+  "two":   2,
+  "three": 3,
+}
+for k, v := range m {
+  fmt.Println(k, v)
+}
+// one 1
+// two 2
+// three 3
+
+
+ch := make(chan int)  // int 채널 생성 
+go func() {  // 고루틴
+  ch <- 1    // 파이썬 yield 와 유사
+  ch <- 2
+  ch <- 3
+  close(ch)  // 채널 닫기
+}()
+for n := range ch {
+  fmt.Println(n)
+}
+```
+
+### 2) 구조체 생성 및 대입
+
+```go
+type Point struct {
+  X, Y float64
+}
+
+// Point 타입에 대한 메소드 정의
+func (p Point) toString() string {
+    return fmt.Sprintf("P(%.1f,%.1f)", p.X, p.Y)
+}
+
+// Point 생성 후 toString 출력 
+p := Point{X:5.33,Y:7.56}
+fmt.Println(p.toString())
+// P(5.3,7.6)
+```
+
+
+### 9) 흔히 저지르는 실수들
+
+참고 : [Do you make these Go coding mistakes?](https://yourbasic.org/golang/gotcha/)
+
+#### 데이터 타입 map 은 make 필요 (array도 마찬가지)
+
+```go
+var m map[string]float64  // (메모리) 생성 안됨
+m["pi"] = 3.1416
+// panic: assignment to entry in nil map
+
+m := make(map[string]float64)
+m["pi"] = 3.1416
+```
+
+#### 구조체 생성은 `new` 연산자 필요
+
+```go
+type Point struct {
+  X, Y float64
+}
+
+func (p *Point) Abs() float64 {
+  return math.Sqrt(p.X*p.X + p.Y*p.Y)
+}
+
+func main() {
+  var p *Point
+  fmt.Println(p.Abs())
+}
+// panic: runtime error: invalid memory address or nil pointer
+
+
+func main() {
+  var p *Point = new(Point)  // 구조체 생성 new
+  fmt.Println(p.Abs())
+}
+```
+
+#### 대부분의 함수는 결과와 error 를 반환한다
+
+```go
+// 하나의 값만 반환 받으려 하면 multiple-value error 발생 
+t, err := time.Parse(time.RFC3339, "2018-04-06T10:49:05Z")
+if err != nil {
+  // TODO: Handle error.
+}
+fmt.Println(t)
+// 2018-04-06 10:49:05 +0000 UTC
+
+
+// map 은 값과 exists 를 반환
+m := map[string]float64{"pi": 3.1416}
+_, exists := m["pi"]
+fmt.Println(exists) // exists == true
+```
+
+#### Array 값을 변경하려면 slice 방식을 사용해야 한다
+
+```go
+func Foo(a [2]int) {  // array 로 param 선언 (복사된다)
+  a[0] = 8  // 복사된 array 의 값을 변경 (의미 없음)
+}
+
+func main() {
+  a := [2]int{1, 2}  // 값이 채워진 array 생성
+  Foo(a)         // param 로 넘겨지면서 array 복사됨
+  fmt.Println(a) // Output: [1 2] (원본은 반영안됨)
+}
+
+//////////////////////////////////
+
+func Foo(a []int) {  // array 의 포인터 (slice)
+  if len(a) > 0 {
+    a[0] = 8  // 원본을 변경
+  }
+}
+
+func main() {
+  a := []int{1, 2}  // a 는 array 의 포인터 (slice)
+  Foo(a)         // Change a[0].
+  fmt.Println(a) // Output: [8 2]
+}
+```
+
+#### `:=` 과 `=` 을 잘 구별해 써야 한다
+
+n 을 변경하고 싶다면, `=` 을 써야 함
+
+```go
+func main() {
+  n := 0
+  if true {
+    n := 1  // 새로운 변수 n 생성 (이름이 같지만 다른 shadow)
+    n++
+  }
+  fmt.Println(n) // 0 (if 이전의 변수는 그대로임)
+}
+```
+
+#### multi-line 값을 대입할 때, line 마다 `,` 를 사용해야 함
+
+슬라이스, 배열, 맵에 multi-line 값 대입할 때 모두 해당
+
+```go
+fruit := []string{  // multi-line slice
+  "apple",
+  "banana",
+  "cherry"  // ',' 이 빠져서 error 발생
+}
+fmt.Println(fruit)
+// missing ',' before newline in composite literal
+```
+
+#### string 은 불변이다
+
+```go
+s := "hello"
+s[0] = 'H'  // 불변 데이터를 변경 시도하여 error
+fmt.Println(s)
+
+//////////////////////
+
+buf := []rune("hello")  // 바꾸려면 애초에 rune 슬라이스로 정의
+buf[0] = 'H'
+```
+
+#### 문자열과 문자형(rune)은 처리 방식이 다르다
+
+```go
+fmt.Println("H" + "i")  // 문자열은 concat 수행
+fmt.Println('H' + 'i')  // rune(문자형) 은 정수 계산을 수행
+
+s := fmt.Sprintf("%c%c, world!", 72, 'i')
+fmt.Println(s)// "Hi, world!"
+```
+
+#### 후행삭제는 TrimSuffix 함수이다 (헷갈리지 말것)
+
+Trim/TrimLeft/TrimRight 함수는 일치하는 모든 문자를 제거
+
+```go
+fmt.Println(strings.TrimRight("ABBA", "BA")) // Output: ""
+fmt.Println(strings.TrimSuffix("ABBA", "BA")) // Output: "AB"
+```
+
+#### 배열을 복사하려면, 메모리가 확보되어 있어야 함
+
+```go
+var src, dst []int
+src = []int{1, 2, 3}
+copy(dst, src)  // Copy elements to dst from src.
+fmt.Println("dst:", dst)  // 공간이 없어 여전히 ""
+
+dst = make([]int, len(src)) // 메모리 확보 (복사 가능)
+copy(dst, src)
+fmt.Println("dst:", dst)  // [1,2,3]
+```
+
+#### 슬라이스 사용시 메모리 재사용으로 인한 부작용 염두할 것
+
+```go
+a := []byte("ba")
+
+a1 := append(a, 'd')  // 메모리 +1
+a2 := append(a, 'g')  // 'd' 공간에 'g'가 덧씌워짐
+
+fmt.Println(string(a1)) // bag
+fmt.Println(string(a2)) // bag
+```
+
+#### 지연 계산시 숨겨진 interface 함수들을 유의할 것
+
+```go
+const n = 9876543210 * 9876543210  // 정의 시에는 오류 없음
+fmt.Println(n)  // 출력을 위해 n 값이 계산되면서 error 발생
+
+fmt.Println(float64(n))  // float 변환 후 Println 처리 (OK)
+```
+
+#### 애매한 `i++` 은 분리해서 사용
+
+```go
+i := 0
+fmt.Println(++i)  // 전위 표현의 inc 연산자는 허용 안함
+fmt.Println(i++)  // 괄호 내부에서 사용 안되는듯 (오류)
+
+/////////////////////
+
+i := 0
+i++
+fmt.Println(i)
+fmt.Println(i)
+i++
+```
+
+#### 연산자 우선순위에 주의하라 (`%` 와 `/`)
+
+```go
+n := 43210 // time in seconds
+fmt.Println(n/60*60, "hours and", n%60*60, "seconds")
+// 43200 hours and 600 seconds
+
+// 계산식으로 분리 권장
+const SecPerHour = 60 * 60
+fmt.Println(n/SecPerHour, "hours and", n%SecPerHour, "seconds")
+```
+
+#### 시간은 숫자가 아니다. 시간 타입을 사용할 것
+
+```go
+n := 100
+time.Sleep(n * time.Millisecond)  // 타입 오류
+
+//////////////////////////////////
+
+// 1) 시간 타입 사용
+var n time.Duration = 100
+time.Sleep(n * time.Millisecond)
+
+// 2) 상수는 사용시에 타입 적용
+const n = 100
+time.Sleep(n * time.Millisecond)
+
+// 3) 한 문장 안에서 동일 타입으로 처리
+time.Sleep(100 * time.Millisecond)
+```
+
+#### for 문에서 길이(len) 이용하여 반복하는 방법
+
+```go
+for i := 0; i < len(a); i++ {
+  fmt.Println(a[i])
+}
+
+for _, n := range a {
+  fmt.Println(n)
+}
+```
+
+#### for 문의 값변수는 local 변수임. 변경 안됨
+
+```go
+s := []int{1, 1, 1}
+for _, n := range s {
+  n += 1
+}
+fmt.Println(s)
+// [1 1 1]
+
+////////////////////////////
+
+s := []int{1, 1, 1}
+for i := range s {
+  s[i] += 1  // index 로 원본값 변경
+}
+fmt.Println(s)
+// [2 2 2]
+```
+
+#### for 문 내에서 변경된 값을 사용하고 싶으면 copy 사용
+
+```go
+var a [2]int
+for _, x := range a {
+  fmt.Println("x =", x)  // x 가 변경된 a[1] 을 반영 못함
+  a[1] = 8
+}
+fmt.Println("a =", a)
+// x = 0
+// x = 0
+// a = [0 8]
+
+//////////////////////////////
+
+var a [2]int
+for _, x := range a[:] {  // copy 처리되어 변경 값을 반영 
+  fmt.Println("x =", x)   // a[1] 변경값을 출력 
+  a[1] = 8
+}
+fmt.Println("a =", a)
+// x = 0
+// x = 8
+// a = [0 8]
+```
+
+#### json 변환시 `json:태그` 로 필드명 지정
+
+```go
+import "encoding/json"
+
+type Person struct {
+  Name string `json:"name"`  // 명확한 필드명을 지정
+  Age  int    `json:"age"`   // 안하면, "Name"/"Age" 출력
+}
+
+p := Person{"Alice", 22}  // 구조체 값 정의
+
+jsonData, _ := json.Marshal(p)
+fmt.Println(string(jsonData))
+// {"name":"Alice","age":22}
+```
+
+#### interface 값은 값과 타입이 모두 일치해야 동일
+
+```go
+func Foo() error {
+  var err *os.PathError = nil  // PathError interface 의 nil
+  // …
+  return err
+}
+
+err := Foo()
+fmt.Println(err)         // <nil>
+fmt.Println(err == nil)  // false : 타입 정보가 있는 nil
+
+/////////////////////////////////
+
+fmt.Println(err == (*os.PathError)(nil))  // true
+```
 
 
 ## 2. 자료구조
@@ -106,9 +497,53 @@ func traverse(hash *HashTable) {
 
 ## 3. 고루틴
 
+### 1) 고루틴 기본 형태
 
+### 2) 고루틴
 
+### 3) [select 외부에 무한 루프를 갖는 형태](https://golangbyexample.com/select-forloop-outside-go/)
 
+```go
+package main
+
+import (
+  "fmt"
+  "time"
+)
+
+func main() {
+  news := make(chan string)
+  go newsFeed(news)
+
+  printAllNews(news)
+}
+
+func printAllNews(news chan string) {
+  for {  // 무한루프
+    select {
+    case n := <-news:
+      fmt.Println(n)
+    case <-time.After(time.Second * 1):
+      fmt.Println("Timeout: News feed finished")
+      return  // 무한루프 탈출 
+    }
+  }
+}
+
+func newsFeed(ch chan string) {
+  for i := 0; i < 2; i++ {
+    time.Sleep(time.Millisecond * 400)
+    ch <- fmt.Sprintf("News: %d", i+1)
+  }
+}
+// News: 1
+// News: 2
+// Timeout: News feed finished
+```
+
+## 9. Summary
+
+- 방심할 수 없네. C 또는 Python 과 같은 듯 하면서 다른 Go 언어
 
 &nbsp; <br />
 &nbsp; <br />

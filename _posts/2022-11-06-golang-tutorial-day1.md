@@ -219,44 +219,80 @@ go run .
 - 패키지(모듈) 검색 [https://pkg.go.dev/](https://pkg.go.dev/)
 - 참고: [초보자를 위한 Go 모듈 - 18가지 기초 정보](https://dev.to/zaracooper/18-essential-go-module-tidbits-for-a-newbie-4455)
 
-### 1) [기본 모듈](https://pkg.go.dev/std)
+### 1) [기본 패키지](https://pkg.go.dev/std)
 
-#### fmt : 포맷 출력
+#### [fmt](https://pkg.go.dev/fmt@go1.19.3) : 포맷 출력
 
-- fmt.Println, fmt.Printf
+- fmt.Println, fmt.Printf, fmt.Print
 - fmt.Sprintf
 
-#### io : 입출력
+```go
+var s3 string
+s3 = fmt.Sprintf("%d %.3f %s\n", 1, 1.1, "Hello, world!")
+fmt.Print(s3)
+// 1 1.100 Hello, world!
+```
 
-- io.WriteString(os.Stderr, myString) : 표준 오류 출력
-- 
+#### [io](https://pkg.go.dev/io) : 바이트/스트림 입출력
 
-#### log, log/syslog : 로그
+- Copy, Pipe, ReadAll, ReadFull, WriteString
+- ByteReader, ByteWriter, ByteScanner
+- Closer
+
+```go
+type Reader interface {
+    Read(p []byte) (n int, err error)    
+}
+
+type Writer interface {
+    Write(p []byte) (n int, err error)
+}
+
+type ReaderFrom interface {
+    ReadFrom(r Reader) (n int6, err error)
+}
+
+type WriterTo interface {
+    WriteTo(w Writer) (n int64, err error)
+}
+
+type Closer interface {
+    Close() error
+}
+
+type Seeker interface {
+    Seek(offset int64, whence int) (int64, error)
+}
+
+// 그외 Byte 대상 Reader, Writer 등..
+```
+
+#### [log, log/syslog](https://pkg.go.dev/log@go1.19.3) : 로그
 
 - syslog.New() : 시스템 로그 생성, 설정
   + log.New() : 사용자 로그 생성, 설정
 - log.Println : 로그 출력 
 - log.Panic : 심각한 로그 출력 
 
-#### os : 터미널 환경
+#### [os](https://pkg.go.dev/os@go1.19.3) : 터미널 환경
 
 - os.Args : 커맨드라인 파라미터 가져오기
 - os.Exit : 종료 
 
-#### strconv : 문자열 타입 변환
+#### [strconv](https://pkg.go.dev/strconv@go1.19.3) : 문자열 타입 변환
 
 - strconv.parseFloat(arg, 64) : float64 변환
 
-#### strings : 문자열 조작, 비교, 찾기 등..
+#### [strings](https://pkg.go.dev/strings@go1.19.3) : 문자열 조작, 비교, 찾기 등..
 
 - ToUpper/ToLower, TrimSpace
 - HasPrefix, Index, Count
 - Compare
 - Split
 
-#### math, math/rand : 수학 관련 모듈
+#### [math, math/rand](https://pkg.go.dev/math@go1.19.3) : 수학 관련 패키지
 
-### 2) [Awesome Go 모듈](https://github.com/avelino/awesome-go) - 추천 목록
+### 2) [Awesome Go 패키지](https://github.com/avelino/awesome-go) - 추천 목록
 
 - [Authentication and OAuth](https://github.com/avelino/awesome-go#authentication-and-oauth)
 - [Build Automation](https://github.com/avelino/awesome-go#build-automation)
