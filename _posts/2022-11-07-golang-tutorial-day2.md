@@ -4,7 +4,6 @@ title: Go 언어 배우기 - 2일차 GIN, GORM
 categories: ["go"]
 tags: ["TIL", "tutorial", "framework", "gin", "gorm"]
 image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e257ca9af7ec/golang_icon.jpg"
-hidden: true
 ---
 
 > Go 언어의 문법과 예제로 자료구조를 살펴봅니다. 추가로 고루틴 예제를 공부합니다. (2일차)
@@ -485,7 +484,7 @@ func traverse(hash *HashTable) {
   for k := range hash.Table {
     if hash.Table[k] != nil {
       t := hash.Table[k]
-      for t != nil {
+      for t != nil {  // 루트 노드에 연결된 모든 노드를 출력
         fmt.Printf("%d -> ", t.Value)
         t = t.Next
       }
@@ -495,55 +494,177 @@ func traverse(hash *HashTable) {
 }
 ```
 
-## 3. 고루틴
+## 3. 고루틴 (Goroutine)
+
+참고 : [책 - 백엔드를 위한 Go 프로그래밍](https://www.aladin.co.kr/shop/wproduct.aspx?ItemId=299624701)
 
 ### 1) 고루틴 기본 형태
 
-### 2) 고루틴
+별도의 (백그라운드) 고루틴에서 squareIt 함수를 실행
 
-### 3) [select 외부에 무한 루프를 갖는 형태](https://golangbyexample.com/select-forloop-outside-go/)
+- 고루틴이 완료되기 전에 메인 루틴이 종료될 수 있기 때문에
+  + time.Sleep 함수를 추가했지만, 기다리는 것은 아님
+  + 실제 고루틴 완료를 기다리기 위해서는 `채널`이 필요함
+
+- 프로그램이 실행되면 고루틴은 하나만 실행됨 (스레드 하나)
+  + 멀티 고루틴을 실행하게 되면 여러 스레드에 맵핑되어 실행됨
+
+- 고루틴 간에는 서로를 제어할 수 없다. (단점)
+  + `채널`을 이용해 정보를 공유하고, 상태를 이용할 수 있음
 
 ```go
 package main
 
+import "fmt"
+import "time"
+
+func squareIt(x int) {
+  fmt.Println(x * x)  
+}
+
+func main() {
+  go squareIt(2)  // "go" 를 추가하면 고루틴으로 실행
+  time.Sleep(1 * time.Millisecond)  // 고루틴 완료를 위해 1ms 지연
+}
+```
+
+### 2) 채널(channel)
+
+일단 실행된 고루틴 함수와 데이터를 공유하기 위해 채널을 사용
+
+#### 버퍼링 되지 않은 채널을 이용하여 데드락 발생
+
+main 고루틴, squareIt 고루틴 모두 상대방이 채널 데이터를 가져갈 때까지 대기 상태에 빠짐 => 데드락
+
+```go
+// input, output 두개의 채널
+func squareIt(inputChan, outputChan chan int) {
+  for x := range inputChan {
+    outputChan <- x * x
+  }
+}
+
+func main() {
+  inputChannel := make(chan int)  // 공유 메모리를 생성
+  outputChannel := make(chan int)
+  go squareIt(inputChannel, outputChannel)
+
+  for i := 0; i < 10; i++ {  
+    inputChannel <- i  // squareIt 고루틴이 읽음
+  }
+  for i := range outputChannel {  // main 고루틴이 읽음
+    fmt.Println(i)  // 읽은 즉시 출력
+  }
+}
+```
+
+#### 데드락 제거
+
+- 출력 채널에 버퍼링을 주고 (9 정도 주어도 데드락 발생 안함)
+  + 버퍼링이 있으면 비동기 채널, 없으면 동기 채널
+- for 루프에서 출력 채널 읽기를 제거
+
+```go
+func main() {
+  inputChannel := make(chan int)
+  outputChannel := make(chan int, 10)  // 출력 버퍼링 (최대 10)
+  go squareIt(inputChannel, outputChannel)
+
+  for i := 0; i < 10; i++ {
+    inputChannel <- i  // 입력이 주어지는 대로 고루틴이 실행됨
+  }
+  for i := 0; i < 10; i++ {
+    fmt.Println(<- outputChannel)  // 읽는 대로 출력 
+  }
+  close(inputChannel)  // squareIt 고루틴 정상 종료
+}
+```
+
+> close(채널) : 고루틴 해제
+
+채널에 더이상 데이터를 보낼 수 없고, 블록된 고루틴들이 정상 종료됨
+
+#### 크기가 0인 채널을 세마포어로 활용한 경우
+
+- 아래 예제는 하나의 세마포어로 하나의 신호를 처리
+- 둘 이상의 신호를 처리하고 싶다면, 버퍼링 채널로 변경
+  - `semaphore := make(chan struct{}, 10)`
+  - 버퍼링을 원형 연결 리스트로 처리하면 더 nice 해짐
+
+```go
 import (
   "fmt"
   "time"
 )
 
 func main() {
-  news := make(chan string)
-  go newsFeed(news)
-
-  printAllNews(news)
+  semaphore := make(chan struct{})
+  fmt.Println("ready")
+  go func() {
+    time.Sleep(3 * time.Second)
+    // .. do something
+    fmt.Println("signalling")
+    semaphore <- struct{}{}
+  }()
+  <-semaphore
+  fmt.Println("exiting")
 }
+// ready
+// (3초 대기) signalling
+// (즉시) exiting
+```
 
-func printAllNews(news chan string) {
+### 3) select 문 : 채널용 switch
+
+- 다양한 채널로부터 데이터를 기다릴 수 있게 해주고
+- 가장 먼저 값을 제공하는 채널부터 처리할 수 있게 해준다
+
+```go
+// 제곱용 채널 2개, 세제곱용 채널 2개, 종료용 채널 1개
+func squarerCuber(sqInChan, sqOutChan, cuInChan, cuOutChan, exitChan chan int) {
+  var squareX int 
+  var cubeX int 
   for {  // 무한루프
-    select {
-    case n := <-news:
-      fmt.Println(n)
-    case <-time.After(time.Second * 1):
-      fmt.Println("Timeout: News feed finished")
-      return  // 무한루프 탈출 
+    select {  // 채널 스위치
+    case squareX = <- sqInChan:  // 제곱용 채널
+      sqOutChan <- squareX * squareX
+    case cubeX = <- cuInChan:  // 세제곱용 채널
+      cuOutChan <- cubeX * cubeX * cubeX
+    case <- exitChan:  // 종료용 채널
+      return
     }
   }
 }
 
-func newsFeed(ch chan string) {
-  for i := 0; i < 2; i++ {
-    time.Sleep(time.Millisecond * 400)
-    ch <- fmt.Sprintf("News: %d", i+1)
+func main() {
+  sqInChan := make(chan int, 10)  // 입력용 채널 (버퍼링)
+  cuInChan := make(chan int, 10)
+  sqOutChan := make(chan int, 10)  // 출력용 채널 (버퍼링)
+  cuOutChan := make(chan int, 10)
+  exitChan := make(chan int)  // 종료용 채널
+  go squarerCuber(sqInChan, sqOutChan, cuInChan, cuOutChan, exitChan)
+
+  for i := 0; i < 10; i ++ {
+    sqInChan <- i 
+    cuInChan <- i 
   }
+  for i := 0; i < 10; i ++ {
+    fmt.Printf("squarer says %d\n", <- sqOutChan)
+    fmt.Printf("cuber says %d\n", <- cuOutChan)
+  }
+  exitChan <- 0
 }
-// News: 1
-// News: 2
-// Timeout: News feed finished
 ```
 
 ## 9. Summary
 
-- 방심할 수 없네. C 또는 Python 과 같은 듯 하면서 다른 Go 언어
+- 방심할 수 없네. C + Python 과 같은 듯 하면서 다른 Go 언어
+- 고루틴은 nodejs, python 의 event-loop 와 다르다.
+  + 우선 성능은 고루틴이 월등히 좋다
+  + `nodejs` 는 하나의 기본 스레드만 있고, 다른 코드를 블록시킬 수 있다
+    * 스레드풀을 이용해도 최대 4개만 가능
+  + 고루틴은 두개 이상의 스레드가 있고, 다른 코루틴을 제어할 수 없다
+- 웹애플리케이션 개발에는 적합치 않다 -> nodejs 추천
 
 &nbsp; <br />
 &nbsp; <br />
