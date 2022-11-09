@@ -20,9 +20,9 @@ sitemap: false
 ### 보유 기술
 
 - 웹애플리케이션 개발 : 프론트엔드 + 백엔드/API + DB 모델링 + 배포
-  - 프론트엔드 : Angular, Nodejs/Typescript
-  - 백엔드/API : Nestjs(Node), Spring(Java), FastAPI(Python)
-  - DB 모델링 : Spring JPA/JDBC, TypeORM, SQLAlchemy
+  - 프론트엔드 : [Angular](https://angular.io/), Nodejs/Typescript, [Style](https://npmtrends.com/@angular/material-vs-antd-vs-bootstrap-vs-emotion-vs-styled-components-vs-tailwindcss)
+  - 백엔드/API : [Nestjs](https://nestjs.com/)(Node), Spring(Java), FastAPI(Python)
+  - DB 모델링 : Spring JPA/JDBC, TypeORM, SQLAlchemy/[SQLModel](https://sqlmodel.tiangolo.com/)
   - 배포 : Docker
 
 - 클라우드 : 인프라, API 연동 
@@ -30,28 +30,24 @@ sitemap: false
   + API : GCS Map, GCS NLP, Google Login
 
 - 데이터 저장/SQL : RDB, NoSQL, GDB
-  - RDB : Postgresql, MySQL, SQLite
-  - NoSQL : MongoDB, Redis, Elasticsearch
-  - GDB : Neo4j (Cypher), Tinkerpop/Amazon Neptune (Gremlin)
+  - RDB : Postgresql, MySQL, [SQLite](https://www.sqlite.org/index.html)
+  - NoSQL : MongoDB, Redis, [Elasticsearch](https://www.elastic.co/kr/downloads/past-releases/elasticsearch-7-10-2)
+  - GDB : [Neo4j](https://neo4j.com/)(Cypher), [Tinkerpop](https://tinkerpop.apache.org/)/[Amazon Neptune](https://aws.amazon.com/ko/neptune/)(Gremlin)
 
 - 데이터 수집/가공 : 크롤링, 전처리, ETL
-  - 크롤링 : Scrapy + Splash
+  - 크롤링 : [Scrapy](https://scrapy.org/) + [Splash/Lua](https://splash.readthedocs.io/en/stable/scripting-overview.html)
   + 전처리 : 중복제거, 필터링, 분류, 품질 관리
-  - 뉴스 200만건 전처리, 검색서비스 인덱싱, Logstash (PG 연동)
+  - 뉴스 200만건 전처리, 검색서비스 인덱싱, [Logstash](https://www.elastic.co/kr/logstash/)(PG 연동)
 
 - 데이터 분석 : Spark 프레임워크, 머신러닝, 딥러닝(활용)
-- Spark 프레임워크 : Spark(Scala/PySpark), Hive, Livy
-머신러닝 : 유사도, 분류/군집, NLP, Numpy/Pandas
-딥러닝 : TF/PyTorch 모델 활용 가능
+  + Spark 프레임워크 : Spark(Scala/PySpark), Hive, Livy
+  + 머신러닝 : 유사도, 분류/군집, NLP, Numpy/Pandas
+  + 딥러닝 : TF/PyTorch 모델 활용 가능, NodeVec
 
-
-- 프론트엔드 웹개발: [Angular](https://angular.io/), Nodejs/Typescript, [Style](https://npmtrends.com/@angular/material-vs-antd-vs-bootstrap-vs-emotion-vs-styled-components-vs-tailwindcss)
-- 백엔드 웹개발: [Nestjs](https://nestjs.com/)(Node), Spring(Java), FastAPI(Python), Docker
-- 데이터 분석: TF2/Pytorch, 한글 전처리/NLP, Spark(Scala), SAS
-- 데이터 저장/질의: Postgresql, MySQL, MongoDB, [SQLite](https://www.sqlite.org/index.html), [Elasticsearch](https://www.elastic.co/kr/downloads/past-releases/elasticsearch-7-10-2)
-- 데이터 수집/가공: [Scrapy](https://scrapy.org/)(Python), 뉴스 200만건, 카카오 검색/쿼리로그
-- 클라우드/인프라: Google Map/NLP API(GCS), EC2/S3/lambda/LB(AWS)
-- 그래프 데이터베이스: [Neo4j](https://neo4j.com/), [Tinkerpop](https://tinkerpop.apache.org/), [Amazon Neptune](https://aws.amazon.com/ko/neptune/)
+- 그 외 분야
+  + 시각화 : [D3.js](https://d3js.org/), [vis.js](https://visjs.org/), [Chart.js](https://www.chartjs.org/), [Cytoscape.js](https://js.cytoscape.org/), [Elgrapho](https://github.com/ericdrowell/ElGrapho)
+  + Linux/Bash 스크립트, Apache Arrow 약간, gRPC 약간, ...
+  - Kotlin 약간, Scala 약간, Go 약간, ...
 <br/>&nbsp;
 
 ***
