@@ -125,8 +125,9 @@ pwa:
 
 paginate: 10
 
-future: false  # hide post with future public date
+future: false  # skip post with future public date
 
+# post 숨길 때는, 해당 post 의 헤더에 `hidden: true` 추가
 
 # ---- The following options are not recommended to be modified ----
 

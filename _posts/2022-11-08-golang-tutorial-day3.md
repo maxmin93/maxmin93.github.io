@@ -4,19 +4,527 @@ title: Go 언어 배우기 - 3일차 프레임워크
 categories: ["go"]
 tags: ["TIL", "tutorial", "framework", "gin", "gorm"]
 image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e257ca9af7ec/golang_icon.jpg"
-hidden: true
 ---
 
 > Go 언어의 웹프레임워크 gin 과 ORM 프레임워크 gorm 을 공부합니다. gin 으로 구현된 스케줄러 코드를 살펴봅니다. (3일차)
 {: .prompt-tip }
 
-## 1. Go 웹프레임워크
+## 1. GIN : 웹프레임워크
 
-## 2. Go ORM 프레임워크
+### 1) 예제
 
-## 3. Gin 으로 스케줄러 구현하기
+```go
+package main
 
-### 4) [select 외부에 무한 루프를 갖는 형태](https://golangbyexample.com/select-forloop-outside-go/)
+import (
+  "net/http"
+
+  // go get -u github.com/gin-gonic/gin
+  "github.com/gin-gonic/gin"
+  // 기본 JSON 모듈을 대체하여 사용
+  // go get -u github.com/json-iterator/go
+  // ==> go run -tags=jsoniter .
+)
+
+// User for API /users
+type User struct {
+  Name    string `json:"name"`
+  Age     int    `json:"age"`
+  Active  bool   `json:"active"`
+  LoginAt string `json:"login_at"`
+}
+
+// Album for API /albums
+type Album struct {
+  ID     string  `json:"id"`
+  Title  string  `json:"title"`
+  Artist string  `json:"artist"`
+  Price  float64 `json:"price"`
+}
+
+// getAlbums responds with the list of all albums as JSON.
+func getAlbums(c *gin.Context) {
+  // albums slice to seed record album data.
+  var albums = []Album{
+    {ID: "1", Title: "Blue Train", Artist: "John Coltrane", Price: 56.99},
+    {ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 17.99},
+    {ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 39.99},
+  }
+
+  c.IndentedJSON(http.StatusOK, albums)
+}
+
+func main() {
+  r := gin.Default()
+
+  r.GET("/albums", getAlbums)
+
+  r.GET("/ping", func(c *gin.Context) {
+    data := User{Name: "Bob", Age: 10, Active: true, LoginAt: "today"}
+    c.IndentedJSON(
+      http.StatusOK,
+      gin.H{"message": "pong", "user": data},
+    )
+  })
+
+  // This handler will match /user/john but will not match /user/ or /user
+  r.GET("/user/:name", func(c *gin.Context) {
+    name := c.Param("name")
+    c.String(http.StatusOK, "Hello %s", name)
+  })
+
+  // However, this one will match /user/john/ and also /user/john/send
+  // If no other routers match /user/john, it will redirect to /user/john/
+  r.GET("/user/:name/*action", func(c *gin.Context) {
+    name := c.Param("name")
+    action := c.Param("action")
+    message := name + " is " + action[1:]
+    c.String(http.StatusOK, message)
+  })
+
+  // For each matched request Context will hold the route definition
+  r.POST("/user/:name/*action", func(c *gin.Context) {
+    b := c.FullPath() == "/user/:name/*action" // true
+    c.String(http.StatusOK, "%t", b)
+  })
+
+  // Routes starting with /user/groups are never interpreted as /user/:name/... routes
+  r.GET("/user/groups", func(c *gin.Context) {
+    c.String(http.StatusOK, "The available groups are [...]")
+  })
+
+  r.Run() // listen and serve on 0.0.0.0:8080
+}
+```
+
+## 2. GORM : ORM 프레임워크
+
+### 1) GORM SQLite 예제
+
+GORM 과 GORM 을 위한 SQLite 드라이버로 구현됨
+
+- gorm 옵션 
+- 테이블 이름 가져오기 (네이밍 규칙에 따라)
+- db.Raw : native sql 실행
+- db.Create : create => ID 값이 채워짐
+- db.First/Last : select limit 1 from 첫 or 마지막
+- db.Update : update
+- db.Delete : delete
+
+```go
+package main
+
+import (
+  "fmt"
+  "time"
+
+  "gorm.io/driver/sqlite"
+  "gorm.io/gorm"
+)
+
+// go get -u gorm.io/gorm
+// go get -u gorm.io/driver/sqlite
+
+// Product 로 시작하는 Comment 를 쓰면, go-lint 언더라인이 사라진다.
+type Product struct {
+  gorm.Model        // ID, CreatedAt, UpdatedAt, DeletedAt
+  Code       string `gorm:"index;not null"`
+  Price      uint   `gorm:"default 0"`
+}
+
+// "go-lint" don't use ALL_CAPS in Go names; use CamelCase
+const (
+  // DateFmtNodash is format 2006-01-02
+  DateFmtNodash = "20060102"
+  // DateFmtDash is format 2006-01-02
+  DateFmtDash = "2006-01-02"
+)
+
+func main() {
+  db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+  if err != nil {
+    panic("failed to connect database")
+  }
+
+  // Migrate the schema
+  db.AutoMigrate(&Product{})
+
+  stmt := &gorm.Statement{DB: db}
+  stmt.Parse(&Product{})
+  tableName := stmt.Schema.Table
+  fmt.Printf("TABLE: '%s'\n", tableName)
+
+  // Truncate : SQLite 에서는 TRUNCATE TABLE 을 지원하지 않는다.
+  // tx := db.Exec(fmt.Sprintf("TRUNCATE TABLE %s;", tableName))
+  tx := db.Exec(fmt.Sprintf("delete from %s;", tableName))
+  if tx.Error != nil {
+    panic("failed to truncate table")
+  }
+
+  // Create
+  var product Product
+  product = Product{Code: "D42", Price: 100}
+  db.Create(&product)
+  fmt.Printf("created: Product.ID=%d (uint)\n\n", product.ID)
+
+  // Check if record exists
+  var exists bool
+  db.Raw(fmt.Sprintf("select ID from %s where CODE = ? limit 1", tableName), "D42").Row().Scan(&exists)
+  if exists {
+    fmt.Println("exists: Product.Code='D42'")
+  }
+
+  // Read
+  var productRow Product
+  db.First(&productRow, product.ID) // find product with integer primary key
+  // find product with code D42
+  tx = db.Table(tableName).Select("UPDATED_AT").Where("CODE = ?", "D42").First(&productRow)
+  if tx.Error != nil {
+    panic("failed to read table")
+  }
+
+  var dateFromDB string // SQLite returns string
+  err = db.Raw("select date()").Row().Scan(&dateFromDB)
+  if err != nil {
+    fmt.Println(err)
+    panic("fail to select date()")
+  }
+
+  // convert string to time.Time with format 'YYYY-MM-DD'
+  today, err := time.Parse(DateFmtDash, dateFromDB)
+  if err != nil {
+    fmt.Println(dateFromDB, err)
+    panic("fail to parse date()")
+  }
+  today = today.Truncate(24 * time.Hour)
+  fmt.Printf("Today: '%s' => '%s'\n",
+    dateFromDB,
+    today.Format(DateFmtNodash))
+  // Today: '2022-11-09' => '20221109'
+
+  isDone := productRow.UpdatedAt.Truncate(24 * time.Hour).Equal(today)
+  fmt.Printf("select: Product.UpdatedAt='%s' (%t)\n\n",
+    productRow.UpdatedAt.Format(DateFmtNodash),
+    isDone)
+
+  // Update - update product's price to 200
+  db.Model(&productRow).Update("Price", productRow.Price+200)
+  fmt.Printf("updated: Product=%v\n\n", productRow)
+
+  // Update - update multiple fields
+  db.Model(&productRow).Updates(Product{Price: 300, Code: "F43"}) // non-zero fields
+  db.Model(&productRow).Updates(map[string]interface{}{"Price": 400, "Code": "F44"})
+
+  // Delete - delete product
+  db.Delete(&productRow, productRow.ID)
+  fmt.Printf("deleted: Product=%+v\n", productRow)
+}
+
+/*
+TABLE: 'products'
+created: Product.ID=1 (uint)
+
+exists: Product.Code='D42'
+Today: '2022-11-09' => '20221109'
+select: Product.UpdatedAt='20221109' (true)
+
+updated: Product={ {1 2022-11-09 19:48:23.284966 +0900 +0900 2022-11-09 19:48:23.286196 +0900 KST {0001-01-01 00:00:00 +0000 UTC false} } D42 300}
+
+deleted: Product={Model: {ID:1 CreatedAt:2022-11-09 19:48:23.284966 +0900 +0900 UpdatedAt:2022-11-09 19:48:23.287382 +0900 KST DeletedAt:{Time:2022-11-09 19:48:23.287918 +0900 KST Valid:true} } Code:F44 Price:400}
+*/
+```
+
+### 2) database/sql 위한 [SQLite3 드라이버](https://github.com/mattn/go-sqlite3#go-sqlite3) 예제
+
+참고 : [[Golang] sqlite3 Database Example - Basic Usage](https://siongui.github.io/2016/01/09/go-sqlite-example-basic-usage/)
+
+#### db-sqlite3 예제용 패키지 생성과 테스트
+
+```bash
+# db-sqlite3 예제용 
+$ go mod init example.com/sqlite3
+
+# built-in database/sql interface 위한 SQLite3 드라이버
+$ go get -u github.com/mattn/go-sqlite3
+
+# 현재 패키지의 테스트 함수중에 특정 함수 테스팅
+$ go test -run TestAll
+dbpath: foo.db
+PASS
+ok      example.com/sqlite3      0.441s
+```
+
+#### db_sqlite.go
+
+```go
+package main
+
+import (
+  "database/sql"
+
+  _ "github.com/mattn/go-sqlite3"
+)
+
+// TestItem structure
+type TestItem struct {
+  ID    string
+  Name  string
+  Phone string
+}
+
+// InitSqliteConnection initializes the sqlite connection
+func InitSqliteConnection(filepath string) *sql.DB {
+  db, err := sql.Open("sqlite3", filepath)
+  if err != nil {
+    panic(err)
+  }
+  if db == nil {
+    panic("db nil")
+  }
+  return db
+}
+
+// CreateTable creates the table
+func CreateTable(db *sql.DB) {
+  // create table if not exists
+  sqlTable := `
+  CREATE TABLE IF NOT EXISTS items(
+    Id TEXT NOT NULL PRIMARY KEY,
+    Name TEXT,
+    Phone TEXT,
+    InsertedDatetime DATETIME
+  );
+  `
+
+  _, err := db.Exec(sqlTable)
+  if err != nil {
+    panic(err)
+  }
+}
+
+// StoreItem stores the item
+func StoreItem(db *sql.DB, items []TestItem) {
+  sqlAdditem := `
+  INSERT OR REPLACE INTO items(
+    Id,
+    Name,
+    Phone,
+    InsertedDatetime
+  ) values(?, ?, ?, CURRENT_TIMESTAMP)
+  `
+
+  stmt, err := db.Prepare(sqlAdditem)
+  if err != nil {
+    panic(err)
+  }
+  defer stmt.Close()
+
+  for _, item := range items {
+    _, err2 := stmt.Exec(item.ID, item.Name, item.Phone)
+    if err2 != nil {
+      panic(err2)
+    }
+  }
+}
+
+// ReadItem reads the items
+func ReadItem(db *sql.DB) []TestItem {
+  sqlReadall := `
+  SELECT Id, Name, Phone FROM items
+  ORDER BY datetime(InsertedDatetime) DESC
+  `
+
+  rows, err := db.Query(sqlReadall)
+  if err != nil {
+    panic(err)
+  }
+  defer rows.Close()
+
+  var result []TestItem
+  for rows.Next() {
+    item := TestItem{}
+    err2 := rows.Scan(&item.ID, &item.Name, &item.Phone)
+    if err2 != nil {
+      panic(err2)
+    }
+    result = append(result, item)
+  }
+  return result
+}
+```
+
+#### sqlite3_test.go
+
+```go
+package main
+
+import (
+  "fmt"
+  "testing"
+)
+
+// 테스팅 함수
+func TestAll(t *testing.T) {
+  const dbpath = "foo.db"
+  fmt.Println("dbpath:", dbpath)
+
+  db := InitSqliteConnection(dbpath)
+  defer db.Close()
+  CreateTable(db)
+
+  // go-lint : struct 타입을 불필요하게 반복하지 말것
+  items := []TestItem{
+    {"1", "A", "213"}, // TestItem{ID: "1", Name: "A", Phone: "213"},
+    {"2", "B", "214"}, // TestItem{ID: "2", Name: "B", Phone: "214"},
+  }
+  StoreItem(db, items)
+
+  readItems := ReadItem(db)
+  t.Log(readItems)
+
+  items2 := []TestItem{
+    {"1", "C", "215"},
+    {"3", "D", "216"},
+  }
+  StoreItem(db, items2)
+
+  readItems2 := ReadItem(db)
+  t.Log(readItems2)
+}
+
+```
+
+## 3. 백그라운드 스케줄러 구현하기
+
+### 1) 크론탭 `cron/v3` 을 이용한 방법
+
+DB(postgresql)에 이벤트 예약 정보를 쓰고, DB를 읽어 스케줄 수행
+
+- 참고 [Building Basic Event Scheduler in Go](https://articles.wesionary.team/building-basic-event-scheduler-in-go-134c19f77f84)
+  + 소스 [깃허브/dipeshdulal/event-scheduling](https://github.com/dipeshdulal/event-scheduling)
+- 크론탭 [깃허브/robfig/cron](https://github.com/robfig/cron)
+  + `go get github.com/robfig/cron/v3@v3.0.0`
+
+#### database (polling) 방식 스케줄링
+
+![database (polling) 방식 스케줄링](https://miro.medium.com/max/1122/1*WVOKKAJBbWlmOL2dEgOCOQ.png){: width="580"}
+
+#### 실행 결과
+
+1. 데이터베이스에 스케줄 테이블 생성
+2. 이벤트 SendEmail, PayBills 을 스케줄링 하고 (insert)
+3. duration 마다 ticker 채널 신호를 받아 실행할 이벤트를 확인
+4. 실행할 이벤트를 select 하여 callListeners 로 넘김
+5. 리스너의 eventFn(함수)를 실행하고, 스케줄 테이블에서 삭제 
+6. close 이벤트 받으면 종료
+
+```text
+2021/01/16 11:58:49 💾 Seeding database with table...
+2021/01/16 11:58:49 🚀 Scheduling event SendEmail to run at 2021-01-16 11:59:49.344904505 +0545 +0545 m=+60.004623549
+2021/01/16 11:58:49 🚀 Scheduling event PayBills to run at 2021-01-16 12:00:49.34773798 +0545 +0545 m=+120.007457039
+2021/01/16 11:59:49 ⏰ Ticks Received...
+2021/01/16 11:59:49 📨 Sending email with data:  mail: nilkantha.dipesh@gmail.com
+2021/01/16 12:00:49 ⏰ Ticks Received...
+2021/01/16 12:01:49 ⏰ Ticks Received...
+2021/01/16 12:01:49 💲 Pay me a bill:  paybills: $4,000 bill
+2021/01/16 12:02:49 ⏰ Ticks Received...
+2021/01/16 12:03:49 ⏰ Ticks Received...
+^C2021/01/16 12:03:57 
+❌ Interrupt received closing...
+```
+
+#### 주요 코드
+
+```go
+// Scheduler data structure
+type Scheduler struct {
+  db          *sql.DB
+  listeners   Listeners
+  cron        *cron.Cron
+  cronEntries map[string]cron.EntryID
+}
+
+// CheckEventsInInterval checks the event in given interval
+func (s Scheduler) CheckEventsInInterval(ctx context.Context, duration time.Duration) {
+  ticker := time.NewTicker(duration)
+  go func() {
+    for {
+      select {
+      case <-ctx.Done():
+        ticker.Stop()
+        return
+      case <-ticker.C:
+        log.Println("⏰ Ticks Received...")
+        events := s.checkDueEvents()
+        for _, e := range events {
+          s.callListeners(e)
+        }
+      }
+
+    }
+  }()
+}
+
+// callListeners calls the event listener of provided event
+func (s Scheduler) callListeners(event Event) {
+  eventFn, ok := s.listeners[event.Name]
+  if ok {
+    go eventFn(event.Payload)
+    _, err := s.db.Exec(`DELETE FROM "public"."jobs" WHERE "id" = $1`, event.ID)
+    if err != nil {
+      log.Print("💀 error: ", err)
+    }
+  } else {
+    log.Print("💀 error: couldn't find event listeners attached to ", event.Name)
+  }
+}
+
+/*
+// SendEmail 이벤트의 eventFn
+func SendEmail(data string) {
+  log.Println("📨 Sending email with data: ", data)
+}
+*/
+```
+
+### 2) GIN Gonic 에서 크론탭으로 스케줄링
+
+GIN 라우팅 실행 전에 crontab 을 백그라운드로 돌려야 함
+
+- Stackoverflow [Using Gin gonic and some scheduler in Golang](https://stackoverflow.com/a/52727369/6811653)
+
+1. DB 연결
+2. 고루틴 : 매 5초마다 크론탭 실행
+3. GIN 서버 실행
+
+```go
+func main() {
+    settings.AppSettings = settings.ReadSettings()
+
+    // DB 연결
+    db.InitOracleDataBase()
+    OracleEnv, OracleSrv, OracleSes := db.GetOracleDB()
+    defer OracleEnv.Close()
+    defer OracleSrv.Close()
+    defer OracleSes.Close()
+
+    // 고루틴 : 매 5초마다 크론탭 실행
+    go func() {
+        gocron.Every(5).Seconds().Do(prOk)
+        <-gocron.Start()
+    }()
+
+    // GIN 서버 실행
+    routes.Init()
+}
+```
+
+### 3) 무한루프 고루틴을 이용한 방법
+
+```go
+```
+
+### 4) 참고 : [select 외부에 무한 루프를 갖는 형태](https://golangbyexample.com/select-forloop-outside-go/)
 
 ```go
 package main
@@ -58,7 +566,15 @@ func newsFeed(ch chan string) {
 
 ## 9. Summary
 
-- 방심할 수 없네. C 또는 Python 과 같은 듯 하면서 다른 Go 언어
+- go-lint 짜증나는군. 이름 가지고 이래라 저래라 잔소리가 많다.
+
+```text
+// go-lint : 타입 이름으로 시작하는 comment 를 넣던지, 아니면 노출하지 마시오
+// go-lint : ALL_CAPS 사용하지 말것, CamelCase 사용하시오
+// go-lint : 이름에 '_'를 사용하지 말것
+// go-lint : struct slice 안에 타입을 불필요하게 반복하지 말것
+```
+
 
 &nbsp; <br />
 &nbsp; <br />

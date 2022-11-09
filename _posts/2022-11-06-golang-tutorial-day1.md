@@ -86,6 +86,7 @@ if *a != *b {panic("not equalt")}
 - `range` : 파이썬의 (for ... in) enumerate 와 유사 (인덱스, 값)
 - `fallthrough` : switch 문에서 다음 case 절까지 실행 (제어 통과)
   + 참고 : 각 case 절에 break 문을 명시할 필요 없음 (기본)
+- `_` : 파이썬의 anything 과 유사
 
 > struct 비교 : '==' 연산자 사용
 
@@ -112,18 +113,17 @@ a3 := Author{
 }
 
 // Checking equality
-if a1 != a2 { panic("Variable a1 is not equal to variable a2") }
-if a2 != a3 { panic("Variable a2 is not equal to variable a3") }
+if a1 != a2 { panic("Variable a1 is not equal to a2") }
+if a2 != a3 { panic("Variable a2 is not equal to a3") }
 ```
 
 #### 특별한 연산자
 
-- `_` 파이썬의 anything 과 유사
 - `:=` 파이썬의 walrus 연산자와 유사 (선언 + 대입)
 - `*` 데이터의 포인터 수신 (`->` 구별없이 `.`만 사용하면 됨)
 - `&` 데이터의 포인터 전달
 - `<-` (고루틴 context의 변수인) 채널 읽기
-
+- `변수++` 증감 연산자 (후위표기법만 가능) 
 - `...` 파이썬의 Spread syntax (...) 와 유사 (코드 간소화)
   + Spread syntax : 반복 구절의 생략과 참조 데이터의 언패킹
 
@@ -335,7 +335,7 @@ go run .
 
 #### [fmt](https://pkg.go.dev/fmt@go1.19.3) : 포맷 출력
 
-- fmt.Println, fmt.Printf, fmt.Print
+- fmt.Printf, fmt.Print, fmt.Println
 - fmt.Sprintf
 
 ```go
@@ -435,7 +435,75 @@ type Seeker interface {
   * [Routers](https://github.com/avelino/awesome-go#routers)
 * [WebAssembly](https://github.com/avelino/awesome-go#webassembly)
 
-## 5. 참고문서
+## 5. Go 프로그래밍 기법
+
+### 1) 익명함수, 중첩함수, 클로저
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    var counter int = 1
+
+    // 익명 함수
+    func(str string) {
+        fmt.Println("Hi", str, "I'm an anonymous function")
+    }("Ricky")
+
+    // 중첩 함수
+    funcVar := func(str string) {
+        fmt.Println("Hi", str, "I'm an anonymous function assigned to a variable.")
+    }
+    funcVar("Johnny")
+
+    // 클로저 : 외부 counter 사용
+    closure := func(str string) {
+        fmt.Println("Hi", str, "I'm a closure.")
+        for i := 1; i < 5; i++ {
+            fmt.Println("Counter incremented to:", counter)
+            counter++
+        }
+    }
+    fmt.Println("Counter is", counter, "before calling closure.")
+    // ==> Counter is 1 before calling closure.
+    closure("Sandy")
+    fmt.Println("Counter is", counter, "after calling closure.")
+    // ==> Counter is 5 after calling closure.
+}
+```
+
+### 2) 커링
+
+```go
+func greet(greeting, name string) string {
+    return fmt.Sprintf("%v, %v", greeting, name)
+}
+func main() {
+    fmt.Println(greet("Good Morning", "Sam"))
+}
+// ==> Good Morning, Sam
+
+////////////////////////////////////////////
+
+func prefixedGreet (p string) func(string) string {
+    // 클로저 함수
+    return func(n string) string {
+        return greet(p,n)
+    }
+}
+
+// 커링 함수
+currfn := prefixedGreet("굳모닝")
+
+currfn("고랭")
+// ==> 굳모닝, 고랭
+```
+
+## 6. 참고문서
 
 ### 1) 공식문서 - [튜토리얼](https://go.dev/doc/)
 
