@@ -18,7 +18,28 @@ image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e25
 - ';' 같은 문장 종결 기호가 필요 없다
 - 강한 타입 선언이 필요한 언어, 하지만 대부분 타입추론에 의존 가능
 - Java 와 비교되는 빠른 컴파일 성능과 더 빠른 실행 성능
-- 객체지향을 지원하지 않는다 : class 와 object 없음
+- 객체지향을 지원하지 않는다 : class 없음
+
+> 포인터(de-reference) `*`, 레퍼런스 `&`
+
+```go
+type Thing struct {
+  Comment string
+  ID     int
+}
+
+func NewThing(someParameter string) *Thing {
+    return &Thing{someParameter, 33} // <- 33: default value
+}
+
+a := NewThing("foo")
+b := &Thing{"foo", 33}
+
+fmt.Println(*a)  // {foo 33}
+fmt.Println(*b)  // {foo 33}
+
+if *a != *b {panic("not equalt")}
+```
 
 ### 2) 네이밍 규칙 (이름 표기법)
 
@@ -66,6 +87,35 @@ image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e25
 - `fallthrough` : switch 문에서 다음 case 절까지 실행 (제어 통과)
   + 참고 : 각 case 절에 break 문을 명시할 필요 없음 (기본)
 
+> struct 비교 : '==' 연산자 사용
+
+```go
+// Creating a structure
+type Author struct {
+    name      string
+    language  string
+    Particles int
+}
+
+// Creating variables of Author structure
+a1 := Author{
+    name:      "Moana",
+    language:  "Python",
+    Particles: 38,
+}
+
+a2 := Author{"Moana","Python",38}
+
+a3 := Author{
+    language:  "Python",
+    Particles: 38,
+}
+
+// Checking equality
+if a1 != a2 { panic("Variable a1 is not equal to variable a2") }
+if a2 != a3 { panic("Variable a2 is not equal to variable a3") }
+```
+
 #### 특별한 연산자
 
 - `_` 파이썬의 anything 과 유사
@@ -90,6 +140,8 @@ a := [...]string{"a", "b", "c"}
 
 > 참고 : 자바스크립트, 파이썬의 Spread syntax (...) 
 
+javascript 예제
+
 ```js
 function sum(x, y, z) {
   return x + y + z;
@@ -101,6 +153,8 @@ console.log(sum(...numbers));
 // expected output: 6
 ````
 
+python 예제
+
 ```python
 # 리스트의 언패킹
 const oldArray = [1, 2, 3]
@@ -110,10 +164,68 @@ const newArray = [...oldArray, 4, 5]
 const oldObject = { hello: 'world', foo: 'bar' }
 const newObject = { ...oldObject, foo: 'baz' }
 ```
-  
-### 4) 특수한 함수
+
+### 4) 데이터 타입
+
+출처 : [codekru.com/data-types-in-golang](https://www.codekru.com/go/data-types-in-golang)
+
+![data-types-in-golang](https://www.codekru.com/wp-content/uploads/2021/08/data-types-in-golang.jpg){: width="600"}
+
+#### 문자열 슬라이싱 : rune 사용 권장 (non-ASCII Unicode characters)
+
+```go
+// Wrong way
+func main() {
+  str := "I ♥ emojis 😍"
+  substr := str[2:3]
+  fmt.Println(substr)  // empty string instead of ♥ character
+}
+
+// Right way
+func main() {
+  str := "I ♥ emojis 😍"
+  runes := []rune(str)  // convert string to rune slice
+  substr := string(runes[2:3])  // take subslice of rune and convert back to string
+  fmt.Println(substr)  // ♥
+}
+```
+
+### 5) 특수한 Built-in 함수
 
 - panic() : 파이썬의 raise Exception() 과 유사 
+
+- new() : 데이터 타입 또는 구조체 초기화 생성 후 포인터 반환
+- make() : channel / map / slice 타입을 위한 특별한 생성자
+  + [new 와의 차이점](https://stackoverflow.com/a/68325868/6811653) : 데이터 타입 또는 구조체에 사용할 수 없음
+
+```go
+import "fmt"
+
+type Comment struct {
+  Author string
+  Body   string
+  Slug   string
+  ID     int
+}
+
+func main() {
+  cmt := new(Comment)  // <- Comment 포인터 == &Comment{}
+  fmt.Printf("%+v\n", cmt)  // 모두 공백으로 표시, 숫자는 0
+}
+// &{Author: Body: Slug: ID:0}
+```
+
+참고 : [Stackoverflow - Why would I make() or new()?](https://stackoverflow.com/a/9325620/6811653)
+
+```go
+new(int)         // -->  NEW(*int)
+new(Point)       // -->  NEW(*Point)
+new(chan int)    // -->  NEW(*chan int)
+make([]int, 10)  // -->  NEW([]int, 10)
+
+make(Point)      // Illegal
+make(int)        // Illegal
+```
 
 ## 2. Go 언어 설치 및 설정
 
@@ -342,6 +454,9 @@ type Seeker interface {
 * [Websites](https://github.com/avelino/awesome-go#websites)
   * [Tutorials](https://github.com/avelino/awesome-go#tutorials)
 
+### 3) 무료 책
+
+- [Effective Go](https://go.dev/doc/effective_go)
 
 ## 9. Summary
 
@@ -349,7 +464,7 @@ type Seeker interface {
   - 두가지 언어를 다 아는 개발자라면 Go 를 안배울 이유가 없다.
 - 최대한 간결하게, 간편하게 개발할 수 있도록 배려한다.
   + 파이썬의 특성을 반영
-- 여러 용도로 사용할 수 있지만, 백엔드 처리에 특화
+- 여러 용도로 사용할 수 있지만, 백엔드 처리에 특화하여 발전중
   + 믿고 쓸수 있는 모듈이 백엔드 위주이고, 그런 식으로 주로 사용
 
 &nbsp; <br />

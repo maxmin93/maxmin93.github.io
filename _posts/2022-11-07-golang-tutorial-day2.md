@@ -223,10 +223,12 @@ fmt.Println(s)// "Hi, world!"
 
 #### 후행삭제는 TrimSuffix 함수이다 (헷갈리지 말것)
 
-Trim/TrimLeft/TrimRight 함수는 일치하는 모든 문자를 제거
+Trim/TrimLeft/TrimRight 함수는 일치할 때까지 계속 문자를 제거
 
 ```go
+fmt.Println(strings.Trim("  ABBA  ", " ")) // Output: "ABBA"
 fmt.Println(strings.TrimRight("ABBA", "BA")) // Output: ""
+
 fmt.Println(strings.TrimSuffix("ABBA", "BA")) // Output: "AB"
 ```
 
