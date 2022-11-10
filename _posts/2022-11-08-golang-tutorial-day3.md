@@ -11,89 +11,233 @@ image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e25
 
 ## 1. GIN : 웹프레임워크
 
-### 1) 예제
+참고 : [Tutorial: Developing a RESTful API with Go and Gin](https://go.dev/doc/tutorial/web-service-gin)
+
+### 1) Gin-Gonic 과 함께 사용할 라이브러리 [(출처)](https://blog.zestmoney.in/our-first-microservice-in-golang-using-gin-gonic-as-framework-4db155e46fc6)
+
+- Authentication => [github.com/auth0/go-jwt-middleware](https://github.com/auth0/go-jwt-middleware)
+- Managing modules => [Using Go Modules](https://blog.golang.org/using-go-modules)
+- ORM => [gorm](https://gorm.io/)
+- Migration => [goose](https://github.com/pressly/goose)
+- Logging => [Zap](https://github.com/uber-go/zap)
+
+> 추가
+
+- assert 패키지 : ["github.com/stretchr/testify/assert"](https://github.com/stretchr/testify)
+  - GIN 모듈에 포함되어 있음 (테스트에 사용)
+  - testing.T 를 받아야 하기 때문에, 단독 사용은 안됨 
+
+- VSCode 에서 [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) 확장도구를 사용해 API 테스트 진행
+  + API 단위로 '###' 구분선을 작성하면 됨
+    * 'Ctrl+Shift+P' 누른 후 "Rest Client: Send Request" 명령 선택
+  + curl 명령으로 실행하는 것과 동일
+
+```text
+###
+
+GET http://localhost:8080/albums/3 HTTP/1.1
+content-type: application/json
+
+###
+
+POST http://localhost:8080/albums HTTP/1.1
+content-type: application/json
+
+{
+  "id": "5",
+  "title": "BEST Clifford Songs",
+  "artist": "Clifford Brown",
+  "ganre": "R&B",
+  "price": 29.99
+}
+```
+
+#### 기본 로거와 Zap 로거의 출력 포맷 비교
+
+- 기본 로거의 출력
+
+```text
+[GIN] 2022/11/10 - 13:46:32 | 201 |     941.208µs |       127.0.0.1 | POST     "/albums"
+[GIN] 2022/11/10 - 14:43:56 | 200 |     112.375µs |       127.0.0.1 | GET      "/albums/3"
+[GIN] 2022/11/10 - 14:47:15 | 200 |     232.417µs |       127.0.0.1 | GET      "/albums/4"
+```
+
+- Zap 로거의 출력 (JSON 포맷)
+
+```json
+{"level":"info","ts":1668062579.340706,"caller":"zap@v0.1.0/zap.go:90","msg":"/ping","status":200,"method":"GET","path":"/ping","query":"","ip":"127.0.0.1","user-agent":"vscode-restclient","latency":0.000212666,"time":"2022-11-10T06:42:59Z"}
+{"level":"info","ts":1668062596.9215739,"caller":"zap@v0.1.0/zap.go:90","msg":"/albums","status":200,"method":"GET","path":"/albums","query":"","ip":"127.0.0.1","user-agent":"vscode-restclient","latency":0.000322625,"time":"2022-11-10T06:43:16Z"}
+```
+
+### 2) 예제
+
+```bash
+$ go get -u github.com/gin-gonic/gin
+$ go get -u github.com/gin-contrib/zap
+$ go get -u github.com/json-iterator/go
+
+$ go mod tidy
+
+# 기본 JSON 모듈을 대체하여 실행 (또는 빌드)
+$ go run -tags=jsoniter .
+```
+
+#### 소스
 
 ```go
 package main
 
 import (
+  "bytes"
+  "encoding/json"
+  "fmt"
+  "log"
   "net/http"
+  "time"
 
-  // go get -u github.com/gin-gonic/gin
+  ginzap "github.com/gin-contrib/zap"
+  "go.uber.org/zap"
+
   "github.com/gin-gonic/gin"
-  // 기본 JSON 모듈을 대체하여 사용
-  // go get -u github.com/json-iterator/go
-  // ==> go run -tags=jsoniter .
 )
-
-// User for API /users
-type User struct {
-  Name    string `json:"name"`
-  Age     int    `json:"age"`
-  Active  bool   `json:"active"`
-  LoginAt string `json:"login_at"`
-}
 
 // Album for API /albums
 type Album struct {
   ID     string  `json:"id"`
   Title  string  `json:"title"`
   Artist string  `json:"artist"`
+  Ganre  string  `json:"ganre"`
   Price  float64 `json:"price"`
 }
 
-// getAlbums responds with the list of all albums as JSON.
-func getAlbums(c *gin.Context) {
-  // albums slice to seed record album data.
+func main() {
+  // 기본 로거와 미들웨어를 포함하는 라우터를 만든다.
+  // r := gin.Default()
+
+  // 빈 라우터를 만든다.
+  r := gin.New()
+
+  // zap 로거를 만들어 라우터에 추가한다.
+  logger, _ := zap.NewProduction()
+  r.Use(ginzap.Ginzap(logger, time.RFC3339, true))
+  r.Use(ginzap.RecoveryWithZap(logger, true))
+
+  ////////////////////////////////////////////////
+
+  // 라우터에 핸들러를 추가한다.
+  r.GET("/ping", func(c *gin.Context) {
+    c.JSON(http.StatusOK, gin.H{"message": "pong & <foo> zażółć gęślą jaźń@"})
+  })
+
+  // albums 의 크기를 지정하면 배열이 생성되고, 지정하지 않으면 슬라이스가 생성된다.
+  // - 생성된 배열에 대해서는 수정이 불가능하다. (append 불가능)
+  // - 크기를 지정하려면 [...]Album{ } 형태로 선언하면 된다.
   var albums = []Album{
-    {ID: "1", Title: "Blue Train", Artist: "John Coltrane", Price: 56.99},
-    {ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Price: 17.99},
-    {ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Price: 39.99},
+    {ID: "1", Title: "Blue Train", Artist: "John Coltrane", Ganre: "Pop", Price: 56.99},
+    {ID: "2", Title: "Jeru", Artist: "Gerry Mulligan", Ganre: "Pop", Price: 17.99},
+    {ID: "3", Title: "Sarah Vaughan and Clifford Brown", Artist: "Sarah Vaughan", Ganre: "Classic", Price: 39.99},
   }
 
-  c.IndentedJSON(http.StatusOK, albums)
+  // Closure for GET /albums
+  r.GET("/albums", func(c *gin.Context) {
+    c.IndentedJSON(http.StatusOK, albums)
+  })
+  // Closure for GET /albums/:id
+  r.GET("/albums/:id", func(c *gin.Context) {
+    getAlbumByID(c, albums)
+  })
+
+  // Closure for POST /albums
+  r.POST("/albums", func(c *gin.Context) {
+    // 기존 albums 을 새 앨범이 추가된 변경본으로 갱신해야 함
+    log.Println("before Append:", cap(albums), len(albums))
+    albums = postAlbums(c, albums) // array 인 경우 albums[:] 로 넘겨야 함
+    log.Println("after Append:", cap(albums), len(albums))
+  })
+
+  // Routes starting with /albums/ganres are never interpreted
+  // as /albums/:id... routes
+  r.GET("/albums/ganres", func(c *gin.Context) {
+    getGanresCount(c, albums)
+  })
+
+  r.GET("/albums/ids", func(c *gin.Context) {
+    getAlbumIds(c, albums)
+  })
+
+  // Listen and Server in 0.0.0.0:8080
+  if err := r.Run(":8080"); err != nil {
+    log.Println("can' start server with 8080 port")
+  }
 }
 
-func main() {
-  r := gin.Default()
+// JSONMarshal 는 HTML escape 를 하지 않는다.
+func JSONMarshal(t interface{}) ([]byte, error) {
+  buffer := &bytes.Buffer{}
+  encoder := json.NewEncoder(buffer)
+  encoder.SetEscapeHTML(false)
+  err := encoder.Encode(t)
+  return buffer.Bytes(), err
+}
 
-  r.GET("/albums", getAlbums)
+// postAlbums adds an album from JSON received in the request body.
+func postAlbums(c *gin.Context, albums []Album) []Album {
+  var newAlbum Album
+  // Call BindJSON to bind the received JSON to newAlbum.
+  if err := c.BindJSON(&newAlbum); err != nil {
+    log.Println(err)
+    return nil
+  }
+  log.Printf("BODY: %+v", newAlbum)
 
-  r.GET("/ping", func(c *gin.Context) {
-    data := User{Name: "Bob", Age: 10, Active: true, LoginAt: "today"}
-    c.IndentedJSON(
-      http.StatusOK,
-      gin.H{"message": "pong", "user": data},
-    )
+  // SetEscapeHTML(false) 를 사용하면 HTML escape 를 하지 않는다.
+  // https://github.com/gin-gonic/gin/issues/693#issuecomment-243681669
+  // - "R&B" 를 "R\u0026B" 로 변환하지 않는다.
+  messageJSON, _ := JSONMarshal(newAlbum)
+  c.String(http.StatusCreated, string(messageJSON))
+
+  // Add the new album to the slice.
+  return append(albums, newAlbum)
+}
+
+// getAlbumByID locates the album whose ID value matches the id
+func getAlbumByID(c *gin.Context, albums []Album) {
+  id := c.Param("id")
+  for _, a := range albums {
+    if a.ID == id {
+      c.IndentedJSON(http.StatusOK, a)
+      return
+    }
+  }
+  c.IndentedJSON(http.StatusNotFound, gin.H{
+    "message": fmt.Sprintf("album not found among albums(%d)", len(albums)),
   })
+}
 
-  // This handler will match /user/john but will not match /user/ or /user
-  r.GET("/user/:name", func(c *gin.Context) {
-    name := c.Param("name")
-    c.String(http.StatusOK, "Hello %s", name)
-  })
+// getAlbumByID locates Ganres and Count about albums
+func getAlbumIds(c *gin.Context, albums []Album) {
+  ids := []string{}
+  for _, a := range albums {
+    ids = append(ids, a.ID)
+  }
+  if len(ids) == 0 {
+    c.IndentedJSON(http.StatusNotFound, gin.H{"message": "albums is empty"})
+    return
+  }
+  c.IndentedJSON(http.StatusOK, ids)
+}
 
-  // However, this one will match /user/john/ and also /user/john/send
-  // If no other routers match /user/john, it will redirect to /user/john/
-  r.GET("/user/:name/*action", func(c *gin.Context) {
-    name := c.Param("name")
-    action := c.Param("action")
-    message := name + " is " + action[1:]
-    c.String(http.StatusOK, message)
-  })
-
-  // For each matched request Context will hold the route definition
-  r.POST("/user/:name/*action", func(c *gin.Context) {
-    b := c.FullPath() == "/user/:name/*action" // true
-    c.String(http.StatusOK, "%t", b)
-  })
-
-  // Routes starting with /user/groups are never interpreted as /user/:name/... routes
-  r.GET("/user/groups", func(c *gin.Context) {
-    c.String(http.StatusOK, "The available groups are [...]")
-  })
-
-  r.Run() // listen and serve on 0.0.0.0:8080
+// getAlbumByID locates Ganres and Count about albums
+func getGanresCount(c *gin.Context, albums []Album) {
+  ganres := map[string]int{}
+  for _, a := range albums {
+    ganres[a.Ganre]++
+  }
+  if len(ganres) == 0 {
+    c.IndentedJSON(http.StatusNotFound, gin.H{"message": "albums is empty or ganres is not found"})
+    return
+  }
+  c.IndentedJSON(http.StatusOK, ganres)
 }
 ```
 
@@ -105,6 +249,7 @@ GORM 과 GORM 을 위한 SQLite 드라이버로 구현됨
 
 - gorm 옵션 
 - 테이블 이름 가져오기 (네이밍 규칙에 따라)
+- db.Debug : SQL문 출력하기 (디버깅)
 - db.Raw : native sql 실행
 - db.Create : create => ID 값이 채워짐
 - db.First/Last : select limit 1 from 첫 or 마지막
@@ -153,6 +298,10 @@ func main() {
   stmt.Parse(&Product{})
   tableName := stmt.Schema.Table
   fmt.Printf("TABLE: '%s'\n", tableName)
+
+  // logging SQL stmt by Debug
+  db.Debug().Where("code = ?", "jinzhu").First(&Product{})
+  fmt.Println("")
 
   // Truncate : SQLite 에서는 TRUNCATE TABLE 을 지원하지 않는다.
   // tx := db.Exec(fmt.Sprintf("TRUNCATE TABLE %s;", tableName))
@@ -222,8 +371,11 @@ func main() {
 
 /*
 TABLE: 'products'
-created: Product.ID=1 (uint)
 
+2022/11/10 11:59:26 /Users/bgmin/Servers/go/pkg/mod/gorm.io/gorm@v1.24.1/callbacks.go:134 record not found
+[0.061ms] [rows:0] SELECT * FROM `products` WHERE code = "jinzhu" AND `products`.`deleted_at` IS NULL ORDER BY `products`.`id` LIMIT 1
+
+created: Product.ID=1 (uint)
 exists: Product.Code='D42'
 Today: '2022-11-09' => '20221109'
 select: Product.UpdatedAt='20221109' (true)
@@ -575,6 +727,10 @@ func newsFeed(ch chan string) {
 // go-lint : struct slice 안에 타입을 불필요하게 반복하지 말것
 ```
 
+- 더 깊이 들어갈수록 복잡하고 어려워지기 시작하네.
+  + 특히 slice 를 함수로 넘길 때, 원본을 수정하는 방법을 못찾았음
+- 선호되고 신뢰성 있는 라이브러리들이 지정된게 아니라서 곤란하다.
+  + 뭐를 쓰면 좋을지 선택 장애가 생긴다.
 
 &nbsp; <br />
 &nbsp; <br />
