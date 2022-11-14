@@ -4,10 +4,9 @@ title: Go 언어 배우기 - 4일차 유틸리티 코드
 categories: ["golang"]
 tags: ["TIL", "tutorial", "유틸리티", "examples", "library"]
 image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e257ca9af7ec/golang_icon.jpg"
-hidden : true
 ---
 
-> 개발에 필요한 다양한 유틸리티 패키지들의 예제를 살펴봅니다. 정렬, 환경파일, 랜덤, 변환 등 (4일차)
+> 개발에 필요한 다양한 유틸리티 코드들의 예제를 살펴봅니다. 또 interface 타입 변환을 공부합니다. (4일차)
 {: .prompt-tip }
 
 ## 1. Go 패키지 < 모듈 < 리포지토리
@@ -100,10 +99,303 @@ fmt.Println(strings.Repeat("--", 30))
   * [Routers](https://github.com/avelino/awesome-go#routers)
 * [WebAssembly](https://github.com/avelino/awesome-go#webassembly)
 
+## 2. 개발시 사용할법한 유틸리티 코드
 
+### 1) [crypto 암호화/복호화](https://gist.github.com/hothero/7d085573f5cb7cdb5801d7adcf66dcf3)
+
+> expire 기간과 (사용)권한 정보를 담은 라이센스 검사 등에 사용 
+
+`평문`을 `key` 문장을 이용하여 암호화하고 복호화함
+
+- AESEncrypt : NewCBCEncrypter + Padding + CryptBlocks
+- AESDecrypt : NewCBCDecrypter + CryptBlocks + Trimming
+- PKCS5Padding : 블록 크기에 맞추기 위해 패딩 처리
+  + 암호화된 데이터의 길이는 블록 크기의 배수가 되어야함
+- PKCS5Trimming : 복호화 후 패딩 문자열을 제거
+
+```go
+var (
+  initialVector = "1234567890123456"
+  passphrase    = "Impassphrasegood"
+)
+
+func main() {
+  var plainText = "hello world"
+
+  encryptedData := AESEncrypt(plainText, []byte(passphrase))
+  encryptedString := base64.StdEncoding.EncodeToString(encryptedData)
+  fmt.Println(encryptedString)
+
+  encryptedData, _ = base64.StdEncoding.DecodeString(encryptedString)
+  decryptedText := AESDecrypt(encryptedData, []byte(passphrase))
+  fmt.Println(string(decryptedText))
+}
+
+func AESEncrypt(src string, key []byte) []byte {
+  block, err := aes.NewCipher(key)
+  if err != nil {
+    fmt.Println("key error1", err)
+  }
+  if src == "" {
+    fmt.Println("plain content empty")
+  }
+  ecb := cipher.NewCBCEncrypter(block, []byte(initialVector))
+  content := []byte(src)
+  content = PKCS5Padding(content, block.BlockSize())
+  crypted := make([]byte, len(content))
+  ecb.CryptBlocks(crypted, content)
+
+  return crypted
+}
+
+func AESDecrypt(crypt []byte, key []byte) []byte {
+  block, err := aes.NewCipher(key)
+  if err != nil {
+    fmt.Println("key error1", err)
+  }
+  if len(crypt) == 0 {
+    fmt.Println("plain content empty")
+  }
+  ecb := cipher.NewCBCDecrypter(block, []byte(initialVector))
+  decrypted := make([]byte, len(crypt))
+  ecb.CryptBlocks(decrypted, crypt)
+
+  return PKCS5Trimming(decrypted)
+}
+
+func PKCS5Padding(ciphertext []byte, blockSize int) []byte {
+  padding := blockSize - len(ciphertext)%blockSize
+  padtext := bytes.Repeat([]byte{byte(padding)}, padding)
+  return append(ciphertext, padtext...)
+}
+
+func PKCS5Trimming(encrypt []byte) []byte {
+  padding := encrypt[len(encrypt)-1]
+  return encrypt[:len(encrypt)-int(padding)]
+}
+```
+
+### 2) 구조체를 map 타입으로 변환하기
+
+출처 : [function for converting a struct to map in Golang](https://stackoverflow.com/a/71272123/6811653)
+
+```go
+import (
+    "fmt"
+    "reflect"
+)
+
+func StructToMap(val interface{}) map[string]interface{} {
+    //The name of the tag you will use for fields of struct
+    const tagTitle = "kelvin"
+
+    var data map[string]interface{} = make(map[string]interface{})
+    varType := reflect.TypeOf(val)
+    if varType.Kind() != reflect.Struct {
+        // Provided value is not an interface, do what you will with that here
+        fmt.Println("Not a struct")
+        return nil
+    }
+
+    value := reflect.ValueOf(val)
+    for i := 0; i < varType.NumField(); i++ {
+        if !value.Field(i).CanInterface() {
+            //Skip unexported fields
+            continue
+        }
+        tag, ok := varType.Field(i).Tag.Lookup(tagTitle)
+        var fieldName string
+        if ok && len(tag) > 0 {
+            fieldName = tag
+        } else {
+            fieldName = varType.Field(i).Name
+        }
+        if varType.Field(i).Type.Kind() != reflect.Struct {
+            data[fieldName] = value.Field(i).Interface()
+        } else {
+            data[fieldName] = StructToMap(value.Field(i).Interface())
+        }
+
+    }
+
+    return data
+}
+```
+
+### interface 슬라이스에서 특정 항목의 포함 여부 검사하기
+
+```go
+func Contains(s []interface{}, e interface{}) bool {
+  for _, a := range s {
+    if a == e {
+      return true
+    }
+  }
+  return false
+}
+```
+
+### [interface 값을 문자열로 변환하기](https://yourbasic.org/golang/interface-to-string/)
+
+```go
+var x interface{} = []int{1, 2, 3}
+str := fmt.Sprintf("%v", x)
+fmt.Println(str) // "[1 2 3]"
+```
+
+### 문자열의 이메일 형식 검사 (정규식)
+
+```go
+func CheckEmail(email interface{}) bool {
+  re := regexp.MustCompile("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+  return re.MatchString(ToStr(email))
+}
+```
+
+### [interface 에서 특정 값만 추출하기](https://luci7.medium.com/golang-extract-value-from-interfaces-without-specifying-the-struct-type-ffb7e23223a7)
+
+```go
+import (
+  "fmt"
+  "reflect"
+)
+
+type User struct {
+  UserEmail string
+  UserPass  string
+}
+
+func login(user interface{}) {
+  ////--- Extract Value without specifying Type
+  val := reflect.ValueOf(user).Elem()
+  n := val.FieldByName("UserEmail").Interface().(string)
+  fmt.Printf("%+v\n", n)
+
+  fmt.Println(user.(*User).UserEmail)
+}
+
+func main() {
+  login(&User{UserEmail: "lucian@knesk.com", UserPass: "lucian123"})
+}
+```
+
+### [타입변환 정리](https://levelup.gitconnected.com/golang-type-conversion-summary-dc9e36842d25)
+
+- Assertion.
+- Forced type conversion.
+- Explicit type conversion.
+- Implicit type conversion.
+
+#### Assertion
+
+```go
+// x 를 T 형식으로 변환 (Assertion)
+var s = x.(T)
+
+// 예제
+var foo interface{} = "123" 
+fooStr, ok := foo.(string)
+if ok {
+    // ...
+}
+```
+
+#### Type Switch 타입 스위치
+
+```go
+switch i := x.(type) {
+    case nil:
+        printString("x is nil")                // type of i is type of x (interface{})
+    case int:
+        printInt(i)                            // type of i is int
+    case float64:
+        printFloat64(i)                        // type of i is float64
+    case func(int) float64:
+        printFunction(i)                       // type of i is func(int) float64
+    case bool, string:
+        printString("type is bool or string")  // type of i is type of x (interface{})
+    default:
+        printString("don't know the type")     // type of i is type of x (interface{})
+}
+
+// 예제
+var foo interface{} = 123
+
+switch fooStr := foo.(type) {
+  case string:
+    fmt.Println("fooStr is a string")
+  case int:
+    fmt.Println("fooStr is an integer")
+  default:
+    fmt.Println("don't know what fooStr is")
+}
+```
+
+#### Forced type conversion. 강제 변환
+
+```go
+var f float64
+bits = *(*uint64)(unsafe.Pointer(&f))
+
+type ptr unsafe.Pointer
+bits = *(*uint64)(ptr(&f))
+
+var p ptr = nil
+```
+
+#### Interface type detection. 인터페이스 타입인지 검사
+
+`Context = xx` 이라 반환된 경우, xx 가 Interface 를 만족하면 OK
+
+- 무슨 말인지 잘 모르겠다
+- 실패하면 error 발생한다고 함
+
+```go
+var _ Context = (*ContextBase)(nil)
+```
+
+#### Explicit type conversion. 명시적 변환
+
+```go
+int64(123)
+[]byte("hello")
+type A int
+A(0)
+```
+
+#### Implicit type conversion. 모호한 변환
+
+```go
+import (
+    "fmt"
+    "reflect"
+)
+
+type Handler func()
+
+func a() Handler {
+    return func() {}
+}
+
+func main() {
+    var i interface{} = main
+
+    _, ok := i.(func())
+    fmt.Println(ok)  // true
+
+    _, ok = i.(Handler)
+    fmt.Println(ok)  // false (실질적으론 같지만 형식상 다르다)
+
+    fmt.Println(reflect.TypeOf(main) == reflect.TypeOf((*Handler)(nil)).Elem())
+    // ==> false
+}
+```
 
 ## 9. Summary
 
+- interface 를 자유롭게 써야 하는데, 아직은 어지럽다.
+  + 고수 형님들 코드들을 보면 구조체를 정의하고, 결합되는 함수를 나열한다. 이후 수시로 interface 함수들이 툭툭 뛰어나오는데, 찾아가며 확인하지 않으면 무슨 일이 일어나고 있는지 바로 알기 어렵다.
+- reflect 패키지가 파워풀 하지 않다고 한다. (내가 봐도 그렇다)
 
 &nbsp; <br />
 &nbsp; <br />
