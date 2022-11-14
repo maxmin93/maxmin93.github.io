@@ -1,12 +1,12 @@
 ---
 date: 2022-11-08 00:00:00 +0000
-title: Go 언어 배우기 - 3일차 프레임워크
-categories: ["go"]
+title: Go 언어 배우기 - 3일차 GIN, GORM
+categories: ["golang"]
 tags: ["TIL", "tutorial", "framework", "gin", "gorm"]
 image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e257ca9af7ec/golang_icon.jpg"
 ---
 
-> Go 언어의 웹프레임워크 gin 과 ORM 프레임워크 gorm 을 공부합니다. gin 으로 구현된 스케줄러 코드를 살펴봅니다. (3일차)
+> Go 언어의 대표적인 웹프레임워크 gin 과 ORM 프레임워크 gorm 을 공부합니다. 스케줄러 cron 도 살펴봅니다. (3일차)
 {: .prompt-tip }
 
 ## 1. GIN : 웹프레임워크
@@ -671,12 +671,7 @@ func main() {
 }
 ```
 
-### 3) 무한루프 고루틴을 이용한 방법
-
-```go
-```
-
-### 4) 참고 : [select 외부에 무한 루프를 갖는 형태](https://golangbyexample.com/select-forloop-outside-go/)
+### 3) 참고 : [select 외부에 무한 루프를 갖는 형태](https://golangbyexample.com/select-forloop-outside-go/)
 
 ```go
 package main
@@ -731,6 +726,7 @@ func newsFeed(ch chan string) {
   + 특히 slice 를 함수로 넘길 때, 원본을 수정하는 방법을 못찾았음
 - 선호되고 신뢰성 있는 라이브러리들이 지정된게 아니라서 곤란하다.
   + 뭐를 쓰면 좋을지 선택 장애가 생긴다.
+  + beego 는 풀세트를 제공하는데, 중국인 전용같은 느낌
 
 &nbsp; <br />
 &nbsp; <br />

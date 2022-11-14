@@ -1,7 +1,7 @@
 ---
 date: 2022-11-06 00:00:00 +0000
-title: Go 언어 배우기 - 1일차 개요
-categories: ["go"]
+title: Go 언어 배우기 - 1일차 개요, 특징
+categories: ["golang"]
 tags: ["TIL", "tutorial", "module", "import", "특징"]
 image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e257ca9af7ec/golang_icon.jpg"
 ---
@@ -350,34 +350,6 @@ fmt.Print(s3)
 - Copy, Pipe, ReadAll, ReadFull, WriteString
 - ByteReader, ByteWriter, ByteScanner
 - Closer
-
-```go
-type Reader interface {
-    Read(p []byte) (n int, err error)    
-}
-
-type Writer interface {
-    Write(p []byte) (n int, err error)
-}
-
-type ReaderFrom interface {
-    ReadFrom(r Reader) (n int6, err error)
-}
-
-type WriterTo interface {
-    WriteTo(w Writer) (n int64, err error)
-}
-
-type Closer interface {
-    Close() error
-}
-
-type Seeker interface {
-    Seek(offset int64, whence int) (int64, error)
-}
-
-// 그외 Byte 대상 Reader, Writer 등..
-```
 
 #### [log, log/syslog](https://pkg.go.dev/log@go1.19.3) : 로그
 
