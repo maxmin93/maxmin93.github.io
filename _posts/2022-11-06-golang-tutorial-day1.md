@@ -19,8 +19,9 @@ image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e25
 - 강한 타입 선언이 필요한 언어, 하지만 대부분 타입추론에 의존 가능
 - Java 와 비교되는 빠른 컴파일 성능과 더 빠른 실행 성능
 - 객체지향을 지원하지 않는다 : class 없음
+- 대소문자를 구분한다. ex) 변수 hello != 변수 Hello
 
-> 포인터(de-reference) `*`, 레퍼런스 `&`
+> 포인터(de-reference) `*`, 레퍼런스(reference) `&`
 
 ```go
 type Thing struct {
@@ -234,11 +235,11 @@ make(int)        // Illegal
 ```bash
 $ brew install golang
 
-$ go env GOROOT
-$ go env GOPATH
-
+# 변경 가능
 $ export GOPATH=<원하는 디렉토리>
-# ==> 모듈 다운로드 위치
+
+$ go env GOROOT  # go 컴파일러 위치
+$ go env GOPATH  # 외부 모듈 다운로드 위치
 ```
 
 ### 2) VSCODE 설정 - Go Extension 설치
@@ -265,8 +266,8 @@ $ export GOPATH=<원하는 디렉토리>
   "go.formatTool": "goimports",
   "go.formatFlags": [],
   "go.inferGopath": true,
-  "go.gopath": "<원하는 위치>",
-  "go.goroot": "/opt/homebrew/opt/go/libexec",
+  "go.gopath": "",
+  "go.goroot": "",
   "go.gocodeAutoBuild": false,
   "go.testFlags": ["-v"],
   "[go.mod]": {
@@ -302,7 +303,7 @@ go build .
 
 ### 4) edit & tidy
 
-> 사용자 모듈 설정
+#### 사용자 모듈 설정
 
 참고 : [Call your code from another module](https://go.dev/doc/tutorial/call-module-code)
 
@@ -326,88 +327,82 @@ go mod edit -replace example.com/greetings=../greetings
 go run .
 ```
 
-## 4. Go 패키지 < 모듈 < 리포지토리
+#### 하위 디렉토리의 패키지 가져오기
 
-- 패키지(모듈) 검색 [https://pkg.go.dev/](https://pkg.go.dev/)
-- 참고: [초보자를 위한 Go 모듈 - 18가지 기초 정보](https://dev.to/zaracooper/18-essential-go-module-tidbits-for-a-newbie-4455)
+> `대문자`로 시작하는 함수는 외부에서 접근 가능 (public)
+> `소문자`로 시작하는 함수는 외부에서 접근 불가능 (private)
 
-### 1) [기본 패키지](https://pkg.go.dev/std)
+예를 들어, 디렉토리 구조가 다음과 같다고 할 때
 
-#### [fmt](https://pkg.go.dev/fmt@go1.19.3) : 포맷 출력
+- go.mod : module `example.com`
+- main.go : package `main`
+- (디렉토리) models
+  + book.go : package `models`
 
-- fmt.Printf, fmt.Print, fmt.Println
-- fmt.Sprintf
+models 디렉토리의 book.go 로부터 함수를 호출하고 싶다면
+
+- helloWorld() <== import 안됨 
+- HelloWorld() <== OK!
+
+- struct book type {} <== import 안됨 
+- struct Book type {} <== OK!
+
+> go-lint 는 export 가능 항목에 대해 주석을 달도록 강요한다. (주석은 '항목명'부터 시작해야 한다)
 
 ```go
-var s3 string
-s3 = fmt.Sprintf("%d %.3f %s\n", 1, 1.1, "Hello, world!")
-fmt.Print(s3)
-// 1 1.100 Hello, world!
+// models/book.go
+package models
+
+// Book can be referenced from outside
+type Book struct {
+  BookID   int    `json:"book_id"`
+  BookName string `json:"book_name"`
+}
+
+type book struct {
+  BookAuthor string `json:"book_author"`
+  BookPrice  int    `json:"book_price"`
+}
+
+// HelloWorld can be referenced from outside
+func HelloWorld() string {
+  return "Hello, world!"
+}
+
+func helloWorld() string {
+  return "hello, world?"
+}
 ```
 
-#### [io](https://pkg.go.dev/io) : 바이트/스트림 입출력
+```go
+// main.go
+package main
 
-- Copy, Pipe, ReadAll, ReadFull, WriteString
-- ByteReader, ByteWriter, ByteScanner
-- Closer
+import (
+  "fmt"
 
-#### [log, log/syslog](https://pkg.go.dev/log@go1.19.3) : 로그
+  // vscode 에서 formater 가 자동으로 import 해준다
+  // - 반대로, import 항목이 없으면 자동으로 삭제한다 (짜증!)
+  m "example.com/models"
+)
 
-- syslog.New() : 시스템 로그 생성, 설정
-  + log.New() : 사용자 로그 생성, 설정
-- log.Println : 로그 출력 
-- log.Panic : 심각한 로그 출력 
+func main() {
+  // NOTE: `대문자`로 시작하면 외부에서 접근 가능 (public)
+  //       `소문자`로 시작하면 외부에서 접근 불가능 (private)
+  // 
+  // => `book` 타입과 `helloWorld` 함수를 호출할 수 없다
 
-#### [os](https://pkg.go.dev/os@go1.19.3) : 터미널 환경
+  book := m.Book{BookID: 1, BookName: "Go"}
+  fmt.Println(book)
 
-- os.Args : 커맨드라인 파라미터 가져오기
-- os.Exit : 종료 
+  Book := new(m.Book)
+  fmt.Println(book == *Book)
 
-#### [strconv](https://pkg.go.dev/strconv@go1.19.3) : 문자열 타입 변환
+  fmt.Println(m.HelloWorld)  # "Hello, world!"
+}
+```
 
-- strconv.parseFloat(arg, 64) : float64 변환
-
-#### [strings](https://pkg.go.dev/strings@go1.19.3) : 문자열 조작, 비교, 찾기 등..
-
-- ToUpper/ToLower, TrimSpace
-- HasPrefix, Index, Count
-- Compare
-- Split
-
-#### [math, math/rand](https://pkg.go.dev/math@go1.19.3) : 수학 관련 패키지
-
-### 2) [Awesome Go 패키지](https://github.com/avelino/awesome-go) - 추천 목록
-
-- [Authentication and OAuth](https://github.com/avelino/awesome-go#authentication-and-oauth)
-- [Build Automation](https://github.com/avelino/awesome-go#build-automation)
-- [Command Line](https://github.com/avelino/awesome-go#command-line)
-- [Data Structures and Algorithms](https://github.com/avelino/awesome-go#data-structures-and-algorithms)
-- [Database](https://github.com/avelino/awesome-go#database)
-- [Database Drivers](https://github.com/avelino/awesome-go#database-drivers)
-- [Date and Time](https://github.com/avelino/awesome-go#date-and-time)
-- [Error Handling](https://github.com/avelino/awesome-go#error-handling)
-- [File Handling](https://github.com/avelino/awesome-go#file-handling)
-- [Functional](https://github.com/avelino/awesome-go#functional)
-- [Job Scheduler](https://github.com/avelino/awesome-go#job-scheduler)
-* [JSON](https://github.com/avelino/awesome-go#json)
-* [Logging](https://github.com/avelino/awesome-go#logging)
-* [Machine Learning](https://github.com/avelino/awesome-go#machine-learning)
-* [Messaging](https://github.com/avelino/awesome-go#messaging)
-- [Networking](https://github.com/avelino/awesome-go#networking)
-+ [HTTP Clients](https://github.com/avelino/awesome-go#http-clients)
-* [OpenGL](https://github.com/avelino/awesome-go#opengl)
-* [ORM](https://github.com/avelino/awesome-go#orm)
-* [Security](https://github.com/avelino/awesome-go#security)
-* [Serialization](https://github.com/avelino/awesome-go#serialization)
-* [Server Applications](https://github.com/avelino/awesome-go#server-applications)
-* [Stream Processing](https://github.com/avelino/awesome-go#stream-processing)
-* [Web Frameworks](https://github.com/avelino/awesome-go#middlewares)
-    * [Actual middlewares](https://github.com/avelino/awesome-go#actual-middlewares)
-    * [Libraries for creating HTTP middlewares](https://github.com/avelino/awesome-go#libraries-for-creating-http-middlewares)
-  * [Routers](https://github.com/avelino/awesome-go#routers)
-* [WebAssembly](https://github.com/avelino/awesome-go#webassembly)
-
-## 5. Go 프로그래밍 기법
+## 4. Go 프로그래밍 기법
 
 ### 1) 익명함수, 중첩함수, 클로저
 
@@ -475,7 +470,7 @@ currfn("고랭")
 // ==> 굳모닝, 고랭
 ```
 
-## 6. 참고문서
+## 5. 참고문서
 
 ### 1) 공식문서 - [튜토리얼](https://go.dev/doc/)
 
