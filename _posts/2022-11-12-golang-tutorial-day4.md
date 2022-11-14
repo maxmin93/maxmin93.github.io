@@ -1,5 +1,5 @@
 ---
-date: 2022-11-14 00:00:00 +0000
+date: 2022-11-12 00:00:00 +0000
 title: Go 언어 배우기 - 4일차 유틸리티 코드
 categories: ["golang"]
 tags: ["TIL", "tutorial", "유틸리티", "examples", "library"]

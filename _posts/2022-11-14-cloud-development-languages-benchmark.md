@@ -31,12 +31,12 @@ image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e25
 - AWS vs GCS 요청수 비교
   + Average number of requests per second under incremental load for 5 minutes
 
-![AWS vs GCS 요청수 비교](https://img.stackshare.io/stackups/lambda_vs_cloud_functions-requests-per-second.png){: width=540}
+![AWS vs GCS 요청수 비교](https://img.stackshare.io/stackups/lambda_vs_cloud_functions-requests-per-second.png){: width=440}
 
 - AWS vs GCS 응답시간 비교
   + Average response time under incremental load for 5 minutes
 
-![AWS vs GCS 응답시간 비교](https://s3-us-west-2.amazonaws.com/stackshare-imgix1/stackups/lambda_vs_cloud_functions-response_time.png){: width=540}
+![AWS vs GCS 응답시간 비교](https://s3-us-west-2.amazonaws.com/stackshare-imgix1/stackups/lambda_vs_cloud_functions-response_time.png){: width=440}
 
 ### 2) AWS SNS 와의 연계시 Lambda, API Gateway, ECS 간 성능 비교
 
@@ -73,7 +73,7 @@ image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e25
 - 그 외 대부분의 경우에는 AWS Lambda 를 사용하면 됨
   + 범용적이고, 개발과 배포가 빠르다
 
-## 2. AWS 내부(lambda) 에서 Go 언어와 다른 언어의 성능 비교
+## 2. AWS lambda 에서 Go 와 다른 언어의 성능 비교
 
 - 출처1 : [Fastest Runtime For AWS Lambda Functions](https://blog.thundra.io/fastest-runtime-for-aws-lambda-functions) - 2022년3월
 - 출처2 : [AWS Lambda 성능 조정 및 모범 사례(2022)](https://www.simform.com/blog/aws-lambda-performance/)
