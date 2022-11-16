@@ -3,7 +3,7 @@ date: 2022-11-15 00:00:00 +0000
 title: Go 언어 배우기 - 5일차 Go Fiber API
 categories: ["golang"]
 tags: ["TIL", "tutorial", "gofiber", "gorm", "boilerplate"]
-image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e257ca9af7ec/golang_icon.jpg"
+image: "https://gofiber.io/assets/images/embed.png"
 ---
 
 > 가장 빠르다는 Go-fiber 웹프레임워크를 이용하여 GORM 과 SQLite 로 간단한 REST API 를 만들어봅니다. (5일차)
@@ -109,7 +109,7 @@ func main() {
 }
 ```
 
-## 2. [Go-Fiber](https://docs.gofiber.io/) 웹서버
+## 3. [Go-Fiber](https://docs.gofiber.io/) 웹서버
 
 ### 1) [미들웨어](https://docs.gofiber.io/api/middleware)
 
@@ -232,7 +232,7 @@ func getQueryParams(c *fiber.Ctx) map[string]string {
   api.Delete("/dogs/:id<int>", db.RemoveDog)
 ```
 
-## 3. [GORM](https://gorm.io/docs/) with SQLite3
+## 4. [GORM](https://gorm.io/docs/) with SQLite3
 
 ### 1) 설정
 
@@ -518,7 +518,7 @@ Not Found
 14:54:32 | 404 |      0s |       127.0.0.1 | GET     | /api/dogs/4
 ```
 
-## 4. Others
+## 5. Others
 
 ### 1) 유틸리티 함수들
 
@@ -603,7 +603,7 @@ func (m MapT) Filter(keys []string) map[string]interface{} {
 - Gofiber 기동 시간이 엄청 빨라서 쾌적하게 작업했다.
 - Gofiber 리포지토리에 `v3-beta` 태그도 있다. 언제 나오려나.
 - GORM 쓰려면 nullable 은 사용 안하는게 정신건강에 좋을듯
-  + true / false 도 모두 code 값으로 변환하여 처리
+  + true / false 도 모두 code 값으로 변환하여 처리해야
 
 - 인터페이스 map 를 다루거나, filter/map/reduce 등 제너릭이 필요한 경우가 자주 발생하는데 관련 함수가 없어 무척 번거로웠다.
   + 정말 Python 이 좋은(편한) 언어로군
