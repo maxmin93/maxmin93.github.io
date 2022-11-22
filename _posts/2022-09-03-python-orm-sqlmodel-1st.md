@@ -2,12 +2,18 @@
 date: 2022-09-03 00:00:00 +0000
 title: python ORM - SQLModel - 1일차
 categories: ["python","orm"]
-tags: ["TIL", "pydantic", "sqlmodel", "sqlalchemy2", "tutorial"]
+tags: ["1st-day", "pydantic", "sqlmodel", "sqlalchemy", "tutorial"]
 image: "https://sqlmodel.tiangolo.com/img/logo-margin/logo-margin-vector.svg"
 ---
 
 > python ORM 으로 FastAPI 저자가 만든 SQLModel 에 대해 공부한 것을 정리합니다.
 {: .prompt-tip }
+
+- 1일차 [python ORM - SQLModel - 1일차](/posts/2022-09-03-python-orm-sqlmodel-1st/)
+- 2일차 [python ORM - SQLModel - 2일차](/posts/2022-09-04-python-orm-sqlmodel-2nd/)
+- 3일차 [python ORM - SQLModel - 3일차](/posts/2022-09-05-python-orm-sqlmodel-3rd/)
+- 4일차 [python ORM - SQLModel - 4일차](/posts/2022-09-08-python-orm-sqlmodel-4th/)
+- 5일차 [FastAPI + SQLModel + Postgres 프로젝트](/posts/2022-10-06-fastapi-sqlmodel-postgres-backend/)
 
 ## ORM 설명
 

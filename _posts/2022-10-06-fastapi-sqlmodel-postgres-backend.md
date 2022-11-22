@@ -1,13 +1,19 @@
 ---
 date: 2022-10-06 00:00:00 +0000
 title: FastAPI + SQLModel + Postgres 프로젝트
-categories: ["python","backend"]
-tags: ["프로젝트", "orm", "postgres", "tutorial", "docker", "sqlmodel", "fastapi"]
+categories: ["python","orm"]
+tags: ["5th-day", "orm", "postgres", "tutorial", "docker", "sqlmodel", "fastapi"]
 image: "https://github.com/maxmin93/fastapi-sqlmodel-heroes/blob/main/assets/img/06-fastapi-sqlmodel-pg14-docs-crunch.png?raw=true"
 ---
 
 > SQLModel 의 Hero Tutorial 을 FastAPI 와 Postgresql 로 구현한 프로젝트를 설명합니다. (Docker 포함)
 {: .prompt-tip }
+
+- 1일차 [python ORM - SQLModel - 1일차](/posts/2022-09-03-python-orm-sqlmodel-1st/)
+- 2일차 [python ORM - SQLModel - 2일차](/posts/2022-09-04-python-orm-sqlmodel-2nd/)
+- 3일차 [python ORM - SQLModel - 3일차](/posts/2022-09-05-python-orm-sqlmodel-3rd/)
+- 4일차 [python ORM - SQLModel - 4일차](/posts/2022-09-08-python-orm-sqlmodel-4th/)
+- 5일차 [FastAPI + SQLModel + Postgres 프로젝트](/posts/2022-10-06-fastapi-sqlmodel-postgres-backend/)
 
 ## 1. SQLModel 의 [Hero Tutorial](https://sqlmodel.tiangolo.com/tutorial/)
 

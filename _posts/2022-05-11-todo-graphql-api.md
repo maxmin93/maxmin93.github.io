@@ -1,8 +1,8 @@
 ---
 date: 2022-05-11 00:00:00 +0000
 title: "GraphQL 로 Todo API 만들기"
-categories: ["nodejs", "backend"]
-tags: ["nestjs", "typeorm", "todo", "sqlite", "graphql"]
+categories: ["nodejs", "nestjs"]
+tags: ["backend", "typeorm", "todo", "sqlite", "graphql"]
 ---
 
 > 입사지원 과제로 제출한 프로젝트입니다. 백엔드에 GraphQL 구현을 추가했습니다.

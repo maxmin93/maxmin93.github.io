@@ -2,7 +2,7 @@
 date: 2022-11-06 00:00:00 +0000
 title: Go 언어 배우기 - 1일차 개요, 특징
 categories: ["golang"]
-tags: ["TIL", "tutorial", "module", "import", "특징"]
+tags: ["tutorial", "module", "init", "1st-day"]
 image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e257ca9af7ec/golang_icon.jpg"
 ---
 

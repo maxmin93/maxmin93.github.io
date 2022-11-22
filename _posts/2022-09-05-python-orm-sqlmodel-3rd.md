@@ -2,12 +2,18 @@
 date: 2022-09-05 00:00:00 +0000
 title: python ORM - SQLModel - 3일차
 categories: ["python","orm"]
-tags: ["TIL", "2.0", "future", "sqlalchemy", "tutorial"]
+tags: ["3rd-day", "2.0", "future", "sqlalchemy", "tutorial"]
 image: "https://sqlmodel.tiangolo.com/img/logo-margin/logo-margin-vector.svg"
 ---
 
 > SQLAlchemy 1.4 의 Future(2.0) 스타일과 1.x 스타일의 Tutorial 을 살펴봅니다.
 {: .prompt-tip }
+
+- 1일차 [python ORM - SQLModel - 1일차](/posts/2022-09-03-python-orm-sqlmodel-1st/)
+- 2일차 [python ORM - SQLModel - 2일차](/posts/2022-09-04-python-orm-sqlmodel-2nd/)
+- 3일차 [python ORM - SQLModel - 3일차](/posts/2022-09-05-python-orm-sqlmodel-3rd/)
+- 4일차 [python ORM - SQLModel - 4일차](/posts/2022-09-08-python-orm-sqlmodel-4th/)
+- 5일차 [FastAPI + SQLModel + Postgres 프로젝트](/posts/2022-10-06-fastapi-sqlmodel-postgres-backend/)
 
 ## 1. SQLAlchemy 1.4 의 Future(2.0) 버전과 1.x 버전
 

@@ -2,7 +2,7 @@
 date: 2022-11-15 00:00:00 +0000
 title: Go 언어 배우기 - 5일차 Go Fiber API
 categories: ["golang"]
-tags: ["TIL", "tutorial", "gofiber", "gorm", "boilerplate"]
+tags: ["5th-day", "tutorial", "gofiber", "gorm", "boilerplate"]
 image: "https://gofiber.io/assets/images/embed.png"
 ---
 
@@ -212,8 +212,7 @@ func getQueryParams(c *fiber.Ctx) map[string]string {
 
 ### 3) Endpoints
 
-- PUT 은 전체를 업데이트하고, PATCH 는 부분 업데이트라지만
-  + 귀찮아서 둘 다 같은 (부분 업데이트) 함수에 연결했다 
+- PUT 은 필드 전체를 업데이트하고, PATCH 는 부분 업데이트를 한다.
 
 - 라우터의 Path 파라미터에 제약사항을 설정할 수 있다.
   + 제약사항에 위배되면 `404 Not Found` 로 처리됨

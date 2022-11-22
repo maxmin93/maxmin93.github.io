@@ -16,6 +16,11 @@ tags:
 > &#91;알림&#93; 본 연구는 **"2019 GCS 창업성장과제"** 의 지원으로 진행된 **"그래프 기술 기반 Graph AI 솔루션 연구개발"** 과제의 연구결과입니다. **AgensKG**의 모든 저작권은 [비트나인](https://bitnine.net/)에 있습니다.
 {: .prompt-warning }
 
+- 1부 [지식그래프란?](/posts/2022-01-27-knowledge-graph/)
+- 2부 [AgensKG 지식그래프 소개](/posts/2022-01-28-knowledge-graph-agenskg/)
+- 3부 [AgensKG 지식그래프 생성하기](/posts/2022-01-29-knowledge-graph-triple/)
+- 4부 [AgensKG 지식그래프를 이용한 질의응답](/posts/2022-01-30-knowledge-graph-qna/)
+
 ## 지식그래프 AgensKG
 
 ### 왜 그래프 기반 지식그래프인가?

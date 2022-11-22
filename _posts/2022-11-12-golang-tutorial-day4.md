@@ -2,7 +2,7 @@
 date: 2022-11-12 00:00:00 +0000
 title: Go 언어 배우기 - 4일차 유틸리티 코드
 categories: ["golang"]
-tags: ["TIL", "tutorial", "유틸리티", "examples", "library"]
+tags: ["4th-day", "tutorial", "유틸리티", "examples", "library"]
 image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e257ca9af7ec/golang_icon.jpg"
 ---
 
@@ -222,7 +222,7 @@ func StructToMap(val interface{}) map[string]interface{} {
 }
 ```
 
-### interface 슬라이스에서 특정 항목의 포함 여부 검사하기
+### 3) interface 슬라이스에서 특정 항목의 포함 여부 검사하기
 
 ```go
 func Contains(s []interface{}, e interface{}) bool {
@@ -235,7 +235,7 @@ func Contains(s []interface{}, e interface{}) bool {
 }
 ```
 
-### [interface 값을 문자열로 변환하기](https://yourbasic.org/golang/interface-to-string/)
+### 4) [interface 값을 문자열로 변환하기](https://yourbasic.org/golang/interface-to-string/)
 
 ```go
 var x interface{} = []int{1, 2, 3}
@@ -243,7 +243,7 @@ str := fmt.Sprintf("%v", x)
 fmt.Println(str) // "[1 2 3]"
 ```
 
-### 문자열의 이메일 형식 검사 (정규식)
+### 5) 문자열의 이메일 형식 검사 (정규식)
 
 ```go
 func CheckEmail(email interface{}) bool {
@@ -252,7 +252,7 @@ func CheckEmail(email interface{}) bool {
 }
 ```
 
-### [interface 에서 특정 값만 추출하기](https://luci7.medium.com/golang-extract-value-from-interfaces-without-specifying-the-struct-type-ffb7e23223a7)
+### 6) [interface 에서 특정 값만 추출하기](https://luci7.medium.com/golang-extract-value-from-interfaces-without-specifying-the-struct-type-ffb7e23223a7)
 
 ```go
 import (
@@ -279,7 +279,7 @@ func main() {
 }
 ```
 
-### [타입변환 정리](https://levelup.gitconnected.com/golang-type-conversion-summary-dc9e36842d25)
+### 7) [타입변환 정리](https://levelup.gitconnected.com/golang-type-conversion-summary-dc9e36842d25)
 
 - Assertion.
 - Forced type conversion.
