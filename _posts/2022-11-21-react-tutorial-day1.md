@@ -11,10 +11,7 @@ hidden: true
 {: .prompt-tip }
 
 - 1일차 [React 공부하기 - 1일차](/posts/2022-11-21-react-tutorial-day1/)
-- 2일차 [React 공부하기 - 2일차](/posts/2022-11-22-react-tutorial-day2/)
-- 3일차 [React 공부하기 - 3일차](/posts/2022-11-23-react-tutorial-day3/)
-- 4일차 [React 공부하기 - 4일차](/posts/2022-11-24-react-tutorial-day4/)
-- 5일차 [React 공부하기 - 5일차](/posts/2022-11-25-react-tutorial-day5/)
+
 
 ## 1. [React 공식 문서](https://reactjs.org/docs/getting-started.html)
 
