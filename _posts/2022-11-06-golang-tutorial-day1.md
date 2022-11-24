@@ -9,6 +9,12 @@ image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e25
 > Go 언어의 기본적인 내용과 다른 언어와 대비해 특징적인 기능 위주로 요약해본다. (1일차)
 {: .prompt-tip }
 
+- [Go 언어 배우기 - 1일차 개요, 특징](/posts/2022-11-06-golang-tutorial-day1/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Go 언어 배우기 - 2일차 문법, 고루틴](/posts/2022-11-07-golang-tutorial-day2/)
+- [Go 언어 배우기 - 3일차 GIN, GORM](/posts/2022-11-08-golang-tutorial-day3/)
+- [Go 언어 배우기 - 4일차 유틸리티 코드](/posts/2022-11-12-golang-tutorial-day4/)
+- [Go 언어 배우기 - 5일차 Go Fiber API](/posts/2022-11-15-golang-tutorial-day5/)
+
 ## 1. Go 언어 개요
 
 일단 첫 소감은 C 언어 사용자라면 쉽게 접근할 수 있지 않나 싶다. C 언어를 대체하려고 만든 것인지, 특히 포인터와 레퍼런스 기호가 나오고 struct 타입이 반갑다. 

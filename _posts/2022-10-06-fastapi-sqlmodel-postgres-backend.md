@@ -13,7 +13,7 @@ image: "https://github.com/maxmin93/fastapi-sqlmodel-heroes/blob/main/assets/img
 - 2일차 [python ORM - SQLModel - 2일차](/posts/2022-09-04-python-orm-sqlmodel-2nd/)
 - 3일차 [python ORM - SQLModel - 3일차](/posts/2022-09-05-python-orm-sqlmodel-3rd/)
 - 4일차 [python ORM - SQLModel - 4일차](/posts/2022-09-08-python-orm-sqlmodel-4th/)
-- 5일차 [FastAPI + SQLModel + Postgres 프로젝트](/posts/2022-10-06-fastapi-sqlmodel-postgres-backend/)
+- 5일차 [FastAPI + SQLModel + Postgres 프로젝트](/posts/2022-10-06-fastapi-sqlmodel-postgres-backend/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
 
 ## 1. SQLModel 의 [Hero Tutorial](https://sqlmodel.tiangolo.com/tutorial/)
 
