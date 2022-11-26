@@ -208,6 +208,16 @@ React 는 단지 View 를 전문적으로 다루는 라이브러리임을 잊지
 
 ![TicTacToe ver2 Capture](https://github.com/maxmin93/react-square-board-game/raw/main/assets/react-tictactoe-ver2.png){: width="600"}
 
+#### 버전3) History 이용해 이전 스텝으로 이동하는 기능 추가
+
+스텝 버튼 생성을 위한 문자열은 컴포넌트 내에서 생성해야 함
+
+- Game 클래스에서 label 문자열을 만들어 태그를 생성하는데 실패
+- 렌더링 되는 대상은 컴포넌트에서 생성되도록 하는게 옳다
+  + key 를 부여해도 `li` 가 최종 label 하나만 생성됨
+
+![TicTacToe ver3 Capture](https://github.com/maxmin93/react-square-board-game/raw/main/assets/react-tictactoe-ver3-signed.png){: width="600"}
+
 ### 4) 핵심 포인트
 
 #### [React Without JSX](https://reactjs.org/docs/react-without-jsx.html)
@@ -246,6 +256,8 @@ root.render(
 - DOM 계층이 깊어지거나 복잡해지면 데이터와 로직 관리가 어려울듯
   + 상태관리 라이브러리가 필수! 
   + [Recoil](https://recoiljs.org/docs/introduction/getting-started) 을 공부해보자!
+
+- 아직도 밝히지 못한 신비로움이 있다. 분발하자.
 
 &nbsp; <br />
 &nbsp; <br />
