@@ -1,8 +1,8 @@
 ---
 date: 2022-11-29 00:00:00 +0000
 title: 프론트엔드 CSS 라이브러리 비교
-categories: ["frontend","css"]
-tags: ["library","react","material","picocss","tailwindcss"]
+categories: ["software","css"]
+tags: ["style","react","material","picocss","tailwindcss"]
 image: "https://stackdiary.com/wp-content/uploads/2022/03/average-bundle-size-for-CSS-frameworks.png"
 ---
 
@@ -240,6 +240,9 @@ const App: React.FC = () => (
 
 ### 5) TailwindCSS
 
+- [Tailwind UI](https://tailwindui.com/) 도 있지만, 유료이다. 
+- 크기라던지 속성을 부여하는 정도는 건드려볼 수 있지만, 그 이상은 무리.
+
 > Grid system
 
 ```jsx
@@ -273,7 +276,66 @@ const App: React.FC = () => (
 </div>
 ```
 
-### 6) [Material UI (MUI)](https://mui.com/material-ui/react-grid2/#fluid-grids)
+### 6) [Material Tailwind](https://www.material-tailwind.com/docs/react/card)
+
+Tailwind 를 이용한 UI 컴포넌트 라이브러리들이 우후죽순 생겨나고 있다.   
+TailwindCSS 의 npm trend 순위가 높아진 것은 이들을 다 합쳐기 때문인듯.
+
+- 만들어진 [페이지 섹션](https://www.material-tailwind.com/blocks#pricing)들은 모두 유료이다.
+
+> Grid system, Card
+
+```jsx
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+} from "@material-tailwind/react";
+ 
+export default function Example() {
+  return (
+    <Card className="w-96">
+      <CardHeader
+        variant="gradient"
+        color="blue"
+        className="mb-4 grid h-28 place-items-center"
+      >
+        <Typography variant="h3" color="white">
+          Sign In
+        </Typography>
+      </CardHeader>
+      <CardBody className="flex flex-col gap-4">
+        <Input label="Email" size="lg" />
+        <Input label="Password" size="lg" />
+        <div className="-ml-2.5">
+          <Checkbox label="Remember Me" />
+        </div>
+      </CardBody>
+      <CardFooter className="pt-0">
+        <Button variant="gradient" fullWidth>
+          Sign In
+        </Button>
+        <Typography variant="small" className="mt-6 flex justify-center">
+          Don't have an account?
+          <Typography
+            as="a"
+            href="#signup"
+            variant="small"
+            color="blue"
+            className="ml-1 font-bold"
+          >
+            Sign up
+          </Typography>
+        </Typography>
+      </CardFooter>
+    </Card>
+  );
+}
+```
+
+### 7) [Material UI (MUI)](https://mui.com/material-ui/react-grid2/#fluid-grids)
 
 매터리얼 느낌도 나지만, 서드파티와 섞어서 쓸 수도 있어서 혼종이라는 느낌이 든다. 스타일 일관성이 깨진 느낌이랄까. 기능이라던지 지원하는 컴포넌트들은 다양하다.
 
@@ -322,7 +384,7 @@ export default function BasicCard() {
 }
 ```
 
-### 7) [React Bootstrap](https://react-bootstrap.github.io/components/buttons/)
+### 8) [React Bootstrap](https://react-bootstrap.github.io/components/buttons/)
 
 많이 단순화 시켰다. 그리고 딱봐도 Bootstrap 이라는 느낌.
 
@@ -380,13 +442,13 @@ function BasicExample() {
 }        
 ```
 
-### 8) [Angular Material](https://material.angular.io/components/card/examples) - Angular (비교용)
+### 9) [Angular Material](https://material.angular.io/components/card/examples) - Angular (비교용)
 
 Admin, 운영툴 만드는 정도의 디자인이다.
 
 > Grid system
 
-```jsx
+```html
 <mat-grid-list cols="4" rowHeight="100px">
   <mat-grid-tile
       *ngFor="let tile of tiles"
@@ -400,7 +462,7 @@ Admin, 운영툴 만드는 정도의 디자인이다.
 
 > Card
 
-```jsx
+```html
 <mat-card>
   <mat-card-header>
     <mat-card-title>Actions Buttons</mat-card-title>
@@ -412,6 +474,14 @@ Admin, 운영툴 만드는 정도의 디자인이다.
   </mat-card-actions>
 </mat-card>
 ```
+
+## 4. 참고할만한 페이지 템플릿들 (유료)
+
+### [Volt React Dashboard](https://themesberg.com/product/dashboard/volt-react)
+
+- [깃허브/volt-react-dashboard](https://github.com/themesberg/volt-react-dashboard) : 라이센스가 걸려있는듯. 실행안됨
+- 템플릿 개발사 Themesberg 는 [flowbite](https://github.com/themesberg/flowbite) 도 만들었다.
+  + Tailwind 템플릿도 다수 있음. 어쨌든 모두 유료
 
 ## 9. Summary
 
