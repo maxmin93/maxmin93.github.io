@@ -488,7 +488,7 @@ http {
 
 ### 3) Server Name If 처리문
 
-- if 블럭보다 301 redirect 를 사용하자
+- rewrite 함수보다 301 redirect 를 사용하자
 
 > BAD
 
@@ -547,9 +547,10 @@ server {
 
 ## 9. Summary
 
-- nginx 구버전 설정들이 작동 안된다. 아뭏튼 최신 버전 1.22 에서는 이렇다. 
-  - events 블록 필요
-  - server 블록 바깥에 http 블록 필요
+- Docker 돌아가는거 보면 굳이 events, http 블럭이 없어도 되던데
+  + 아뭏튼 ubuntu 설치 nginx 버전 1.22 에서는 이렇다. 
+    + events 블록 필요
+    + server 블록 바깥에 http 블록 필요
 
 &nbsp; <br />
 &nbsp; <br />

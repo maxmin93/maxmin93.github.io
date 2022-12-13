@@ -31,7 +31,7 @@ $ bundle add jekyll
 # 초기 bundle 관련 파일 제거
 $ bundle exec jekyll new --force --skip-bundle .
 
-# 나머지 의존 패키지들 설치
+# 나머지 의존 패키지들 설치!!
 $ bundle install
 
 # (기본 템플릿) 웹사이트 실행 port=4000
