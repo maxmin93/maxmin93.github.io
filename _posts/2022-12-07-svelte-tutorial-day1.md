@@ -411,14 +411,63 @@ export const count = writable(0);
 
 ### 1) Getting started
 
+프로젝트 생성시, 옵션 선택에서 typescript 를 선택하면 된다.
+
 ```bash
 $ npm create svelte@latest my-ts-app
+# ==> Add type checking with TypeScript? › Yes, using TypeScript syntax
 $ cd my-ts-app
 $ npm install
 $ npm run dev -- --open
 ```
 
-### 1) TS 로 작성된 svelte
+`npm create vite@latest my-ts-project -- --template svelte-ts`
+
+- 이런 방식으로 할 수도 있지만, svelte 쪽이 더 최신 버전을 사용한다.
+- 그리고 아래 두 파일에 설정 추가가 필요하다.
+  + vite.config.js : vite 실행시 옵션
+  + tsconfig.json : 타입스크립트 컴파일 옵션
+
+#### vite.config.js
+
+import 의 경로를 좀 더 명확히 하기 위해 `$root` 디렉토리를 정의한다.
+
+```js
+const config = {
+  resolve: {
+    alias: {
+      $root: path.resolve('./src'),
+    },
+  },
+}
+```
+
+#### tsconfig.json
+
+별도의 ts 파일 등을 작성했을 때, import 관련하여 vscode 의 경고 메시지가 뜨는데 이를 방지를 위해 다음과 같은 설정이 필요하다.
+
+- 컴파일 범위와 컴파일에 포함되는 파일 타입을 명시
+
+```js
+{
+  "compilerOptions": {
+    // ...
+    "baseUrl": ".",
+    "paths": {
+      "$root/*": ["./src/*"]
+    }
+  },
+  "include": [
+    "src/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.js",
+    "src/**/*.svelte"
+  ]
+}
+```
+
+
+### 2) TS 로 작성된 svelte
 
 > lang=ts 를 명시한 script 태그 안에 typescript 로 작성한다.
 
@@ -528,6 +577,21 @@ type BookListItemProps = {
   index: number,
   item: Item
 }
+```
+
+### 3) 배포
+
+- Github 로부터 [Vercel 클라우드](https://vercel.com/)에 직접 배포 (CI/CD)
+  + [svelte-ts-todo-app.vercel.app](https://svelte-ts-todo-app.vercel.app/)
+
+- 또는 vite 를 직접 실행하여 nginx 에서 서브 디렉토리에 연결
+
+```bash
+$ npm run preview
+$ npx vite preview --host 0.0.0.0
+```
+
+```conf
 ```
 
 ## 3. 장단점
