@@ -486,7 +486,7 @@ http {
 }
 ```
 
-### 3) Server Name If 처리문
+### 3) redirect 처리문
 
 - rewrite 함수보다 301 redirect 를 사용하자
 
@@ -548,6 +548,7 @@ server {
 ## 9. Summary
 
 - Docker 돌아가는거 보면 굳이 events, http 블럭이 없어도 되던데
+  + 최상단에 옵션이 설정되면서 http > server 의 계층이 생성된듯 
   + 아뭏튼 ubuntu 설치 nginx 버전 1.22 에서는 이렇다. 
     + events 블록 필요
     + server 블록 바깥에 http 블록 필요

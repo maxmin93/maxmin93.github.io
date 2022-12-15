@@ -10,6 +10,7 @@ image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 {: .prompt-tip }
 
 - [Svelte 공부하기 - 1일차](/posts/2022-12-07-svelte-tutorial-day1/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Svelte 공부하기 - 2일차](/posts/2022-12-14-svelte-tutorial-day2/)
 
 ## 1. [Svelte 공식 문서](https://svelte.dev/docs)
 
@@ -591,12 +592,56 @@ $ npm run preview
 $ npx vite preview --host 0.0.0.0
 ```
 
+#### nginx 의 sub-path 연결하기 (base 설정)
+
+App 을 sub-path 에 매칭하기 위해서는 app 의 base path 설정이 필요하다.
+
+- `localhost:4173/app/todo` 에서 실행되는지 확인하고
+  + base path 설정 안하면, 기본 '/'를 사용하기 때문에 css, js 파일 등의 assets 로딩이 실패한다.
+- nginx 의 /app/todo 에 Svelte App 연결
+
+참고 [Dev server does not apply base path correctly #2958](https://github.com/sveltejs/kit/issues/2958#issuecomment-993442115)
+
+> svelte.config.js
+
+```js
+const config = {
+  kit: {
+    adapter: adapter(),
+    paths: {
+      base: '/app/todo'
+    }
+  }
+};
+```
+
+> nginx.conf
+
 ```conf
+server {
+  listen       80;
+  listen       [::]:80;
+  server_name  test.jeju.onl;
+
+  location /app/todo {
+    proxy_pass http://127.0.0.1:4173/app/todo;
+  }
+}
 ```
 
 ## 3. 장단점
 
-참고 : [Svelte vs Vue: 상위 프런트 엔드 프레임워크 비교 (2022.9)](https://procoders.tech/blog/svelte-vs-vue-frameworks-comparison/)
+참고
+
+- [Svelte vs Vue: 상위 프런트 엔드 프레임워크 비교 (2022.9)](https://procoders.tech/blog/svelte-vs-vue-frameworks-comparison/)
+- [Svelte.js Guide: The Framework to Write Faster JavaScript](https://snipcart.com/blog/svelte-js-framework-tutorial)
+
+|     | Svelte | React | Vue |
+| :-- | :--    | :--   | :-- |
+| App Performance | Faster than React and Vue | Slower than Svelte and slightly slower than Vue | Slower than Svelte but slightly faster than React |
+| Architecture | JavaScript compiler | DOM | Virtual DOM |
+| Average app size | 15 kb | 193 kb | 71 kb |
+| Learning curve | Easy to learn | Relatively easy to learn | Relatively easy to learn |
 
 > NPM Trends : React vs Angular vs Svelte vs Vue
 

@@ -1,0 +1,155 @@
+---
+date: 2022-12-14 00:00:00 +0000
+title: Svelte 공부하기 - 2일차
+categories: ["nodejs","svelte"]
+tags: ["frontend","tutorial","2nd-day","styles"]
+image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
+---
+
+> 프론트엔드 프레임워크인 SvelteKit 에 대해 공부한다. css framework 들을 적용하고 레이아웃을 만들어보자. (2일차)
+{: .prompt-tip }
+
+- [Svelte 공부하기 - 1일차](/posts/2022-12-07-svelte-tutorial-day1/)
+- [Svelte 공부하기 - 2일차](/posts/2022-12-14-svelte-tutorial-day2/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+
+## 1. Svelte 에 적용할 CSS Frameworks
+
+참고 [UI Library made with Svelte](https://madewithsvelte.com/ui-library)
+
+- Svelte Headless UI : 더이상 업데이트가 안됨 => TailwindUI(유료)
+- Svelte Material UI : 스타일이 구리다
+- Carbon Components Svelte : CSS 설정이 어렵다?
+- daisyUI : 이쁘고 떡상 가능성이 있다. (Svelte 전용 없음. 개발 필요)
+- [Skeleton](https://www.skeleton.dev/) : 이쁘다. 그런데 테마 색대비가 조금 이상하다.
+- Attractions : 베스트. SCSS 사용한다는게 단점 (버려야함)
+- [AgnosticUI](https://www.agnosticui.com/) : 최애 라이브러리 중에 하나 (모든 프레임워크 지원)
+
+### 1) [Pico.CSS](https://picocss.com/)
+
+참고 [Why Pico Is My Favorite CSS Framework For Svelte](https://www.youtube.com/watch?v=-n84EMKIXQM)
+
+### 2) [daisyUI](https://daisyui.com/) - Tailwind CSS
+
+### 3) [Skeleton](https://www.skeleton.dev/) - Tailwind CSS
+
+### 4) [AgnosticUI](https://www.agnosticui.com/)
+
+## 2. SvelteKit with Pico.CSS
+
+Pico 기본 테마로 root 레이아웃을 만들어보자.
+
+![svelte-pico-layout-root](https://github.com/maxmin93/svelte-pico-tutorial/raw/main/static/svelte-pico-layout-crunch.png){: width="600"}
+
+### 1) $src/routes/+layout.svelte
+
+특별히 레이아웃을 생성하지 않으면 비어있는 layout 인 `<slot />`만 적용된다.
+
+- `<slot />`에는 `+page.svelte`의 내용이 들어간다.
+
+```svelte
+<script>
+  import '@picocss/pico';
+</script>
+
+<div id="page">
+  <nav class="center">
+    <!-- svelte-ignore a11y-missing-attribute -->
+    <a>My Site</a>
+  </nav>
+
+  <main class="center">
+    <slot />
+  </main>
+
+  <footer class="center">© 토니네-제주온라인 2022</footer>
+</div>
+
+<style>
+  :global(html) {
+    overflow-y: scroll;
+  }
+
+  #page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    gap: 5vw;
+  }
+
+  .center {
+    padding-left: max(1rem, calc(50vw - 350px));
+    padding-right: max(1rem, calc(50vw - 350px));
+  }
+
+  nav,
+  footer {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.1px;
+  }
+
+  nav {
+    background: rgba(0, 0, 0, 0.4);
+    font-weight: 500;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  footer {
+    text-align: center;
+    padding: 3rem 0;
+    color: #777;
+    margin-top: auto;
+  }
+</style>
+```
+
+> vite:import-analysis 의 imports deprecated 경고 메시지 없애기
+
+- `import '@picocss/pico';` 방식으로 변경
+
+```text
+import pico from "@picocss/pico";
+5  |  import { base } from "$app/paths";
+6  |
+Default and named imports from CSS files are deprecated.
+Use the ?inline query instead.
+For example: import pico from "@picocss/pico?inline"
+  Plugin: vite:import-analysis
+```
+
+### 2) $src/routes/about/+layout.svelte
+
+레이아웃은 계층적으로 적용된다.
+
+- src
+  - routes
+    - +layout.svelte : 메인 레이아웃
+    - +page.svelte : 메인 페이지
+    - about
+      - +layout.svelte : about 레이아웃
+      - +page.svelte : about 페이지
+
+```svelte
+<h2>This is Layout of About</h2>
+
+<slot />
+```
+
+About 페이지가 추가된 화면
+
+![svelte-pico-layout-about](https://github.com/maxmin93/svelte-pico-tutorial/raw/main/static/svelte-pico-layout-about-crunch.png){: width="600"}
+
+
+## 9. Summary
+
+- [Sveltekit 1.0 출시 - 2022년12월]()
+
+- `a11y` 란? [웹접근성(accessibility)](https://studio-jt.co.kr/a11y-level-up-%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1-%EB%A0%88%EB%B2%A8%EC%97%85/) 을 가리키는 축약어
+  + 테마의 색대비 문제도 a11y 항목에 해당한다 (불편함도 접근성 문제)
+
+&nbsp; <br />
+&nbsp; <br />
+
+> **끝!** &nbsp; 읽어주셔서 감사합니다.
+{: .prompt-info }
