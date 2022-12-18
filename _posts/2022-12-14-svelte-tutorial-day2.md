@@ -12,31 +12,33 @@ image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 - [Svelte 공부하기 - 1일차](/posts/2022-12-07-svelte-tutorial-day1/)
 - [Svelte 공부하기 - 2일차](/posts/2022-12-14-svelte-tutorial-day2/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
 
-## 1. Svelte 에 적용할 CSS Frameworks
+## 1. SvelteKit 이란?
+
+### 1) Svelte 를 이용한 SSR 프레임워크
+
+- [Sveltekit 1.0 출시 - 2022년12월](https://svelte.dev/blog/announcing-sveltekit-1.0)
+  + 이전에 [Sapper](https://sapper.svelte.dev/docs/) 이란 이름으로 개발되던 프로젝트를 이전했음
+
+- Vercel 사의 Vite 와 Svelte 를 통합하여 SSR 과 CSR 이 모두 가능
+- Svelte 를 사용하기 때문에, Nextjs 보다 성능과 용량이 최적화됨
+
+### 2) SvelteKit 에 적용할 CSS Frameworks
 
 참고 [UI Library made with Svelte](https://madewithsvelte.com/ui-library)
 
-- Svelte Headless UI : 더이상 업데이트가 안됨 => TailwindUI(유료)
+- [Svelte Headless UI](https://svelte-headlessui.goss.io/docs) : 더이상 업데이트가 안됨 => TailwindUI(유료)
 - Svelte Material UI : 스타일이 구리다
 - Carbon Components Svelte : CSS 설정이 어렵다?
-- daisyUI : 이쁘고 떡상 가능성이 있다. (Svelte 전용 없음. 개발 필요)
+- [daisyUI](https://daisyui.com/) : 이쁘고 떡상 가능성이 있다. 순수 CSS (컴포넌트 아님)
 - [Skeleton](https://www.skeleton.dev/) : 이쁘다. 그런데 테마 색대비가 조금 이상하다.
 - Attractions : 베스트. SCSS 사용한다는게 단점 (버려야함)
 - [AgnosticUI](https://www.agnosticui.com/) : 최애 라이브러리 중에 하나 (모든 프레임워크 지원)
 
-### 1) [Pico.CSS](https://picocss.com/)
-
-참고 [Why Pico Is My Favorite CSS Framework For Svelte](https://www.youtube.com/watch?v=-n84EMKIXQM)
-
-### 2) [daisyUI](https://daisyui.com/) - Tailwind CSS
-
-### 3) [Skeleton](https://www.skeleton.dev/) - Tailwind CSS
-
-### 4) [AgnosticUI](https://www.agnosticui.com/)
-
 ## 2. SvelteKit with Pico.CSS
 
 Pico 기본 테마로 root 레이아웃을 만들어보자.
+
+참고 [Why Pico Is My Favorite CSS Framework For Svelte](https://www.youtube.com/watch?v=-n84EMKIXQM)
 
 ![svelte-pico-layout-root](https://github.com/maxmin93/svelte-pico-tutorial/raw/main/static/svelte-pico-layout-crunch.png){: width="600"}
 
@@ -46,7 +48,7 @@ Pico 기본 테마로 root 레이아웃을 만들어보자.
 
 - `<slot />`에는 `+page.svelte`의 내용이 들어간다.
 
-```svelte
+```vue
 <script>
   import '@picocss/pico';
 </script>
@@ -130,7 +132,7 @@ For example: import pico from "@picocss/pico?inline"
       - +layout.svelte : about 레이아웃
       - +page.svelte : about 페이지
 
-```svelte
+```html
 <h2>This is Layout of About</h2>
 
 <slot />
@@ -140,11 +142,171 @@ About 페이지가 추가된 화면
 
 ![svelte-pico-layout-about](https://github.com/maxmin93/svelte-pico-tutorial/raw/main/static/svelte-pico-layout-about-crunch.png){: width="600"}
 
+## 3. SvelteKit with Skeleton
+
+### 1) 프로젝트 생성 및 설정
+
+#### 권장: create skeleton-app
+
+```bash
+pnpm create skeleton-app sklt-app
+cd sklt-app
+pnpm vite dev -- --open
+```
+
+#### 또는 create svelte 이후 setup skeleton
+
+> 작업 사항이 적지 않다.
+
+1. 생성 : sveltekit project
+2. 설치 : Skeleton & Tailwind CSS
+3. 설정 : tailwind,
+4. 수정 : app.postcss, app.html
+
+> 설치
+
+```bash
+# create-svelte
+pnpm create svelte svltk-jwt-auth
+# => Typescript 선택
+
+# install Skeleton CSS
+pnpm install -D @skeletonlabs/skeleton
+# setup preprocess, PostCSS, TailwindCSS
+pnpx svelte-add@latest tailwindcss
+# install dependencies
+pnpm install
+
+# 추가 모듈 : forms, typography, line-clamp
+pnpm install -D @tailwindcss/forms @tailwindcss/typography
+pnpm install -D @tailwindcss/line-clamp
+```
+
+> 설정
+
+4-1. tailwind.config.cjs 설정
+
+- darkMode : html 태그 속성 지정
+- content : skeleton 포함
+- plugin : tailwind, skeleton theme
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: "class",
+  content: [
+    "./src/**/*.{html,js,svelte,ts}",
+    require("path").join(
+      require.resolve("@skeletonlabs/skeleton"),
+      "../**/*.{html,js,svelte,ts}"
+    ),
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/typography"),
+    require("@skeletonlabs/skeleton/tailwind/theme.cjs"),
+  ],
+};
+```
+
+4-2. `src/app.postcss` 수정 (tailwind 임포트 제거)
+
+```scss
+/*
+// tainwind 임포트 라인들을 제거해야 한다!
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*/
+
+html,
+body {
+  @apply h-full overflow-hidden;
+}
+```
+
+4-3. `src/app.html` 설정
+
+- html 태그 : 모드 class="dark"
+- body 태그 : 테마 data-theme="skeleton"
+
+```html
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <!-- ... -->
+  <body data-theme="skeleton">
+    <div style="display: contents" class="h-full overflow-hidden">
+      %sveltekit.body%
+    </div>
+  </body>
+</html>
+```
+
+4-4. `src/routes/+layout.svelte` 수정
+
+- AppShell : 애플리케이션 레이아웃
+- AppBar : AppShell 의 상단 메뉴바
+  - lead : 레이아웃의 왼쪽
+  - trail : 레이아웃의 오른쪽
+
+```vue
+<script>
+import "@skeletonlabs/skeleton/themes/theme-skeleton.css";
+import "@skeletonlabs/skeleton/styles/all.css";
+import "../app.postcss";
+import { AppShell, AppBar } from "@skeletonlabs/skeleton";
+</script>
+
+<!-- App Shell -->
+<AppShell slotSidebarLeft="bg-surface-500/5 w-56 p-4">
+  <svelte:fragment slot="header">
+    <!-- App Bar -->
+    <AppBar>
+      <svelte:fragment slot="lead">
+        <strong class="text-xl uppercase">Skeleton</strong>
+      </svelte:fragment>
+      <svelte:fragment slot="trail">
+        <a class="btn btn-sm btn-ghost-surface" href="https://discord.gg/EXqV7W8MtY" target="_blank" rel="noreferrer">Discord</a>
+        <a class="btn btn-sm btn-ghost-surface" href="https://twitter.com/SkeletonUI" target="_blank" rel="noreferrer">Twitter</a>
+        <a class="btn btn-sm btn-ghost-surface" href="https://github.com/skeletonlabs/skeleton" target="_blank" rel="noreferrer">GitHub</a>
+      </svelte:fragment>
+    </AppBar>
+  </svelte:fragment>
+
+  <!-- Page Route Content -->
+  <slot />
+
+</AppShell>
+```
+
+### 2) dev 실행
+
+```bash
+# dev 실행 (브라우저 오픈)
+pnpx vite dev -- --open
+```
+
+![14-svelte-skeleton-layout](/2022/12/14-svelte-skeleton-layout.png){: width="600"}
+
+#### Issue: [New Vite requirements gives warning when building "for the first time"](https://github.com/sveltejs/kit/issues/5390#issuecomment-1176480653)
+
+첫 실행시 다음과 같은 warning 메시지 발생 => 무시 (두번째부터는 안남옴)
+
+```bash
+$ pnpm vite dev -- --open
+▲ [WARNING] Cannot find base config file "./.svelte-kit/tsconfig.json" [tsconfig.json]
+
+    tsconfig.json:2:12:
+      2 │   "extends": "./.svelte-kit/tsconfig.json",
+        ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```
 
 ## 9. Summary
 
-- [Sveltekit 1.0 출시 - 2022년12월]()
-
+- 처음에는 어렵겠지만 Skeleton 을 써보자. 무엇보다 이쁘다.
 - `a11y` 란? [웹접근성(accessibility)](https://studio-jt.co.kr/a11y-level-up-%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1-%EB%A0%88%EB%B2%A8%EC%97%85/) 을 가리키는 축약어
   + 테마의 색대비 문제도 a11y 항목에 해당한다 (불편함도 접근성 문제)
 
