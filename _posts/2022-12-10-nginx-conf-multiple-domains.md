@@ -1,6 +1,6 @@
 ---
 date: 2022-12-10 00:00:00 +0000
-title: NGINX 멀티 도메인 설정
+title: Nginx 도메인 + SSL + Node App 설정
 categories: ["devops","network"]
 tags: ["nginx","proxy","domain","ssl","certbot"]
 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtltoIcEP5lsu65rqH8t7E7BR8Ygqh06l8DTGQ3nOxta8ExZAfRDyvmYiXblZ-kbnTQhw"
@@ -17,7 +17,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtltoIcEP5lsu65rqH
 
 > nginx version: nginx/1.22.0
 
-```bash
+```shell
 $ nginx -version
 nginx version: nginx/1.22.0
 
@@ -74,10 +74,11 @@ http {
   }
 }
 ```
+{: file="nginx.conf"}
 
 #### nginx 설정 확인 (테스트 옵션)
 
-```bash
+```shell
 $ sudo nginx -t
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
@@ -87,7 +88,7 @@ nginx: configuration file /etc/nginx/nginx.conf test is successful
 
 기본으로 `/usr/share/nginx/html` 디렉토리가 web root 위치로 잡혀 있는데, 사용하면 안된다. 왜냐하면 upgrade 되면서 html 파일들이 변경되어 버리기 때문이다.
 
-```bash
+```shell
 $ sudo mkdir -p /var/www/html
 $ sudo cp index.html /var/www/html
 ```
@@ -96,7 +97,7 @@ $ sudo cp index.html /var/www/html
 
 dry-run 으로 테스트한 후, dry-run 없이 실적용
 
-```bash
+```shell
 $ sudo systemctl stop nginx
 $ sudo certbot certonly -d jeju.onl -d www.jeju.onl --dry-run
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
@@ -129,7 +130,7 @@ $ sudo systemctl status nginx
 
 인증 기한이 3개월 밖에 안되기 때문에, 재갱신 작업을 매월 수행해야 함
 
-```bash
+```shell
 $ sudo systemctl stop nginx
 $ sudo certbot certonly --force-renew --standalone -d demo.jeju.onl
 $ sudo systemctl start nginx
@@ -246,7 +247,7 @@ http {
 
 - 리다이렉션 먼저 설정한다고 www.jeju.onl 에 대한 443 포트 server 규칙이 먼저 명시되면 이와 같은 오류 메시지가 나옴
 
-```bash
+```shell
 $ sudo nginx -t
 nginx: [emerg] no "ssl_certificate" is defined for the "listen ... ssl" directive in /etc/nginx/nginx.conf:46
 nginx: configuration file /etc/nginx/nginx.conf test failed

@@ -4,7 +4,8 @@ date: 2021-01-02 00:00:00 +0000
 categories: ["python","book"]
 tags: ["effective-python"]
 image:
-  src: https://effectivepython.com/images/cover_2ed.jpg
+  path: https://effectivepython.com/images/cover_2ed.jpg
+  width: 300
 ---
 
 > Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.
@@ -17,7 +18,7 @@ image:
 :bangbang: &nbsp; 2020년 1월1일부터 파이썬2는 더이상 지원되지 않는다. 파이썬3를 사용할 것!<br>
 :bangbang: &nbsp; **Pyspark 는 python 3.8 이상과 호환되지 않는다.** 3.7 버전을 사용해야 함 [&#9658;stackoverflow][1]
 
-```bash
+```shell
 $ python3 --version
 Python 3.7.9
 ```

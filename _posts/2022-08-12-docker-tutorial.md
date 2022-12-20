@@ -14,7 +14,7 @@ tags: ["TIL", "compose", "aws", "nginx"]
 
 `brew install` 또는 [Download 페이지](https://docs.docker.com/desktop/install/mac-install/) 통해 설치
 
-```bash
+```shell
 # UI 애플리케이션도 설치됨
 $ brew install docker
 ```
@@ -47,7 +47,7 @@ $ brew install docker
 - 참고: [Enable TCP port 2375 for external connection to Docker](https://gist.github.com/styblope/dc55e0ad2a9848f2cc3307d4819d819f)
   - Docker 공식 페이지 [Configure where the Docker daemon listens for connections](https://docs.docker.com/engine/install/linux-postinstall/#configure-where-the-docker-daemon-listens-for-connections) 대로 하니깐 안됨!!
 
-```bash
+```shell
 # 방화벽 TCP 포트 2375 허용하기
 host1 $ sudo ufw allow 2375/tcp
 
@@ -73,7 +73,7 @@ host2 $ DOCKER_HOST=minubt; docker ps -a
 
 > 도커 실행 및 확인
 
-```bash
+```shell
 # 도커 허브로부터 이미지를 다운로드 받아 바로 실행
 # -d: 백그라운드 실행
 # -p: 포트 맵핑 (내부:외부)
@@ -102,7 +102,7 @@ f17334ba1b8d
 - 컨테이너 콘솔에 접속하여 사용중인 포트와 프로그램 조회
   - `docker exec -it $(docker ps -l -q) /bin/bash`
 
-```bash
+```shell
 # 컨테이너 콘솔로 진입 => /bin/sh
 $ docker exec -it f17334ba1b8de83377b9810cd2f6934868f21404b6ba6c1462a0133e6171f
 275 /bin/sh
@@ -122,7 +122,7 @@ $ netstat -tnlp | tail -n +2 | grep -v "-" | awk '{print $4"\t"$5"\t"$7}'
 
 > 컨테이너 종료 후 삭제
 
-```bash
+```shell
 # 마지막으로 사용한 컨테이너를 강제 종료하고 삭제 (force 옵션)
 $ docker rm -f $(docker ps -lq)
 
@@ -141,7 +141,7 @@ $ docker rm $(docker ps -aq)
 - docker-compose.yml
 - Jenkinsfile
 
-```bash
+```shell
 $ git clone https://github.com/docker/getting-started
 
 $ cd getting-started
@@ -187,7 +187,7 @@ services:
       - ./:/app
 ```
 
-```bash
+```shell
 $ docker-compose up
 
 ```
@@ -198,7 +198,7 @@ $ docker-compose up
 
 - [Jenkins 사용한 devoops 환경 구축](https://www.dongyeon1201.kr/9026133b-31be-4b58-bcc7-49abbe893044)
 
-```bash
+```shell
 # 젠킨스 이미지 다운로드
 $ docker pull jenkins/jenkins:lts
 
@@ -375,7 +375,7 @@ services:
 
 - [AWS EC2 Container Registry(ECR) 어렵지 않아요](https://bluese05.tistory.com/51)
 
-```bash
+```shell
 $ aws ecr create-repository --repository-name <repo_name> --region <region_name>
 
 $ aws ecr get-login-password --region <region_name>

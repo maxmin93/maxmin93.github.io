@@ -103,7 +103,7 @@ company_db=# select * from team;
 
 #### (1) create hero : POST `/heroes`
 
-```bash
+```shell
 # insert with HeroCreate
 $ curl -X POST "http://localhost:58000/heroes/" -H "Content-Type: application/json" -d '''
 {"name": "ABC Teacher", "secret_name": "foo bar", "age": 35}
@@ -118,7 +118,7 @@ $ curl -X GET "http://localhost:58000/hero/5"
 
 #### (2) update hero{id} : PATCH `/heroes/{id}`
 
-```bash
+```shell
 # update whole-data by ID=5
 $ curl -X PATCH "http://localhost:58000/heroes/5" -H "Content-Type: application/json" -H 'Accept: application/json' -d '''
 {"name": "ABC Teacher (Extra)", "secret_name": "foo bar", "age": 55}
@@ -140,7 +140,7 @@ $ curl -X GET -H 'Accept: application/json' "http://localhost:58000/hero/5"
 
 #### (3) delete hero{id} : DELETE `/heroes/{id}`
 
-```bash
+```shell
 # delete by ID=5
 $ curl -X DELETE -H 'Accept: application/json' "http://localhost:58000/heroes/5"
 {"ok":true}%
@@ -157,7 +157,7 @@ $ curl -X GET -H 'Accept: application/json' "http://localhost:58000/hero/5"
 - GET `/heroes`
 - GET `/hero/2`
 
-```bash
+```shell
 $ curl -X GET "http://localhost:58000/heroes/last"
 {"name":"Spider-Boy","secret_name":"Pedro Parqueador","age":21,"team_id":null,"id":4}%
 ```
@@ -181,7 +181,7 @@ $ curl -X GET "http://localhost:58000/heroes/last"
 
 #### (5) create team : POST `/teams`
 
-```bash
+```shell
 $ curl -X POST "http://localhost:8000/teams/" -H "Content-Type: application/json" -d '''
 {"name": "뉴욕팀", "headquarters": "뉴욕시청", "heroes": []}
 '''
@@ -197,7 +197,7 @@ $ curl -X POST "http://localhost:8000/teams/" -H "Content-Type: application/json
 
 #### (6) update team{id} : PATCH `/teams/{id}`
 
-```bash
+```shell
 # update partial-data by ID=5
 $ curl -X PATCH "http://localhost:8000/teams/6" -H "Content-Type: application/json" -H 'Accept: application/json' -d '''
 {"name": "뉴욕팀 Super", "headquarters": "뉴욕시청 공원", "heroes": [
@@ -209,7 +209,7 @@ $ curl -X PATCH "http://localhost:8000/teams/6" -H "Content-Type: application/js
 
 #### (3) delete team{id} : DELETE `/teams/{id}`
 
-```bash
+```shell
 # delete by ID=5
 $ curl -X DELETE -H 'Accept: application/json' "http://localhost:58000/teams/5"
 {"ok":true}%
@@ -226,7 +226,7 @@ $ curl -X GET -H 'Accept: application/json' "http://localhost:58000/teams/5"
 - GET `/teams`
 - GET `/team/2`
 
-```bash
+```shell
 $ curl -X GET "http://localhost:58000/teams/last"
 {"name":"Spider-Boy","secret_name":"Pedro Parqueador","age":21,"team_id":null,"id":4}%
 ```
@@ -295,7 +295,7 @@ $ curl -X GET "http://localhost:58000/teams/last"
 - test_aiohttp_with_every_client : 1000 번 GET `/heroes/` 호출
   + resp.status == 200 검사
 
-```bash
+```shell
 $ poetry run pytest tests --log-cli-level=DEBUG
 ============================== test session starts ===============================
 platform darwin -- Python 3.9.13, pytest-7.1.3, pluggy-1.0.0
@@ -332,7 +332,7 @@ tests/main_test.py ......                                                  [100%
   
 ## 4. docker compose 실행
 
-```bash
+```shell
 # 도커 컴포즈에서 linux/amd64 이미지 생성 (Mac M1)
 $ env DOCKER_DEFAULT_PLATFORM=linux/amd64 docker compose build
 [+] Building 650.5s (20/21)

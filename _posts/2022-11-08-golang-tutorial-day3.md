@@ -77,7 +77,7 @@ content-type: application/json
 
 ### 2) 예제
 
-```bash
+```shell
 $ go get -u github.com/gin-gonic/gin
 $ go get -u github.com/gin-contrib/zap
 $ go get -u github.com/json-iterator/go
@@ -398,7 +398,7 @@ deleted: Product={Model: {ID:1 CreatedAt:2022-11-09 19:48:23.284966 +0900 +0900 
 
 #### db-sqlite3 예제용 패키지 생성과 테스트
 
-```bash
+```shell
 # db-sqlite3 예제용 
 $ go mod init example.com/sqlite3
 

@@ -353,7 +353,7 @@ resource "aws_s3_bucket" "my_s3_bucket" {
 
 - 예제) Amazon Linux 2 인스턴스 생성하기 [(AMI 카탈로그 검색)](https://ap-northeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-northeast-2#AMICatalog:)
 
-```bash
+```shell
 $ mkdir terraform-ec2-tutorial && cd terraform-ec2-tutorial
 $ cat <<EOF > main.tf 
 terraform {

@@ -4,7 +4,8 @@ title: "Effective PYTHON 2nd - Ch09"
 categories: ["python", "book"]
 tags: ["effective-python"]
 image:
-  src: https://effectivepython.com/images/cover_2ed.jpg
+  path: https://effectivepython.com/images/cover_2ed.jpg
+  width: 300
 ---
 
 > Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.
@@ -168,7 +169,7 @@ if __name__ = '__main__':
 
 ```
 
-```bash
+```shell
 $ python3 integration_test.py
 * 모듈 설정
  * 테스트 설정

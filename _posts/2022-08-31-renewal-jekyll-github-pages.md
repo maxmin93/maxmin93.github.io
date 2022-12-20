@@ -42,7 +42,7 @@ image: "/2022/08/31-jekyll-permanant-url-path-min.png"
 - 이제 깃허브에 올려서 빌드와 배포(CI/CD)가 잘 되는지 확인하자.
   - 이상이 없으면 작업 환경이 설정된 것임
 
-```bash
+```shell
 $ git clone http://github.com/{github_username}/{github_username}.github.io
 
 $ cd `{github_username}.github.io`
@@ -67,7 +67,7 @@ $ bundle exec jekyll serve --host 0.0.0.0
 
 > 처음 jekyll(지킬)을 다뤄볼 때에는 다음과 같은 과정을 해보길 권한다.
 
-```bash
+```shell
 $ cd {my-jekyll-website}
 
 # bundle 은 설치 관리자
@@ -167,7 +167,7 @@ defaults:
 
 ![jekyll-chirpy-github-action-fail-log](/2022/08/31-jekyll-chirpy-github-action-fail-log-min.png){: width="600" } <br />&nbsp;
 
-```bash
+```shell
 # Mac M1 환경에서 작업할 떄에는 꼭 확인!
 $ bundle lock --add-platform x86_64-linux
 
@@ -192,7 +192,7 @@ $ git add --all && git commit -m "lock x86_64" && git push
 
 > **_TIP._** `{blog_root_dir}/tools/deploy.sh`로 배포 전에 자가 검사를 하자.
 
-```bash
+```shell
 $ ./tools/deploy.sh --dry-run
  Incremental build: disabled. Enable with --incremental
       Generating...
@@ -414,7 +414,7 @@ body {
 
 > `rename` 으로 한번에 (`-min` 패턴을 제거하여) 파일명 변경
 
-```bash
+```shell
 # rename 명령이 필요하다 (perl 스크립트)
 $ brew install rename
 
@@ -428,7 +428,7 @@ $ rename 's/-min././' *-min.png
 - 드래그-앤-드랍 으로 파일 변환하면 `*-crunch.png` 붙어서 저장됨
   - jpeg 포맷은 못한다고 뱉어내네요. 흠~
 
-```bash
+```shell
 # --cask 옵션 붙여야 GUI 애플리케이션이 설치됨
 $ brew install crunch --cask
 

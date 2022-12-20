@@ -34,7 +34,7 @@ tags: ["backend", "typeorm", "todo", "sqlite", "graphql"]
 - @nestjs/cli 8.0.0
 - Sqlite 3.36.0
 
-```bash
+```shell
 # node 설치
 $ brew install node@16
 
@@ -63,7 +63,7 @@ $ ls dist
 서버 시동 후 웹브라우저 또는 Postman 으로 사용할 수 있습니다.<br>
 API 포트 변경은 `.env` 파일의 `TODOS_PORT` 변수로 설정할 수 있습니다.
 
-```bash
+```shell
 # development mode
 $ npm run start
 
@@ -82,7 +82,7 @@ $ npm run start:prod
   - Todo 와 Join 에 사용되는 컬럼은 `grp_id`, `sub_id` 이고
   - `grp_id` 은 상위 Todo, `sub_id` 는 하위 Todo
 
-```bash
+```shell
 # DB 오류시 스크립트 실행으로 재생성
 $ sqlite3 todos.db < create_todos.sql
 

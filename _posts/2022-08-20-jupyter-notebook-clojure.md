@@ -17,7 +17,7 @@ image: "/2022/08/20-clojupyter-main.png"
 
 보통 python 모듈로 설치하는데, brew 로 설치하여 lab 버전을 사용하고자 한다.
 
-```bash
+```shell
 # 쥬피터 설치
 brew install jupyter
 
@@ -42,7 +42,7 @@ Available kernels:
   - Mac M1 사용자는 `v0.3.5` 사용
   - [깃허브 - clojupyter - tag:v0.3.5](https://github.com/clojupyter/clojupyter/releases/tag/v0.3.5): Upgrade for M1 support
 
-```bash
+```shell
 # 싱글브랜치 다운로드
 $ git clone --single-branch -b v.0.3.5 https://github.com/clojupyter/clojupyter clojupyter_0.3.5
 
@@ -143,7 +143,7 @@ $ jupyter lab
 
 참고: `lein` 으로 무엇을 할 수 있는가? [깃허브 - Basic Usage](https://github.com/technomancy/leiningen/blob/stable/README.md#basic-usage)
 
-```bash
+```shell
 $ lein new [TEMPLATE] NAME # generate a new project skeleton
 
 $ lein test [TESTS] # run the tests in the TESTS namespaces, or all tests
@@ -159,7 +159,7 @@ $ lein deploy clojars # publish the project to Clojars as a library
 
 ### Clojure REPL 사용해 보기
 
-```bash
+```shell
 $ lein repl
 REPL-y 0.5.1, nREPL 0.9.0
 Clojure 1.11.1
@@ -189,7 +189,7 @@ $
 - [공식문서 - gen-class Examples](https://clojure.org/reference/compilation#_gen_class_examples)
 - [Stackoverflow - 왜 클로저는 파일명의 대시를 언더스코어로 변경하는가?](https://stackoverflow.com/a/4451693)
 
-```bash
+```shell
 # 새 프로젝트 생성 (app template 선택)
 $ lein new app my-project
 ...
@@ -253,7 +253,7 @@ Created my-project/target/my-project-0.1.0-SNAPSHOT-standalone.jar
   - 보통 사용하는 java 옵션의 이름은 `JAVA_OPTS` 인데, `JVM_OPTS` 를 쓰고 있다.
   - 참고: [Re: Leiningen 환경변수로 JAVA_OPTS 를 읽어 들이나요?](https://groups.google.com/g/clojure/c/syW_5uZYWcM)
 
-```bash
+```shell
 # 일반적인 JVM 메모리 설정 (내가 쓰는 설정)
 export JAVA_OPTS="-Xms1g -Xmx1g"
 

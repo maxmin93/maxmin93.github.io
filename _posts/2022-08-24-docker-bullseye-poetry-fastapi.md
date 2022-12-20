@@ -3,6 +3,7 @@ date: 2022-08-24 00:00:00 +0000
 title: 도커 bullseye-slim 기반 poetry + FastAPI 이미지 만들기
 categories: ["devops", "docker"]
 tags: ["python", "sqlalchemy", "bullseye", "docker", "poetry", "fastapi"]
+image: https://ianrufus.com/img/blog/2020/11/fastapi-docker/fastapi-docker.png
 ---
 
 > FastAPI 서버 개발을 위한 Docker 이미지를 생성합니다. (bullseye-slim 버전 기반)
@@ -42,7 +43,7 @@ tags: ["python", "sqlalchemy", "bullseye", "docker", "poetry", "fastapi"]
 
 -  `-it` 옵션 사용시 실행 로그가 보여서 좋다
 
-```bash
+```shell
 # 빌드
 $ docker build -t py39-api:latest --no-cache . 
 
@@ -54,7 +55,7 @@ $ docker run -it --rm --name py39-api -p 58000:8000 \
 
 #### 실행화면
 
-```bash
+```shell
 ... # (생략)
 
 Step 28/29 : ENTRYPOINT ["/entrypoint.sh"]
@@ -218,7 +219,7 @@ CMD poetry run uvicorn $APP_MAIN --app-dir $APP_ROOT --reload --host 0.0.0.0 --p
 
 #### 소스) entrypoint.sh
 
-```bash
+```shell
 #!/bin/bash
 
 # stop script on ERROR
@@ -286,7 +287,7 @@ exec "$@"
   - 기본 로케일이지만 UTF-8 이라서 모든 언어 표현 가능
   - 필요한 경우에만 ko_KR.UTF-8 사용 (약간의 성능/기능 제한 있음)
 
-```bash
+```shell
 $ docker run -it --rm --name nfp-api -p 58000:8000 \
     -e TZ=Asia/Seoul -e LANG=C.UTF-8 -e LC_ALL=C.UTF-8 \
     python:3.9-slim bash

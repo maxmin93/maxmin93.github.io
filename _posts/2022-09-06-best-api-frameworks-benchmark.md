@@ -44,7 +44,7 @@ func main() {
 
 > 설치 및 실행 
 
-```bash
+```shell
 # 라이브러리 다운로드
 $ go get -u github.com/gin-gonic/gin
 
@@ -102,7 +102,7 @@ func main() {
 
 > 설치 및 실행
 
-```bash
+```shell
 $ go get github.com/sashabaranov/go-fastapi
 
 $ go run example.go
@@ -134,7 +134,7 @@ app.listen(port, () => {
 
 > 설치 및 실행
 
-```bash
+```shell
 $ npm install express --save
 
 $ node app.js
@@ -181,7 +181,7 @@ async def read_item(item_id: int, q: Union[str, None] = None):
 
 > 설치 및 실행 
 
-```bash
+```shell
 $ pip install fastapi
 $ pip install "uvicorn[standard]"
 
@@ -226,7 +226,7 @@ fastify.listen({ port: 3000 }, (err, address) => {
 
 > 설치 및 실행
 
-```bash
+```shell
 $ yarn add fastify
 
 $ npm init fastify

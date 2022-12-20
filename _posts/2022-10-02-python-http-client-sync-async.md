@@ -262,7 +262,7 @@ if __name__ == '__main__':
 - httpx synchronization mode
   - Send 100 requests, time consuming: 16.60 sec
 
-```bash
+```shell
 import time
 import httpx
 

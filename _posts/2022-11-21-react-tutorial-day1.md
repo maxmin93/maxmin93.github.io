@@ -88,7 +88,7 @@ class LikeButton extends React.Component {
 
 - npx 가 알아서 최신 버전을 찾아 설치한다.
 
-```bash
+```shell
 $ npm uninstall -g create-react-app
 # 또는 yarn global remove create-react-app
 
@@ -100,7 +100,7 @@ Ok to proceed? (y)
 
 #### [create-react-app](https://create-react-app.dev/docs/getting-started#quick-start) 으로 새 프로젝트 생성
 
-```bash
+```shell
 # npx 로 프로젝트 생성
 npx create-react-app hello-react
 

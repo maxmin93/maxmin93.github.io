@@ -22,7 +22,7 @@ image: "/2022/09/08-nfp-frontend-app-crunch.png"
   + Apple M1 이라서 그런가 싶어, ubuntu 에서도 시도했으나 마찬가지 실패
   + Docker 없이 local 에서 환경 맞춰가며 install 등을 시도했으나 실패
 
-```bash
+```shell
 pip install cookiecutter
 
 cookiecutter https://github.com/tiangolo/full-stack-fastapi-postgresql
@@ -55,7 +55,7 @@ docker-compose up -d
 
 ### 브랜치 [tutorial-1-how-to-build-nfp-boilerplate](https://github.com/travisluong/nfp-boilerplate/tree/tutorial-1-how-to-build-nfp-boilerplate) 다운로드
 
-```bash
+```shell
 # 
 $ git clone -b tutorial-1-how-to-build-nfp-boilerplate \
     $GITHUB/travisluong/nfp-boilerplate
@@ -73,7 +73,7 @@ nfp-frontend
 
 ### 1) poetry 패키지 설정
 
-```bash
+```shell
 $ cd nfp-backend
 
 $ poetry init
@@ -110,7 +110,7 @@ $ poetry show -l
 
 #### create user, database, remote access
 
-```bash
+```shell
 $ ssh minubt
 
 # createuser tonyne -P
@@ -169,7 +169,7 @@ ORDER BY role_name desc;
 
 #### alembic migration
 
-```bash
+```shell
 $ poetry shell
 
 # create init file
@@ -258,7 +258,7 @@ $ exit  # from poetry shell
 - `.env` 작성
 - fastapi 실행
 
-```bash
+```shell
 $ pwd  
 {PROJECT-ROOT}/nfp-backend
 
@@ -274,7 +274,7 @@ $ poetry run uvicorn main:app --reload
 
 #### API 확인
 
-```bash
+```shell
 $ curl -X GET "http://localhost:8000/notes/"
 []%
 
@@ -296,7 +296,7 @@ React.js 의 SSR 프레임워크 (정적페이지 & 서버렌더링)
 
 #### Next.js 설치
 
-```bash
+```shell
 $ node --version
 v16.17.0
 
@@ -324,7 +324,7 @@ github 의 전체 [examples](https://github.com/vercel/next.js/tree/canary/examp
 
 > create-next-app 의 템플릿 --typescript (--ts) 는 올바르게 나옴.
 
-```bash
+```shell
 $ npx create-next-app ts-starter --ts
 
 # dependencies
@@ -349,7 +349,7 @@ ready - started server on 0.0.0.0:3000, url: http://localhost:3000
 
 #### 이어서, [next.js with tailwindcss](https://nextjs.org/examples)
 
-```bash
+```shell
 $ yarn add -D tailwindcss postcss autoprefixer
 
 $ npx tailwindcss init -p
@@ -509,7 +509,7 @@ module.exports = {
 - `pm2 start` 로 next app 실행
 - `pm2 monitor` 로 모니터링 : [https://pm2.io](https://pm2.io)
 
-```bash
+```shell
 $ pm2 start ecosystem.config.js --env production
 [PM2][WARN] Applications nfp-frontend not running, starting...
 [PM2] App [nfp-frontend] launched (1 instances)

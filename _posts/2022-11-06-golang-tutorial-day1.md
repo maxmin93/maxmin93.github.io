@@ -238,7 +238,7 @@ make(int)        // Illegal
 
 ### 1) [Go 설치](https://go.dev/doc/install)
 
-```bash
+```shell
 $ brew install golang
 
 # 변경 가능
@@ -286,7 +286,7 @@ $ go env GOPATH  # 외부 모듈 다운로드 위치
 
 ### 1) init : go.mod 생성
 
-```bash
+```shell
 go mod init <모듈명>
 
 go mod init example.com/hello
@@ -294,7 +294,7 @@ go mod init example.com/hello
 
 ### 2) run
 
-```bash
+```shell
 go run .
 
 go run main.go
@@ -302,7 +302,7 @@ go run main.go
 
 ### 3) build
 
-```bash
+```shell
 go build .
 # ==> 실행 가능 바이너리 생성 
 ```
@@ -313,7 +313,7 @@ go build .
 
 참고 : [Call your code from another module](https://go.dev/doc/tutorial/call-module-code)
 
-```bash
+```shell
 # 사용자 모듈 작성
 go mod init example.com/greetings
 # package greetings

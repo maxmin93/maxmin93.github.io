@@ -151,7 +151,7 @@ Rel(personAlias, containerAlias, "Label", "Optional Technology")
 
 - 이미지 파일 생성
 
-```bash
+```shell
 $ java -jar plantuml-1.2022.7.jar ./sample-diagram.puml
 
 $ ls .

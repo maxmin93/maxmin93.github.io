@@ -19,7 +19,7 @@ tags: ["TIL", "utf8", "마운트", "postgresql", "locale"]
 
 ### 1) (참고) 설정
 
-```bash
+```shell
 # 기본 locale="C"
 $ initdb -D $PGDATA --no-locale --encoding=UTF8
 
@@ -58,7 +58,7 @@ $ cat $PGDATA/pg_hba.conf
 
 #### 데이터베이스 생성
 
-```bash
+```shell
 createdb --lc-collate="en_US.UTF-8" --lc-ctype="en_US.UTF-8" --template="template0" testdb
 
 psql -c "CREATE DATABASE testdb LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8' TEMPLATE template0;"
@@ -124,7 +124,7 @@ OWNER dbuser;
 
 ### 0) Docker 운용 환경 및 이미지 다운로드
 
-```bash
+```shell
 # OS info
 $ cat /etc/os-release*
 PRETTY_NAME="Ubuntu 22.04.1 LTS"
@@ -145,7 +145,7 @@ $ docker pull --platform linux/amd64 postgres:14
   + pg14 부터: `scram-sha-256` 또는 `trust`
   + pg14 이전 버전들: `md5` 또는 `trust`
 
-```bash
+```shell
 # POSTGRES_HOST_AUTH_METHOD 옵션
 # ==>
 $ echo "host all all all $POSTGRES_HOST_AUTH_METHOD" >> pg_hba.conf
@@ -173,7 +173,7 @@ $ echo "host all all all $POSTGRES_HOST_AUTH_METHOD" >> pg_hba.conf
   + 패스워드 없는 경우 다른 인증방식을 꼭 지정해야 함
     - `POSTGRES_HOST_AUTH_METHOD=trust` 
 
-```bash
+```shell
 $ docker run -it --rm --name pg14-db -p 55432:5432 \
     -e POSTGRES_HOST_AUTH_METHOD=trust \
     postgres:14
@@ -191,7 +191,7 @@ $ psql -h localhost -p 55432 -U postgres -d postgres
 
 > 문자셋이 en_US.utf8, C.UTF-8 밖에 없어서 ko_KR.utf8 설정을 못함
 
-```bash
+```shell
 $ locale
 LANG=en_US.utf8
 LANGUAGE=
@@ -233,7 +233,7 @@ POSIX
     + USER 가 없는 경우 postgres 에 적용
     + `-W` 패스워드 옵션으로 로그인 해야 함
 
-```bash
+```shell
 $ docker run -it --rm --name pg14-db -p 55432:5432 \
     -e TZ=Asia/Seoul \
     -e POSTGRES_INITDB_ARGS="-k -E UTF8" \
@@ -302,7 +302,7 @@ postgres 계정 없이, USER 계정을 SUPER_USER 로 사용
   - POSTGRES_USER : 관리자 계정 생성
     + postgres 계정은 없음
 
-```bash
+```shell
 $ docker run -it --rm --name pg14-db -p 55432:5432 \
     -e TZ=Asia/Seoul \
     -e POSTGRES_DB=nfp_db \
@@ -336,7 +336,7 @@ $ select datname, datdba, encoding, datcollate, datctype, datistemplate from pg_
 
 > (참고) volume 및 network 생성
 
-```bash
+```shell
 # volume 생성
 $ docker volume create --label nfpdb_data nfpdb_data
 
@@ -348,7 +348,7 @@ $ docker network create --label nfp_default nfp_default
 
 `FROM postgres:14` 의 기반인 bullseye 에 locale 설정 후 설치
 
-```bash
+```shell
 root@9abbe19eb4d8:/# cat /etc/os-release*
 PRETTY_NAME="Debian GNU/Linux 11 (bullseye)"
 VERSION="11 (bullseye)"
@@ -398,7 +398,7 @@ ENV TZ Asia/Seoul
 - 컨테이너 외부에서는 password 로그인만 가능
   + 내부에서는 password, trust 둘다 로그인 가능
 
-```bash
+```shell
 $ docker build -t pg14-ko:latest --no-cache .
 
 $ docker run -it --rm --name pg14-db -p 55432:5432 \
@@ -470,7 +470,7 @@ CREATE TABLE
 
 로그 포맷, 메시지, 시간 출력형식 등등 모두 한국어로 적용됨
 
-```bash
+```shell
 $ docker exec -it $(docker ps -ql) /bin/bash
 # ==> 이후 내부환경 확인
 
@@ -601,7 +601,7 @@ RUN chmod +x /docker-entrypoint-initdb.d/docker-entrypoint.sh
   + 재부팅 이후 설정의 정상 여부를 확인
   + 재부팅하여 작업 종료 (서비스 시작)
 
-```bash
+```shell
 #!/bin/sh
 
 # terminate script on ERROR
@@ -689,7 +689,7 @@ exec "$@"
 - $PGDATA 를 volume 마운트
 - 외부 설정파일을 사용하도록 최종 CMD 변경
 
-```bash
+```shell
 # 서비스 실행 
 $ docker compose up --build --force-recreate
 # ==> ['postgres','-c','config_file=/etc/postgresql/postgresql.conf']
@@ -738,7 +738,7 @@ volumes:
 
 #### 실행 및 테스트
 
-```bash
+```shell
 $ psql -U postgres -d postgres
 psql (14.5 (Debian 14.5-1.pgdg110+1))
 Type "help" for help.
@@ -764,7 +764,7 @@ postgres=# select now();    # 시간 OK!
 
 > Dockerfile
 
-```bash
+```shell
 FROM postgres:14.3
 
 RUN localedef -i de_DE -c -f UTF-8 -A /usr/share/locale/locale.alias de_DE.UTF-8
@@ -777,7 +777,7 @@ trust 인증 사용자를 자신의 계정으로 하고 싶은 경우
 
 - 프로세스 및 파일 권한이 user `$(id -u):$(id -g)` 에게 귀속
 
-```bash
+```shell
 # (id 가 달라서) 안되는 경우가 있다
 $ docker run -it --rm --user 1000:1000 -e POSTGRES_PASSWORD=mysecretpassword postgres
 initdb: could not look up effective user ID 1000: user does not exist

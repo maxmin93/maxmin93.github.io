@@ -4,7 +4,7 @@ title: Postgres Exporter
 author: maxmin93
 categories: ["devops", "monitoring"]
 tags: ["postgresql", "metric", "성능지표", "모니터링", "prometheus", "grafana"]
-pin: false
+image: https://riturajkhare.files.wordpress.com/2022/03/grafana-prometheus.png
 ---
 
 > AgensGraph 모니터링을 위해 Prometheus 와 Grafana 설정과 성능지표 쿼리를 작성합니다.
@@ -35,7 +35,7 @@ pin: false
 
 prometheus를 간단히 `brew install prometheus`로 설치할 수 있는데, 설정파일은 아래 위치에 있습니다.
 
-```bash
+```shell
 $ cat /opt/homebrew/etc/prometheus.args
 --config.file /opt/homebrew/etc/prometheus.yml
 --web.listen-address=127.0.0.1:9090
@@ -57,7 +57,7 @@ scrape_configs:
 
 ### postgres_exporter 작동
 
-```bash
+```shell
 # 필수 환경변수 (일반적인 dsn 형식)
 $ export DATA_SOURCE_NAME="postgresql://${PG_UID}:${PG_PWD}@${HOST_IP}:${PORT}/${DATABASE}?sslmode=disable"
 
@@ -99,7 +99,7 @@ pg_stat_activity_count{datname="metastore",server="minubt:5432",state="idle in t
 
 ### Prometheus 에 postgres_exporter 의 endpoint 등록하기
 
-```bash
+```shell
 $ cat /opt/homebrew/etc/prometheus.yml
 global:
   # 15초 간격으로 읽어오기

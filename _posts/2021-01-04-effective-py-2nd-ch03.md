@@ -4,7 +4,8 @@ date: 2021-01-04 00:00:00 +0000
 categories: ["python", "book"]
 tags: ["effective-python"]
 image:
-  src: https://effectivepython.com/images/cover_2ed.jpg
+  path: https://effectivepython.com/images/cover_2ed.jpg
+  width: 300
 ---
 
 > Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.

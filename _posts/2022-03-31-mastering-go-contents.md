@@ -4,7 +4,8 @@ title: "Mastering Go - Contents"
 categories: ["golang", "book"]
 tags: ["go-mastering"]
 image:
-  src: http://www.acornpub.co.kr/tb/detail/book/fl/sh/1621183964smdDjLWI.jpg
+  path: http://www.acornpub.co.kr/tb/detail/book/fl/sh/1621183964smdDjLWI.jpg
+  width: 300
 ---
 
 > 크롤링과 마이크로 서비스 등 백엔드 구현에 널리 쓰이는 Go 언어를 공부합니다.

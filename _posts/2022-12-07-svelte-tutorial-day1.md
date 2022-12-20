@@ -21,7 +21,7 @@ Jekyll 의 코드블럭의 문법 하이라이터로 [rouge](https://github.com/
 
 ### 1) 프로젝트 생성 및 실행
 
-```bash
+```shell
 $ npm create svelte@latest my-app
 Need to install the following packages:
   create-svelte@2.0.0-next.198
@@ -59,7 +59,7 @@ my-app       5  54.9ms  11.0ms
 
 - Typescript 사용시 `--template svelte-ts`
 
-```bash
+```shell
 $ npm create vite@latest my-svelte-project -- --template svelte
 $ cd my-svelte-project
 $ npm install
@@ -414,7 +414,7 @@ export const count = writable(0);
 
 프로젝트 생성시, 옵션 선택에서 typescript 를 선택하면 된다.
 
-```bash
+```shell
 $ npm create svelte@latest my-ts-app
 # ==> Add type checking with TypeScript? › Yes, using TypeScript syntax
 $ cd my-ts-app
@@ -587,7 +587,7 @@ type BookListItemProps = {
 
 - 또는 vite 를 직접 실행하여 nginx 에서 서브 디렉토리에 연결
 
-```bash
+```shell
 $ npm run preview
 $ npx vite preview --host 0.0.0.0
 ```

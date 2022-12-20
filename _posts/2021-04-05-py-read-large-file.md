@@ -3,6 +3,7 @@ date: 2021-04-05 00:00:00 +0000
 title: Python - 대용량 파일 읽기
 categories: ["python"]
 tags: ["mmap", "threadpoolexecutor"]
+image: /2021/04/load_docs.py_type3.png
 ---
 
 > 텍스트로만 8GB 이상인 대용량 파일을 전처리 하기 위해서 빠르게 읽고 쓰는 방법에 대해 공부했습니다.

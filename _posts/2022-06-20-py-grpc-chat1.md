@@ -121,7 +121,7 @@ service ChatServer {
 
 `--grpc_python_out` 옵션으로 파이썬용 stub 코드 생성
 
-```bash
+```shell
 $ python -m grpc_tools.protoc -I=proto/ --python_out=proto/ --grpc_python_out=proto/ proto/chat.proto
 ```
 

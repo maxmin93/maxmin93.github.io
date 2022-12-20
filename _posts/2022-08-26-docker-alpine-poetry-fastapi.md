@@ -15,7 +15,7 @@ tags: ["python", "alpine", "aarch64", "docker", "poetry", "fastapi"]
 - 작은 사이즈가 강점인데 만들고 나니 **509 MB**
   + 지난번 것은 _376 MB_
 
-```bash
+```shell
 $ docker build -t py39-alpine:latest --no-cache .
 
 $ docker run -it --rm --name py39-alpine -p 58000:8000 \
@@ -115,7 +115,7 @@ watchgod = "0.7"
 
 파이썬 가상환경(venv)을 `$APP_ROOT/.venv` 에 생성한다. (의존 패키지도 포함)
 
-```bash
+```shell
 $ poetry config virtualenvs.create false 
 
 $ poetry config --list
@@ -136,7 +136,7 @@ alembic 으로 database 를 생성할 수 없다.
 - 비어있는 스키마에서 최신 상태로 마이그레이션 할 수 있다는 설명뿐이다.
   + 참고: [Alembic - 환경 생성](https://alembic.sqlalchemy.org/en/latest/tutorial.html#creating-an-environment)
 
-```bash
+```shell
 $ createdb -e -h minubt -p 5432 -l "C.UTF-8" -T "template0" -O tonyne nfp_db
 SELECT pg_catalog.set_config('search_path', '', false);
 CREATE DATABASE nfp_db OWNER tonyne TEMPLATE template0 LC_COLLATE 'C.UTF-8' LC_CTYPE 'C.UTF-8';
@@ -161,7 +161,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 127bcea40bef, create notes
 
 > postgresql 커맨드 라인 명령어: createdb, dropdb
 
-```bash
+```shell
 $ createdb -e -h minubt -p 5432 -l "C.UTF-8" -T "template0" -O tonyne nfp_db
 SELECT pg_catalog.set_config('search_path', '', false);
 CREATE DATABASE nfp_db OWNER tonyne TEMPLATE template0 LC_COLLATE 'C.UTF-8' LC_CTYPE 'C.UTF-8';
@@ -202,7 +202,7 @@ command.stamp(alembic_cfg, "head")
 - 이 외의 Alembic 사용법은 매뉴얼 참고 
   - [Creating an Environment](https://alembic.sqlalchemy.org/en/latest/tutorial.html#creating-an-environment)
 
-```bash
+```shell
 $ alembic init alembic
 $ alembic revision -m "create account table"
 $ alembic upgrade head   # first migration
@@ -224,7 +224,7 @@ $ alembic upgrade +2
   + build-base : gcc 도구 
   + libffi-dev : cffi 라이브러리
 
-```bash
+```shell
 # ...
       building '_cffi_backend' extension
       creating build/temp.linux-aarch64-cpython-39
@@ -250,7 +250,7 @@ FastAPI 종료를 위해 'Ctrl+C' 누르면 `asyncio.exceptions.CancelledError` 
 - FastAPI 이슈는 아니고 Uvicorn 이슈
 - Mac M1 특이사항은 아니지만, 아직 해결 안된 이슈라서 기록해 둠
 
-```bash
+```shell
 ^CINFO:     Shutting down
 INFO:     Finished server process [95782]
 ERROR:    Traceback (most recent call last):

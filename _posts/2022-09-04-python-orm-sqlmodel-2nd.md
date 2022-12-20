@@ -92,7 +92,7 @@ SQLAlchemy 2.0 기능은 SQLAlchemy 1.4 에서도 `future=True` 옵션을 통해
 
 > 사전 설치 (공통)
 
-```bash
+```shell
 brew install libpq --build-from-source
 brew install openssl@1.1
 

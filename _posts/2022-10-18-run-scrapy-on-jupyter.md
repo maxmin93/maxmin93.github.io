@@ -80,7 +80,7 @@ image: "/2022/10/09-pyarrow-vs-pandas-csv-read-crunch.png"
 
 ### 1) 프로젝트 생성 및 실행
 
-```bash
+```shell
 $ scrapy startproject <project_name> [project_dir]
 
 $ cd [project_dir]

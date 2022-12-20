@@ -4,7 +4,7 @@ title: Mac용 App 패키징 할 때 서명 및 공증 (Apple M1)
 author: maxmin93
 categories: ["packaging", "Mac/Linux"]
 tags: ["mac", "codesign", "cer", "패키징", "서명", "공증"]
-pin: false
+image: https://devimages-cdn.apple.com/wwdc-services/images/48/2970/2970_wide_250x141_2x.jpg
 ---
 
 > 맥 OS용 네이티브 웹앱을 패키징하고 배포하기 위해 필요한 `codesign`(개발자 서명)과 `notarization`(인증기관 공증)에 대해 `pgAdmin4`를 가지고 연습해 보았습니다.
@@ -88,7 +88,7 @@ Mac용 앱의 서명과 공증 작업을 위해서는 Apple Developer ID 발급 
 
 - xcode 도구를 이용해 등록한 인증서가 잘 작동하는지 확인합니다. (altool은 xcode 설치가 되어 있어야 사용할 수 있습니다. 안깔았으면 까세요.)
 
-```bash
+```shell
 $ xcrun altool --list-providers -u "maxmin93@gmail.com" -p "${ASP}"
 ProviderName   ProviderShortname PublicID                             WWDRTeamID
 -------------- ----------------- ------------------------------------ ----------
@@ -103,7 +103,7 @@ pgAdmin4의 Mac용 패키징 과정에 필요한 파일 2개가 있습니다.
 
 - 서명을 위한 설정 파일 'codesign.conf'
 
-```bash
+```shell
 # '12345ABCD'는 ${ProviderShortname}을 입력
 
 DEVELOPER_ID="Developer ID Application: My Name (12345ABCD)"
@@ -111,7 +111,7 @@ DEVELOPER_ID="Developer ID Application: My Name (12345ABCD)"
 
 - 공증을 위한 설정 파일 'notarization.conf'
 
-```bash
+```shell
 # '12345ABCD'는 ${ProviderShortname}을 입력
 
 DEVELOPER_USER="maxmin93@gmail.com"
@@ -128,7 +128,7 @@ DEVELOPER_NAME="12345ABCD"
 
 - 서명 사용시
 
-```bash
+```shell
 # DEVELOPER_ID="Developer ID Application: My Name (12345ABCD)"
 # DMG_NAME={dmg 파일경로}
 
@@ -141,7 +141,7 @@ codesign --force --verify --verbose --timestamp \
 
 - 공증 사용시
 
-```bash
+```shell
 # '12345ABCD'는 ${ProviderShortname}을 입력
 # 'abcd-efgh-ijkl-mnop'는 ${ASP}을 입력
 

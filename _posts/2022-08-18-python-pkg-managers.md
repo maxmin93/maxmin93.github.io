@@ -3,7 +3,7 @@ date: 2022-08-18 00:00:00 +0000
 title: FastAPI 예제로 파이썬 패키지 관리도구 비교
 categories: ["python"]
 tags: ["개발환경", "venv", "pip", "pipenv", "poetry", "flit"]
-pin: false
+image: https://d33wubrfki0l68.cloudfront.net/e5bef992cd67b65cf04372ce4802620989c02ccd/4d1dc/static/images/blog/poetry.png
 ---
 
 > 오래된 습관같은 `pip+venv` 대신에 `poetry` 를 비롯한 새로운 관리도구들을 알아보겠습니다.
@@ -100,7 +100,7 @@ Apple M1 맥북을 기준으로 작성합니다.
 
 > [venv](https://docs.python.org/3/library/venv.html)
 
-```bash
+```shell
 $ python3 -m venv ./venv
 ```
 
@@ -108,7 +108,7 @@ $ python3 -m venv ./venv
 
 #### poetry
 
-```bash
+```shell
 # brew 로 설치하지 말자!! 최신 python 경로로 고정됨
 $ pip install poetry
 

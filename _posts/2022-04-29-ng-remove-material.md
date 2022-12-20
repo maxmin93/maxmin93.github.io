@@ -22,7 +22,7 @@ Angular Material 을 사용하면 웹디자이너(웹퍼블리셔)와 협업을 
 [Getting Started](https://material.angular.io/guide/getting-started)를 따라가면 됩니다.<br/>
 본 예제는 'Angular CLI 13.3.3' 버전에서 실행했습니다.
 
-```bash
+```shell
 # Angular Material 설치
 $ ng add @angular/material
 ℹ Using package manager: npm
@@ -138,7 +138,7 @@ Material을 사용하면서 body margin을 적용할 방법은 2가지가 있다
 Material 패키지를 제거하는 방법은 `npm uninstall` 뿐이다.<br/>
 이후 `ng add`에 의해 자동으로 추가된 항목들을 제거하면 된다.
 
-```bash
+```shell
 # material 과 cdk 패키지 제거
 $ npm uninstall @angular/material --save
 $ npm uninstall @angular/cdk --save

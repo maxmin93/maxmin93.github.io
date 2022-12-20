@@ -14,13 +14,17 @@ image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 
 ## 1. SvelteKit 이란?
 
-### 1) Svelte 를 이용한 SSR 프레임워크
+**Svelte 를 뷰 레이어로 사용하는 SSR 프레임워크**
+
+### 1) 요약
 
 - [Sveltekit 1.0 출시 - 2022년12월](https://svelte.dev/blog/announcing-sveltekit-1.0)
-  + 이전에 [Sapper](https://sapper.svelte.dev/docs/) 이란 이름으로 개발되던 프로젝트를 이전했음
+  + 이전에 [Sapper](https://sapper.svelte.dev/docs/) 이란 이름으로 개발되던 백엔드 프레임워크 프로젝트를 이어 받았음
 
-- Vercel 사의 Vite 와 Svelte 를 통합하여 SSR 과 CSR 이 모두 가능
-- Svelte 를 사용하기 때문에, Nextjs 보다 성능과 용량이 최적화됨
+- Vercel 사의 Vite 와 통합하여 NextJS 와 유사
+  + Svelte 는 VueJS 와 유사
+
+> 백엔드와 프론트엔드의 경계가 모호하기 때문에 헷갈릴 수 있다.
 
 ### 2) SvelteKit 에 적용할 CSS Frameworks
 
@@ -41,6 +45,7 @@ Pico 기본 테마로 root 레이아웃을 만들어보자.
 참고 [Why Pico Is My Favorite CSS Framework For Svelte](https://www.youtube.com/watch?v=-n84EMKIXQM)
 
 ![svelte-pico-layout-root](https://github.com/maxmin93/svelte-pico-tutorial/raw/main/static/svelte-pico-layout-crunch.png){: width="600"}
+_picocss 적용된 첫페이지_
 
 ### 1) $src/routes/+layout.svelte
 
@@ -141,6 +146,7 @@ For example: import pico from "@picocss/pico?inline"
 About 페이지가 추가된 화면
 
 ![svelte-pico-layout-about](https://github.com/maxmin93/svelte-pico-tutorial/raw/main/static/svelte-pico-layout-about-crunch.png){: width="600"}
+_about 페이지 추가_
 
 ## 3. SvelteKit with Skeleton
 
@@ -148,7 +154,7 @@ About 페이지가 추가된 화면
 
 #### 권장: create skeleton-app
 
-```bash
+```shell
 pnpm create skeleton-app sklt-app
 cd sklt-app
 pnpm vite dev -- --open
@@ -165,7 +171,7 @@ pnpm vite dev -- --open
 
 > 설치
 
-```bash
+```shell
 # create-svelte
 pnpm create svelte svltk-jwt-auth
 # => Typescript 선택
@@ -211,6 +217,7 @@ module.exports = {
   ],
 };
 ```
+{: file="tailwind.config.cjs"}
 
 4-2. `src/app.postcss` 수정 (tailwind 임포트 제거)
 
@@ -227,6 +234,7 @@ body {
   @apply h-full overflow-hidden;
 }
 ```
+{: file="src/app.postcss"}
 
 4-3. `src/app.html` 설정
 
@@ -244,6 +252,7 @@ body {
   </body>
 </html>
 ```
+{: file="src/app.html"}
 
 4-4. `src/routes/+layout.svelte` 수정
 
@@ -284,18 +293,19 @@ import { AppShell, AppBar } from "@skeletonlabs/skeleton";
 
 ### 2) dev 실행
 
-```bash
+```shell
 # dev 실행 (브라우저 오픈)
 pnpx vite dev -- --open
 ```
 
 ![14-svelte-skeleton-layout](/2022/12/14-svelte-skeleton-layout.png){: width="600"}
+_skeleton 레이아웃 (테마 적용)_
 
 #### Issue: [New Vite requirements gives warning when building "for the first time"](https://github.com/sveltejs/kit/issues/5390#issuecomment-1176480653)
 
 첫 실행시 다음과 같은 warning 메시지 발생 => 무시 (두번째부터는 안남옴)
 
-```bash
+```shell
 $ pnpm vite dev -- --open
 ▲ [WARNING] Cannot find base config file "./.svelte-kit/tsconfig.json" [tsconfig.json]
 

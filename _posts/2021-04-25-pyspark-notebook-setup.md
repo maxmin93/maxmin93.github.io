@@ -3,6 +3,7 @@ date: 2021-04-25 00:00:00 +0000
 title: "jupyter notebook 과 pyspark 연동 설정"
 categories: ["python"]
 tags: ["jupyter", "pyspark", "setup"]
+image: https://miro.medium.com/max/698/1*h7xQUkvB_dyJKpJ3EP_TvA.jpeg
 ---
 
 > 데이터 분석을 위한 작업 환경을 개선하려고 주피터 노트북에 PySpark 를 연동한 작업을 기록합니다.
@@ -35,7 +36,7 @@ tags: ["jupyter", "pyspark", "setup"]
 
 ### ipython profile 생성
 
-```bash
+```shell
 $ ipython profile create pyspark
 
 # ~/.ipython/ 밑에 profile 생성됨
@@ -43,7 +44,7 @@ $ ipython profile create pyspark
 
 ### ipython_config.py 수정
 
-```bash
+```shell
 $ vi ~/.ipython/profile_pyspark/ipython_config.py
 
 # 추가
@@ -61,7 +62,7 @@ c.NotebookApp.password = 'sha1:**************************'
 
 패스워드 설정이 없으면 ipython 실행시마다 Token 과 암호를 묻게된다.
 
-```bash
+```shell
 $ ipython
 In [1]: from IPython.lib import passwd
 
@@ -80,7 +81,7 @@ Do you really want to exit ([y]/n)? y
 
 ### jupyter notebook 테스트
 
-```bash
+```shell
 $ ipython notebook --config='~/.ipython/profile_pyspark/ipython_config.py'
 
 # browser 에서 새 노트 생성 후 파이썬 테스트
@@ -98,7 +99,7 @@ $ ipython notebook --config='~/.ipython/profile_pyspark/ipython_config.py'
 
 ### ipykernel 설치 및 환경 생성
 
-```bash
+```shell
 $ pip install ipykernel
 
 # 환경설정 생성: pyspark
@@ -110,7 +111,7 @@ $ python -m ipykernel install --user --name=pyspark
 
 ### kernel.json 수정
 
-```bash
+```shell
 $ vi ~/Library/Jupyter/kernels/pyspark/kernel.json
 
 # 작성
@@ -154,7 +155,7 @@ print(spark.version)
 
 ### alias 설정
 
-```bash
+```shell
 # 편리하라고 등록: ~/.zshrc
 alias pyspark-notebook="ipython notebook --config='~/.ipython/profile_pyspark/  ipython_config.py'"
 

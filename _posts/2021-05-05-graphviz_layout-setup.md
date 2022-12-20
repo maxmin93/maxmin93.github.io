@@ -27,7 +27,7 @@ matplotlib 등의 프로그램에서 graphviz 의 pos 결과를 받아 사용하
 - [pygraphviz install guide](https://pygraphviz.github.io/documentation/stable/install.html)
   - MacOS 에서 graphviz 설치시 오류 발생
 
-```bash
+```shell
 $ brew install graphviz
 # <== 설치 오류
 
@@ -53,7 +53,7 @@ $ pip install pygraphviz
 
 [Install pygraphviz](https://github.com/pygraphviz/pygraphviz/blob/main/INSTALL.txt)
 
-```bash
+```shell
 $ port install graphviz-devel
 
 $ pip install --global-option=build_ext \
@@ -70,7 +70,7 @@ Installing collected packages: pygraphviz
 Successfully installed pygraphviz-1.7
 ```
 
-```bash
+```shell
 $ brew install graphviz
 
 $ pip install pygraphviz

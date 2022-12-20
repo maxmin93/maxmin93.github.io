@@ -57,7 +57,7 @@ GoFiber 와 GORM 을 이용해 간단한 REST API 를 구현함 (boilerplate)
 
 ## 2. 프로젝트 Setup
 
-```bash
+```shell
 $ mkdir fiber-example && cd fiber-example
 $ go mod init example.com
 
@@ -499,7 +499,7 @@ Not Found
 
 #### Gofiber 로깅
 
-```bash
+```shell
  ┌───────────────────────────────────────────────────┐ 
  │                   Fiber v2.39.0                   │ 
  │               http://127.0.0.1:3000               │ 
