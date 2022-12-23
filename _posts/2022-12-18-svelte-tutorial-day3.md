@@ -439,7 +439,7 @@ drwxr-xr-x  4 bgmin  staff   128 12 15 15:28 _app
 - SvelteKit 공식 문서를 보는게 정답이다. (많이 헷갈렸다. 쉑~)
   + 검색에 나오는 자료는 이전 [Sapper](https://sapper.svelte.dev/docs/) 의 내용을 담고 있다.
 - `+page`, `+layout` 접두사만 사용하자.
-  + `+server` 는 HTTP 동사를 정의하는 [endpoint 용도](https://kit.svelte.dev/docs/routing#server)로만 사용하자.
+  + `+server` 는 GET/POST 같은 [RequestHandler](https://kit.svelte.dev/docs/routing#server) 용도로만 사용하자.
   + `+page.server`, `+layout.server` 는 모두 `+server` 스크립트다.
 
 ### 중요 용어
