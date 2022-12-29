@@ -193,72 +193,49 @@ export const load = (async () => {
 ```
 {: file="src/routes/blog/[slug]/+layout.svelte"}
 
-### 3) [SvelteKit 에서 환경변수 사용하기](https://joyofcode.xyz/sveltekit-environment-variables)
+### 3) `+server.ts` 에서 RequestHandler 로 API 만들기
 
-#### `$root/.env`{: .filepath} 이용한 static 환경 변수
-
-`.env` 파일에 사전 정의된 환경 변수
-
-```text
-# Private
-SECRET_API_KEY=secret
-
-# Public
-PUBLIC_API_KEY=public
-```
-{: file=".env"}
-
-- $env/static/public : PUBLIC_ 접두사가 붙은 변수
-  + `+page.server.ts` 과 `+page.ts` 에서도 사용 가능
-- $env/static/private : 그 외의 변수는 private
-  + `+page.server.ts` 에서만 사용 가능
-
-> Vite 에서는 import.meta.env 통해 접근할 수 있음
+- src/routes
+  + dogs
+    * +server.ts
 
 ```ts
-/* page.server.ts */
+import type { RequestHandler } from '@sveltejs/kit';
 
-import { SECRET_API_KEY } from '$env/static/private'
-import type { PageServerLoad } from './$types'
-
-export const load: PageServerLoad = () => {
-  console.log(SECRET_API_KEY) // secret
+interface dog {
+  name: string;
 }
 
-/* page.ts */
+const dogs: dog[] = [
+  { name: 'German Shepherd' }, 
+  { name: 'BullDog' }, 
+  { name: 'Poodle' }
+];
 
-import { PUBLIC_API_KEY } from '$env/static/public'
-import type { PageLoad } from './$types'
-
-export const load: PageLoad = () => {
-  console.log(PUBLIC_API_KEY) // public
-}
+export const GET: RequestHandler = async () => {
+  return new Response(JSON.stringify(dogs));
+};
 ```
-{: file="+page.server.ts & +page.ts"}
+{: file="src/routes/dogs/+server.ts"}
 
-#### `process.env` 이용한 dynamic 환경 변수
+브라우저에서 `http://localhost:5173/dogs` 열기
 
-(운영체제) 프로세스 환경에서 정의된 환경 변수
+> RequestHandler 로 GET, POST, DELETE 등을 구현할 수 있다.
 
-- $env/dynamic/public : PUBLIC_ 접두사로 정의된 변수
-- $env/dynamic/private
-
-#### 서버 스크립트 상에서 정의하여 사용하는 변수
-
-```ts
-/* lib/server/secrets.ts */
-export const secret = '🍜'
-
-
-/* +page.server.ts */
-import { secret } from '$lib/server/secrets'
-import type { PageServerLoad } from './$types'
-
-export const load: PageServerLoad = () => {
-  console.log(secret) // 🍜
-}
+```json
+[
+  {
+    "name": "German Shepherd"
+  },
+  {
+    "name": "BullDog"
+  },
+  {
+    "name": "Poodle"
+  }
+]
 ```
-{: file="$lib/server/secrets.ts & +page.server.ts"}
+{: file="http://localhost:5173/dogs"}
 
 ## 3. SvelteKit 의 Core
 
@@ -440,7 +417,6 @@ drwxr-xr-x  4 bgmin  staff   128 12 15 15:28 _app
   + 검색에 나오는 자료는 이전 [Sapper](https://sapper.svelte.dev/docs/) 의 내용을 담고 있다.
 - `+page`, `+layout` 접두사만 사용하자.
   + `+server` 는 GET/POST 같은 [RequestHandler](https://kit.svelte.dev/docs/routing#server) 용도로만 사용하자.
-  + `+page.server`, `+layout.server` 는 모두 `+server` 스크립트다.
 
 ### 중요 용어
 

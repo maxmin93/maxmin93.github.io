@@ -12,12 +12,21 @@ image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 - [Svelte 공부하기 - 1일차](/posts/2022-12-07-svelte-tutorial-day1/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
 - [Svelte 공부하기 - 2일차](/posts/2022-12-14-svelte-tutorial-day2/)
 
+## 0. 시작하기에 앞서
+
+백엔드 개발자 베이스를 가진 나로서는 프론트엔드 개발이 쉬워야 그나마 따라갈 수 있기 때문에, Svelte 를 선택하게 되었습니다.
+
+React 가 대세라지만 문법에서 느껴지는 이질감 탓에 선뜻 공부하기를 주저하게 만들었고, Vue 도 Angular 에서 영감을 받았다고 하지만 괴상하게 느껴지는 것은 마찬가지였습니다. Angular 는 이런 느낌이 없었기에, 스프링 하던 가락으로 바로 작업을 할 수 있었지요.
+
+Svelte 는 컴파일을 통해 바닐라 JS를 생성해 냅니다. DOM 을 다루지 않는 다는 점도 매력적이었습니다. 모던웹은 페이지를 리로드하지 않고, 컴포넌트 방식으로 동적 렌더링의 효율을 높이는데 방향성이 있습니다. 복잡한 개념들을 최대한 쉽게 풀어 낸 개발 도구가 Svelte 라고 생각합니다.
+
 ## 1. [Svelte 공식 문서](https://svelte.dev/docs)
 
 Jekyll 의 코드블럭의 문법 하이라이터로 [rouge](https://github.com/rouge-ruby/rouge) 가  쓰이는데, 아직 svelte 언어 지원이 안되어서 vue 로 사용하여 작성함. (`_config.yml` 의 `syntax_highlighter: rouge` 옵션 참조)
 
-- 참고 [Svelte Examples](https://svelte.dev/examples)
 - "스벨^트" 라고 발음한다. (매끄럽다는 뜻)
+- 참고1 [Svelte Examples](https://svelte.dev/examples)
+- 참고2 [테오 블로그 - Svelte Rxjs Vite AdorableCSS](https://velog.io/@teo/Svelte-Rxjs-Vite-AdorableCSS)
 
 ### 1) 프로젝트 생성 및 실행
 
@@ -470,7 +479,7 @@ const config = {
 
 ### 2) TS 로 작성된 svelte
 
-> lang=ts 를 명시한 script 태그 안에 typescript 로 작성한다.
+> `lang=ts` 를 명시한 script 태그 안에 typescript 로 작성한다.
 
 ```vue
 <script lang="ts">
@@ -580,7 +589,33 @@ type BookListItemProps = {
 }
 ```
 
-### 3) 배포
+### 3) rxjs 사용하기
+
+`svelte/store` 는 `rxjs` 와 궁합이 좋다고 한다. (rxjs 개발자가 참여)
+
+- 설치 `pnpm install rxjs`
+- 또 다른 예제: 공식문서 ['rxjs + store' 예제](https://svelte.dev/repl/f4024d6fea4747c59f12730a892c19bb?version=3.55.0)
+
+> 1초마다 카운트 x 2 하는 예제 ($timer 에서 출력)
+
+```vue
+<script lang="ts">
+  import { interval } from 'rxjs';
+  import { startWith, map } from 'rxjs/operators';
+
+  let timer = interval(1000).pipe(
+    startWith(0),
+    map((x) => x * 2)
+  );
+</script>
+
+<h1>
+  Welcome to SvelteKit and Rxjs ({$timer})
+</h1>
+```
+{: file="src/routes/+page.svelte"}
+
+### 4) 배포
 
 - Github 로부터 [Vercel 클라우드](https://vercel.com/)에 직접 배포 (CI/CD)
   + [svelte-ts-todo-app.vercel.app](https://svelte-ts-todo-app.vercel.app/)
@@ -649,22 +684,21 @@ server {
 
 - 현시점에서 React, Angular, Vue 다음으로 4위를 차지하고 있다.
   + 하지만 개발자 호응도가 좋아 성장 가능성은 높다.
-  + 여차하면 Vue 로 갈아탈 수도 있지 않을까
+
+> 풀스택 프레임워크로 활용하려면 SvelteKit (for SSR) 을 다루어야 한다.
 
 ### 1) 장점
 
-- 사용하기 쉽다.
-- 가상 DOM 없이 코드를 컴파일한다. (최적화, 컴파일 성능 향상)
-  + 런타임 오버헤드가 낮아짐. 부드러운 전환과 빠른 렌더링 효과
-- 자동화된 업데이트 (사용자경험 향상)
-  + 가상DOM 에 반영될 때까지 기다릴 필요 없음
+- 사용하기 쉽다. (= 배우기 쉽다)
+- 작은 빌드 사이즈로 최적화하여 성능 향상 (별도 패키지 없음)
+- 가상 DOM 없이 코드를 컴파일한다
+  + 런타임 오버헤드가 낮아짐 : 부드러운 전환과 빠른 렌더링 효과
   + _cf._ React 와 Vue 는 가상DOM 을 사용
 
 ### 2) 단점
 
 - Google, Facebook 같은 주요 지원이 없음
-- 소규모 커뮤니티
-- 라우팅 문제 : 라우터에 페이지를 정의한다. (라우터가 꼭 필요함)
+- 소규모 커뮤니티 (시간 문제로 보인다)
 - React Native 같은 크로스 플랫폼 앱은 불가능
   + 어차피 Flutter 사용할거니깐
 
@@ -674,8 +708,10 @@ server {
   + 일단 해보고, 필요하면 Vue 로 갈아타자.
 - 이거 하나면 React & Next 를 굳이 배울 필요가 있나 싶다.
   + 흰 고양이든 검은 고양이든 쥐만 잘 잡으면 된다. 
+- Svelte 아직 비주류 개발도구라서 취업에는 불리하다.
+  + 나이가 많은 개발자라 어느 회사에서든 쉽사리 뽑아주지 않기 때문에 과감하게 결정할 수 있는 입장이라는게 다행일지도.
 
-- 다음으로 간단한 애플리케이션을 다뤄보자. (라우팅 포함)
+현대적인 프론트엔드까지 모두 다루는 진정한 시니어 개발자가 되겠습니다.
 
 &nbsp; <br />
 &nbsp; <br />
