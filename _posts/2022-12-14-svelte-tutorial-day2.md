@@ -9,8 +9,11 @@ image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 > 프론트엔드 프레임워크인 SvelteKit 에 대해 공부한다. css framework 들을 적용하고 레이아웃을 만들어보자. (2일차)
 {: .prompt-tip }
 
-- [Svelte 공부하기 - 1일차](/posts/2022-12-07-svelte-tutorial-day1/)
-- [Svelte 공부하기 - 2일차](/posts/2022-12-14-svelte-tutorial-day2/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Svelte 공부하기 - 1일차](/posts/2022-12-07-svelte-tutorial-day1/) : Svelte
+- [Svelte 공부하기 - 2일차](/posts/2022-12-14-svelte-tutorial-day2/) : SvelteKit + CSS <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Svelte 공부하기 - 3일차](/posts/2022-12-18-svelte-tutorial-day3/) : SvelteKit 구조, 작동방식 
+- [Svelte 공부하기 - 4일차](/posts/2022-12-20-svelte-tutorial-day4/) : SvelteKit 애플리케이션 예제 
+- [Svelte 공부하기 - 5일차](/posts/2022-12-30-svelte-tutorial-day5/) 
 
 ## 1. SvelteKit 이란?
 
