@@ -13,7 +13,6 @@ image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 - [Svelte 공부하기 - 2일차](/posts/2022-12-14-svelte-tutorial-day2/) : SvelteKit + CSS <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
 - [Svelte 공부하기 - 3일차](/posts/2022-12-18-svelte-tutorial-day3/) : SvelteKit 구조, 작동방식 
 - [Svelte 공부하기 - 4일차](/posts/2022-12-20-svelte-tutorial-day4/) : SvelteKit 애플리케이션 예제 
-- [Svelte 공부하기 - 5일차](/posts/2022-12-30-svelte-tutorial-day5/) 
 
 ## 1. SvelteKit 이란?
 
@@ -292,6 +291,28 @@ import { AppShell, AppBar } from "@skeletonlabs/skeleton";
   <slot />
 
 </AppShell>
+```
+
+#### [svelte-add](https://github.com/svelte-add/svelte-add) 도구
+
+```console
+# tailwindcss
+$ pnpx --yes svelte-add@latest tailwindcss
+
+# postcss
+$ pnpx --yes svelte-add@latest postcss
+
+# prettier 
+$ pnpx --yes svelte-add@latest prettier
+
+# eslint
+$ pnpx --yes svelte-add@latest eslint
+```
+
+- [svelte-supabase](https://github.com/supabase-community/svelte-supabase)
+
+```console
+pnpx apply supabase-community/svelte-supabase
 ```
 
 ### 2) dev 실행

@@ -1,5 +1,5 @@
 ---
-date: 2022-12-14 00:00:00 +0000
+date: 2022-12-18 00:00:00 +0000
 title: Svelte 공부하기 - 3일차
 categories: ["nodejs","svelte"]
 tags: ["frontend","tutorial","3rd-day"]
@@ -13,7 +13,6 @@ image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 - [Svelte 공부하기 - 2일차](/posts/2022-12-14-svelte-tutorial-day2/) : SvelteKit + CSS
 - [Svelte 공부하기 - 3일차](/posts/2022-12-18-svelte-tutorial-day3/) : SvelteKit 구조, 작동방식 <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
 - [Svelte 공부하기 - 4일차](/posts/2022-12-20-svelte-tutorial-day4/) : SvelteKit 애플리케이션 예제 
-- [Svelte 공부하기 - 5일차](/posts/2022-12-30-svelte-tutorial-day5/) 
 
 ## 1. SvelteKit 의 구조
 
@@ -417,8 +416,8 @@ drwxr-xr-x  4 bgmin  staff   128 12 15 15:28 _app
 
 - SvelteKit 공식 문서를 보는게 정답이다. (많이 헷갈렸다. 쉑~)
   + 검색에 나오는 자료는 이전 [Sapper](https://sapper.svelte.dev/docs/) 의 내용을 담고 있다.
-- `+page`, `+layout` 접두사만 사용하자.
-  + `+server` 는 GET/POST 같은 [RequestHandler](https://kit.svelte.dev/docs/routing#server) 용도로만 사용하자.
+- `+page`, `+layout` 접두사를 사용한다. (이외는 무시됨)
+  + `+server` 는 GET/POST 같은 [RequestHandler](https://kit.svelte.dev/docs/routing#server) 용도로만 사용한다.
 
 ### 중요 용어
 

@@ -13,7 +13,6 @@ image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 - [Svelte 공부하기 - 2일차](/posts/2022-12-14-svelte-tutorial-day2/) : SvelteKit + CSS
 - [Svelte 공부하기 - 3일차](/posts/2022-12-18-svelte-tutorial-day3/) : SvelteKit 구조, 작동방식
 - [Svelte 공부하기 - 4일차](/posts/2022-12-20-svelte-tutorial-day4/) : SvelteKit 애플리케이션 예제 <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
-- [Svelte 공부하기 - 5일차](/posts/2022-12-30-svelte-tutorial-day5/) 
 
 ## 1. PageLoad 로 JSON 데이터 전달하기
 
@@ -43,18 +42,24 @@ _svltk-tutorial-lesson01 실행화면_
 
 참고 : [Full Stack SvelteKit For Beginners](https://joyofcode.xyz/sveltekit-for-beginners)
 
+- 소스 코드: [깃허브/mattcroat/sveltekit-for-beginners](https://github.com/mattcroat/sveltekit-for-beginners)
+
 ![svltk-tutorial-lesson02](https://github.com/maxmin93/svltk-tutorial/raw/main/static/sveltk-lesson02-home-crunch.png){: width="600px"}
 _svltk-tutorial-lesson02 실행화면_
 
 ### 1) 구현 기능
 
 - prisma 를 이용한 tweets DB 연동
+  + getTweets, getTweet, getUserProfile, createTweet, removeTweet
 - `/lesson02` 에서 svelte transition 적용
   - onMount() : 페이지가 로드 이후 visible=true 로 in transition 시작
   - 버튼 클릭시 setTimeout 이후, visible=false 로 out transition 시작
 - `/api/tweets/+server.ts` 에서 tweets API 생성 : GET
   - `/lesson02/home/+page.ts` 에서 fetch 로 API 호출
   - `/lesson02/home/+page.svelte` 에서 tweets 출력
+- `$lib/server` 아래의 코드는 server 스크립트에서만 불러올 수 있다
+- `+layout@.svelte` 는 layout 을 재정의 한다. ex) settings 메뉴
+  + 간혹 `+layout@reset.svelte` 라고 사용한 예제들이 있음
 
 ### 2) prisma 관련 설정
 
