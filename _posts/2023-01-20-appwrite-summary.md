@@ -2,7 +2,7 @@
 date: 2023-01-20 00:00:00 +0000
 title: 오픈소스 Backend Appwrite
 categories: ["software","backend"]
-tags: ["oauth","mariadb","realtime","storage","cron"]
+tags: ["oauth","database","realtime","storage"]
 image: "https://appwrite.io/images-ee/press/badge-pink-box.svg"
 ---
 
@@ -225,7 +225,11 @@ const createTodos = () => {
 
 ### 소회
 
+- 원스톱으로 Docker 설치가 되는 것을 보고 '와~ 멋지다' 라고 탄성했다.
+  + Console 이 바로 실행되는 것을 보고 '정말 좋다' 라고 감탄했다.
+  + 그러나 ...
 - 내가 굳이 불편한 Appwrite 를 잡고 있을 필요가 있을까?
+  + Supabase 처럼 prisma 와 연계할 수 없다. (API로만 사용 가능)
   + Appwrite 는 클라우드 서비스가 아직 없다. 
   + 월 5달러의 돈이 들더라도 신경쓸 필요 없는 Supabase 클라우드를 쓰자.
 - 사용자가 많고 예제가 많은 것이 좋은 도구인데, Svelte 는 아직도 부족하다.
