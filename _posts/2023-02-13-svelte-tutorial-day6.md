@@ -352,6 +352,15 @@ _The Timeline element presented on the Flowbite website._
   + Flowbite 가 필요하던 차에 업데이트가 되어 반갑다.
 - 일단 업로드 하고 나중에 필요한 부분을 업데이트 하자.
 
+> Full-Stack CRUD Application Example
+
+- [Full-Stack CRUD Application with SvelteKit & Prisma](https://www.youtube.com/watch?v=E9J2VXd-bzE)
+
+> SvelteKit Auth Tutorials with Firebase Auth
+
+- [SvelteKit Authentication Tutorial + Firebase Auth](https://www.youtube.com/watch?v=8NlUTFppJkU)
+- [SvelteKit + Firebase 9 Authentication Simple Tutorial](https://www.youtube.com/watch?v=PXf0t6Id7i0)
+
 &nbsp; <br />
 &nbsp; <br />
 
