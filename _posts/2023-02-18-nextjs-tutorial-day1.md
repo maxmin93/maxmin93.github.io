@@ -254,7 +254,7 @@ _t3-app tutorial - Guestbook_
 
 캐시를 탐색하고, 없으면 fetcher 가 작동하는 방식
 
-```js
+```jsx
 import useSWR from 'swr'
 
 function Profile() {
