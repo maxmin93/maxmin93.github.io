@@ -23,25 +23,6 @@ image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and
 
 #### div, [label](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label), input
 
-<div style="border: solid; width: 50%;">
-<div style="height: 1.5rem;
-    display: flex;
-    align-items: center;
-    margin-left: 12px;">
-    <input type="checkbox" name="cheese" id="cheese">
-    <label for="cheese" style="margin-left: 2rem; align-self: flex-start;">Do you like cheese?</label>
-</div>
-
-<div style="height: 1.5rem;
-    display: flex;
-    align-items: center;
-    margin-left: 12px;">
-    <label for="peas" style="margin-right: 2rem; align-self: flex-start;">Do you like cheese?</label>
-    <input type="checkbox" name="peas" id="peas">
-</div>
-<div style="height: .5rem;"></div>
-</div>
-
 ```html
 <div class="preference">
     <label for="cheese">Do you like cheese?</label>
@@ -74,6 +55,51 @@ div {
   <label for='name'>Name:</label>
   <input type='text' id='name' />
 </div>
+```
+
+<div style="border: solid; width: 50%;">
+<div style="height: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin-left: 12px;">
+    <input type="checkbox" name="cheese" id="cheese">
+    <label for="cheese" style="margin-left: 2rem; align-self: flex-start;">Do you like cheese?</label>
+</div>
+
+<div style="height: 1.5rem;
+    display: flex;
+    align-items: center;
+    margin-left: 12px;">
+    <label for="peas" style="margin-right: 2rem; align-self: flex-start;">Do you like cheese?</label>
+    <input type="checkbox" name="peas" id="peas">
+</div>
+<div style="height: .5rem;"></div>
+</div>
+
+#### form, fieldset, legend
+
+- form : action, method(= get/post)
+- fieldset 은 input 요소들의 그룹
+  - legend 로 fieldset 의 제목을 기술한다.
+  - 다양한 input 요소들을 기술할 수 있다.
+
+```text
+- form
+  + fieldset
+    * legend
+      - p
+        + label
+        + input: type (= text/password/phone/number/...)
+      - p
+        + label
+        + input: type (= radio/checkbox)
+      - p        
+        + select: multiple, size
+          * optgroup
+            - option
+      - p        
+        + textarea
+    * button: type(= submit, reset), formaction, formmethod
 ```
 
 #### dl, dt, dd : 제목과 설명이 한쌍인 설명 목록을 만들때 사용한다.
@@ -156,18 +182,27 @@ figcaption {
 </figure>
 ```
 
-#### table, th, tr, td
+#### table, caption, thead, tbody, tfoot, tr, th, td
 
-> table 의 경우엔 caption 태그로 제목을 출력할 수 있다.
+- table 의 경우엔 caption 태그로 제목을 출력할 수 있다.
+- table 그룹은 thead, tbody, tfoot 의 내부 구조를 갖는다.
+- th 는 Head 항목을 의미
+  + thead 에서 scope="col" 로 열 하나의 Head 임을 설명
+  + tbody 에서 scope="row" 로 행 하나의 Head 임을 설명
+- 그외 tr 과, td 는 기존과 동일
+  + colspan, rowspan 으로 셀 병합을 서술할 수 있음
 
 ```html
 <table>
-    <caption>He-Man and Skeletor facts</caption>
+  <caption>He-Man and Skeletor facts</caption>
+  <thead>
     <tr>
-        <td> </td>
+        <th>&nbsp;</th>
         <th scope="col" class="heman">He-Man</th>
         <th scope="col" class="skeletor">Skeletor</th>
-    </tr>
+    </tr>    
+  </thead>  
+  <tbody>
     <tr>
         <th scope="row">Role</th>
         <td>Hero</td>
@@ -178,9 +213,14 @@ figcaption {
         <td>Power Sword</td>
         <td>Havoc Staff</td>
     </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3">Comments about anything</td>
+    </tr>
+  </tfoot>
 </table>
 ```
-
 
 #### abbr : 약어
 
@@ -251,6 +291,18 @@ details[open] summary {
 </style>
 ```
 
+<aside>
+  <details>
+    <summary>
+      Guess the <mark>number of hours</mark> I code per day
+    </summary>
+    <p>
+      I start at <time datetime="08:00">8 am</time> and I write code
+      for <time datetime="PT3H">3 hours</time> every morning.
+    </p>
+  </details>
+</aside>
+
 ### 2) 유용한 도구
 
 #### [HTML 검사기](https://validator.w3.org/nu/#file)
@@ -258,7 +310,7 @@ details[open] summary {
 > Info 메시지는 Message Filtering 으로 숨길 수 있다.
 
 ![HTML Validator](https://i.ytimg.com/vi/wNOVgWYThE8/maxresdefault.jpg){: width="500"}
-_NU HTML Validator_
+_Nu HTML Validator_
 
 #### [HTML5 Outliner](https://chrome.google.com/webstore/detail/html5-outliner/afoibpobokebhgfnknfndkgemglggomo) - 크롬 확장프로그램
 
