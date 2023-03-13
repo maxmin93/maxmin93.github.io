@@ -1,6 +1,6 @@
 ---
 title: Portfolio
-icon: fa-solid fa-info-circle
+icon: fas fa-info-circle
 order: 4
 sitemap: false
 ---

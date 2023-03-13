@@ -1,6 +1,6 @@
 ---
 title: About
-icon: fa-solid fa-info-circle
+icon: fas fa-info-circle
 order: 6
 sitemap: false
 ---

@@ -1,6 +1,6 @@
 ---
 title: My Projects
-icon: fa-solid fa-building
+icon: fas fa-building
 order: 5
 sitemap: false
 ---

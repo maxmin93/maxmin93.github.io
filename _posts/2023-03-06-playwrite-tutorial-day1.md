@@ -359,6 +359,9 @@ def selector_exists(page, selector, timeout=3000):
 
 #### [A 태그의 href 값을 가져오는 방법](https://stackoverflow.com/a/68095321/6811653) : evaluate
 
+- 같은 방식으로 해당 element 의 outerHTML 도 가져올 수 있다.
+  + `locator.evaluate("el => el.outerHTML")` 
+
 ```py
 hrefs_of_page = page.eval_on_selector_all("a[href^='/wiki/']", "elements => elements.map(element => element.href)")
 ```
