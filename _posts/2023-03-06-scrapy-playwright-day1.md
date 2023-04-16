@@ -1,17 +1,17 @@
 ---
 date: 2023-03-06 00:00:00 +0000
-title: Scrapy, Playwrite 공부하기 - 1일차
+title: Scrapy, Playwright 공부하기 - 1일차
 categories: ["python","scrapy"]
-tags: ["playwrite","tutorial","1st-day"]
+tags: ["playwright","scrapy","1st-day"]
 image: "https://pbs.twimg.com/profile_images/1318604600677527552/stk8sqYZ_400x400.png"
 ---
 
-> Microsoft 에서 만든 Playwrite 를 사용하여 웹 스크래핑 방법을 공부합니다. Scrapy 와 연동하거나 단독으로 사용할 수 있습니다.
+> Microsoft 에서 만든 Playwright 를 사용하여 웹 스크래핑 방법을 공부합니다. Scrapy 와 연동하거나 단독으로 사용할 수 있습니다.
 {: .prompt-tip }
 
-- [Playwrite 공부하기 - 1일차](/posts/2022-12-07-svelte-tutorial-day1/) : Playwrite <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Scrapy, Playwright 공부하기 - 1일차](/posts/2023-03-06-scrapy-playwright-day1/) : Scrapy, Playwright <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
 
-## 1. [Playwrite](https://playwright.dev/python/) 란?
+## 1. [Playwright](https://playwright.dev/python/) 란?
 
 Microsoft 사에서 만든 E2E 용 headless browser 로 웹애플리케이션의 브라우져별 호환성과 기능 테스트를 위해 사용할 수 있습니다.
 

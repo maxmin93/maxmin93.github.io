@@ -2,7 +2,8 @@
 title: Elasticsearch 작업하기 - 1일차
 date: 2023-03-12 00:00:00 +0000
 categories: ["database", "elasticsearch"]
-tags: ["metricbeats", "docker", "logstash", "1st-day"]
+tags: ["metricbeats", "kibana", "logstash", "1st-day"]
+image: "https://e7.pngegg.com/pngimages/661/195/png-clipart-logo-elasticsearch-graphics-logstash-font-elastic-text-logo.png"
 ---
 
 > NoSQL DB 이면서 검색엔진인 Elasticsearch 8 설정의 작업 과정을 기록합니다.
@@ -20,12 +21,23 @@ tags: ["metricbeats", "docker", "logstash", "1st-day"]
 
 ### 2) 제품 구성
 
-- Elasticsearch : 검색 엔진
+- Elasticsearch : 검색 엔진, 플러그인
+  + JVM 이 빌트인 되어 설치된다. 보통 Java 17 이상
 - Kibana : elastic 관리 및 쿼리 도구
+  + node 모듈로 구성
 - Logstash : 데이터 입력용 ETL 도구
 - MetricBeats : 성능 모니터링 (Kibana 대시보드에서 조회)
 
-### 3) homebrew 설치 (최신 버전이 7.17.4)
+### 3) 보안 설정
+
+- elasticsearch 8.x 에서는 자동으로 ssl 생성과 https 설정이 이루어짐
+- kibana 는 설치시 es 접속을 위한 증명서를 받아와 사용한다.
+- elastic 슈퍼 유저가 기본 계정으로 생성되고, role 과 계정을 추가할 수 있다.
+- metric 정보 조회 등의 api 를 위해서 api-key 발급 기능도 있다. 
+
+## 2. Elasticsearch 설치
+
+### 1) MacOS 에서 homebrew 로 설치 (최신 버전이 7.17.4)
 
 기본 설정으로 작동시키는 것은 성공했지만, 부팅 후 자동실행 설정에 실패했다.
 
@@ -66,16 +78,15 @@ Enter password for [beats_system]:
 Enter password for [remote_monitoring_user]:
 ```
 
+### 2) Ubuntu 에서 apt 로 설치
 
-## 2. 우분투 apt 설치
+서비스 자동실행를 위해 Ubuntu 의 systemctl 을 사용하는 것이 가장 믿음직스러워 설치를 재시도 했다. docker 에 비해 시스템 튜닝의 변경이 바로 반영된다는 편리함이 있지만, single node 라는 점이 염려되었다. elasticsearch 는 가용성을 중시하기 때문에 샤딩과 복제 메커니즘을 가지고 있다. 최소 3개 이상의 멀티 노드의 구조에서 장점을 발휘하는데, single node 인 경우 샤딩에 관한 선택의 여지가 없게된다. (shard_size=1)
 
-우분투 환경에 앞서서 Docker 로 설치를 진행해 보았다. 기본 설정으로 문제없이 설치 되었지만, 설정을 변경하거나 시스템 튜닝을 한다고 가정했을 때 불편함이 염려되었다. elasticsearch 는 메모리도 많이 사용하고 색인으로 인한 디스크 사용량도 꽤 크다. Docker 의 제한된 환경에서 구동시키는 것보다는 직접 운용하는게 낫다고 생각되어 재설치 하였다.
+- 장점: 설치 후 유지보수가 편한다. (서버 관리, 데이터 관리)
+- 단점: 샤딩이 안되고, 리소스 낭비가 크다. (서버 1대에 서비스 1개)
+  - 클라우드 서비스를 사용하면 좋겠지만, 매우 비싸다
 
-- 일단 설치 후 변경 사항이 적다. (데이터 관리가 관건)
-- busy 상태와 idle 상태의 리소스 사용량 차이가 크다.
-  - 클라우드 서비스를 사용하면 좋겠지만, 알다시피 비싸다
-
-### 1) elasticsearch
+#### elasticsearch
 
 설치 과정에서 elastic 계정과 토큰이 생성된다.
 
@@ -116,7 +127,15 @@ $ sudo systemctl start elasticsearch.service
 
 # (실행 상태에서) elastic 슈퍼유저의 패스워드 변경
 $ sudo /usr/share/elasticsearch/bin/elasticsearch-reset-password -i -u elastic
+
+# curl 접속 테스트
+$ curl -k -XGET "https://localhost:9200" -u elastic:{password}
 ```
+
+💡TIP : curl 사용시
+
+- 패스워드에 특수기호를 사용한 경우 `\`를 붙여서 입력하면 된다.
+- https 접속시 `-k` 옵션을 사용
 
 > 아래 내용이 elasticsearch.yml 에 자동으로 설정된다.
 
@@ -162,7 +181,7 @@ http.host: 0.0.0.0
 
 #### 추가 작업
 
-> SSD 외장 드라이브(ssd1t)로 데이터와 로그 경로를 설정하였다. 
+> SSD 외장 드라이브(M.2 NVMe)로 데이터와 로그 경로를 설정하였다. 
 
 - elasticsearch.yml 에서 path.data 와 path.logs 수정
 - 이미 데이터가 생성된 경우 폴더를 복사해서 적용한다
@@ -182,8 +201,13 @@ $ sudo systemctl restart elasticsearch.service
 
 설치 후 브라우저로 `https://localhost:9200` 접속하여 확인
 
+#### 참고문서
 
-### 2) kibana
+- [Storing Elasticsearch Data on a Separate Ubuntu Partition](https://burnhamforensics.com/2019/02/14/storing-elasticsearch-data-on-a-separate-ubuntu-partition/)
+- [How can I safely move Elasticsearch indices to another mount in Linux?](https://stackoverflow.com/a/41892830)
+
+
+#### kibana
 
 elasticsearch 에 비해 설치 과정이 손쉽다.
 
@@ -223,7 +247,9 @@ xpack.fleet.outputs: [{id: fleet-default-output, name: default, is_default: true
 ```
 {: file="config/kibana.yml"}
 
-> https 로 접속하도록 설정하려면, cert 정보를 생성해야 한다.
+#### 추가작업 : SSL 설정
+
+https 로 접속하도록 설정하려면, cert 정보를 생성해야 한다.
 
 ```console
 $ sudo openssl genrsa -des3 -out server.key 2048
@@ -245,23 +271,11 @@ server.ssl.key: /etc/kibana/certs/server.key
 
 브라우저로 `https://localhost:5601` 접속하여 확인
 
-### 3) metricbeat
+#### metricbeat
 
-설정 사항이 많아서, 동영상 가이드를 보며 작업하는 것을 권장한다.
+[MetricBeat 설치](https://www.elastic.co/guide/en/beats/metricbeat/current/metricbeat-installation-configuration.html) 문서를 참고해서 진행하면 된다.
 
 1. Install Metricbeat on the same server as Elasticsearch
-2. Enable and configure the Elasticsearch x-pack module in Metricbeat
-3. Configure Metricbeat to send data to the monitoring cluster
-4. Start Metricbeat
-
-- 참고: [Collecting Elasticsearch monitoring data with Metricbeatedit](https://www.elastic.co/guide/en/elasticsearch/reference/8.6/configuring-metricbeat.html)
-
-```console
-$ cd metricbeat-8.6.2-darwin-x86_64
-
-$ ./metricbeat modules enable elasticsearch-xpack
-Enabled elasticsearch-xpack
-```
 
 ```yml
 - module: elasticsearch
@@ -273,6 +287,10 @@ Enabled elasticsearch-xpack
   #password: "secret"
 ```
 {: file="modules.d/elasticsearch-xpack.yml"}
+
+2. Enable and configure the Elasticsearch x-pack module in Metricbeat
+
+ES접속 정보를 설정 (나중에 계정 대신에 api_key로 교체)
 
 ```yml
 # ------------------ Elasticsearch Output ------------------
@@ -286,10 +304,13 @@ output.elasticsearch:
   # Authentication credentials - either API key or username/password.
   #api_key: "id:api_key"
   username: "elastic"
-  password: "c-lY6Lt82-Bn3-40tX8u"
-  #password: "changeme"
+  password: "changeme"
 ```
 {: file="metricbeat.yml"}
+
+3. Configure Metricbeat to send data to the monitoring cluster
+
+설정 사항을 테스트할 수 있다. 
 
 ```console
 $ ./metricbeat test config
@@ -313,15 +334,22 @@ $ sudo ./metricbeat -e
 Index setup finished.
 Loading dashboards (Kibana must be running and reachable)
 # 꽤 시간 걸림 (3분?)
+```
 
-$ sudo chown root metricbeat.yml 
-$ sudo chown root modules.d/{modulename}.yml 
+4. Start Metricbeat
+
+```console
 $ sudo ./metricbeat -e
 Exiting: error loading config file: config file ("metricbeat.yml") must be owned by the user identifier (uid=0) or root
 
-# 또는
+$ sudo chown root metricbeat.yml 
+$ sudo chown root modules.d/{modulename}.yml 
 $ ./metricbeat -e --strict.perms=false 
 ```
+
+5. 추가작업 : api_key 등록
+
+- 참고: [Collecting Elasticsearch monitoring data with Metricbeatedit](https://www.elastic.co/guide/en/elasticsearch/reference/8.6/configuring-metricbeat.html)
 
 ```console
 # Kibana > DevTools > Console
@@ -351,6 +379,8 @@ Enter value for OUTPUT_ES_API_KEY: <붙여넣기>
 Successfully updated the keystore
 ```
 
+elastic 계정 대신에 api_key 를 사용하도록 설정한다. 
+
 ```yml
 # ------------------ Elasticsearch Output ------------------
 output.elasticsearch:
@@ -363,6 +393,8 @@ output.elasticsearch:
 ```
 {: file="metricbeat.yml"}
 
+6. Kibana 대시보드로 metricbeat 기본 템플릿 조회
+
 - Stack Management &gt; Index Management &gt; Data Streams 
   + metricbeat-8.6.2 항목 확인 (head=yellow, indices=1) 
 
@@ -370,6 +402,8 @@ output.elasticsearch:
   + Analytics &gt; Discover 에서 "metricbeat-" 스트림 확인
 
 - Observability &gt; Overview 에서 host 선택
+
+![metricbeat-system-dashboard](https://www.elastic.co/guide/en/beats/metricbeat/current/images/metricbeat-system-dashboard.png){: width="600px"}
 
 
 ## 3. 도메인 인증서와 nginx 연동
@@ -412,14 +446,10 @@ server {
 
 Stackoverflow 에 관련 질문들이 많이 올라와 있다. 생각대로 작동하지 않는다는 내용이 다수이고, basePath 를 사용하기 위해서는 url 에서 basePath 문자열을 필터링 후 제거하여 basePath 가 반복되지 않도록 rewrite 처리를 해야 한다는 답변이 있다.
 
-
 ## 9. Summary
 
-- 시스템 설정에 너무 시간을 빼앗긴다. 
-- 저런건 전문가에게 맡기고 다음 일을 하자!
-  + 색인 스키마 만들고, python 으로 데이터 import 기능이 필요하다.
-  + 이 과정에서 데이터 필터링과 명사 추출 등의 처리가 들어간다.
-  + nori 토크나이저는 한글 검색을 추가 작업 없이 바로 적용할 때나 유용하다.
+- 시스템 설정에 너무 시간을 빼앗겼다. 핵심에 집중하자.
+- 그런데 찜찜한 부분이 있으면 그냥 넘어가질 못하겠다. 아무래도 Docker 설치도 하게 될 듯
 
 &nbsp; <br />
 &nbsp; <br />
