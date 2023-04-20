@@ -6,7 +6,7 @@ tags: ["mecab-ko", "tokenizer", "nori", "2nd-day"]
 image: "https://e7.pngegg.com/pngimages/661/195/png-clipart-logo-elasticsearch-graphics-logstash-font-elastic-text-logo.png"
 ---
 
-> 개체명을 가중치로 이용하여 검색 서비스의 성능을 향상시킬 수 있습니다. 이를 위해 mecab-ko 형태소 분석기에 대해 공부합니다. 
+> 형태소 분석기를 이용하여 검색 서비스의 성능을 향상시킬 수 있습니다. 이를 위해 elasticsearch 의 nori 플러그인과 mecab-ko 형태소 분석기에 대해 공부합니다. 
 {: .prompt-tip }
 
 - [Elasticsearch 작업하기 - 1일차](/posts/2023-03-12-elasticsearch-day1/) : es, kibana 설치
@@ -124,7 +124,7 @@ services:
     image: elasticsearch-with-nori:latest
     container_name: esnode01
     volumes:
-      - ./nori/userdict_ko.txt:/usr/share/elasticsearch/config/userdict_ko.txt
+      - ./user_dic:/usr/share/elasticsearch/config/user_dic
       - certs_data:/usr/share/elasticsearch/config/certs
       - es01_data:/usr/share/elasticsearch/data      
     ports:
@@ -170,7 +170,7 @@ services:
     image: elasticsearch-with-nori:latest
     container_name: esnode02
     volumes:
-      - ./nori/userdict_ko.txt:/usr/share/elasticsearch/config/userdict_ko.txt
+      - ./user_dic:/usr/share/elasticsearch/config/user_dic
       - certs_data:/usr/share/elasticsearch/config/certs
       - es02_data:/usr/share/elasticsearch/data
     environment:
@@ -213,7 +213,7 @@ services:
     image: elasticsearch-with-nori:latest
     container_name: esnode03    
     volumes:
-      - ./nori/userdict_ko.txt:/usr/share/elasticsearch/config/userdict_ko.txt
+      - ./user_dic:/usr/share/elasticsearch/config/user_dic
       - certs_data:/usr/share/elasticsearch/config/certs
       - es03_data:/usr/share/elasticsearch/data
     environment:
@@ -350,7 +350,12 @@ $ docker compose down -v
 
 Elasticsearch 는 한국어 분석을 위해 mecab-ko 형태소 분석기를 제공하고 있다. 
 
-### 1) [nori plugin 설치](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-nori.html)
+참고문서
+
+- [공식문서 - Nori Analyzer](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-nori.html)
+- [6.7.2 노리 (nori) 한글 형태소 분석기](https://esbook.kimjmin.net/06-text-analysis/6.7-stemming/6.7.2-nori)
+
+### 1) nori plugin 설치
 
 도커에서는 이미지에 추가한 상태라 아래 단계가 필요 없지만, 설명을 위해 작성한다.
 
@@ -490,12 +495,12 @@ GET /_analyze
     "type" : "nori_tokenizer",
     "decompound_mode": "none",
     "discard_punctuation": "true",
-    "user_dictionary": "userdict_ko.txt"
+    "user_dictionary": "user_dic/nori_ko.txt"
   },
   "filter": {
     "type" : "nori_part_of_speech",
     "stoptags" : [
-      "E","IC","J","MAG","MAJ","MM",NP",
+      "E","IC","J","MAG","MAJ","MM","NP",
       "SP","SSC","SSO","SC","SE",
       "XPN","XSA","XSV","UNA","NA",
       "VCN","VCP","VV","VX","VSV"
@@ -562,9 +567,109 @@ GET /_analyze
 }
 ```
 
-#### 참고문서
+### 3) 동의어(synonym) 테스트 
 
-- [6.7.2 노리 (nori) 한글 형태소 분석기](https://esbook.kimjmin.net/06-text-analysis/6.7-stemming/6.7.2-nori)
+동의어 사전을 참조해 토큰을 확장, 대체한다. 중복된 토큰은 `remove_duplicates`으로 제거한다.
+
+참고문서
+
+- [공식문서 - Synonym token filter](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-synonym-tokenfilter.html)
+- [Elastic 가이드북 - 동의어](https://esbook.kimjmin.net/06-text-analysis/6.6-token-filter/6.6.3-synonym)
+
+```console
+GET /_analyze
+{
+  "tokenizer": {
+    "type" : "nori_tokenizer",
+    "decompound_mode": "none",
+    "discard_punctuation": "true",
+    "user_dictionary": "user_dic/nori_ko.txt"
+  },
+  "filter": [
+    {
+      "type" : "nori_part_of_speech",
+      "stoptags" : [
+        "E","IC","J","MAG","MAJ","MM","NP",
+        "SP","SSC","SSO","SC","SE",
+        "XPN","XSA","XSV","UNA","NA",
+        "VCN","VCP","VV","VX","VSV"
+      ]
+    },
+    {
+      "type": "synonym",
+      "synonyms": [
+        "universe , cosmos",
+        "i-pod, i pod => 아이팟",
+        "동해물 => 동해바닷물, 동해바다"
+      ]
+    },
+    {
+      "type": "remove_duplicates"
+    }
+  ],
+  "text": ["동해물이 세종시에 이르고, i-pod가 universe에 넘치도록!"]
+}
+
+# 출력
+{
+  "tokens": [
+    {
+      "token": "동해",
+      "start_offset": 0,
+      "end_offset": 2,
+      "type": "SYNONYM",
+      "position": 0
+    },
+    {
+      "token": "바닷물",
+      "start_offset": 2,
+      "end_offset": 3,
+      "type": "SYNONYM",
+      "position": 1
+    },
+    {
+      "token": "바다",
+      "start_offset": 2,
+      "end_offset": 3,
+      "type": "SYNONYM",
+      "position": 1
+    },
+    {
+      "token": "세종시",
+      "start_offset": 5,
+      "end_offset": 8,
+      "type": "word",
+      "position": 3
+    },
+    {
+      "token": "아이팟",
+      "start_offset": 15,
+      "end_offset": 20,
+      "type": "SYNONYM",
+      "position": 4
+    },
+    {
+      "token": "universe",
+      "start_offset": 22,
+      "end_offset": 30,
+      "type": "word",
+      "position": 6
+    },
+    {
+      "token": "cosmos",
+      "start_offset": 22,
+      "end_offset": 30,
+      "type": "SYNONYM",
+      "position": 6
+    }
+  ]
+}
+```
+
+> 주의사항: 동의어에 의해 token 의 개수가 변경되면 안된다. position 이 밀리는 문제가 발생하면 analyzer 오류 발생
+
+- `i-pod` 을 `아이팟` 으로 변경하면서 `아이`+`팟` 으로 분리가 되면, 토큰의 포지션이 틀려지게 됨
+- 해결 : nori 사용자 사전에 `아이팟` 을 추가하여 단일 토큰으로 처리되도록 함
 
 
 ## 3. 형태소 분석기 macab 설치
@@ -624,6 +729,7 @@ _mecab 사전 품사 태그_
 ### 3) 사용자 사전 추가
 
 추가 조사가 필요하여 다음 작업에서 기술하겠다.
+
 
 ## 9. Summary
 

@@ -6,7 +6,7 @@ tags: ["playwright","scrapy","2nd-day"]
 image: "https://pbs.twimg.com/profile_images/1318604600677527552/stk8sqYZ_400x400.png"
 ---
 
-> Microsoft 에서 만든 Playwright 를 사용하여 웹 스크래핑 방법을 공부합니다. Scrapy 와 연동하거나 단독으로 사용할 수 있습니다.
+> 스크래핑은 데이터를 가져오는 행위를 말하고, 크롤링은 페이지 내의 링크를 수집하는 것을 말합니다. 본 글에서는 Scrapy 의 크롤링 모드를 사용해봅니다. 
 {: .prompt-tip }
 
 - [Scrapy, Playwright 공부하기 - 1일차](/posts/2023-03-06-scrapy-playwright-day1/) : Scrapy, Playwright
