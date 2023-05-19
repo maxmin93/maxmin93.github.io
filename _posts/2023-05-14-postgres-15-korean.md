@@ -21,8 +21,8 @@ tags: ["pg15", "korean", "collate", "utf8", "gin"]
 $ sudo -u postgres psql -d postgres
 
 > CREATE TABLESPACE tutorial_ts
-OWNER tonyne
-LOCATION '/mnt/ssd2t/pg_data/tutorial_ts';
+  OWNER tonyne
+  LOCATION '/mnt/ssd2t/pg_data/tutorial_ts';
 ```
 
 ### 2) collate 별 데이터베이스 생성
@@ -51,7 +51,7 @@ SELECT collname FROM pg_collation where collname like 'ko%';
 #### 데이터베이스 생성
 
 ```sql
--- en_US.utf8 문자셋 환경
+-- en_US.utf8 문자셋 환경 (libc)
 CREATE DATABASE testdb_en
   WITH
     TABLESPACE tutorial_ts
@@ -62,7 +62,7 @@ CREATE DATABASE testdb_en
     TEMPLATE template0
     IS_TEMPLATE = False;
 
--- 문자셋에 상관없이 글자단위 정렬
+-- 문자셋에 상관없이 글자 단위 정렬 (libc)
 CREATE DATABASE testdb_c
   WITH
     TABLESPACE tutorial_ts
@@ -73,7 +73,7 @@ CREATE DATABASE testdb_c
     TEMPLATE template0
     IS_TEMPLATE = False;
 
--- ko_KR.utf8 문자셋 환경
+-- ko_KR.utf8 문자셋 환경 (libc)
 CREATE DATABASE testdb_ko
   WITH
     TABLESPACE tutorial_ts
@@ -84,7 +84,7 @@ CREATE DATABASE testdb_ko
     TEMPLATE template0
     IS_TEMPLATE = False;
 
--- ICU 를 이용하지만 testdb_ko 와 사실상 동일
+-- ko_KR.utf8 문자셋 환경 (ICU)
 CREATE DATABASE testdb_icu
   WITH
     TABLESPACE tutorial_ts
@@ -99,7 +99,7 @@ CREATE DATABASE testdb_icu
 ```shell
 $ psql -U tonyne -d postgres
 
-# 데이터베이스 조회
+-- 데이터베이스 조회
 > \l
 이름       | 소유주 | 인코딩 | Collate     | CType       | 로케일 제공자 |
 -----------+--------+--------+-------------+-------------+---------------+
@@ -137,8 +137,8 @@ COPY 7180
 $ psql -U tonyne -d testdb_c
 \copy (SELECT * FROM persons) to 'C:\tmp\persons_client.csv' with csv
 
-\ COPY persons(first_name,last_name,email) 
-TO 'C:\tmp\persons_partial_db.csv' DELIMITER ',' CSV HEADER;
+\copy persons (first_name, last_name, email) 
+to 'C:\tmp\persons_partial_db.csv' DELIMITER ',' CSV HEADER;
 ```
 
 ## 2. 한글 정렬 및 검색
@@ -147,7 +147,7 @@ postgresql 의 정렬 기능은 `libc` 가 제공한다. libc 는 LC_COLLATE 설
 
 - 인코딩은 문자를 바이트로 변환하는 알고리즘
 - 문자셋은 locale 을 의미 (한국은 ko_KR, 미국은 en_US) : 언어와 국가
-- collate 는 문자열 비교 방법을 지정
+- collate 는 libc 에 의한 문자열 비교 방법을 결정
 - ICU 는 LC_COLLATE 에 의한 정렬 규칙 제한을 완화시키기 위해 탑재된 국가별 언어 지원용 libc 규칙셋을 의미한다. (pg10 부터 제공)
   + pg16 부터 ICU 가 기본 로케일로 사용될 예정
 
@@ -320,6 +320,7 @@ create text search dictionary
 create text search configuration
 commit ...
 
+-- text search config 조회
 > \dF korean
                 텍스트 검색 구성 목록
  스키마 |  이름  |               설명
@@ -343,17 +344,17 @@ commit ...
  ㄴ다   | EC   |         | F        | ㄴ다      |        |
 (7개 행)
 
-# text-search 함수
+-- text-search 함수
 > select * from to_tsvector('아버지가방에들어가신다');
         to_tsvector
 ----------------------------
  '아버지가방에들어가신다':1
 (1개 행)
 
-# text-search 함수 : 파서 지정
+-- text-search 함수 : korean config 지정
 select * from to_tsvector('korean','아버지가방에들어가신다');
 
-# 기본으로 text_search 설정을 korean 으로 적용할 수 있다
+-- 기본으로 text_search 설정을 korean 으로 적용할 수 있다
 > set default_text_search_config = 'korean';
 SET
 
@@ -395,9 +396,9 @@ to_tsvector 함수 결과에 대해 to_tsquery 함수를 사용한다.
 ## 9. Summary
 
 - UTF-8 인코딩은 필수이다.
-- 한글 텍스트가 주요 쿼리 대상이라면 LC_COLLATE=`ko_KR.UTF-8` 가 적합하다
-  + 영문 텍스트가 쿼리의 주 대상이라면 LC_COLLATE=`C.UTF-8` 가 적합
-  + 영문과 한글을 컬럼 단위로 제어하고 싶다면 `ko_KR (ICU)` 를 활용하자
+- 영문 및 한글 텍스트가 쿼리의 주 대상이라면 LC_COLLATE=`C.UTF-8` 가 적합
+  + 한글이라도 코드값 성격으로 사용한다면 `C.UTF-8` 로 충분
+  + 한글을 컬럼 단위로 제어하고 싶다면 `collate "ko_KR"` 키워드를 활용하자
 - 한글 인덱스는 full-text search 기반의 gin 인덱스가 좋다.
 - mecab-ko 를 이용한 tsvector 검색을 어떻게 이용할지 성공사례가 필요하다.
   + 명사만 뽑아서 trigram 색인 되도록 하고 싶다. 좀 더 공부하자.
