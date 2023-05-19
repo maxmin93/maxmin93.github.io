@@ -1,6 +1,6 @@
 ---
 title: PostgreSQL 15 한글 관련 설정
-date: 2023-02-07 00:00:00 +0000
+date: 2023-05-14 00:00:00 +0000
 categories: ["database", "postgres"]
 tags: ["pg15", "korean", "collate", "utf8", "gin"]
 ---
