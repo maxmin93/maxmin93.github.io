@@ -352,7 +352,7 @@ commit ...
 (1개 행)
 
 -- text-search 함수 : korean config 지정
-select * from to_tsvector('korean','아버지가방에들어가신다');
+> select * from to_tsvector('korean','아버지가방에들어가신다');
 
 -- 기본으로 text_search 설정을 korean 으로 적용할 수 있다
 > set default_text_search_config = 'korean';
@@ -374,24 +374,45 @@ to_tsvector 함수 결과에 대해 to_tsquery 함수를 사용한다.
   + 여러 단어를 결합하고 싶으면 `&`, `|`, `!` 논리 연산자 이용
 
 ```sql
--- 모듈 설치
-> CREATE EXTENSION pg_trgm;
-
 -- '제주시' 검색
 > select content from tmp.tbl_test where to_tsvector('korean', content) @@ to_tsquery('korean','제주시') limit 5;
 
 -- '서귀포 & 모슬포' 검색
 > select content from jjall.lineadv_item_2023 where to_tsvector('korean', content) @@ to_tsquery('korean','서귀포 & 모슬포') order by content limit 5;
-
--- trigram 인덱스 생성
-> drop index if exists tmp.ix_tbl_test_content;
-> create index CONCURRENTLY ix_tbl_test_content on tmp.tbl_test USING gin (content gin_trgm_ops) tablespace tutorial_ts;
-
--- insert/update 에 대해 tsvector 적용하는 트리거 생성
-> CREATE TRIGGER trg_tbl_test_tsvector_update BEFORE INSERT OR UPDATE
-  ON tmp.tbl_test FOR EACH ROW EXECUTE PROCEDURE
-  tsvector_update_trigger(tbl_test_search_vector, 'korean', section, content);
 ```
+
+#### full-text search 위한 gin 인덱스 생성 및 사용
+
+to_tsvector 함수로 gin 인덱스 생성 후 to_tsquery 로 검색
+
+- '서귀포 & 모슬포' 쿼리에 대해 `0.688 ms` 소요 (약 100배 빠름)
+
+```sql
+> drop index if exists tmp.ix_tbl_test_content;
+
+-- indexing with mecab (17만 레코드에 14초 소요)
+> CREATE INDEX ix_tbl_test_content
+    on tmp.tbl_test
+    USING GIN (to_tsvector('korean', content));
+
+-- parallel seq-scan 78.354 ms
+> explain (analyze) 
+  select distinct content from tmp.tbl_test
+  where content like '%서귀포%' and content like '%모슬포%'
+  limit 5;
+
+-- bitmap heap-scan 0.688 ms
+> explain (analyze)
+  select distinct content from tmp.tbl_test
+  where to_tsvector('korean', content) @@ to_tsquery('korean','서귀포 & 모슬포')
+  limit 5;  
+```
+
+> 참고
+
+- `create index CONCURRENTLY` 는 파티션 테이블에 대해 작동 안함
+- index 생성시 tablespace 지정 안됨
+
 
 ## 9. Summary
 
@@ -411,14 +432,16 @@ to_tsvector 함수 결과에 대해 to_tsquery 함수를 사용한다.
 - `as` 키워드와 함께 alias 와 record 정의가 필요함
 - dblink 연결명 사용시 dblink_connect, dblink_disconnect 사용
 
-```sql
+```shell
+$ sudo -u postgres psql -d tutorial
+
 -- 확장 모듈 등록
-CREATE EXTENSION dblink;
+> CREATE EXTENSION dblink;
 
 -- dblink 쿼리 예제
-SELECT *
-FROM  dblink('dbname=db2','SELECT id, code FROM table2 limit 10')
-      AS tb2(id int, code text);
+> SELECT *
+  FROM  dblink('dbname=db2','SELECT id, code FROM table2 limit 10')
+        AS tb2(id int, code text);
 ```
 
 ### 참고: [Autovacuum, Vacuum(Full) 에 대해](https://nrise.github.io/posts/postgresql-autovacuum/)
