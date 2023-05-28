@@ -446,7 +446,7 @@ $ sudo -u postgres psql -d tutorial
 
 ### 참고: [Autovacuum, Vacuum(Full) 에 대해](https://nrise.github.io/posts/postgresql-autovacuum/)
 
-`vacuum` 은 진공청소기로 청소한다는 의미로, update/delete 등에 의해 발생한 `dead tuple` 들을 정리하여 FSM(해제 메모리)으로 되돌리는 기능을 수행한다.
+`vacuum` 은 진공청소기로 청소한다는 의미이다. update/delete 등에 의해 발생한 `dead tuple` 들을 정리하여 FSM(해제 메모리)으로 되돌리는 기능을 수행한다.
 
 - autovacuum 의 scale_factor 또는 threshold 를 이용해 자동 처리가 가능하다.
 - 수동 Full Vacuum 과 자동 Autovacuum 의 가장 큰 차이점은 해당 테이블에 lock 을 유발하는지 여부이다. 또, 수동 vacuum 은 실질적인 용량 감소를 보인다.
@@ -455,6 +455,16 @@ $ sudo -u postgres psql -d tutorial
 $ ps aux|grep autovacuum|grep -v grep
 
 $ psql -d postgres -c "SELECT name, setting FROM pg_settings WHERE name ILIKE '%autovacuum%'";
+```
+
+### 참고: 테이블 파티션 생성 권한
+
+테이블 owner 또는 권한 상속 멤버들만 파티션 테이블을 만들 수 있다.
+
+```sql
+> CREATE TABLE tutorial.tbl_temp_2024 PARTITION OF tutorial.tbl_temp
+    FOR VALUES FROM ('2023-01-01') TO ('2024-01-01');
+오류:  article 테이블의 소유주여야만 합니다
 ```
 
 &nbsp; <br />

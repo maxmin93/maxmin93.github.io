@@ -99,15 +99,37 @@ $ sudo -u postgres createuser <username> --createdb --no-superuser --no-createro
 $ sudo -u postgres createdb <dbname> --owner <username> --encoding='utf-8' --locale=en_US.utf-8 --template=template0
 
 $ sudo -u postgres psql
-psql=# ALTER USER <username> WITH ENCRYPTED PASSWORD '<password>';
-psql=# GRANT ALL PRIVILEGES ON DATABASE <dbname> TO <username>;
+psql=# ALTER USER `username` WITH ENCRYPTED PASSWORD 'p@ssw0rd';
+psql=# GRANT ALL PRIVILEGES ON DATABASE `dbname` TO `username`;
 ```
 
-> template1 대신 template0 을 복사하는 일반적인 다른 이유는, template1 의 복사는 동일한 설정을 사용해야 하지만 template0 을 복사하는 경우에는 새 인코딩 및 로케일(locale) 설정을 지정할 수 있기 때문이다. template1 은 인코딩 또는 로케일(locale)에 관한 데이터를 포함하지만 template0은 그렇지 않다.
+> `template1` 대신 `template0` 을 복사하는 일반적인 다른 이유는, template1 의 복사는 동일한 설정을 사용해야 하지만 template0 을 복사하는 경우에는 새 인코딩 및 로케일(locale) 설정을 지정할 수 있기 때문이다. template1 은 인코딩 또는 로케일(locale)에 관한 데이터를 포함하지만 template0 은 그렇지 않다.
 
 ```sql
-CREATE USER <username> WITH ENCRYPTED PASSWORD '<password>';
-CREATE DATABASE <dbname> OWNER <username> ENCODING 'utf-8';
+-- 로그인 계정 생성 (상속 금지, 로그인)
+CREATE USER `username`
+  NOINHERIT LOGIN 
+  WITH ENCRYPTED PASSWORD 'p@ssw0rd';
+
+-- 데이터베이스 생성 (template0)
+CREATE DATABASE `dbname`
+  WITH OWNER `username`
+  ENCODING 'utf-8' 
+  LC_COLLATE = 'C.utf8'
+  LC_CTYPE = 'C.utf8'
+  TEMPLATE template0
+  IS_TEMPLATE = False;
+
+-- 데이터베이스 접속을 포함한 모든 권한 제거 (dbo 는 가능)
+--   + PUBLIC(대문자) : 모든 사용자
+--   + public 스키마에 대한 PUBLIC 사용자 권한도 없어진다.
+REVOKE ALL ON DATABASE `dbname` FROM PUBLIC;
+
+/*
+-- public 스키마 접근 권한 제거 (dbo 는 가능)
+--   + PUBLIC(대문자) : 모든 사용자
+REVOKE ALL PRIVILEGES ON SCHEMA public FROM PUBLIC;
+*/
 ```
 
 ### 4) Python 테스트 (psycopg3)
@@ -246,11 +268,17 @@ psql=# create table api.todos (
 psql=# insert into api.todos (task) values
   ('finish tutorial 0'), ('pat self on back');
 
+    -- 권한 설정용 계정 생성
 psql=# create role web_anon nologin;
 psql=# grant usage on schema api to web_anon;
 psql=# grant select on api.todos to web_anon;
 
-psql=# create role authenticator noinherit login password 'mysecretpassword';
+    -- 로그인 전용 계정 생성
+psql=# create role authenticator noinherit login with password 'p@ssw0rd';
+    -- 데이터베이스 connect 권한 부여 (REVOKE ALL 데이터베이스 한 경우)
+psql=# GRANT CONNECT ON DATABASE tutorial TO authenticator;
+
+    -- 권한 상속: web_anon => authenticator
 psql=# grant web_anon to authenticator;
 
 psql=# \q
@@ -288,12 +316,16 @@ $ curl http://localhost:3000/todos -X POST \
 2. todo_user 권한을 authenticator 에 부여
 
 ```sql
+-- 권한 설정용 role 생성
 create role todo_user nologin;
 grant usage on schema api to todo_user;
 grant all on api.todos to todo_user;
 grant usage, select on sequence api.todos_id_seq to todo_user;
 
+-- 로그인 계정에 권한 상속 (todo_user => authenticator)
 grant todo_user to authenticator;
+
+-- role 사용시 `set role todo_user;` 필요
 ```
 
 3. 길이 32바이트의 랜덤 문자열 생성 (JWT 암호로 사용)
@@ -424,6 +456,19 @@ $ curl http://localhost:3000/todos \
   + image 데이터도 전송할 수 있더라.
   + auth 기능을 이용하면 데이터 보안도 가성비 좋게 구축할 수 있다.
 - PostgREST 서버 성능에 대해 알 수가 없어 서비스로 사용해도 될지 모르겠다.
+
+#### `set role <config_role>;` 안해도 기본 적용시키는 환경변수 설정하기
+
+- `alter role` 을 이용하여 자동으로 적용할 환경변수들을 설정한다
+- 특정 데이터베이스에서 적용되도록 `in database` 구절을 사용하자
+
+```sql
+-- 기본 role 을 config_role 이 되도록 설정
+ALTER ROLE `username` IN DATABASE `dbname` SET ROLE='<config_role>';
+
+-- 설정 해제
+ALTER ROLE `username` RESET ALL;
+```
 
 &nbsp; <br />
 &nbsp; <br />
