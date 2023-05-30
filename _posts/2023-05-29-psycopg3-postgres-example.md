@@ -77,7 +77,12 @@ class TestRow(BaseModel):
     logdate: datetime
     info: dict
     phones: List[str] = []
-    content: str
+    content: str | None = ""  
+
+    @validator("content")
+    def content_default(cls, v):
+        print(f"validator(content): {v}")  # => None
+        return v or "no data"  # if null, set default value
 
 
 def main(DATABASE_URL: str):
@@ -163,11 +168,13 @@ def main(DATABASE_URL: str):
 
 ## 2. psycopg 비동기식 사용 (async)
 
-psycopg3 에서는 aiopg 등을 사용하지 않아도 자체적으로 비동기 처리를 지원한다.
+psycopg3 에서는 asyncpg 등을 사용하지 않아도 자체적으로 비동기 처리를 지원한다.
 
 ### 1) DB 접속
 
-autocommit 옵션의 기본값은 False 이다.
+`autocommit=False` 상태이면 반드시 `commit()` 을 해주어야 반영된다.
+
+- autocommit 옵션의 기본값은 False 이다.
 
 ```py
 import asyncio
@@ -218,7 +225,6 @@ if __name__ == "__main__":
 비동기 연결 객체는 with 구문과 강하게 연결되어 있어서 함께 사용해야 한다.
 
 - 다른 함수로 연결 객체를 전달하려면 `with 구문` 아래에서 해야 한다.
-- `autocommit=False` 상태이면 반드시 `commit()` 을 해주어야 반영된다.
 
 ```py
 async def insert_data(aconn: AsyncConnection, data: TestRow):
@@ -328,34 +334,22 @@ if __name__ == "__main__":
 
 ## 9. Summary
 
-psycopg3 관련 자료가 얼마 없다. psycopg2 를 잘 사용하고 있는데 굳이 옮길 필요가 있느냐라는 분위기이다. 다음은 [reddit 에 올라온 글](https://www.reddit.com/r/PostgreSQL/comments/10q63ty/are_you_using_psycopg3_or_psycopg2/)이다.
-
-- 나는 v3를 사용하고 있지만 그것에 대한 참조를 찾기가 더 어려웠습니다. 일부 구문은 v2 자습서/예제에서 찾아보고 무엇이 작동하는지 확인해야 했습니다. v3 공식 문서는 예제에 약간의 정보가 있으면 괜찮아 보입니다.
-- 최근에 3을 사용하기 시작했고 지금까지 즐기고 있습니다. 설치가 더 쉽고(v2에는 꽤 쉬운 psycopg2-binary가 있지만), 즉시 사용할 수 있는 비동기 기능과 더 큰 파이프라인 중 하나를 수정하는 데 도움이 되는 COPY 관련 몇 가지 멋진 기능이 있습니다. 가까운 시일 내에 공용 라이브러리를 업그레이드할 예정입니다.
-- 나는 오래 전에 그것에 대해 들었고 많은 사람들이 psycopg2에서 안정적으로 나온다고 주장하기에는 여전히 너무 새롭습니다. 그러나 그것은 또한 psycopg로 자체 레이블을 다시 지정했으며 주요 이점은 친숙한 asynio 인터페이스로 비동기 작업을 허용한다는 것입니다. 이러한 이점만으로도 최신 API를 설계하는 많은 사람들이 이를 사용하기 시작하기에 충분합니다. 그러나 비동기가 필요하지 않다면 왜 신뢰할 수 있는 ole에서 전환해야 할까요?
-- asyncpg : 별 5.5k aiopg 및 psycopg 2 보다 3배 더 빠르다는 벤치마크를 포함하며 , psycopg3는 벤치마크에서 언급되지 않습니다.
-
 > 비동기를 사용하는 경우 psycopg3 가 asyncpg 보다 더 사용자 친화적이다. [&lt;출처&gt;](https://www.reddit.com/r/learnpython/comments/vi59dk/comment/ie41lfj/?utm_source=share&utm_medium=web2x&context=3)
 
-> psycopg2 와 psycopg3(3.0.15)의 성능 비교 [&lt;출처&gt;](https://www.spherex.dev/psycopg-2-vs-psycopg3/)
+- psycopg3 관련 자료가 얼마 없다. psycopg2 를 잘 사용하고 있는데 굳이 옮길 필요가 있느냐라는 분위기이다. [&lt;참고&gt;](https://www.reddit.com/r/PostgreSQL/comments/10q63ty/are_you_using_psycopg3_or_psycopg2/)
+- 별점 : psycopg3 1k, asyncpg 6k, aiopg 1.3k (마지막 업데이트 2022년 10월)
+
+> psycopg2 와 psycopg3(버전 3.0.15)의 성능 비교 [&lt;출처&gt;](https://www.spherex.dev/psycopg-2-vs-psycopg3/)
 
 - psycopg3으로 SQL 쿼리를 실행하는 것이 psycopg2를 사용하는 것보다 메모리 효율성이 4~5배 더 높다는 것을 알 수 있었다.
 - 그러나 insert 에 대해서 2.4 ~ 2.5 배 더 느렸다. (최적화가 미흡한 상태라 추측)
-  + 현재 psycopg3 최신 버전은 `3.2.0.dev1` 이다.
+  + 현재 psycopg3 최신 버전은 `3.2.0.dev1` 이다. 실험 당시와는 많이 달라졌음.
 
-### psycopg3 - [timestamptz 사용](https://www.psycopg.org/psycopg3/docs/basic/adapt.html#date-time-types-adaptation)
+### psycopg3 - 트랜잭션 처리를 위한 [Connection context](https://www.psycopg.org/psycopg3/docs/basic/usage.html#connection-context)
 
-```py
-conn.info.timezone
-# => zoneinfo.ZoneInfo(key='Europe/London')
-
-conn.execute("SET TIMEZONE to 'Europe/Rome'")  # UTC+2 in summer
-
-conn.execute("SELECT '2042-07-01 12:00Z'::timestamptz").fetchone()[0]  # UTC input
-# => datetime.datetime(2042, 7, 1, 14, 0, tzinfo=zoneinfo.ZoneInfo(key='Europe/Rome'))
-```
-
-### psycopg3 - [Connection context](https://www.psycopg.org/psycopg3/docs/basic/usage.html#connection-context)
+- 실패할 경우 rollback
+- 성공할 경우 commit
+- 마지막엔 무조건 close
 
 ```py
 conn = psycopg.connect()
