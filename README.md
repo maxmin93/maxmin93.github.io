@@ -6,6 +6,42 @@
   - [테마 - jekyll-theme-chirpy 5.2.1](https://rubygems.org/gems/jekyll-theme-chirpy) ![Gem Version](https://img.shields.io/gem/v/jekyll-theme-chirpy)
   - jekyll-4.2.2
 
+### trouble shooting (문제 해결)
+
+대부분의 모듈 문제인 경우 강제 재설치 `bundle install --redownload` 로 처리된다.
+
+#### `bundle 'load': cannot load such file` 오류 (macOS)
+
+출처: [How to fix: Fastlane bundler load error on MacOS](https://kirkryan.co.uk/blog/how-to-fix-fastlane-bundler-load-error-on-macos/)
+
+bundler 가 재설치 되면서 버전이 변경되는 경우, ruby가 참조를 할 수 없어 발생한다.
+
+```shell
+$ bundle --help
+Traceback (most recent call last):
+        1: from /opt/homebrew/opt/ruby@2/bin/bundle:23:in `<main>'
+/opt/homebrew/opt/ruby@2/bin/bundle:23:in `load': cannot load such file -- /opt/homebrew/lib/ruby/gems/2.7.0/gems/bundler-2.3.21/exe/bundle (LoadError)
+```
+
+1. Gemfile.lock 파일을 열고
+2. 맨 하단에 `BUNDLED WITH` 값을 오류 메시지의 bundler 버전과 같은지 확인한다.
+3. 틀리면 설치된 버전값으로 수정하여 저장한다.
+
+### jellky 빌드 오류 체크
+
+git page 에 올리기 전에 무조건 한번씩 확인하는 것이 좋다.
+
+- 작성된 md 파일 내의 깨진 링크 또는 특수 문자 등의 문제를 체크한다.
+  + 이상 없으면 깃허브 블로그 페이지에서도 문제없이 build 될 것이다.
+
+```shell
+$ ./tools/deploy.sh --dry-run
+
+Running ["ScriptCheck", "LinkCheck", "ImageCheck", "HtmlCheck"] on ["_site"] on *.html... 
+Ran on 444 files!
+HTML-Proofer finished successfully.
+```
+
 ## 환경 설정
 
 - Ruby 2.7 (권장 2.x 최신버전)
