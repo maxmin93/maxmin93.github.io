@@ -1,8 +1,8 @@
 ---
 title: python asyncio 사용법
 date: 2023-06-06 00:00:00 +0000
-categories: ["python", "asyncio"]
-tags: ["coroutine", "psycopg3", "httpx", "async"]
+categories: ["python"]
+tags: ["coroutine", "psycopg3", "httpx", "async", "asyncio"]
 ---
 
 > Python 에서 비동기 작업 coroutine 들을 배치하고 수행하기 위한 방법을 알아보자. httpx 와 psycopg 라이브러리를 이용하여 실험했다.
