@@ -1,9 +1,9 @@
 ---
 date: 2023-04-28 00:00:00 +0000
 title: OpenAI - GPT 공부하기
-categories: ["ai.dl","gpt"]
+categories: ["AI","gpt"]
 tags: ["openai", "gpt3.5", "prompt", "1st-day"]
-image: https://www.assemblyai.com/blog/content/images/2022/02/openai.png
+image: "https://www.assemblyai.com/blog/content/images/2022/02/openai.png"
 ---
 
 > OpenAI 의 GPT-3.5 turbo 활용 방법을 공부합니다. 음성 파일에서 스크립트를 추출하는 방법도 살펴봅니다.

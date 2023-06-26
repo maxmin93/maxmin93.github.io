@@ -1,9 +1,9 @@
 ---
 date: 2023-04-23 00:00:00 +0000
 title: 한국어 개체명인식 공부하기 - 1일차
-categories: ["ai.dl","ner"]
-tags: ["토크나이징", "명사추출", "entity", "자연어처리"]
-image: https://www.pragnakalp.com/wp-content/uploads/2020/03/bert-based-named-entity-recognition-ner-1536x804.jpg
+categories: ["AI","nlp"]
+tags: ["토크나이징", "ner", "명사추출", "entity", "자연어처리"]
+image: "https://www.pragnakalp.com/wp-content/uploads/2020/03/bert-based-named-entity-recognition-ner-1536x804.jpg"
 ---
 
 > 개체명을 가중치로 이용하여 검색 서비스의 성능을 향상시킬 수 있습니다. 이를 위해 한국어 개체명 인식에 대해 공부합니다. 

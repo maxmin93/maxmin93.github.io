@@ -3,6 +3,7 @@ title: Hasura 사용법 (GraphQL Engine)
 date: 2023-02-09 00:00:00 +0000
 categories: ["database", "postgres"]
 tags: ["pg15", "hasura", "docker", "graphql"]
+image: "https://hasura.io/brand-assets/hasura-logo-primary-dark.svg"
 ---
 
 > 고성능 GraphQL 엔진인 Hasura 를 도커로 설치하고 PostgreSQL 15 를 설정하여 사용법을 공부합니다.

@@ -3,6 +3,7 @@ title: PostgreSQL 15 한글 검색 설정
 date: 2023-05-14 00:00:00 +0000
 categories: ["database", "postgres"]
 tags: ["pg15", "korean", "collate", "utf8", "gin"]
+image: "https://dyclassroom.com/image/topic/postgresql/postgresql.jpg"
 ---
 
 > Postgresql 에서 한글 검색을 위한 encode, collate, ctype 설정 및 gin 인덱스 설정에 대해 알아보자.

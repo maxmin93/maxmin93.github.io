@@ -345,22 +345,22 @@ if __name__ == "__main__":
 - 그러나 insert 에 대해서 2.4 ~ 2.5 배 더 느렸다. (최적화가 미흡한 상태라 추측)
   + 현재 psycopg3 최신 버전은 `3.2.0.dev1` 이다. 실험 당시와는 많이 달라졌음.
 
-### psycopg3 - 트랜잭션 처리를 위한 [Connection context](https://www.psycopg.org/psycopg3/docs/basic/usage.html#connection-context)
+### 트랜잭션은 transaction 구문을 사용하는 것이 훨씬 편한다.
 
-- 실패할 경우 rollback
-- 성공할 경우 commit
-- 마지막엔 무조건 close
+> 트랜잭션 상태에 따라 commit 또는 rollback 이 적용된다
 
 ```py
-conn = psycopg.connect()
-try:
-    ... # use the connection
-except BaseException:
-    conn.rollback()
-else:
-    conn.commit()
-finally:
-    conn.close()
+    try:
+        async with pool.connection() as conn:
+            await set_role(conn)
+            # 정상 처리시 commit, 실패시 rollback
+            async with conn.transaction(tx_name):
+                await conn.execute(stmt_new_person)
+                await conn.execute(stmt_new_order)
+        return True
+    except Exception as e:
+        print(f"  - transaction[{tx_name}] fail: {e}")
+        return False
 ```
 
 &nbsp; <br />

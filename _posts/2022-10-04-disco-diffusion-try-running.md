@@ -1,7 +1,7 @@
 ---
 date: 2022-10-04 00:00:00 +0000
 title: Disco Diffusion 실행해보기 (Stable 추가)
-categories: ["ai.dl","image"]
+categories: ["AI","gpt"]
 tags: ["python", "diffusion", "TIL", "text-to-image", "ai-art"]
 image: "/2022/10/04-disco-diffusion-output_49-crunch.png"
 ---

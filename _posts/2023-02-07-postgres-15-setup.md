@@ -3,6 +3,7 @@ title: PostgreSQL 15 설정 (우분투)
 date: 2023-02-07 00:00:00 +0000
 categories: ["database", "postgres"]
 tags: ["pg15", "setup", "ubuntu", "install"]
+image: "https://dyclassroom.com/image/topic/postgresql/postgresql.jpg"
 ---
 
 > 만능 데이터베이스인 PostgreSQL 15 설정의 작업 과정을 기록합니다.
