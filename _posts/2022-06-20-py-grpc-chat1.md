@@ -1,8 +1,8 @@
 ---
 date: 2022-06-20 00:00:00 +0000
 title: Python - gRPC 기반 Chat 1st
-categories: ["python", "interface"]
-tags: ["TIL", "stream", "chat", "grpc", "proto3"]
+categories: ["software", "backend"]
+tags: ["python", "stream", "chat", "grpc", "proto3"]
 ---
 
 > 마이크로 서비스의 핵심 프로토콜인 gRPC 에 대해 Chat 예제 소스를 분석하며 공부합니다.

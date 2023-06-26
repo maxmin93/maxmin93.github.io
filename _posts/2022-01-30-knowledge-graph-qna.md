@@ -1,18 +1,8 @@
 ---
 date: 2022-01-30 00:00:00 +0000
 title: "AgensKG 지식그래프를 이용한 질의응답"
-categories: ["knowledge-graph","agens-kg"]
-tags:
-  [
-    "의존그래프",
-    "질의응답",
-    "그래프유사도",
-    "지식그래프",
-    "서브그래프",
-    "질의유형",
-    "qna",
-    "pagerank",
-  ]
+categories: ["AI","knowledge-graph"]
+tags: ["질의응답","그래프유사도","지식그래프","qna","pagerank"]
 ---
 
 > &#91;알림&#93; 본 연구는 **"2019 GCS 창업성장과제"** 의 지원으로 진행된 **"그래프 기술 기반 Graph AI 솔루션 연구개발"** 과제의 연구결과입니다. **AgensKG**의 모든 저작권은 [비트나인](https://bitnine.net/)에 있습니다.

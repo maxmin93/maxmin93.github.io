@@ -1,7 +1,7 @@
 ---
 date: 2023-03-06 00:00:00 +0000
 title: Scrapy, Playwright 공부하기 - 1일차
-categories: ["python","scrapy"]
+categories: ["python","scraper"]
 tags: ["playwright","scrapy","1st-day"]
 image: "https://pbs.twimg.com/profile_images/1318604600677527552/stk8sqYZ_400x400.png"
 ---

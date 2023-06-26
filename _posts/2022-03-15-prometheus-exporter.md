@@ -1,9 +1,9 @@
 ---
 date: 2022-03-15 00:00:00 +0000
-title: Postgres Exporter
+title: Postgres Exporter 를 이용한 AgensGraph 모니터링
 author: maxmin93
-categories: ["devops", "monitoring"]
-tags: ["postgresql", "metric", "성능지표", "모니터링", "prometheus", "grafana"]
+categories: ["devops"]
+tags: ["agensgraph", "모니터링", "prometheus", "grafana"]
 image: https://riturajkhare.files.wordpress.com/2022/03/grafana-prometheus.png
 ---
 

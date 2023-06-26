@@ -1,16 +1,8 @@
 ---
 date: 2022-01-28 00:00:00 +0000
 title: "AgensKG 지식그래프 소개"
-categories: ["knowledge-graph","agens-kg"]
-tags:
-  [
-    "의존그래프",
-    "가지치기",
-    "라벨링",
-    "지식그래프",
-    "트리플그래프",
-    "그래프데이터베이스",
-  ]
+categories: ["AI","knowledge-graph"]
+tags: ["의존그래프","agens-kg","라벨링","지식그래프"]
 ---
 
 > &#91;알림&#93; 본 연구는 **"2019 GCS 창업성장과제"** 의 지원으로 진행된 **"그래프 기술 기반 Graph AI 솔루션 연구개발"** 과제의 연구결과입니다. **AgensKG**의 모든 저작권은 [비트나인](https://bitnine.net/)에 있습니다.

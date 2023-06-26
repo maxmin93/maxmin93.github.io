@@ -1,7 +1,7 @@
 ---
 date: 2021-05-10 00:00:00 +0000
 title: "문서 의존그래프와 가지치기(pruning)"
-categories: ["knowledge-graph"]
+categories: ["AI","knowledge-graph"]
 tags: ["지식그래프", "nlp", "의존그래프", "가지치기", "전처리"]
 ---
 

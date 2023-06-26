@@ -1,8 +1,8 @@
 ---
 date: 2023-02-18 00:00:00 +0000
 title: Nextjs 공부하기 - 1일차
-categories: ["nodejs","nextjs"]
-tags: ["frontend","tutorial","1st-day"]
+categories: ["nodejs","react"]
+tags: ["nextjs","tutorial","1st-day"]
 image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 ---
 

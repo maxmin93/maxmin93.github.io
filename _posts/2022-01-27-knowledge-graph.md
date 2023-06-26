@@ -1,8 +1,8 @@
 ---
 date: 2022-01-27 00:00:00 +0000
 title: "지식그래프란?"
-categories: ["knowledge-graph"]
-tags: ["지식그래프", "시멘틱웹", "온톨로지", "xAI", "agens-kg", "인식론"]
+categories: ["AI","knowledge-graph"]
+tags: ["시멘틱웹", "온톨로지", "xAI", "agens-kg", "인식론"]
 ---
 
 > 그래프 기반 지식그래프 R&D 과제 수행을 위해 지식그래프에 대한 개념부터 조사를 했습니다.
