@@ -1,15 +1,17 @@
 ---
 date: 2023-02-24 00:00:00 +0000
-title: Frontend 공부하기 - 1일차
+title: Frontend 공부하기 - 1일차 HTML
 categories: ["software","frontend"]
 tags: ["html","css","tutorial","1st-day"]
-image: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1024px-HTML5_logo_and_wordmark.svg.png"
+image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-kQQloEDQ90MNQJP2X5a2onDmlkfHRnV7MHlK2ocvv4zRrwtMOb8lMJhaCAUWlY-Xus&usqp=CAU"
 ---
 
 > 프론트엔드 개발을 배우기 위해 기초부터 다지기로 했다. HTML 과 CSS 를 배우고 TailwindCSS 로 넘어갑니다. (1일차)
 {: .prompt-tip }
 
-- [Frontend 공부하기 - 1일차](/posts/2023-02-24-frontend-tutorial-day1/) : [HTML Full Course](https://www.youtube.com/watch?v=mJgBOIoGihA) - Dave Gray <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Frontend 공부하기 - 1일차](/posts/2023-02-24-frontend-tutorial-day1/) : Dave Gray &ndash; [HTML Full Course](https://www.youtube.com/watch?v=mJgBOIoGihA)  &nbsp; &#10004;
+- [Frontend 공부하기 - 2일차](/posts/2023-06-29-frontend-tutorial-day2/) : Dave Gray &ndash; [CSS Full Course](https://www.youtube.com/playlist?list=PL0Zuz27SZ-6Mx9fd9elt80G1bPcySmWit) Part&#9839;1
+- [Frontend 공부하기 - 3일차](/posts/2023-06-30-frontend-tutorial-day3/) : Dave Gray &ndash; [CSS Full Course](https://www.youtube.com/playlist?list=PL0Zuz27SZ-6Mx9fd9elt80G1bPcySmWit) Part&#9839;2
 
 ## 1. HTML5
 
@@ -445,6 +447,15 @@ div 이지만 버튼으로 사용한다는 의미를 부여한 예제이다. 클
 
 - WAI-ARIA 는 어떻게 써야 할지 잘 모르겠다.
   + ARIA를 잘 사용하지 못할 바엔 사용하지 않는 편이 좋다고 하네
+
+> [HTML 코드 - 기호](https://www.toptal.com/designers/htmlarrows/) 
+
+- &lt; `&lt;` / &gt; `&gt;` / &laquo; `&laquo;` / &raquo; `&raquo;`
+- &amp; `&amp;` / &#10004; `&#10004;` / &#63; `&#63` (`%3F`) 
+- &times; `&times;` / &divide; `&divide;` / &mdash; `&mdash;`
+- `&nbsp;` / &#9839; `&#9839` (music sharp) / &commat; `&commat;`
+- &ldquo; &ldquo; / &lsquo; `&lsquo;` / &rdquo; `&rdquo;` / &rsquo; `&rsquo`;
+- &larr; `&larr;` / &rarr; `&rarr;` / &brvbar; `&brvbar;`
 
 &nbsp; <br />
 &nbsp; <br />

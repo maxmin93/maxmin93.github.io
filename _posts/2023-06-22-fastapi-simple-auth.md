@@ -95,7 +95,7 @@ username: str = payload.get("sub")
 - 그러면서, endpoint 가 노출 되어도 외부에서 활용할 수 없도록 막을 수 있고
 - expire 시간을 이용해 사용에 시간 제한을 걸 수 있다
 
-> 단점
+> 주의사항
 
 - password 방식과 다름 없기 때문에, apiKey 가 노출되면 안된다
   + 당연하지만 secretKey 도 노출되면 안됨
@@ -111,14 +111,27 @@ apiKey 를 password 처럼 사용하자
 
 #### 인증 정보가 틀린 경우 HTTPException 오류 처리
 
+[python-jose](https://python-jose.readthedocs.io/en/latest/jwt/) 에서 `exp` 예약어에 대해 자동으로 claim 처리를 해준다. 
+
 ```py
-data = get_jwt_data(token)
-if not data or not check_role(data["role"]) or not check_exp(data["exp"]):
-    raise HTTPException(
-        status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Invalid token",
-        headers={"WWW-Authenticate": "Bearer"},
-    )
+def get_jwt_data(token: str):
+    try:
+        return jwt.decode(token, settings.secret_key, algorithms=[ALGORITHM])
+    except ExpiredSignatureError:  # Expiration Claim
+        return None
+    except JWTError:
+        return None
+
+def auth_api_jwt(token: str = Depends(oauth2_scheme)):
+    """API Key Authentication (JWT)"""
+    data = get_jwt_data(token)
+    if not data or not check_role(data["role"]) or not check_exp(data["exp"]):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid token",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    return data        
 ```
 
 #### 패스워드 bcrypt 해싱 및 비교
@@ -128,11 +141,17 @@ from passlib.context import CryptContext
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+def get_password_hash(password):
+    """get password hash
+
+    usage:
+        [주의!] '==' 연산자로는 비교 불가능, 꼭 verify_password() 사용
+        get_password_hash("my-password") == hashed_my_password
+    """
+    return pwd_context.hash(password)
+
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
-
-def get_password_hash(password):
-    return pwd_context.hash(password)
 
 def authenticate_user(fake_db, username: str, password: str):
     user = get_user(fake_db, username)
