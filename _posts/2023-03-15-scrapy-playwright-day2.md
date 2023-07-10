@@ -10,7 +10,7 @@ image: "https://pbs.twimg.com/profile_images/1318604600677527552/stk8sqYZ_400x40
 {: .prompt-tip }
 
 - [Scrapy, Playwright 공부하기 - 1일차](/posts/2023-03-06-scrapy-playwright-day1/) : Scrapy, Playwright
-- [Scrapy, Playwright 공부하기 - 2일차](/posts/2023-03-15-scrapy-playwright-day2/) : CrawlSpider <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Scrapy, Playwright 공부하기 - 2일차](/posts/2023-03-15-scrapy-playwright-day2/) : CrawlSpider &nbsp; &#10004;
 
 ## 1. CrawlSpider 사용법
 

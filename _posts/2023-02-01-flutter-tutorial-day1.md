@@ -9,7 +9,7 @@ image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Dart_programmi
 > Flutter 베이스 언어인 Dart 에 대해 공부한다. Dart 는 완전한 OOP를 지원한다. (1일차)
 {: .prompt-tip }
 
-- [Flutter 공부하기 - 1일차](/posts/2023-02-01-flutter-tutorial-day1/) : Dart 언어 <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Flutter 공부하기 - 1일차](/posts/2023-02-01-flutter-tutorial-day1/) : Dart 언어 &nbsp; &#10004;
 
 ## 0. 시작하기에 앞서
 

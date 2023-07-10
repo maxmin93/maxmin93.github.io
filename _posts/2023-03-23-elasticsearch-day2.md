@@ -10,7 +10,7 @@ image: "https://e7.pngegg.com/pngimages/661/195/png-clipart-logo-elasticsearch-g
 {: .prompt-tip }
 
 - [Elasticsearch 작업하기 - 1일차](/posts/2023-03-12-elasticsearch-day1/) : es, kibana 설치
-- [Elasticsearch 작업하기 - 2일차](/posts/2023-03-23-elasticsearch-day2/) : nori plugin, mecab-co 설치 <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Elasticsearch 작업하기 - 2일차](/posts/2023-03-23-elasticsearch-day2/) : nori plugin, mecab-co 설치 &nbsp; &#10004;
 
 
 ## 1. ES 클러스터 도커 설치
@@ -567,7 +567,7 @@ GET /_analyze
 }
 ```
 
-### 3) 동의어(synonym) 테스트 
+### 3) 동의어(synonym) 테스트
 
 동의어 사전을 참조해 토큰을 확장, 대체한다. 중복된 토큰은 `remove_duplicates`으로 제거한다.
 

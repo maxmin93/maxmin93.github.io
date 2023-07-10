@@ -9,7 +9,7 @@ tags: ["의존그래프","agens-kg","라벨링","지식그래프"]
 {: .prompt-warning }
 
 - 1부 [지식그래프란?](/posts/2022-01-27-knowledge-graph/)
-- 2부 [AgensKG 지식그래프 소개](/posts/2022-01-28-knowledge-graph-agenskg/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- 2부 [AgensKG 지식그래프 소개](/posts/2022-01-28-knowledge-graph-agenskg/) &nbsp; &#10004;
 - 3부 [AgensKG 지식그래프 생성하기](/posts/2022-01-29-knowledge-graph-triple/)
 - 4부 [AgensKG 지식그래프를 이용한 질의응답](/posts/2022-01-30-knowledge-graph-qna/)
 

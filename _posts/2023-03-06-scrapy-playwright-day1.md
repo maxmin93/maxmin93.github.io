@@ -9,7 +9,8 @@ image: "https://pbs.twimg.com/profile_images/1318604600677527552/stk8sqYZ_400x40
 > Microsoft 에서 만든 Playwright 를 사용하여 웹 스크래핑 방법을 공부합니다. Scrapy 와 연동하거나 단독으로 사용할 수 있습니다.
 {: .prompt-tip }
 
-- [Scrapy, Playwright 공부하기 - 1일차](/posts/2023-03-06-scrapy-playwright-day1/) : Scrapy, Playwright <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Scrapy, Playwright 공부하기 - 1일차](/posts/2023-03-06-scrapy-playwright-day1/) : Scrapy, Playwright &nbsp; &#10004;
+- [Scrapy, Playwright 공부하기 - 2일차](/posts/2023-03-15-scrapy-playwright-day2/) : CrawlSpider
 
 ## 1. [Playwright](https://playwright.dev/python/) 란?
 

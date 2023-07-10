@@ -9,7 +9,7 @@ image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e25
 > Go 언어의 기본적인 내용과 다른 언어와 대비해 특징적인 기능 위주로 요약해본다. (1일차)
 {: .prompt-tip }
 
-- [Go 언어 배우기 - 1일차 개요, 특징](/posts/2022-11-06-golang-tutorial-day1/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Go 언어 배우기 - 1일차 개요, 특징](/posts/2022-11-06-golang-tutorial-day1/) &nbsp; &#10004;
 - [Go 언어 배우기 - 2일차 문법, 고루틴](/posts/2022-11-07-golang-tutorial-day2/)
 - [Go 언어 배우기 - 3일차 GIN, GORM](/posts/2022-11-08-golang-tutorial-day3/)
 - [Go 언어 배우기 - 4일차 유틸리티 코드](/posts/2022-11-12-golang-tutorial-day4/)

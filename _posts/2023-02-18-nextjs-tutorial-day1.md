@@ -9,7 +9,7 @@ image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 > 프론트엔드 프레임워크인 Nextjs 에 대해 공부한다. 현재 세계에서 가장 많은 사용자가 사용하는 프레임워크이다. (1일차)
 {: .prompt-tip }
 
-- [Nextjs 공부하기 - 1일차](/posts/2023-02-18-nextjs-tutorial-day1/) : Svelte <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Nextjs 공부하기 - 1일차](/posts/2023-02-18-nextjs-tutorial-day1/) : Svelte &nbsp; &#10004;
 
 ## 1. Nextjs
 
@@ -245,7 +245,7 @@ const GuestbookEntries = () => {
 
 Discord OAuth 로 로그인을 하면, 텍스트 입력 박스로 멘트를 입력할 수 있다.
 
-![t3-app tutorial - Guestbook](/2023/02/18-t3-tutorial-guestbook.png){: width="480px"}
+![t3-app tutorial - Guestbook](/2023/02/18-t3-tutorial-guestbook-w640.png){: width="480px"}
 _t3-app tutorial - Guestbook_
 
 ## 2. [데이터 처리](https://nextjs.org/docs/basic-features/layouts#data-fetching)

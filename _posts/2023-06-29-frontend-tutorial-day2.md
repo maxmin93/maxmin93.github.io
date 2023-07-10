@@ -12,12 +12,13 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-kQQloEDQ90MNQJP
 - [Frontend 공부하기 - 1일차](/posts/2023-02-24-frontend-tutorial-day1/) : Dave Gray &ndash; [HTML Full Course](https://www.youtube.com/watch?v=mJgBOIoGihA) 
 - [Frontend 공부하기 - 2일차](/posts/2023-06-29-frontend-tutorial-day2/) : Dave Gray &ndash; [CSS Full Course](https://www.youtube.com/playlist?list=PL0Zuz27SZ-6Mx9fd9elt80G1bPcySmWit) Part&#9839;1 &nbsp; &#10004;
 - [Frontend 공부하기 - 3일차](/posts/2023-06-30-frontend-tutorial-day3/) : Dave Gray &ndash; [CSS Full Course](https://www.youtube.com/playlist?list=PL0Zuz27SZ-6Mx9fd9elt80G1bPcySmWit) Part&#9839;2
+- [Frontend 공부하기 - 4일차](/posts/2023-07-03-frontend-tutorial-day4/) : Dave Gray &ndash; [CSS Full Course](https://www.youtube.com/playlist?list=PL0Zuz27SZ-6Mx9fd9elt80G1bPcySmWit) Part&#9839;3
 
 > 참고문서
 
 [MDN - CSS 문서](https://developer.mozilla.org/ko/docs/Web/CSS)
 
-## Part &#9839;1 Chapter 01 ~ 09
+## Part &#9839;1 Chapter 01 ~ 10
 
 ### Ch01. CSS Introduction
 
@@ -325,6 +326,99 @@ selectors 에 대해 설정을 재설정하게 됨 => 엉성한 스타일을 의
     }
   }
 ```
+
+
+### Ch10. CSS Display Property
+
+![css-inline-vs-inlineblock-vs-block](https://samanthaming.gumlet.io/pictorials/css-inline-vs-inlineblock-vs-block-4.jpg.gz?format=auto){: width="480px"}
+_css-inline-vs-inlineblock-vs-block_
+
+- inline 요소는 서로 쌓이지 않고, 새 라인을 생성하지 않음 (나란히 배치)
+  + width, height 등의 속성이 무시됨 (콘텐츠만큼의 너비만 차지)
+  + 대표적인 태그: span, a, img, em, strong, i, small 등..
+- block 은 새 라인을 생성하고, 라인의 전체를 차지함 (분리된다)
+  + width, height, margin, padding 속성이 모두 반영됨
+  + 대표적인 태그: div, h1, p, li, section 등..
+- inline-block 은 하이브리드 (내부는 block, 외부는 inline)
+  + inline 처럼 나란히 배치되지만, block 처럼 높이와 너비 설정 가능
+  + 대표적인 태그: button, input, select 등..
+
+```css
+  .opposite {
+    display: inline-block; /* 안하면, margin 등은 효과 없음 */
+    background-color: #333;
+    color: whitesmoke;
+    margin-top: 2rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0.5rem;
+    text-align: right;
+    background-color: black;
+    color: whitesmoke;
+    margin: 0;
+  }
+
+  li {
+    display: inline-block;
+    margin-inline: 0.5rem;
+
+    a {
+      text-decoration: none;
+      color: whitesmoke;
+      cursor: pointer;
+
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+```
+
+#### pull-down (풀다운) 메뉴 항목을 overlay 시키기
+
+예제: [How to get a drop-down menu to overlay other elements](https://stackoverflow.com/a/29732614/6811653)
+
+> 메뉴 그룹 ul 의 시작점을 절대위치로 고정하면 된다. (덮어버림)
+
+- `header` 는 상단에 붙이고 `position: sticky`
+- `nav` 를 기준으로 상대좌표 시작 `position: relative`
+  + `ul` 은 위치 고정 `position: absolute` + `top: 0` &amp; `left: 0`
+  + `li` 항목은 nav 의 block 으로 visibility 조정
+
+```html
+  .container {
+    min-height: 100vh;
+
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  header {
+    position: sticky; /* 시작 위치에 고정 */
+  }
+
+  :is(header:hover, header:focus-within) {
+    nav {
+      display: block; /* visibility: visible; */
+    }
+  }  
+
+  nav {
+    display: none; /* visibility: hidden; */
+    position: relative; /* 상대좌표 기준 */
+
+    ul {
+      position: absolute; /* 상대좌표를 기준으로 절대좌표 시작 */
+      left: 0;
+      top: 0;
+      width: 100%;
+    }  
+  }
+```
+
 
 ## 9. Summary
 

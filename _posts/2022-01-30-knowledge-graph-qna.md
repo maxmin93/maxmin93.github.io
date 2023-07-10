@@ -11,7 +11,7 @@ tags: ["질의응답","그래프유사도","지식그래프","qna","pagerank"]
 - 1부 [지식그래프란?](/posts/2022-01-27-knowledge-graph/)
 - 2부 [AgensKG 지식그래프 소개](/posts/2022-01-28-knowledge-graph-agenskg/)
 - 3부 [AgensKG 지식그래프 생성하기](/posts/2022-01-29-knowledge-graph-triple/)
-- 4부 [AgensKG 지식그래프를 이용한 질의응답](/posts/2022-01-30-knowledge-graph-qna/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- 4부 [AgensKG 지식그래프를 이용한 질의응답](/posts/2022-01-30-knowledge-graph-qna/) &nbsp; &#10004;
 
 ## 지식그래프 기반 질의응답
 

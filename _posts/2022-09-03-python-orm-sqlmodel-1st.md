@@ -9,7 +9,7 @@ image: "https://sqlmodel.tiangolo.com/img/logo-margin/logo-margin-vector.svg"
 > python ORM 으로 FastAPI 저자가 만든 SQLModel 에 대해 공부한 것을 정리합니다.
 {: .prompt-tip }
 
-- 1일차 [python ORM - SQLModel - 1일차](/posts/2022-09-03-python-orm-sqlmodel-1st/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- 1일차 [python ORM - SQLModel - 1일차](/posts/2022-09-03-python-orm-sqlmodel-1st/) &nbsp; &#10004;
 - 2일차 [python ORM - SQLModel - 2일차](/posts/2022-09-04-python-orm-sqlmodel-2nd/)
 - 3일차 [python ORM - SQLModel - 3일차](/posts/2022-09-05-python-orm-sqlmodel-3rd/)
 - 4일차 [python ORM - SQLModel - 4일차](/posts/2022-09-08-python-orm-sqlmodel-4th/)

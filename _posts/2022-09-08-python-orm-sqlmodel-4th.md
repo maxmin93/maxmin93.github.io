@@ -12,7 +12,7 @@ image: "/2022/09/08-nfp-frontend-app-crunch.png"
 - 1일차 [python ORM - SQLModel - 1일차](/posts/2022-09-03-python-orm-sqlmodel-1st/)
 - 2일차 [python ORM - SQLModel - 2일차](/posts/2022-09-04-python-orm-sqlmodel-2nd/)
 - 3일차 [python ORM - SQLModel - 3일차](/posts/2022-09-05-python-orm-sqlmodel-3rd/)
-- 4일차 [python ORM - SQLModel - 4일차](/posts/2022-09-08-python-orm-sqlmodel-4th/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- 4일차 [python ORM - SQLModel - 4일차](/posts/2022-09-08-python-orm-sqlmodel-4th/) &nbsp; &#10004;
 - 5일차 [FastAPI + SQLModel + Postgres 프로젝트](/posts/2022-10-06-fastapi-sqlmodel-postgres-backend/)
 
 처음 계획은 FastAPI 저자가 작성한 예제 [tiangolo/full-stack-fastapi-postgresql](https://github.com/tiangolo/full-stack-fastapi-postgresql) 를 따라해 보려고 했었습니다. 그러나 패키지 설치 실패, Docker 생성 실패 등의 문제가 있어서 다음으로 미루고 다른 예제를 찾아서 공부하기로 했습니다.
@@ -532,11 +532,11 @@ $ pm2 monit nfp-frontend
 $ pm2 monitor nfp-frontend
 ```
 
-| ![pm2.io - processes overview](/2022/09/08-pm2-monitor-overview-crunch.png){: width="580"} |
+| ![pm2.io - processes overview](/2022/09/08-pm2-monitor-overview-w640.png){: width="580"} |
 | :----: |
 | &lt;그림&gt; pm2.io - processes overview |
 
-| ![pm2.io - monitor realtime](/2022/09/08-pm2-monitor-realtime-crunch.png){: width="580"} |
+| ![pm2.io - monitor realtime](/2022/09/08-pm2-monitor-realtime-w640.png){: width="580"} |
 | :----: |
 | &lt;그림&gt; pm2.io - monitor realtime |
 

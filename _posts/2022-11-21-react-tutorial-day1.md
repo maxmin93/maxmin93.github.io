@@ -9,7 +9,7 @@ image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 > 프론트엔드 개발시 View 구현의 필수 재료인 React 에 대해 공부한다. Nextjs/Gatsby, WebComponent 연계 (1일차)
 {: .prompt-tip }
 
-- [React 공부하기 - 1일차](/posts/2022-11-21-react-tutorial-day1/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [React 공부하기 - 1일차](/posts/2022-11-21-react-tutorial-day1/) &nbsp; &#10004;
 
 
 ## 1. [React 공식 문서](https://reactjs.org/docs/getting-started.html)

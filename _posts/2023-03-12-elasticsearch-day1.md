@@ -9,6 +9,8 @@ image: "https://e7.pngegg.com/pngimages/661/195/png-clipart-logo-elasticsearch-g
 > NoSQL DB 이면서 검색엔진인 Elasticsearch 8 설정의 작업 과정을 기록합니다.
 {: .prompt-tip }
 
+- [Elasticsearch 작업하기 - 1일차](/posts/2023-03-12-elasticsearch-day1/) : es, kibana 설치 &nbsp; &#10004;
+- [Elasticsearch 작업하기 - 2일차](/posts/2023-03-23-elasticsearch-day2/) : nori plugin, mecab-co 설치
 
 ## 1. Elasticsearch 개요
 

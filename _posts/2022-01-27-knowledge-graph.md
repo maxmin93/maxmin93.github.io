@@ -8,7 +8,7 @@ tags: ["시멘틱웹", "온톨로지", "xAI", "agens-kg", "인식론"]
 > 그래프 기반 지식그래프 R&D 과제 수행을 위해 지식그래프에 대한 개념부터 조사를 했습니다.
 {: .prompt-tip }
 
-- 1부 [지식그래프란?](/posts/2022-01-27-knowledge-graph/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- 1부 [지식그래프란?](/posts/2022-01-27-knowledge-graph/) &nbsp; &#10004;
 - 2부 [AgensKG 지식그래프 소개](/posts/2022-01-28-knowledge-graph-agenskg/)
 - 3부 [AgensKG 지식그래프 생성하기](/posts/2022-01-29-knowledge-graph-triple/)
 - 4부 [AgensKG 지식그래프를 이용한 질의응답](/posts/2022-01-30-knowledge-graph-qna/)

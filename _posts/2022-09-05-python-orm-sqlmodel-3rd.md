@@ -11,7 +11,7 @@ image: "https://sqlmodel.tiangolo.com/img/logo-margin/logo-margin-vector.svg"
 
 - 1일차 [python ORM - SQLModel - 1일차](/posts/2022-09-03-python-orm-sqlmodel-1st/)
 - 2일차 [python ORM - SQLModel - 2일차](/posts/2022-09-04-python-orm-sqlmodel-2nd/)
-- 3일차 [python ORM - SQLModel - 3일차](/posts/2022-09-05-python-orm-sqlmodel-3rd/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- 3일차 [python ORM - SQLModel - 3일차](/posts/2022-09-05-python-orm-sqlmodel-3rd/) &nbsp; &#10004;
 - 4일차 [python ORM - SQLModel - 4일차](/posts/2022-09-08-python-orm-sqlmodel-4th/)
 - 5일차 [FastAPI + SQLModel + Postgres 프로젝트](/posts/2022-10-06-fastapi-sqlmodel-postgres-backend/)
 

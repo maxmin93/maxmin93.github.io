@@ -3,7 +3,7 @@ date: 2022-10-02 00:00:00 +0000
 title: HTTP Client 성능 비교 - httpx, aiohttp, requests
 categories: ["python"]
 tags: ["httpx", "aiohttp", "성능", "sync", "async", "http-client"]
-image: "/2022/09/16-vue3-my-todo-app-crunch.png"
+image: "https://scrapfly.io/blog/content/images/web-scraping-with-python-httpx_banner_light.svg"
 ---
 
 > 대표적인 HTTP Client 라이브러리의 성능을 비교하고 특징을 공부합니다.
@@ -23,7 +23,7 @@ API 서비스를 개발할 때, 또 다른 API 의 결과를 받아 전달하여
 
 __미리 총평을 하자면,__
 
-> 비동기 HTTP Client 를 위해서는 __aiohttp__ 를 사용하는 것이 옳다!
+> 비동기 HTTP Client 를 위해서는 __aiohttp__ 를 사용하는 것이 옳다! 하지만 개발 편의성 측면에서 **httpx** 가 더 좋다.
 
 
 ## 2. 비동기식 HTTP Client

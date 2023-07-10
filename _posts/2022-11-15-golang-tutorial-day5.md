@@ -13,7 +13,7 @@ image: "https://gofiber.io/assets/images/embed.png"
 - [Go 언어 배우기 - 2일차 문법, 고루틴](/posts/2022-11-07-golang-tutorial-day2/)
 - [Go 언어 배우기 - 3일차 GIN, GORM](/posts/2022-11-08-golang-tutorial-day3/)
 - [Go 언어 배우기 - 4일차 유틸리티 코드](/posts/2022-11-12-golang-tutorial-day4/)
-- [Go 언어 배우기 - 5일차 Go Fiber API](/posts/2022-11-15-golang-tutorial-day5/) <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Go 언어 배우기 - 5일차 Go Fiber API](/posts/2022-11-15-golang-tutorial-day5/) &nbsp; &#10004;
 
 ## 1. REST API using Go Fiber and GORM
 

@@ -10,7 +10,7 @@ hidden: true
 > 프론트엔드 프레임워크인 Svelte 에 대해 공부한다. Svelte 는 Vite 를 사용한다. (1일차)
 {: .prompt-tip }
 
-- [TailwindCSS 공부하기 - 1일차](/posts/2023-02-16-tailwindcss-tutorial-day1/) : Tutorial &num;1 <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [TailwindCSS 공부하기 - 1일차](/posts/2023-02-16-tailwindcss-tutorial-day1/) : Tutorial &#9839;1 &nbsp; &#10004;
 
 ## 1. TailwindCSS 강좌
 

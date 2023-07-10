@@ -13,7 +13,7 @@ image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 - [Svelte 공부하기 - 2일차](/posts/2022-12-14-svelte-tutorial-day2/) : SvelteKit + CSS
 - [Svelte 공부하기 - 3일차](/posts/2022-12-18-svelte-tutorial-day3/) : SvelteKit 구조, 작동방식
 - [Svelte 공부하기 - 4일차](/posts/2022-12-20-svelte-tutorial-day4/) : SvelteKit 애플리케이션 예제
-- [Svelte 공부하기 - 5일차](/posts/2022-12-30-svelte-tutorial-day5/) : Supabase 인증, DB 연동 <span style='font-size:1.5rem;'>&nbsp; &#10004;</span>
+- [Svelte 공부하기 - 5일차](/posts/2022-12-30-svelte-tutorial-day5/) : Supabase 인증, DB 연동 &nbsp; &#10004;
 
 ## 1. Pico CSS 설정하기
 
@@ -142,7 +142,7 @@ _Supabase Social Login - Github_
 ![Supabase Social Login - Google](/2022/12/30-tonyneapp-auth-google-login.png){: width="480"}
 _Supabase Social Login - Google_
 
-![Google Cloud - OAuth 설정 - 동의화면 설정](/2022/12/30-supabase-auth-google-settings.png){: width="600"}
+![Google Cloud - OAuth 설정 - 동의화면 설정](/2022/12/30-supabase-auth-google-settings-w640.png){: width="600"}
 _Google Cloud - OAuth 설정 - 동의화면 설정_
 
 ### 3) [facebook 로그인](https://supabase.com/docs/guides/auth/social-login/auth-facebook)
