@@ -33,7 +33,7 @@ tags: ["패키징", "pgadmin4", "visual-studio", "윈도우", "build"]
   - 환경변수 Path 에 `${MinGW_ROOT}/msys/1.0/bin` 등록
   - Perl 은 제거 (중요!) → 지우거나 확장명을 바꿔버릴것
 
-![01_01-cmd-option](/2022/03/01_01-cmd-option.png){: width="540"}
+![01_01-cmd-option](/2022/03/01_01-cmd-option-w640.png){: width="540"}
 
 ![01_02-sys-env](/2022/03/01_02-sys-env.png){: width="540"}
 

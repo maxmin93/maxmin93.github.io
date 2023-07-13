@@ -78,7 +78,7 @@ Mac용 앱의 서명과 공증 작업을 위해서는 Apple Developer ID 발급 
 
 'ASP'는 메뉴 한글명으로 '앱 암호'라고 되어 있는데, 실제 암호는 아니고 개발자 ID를 대신하는 '계정 코드'정도로 이해하시면 됩니다. 입력하는 키워드는 '용도'를 나타내기 때문에 사용 목적에 맞춰 적당히 이름을 넣으면 됩니다. (ex: pg개발)
 
-![AppleID-ASP](/2022/02/AppleID-ASP.png){: width="540"}
+![AppleID-ASP](/2022/02/AppleID-ASP-w640.png){: width="540"}
 
 ![AppleID-ASP-input](/2022/02/AppleID-ASP-input.png){: width="540"}
 
@@ -121,8 +121,8 @@ DEVELOPER_NAME="12345ABCD"
 
 - 설정 파일이 잘 작성되었으면 `make appbundle`으로 전체 빌드 실행
 
-![pgadmin4-makeAppbundle-head](/2022/02/pgadmin4-makeAppbundle-head.png){: width="540"}
-![pgadmin4-makeAppbundle-tail](/2022/02/pgadmin4-makeAppbundle-tail.png){: width="540"}
+![pgadmin4-makeAppbundle-head](/2022/02/pgadmin4-makeAppbundle-head-w640.png){: width="540"}
+![pgadmin4-makeAppbundle-tail](/2022/02/pgadmin4-makeAppbundle-tail-w640.png){: width="540"}
 
 ### 개별적인 서명과 공증 사용
 

@@ -63,7 +63,7 @@ $ bundle install
 $ bundle exec jekyll serve --host 0.0.0.0
 ```
 
-![jekyll-chirpy-github-action-success](/2022/08/31-jekyll-chirpy-github-action-success-min.png){: width="600" } <br />&nbsp;
+![jekyll-chirpy-github-action-success](/2022/08/31-jekyll-chirpy-github-action-success-w640.png){: width="600" } <br />&nbsp;
 
 > 처음 jekyll(지킬)을 다뤄볼 때에는 다음과 같은 과정을 해보길 권한다.
 
@@ -112,7 +112,7 @@ url: "https://{깃허브 계정명}.jeju.onl"
 theme_mode: # [light|dark]
 
 img_cdn: "/assets/img"
-avatar: "/tonyne-avatar_360x360.png"
+avatar: "/tonyne-avatar_360x360-low.png"
 # ...
 ```
 
@@ -165,7 +165,7 @@ defaults:
 
 > **_TIP._** 오류가 난 과정의 메시지만 봐서는 못찾았다. 그 이전 단계 로그를 봐야 찾을 수 있음.
 
-![jekyll-chirpy-github-action-fail-log](/2022/08/31-jekyll-chirpy-github-action-fail-log-min.png){: width="600" } <br />&nbsp;
+![jekyll-chirpy-github-action-fail-log](/2022/08/31-jekyll-chirpy-github-action-fail-log-w640.png){: width="600" } <br />&nbsp;
 
 ```shell
 # Mac M1 환경에서 작업할 떄에는 꼭 확인!
@@ -179,7 +179,7 @@ $ git add --all && git commit -m "lock x86_64" && git push
 
 > **_TIP._** 이 같은 문제 때문에 대부분 `Gemfile.lock` 을 제거하고 올리라 권장하고 있다.
 
-![jekyll-chirpy-lock-modify-x86](/2022/08/31-jekyll-chirpy-lock-modify-x86-min.png){: width="600" } <br />&nbsp;
+![jekyll-chirpy-lock-modify-x86](/2022/08/31-jekyll-chirpy-lock-modify-x86-w640.png){: width="600" } <br />&nbsp;
 
 ### 3) 이번엔 또 뭐야? HTML-Proofer 오류
 

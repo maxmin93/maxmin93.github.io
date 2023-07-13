@@ -11,7 +11,7 @@ image: "https://miro.medium.com/v2/resize:fit:1000/0*XE6qPC63JoXPkwRL.png"
 
 - [Svelte TailwindCSS &ndash; 1일차](/posts/2023-07-10-svelte-tailwindcss-day1/) : Tailwind Labs &ndash; [Insta UI](https://www.youtube.com/watch?v=v74SZBVMPa0) &nbsp; &#10004;
 
-## 1. SvelteKit &plus; TailwindCSS Setup
+## 1. SvelteKit &amp; TailwindCSS Setup
 
 tailwindcss 확장 모듈을 설치하면 postcss 까지 설치된다. (config 설정 필요)
 
