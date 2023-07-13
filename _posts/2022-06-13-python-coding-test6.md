@@ -1,8 +1,8 @@
 ---
-date: 2022-06-13 00:00:00 +0000
+date: 2022-06-13 00:00:00 +0900
 title: "Python 코딩테스트 51~60"
-categories: ["python", "코딩테스트"]
-tags: ["coderbyte"]
+categories: ["language","python"]
+tags: ["coderbyte", "코딩테스트"]
 ---
 
 > 파이썬 코딩테스트 준비를 하며 공부한 내용을 기록하고 복습합니다.

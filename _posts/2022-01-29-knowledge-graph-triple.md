@@ -1,5 +1,5 @@
 ---
-date: 2022-01-29 00:00:00 +0000
+date: 2022-01-29 00:00:00 +0900
 title: "AgensKG 지식그래프 생성하기"
 categories: ["AI","knowledge-graph"]
 tags: ["지식그래프", "트리플그래프", "라벨링", "entity", "ner"]

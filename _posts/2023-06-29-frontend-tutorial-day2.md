@@ -1,8 +1,8 @@
 ---
-date: 2023-06-29 00:00:00 +0000
+date: 2023-06-29 00:00:00 +0900
 title: Frontend 공부하기 - 2일차 CSS Part1
-categories: ["software","frontend"]
-tags: ["svelte", "html","css","tutorial","1st-day"]
+categories: ["frontend","css"]
+tags: ["svelte", "css","tutorial","1st-day"]
 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-kQQloEDQ90MNQJP2X5a2onDmlkfHRnV7MHlK2ocvv4zRrwtMOb8lMJhaCAUWlY-Xus&usqp=CAU"
 ---
 

@@ -1,8 +1,8 @@
 ---
-date: 2022-12-15 00:00:00 +0000
+date: 2022-12-15 00:00:00 +0900
 title: 프론트엔드 생산성 도구들
-categories: ["software","frontend"]
-tags: ["library","utility","component","validation"]
+categories: ["software","trends"]
+tags: ["library","frontend","component","validation"]
 image: "https://vitejs.dev/ecosystem-vite4.png"
 ---
 

@@ -1,8 +1,9 @@
 ---
 title: psycopg3 Sync/Async 예제
-date: 2023-05-29 00:00:00 +0000
-categories: ["python", "postgres"]
-tags: ["pg15", "psycopg3", "pool", "async", "fastapi"]
+date: 2023-05-29 00:00:00 +0900
+categories: ["database", "postgres"]
+tags: ["pg15", "psycopg3", "pool", "python", "async", "fastapi"]
+image: "https://miro.medium.com/v2/resize:fit:1400/1*9ma4X2mX_-KSw8hapRP9gw.gif"
 ---
 
 > Python 에서 Postgresql 를 다루기 위한 psycopg 라이브러리에 대해 공부해보자. Sync, Async 및 fastapi 에서의 사용 방법을 다룬다.

@@ -1,8 +1,8 @@
 ---
-date: 2022-11-24 00:00:00 +0000
+date: 2022-11-24 00:00:00 +0900
 title: Python 이미지 유틸리티 - Pillow, CV2
-categories: ["python"]
-tags: ["utility","imagekit","pillow","opencv"]
+categories: ["software","library"]
+tags: ["utility","imagekit","pillow","opencv","python"]
 image: "https://blog.kakaocdn.net/dn/cMU0Dy/btqMuP7igrW/n05i5nsrUlsKKhpZbBmPdk/img.png"
 ---
 

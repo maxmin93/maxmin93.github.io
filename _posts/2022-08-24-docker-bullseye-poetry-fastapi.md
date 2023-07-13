@@ -1,5 +1,5 @@
 ---
-date: 2022-08-24 00:00:00 +0000
+date: 2022-08-24 00:00:00 +0900
 title: 도커 bullseye-slim 기반 poetry + FastAPI 이미지 만들기
 categories: ["devops", "docker"]
 tags: ["python", "sqlalchemy", "bullseye", "docker", "poetry", "fastapi"]

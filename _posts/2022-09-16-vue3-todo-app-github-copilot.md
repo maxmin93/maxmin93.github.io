@@ -1,5 +1,5 @@
 ---
-date: 2022-09-16 00:00:00 +0000
+date: 2022-09-16 00:00:00 +0900
 title: 깃허브 코파일럿과 함께 Vue3 공부해보기
 categories: ["devops"]
 tags: ["github", "copilot", "todo-app", "vue3", "tutorial"]

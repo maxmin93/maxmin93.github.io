@@ -1,5 +1,5 @@
 ---
-date: 2023-03-11 00:00:00 +0000
+date: 2023-03-11 00:00:00 +0900
 title: Amazon Linux 2 설정하기 - Part 2
 categories: ["devops","aws"]
 tags: ["lightsail", "linux", "setup", "install"]

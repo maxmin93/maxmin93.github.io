@@ -1,8 +1,8 @@
 ---
-date: 2023-02-13 00:00:00 +0000
+date: 2023-02-13 00:00:00 +0900
 title: Svelte 공부하기 - 6일차
-categories: ["nodejs","svelte"]
-tags: ["frontend","tutorial","6th-day"]
+categories: ["frontend","svelte"]
+tags: ["sveltekit","tutorial","6th-day"]
 image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 ---
 

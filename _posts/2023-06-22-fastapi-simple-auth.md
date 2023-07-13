@@ -1,8 +1,8 @@
 ---
 title: FastAPI 간단한 Auth 구현 방법
-date: 2023-06-22 00:00:00 +0000
-categories: ["python"]
-tags: ["fastapi", "api-key", "jwt", "security"]
+date: 2023-06-22 00:00:00 +0900
+categories: ["backend","fastapi"]
+tags: ["api-key", "jwt", "security","python"]
 image: "https://miro.medium.com/v2/resize:fit:1023/0*1EtZTArgBliVFhaC.png"
 ---
 

@@ -1,5 +1,5 @@
 ---
-date: 2022-08-14 00:00:00 +0000
+date: 2022-08-14 00:00:00 +0900
 title: 도커 postresql 시간대, 언어 설정 방법들의 비교
 categories: ["devops", "docker"]
 tags: ["TIL", "utf8", "마운트", "postgresql", "locale"]

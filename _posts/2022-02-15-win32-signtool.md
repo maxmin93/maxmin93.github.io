@@ -1,9 +1,9 @@
 ---
-date: 2022-02-15 00:00:00 +0000
+date: 2022-02-15 00:00:00 +0900
 title: Windows용 인증서 및 App 서명
 author: maxmin93
-categories: ["software","os"]
-tags: ["windows","pgadmin4","패키징","서명","인증서"]
+categories: ["devops","packaging"]
+tags: ["windows","pgadmin4","서명","인증서"]
 ---
 
 > Windows용 네이티브 웹앱을 패키징하고 배포하기 위해 필요한 `signtool`(개발자 서명)과 `makecert`(서명자 생성)에 대해 `pgAdmin4`를 가지고 작업한 내용을 기록합니다.

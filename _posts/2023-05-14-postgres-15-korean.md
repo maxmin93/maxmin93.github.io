@@ -1,6 +1,6 @@
 ---
 title: PostgreSQL 15 한글 검색 설정
-date: 2023-05-14 00:00:00 +0000
+date: 2023-05-14 00:00:00 +0900
 categories: ["database", "postgres"]
 tags: ["pg15", "korean", "collate", "utf8", "gin"]
 image: "https://dyclassroom.com/image/topic/postgresql/postgresql.jpg"

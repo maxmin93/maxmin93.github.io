@@ -1,8 +1,8 @@
 ---
-date: 2022-06-25 00:00:00 +0000
+date: 2022-06-25 00:00:00 +0900
 title: Python - Thread Safe 타입도 Lock 이 필요한가?
-categories: ["python"]
-tags: ["TIL", "원자성", "스레드안전", "멀티스레드"]
+categories: ["language","python"]
+tags: ["원자성", "스레드안전", "멀티스레드"]
 ---
 
 > 알아도 또 까먹고, 헷갈리는 스레드 안전에 대한 개념을 한번 더 챙겨봅니다.

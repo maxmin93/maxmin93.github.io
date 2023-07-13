@@ -1,15 +1,15 @@
 ---
-date: 2023-02-01 00:00:00 +0000
-title: Flutter 공부하기 - 1일차
-categories: ["flutter","dart"]
-tags: ["tutorial","1st-day"]
+date: 2023-02-01 00:00:00 +0900
+title: Dart 공부하기 - 1일차
+categories: ["language","dart"]
+tags: ["flutter", "tutorial","1st-day"]
 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Dart_programming_language_logo.svg/2560px-Dart_programming_language_logo.svg.png"
 ---
 
 > Flutter 베이스 언어인 Dart 에 대해 공부한다. Dart 는 완전한 OOP를 지원한다. (1일차)
 {: .prompt-tip }
 
-- [Flutter 공부하기 - 1일차](/posts/2023-02-01-flutter-tutorial-day1/) : Dart 언어 &nbsp; &#10004;
+- [Dart 공부하기 - 1일차](/posts/2023-02-01-flutter-tutorial-day1/) : Dart 언어 &nbsp; &#10004;
 
 ## 0. 시작하기에 앞서
 

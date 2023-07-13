@@ -1,8 +1,8 @@
 ---
-date: 2021-04-25 00:00:00 +0000
+date: 2021-04-25 00:00:00 +0900
 title: "jupyter notebook 과 pyspark 연동 설정"
-categories: ["python"]
-tags: ["jupyter", "pyspark", "setup"]
+categories: ["devops"]
+tags: ["jupyter", "pyspark", "setup","python"]
 image: https://miro.medium.com/max/698/1*h7xQUkvB_dyJKpJ3EP_TvA.jpeg
 ---
 

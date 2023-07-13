@@ -1,7 +1,7 @@
 ---
-date: 2022-04-29 00:00:00 +0000
+date: 2022-04-29 00:00:00 +0900
 title: "Angular Material 제거하기"
-categories: ["nodejs", "angular"]
+categories: ["frontend", "angular"]
 tags: ["styles", "remove", "material", "css", "초기화"]
 ---
 

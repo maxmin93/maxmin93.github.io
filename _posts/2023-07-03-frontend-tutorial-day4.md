@@ -1,8 +1,8 @@
 ---
-date: 2023-07-03 00:00:00 +0000
+date: 2023-07-03 00:00:00 +0900
 title: Frontend 공부하기 - 4일차 CSS Part3
-categories: ["software","frontend"]
-tags: ["svelte", "html","css","tutorial","3rd-day"]
+categories: ["frontend","css"]
+tags: ["svelte", "css","tutorial","3rd-day"]
 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-kQQloEDQ90MNQJP2X5a2onDmlkfHRnV7MHlK2ocvv4zRrwtMOb8lMJhaCAUWlY-Xus&usqp=CAU"
 hidden: true
 ---

@@ -1,5 +1,5 @@
 ---
-date: 2022-10-25 00:00:00 +0000
+date: 2022-10-25 00:00:00 +0900
 title: AWS Lightsail 에서 Amazon Linux 2 설정하기
 categories: ["devops","aws"]
 tags: ["lightsail", "linux", "setup", "install"]

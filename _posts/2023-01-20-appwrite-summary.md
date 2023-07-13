@@ -1,8 +1,8 @@
 ---
-date: 2023-01-20 00:00:00 +0000
+date: 2023-01-20 00:00:00 +0900
 title: 오픈소스 Backend Appwrite
-categories: ["software","backend"]
-tags: ["oauth","database","realtime","storage"]
+categories: ["backend"]
+tags: ["oauth","appwrite","realtime","storage"]
 image: "https://appwrite.io/images-ee/press/badge-pink-box.svg"
 ---
 

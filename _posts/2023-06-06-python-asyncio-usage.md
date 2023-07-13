@@ -1,7 +1,7 @@
 ---
 title: python asyncio 사용법
-date: 2023-06-06 00:00:00 +0000
-categories: ["python"]
+date: 2023-06-06 00:00:00 +0900
+categories: ["language","python"]
 tags: ["coroutine", "psycopg3", "httpx", "async", "asyncio"]
 image: "https://developers.redhat.com/sites/default/files/styles/article_feature/public/blog/2021/05/Python-01.png?itok=qO_bpcrR"
 ---

@@ -1,8 +1,8 @@
 ---
-date: 2022-09-06 00:00:00 +0000
+date: 2022-09-06 00:00:00 +0900
 title: "Best API 프레임워크와 Benchmark (2022년)"
-categories: ["software","backend"]
-tags: ["api-서버", "웹프레임워크", "stack", "벤치마크", "성능"]
+categories: ["backend"]
+tags: ["api", "framework", "benchmark", "performance"]
 ---
 
 > 언어에 상관 없이 API 용 웹 프레임워크에 대해 조사하고 성능 벤치마킹 자료를 살펴봅니다.

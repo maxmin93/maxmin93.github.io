@@ -1,7 +1,7 @@
 ---
-date: 2022-11-15 00:00:00 +0000
+date: 2022-11-15 00:00:00 +0900
 title: Go 언어 배우기 - 5일차 Go Fiber API
-categories: ["golang"]
+categories: ["language","golang"]
 tags: ["5th-day", "tutorial", "gofiber", "gorm", "boilerplate"]
 image: "https://gofiber.io/assets/images/embed.png"
 ---

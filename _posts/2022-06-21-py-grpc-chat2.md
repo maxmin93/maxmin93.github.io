@@ -1,7 +1,7 @@
 ---
-date: 2022-06-21 00:00:00 +0000
+date: 2022-06-21 00:00:00 +0900
 title: Python - gRPC 기반 Chat 2nd
-categories: ["software", "backend"]
+categories: ["backend","grpc"]
 tags: ["python", "channel", "heartbeat", "login", "async", "grpc"]
 ---
 

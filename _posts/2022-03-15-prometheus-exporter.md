@@ -1,5 +1,5 @@
 ---
-date: 2022-03-15 00:00:00 +0000
+date: 2022-03-15 00:00:00 +0900
 title: Postgres Exporter 를 이용한 AgensGraph 모니터링
 author: maxmin93
 categories: ["devops"]

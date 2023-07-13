@@ -1,8 +1,8 @@
 ---
-date: 2022-08-18 00:00:00 +0000
+date: 2022-08-18 00:00:00 +0900
 title: FastAPI 예제로 파이썬 패키지 관리도구 비교
-categories: ["python"]
-tags: ["개발환경", "venv", "pip", "pipenv", "poetry", "flit"]
+categories: ["devops"]
+tags: ["venv", "pip", "pipenv", "poetry", "flit","python"]
 image: https://d33wubrfki0l68.cloudfront.net/e5bef992cd67b65cf04372ce4802620989c02ccd/4d1dc/static/images/blog/poetry.png
 ---
 

@@ -1,8 +1,8 @@
 ---
-date: 2021-05-05 00:00:00 +0000
+date: 2021-05-05 00:00:00 +0900
 title: "MacOS 에서 pygraphviz 설치 및 networkx 사용"
-categories: ["python"]
-tags: ["graphviz", "networkx", "matplotlib"]
+categories: ["database","graphdb"]
+tags: ["graphviz", "networkx", "matplotlib", "python","visualization"]
 ---
 
 > Python 환경에서 그래프 분석을 하기 위해 그래프의 시각화를 제공하는 graphvis 라이브러리에 대해 공부합니다.

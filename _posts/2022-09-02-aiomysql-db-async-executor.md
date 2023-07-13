@@ -1,8 +1,8 @@
 ---
-date: 2022-09-02 00:00:00 +0000
+date: 2022-09-02 00:00:00 +0900
 title: pymysql 과 aiomysql 살펴보기 (async 처리)
-categories: ["python"]
-tags: ["TIL", "mysql", "asyncio", "sqlalchemy", "비동기"]
+categories: ["database"]
+tags: ["mysql", "asyncio", "sqlalchemy","python"]
 image: "https://byline.network/wp-content/uploads/2017/10/mysql-logo.jpg"
 ---
 

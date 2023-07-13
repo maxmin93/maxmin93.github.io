@@ -1,7 +1,7 @@
 ---
-date: 2022-11-08 00:00:00 +0000
+date: 2022-11-08 00:00:00 +0900
 title: Go 언어 배우기 - 3일차 GIN, GORM
-categories: ["golang"]
+categories: ["language","golang"]
 tags: ["3rd-day", "tutorial", "framework", "gin", "gorm"]
 image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e257ca9af7ec/golang_icon.jpg"
 ---
@@ -386,7 +386,7 @@ exists: Product.Code='D42'
 Today: '2022-11-09' => '20221109'
 select: Product.UpdatedAt='20221109' (true)
 
-updated: Product={ {1 2022-11-09 19:48:23.284966 +0900 +0900 2022-11-09 19:48:23.286196 +0900 KST {0001-01-01 00:00:00 +0000 UTC false} } D42 300}
+updated: Product={ {1 2022-11-09 19:48:23.284966 +0900 +0900 2022-11-09 19:48:23.286196 +0900 KST {0001-01-01 00:00:00 +0900 UTC false} } D42 300}
 
 deleted: Product={Model: {ID:1 CreatedAt:2022-11-09 19:48:23.284966 +0900 +0900 UpdatedAt:2022-11-09 19:48:23.287382 +0900 KST DeletedAt:{Time:2022-11-09 19:48:23.287918 +0900 KST Valid:true} } Code:F44 Price:400}
 */

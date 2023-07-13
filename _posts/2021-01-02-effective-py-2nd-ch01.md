@@ -1,8 +1,8 @@
 ---
 title: "Effective PYTHON 2nd - Ch01"
-date: 2021-01-02 00:00:00 +0000
-categories: ["python","book"]
-tags: ["effective-python"]
+date: 2021-01-02 00:00:00 +0900
+categories: ["language","python"]
+tags: ["effective-python","book"]
 image:
   path: https://effectivepython.com/images/cover_2ed.jpg
   width: 300

@@ -1,8 +1,8 @@
 ---
-date: 2022-10-18 00:00:00 +0000
+date: 2022-10-18 00:00:00 +0900
 title: Scrapy 사용법과 Jupyter 에서 Scrapy 실행하기
-categories: ["python","scraper"]
-tags: ["scrapy", "크롤링", "xpath", "jupyter", "TIL"]
+categories: ["backend","scraper"]
+tags: ["scrapy", "크롤링", "xpath", "jupyter", "python"]
 image: "/2022/10/09-pyarrow-vs-pandas-csv-read-crunch.png"
 ---
 

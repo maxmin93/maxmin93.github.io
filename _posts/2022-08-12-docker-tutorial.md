@@ -1,5 +1,5 @@
 ---
-date: 2022-08-12 00:00:00 +0000
+date: 2022-08-12 00:00:00 +0900
 title: 도커 튜토리얼 getting-started
 categories: ["devops", "docker"]
 tags: ["TIL", "compose", "aws", "nginx"]

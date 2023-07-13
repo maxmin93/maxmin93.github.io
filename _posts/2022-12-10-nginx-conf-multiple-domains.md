@@ -1,5 +1,5 @@
 ---
-date: 2022-12-10 00:00:00 +0000
+date: 2022-12-10 00:00:00 +0900
 title: Nginx 도메인 + SSL + Node App 설정
 categories: ["devops","network"]
 tags: ["nginx","proxy","domain","ssl","certbot"]

@@ -1,5 +1,5 @@
 ---
-date: 2022-01-27 00:00:00 +0000
+date: 2022-01-27 00:00:00 +0900
 title: "지식그래프란?"
 categories: ["AI","knowledge-graph"]
 tags: ["시멘틱웹", "온톨로지", "xAI", "agens-kg", "인식론"]

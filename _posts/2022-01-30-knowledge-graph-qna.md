@@ -1,5 +1,5 @@
 ---
-date: 2022-01-30 00:00:00 +0000
+date: 2022-01-30 00:00:00 +0900
 title: "AgensKG 지식그래프를 이용한 질의응답"
 categories: ["AI","knowledge-graph"]
 tags: ["질의응답","그래프유사도","지식그래프","qna","pagerank"]

@@ -1,9 +1,9 @@
 ---
-date: 2022-03-01 00:00:00 +0000
+date: 2022-03-01 00:00:00 +0900
 title: Postgresql Windows build
 author: maxmin93
-categories: ["software","os"]
-tags: ["패키징", "pgadmin4", "visual-studio", "윈도우", "build"]
+categories: ["devops","packaging"]
+tags: ["pgadmin4", "visual-studio", "윈도우", "build"]
 ---
 
 > 오픈소스 제품의 윈도우 패키징을 위해 Postgresql 대상으로 배포판을 만들어봅니다.

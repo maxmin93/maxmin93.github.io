@@ -1,7 +1,7 @@
 ---
-date: 2023-07-10 00:00:00 +0000
+date: 2023-07-10 00:00:00 +0900
 title: Svelte TailwindCSS &ndash; 1일차 클론코딩
-categories: ["software","frontend"]
+categories: ["frontend","css"]
 tags: ["svelte", "tailwindcss","clone-coding","1st-day"]
 image: "https://miro.medium.com/v2/resize:fit:1000/0*XE6qPC63JoXPkwRL.png"
 ---

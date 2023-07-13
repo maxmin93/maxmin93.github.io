@@ -1,8 +1,8 @@
 ---
-date: 2022-12-20 00:00:00 +0000
+date: 2022-12-20 00:00:00 +0900
 title: Svelte 공부하기 - 4일차
-categories: ["nodejs","svelte"]
-tags: ["frontend","tutorial","4th-day"]
+categories: ["frontend","svelte"]
+tags: ["sveltekit","tutorial","4th-day"]
 image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
 ---
 

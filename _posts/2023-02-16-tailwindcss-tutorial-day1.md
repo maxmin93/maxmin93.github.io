@@ -1,5 +1,5 @@
 ---
-date: 2023-02-16 00:00:00 +0000
+date: 2023-02-16 00:00:00 +0900
 title: TailwindCSS 공부하기 - 1일차
 categories: ["frontend","css"]
 tags: ["tailwind","tutorial","1st-day"]

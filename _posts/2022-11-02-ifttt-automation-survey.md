@@ -1,5 +1,5 @@
 ---
-date: 2022-11-02 00:00:00 +0000
+date: 2022-11-02 00:00:00 +0900
 title: IFTTT 서비스와 자동화 관련 SaaS 조사
 categories: ["software"]
 tags: ["ifttt", "자동화", "saas", "통합"]

@@ -1,8 +1,8 @@
 ---
-date: 2023-07-13 00:00:00 +0000
+date: 2023-07-13 00:00:00 +0900
 title: RedisGraph 수명 종료 발표
-categories: ["software","backend"]
-tags: ["gdb", "end-of-life", "redisgraph", "review"]
+categories: ["database","graphdb"]
+tags: ["redis", "end-of-life", "redisgraph", "review"]
 image: "https://redis.com/wp-content/uploads/2022/04/redisgraph-two-point-eight-1200x628-1.jpg"
 ---
 
@@ -56,7 +56,7 @@ GDB 는 Knowledge-graph 를 위한 전용 데이터베이스로 사용될 목적
 
 ## 9. Summary
 
-- 그래프 데이터베이스 손절하길 잘했다.
+- 그래프 데이터베이스의 전망은 암울하다. 손절하길 잘했다.
 - 내 앞가림이나 빨리 하자.
 
 &nbsp; <br />

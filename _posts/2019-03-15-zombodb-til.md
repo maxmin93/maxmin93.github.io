@@ -1,6 +1,6 @@
 ---
 title: Zombodb - pg10 plugin for es6
-date: 2019-03-15 00:00:00 +0000
+date: 2019-03-15 00:00:00 +0900
 categories: ["elasticsearch","plugin"]
 tags: ["zombodb", "postgresql"]
 ---

@@ -1,8 +1,8 @@
 ---
-date: 2022-06-07 00:00:00 +0000
+date: 2022-06-07 00:00:00 +0900
 title: "Python 코딩테스트 01~10"
-categories: ["python", "코딩테스트"]
-tags: ["dmoj"]
+categories: ["language","python"]
+tags: ["dmoj", "코딩테스트"]
 ---
 
 > 파이썬 코딩테스트 준비를 하며 공부한 내용을 기록하고 복습합니다.

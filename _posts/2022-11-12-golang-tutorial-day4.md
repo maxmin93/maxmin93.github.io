@@ -1,7 +1,7 @@
 ---
-date: 2022-11-12 00:00:00 +0000
+date: 2022-11-12 00:00:00 +0900
 title: Go 언어 배우기 - 4일차 유틸리티 코드
-categories: ["golang"]
+categories: ["language","golang"]
 tags: ["4th-day", "tutorial", "유틸리티", "examples", "library"]
 image: "https://images.velog.io/images/milkcoke/post/2e6493d9-ef2a-4116-91bc-e257ca9af7ec/golang_icon.jpg"
 ---

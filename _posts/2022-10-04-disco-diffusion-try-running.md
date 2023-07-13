@@ -1,5 +1,5 @@
 ---
-date: 2022-10-04 00:00:00 +0000
+date: 2022-10-04 00:00:00 +0900
 title: Disco Diffusion 실행해보기 (Stable 추가)
 categories: ["AI","gpt"]
 tags: ["python", "diffusion", "TIL", "text-to-image", "ai-art"]

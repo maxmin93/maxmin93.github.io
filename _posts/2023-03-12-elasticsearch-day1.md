@@ -1,6 +1,6 @@
 ---
+date: 2023-03-12 00:00:00 +0900
 title: Elasticsearch 작업하기 - 1일차
-date: 2023-03-12 00:00:00 +0000
 categories: ["database", "elasticsearch"]
 tags: ["metricbeats", "kibana", "logstash", "1st-day"]
 image: "https://e7.pngegg.com/pngimages/661/195/png-clipart-logo-elasticsearch-graphics-logstash-font-elastic-text-logo.png"

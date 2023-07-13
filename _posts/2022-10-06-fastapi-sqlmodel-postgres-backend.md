@@ -1,8 +1,8 @@
 ---
-date: 2022-10-06 00:00:00 +0000
+date: 2022-10-06 00:00:00 +0900
 title: FastAPI + SQLModel + Postgres 프로젝트
-categories: ["python","orm"]
-tags: ["5th-day", "orm", "postgresql", "tutorial", "docker", "sqlmodel", "fastapi"]
+categories: ["backend","orm"]
+tags: ["python", "postgresql", "project", "docker", "sqlmodel", "fastapi"]
 image: "https://github.com/maxmin93/fastapi-sqlmodel-heroes/blob/main/assets/img/06-fastapi-sqlmodel-pg14-docs-crunch.png?raw=true"
 ---
 

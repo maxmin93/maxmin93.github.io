@@ -1,5 +1,5 @@
 ---
-date: 2023-04-28 00:00:00 +0000
+date: 2023-04-28 00:00:00 +0900
 title: OpenAI - GPT 공부하기
 categories: ["AI","gpt"]
 tags: ["openai", "gpt3.5", "prompt", "1st-day"]

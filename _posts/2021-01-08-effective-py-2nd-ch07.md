@@ -1,8 +1,8 @@
 ---
-date: 2021-01-08 00:00:00 +0000
+date: 2021-01-08 00:00:00 +0900
 title: "Effective PYTHON 2nd - Ch07"
-categories: ["python", "book"]
-tags: ["effective-python"]
+categories: ["language","python"]
+tags: ["effective-python","book"]
 image:
   path: https://effectivepython.com/images/cover_2ed.jpg
   width: 300

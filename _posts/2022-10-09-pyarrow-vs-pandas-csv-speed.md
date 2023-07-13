@@ -1,8 +1,8 @@
 ---
-date: 2022-10-09 00:00:00 +0000
+date: 2022-10-09 00:00:00 +0900
 title: PyArrow vs. Pandas - CSV 읽기 쓰기 성능 비교
-categories: ["python"]
-tags: ["성능", "pyarrow", "pandas", "csv", "TIL"]
+categories: ["software","library"]
+tags: ["performance", "pyarrow", "pandas", "csv","python"]
 image: "/2022/10/09-pyarrow-vs-pandas-csv-read-crunch.png"
 ---
 

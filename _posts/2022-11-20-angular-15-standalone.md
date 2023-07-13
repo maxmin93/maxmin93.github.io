@@ -1,8 +1,8 @@
 ---
-date: 2022-11-20 00:00:00 +0000
+date: 2022-11-20 00:00:00 +0900
 title: Angular 15 - 기능 및 Standalone
-categories: ["nodejs","angular"]
-tags: ["TIL","release","standalone"]
+categories: ["frontend","angular"]
+tags: ["angular15","release","standalone"]
 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/AngularJS_logo.svg/1200px-AngularJS_logo.svg.png"
 ---
 

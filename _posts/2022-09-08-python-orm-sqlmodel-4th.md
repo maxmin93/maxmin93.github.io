@@ -1,8 +1,8 @@
 ---
-date: 2022-09-08 00:00:00 +0000
+date: 2022-09-08 00:00:00 +0900
 title: python ORM - SQLModel - 4일차
-categories: ["python","orm"]
-tags: ["4th-day", "fastapi", "nextjs", "tailwindcss", "pm2"]
+categories: ["backend","orm"]
+tags: ["4th-day", "fastapi", "nextjs", "python", "pm2"]
 image: "/2022/09/08-nfp-frontend-app-crunch.png"
 ---
 

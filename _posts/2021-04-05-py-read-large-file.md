@@ -1,8 +1,8 @@
 ---
-date: 2021-04-05 00:00:00 +0000
-title: Python - 대용량 파일 읽기
-categories: ["python"]
-tags: ["mmap", "threadpoolexecutor"]
+date: 2021-04-05 00:00:00 +0900
+title: Python - mmap 으로 대용량 파일 읽기
+categories: ["software","library"]
+tags: ["mmap", "thread","python"]
 image: /2021/04/load_docs.py_type3.png
 ---
 

@@ -1,8 +1,8 @@
 ---
-date: 2022-10-02 00:00:00 +0000
+date: 2022-10-02 00:00:00 +0900
 title: HTTP Client 성능 비교 - httpx, aiohttp, requests
-categories: ["python"]
-tags: ["httpx", "aiohttp", "성능", "sync", "async", "http-client"]
+categories: ["software","library"]
+tags: ["httpx", "aiohttp", "performance", "http-client","python"]
 image: "https://scrapfly.io/blog/content/images/web-scraping-with-python-httpx_banner_light.svg"
 ---
 

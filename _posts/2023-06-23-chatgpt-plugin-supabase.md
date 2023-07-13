@@ -1,5 +1,5 @@
 ---
-date: 2023-06-23 00:00:00 +0000
+date: 2023-06-23 00:00:00 +0900
 title: ChatGPT Plugin 과 Supabase 통합
 categories: ["AI","gpt"]
 tags: ["chatgpt","postgresql","plugin","supabase"]

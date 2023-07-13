@@ -1,5 +1,5 @@
 ---
-date: 2021-02-01 00:00:00 +0000
+date: 2021-02-01 00:00:00 +0900
 title: NEWS API & Angular Example
 author: maxmin93
 categories: ["AI"]

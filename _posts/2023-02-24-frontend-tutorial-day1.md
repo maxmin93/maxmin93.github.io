@@ -1,7 +1,7 @@
 ---
-date: 2023-02-24 00:00:00 +0000
+date: 2023-02-24 00:00:00 +0900
 title: Frontend 공부하기 - 1일차 HTML
-categories: ["software","frontend"]
+categories: ["frontend","css"]
 tags: ["html","css","tutorial","1st-day"]
 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-kQQloEDQ90MNQJP2X5a2onDmlkfHRnV7MHlK2ocvv4zRrwtMOb8lMJhaCAUWlY-Xus&usqp=CAU"
 ---

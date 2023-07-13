@@ -1,8 +1,8 @@
 ---
-date: 2022-12-23 00:00:00 +0000
+date: 2022-12-23 00:00:00 +0900
 title: 백엔드 플랫폼 기술 트렌드
-categories: ["software","backend"]
-tags: ["headless","trends","baas","search"]
+categories: ["software","trends"]
+tags: ["headless","backend","baas","search"]
 image: "https://uploads-ssl.webflow.com/5f30e5daeb0dcb58dd2da7d8/60eeb98c86f24533fd3287e6_2.png"
 ---
 
