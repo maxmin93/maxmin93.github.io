@@ -11,7 +11,7 @@ image: "https://redis.com/wp-content/uploads/2022/04/redisgraph-two-point-eight-
 
 ## 1. [RedisGraph 수명종료 발표 원문](https://redis.com/blog/redisgraph-eol/) - 2023년 7월 5일
 
-### 1) 핵심 요약
+### 1) 요약
 
 - Redis Stack 7.2.xy 버전부터 그래프 기능(RedisGraph)을 포함하지 않고
 - 판매 종료는 즉시 시작되고
