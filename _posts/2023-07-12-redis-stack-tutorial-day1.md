@@ -42,24 +42,109 @@ _Redis Stack_
 
 ### 1) [Docker 설치](https://hub.docker.com/r/redis/redis-stack)
 
+설치 후 RedisInsight 열기 [http://localhost:8001](http://localhost:8001)
+
 ```console
-$ docker pull redis/redis-stack
-$ docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 redis/redis-stack:latest
+$ docker pull redis/redis-stack:latest
+$ docker run -d --name redis-stack -p 6379:6379 -p 8001:8001 \
+  redis/redis-stack:latest
+
+# 도커 안의 redis-cli 실행시
+$ docker exec -it redis-stack redis-cli
+
+# create volume 또는 직접 bind
+$ docker volume create --name redis-data \
+  --opt type=none --opt o=bind \
+  --opt device=/home/bgmin/Jinna_Balu/Test_volume
+
+$ docker stop redis-stack
+$ docker rm redis-stack
 
 # mount config files
-$ docker run -d --name redis-stack \
-  -v `pwd`/local-redis-stack.conf:/redis-stack.conf \
+# config 사용시 추가 => -v `pwd`/redis-stack.conf:/redis-stack.conf
+$ docker run -d \
+  -e REDIS_ARGS="--requirepass redis-stack --save 60 1000 --appendonly yes" \
+  -v `pwd`/redis-data/:/data \
   -p 6379:6379 -p 8001:8001 \
+  --name redis-stack \
+  --restart always \
   redis/redis-stack:latest
 ```
 
-- RedisInsight 열기 [http://localhost:8001](http://localhost:8001)
+> AOF rewrite 를 위한 `auto-aof-rewrite-min-size` 의 기본값은 64MB
+
+- AOF Auto Rewrite를 Disable 하려면 `auto-aof-rewrite-percentage` 를 `0` 으로 설정하면 된다. (기본값은 100)
+- 상태 조회는 `info persistence` 명령어로 확인
+
+> `requirepass` 설정시 로그인 방법 (패스워드)
+
+- Redis 서버의 기본 username 은 `default` 이다.
+  + AUTH 명령어 사용법: `auth [username] password`
+
+```console
+$ redis-cli -u redis://localhost:6379
+localhost:6379> auth default redis-stack
+OK
+localhost:6379> acl whoami
+"default"
+localhost:6379> acl users
+1) "default"
+localhost:6379> acl getuser default
+ 1) "flags"
+ 2) 1) "on"
+    2) "allkeys"
+    3) "allchannels"
+    4) "allcommands"
+ 3) "passwords"
+ 4) 1) "61abc586f05041f4bb6ac1eb8c049fa3dc85ee218995698c0c85c4f4ec113d18"
+ 5) "commands"
+ 6) "+@all"
+ 7) "keys"
+ 8) 1) "*"
+ 9) "channels"
+10) 1) "*"
+localhost:6379>
+```
+
+#### `entrypoint.sh` 에서 사용된 docker arguments
+
+참고: [Redis - Docker - Environment variables](https://redis.io/docs/getting-started/install-stack/docker/#environment-variables)
+
+- REDIS_ARGS
+- REDISEARCH_ARGS="MAXSEARCHRESULTS 10000 MAXAGGREGATERESULTS 10000"
+- REDISTIMESERIES_ARGS
+- REDISJSON_ARGS
+- REDISBLOOM_ARGS
+
+> 고정된 variables
+
+- BASEDIR=/opt/redis-stack
+- CMD=${BASEDIR}/bin/redis-server
+- CONFFILE=/redis-stack.conf
+- REDIS_DATA_DIR=/data
+
+#### 도커 이미지 안에 있는 `/etc/redis-stack.conf` 파일
+
+- port 외에는 entrypoint.sh 에서 모두 지정된 내용임
+- conf 보다 REDIS_ARGS 로 설정하는게 낫다
+
+> conf 를 작성하려면, daemonize 와 loadmodule 을 제외한 나머지를 작성할 것
+
+```conf
+port 6379
+daemonize no
+loadmodule /opt/redis-stack/lib/redisearch.so
+loadmodule /opt/redis-stack/lib/redisgraph.so
+loadmodule /opt/redis-stack/lib/redistimeseries.so
+loadmodule /opt/redis-stack/lib/rejson.so
+loadmodule /opt/redis-stack/lib/redisbloom.so
+```
 
 ### 2) [MacOS 설치](https://redis.io/docs/getting-started/install-stack/mac-os/)
 
 ```console
 $ brew tap redis-stack/redis-stack
-$ brew install redis-stack
+$ brew install --cask redis-stack
 
 # 시작
 $ redis-stack-server
@@ -326,6 +411,7 @@ router.get('/pub/:text', async (req, res) => {
 
 ## 9. Summary
 
+- `appendonly yes` 설정을 하면 서버를 재시작 해도 상태 유지가 된다.
 - Redis Stack 이거 하나로 인메모리와 검색, 채널 알림 처리가 가능하다.
 - 모바일 서비스를 위한 백엔드 스토리지로 사용하면 좋다.
 - 장바구니 등 (상대적으로 느린) 데이터베이스 이용전 상태 변경에 사용하면 좋다.

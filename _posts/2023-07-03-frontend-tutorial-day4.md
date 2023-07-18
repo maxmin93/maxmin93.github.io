@@ -2,9 +2,8 @@
 date: 2023-07-03 00:00:00 +0900
 title: Frontend 공부하기 - 4일차 CSS Part3
 categories: ["frontend","css"]
-tags: ["svelte", "css","tutorial","3rd-day"]
+tags: ["svelte", "css","tutorial","4th-day"]
 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-kQQloEDQ90MNQJP2X5a2onDmlkfHRnV7MHlK2ocvv4zRrwtMOb8lMJhaCAUWlY-Xus&usqp=CAU"
-hidden: true
 ---
 
 > 프론트엔드 개발을 배우기 위해 CSS 기초부터 다지려고 합니다. Dave Gray 유튜브 강좌이고, 실습 환경은 SvelteKit + PostCSS 을 사용합니다. (4일차)
@@ -19,7 +18,7 @@ hidden: true
 
 [MDN - CSS 문서](https://developer.mozilla.org/ko/docs/Web/CSS)
 
-## Part &#9839;3 Chapter 19 ~ 28
+## Part &#9839;3 Chapter 19 ~ 23
 
 ### Ch19. CSS Pseudo-Classes vs Pseudo-Elements
 
@@ -242,6 +241,195 @@ data-tooltip 의 문자열이 (클릭시) 툴팁으로 표시된다.
 
 ### Ch22. CSS Animated Responsive NavBar
 
+<video width="600" controls>
+  <source src="/assets/img/2023/07/03-css-ch22-animations.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+> `video` 태그로 mp4 파일을 직접 플레이 할 수 있다. (HTML)
+
+
+#### box 굴리기
+
+3번째 박스에 대해 animation 이 2회 반복된다.
+
+```css
+  .animate {
+    /* animation-name: slide;
+    animation-duration: 2s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0.1s;
+    animation-iteration-count: 2;
+    animation-direction: alternate;
+    animation-fill-mode: forwards; */
+    animation: 3s ease-in-out 0.9s 2 alternate forwards slide;
+  }
+
+  @keyframes slide {
+    0%   { transform: translateX(0); }
+    33%  { transform: translateX(300px) rotate(180deg); }
+    66%  { transform: translateX(-300px) rotate(-180deg); }
+    100% { transform: translateX(0); background-color: rebeccapurple; }
+  }
+```
+
+#### pull-down 메뉴의 햄버거 아이콘
+
+Header 에 hover 시, 메뉴 icon 이 회전하여 'X' 표시가 된다.
+
+- '&ndash;' 형태의 div 를 before 과 after 로 위아래로 쌓아 햄버거 아이콘 생성
+- 회전 `rotate(180deg)`
+- 햄버거 쌓기를 위한 위치 이동 `translate(-20px, +12px)`
+
+```css
+  header {
+    background-color: var(--HEADER-BGCOLOR);
+    color: var(--HEADER-COLOR);
+    position: sticky; /* 시작 위치에 고정 */
+
+    :is(&:hover, &:focus-within) {
+      .menu-icon {
+        background-color: transparent;
+        transform: rotate(180deg);
+
+        &::before {
+          transform: translateX(-20px) rotate(45deg);
+        }
+        &::after {
+          transform: translateX(-20px) rotate(-45deg);
+        }
+      }
+
+      nav {
+        display: block; /* visibility: visible; */
+      }
+    }
+  }
+
+  .menu-icon,
+  .menu-icon::before,
+  .menu-icon::after {
+    background-color: var(--HEADER-COLOR);
+    width: 40px;
+    height: 5px;
+    border-radius: 5px;
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .menu-icon::before,
+  .menu-icon::after {
+    content: '';
+  }
+
+  .menu-icon::before {
+    transform: translate(-20px, -12px);
+  }
+  .menu-icon::after {
+    transform: translate(-20px, +12px);
+  }    
+```
+
+#### pull-down 메뉴의 바운스 효과
+
+- hover 시에만 nav 가 `display: block` 되며 나타난다
+- Y축 방향으로 스케일을 0 에서 1.2배 살짝 늘렸다가 원래 길이로 복원시킨다
+  + 애니메이션 `showMenu` 을 0.5초 동안 실행
+
+```css
+  nav {
+    background-color: var(--HEADER-BGCOLOR);
+    display: none; /* visibility: hidden; */
+    transform-origin: top center;
+    animation: showMenu 0.5s ease-in-out forwards;
+
+    /* pull-down 메뉴 고정하기: position, top, left */
+    position: relative; /* 상대좌표 기준 */
+
+    a {
+      display: block;
+
+      &:hover,
+      &:focus {
+        transform: scale(1.2);
+        transition: all 0.3s;
+      }
+    }
+  }
+
+  @keyframes showMenu {
+    0%   { transform: scaleY(0); }
+    80%  { transform: scaleY(1.2); }
+    100% { transform: scaleY(1); }
+  }  
+```
+
+#### [메뉴 숨기기 애니메이션](https://www.youtube.com/watch?v=VzkWH7mJpe8&list=PL0Zuz27SZ-6Mx9fd9elt80G1bPcySmWit&index=26) (추가)
+
+'X' 로 변한 햄버거 메뉴를 다시 눌렀을 때, 풀다운 메뉴가 접혀지도록 한다
+
+```html
+  <header>
+    <section class="header-title-line">
+      <h1>Acme Co.</h1>
+      <button class="menu-button" title="Open Nav Menu">
+        <div class="menu-icon" />
+      </button>
+    </section>
+
+    <!-- 닫기 버튼 추가 (절대위치로 햄버거 메뉴를 덮도록 설정) -->
+    <button class="closeMenuBtn" title="Close Nav Menu" tabindex="-1" />
+
+    <nav> <!-- ... 생략 ... --> </nav>
+  </header>
+
+
+<style lang="postcss">
+
+  header:focus-within nav {
+    display: block; /* visibility: visible; */
+    transform-origin: top center;
+    animation: showMenu 0.5s ease-in-out forwards;
+  }
+
+  /* 열기 버튼을 누른 후에는 닫기 버튼이 그 자리를 차지한다 */
+  header:focus-within .closeMenuBtn {
+    display: block;
+  }
+
+  /* 닫기 버튼을 누른 후에는 열기 버튼을 위해 자리를 피해준다 */
+  header:focus-within .closeMenuBtn:focus {
+    transform: translateX(-50px);
+  }
+
+  .closeMenuBtn {
+    display: none;
+    background-color: transparent;
+    outline: none;
+    border: 1px solid red;
+    position: absolute;
+    top: 0.25rem;
+    right: 0.5rem;
+    width: 48px;
+    height: 48px;
+  }
+
+  .closeMenuBtn:focus + nav {
+    animation: hideMenu 0.5s ease-in-out forwards;
+  }
+
+  @keyframes hideMenu {
+    0%   { transform: scaleY(1); }
+    20%  { transform: scaleY(1.2); }
+    100% { transform: scaleY(0); }
+  }  
+</style>
+```
+
+![pull-down menu - close button animation](/2023/07/03-css-ch22-animations-close-10fps.gif){: width="600"}
+_pull-down menu - close button animation_
+
+
 ### Ch23. How to Organize CSS
 
 #### 컨벤션 제안
@@ -262,20 +450,14 @@ data-tooltip 의 문자열이 (클릭시) 툴팁으로 표시된다.
 </header>
 ```
 
-### Ch24. CSS Complete Project
-
-### Ch25. CSS Full Course
-
-### Ch26. HTML CSS Animations
-
-### Ch27. CSS `:has` selector is Amazing
-
-### Ch28. Why Flexbox? Why do Flex Items stretch?
-
 
 ## 9. Summary
 
 - CSS Grid 는 레이아웃용 (2차원), Flexbox 는 정렬용 (1차원)
+- 자바스크립트 없이 css 만으로 동작을 제어하는 것은 어렵네 (되긴 하는데)
+  + 가상의 selector 를 만들고 (보이지 않게)
+  + focus 등의 상태를 구분하기 위해 위치를 이동시키고
+  + 이건 뭐 객체를 이용한 프로그래밍인데, 변수가 아니라서 헷갈린다
 
 &nbsp; <br />
 &nbsp; <br />
