@@ -368,6 +368,10 @@ Header 에 hover 시, 메뉴 icon 이 회전하여 'X' 표시가 된다.
 
 'X' 로 변한 햄버거 메뉴를 다시 눌렀을 때, 풀다운 메뉴가 접혀지도록 한다
 
+- `.closeMenuBtn:focus + nav` 일 때, 닫기 애니케이션이 실행된다
+  + "+" 선택자는 sibling (이웃한) 관계일 때 유효 [&lt;참고&gt;](https://www.w3schools.com/cssref/sel_element_pluss.php)
+  + closeMenuBtn 클래스 요소가 선택되고, nav 가 block 상태인 경우
+
 ```html
   <header>
     <section class="header-title-line">
