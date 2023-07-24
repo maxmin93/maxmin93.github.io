@@ -389,10 +389,12 @@ dark 모드를 위한 색상 변수를 정의
 
 #### 전역 적용시 `:global` 키워드
 
+참고: [SvelteKit CSS 예제 - Scoped component styling](https://svelte.dev/repl/bb7a7e7a71b440039016e65de00a8a98?version=3.22.2)
+
 - 기본적으로 style 은 해당 component 에만 적용된다. (고유 class 태그가 붙여짐)
 - 하위 컴포넌트에도 적용되도록 하고 싶으면 `:global` 키워드 사용
 
-참고: [SvelteKit CSS 예제 - Scoped component styling](https://svelte.dev/repl/bb7a7e7a71b440039016e65de00a8a98?version=3.22.2)
+> `:global` 함수는 selector 의 시작 또는 끝에 위치해야 한다 (중간은 안됨!)
 
 ![svelte-scoped-styling](/2023/07/05-svelte-scoped-styling.png){: width="420"}
 _global 키워드 사용 예_
@@ -448,9 +450,9 @@ async function onClick (event) {
 {: file="Link.svelte"}
 
 
-
-
 참고: [Joy Of Code - How To Use Global Styles In SvelteKit](https://joyofcode.xyz/global-styles-in-sveltekit#global)
+
+> svelte-preprocess 에서 `style global` 옵션을 지원한다
 
 ```vue
 <script>
@@ -466,9 +468,15 @@ async function onClick (event) {
     color: aqua;
   }
 </style>
-```
 
-> `:global` 함수는 selector 의 시작 또는 끝에 위치해야 한다 (중간은 안됨!)
+<!-- 또는 스타일 모듈 자체를 global 적용이 되도록 선언 -->
+
+<style global>
+  .prose h1 {
+    color: aqua;
+  }
+</style>
+```
 
 ## 2. 그 외 추가 내용
 
