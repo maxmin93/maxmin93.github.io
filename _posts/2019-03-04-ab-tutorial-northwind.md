@@ -1,6 +1,6 @@
 ---
-title: AgensBrowser tutorial - northwind
 date: 2019-03-04 00:00:00 +0900
+title: AgensBrowser tutorial - northwind
 categories: ["database", "graphdb"]
 tags: ["agensgraph", "recommendation", "추천", "tutorial"]
 ---

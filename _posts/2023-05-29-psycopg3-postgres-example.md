@@ -1,6 +1,6 @@
 ---
-title: psycopg3 Sync/Async 예제
 date: 2023-05-29 00:00:00 +0900
+title: psycopg3 Sync/Async 예제
 categories: ["database", "postgres"]
 tags: ["pg15", "psycopg3", "pool", "python", "async", "fastapi"]
 image: "https://miro.medium.com/v2/resize:fit:1400/1*9ma4X2mX_-KSw8hapRP9gw.gif"

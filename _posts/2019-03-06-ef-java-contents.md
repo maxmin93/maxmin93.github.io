@@ -1,6 +1,6 @@
 ---
-title: Effective Java 3rd - Contents
 date: 2019-03-06 00:00:00 +0900
+title: Effective Java 3rd - Contents
 categories: ["language","java"]
 tags: ["effective-java", "book"]
 image:

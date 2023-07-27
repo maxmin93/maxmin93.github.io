@@ -1,6 +1,6 @@
 ---
-title: Learning Elastic Stack 6
 date: 2019-03-14 00:00:00 +0900
+title: Learning Elastic Stack 6
 categories: ["elasticsearch"]
 tags: ["TIL", "tutorial"]
 ---

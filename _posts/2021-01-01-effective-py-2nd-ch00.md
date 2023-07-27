@@ -1,6 +1,6 @@
 ---
-title: "Effective PYTHON 2nd - Contents"
 date: 2021-01-01 00:00:00 +0900
+title: "Effective PYTHON 2nd - Contents"
 categories: ["language","python"]
 tags: ["effective-python","book"]
 image:

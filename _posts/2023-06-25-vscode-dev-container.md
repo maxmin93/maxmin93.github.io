@@ -1,6 +1,6 @@
 ---
-title: VSCode 의 Dev Container 사용하기
 date: 2023-06-25 00:00:00 +0900
+title: VSCode 의 Dev Container 사용하기
 categories: ["devops","docker"]
 tags: ["vscode", "container", "setup", "nodejs"]
 image: "https://code.visualstudio.com/assets/docs/devcontainers/containers/architecture-containers.png"

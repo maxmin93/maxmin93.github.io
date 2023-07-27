@@ -1,6 +1,6 @@
 ---
-title: PostgreSQL 15 설정 (우분투)
 date: 2023-02-07 00:00:00 +0900
+title: PostgreSQL 15 설정 (우분투)
 categories: ["database", "postgres"]
 tags: ["pg15", "setup", "ubuntu", "install"]
 image: "https://dyclassroom.com/image/topic/postgresql/postgresql.jpg"

@@ -1,6 +1,6 @@
 ---
-title: Elasticsearch 작업하기 - 2일차
 date: 2023-03-23 00:00:00 +0900
+title: Elasticsearch 작업하기 - 2일차
 categories: ["database", "elasticsearch"]
 tags: ["mecab-ko", "tokenizer", "nori", "2nd-day"]
 image: "https://e7.pngegg.com/pngimages/661/195/png-clipart-logo-elasticsearch-graphics-logstash-font-elastic-text-logo.png"

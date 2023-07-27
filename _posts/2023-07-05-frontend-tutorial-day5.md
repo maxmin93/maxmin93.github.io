@@ -1,5 +1,5 @@
 ---
-date: 2023-07-03 00:00:00 +0900
+date: 2023-07-05 00:00:00 +0900
 title: Frontend 공부하기 - 5일차 CSS Part4
 categories: ["frontend","css"]
 tags: ["svelte", "css","tutorial","5th-day"]

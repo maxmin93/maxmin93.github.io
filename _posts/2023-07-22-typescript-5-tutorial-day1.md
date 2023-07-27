@@ -1,5 +1,5 @@
 ---
-date: 2023-07-13 00:00:00 +0900
+date: 2023-07-22 00:00:00 +0900
 title: Typescript 5 튜토리얼 - 1일차
 categories: ["language","typescript"]
 tags: ["type-guard", "using", "1st-day"]
@@ -9,9 +9,12 @@ image: "https://blog.theodo.com/static/ba2166b279b234c4824d1c2fb299ced2/a79d3/ts
 > using, satisfies 같은 새로운 키워드도 나오고 버전도 계속 올라가면서 보수 교육이 필요해졌다. 최신 문서들을 참고해 공부하고 기록해보자.
 {: .prompt-tip }
 
+- [Typescript 5 튜토리얼 - 1일차](/posts/2023-07-22-typescript-5-tutorial-day1/) - 새로운 기능들 &nbsp; &#10004;
+- [Typescript 5 튜토리얼 - 2일차](/posts/2023-07-25-typescript-5-tutorial-day2/) - 공식문서 Part&#9839;1
+
 ## 1. Typescript 기능들
 
-최근 5.2 버전이 사용되고 있다. 주요 기능 위주로 빠르게 살펴보자
+최근 5.2 beta 버전까지 나왔다. 주요 기능 위주로 빠르게 살펴보자
 
 ### 1) 데코레이터
 

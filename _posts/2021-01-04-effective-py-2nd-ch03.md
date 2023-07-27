@@ -1,6 +1,6 @@
 ---
-title: "Effective PYTHON 2nd - Ch03"
 date: 2021-01-04 00:00:00 +0900
+title: "Effective PYTHON 2nd - Ch03"
 categories: ["language","python"]
 tags: ["effective-python","book"]
 image:

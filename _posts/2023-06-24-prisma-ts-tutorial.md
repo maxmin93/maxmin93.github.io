@@ -1,6 +1,6 @@
 ---
-title: Prisma ORM 튜토리얼
 date: 2023-06-24 00:00:00 +0900
+title: Prisma ORM 튜토리얼
 categories: ["backend", "orm"]
 tags: ["prisma", "typescript", "tutorial", "postgresql"]
 image: "https://seeklogo.com/images/P/prisma-logo-BE375CFB25-seeklogo.com.png"
