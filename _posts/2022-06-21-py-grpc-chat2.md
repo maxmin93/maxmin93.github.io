@@ -1,8 +1,9 @@
 ---
 date: 2022-06-21 00:00:00 +0900
 title: Python - gRPC 기반 Chat 2nd
-categories: ["backend","grpc"]
-tags: ["python", "channel", "heartbeat", "login", "async", "grpc"]
+categories: ["backend","api"]
+tags: ["python", "grpc", "channel", "heartbeat"]
+image: "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8susytd9w6lxe9sreqvd.jpg"
 ---
 
 > 마이크로 서비스의 핵심 프로토콜인 gRPC 에 대해 Chat 예제 소스를 분석하며 공부합니다.

@@ -1,8 +1,8 @@
 ---
 date: 2023-02-09 00:00:00 +0900
 title: Hasura 사용법 (GraphQL Engine)
-categories: ["backend","graphql"]
-tags: ["pg15", "hasura", "docker", "postgres"]
+categories: ["backend","api"]
+tags: ["pg15", "graphql", "hasura", "docker", "postgres"]
 image: "https://hasura.io/brand-assets/hasura-logo-primary-dark.svg"
 ---
 
