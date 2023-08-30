@@ -126,7 +126,11 @@ export const load: PageLoad = async ({ params }) => {
 
 - icon 설정
 - meta 설정 : rss
-- script module(=defer) 설정 : color-schema(theme) 설정
+- script module 설정 : color-schema(theme) 설정
+  + 참고: [브라우저 환경에서 module script 의 특징](https://ko.javascript.info/modules-intro#ref-485)
+    * 지연 실행 (defer)
+    * 비동기 처리 (async)
+    * 외부 스크립트 (src)
 
 > `src/routes/error.html`
 
@@ -298,7 +302,7 @@ export const GET: RequestHandler = async ({ fetch }) => {
 
 - lazy 로딩
 
-```svelte
+```vue
 <script lang="ts">
   export let src: string;
   export let alt: string;
@@ -348,7 +352,11 @@ export default config;
 
 ```bash
 pnpm i remark-unwrap-images remark-toc rehype-slug
+pnpm i rehype-slug rehype-autolink-headings
 ```
+
+- rehype-slug : 제목에 ID를 자동으로 추가
+- rehype-autolink-headings : 자동으로 제목에 링크를 추가
 
 ## Building
 
@@ -380,12 +388,15 @@ pnpm i -D @sveltejs/adapter-vercel
 - Mdsvex 관련 플러그인들이 많은데 무슨 기능들인지 제대로 보지 못했다.
 - [한글로 작성된 블로그 문서](https://mycodings.fly.dev/blog/2023-07-30-tutorial-how-to-make-sveltekit-markdown-blog-site)가 있는데 tailwindcss 를 적용했다는 점만 다르고 동일한 내용이다.
 - 다른 블로그 프로젝트들도 찾아서 따라해 보아야겠다. 재밋다.
+  + [Josh Collinsworth 블로그](https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog) 에는 category 리스트도 있다.
+  + `blog/1/+page.md` 방식으로 구성할 수도 있다.
+    * _cf._ 본 글에서는 `blog/post-title.md` 방식으로 구성
 
 ### 참고문서
 
+- [Let's learn SvelteKit by building a static Markdown blog from scratch](https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog)
 - [깃허브 - edde746/sveltekit-markdown-blog](https://github.com/edde746/sveltekit-markdown-blog)
   - [블로그 Demo 페이지](https://blog-demo-cy4.pages.dev/)
-- [Let's learn SvelteKit by building a static Markdown blog from scratch](https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog)
 
 &nbsp; <br />
 &nbsp; <br />
