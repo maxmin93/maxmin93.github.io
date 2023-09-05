@@ -22,7 +22,7 @@ _블로그 포스트 리스트 (메인)_
 ![svltk-blog-joyofcode-post1](https://github.com/maxmin93/svltk-blog-joyofcode/blob/main/static/29-svltk-blog-joyofcode-post1.png?raw=true){: width="540px"}
 _블로그 포스트 페이지_
 
-## 프로젝트 생성
+## 1. 프로젝트 생성
 
 If you're seeing this, you've probably already done this step. Congrats!
 
@@ -37,7 +37,7 @@ $ pnpm install
 $ pnpm run dev
 ```
 
-## Developing
+## 2. Developing
 
 ### 라이브러리 추가
 
@@ -358,7 +358,7 @@ pnpm i rehype-slug rehype-autolink-headings
 - rehype-slug : 제목에 ID를 자동으로 추가
 - rehype-autolink-headings : 자동으로 제목에 링크를 추가
 
-## Building
+## 3. Building
 
 ```bash
 pnpm run build  # 빌드

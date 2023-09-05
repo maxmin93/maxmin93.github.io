@@ -7,10 +7,12 @@ image: "https://twenty-tech.com/wp-content/uploads/2019/01/PWA-696x467.png"
 hidden: true
 ---
 
-> using 같은 새로운 키워드도 나오고 버전도 계속 올라가면서 보수 교육이 필요해졌다. 최신 문서들을 참고해 공부하고 기록해보자.
+> 작성중
 {: .prompt-tip }
 
 ## 1. PWA 개요
+
+아직 한줄도 안썼다.
 
 
 ## 9. Summary

@@ -3,7 +3,7 @@ date: 2023-02-13 00:00:00 +0900
 title: Svelte 공부하기 - 6일차
 categories: ["frontend","svelte"]
 tags: ["sveltekit","tutorial","6th-day"]
-image: "https://assets.stickpng.com/images/584830e8cef1014c0b5e4aa0.png"
+image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 ---
 
 > 프론트엔드 프레임워크인 SvelteKit 에 대해 공부한다. Svelte 중에 부족한 부분을 보충한다. (6일차)
