@@ -396,7 +396,9 @@ pnpm i -D @sveltejs/adapter-vercel
 
 - [Let's learn SvelteKit by building a static Markdown blog from scratch](https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog)
 - [깃허브 - edde746/sveltekit-markdown-blog](https://github.com/edde746/sveltekit-markdown-blog)
-  - [블로그 Demo 페이지](https://blog-demo-cy4.pages.dev/)
+  + [블로그 Demo 페이지](https://blog-demo-cy4.pages.dev/)
+- [유튜브 - Building a blog with SvelteKit, TailwindCSS, and MDsveX](https://www.youtube.com/watch?v=U5bMAW7SINM)
+  + [깃허브 - jvp-design/sveltekit-tailwind-mdsvex-blog](https://github.com/jvp-design/sveltekit-tailwind-mdsvex-blog)
 
 &nbsp; <br />
 &nbsp; <br />
