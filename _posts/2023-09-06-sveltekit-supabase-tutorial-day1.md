@@ -2,7 +2,7 @@
 date: 2023-09-06 00:00:00 +0900
 title: SvelteKit + Supabase 통합 - 1일차
 categories: ["frontend","svelte"]
-tags: ["lucia", "supabase", "joyofcode", "1st-day"]
+tags: ["supabase", "prisma", "1st-day"]
 image: "https://i.ytimg.com/vi/Qnpce8hwn58/hqdefault.jpg"
 ---
 
@@ -43,6 +43,10 @@ pnpm run dev
 ### [TailwindCSS 설정](https://tailwindcss.com/docs/guides/sveltekit)
 
 1. Install TailwindCSS
+2. `tailwind.config.js` 에 template paths 추가
+3. `app.css` 에 Tailwind directives 추가
+4. 최상위 `+layout.svelte` 에 `app.css` import
+5. `+page.svelte` 에서 TailwindCSS classes 를 사용해 작동 확인
 
 ```bash
 pnpm install -D tailwindcss postcss autoprefixer
@@ -50,8 +54,6 @@ pnpx tailwindcss init -p
 
 pnpm run dev
 ```
-
-2. `tailwind.config.js` 에 template paths 추가
 
 ```js
 // tailwind.config.js
@@ -65,16 +67,12 @@ export default {
 };
 ```
 
-3. `app.css` 에 Tailwind directives 추가
-
 ```css
 /* src/app.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 ```
-
-4. 최상위 `+layout.svelte` 에 `app.css` import
 
 ```html
 <!-- src/routes/+layout.svelte -->
@@ -84,8 +82,6 @@ export default {
 
 <slot />
 ```
-
-5. `+page.svelte` 에서 TailwindCSS classes 를 사용해 작동 확인
 
 ```html
 <!-- src/routes/+page.svelte -->
@@ -240,6 +236,8 @@ supabase gen types typescript --local --debug > src/lib/database.types.ts
 
 ## 3. Prisma 설치 및 설정
 
+brew 패키지 매니저로 설치한 경우 버전이 안맞아 previewFeatures 가 작동 안되는 경우가 있으니 npx 또는 pnpx 을 붙여서 사용해야 한다.
+
 ### Prisma 설치
 
 참고: [Using Prisma with SvelteKit](https://dev.to/joshnuss/using-prisma-with-sveltekit-46l6)
@@ -250,11 +248,11 @@ $ pnpm install -D prisma @prisma/client
 $ pnpm prisma init --datasource-provider postgresql
 
 # 이미 DB 에 스키마가 존재하는 경우 
-$ prisma db pull
-$ prisma generate
+$ pnpx prisma db pull
+$ pnpx prisma generate
 
 # 또는, 모델링 작성후 DB 에 반영하려면
-$ prisma db push
+$ pnpx prisma db push
 ```
 
 ### [Prisma multi-schema](https://www.prisma.io/docs/guides/other/multi-schema)
@@ -270,11 +268,7 @@ $ pnpx prisma db pull  # 기존 스키마를 읽고
 
 $ pnpx prisma db push  # 새로운(변경된) 스키마를 반영한다
 
-# migration 을 위한 스크립트 생성
-$ pnpx prisma migrate diff \
---from-empty \
---to-schema-datamodel prisma/schema.prisma \
---script > prisma/migrations/0_init/migration.sql
+$ pnpx prisma generate # prisma client 를 생성한다
 ```
 
 `prisma/schema.prisma` 에 멀티 스키마를 위한 변경사항을 작성한다
@@ -400,15 +394,13 @@ pnpx prisma db push
 pnpx vite-node prisma/seed.ts
 ```
 
-## 4. node 배포
-
-도커 개발시 node 가 아닌 vite 를 entrypoint 로 삼아야 함
+## 4. 도커 배포
 
 ### [adapter-node](https://kit.svelte.dev/docs/adapter-node) 오류
 
 ```console
-$ pnpm i -D @sveltejs/adapter-node
-$ pnpm i dotenv
+$ pnpm add -D @sveltejs/adapter-node
+$ pnpm add dotenv
 
 $ pnpm run build 
 $ pnpm run preview  # vite preview
@@ -424,6 +416,87 @@ $ node -r dotenv/config build
 
 - [__dirname is not defined when generating PrismaClient to custom location, w/ SvelteKit](https://github.com/prisma/prisma/issues/15614)
 - [_dirname is not defined in ES module scope, Error Only In hooks.server.ts in SvelteKit](https://github.com/prisma/prisma/issues/20702)
+
+
+### [vite preview 설정](https://vitejs.dev/config/preview-options.html)
+
+node 서버 대신에 vite 를 사용하여 웹앱을 기동시키자.
+
+- 외부 노출용 호스팅 설정
+- port 설정 : 동일 port 가 사용중이면 exit
+  + server (개발용) `pnpm run dev`
+  + preview (빌드용) `pnpm run preview`
+
+```ts
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  plugins: [sveltekit()],
+  server: {
+    host: true,
+    port: 3000,
+    strictPort: true,
+    watch: {
+      usePolling: true,
+    },
+  },
+  // https://vitejs.dev/config/preview-options.html
+  preview: {
+    port: 8000,
+  },
+});
+```
+
+### 도커 컴포즈 설정
+
+- node 18 + pnpm 패키지 매니저
+- preview 실행
+
+```Dockerfile
+FROM node:18-slim AS base
+
+# because of gyp ERR! Cannot find python
+RUN apt update -y && apt install -y make g++ python3
+RUN ln -s /usr/bin/python3 /usr/bin/python
+
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+COPY . /app
+WORKDIR /app
+
+RUN pnpm install --frozen-lockfile
+RUN pnpm run build
+
+EXPOSE 8000
+CMD [ "pnpm", "run", "preview" ]
+```
+
+```yml
+version: '3'
+
+services:
+  vite_docker:
+    # docker build -t svltk-supabase-app --no-cache .
+    build: .
+    container_name: vite_docker
+    ports:
+      - 8000:8000
+    networks:
+      - webappnetwork
+
+networks:
+  webappnetwork:
+    driver: bridge
+```
+
+```console
+$ docker compose up --build -d 
+$ docker compose down -v
+```
+
 
 ## 9. Summary
 
