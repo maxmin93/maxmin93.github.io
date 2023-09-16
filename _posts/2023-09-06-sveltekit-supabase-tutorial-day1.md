@@ -34,7 +34,7 @@ pnpm create svelte@latest svltk-supabase-app
   - Skeleton project
   - TypeScript
 
-cd svltk-tailwind-todo-app
+cd svltk-supabase-app
 pnpm install
 
 pnpm run dev
@@ -110,7 +110,7 @@ export default {
 ### supabase cli 설치 및 설정
 
 1. CLI 설치 (OS X)
-2. supabase login
+2. supabase login : access token 입력 (클라우드와 link 할 때 필요)
 3. 프로젝트용 superbase docker 컨테이너 실행
   - 우선 로컬에 docker 서비스가 활성화 되어 있어야 한다.
 
@@ -143,7 +143,7 @@ $ pnpm install @supabase/supabase-js
 # pnpm install @supabase/auth-helpers-sveltekit
 
 $ supabase stop
-# supabase stop --no-backup
+# supabase stop --no-backup  # 백업 없이 종료 (초기화)
 ```
 
 ### [SvelteKit 에서 Supabase 사용하기](https://supabase.com/docs/guides/getting-started/quickstarts/sveltekit)
@@ -236,7 +236,7 @@ supabase gen types typescript --local --debug > src/lib/database.types.ts
 
 ## 3. Prisma 설치 및 설정
 
-brew 패키지 매니저로 설치한 경우 버전이 안맞아 previewFeatures 가 작동 안되는 경우가 있으니 npx 또는 pnpx 을 붙여서 사용해야 한다.
+brew 패키지 매니저로 설치한 경우 버전이 안맞아 previewFeatures 가 작동 안되는 경우가 있으니 npm 또는 pnpm 을 붙여서 사용해야 한다.
 
 ### Prisma 설치
 
@@ -245,7 +245,7 @@ brew 패키지 매니저로 설치한 경우 버전이 안맞아 previewFeatures
 ```console
 $ pnpm install -D prisma @prisma/client
 
-$ pnpm prisma init --datasource-provider postgresql
+$ pnpx prisma init --datasource-provider postgresql
 
 # 이미 DB 에 스키마가 존재하는 경우 
 $ pnpx prisma db pull
@@ -260,7 +260,7 @@ $ pnpx prisma db push
 멀티 스키마 의존라이브러리를 설치한다.
 
 ```console
-$ pnpm i prisma-multischema
+$ pnpm add prisma-multischema
 
 $ pnpx prisma-multischema
 
@@ -405,7 +405,7 @@ $ pnpm add dotenv
 $ pnpm run build 
 $ pnpm run preview  # vite preview
 
-# node 실행시 __dirname 관련 오류로 실행 안됨!
+# node 실행시 __dirname 관련 오류로 실행 안됨! (prisma 문제)
 # ➡ `.env` 읽기를 위해 dentenv/config 모듈을 먼저 수행
 $ node -r dotenv/config build
 ```
@@ -428,6 +428,7 @@ node 서버 대신에 vite 를 사용하여 웹앱을 기동시키자.
   + preview (빌드용) `pnpm run preview`
 
 ```ts
+// vite.config.ts
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
@@ -441,11 +442,13 @@ export default defineConfig({
       usePolling: true,
     },
   },
-  // https://vitejs.dev/config/preview-options.html
   preview: {
     port: 8000,
   },
 });
+
+// ** vite 설정 안하는 경우, 파라미터로 설정 --host, --port
+// CMD [ "pnpm", "run", "preview", "--host", "0.0.0.0"]
 ```
 
 ### 도커 컴포즈 설정
@@ -454,20 +457,14 @@ export default defineConfig({
 - preview 실행
 
 ```Dockerfile
-FROM node:18-slim AS base
-
-# because of gyp ERR! Cannot find python
-RUN apt update -y && apt install -y make g++ python3
-RUN ln -s /usr/bin/python3 /usr/bin/python
-
+FROM node:18-slim
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 RUN corepack enable
-
 COPY . /app
 WORKDIR /app
 
-RUN pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 RUN pnpm run build
 
 EXPOSE 8000
@@ -493,6 +490,11 @@ networks:
 ```
 
 ```console
+$ docker build -t svltk-supabase-app --no-cache .
+$ docker run -it -p 4173:4173 --rm svltk-supabase-app bash
+$ docker run -dp 4173:4173 --rm \
+  --name svltk-supabase-app svltk-supabase-app
+
 $ docker compose up --build -d 
 $ docker compose down -v
 ```
@@ -512,7 +514,7 @@ $ docker compose down -v
   + [Lucia - Sign in with username and password in SvelteKit](https://lucia-auth.com/guidebook/sign-in-with-username-and-password/sveltekit)
 - [Directus Guides - Headless CMS](https://docs.directus.io/guides/)
   + [Directus Examples - SvelteKit](https://github.com/directus/examples/tree/main/sveltekit)
-  
+
 &nbsp; <br />
 &nbsp; <br />
 

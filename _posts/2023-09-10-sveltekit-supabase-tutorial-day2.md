@@ -2,7 +2,7 @@
 date: 2023-09-10 00:00:00 +0900
 title: SvelteKit + Supabase 통합 - 2일차
 categories: ["frontend","svelte"]
-tags: ["drizzle", "supabase", "2st-day"]
+tags: ["drizzle", "supabase", "2nd-day"]
 image: "https://i.ytimg.com/vi/Qnpce8hwn58/hqdefault.jpg"
 ---
 
@@ -31,11 +31,11 @@ _users 리스트 출력_
 ### [SvelteKit](https://kit.svelte.dev/) 프로젝트 생성
 
 ```bash
-pnpm create svelte@latest svltk-supabase-app
+pnpm create svelte@latest svltk-drizzle-app
   - Skeleton project
   - TypeScript
 
-cd svltk-tailwind-todo-app
+cd svltk-drizzle-app
 pnpm install
 
 pnpm run dev
@@ -45,62 +45,50 @@ pnpm run dev
 
 1. Install TailwindCSS
 2. `tailwind.config.js` 에 template paths 추가
-3. `app.css` 에 Tailwind directives 추가
-4. 최상위 `+layout.svelte` 에 `app.css` import
-5. `+page.svelte` 에서 TailwindCSS classes 를 사용해 작동 확인
+3. `postcss.config.js` 에 nesting plugin 추가
+4. `app.css` 에 Tailwind directives 추가
+5. 최상위 `+layout.svelte` 에 `app.css` import
+6. `+page.svelte` 에서 TailwindCSS classes 를 사용해 작동 확인
 
 ```bash
 pnpm add -D tailwindcss postcss autoprefixer
 pnpx tailwindcss init -p
 
-pnpm run dev
-```
+# (Mac 에서는) 첫번째 "" 인자가 필요하다
+sed -i "" "s/content: \[\]/content: \['\.\/src\/\*\*\/\*\.\{html,js,svelte,ts\}'\]/" tailwind.config.js
 
-```js
-// tailwind.config.js
-/** @type {import('tailwindcss').Config} */
+cat <<EOF > postcss.config.js
 export default {
-  content: ['./src/**/*.{html,js,svelte,ts}'],
-  theme: {
-    extend: {},
+  plugins: {
+    'tailwindcss/nesting': {}, tailwindcss: {}, autoprefixer: {},
   },
-  plugins: [],
 };
-```
+EOF
 
-```css
-/* src/app.css */
+cat <<EOF > src/app.css
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-```
+EOF
 
-```html
-<!-- src/routes/+layout.svelte -->
+cat <<EOF > src/routes/+layout.svelte
 <script lang="ts">
   import '../app.css';
 </script>
-
 <slot />
-```
+EOF
 
-```html
-<!-- src/routes/+page.svelte -->
+cat <<EOF > src/routes/+page.svelte
 <h1 class="text-3xl font-bold underline">Hello, SvelteKit!</h1>
+EOF
+
+pnpm run dev
 ```
 
-선택사항 : Tailwind [Nesting](https://tailwindcss.com/docs/using-with-preprocessors#nesting) 플러그인
+> 참고
 
-```js
-// postcss.config.js
-export default {
-  plugins: {
-    'tailwindcss/nesting': {},
-    tailwindcss: {},
-    autoprefixer: {},
-  },
-};
-```
+- [sed 명령어 - How To Replace Text with a Bash Script](https://levelup.gitconnected.com/bash-script-to-replace-text-904f1ba05bc)
+
 
 #### [daisyUI 설정](https://daisyui.com/docs/config/)
 
@@ -119,17 +107,27 @@ module.exports = {
   plugins: [require('daisyui')],
   daisyui: {
     logs: false,
-    themes: ['cupcake', 'dark', 'cmyk'], // HTML[data-theme]
+    themes: ['cmyk', 'dark', 'lofi'], // HTML[data-theme]
   },
 };
 ```
 
 ```html
-<div data-theme="cupcake">
-  This div will always use light theme
-  <span data-theme="dark">This span will always use retro theme!</span>
+<div class="card m-10 w-96 bg-base-100 shadow-xl" data-theme="lofi">
+  <figure>
+    <img src="https://picsum.photos/200/300" alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">Shoes!</h2>
+    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
 </div>
 ```
+
+> 랜덤 이미지 `https://picsum.photos/200/300`
 
 #### [`@tailwindcss/typography` 플러그인](https://daisyui.com/docs/layout-and-typography/#-1)
 
@@ -154,50 +152,15 @@ onMount(() => {
 
 ## 2. [supabase 로컬 개발 환경 설정](https://supabase.com/docs/guides/cli/local-development)
 
-> 참고문서
+프로젝트에 필요한 DB 및 설정들을 개별적으로 관리할 수 있다.
 
-- [Supabase Docs - Supabase CLI](https://supabase.com/docs/guides/cli/getting-started)
-
-### supabase 설치 및 설정
-
-1. CLI 설치 (OS X)
-2. supabase login
-3. 프로젝트용 superbase docker 컨테이너 실행
-4. `.env` 설정
-
-- 우선 로컬에 docker 서비스가 활성화 되어 있어야 한다.
-
-```console
-$ brew install supabase/tap/supabase
-```
-
-```console
-$ supabase login
-# - access_token 입력
-```
-
-```console
-$ cd ${PROJECT_ROOT}
-
-$ supabase init
-# `./supabase/config.toml` 생성됨
-
-$ supabase start
-# project_id 이름으로 도커 컨테이너 그룹 실행
-
-$ supabase status
-# - DB URL
-# - API URL
-# - anon key
-
-# open Studio => http://localhost:54323/
-
-$ pnpm add @supabase/supabase-js
-# pnpm add @supabase/auth-helpers-sveltekit
-
-$ supabase stop
-# supabase stop --no-backup
-```
+### [supabase CLI 설치 및 사용](https://supabase.com/docs/guides/cli/getting-started)
+ 
+0. supabase login : access token 입력 (클라우드와 link 할 때 필요)
+1. supabase init : `supabase/config.toml` 설정 파일 생성됨
+2. `supabase/seed.sql` 작성
+3. supabase start : docker 컨테이너 실행
+4. supabase studio : [http://localhost:54323](http://localhost:54323)
 
 ```bash
 # .env
@@ -206,20 +169,64 @@ SUPABASE_ANON_KEY="..."
 SUPABASE_URL="http://localhost:54321"
 ```
 
-> 참고문서
+#### [DB migration](https://supabase.com/docs/guides/cli/local-development#database-migrations)
 
-- [SvelteKit 에서 Supabase 사용하기](https://supabase.com/docs/guides/getting-started/quickstarts/sveltekit)
-- [Supabase.js - Initializing](https://supabase.com/docs/reference/javascript/initializing)
-- [Static For Variables During The Build Process](https://joyofcode.xyz/sveltekit-environment-variables#static-for-variables-during-the-build-process)
+- db reset 할 때, migrations sql 파일들은 이름 순서대로 실행된다.
+- migrations 의 sql 파일들이 먼저 실행된 후, seed.sql 이 실행된다.
+
+```bash
+supabase migration new tables
+# `supabase/migrations/{timestamp}_tables.sql` 파일 생성
+# cat 명령어로 파일 생성해도 마찬가지로 동작함
+
+cat <<EOF > supabase/migrations/$(date '+%Y%m%d%H%M%S')_tables.sql
+-- Create the table
+CREATE TABLE countries (
+ id SERIAL PRIMARY KEY,
+ name VARCHAR(255) NOT NULL COLLATE "ko-x-icu"
+);
+EOF
+
+cat <<EOF > supabase/seed.sql
+-- Insert some sample data into the table
+INSERT INTO countries (name) VALUES 
+('미국'),('캐나다'),('러시아'),('중국'),('일본'),('한국');
+EOF
+
+# DB 컨테이너가 재시작 되며 초기화 된다
+supabase db reset
+```
+
+Supabase Studio 의 SQL Editor 로 데이터 확인
+
+```sql
+-- # 사용 가능한 collation 리스트
+SELECT collname FROM pg_collation where collname like 'ko%';
+-- => ko-x-icu
+-- => ko-KR-x-icu
+-- => ...
+
+-- # collation 적용된 테이블과 컬럼 조회
+select table_schema, table_name, column_name, collation_name
+from information_schema.columns
+where table_schema = 'public' and collation_name is not null
+order by table_schema, table_name, ordinal_position;
+
+-- query
+select * from countries;
+```
+
 
 ### [Drizzle ORM + Supabase](https://orm.drizzle.team/docs/quick-postgresql/supabase) 설정
 
-#### Drizzle ORM 설치 및 설정
+#### Drizzle Kit 설치 및 설정
 
 - DATABASE_URL 환경변수 (`.env`) 설정
 - `src/lib/db/schema.ts` 파일 생성
 - [`drizzle.config.ts` 파일 생성](https://orm.drizzle.team/kit-docs/conf)
 - 마이그레이션 : schema 파일로부터 push (자동)
+
+> drizzle-kit 은 npm 또는 pnpm 으로 실행해야 한다. 
 
 ```bash
 pnpm add drizzle-orm postgres dotenv
@@ -227,6 +234,9 @@ pnpm add -D drizzle-kit
 
 # drizzle config 파일 생성
 touch drizzle.config.ts
+
+# db 를 읽어서 schema.ts 파일 자동 생성 (필요한 코드만 가져다 쓴다)
+pnpm drizzle-kit introspect:pg
 
 # schema 반영 (주의: drizzle.config.ts 파일이 있어야 함)
 pnpm drizzle-kit push:pg
@@ -338,7 +348,7 @@ export const load: PageServerLoad = async () => {
 #### Drizzle Migrate 실행
 
 - drizzle 아래 migration SQL 파일이 있어야 하고
-- .env 에 DATABASE_URL 환경변수가 있어야 한다
+- `.env` 에 DATABASE_URL 환경변수가 있어야 한다
 
 ```bash
 pnpx vite-node migrate.ts
