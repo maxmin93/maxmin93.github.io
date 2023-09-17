@@ -51,7 +51,7 @@ pnpm run dev
 6. `+page.svelte` 에서 TailwindCSS classes 를 사용해 작동 확인
 
 ```bash
-pnpm add -D tailwindcss postcss autoprefixer
+pnpm add -D tailwindcss autoprefixer
 pnpx tailwindcss init -p
 
 # (Mac 에서는) 첫번째 "" 인자가 필요하다
@@ -215,7 +215,6 @@ order by table_schema, table_name, ordinal_position;
 -- query
 select * from countries;
 ```
-
 
 ### [Drizzle ORM + Supabase](https://orm.drizzle.team/docs/quick-postgresql/supabase) 설정
 
@@ -406,12 +405,49 @@ main().catch((e) => {
   + 잡다한 기능이 없어서 반쯤은 수동으로 DB 를 다룰수 있어서 편하다.
   + prisma 에 질린 개발자들 사이에서 인기가 높다. (동감)
   + drizzle-kit 기능이 아직 부족하다.
-- 아직 다 작성된 문서는 아니다. (나중에 보충)
 
-### 참고문서
 
-- [Drizzle ORM Quickstart Tutorial and First Impressions](https://tone-row.com/blog/drizzle-orm-quickstart-tutorial-first-impressions)
-- [What is TypeScript SQL-like Drizzle ORM?](https://byby.dev/drizzle-orm)
+### Javascript with JSDoc
+
+최근 추세가 Typescript 로부터 탈출하는 경향이 있어서 관련 이슈를 살펴보았다. Typescript 는 초기 JS 의 알 수 없는 오류로부터 안전을 보장받기 위해서 시작된 보조 도구였는데, 요즈음은 형세가 역전되어 Type 가드를 위한 잡다한 코드를 발생시키고 빨간줄을 없애기 위해 생산성을 떨어뜨리는 지경에 이르렀다고 느끼는 사람들이 늘어난 모양이다. 또 다른 개발도구와 프레임워크의 도움으로 타입 검사가 꼭 필요한 케이스가 줄은 탓도 크다.
+
+- js 파일에서 타입체크를 하고 싶으면 [최상단에 `@ts-check` 을 넣으면 된다.](https://code.visualstudio.com/docs/nodejs/working-with-javascript#_type-checking-javascript)
+
+- 참고 : [JSDoc - type](https://jsdoc.app/tags-type.html)
+  - lint 의 빨간줄을 피하고 싶으면 `/** @type {...} */` 를 이용하면 된다.
+  - 타입체크를 무력화 할 수도 있다.
+    + 한줄 `@ts-ignore`
+    + 문서 전체 `@ts-nocheck`
+
+- 참고 : [TypeScript vs. JSDoc JavaScript for static type checking](https://blog.logrocket.com/typescript-vs-jsdoc-javascript/)
+  - JSDoc 장점
+    - 실수를 피하면서 약간의 유형 안전성을 원할 때
+    - 컴파일 단계가 없는 것을 선호할 때 (더 빠른 변경과 반영)
+  - JSDoc 단점
+    - 그렇지만, Typescript 가 JSDoc 보다 도구 지원이 더 좋다. (약간의 차이)
+    - Typescript 보다 타이핑이 더 많다.
+
+```js
+  const checkIfExist = (
+    /** @type {any} */ objectName,
+    /** @type {string} */ keyName
+  ) => {
+    let keyExists = Object.keys(objectName).some((key) => key === keyName);
+    return keyExists && objectName[keyName] ? true : false;
+  };
+
+  console.log(checkIfExist(data, 'tag')); // Returns true|false
+```
+
+> 이번에는 Javascript 로 진행해보려 했다가 TS 로 다시 바꿨다.
+
+- drizzle 이 ts 용 ORM 라이브러리라서 TS 필요
+  - prisma 보다는 경량이라는 점이 확실히 이점이라
+- JSDoc 을 사용해 보았지만, 줄곳 Typescript 만 사용하던 관행이 있어서 Javascript 가 낯설게 느껴졌다. 컴파일 과정이 필요하지 않을 정도로 고수이거나, 추가 개발에 부담을 느끼는 라이브러리 개발자들, 빠른 실행을 위해 단계를 단축하고 싶은 사람들이나 사용할 법하다고 느꼈다. 
+  - 나 같은 어설픈 개발자에게는 vscode 와 typescript 조합이 최고다.
+  - Rich Harris : 라이브러리 개발에는 JSDoc 을 쓰자! (Typescript 과열)
+
+> 앱 개발시에는 어차피 컴파일 과정이 있어서 JSDoc 사용의 효용이 크지 않다.
   
 &nbsp; <br />
 &nbsp; <br />

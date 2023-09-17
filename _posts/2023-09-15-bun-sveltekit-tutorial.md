@@ -77,6 +77,82 @@ $ bun install --backend=copyfile
  3 packages installed [136.00ms]
 ```
 
+### Tutorial: [ElaysiaJS](https://elysiajs.com/introduction.html) 로 REST API 만들기
+
+- ElaysiaJS : ExpressJS 유사 프레임워크
+- 내장 Sqlite
+- [swagger 플러그인](https://elysiajs.com/plugins/swagger.html#swagger-plugin) : `http://localhost:3000/swagger`
+
+```bash
+bun create elysia hi-elysia
+cd hi-elysia
+
+bun add @elysiajs/swagger
+
+bun dev
+```
+
+```ts
+// index.ts
+import { Elysia } from 'elysia';
+import { swagger } from '@elysiajs/swagger';
+import { Database } from 'bun:sqlite';
+
+const db = new Database(':memory:');
+const app = new Elysia().use(swagger());
+
+app.get('/query', () => {
+  // https://bun.sh/docs/api/sqlite#statements
+  const query = db.query(`select $message;`);
+  // get(): first result (vs. all())
+  const result = query.get({ $message: 'Hello world from Sqlite' });
+  console.log(query.toString());
+  // => select 'Hello world from Sqlite';
+  return result;
+});
+
+app.get('/books', () => 'books');
+app.post('/books', () => 'books');
+app.put('/books', () => 'books');
+app.get('/books/:id', ({ params: { id } }) => `books: GET ${id}`);
+app.delete('/books/:id', ({ params: { id } }) => `books: DELETE ${id}`);
+
+app.get('/', () => 'Hello Elysia');
+
+app.get('/sample', () => ({
+  vtuber: ['Shirakami Fubuki', 'Inugami Korone'],
+}));
+
+const options: Intl.DateTimeFormatOptions = {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  hour12: true,
+  weekday: 'long',
+};
+
+app
+  .state('version', '1.0.2')
+  .decorate('getDate', () => Date.now())
+  .get('/version', ({ getDate, store: { version } }) => ({
+    version,
+    date: new Intl.DateTimeFormat('ko-KR', options).format(getDate()),
+  }));
+/* => {
+  "version": "1.0.2",
+  "date": "2023. 09. 17. 일요일 오후 03:19"
+} 
+ */
+
+app.listen(3000);
+
+console.log(
+  `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`
+);
+```
+
 ## 2. [Bun &amp; SvelteKit](https://bun.sh/guides/ecosystem/sveltekit)
 
 ### 프로젝트 생성
@@ -89,6 +165,29 @@ $ bun install
 # bun install --backend=copyfile
 
 $ bun --bun run dev
+```
+
+> `-b`, `--bun` 옵션은 런타임으로 Bun 을 사용하도록 강제한다.
+
+```jsonc
+// package.json
+{
+  "scripts": {
+    // "dev": "vite dev", 대신에
+    "dev": "bunx --bun vite dev",
+  }
+}
+```
+
+#### [bun-types for Typescript](https://bun.sh/docs/typescript)
+
+Typescript 에서 Bun 의 내장 API 를 사용하고 싶으면 (쓸 일이 있으면)
+
+- [bun-types](https://github.com/oven-sh/bun-types) 를 설치해야 한다.
+- `tsconfig.json` 의 compilerOptions 에 `"types": ["bun-types"]` 추가
+
+```bash
+bun add -d bun-types
 ```
 
 ### 빌드
