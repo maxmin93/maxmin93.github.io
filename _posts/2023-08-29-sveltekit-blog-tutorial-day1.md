@@ -302,7 +302,7 @@ export const GET: RequestHandler = async ({ fetch }) => {
 
 - lazy 로딩
 
-```vue
+```html
 <script lang="ts">
   export let src: string;
   export let alt: string;

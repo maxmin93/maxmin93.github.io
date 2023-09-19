@@ -56,7 +56,7 @@ _picocss 적용된 첫페이지_
 
 - `<slot />`에는 `+page.svelte`의 내용이 들어간다.
 
-```vue
+```html
 <script>
   import '@picocss/pico';
 </script>
@@ -264,7 +264,7 @@ body {
   - lead : 레이아웃의 왼쪽
   - trail : 레이아웃의 오른쪽
 
-```vue
+```html
 <script>
 import "@skeletonlabs/skeleton/themes/theme-skeleton.css";
 import "@skeletonlabs/skeleton/styles/all.css";

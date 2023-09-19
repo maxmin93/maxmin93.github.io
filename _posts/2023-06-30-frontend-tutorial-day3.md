@@ -336,7 +336,7 @@ img {
 - title 설정: `nowrap`
 - profile 이미지 설정 `figure` (캡션은 가리고)
 
-```vue
+```html
 <div class="container">
   <section class="hero">
     <figure class="profile-pic-figure">
@@ -414,7 +414,7 @@ img {
 - 배경 이미지 배치
 - 배경 그라디언트 설정 `linear-gradient`
 
-```vue
+```html
 <section>
   <p class="clip">Jane</p>
 </section>
@@ -436,7 +436,7 @@ img {
 - 배경 이미지를 설정
 - 투명 텍스트를 배경과 clip 시키기 (붙여서 고정시키기)
 
-```vue
+```html
 <section>
   <p class="clip">Jane</p>
 </section>

@@ -57,7 +57,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 - edit 버튼에 setEditing 을 연결 => input 으로 편집 가능
 - delete 버튼에 deleteTodo 를 연결
 
-```vue
+```html
 <script lang="ts">
   type ToDo = {
     content: string;
@@ -80,7 +80,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 - KeyboardEvent 이벤트의 `e.key === 'Enter'` 조건 검사
   + 일치하면 callback 함수 실행
 
-```vue
+```html
 <script lang="ts">
   const onKeyPress = (e: KeyboardEvent, callback: () => void) => {
     if (e.key === 'Enter') {
@@ -89,10 +89,10 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
   };
 </script>
 
-  <div style="display: flex;">
-    <input type="text" on:keypress={(e) => onKeyPress(e, addToDo)} bind:value={textInput} />
-    <button style="width: 200px;" on:click={addToDo}>Add</button>
-  </div>
+<div style="display: flex;">
+  <input type="text" on:keypress={(e) => onKeyPress(e, addToDo)} bind:value={textInput} />
+  <button style="width: 200px;" on:click={addToDo}>Add</button>
+</div>
 ```
 
 ## 3. Supabase 이용한 인증 (로그인, 로그아웃)

@@ -77,7 +77,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-kQQloEDQ90MNQJP
 
 #### Svelte 에서 [CSS Variable 예제](https://svelte.dev/repl/57f03a5268884c8080b286c95e9a7c52?version=3.38.2)
 
-```vue
+```html
 <script>
   let red = 0;
   let green = 0;
@@ -147,7 +147,7 @@ _setup prefer-color-scheme_
 - squareClick 으로 active 상태를 제어한다
   + true 이면 `square--highlight` 클래스가 활성화됨
 
-```vue
+```html
 <script lang="ts">
   const squaresCount = 12;
   const squares = Array<boolean>(squaresCount).fill(false);

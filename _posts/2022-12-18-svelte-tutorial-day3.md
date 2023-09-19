@@ -112,7 +112,7 @@ export const load = (({ params }) => {
 ```
 {: file="src/routes/blog/[slug]/+page.ts"}
 
-```vue
+```html
 <script lang="ts">
   import type { PageData } from './$types';
 
@@ -166,7 +166,7 @@ export const load = (async () => {
 
 > 레이아웃 데이터 소비자(Consumer) 
 
-```vue
+```html
 <script lang="ts">
   import type { LayoutData } from './$types';
 
@@ -299,7 +299,7 @@ export const actions: Actions = {
 ```
 {: file="src/routes/login/+page.server.ts"}
 
-```vue
+```html
 <form method="POST">
   <label>
     Email

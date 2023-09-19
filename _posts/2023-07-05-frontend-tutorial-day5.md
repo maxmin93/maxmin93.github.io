@@ -399,7 +399,7 @@ dark 모드를 위한 색상 변수를 정의
 ![svelte-scoped-styling](/2023/07/05-svelte-scoped-styling.png){: width="420"}
 _global 키워드 사용 예_
 
-```vue
+```html
 <script>
   import Link from './Link.svelte'
 </script>
@@ -423,7 +423,7 @@ _global 키워드 사용 예_
 ```
 {: file="App.svelte"}
 
-```vue
+```html
 <a href={href} on:click={onClick} {...$$restProps}>
   <slot/>
 </a>
@@ -454,7 +454,7 @@ async function onClick (event) {
 
 > svelte-preprocess 에서 `style global` 옵션을 지원한다
 
-```vue
+```html
 <script>
   export let data
 </script>

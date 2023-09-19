@@ -31,7 +31,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
       - button on:click => sayHello
       - sayHello => dispatch(message)
 
-```vue
+```html
 <script>
   import Outer from './Outer.svelte';
 
@@ -44,7 +44,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 ```
 {: file="App.svelte"}
 
-```vue
+```html
 <script>
   import Inner from './Inner.svelte';
 </script>
@@ -53,7 +53,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 ```
 {: file="Outter.svelte"}
 
-```vue
+```html
 <script>
   import { createEventDispatcher } from 'svelte';
 
@@ -74,7 +74,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 
 비슷한 예제로 DOM 이벤트도 handler 가 없으면 상위로 전달된다.
 
-```vue
+```html
 <script>
   import CustomButton from './CustomButton.svelte';
 
@@ -87,7 +87,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 ```
 {: file="App.svelte"}
 
-```vue
+```html
 <button on:click> <!-- 핸들러가 없다 (이벤트 통과) -->
   Click me
 </button>
@@ -104,7 +104,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 - DOM에 마운트된 후 데이터를 느리게 가져오는 것을 피할 수 있습니다.
   - 서버 사이드 렌더링 할 때 fetch 타이밍을 맞추기 위함 (script 태그에 의한 데이터 로딩 방식보다 나은 방법)
 
-```vue
+```html
 <script>
   import { onMount } from 'svelte';
 
@@ -136,7 +136,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 - Timer 소멸시 setInterval 을 clear 처리하는 예제
   + 메모리 누수를 막을 수 있다
 
-```vue
+```html
 <script>
   import Timer from './Timer.svelte';
 
@@ -160,7 +160,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 ```
 {: file="App.svelte"}
 
-```vue
+```html
 <script>
   import { onDestroy } from 'svelte';
   function onInterval(callback, milliseconds) {
@@ -189,7 +189,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
     * div 요소를 bind:this 로 div 변수에 바인딩
     * update 이전에 채팅의 스크롤 위치를 확인하고, 이후에 스크롤링
 
-```vue
+```html
 <script>
   import Eliza from 'elizabot';
   import { beforeUpdate, afterUpdate } from 'svelte';
@@ -285,7 +285,7 @@ _The Timeline element presented on the Flowbite website._
 
 기본적으로 Modal 컴포넌트가 HTML 영역에 선언되어 있어야 한다.
 
-```vue
+```html
 <script lang="ts">
   // Modals Utils
   import type { ModalSettings, ModalComponent } from '@skeletonlabs/skeleton';
@@ -302,7 +302,7 @@ _The Timeline element presented on the Flowbite website._
 
 #### Alert (기본)
 
-```vue
+```html
 <script lang="ts">
   function modalAlert(): void {
     const d: ModalSettings = {
@@ -320,7 +320,7 @@ _The Timeline element presented on the Flowbite website._
 
 #### Form (Component 타입)
 
-```vue
+```html
 <script lang="ts">
   import ModalForm from '$lib/Modal/ModalForm.svelte';
 
