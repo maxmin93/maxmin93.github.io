@@ -1,8 +1,8 @@
 ---
 date: 2023-09-19 00:00:00 +0900
 title: Bun + Express 코드 공부하기
-categories: ["backend"]
-tags: ["express", "code-study", "typescript", "bun"]
+categories: ["backend", "bun"]
+tags: ["express", "code-study", "typescript"]
 image: "https://miro.medium.com/v2/resize:fit:512/format:webp/1*VoHwnK9wwjiRXi4KabN4Og.png"
 ---
 
