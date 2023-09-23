@@ -1,8 +1,8 @@
 ---
 date: 2022-04-29 00:00:00 +0900
 title: "Angular Material 제거하기"
-categories: ["frontend", "angular"]
-tags: ["styles", "remove", "material", "css", "초기화"]
+categories: ["frontend"]
+tags: ["styles", "material", "css", "angular"]
 image: "https://miro.medium.com/v2/resize:fit:759/1*JCXpsIIoc21cj3Ea8PdnjQ.png"
 ---
 

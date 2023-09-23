@@ -1,8 +1,8 @@
 ---
 date: 2022-08-31 00:00:00 +0900
 title: 깃허브 블로그 jekyll 갱신하기 (Mac M1)
-categories: ["frontend","jekyll"]
-tags: ["git-blog", "utterances", "google", "jekyll4", "chirpy"]
+categories: ["frontend"]
+tags: ["git-blog", "utterances", "google", "jekyll"]
 image: "/2022/08/31-jekyll-permanant-url-path-min.png"
 ---
 

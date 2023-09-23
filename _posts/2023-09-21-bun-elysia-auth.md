@@ -64,6 +64,8 @@ select * from bun_users;
 
 #### `.env.local` 환경변수
 
+Bun 런타임에서는 `Bun.env.${변수명}` 으로 읽어올 수 있다.
+
 ```bash
 DATABASE_URL="postgresql://postgres:postgres@localhost:54322/postgres"
 JWT_SECRET="hello-elysia-auth"
