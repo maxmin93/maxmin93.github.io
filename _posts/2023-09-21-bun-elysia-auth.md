@@ -64,16 +64,18 @@ select * from bun_users;
 
 #### `.env.local` 환경변수
 
-Bun 런타임에서는 `Bun.env.${변수명}` 으로 읽어올 수 있다.
+Bun 런타임에서는 `{process 또는 Bun}.env.${변수명}` 으로 읽어올 수 있다.
 
 ```bash
 DATABASE_URL="postgresql://postgres:postgres@localhost:54322/postgres"
 JWT_SECRET="hello-elysia-auth"
 ```
 
+> `.env.local` 파일의 우선순위가 `.env` 보다 높다 (dotenv)
+
 ### `tsconfig.json` [import path 설정](https://bun.sh/guides/runtime/tsconfig-paths)
 
-```json
+```js
 {
   "compilerOptions": {
     "paths": {
@@ -313,7 +315,7 @@ isAuthenticated 플러그인에 의해 보호된 경로
 
 ### Password 처리
 
-- Bun 런타임에서 node 의 `node:crypto` API 사용
+- `node:crypto` API 사용 [(bun 0.6.7 부터 지원)](https://bun.sh/blog/bun-v0.6.7#faster-node-crypto-hashing)
   - `import { randomBytes, pbkdf2, createHash } from 'node:crypto';`
 
 > Bun 내장 API 에도 [Bun.CryptoHasher](https://bun.sh/docs/api/hashing#bun-cryptohasher) 기능이 있다. ("blake2b256", "sha512" 등등..)
