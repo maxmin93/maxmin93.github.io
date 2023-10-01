@@ -498,9 +498,11 @@ const app = new Elysia()
 
 - `index.ts`
   - `decorate` 를 이용해 context 에 속성으로 등록하여 handler 에서 사용
-  - 참고: [Create a CRUD App with Bun and Elysia.js](https://dev.to/gaurishhs/create-a-crud-app-with-bun-and-elysiajs-gjn)
 
 좀 더 nice 하게 하려면 [Dependency Injection](https://elysiajs.com/patterns/dependency-injection.html) 를 참고할 것.
+
+- 참고: [Create a CRUD App with Bun and Elysia.js](https://dev.to/gaurishhs/create-a-crud-app-with-bun-and-elysiajs-gjn)
+  - [깃허브 - gaurishhs/bun-web-app](https://github.com/gaurishhs/bun-web-app)
 
 ```ts
 import { launchBrowser, searchPlaces } from '$lib/scraper';
@@ -531,6 +533,8 @@ app.get('/search', async ({ browser, query: { q } }) => {
   };
 });    
 ```
+
+> 실행 
 
 ```console
 $ bun run src/index.ts
