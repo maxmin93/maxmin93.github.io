@@ -9,6 +9,11 @@ group :test do
   gem "html-proofer", "~> 3.18"
 end
 
+# https://github.com/algolia/jekyll-algolia
+group :jekyll_plugins do
+  gem 'jekyll-algolia', '~> 1.0'
+end
+
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
 # and associated library.
 install_if -> { RUBY_PLATFORM =~ %r!mingw|mswin|java! } do

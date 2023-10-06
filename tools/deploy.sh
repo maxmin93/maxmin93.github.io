@@ -72,6 +72,11 @@ resume_site_dir() {
   fi
 }
 
+indexing() {
+  # upload to algolia
+  ALGOLIA_API_KEY="${ALGOLIA_API_KEY}" bundle exec jekyll algolia --config "$_config"
+}
+
 setup_gh() {
   if [[ -z $(git branch -av | grep "$PAGES_BRANCH") ]]; then
     _no_pages_branch=true
@@ -125,6 +130,9 @@ main() {
   if $_opt_dry_run; then
     exit 0
   fi
+
+  echo "indexing by algolia..."
+  indexing
 
   setup_gh
   backup

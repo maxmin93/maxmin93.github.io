@@ -281,6 +281,7 @@ export const app = new Elysia()
 - [Drizzle ORM - SQLite 컬럼 타입](https://orm.drizzle.team/docs/column-types/sqlite) : schema 정의시 사용
   - 추가 : [Drizzle 예제 - 깃허브 libSQL(Hono)](https://github.com/drizzle-team/drizzle-orm/blob/main/examples/libsql/src/server.ts)
 - [Turso 예제 - 깃허브 api-mug-store-api](https://github.com/turso-extended/api-mug-store-api)
+  - 인덱스 생성, 외부키 연결, createdAt(날짜 기본값) 등 스키마 예시가 좋다.
   - 추가 : [Turso 예제 - 이커머스 상점(Remix, Drizzle, Turso)](https://docs.turso.tech/tutorials/e-commerce-store-codelab/)
 
 ### books 테이블 스키마

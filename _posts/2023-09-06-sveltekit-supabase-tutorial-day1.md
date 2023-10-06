@@ -106,6 +106,10 @@ export default {
 > 참고문서
 
 - [Supabase Docs - Supabase CLI](https://supabase.com/docs/guides/cli/getting-started)
+- [Self-Hosting with Docker](https://supabase.com/docs/guides/self-hosting/docker)
+  - [Self-Hosting Supabase Studio](https://supabase.com/docs/guides/self-hosting/docker#accessing-supabase-studio) 로그인 기본값
+    - Username: supabase
+    - Password: this_password_is_insecure_and_should_be_updated
 
 ### supabase cli 설치 및 설정
 
