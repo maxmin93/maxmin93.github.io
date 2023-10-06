@@ -102,7 +102,7 @@ search:
 <div id="search-result-wrapper" class="d-flex justify-content-center unloaded">
   <div class="col-12 col-sm-11 post-content">
     <div id="search-hints">
-      {% include trending-tags.html %}
+      {_% include trending-tags.html %_}
     </div>
     <div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
   </div>
@@ -186,7 +186,7 @@ search.start();
 1. `jekyll-algolia` 설치 : Gemfile 수정 후 `bundle install` 실행
 2. `_config.yml` 에 algolia 설정 추가 (APP_ID, INDEX_NAME)
 3. `jekyll-algolia` 실행 : ADMIN_API_KEY 필요
-4. `deploy.sh` 작업에 indexing 단계 추가 
+4. `deploy.sh` 작업에 indexing 단계 추가 (실패!!)
 5. algolia 대시보드에서 인덱싱 조회 (쿼리 테스트)
 
 ```gem
@@ -217,6 +217,16 @@ main() {
   indexing
   # ...
 }
+```
+
+> github Action 에서 처리하도록 설정했는데, 실패했다. (Node v12 요구)
+
+```txt
+indexing by algolia...
+Error: Process completed with exit code 1.
+
+==> continuous-delivery : 
+The following actions uses node12 which is deprecated and will be forced to run on node16
 ```
 
 ### 인덱싱
