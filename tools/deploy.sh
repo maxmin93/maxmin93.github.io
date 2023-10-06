@@ -127,12 +127,12 @@ main() {
   test
   resume_site_dir
 
+  # echo "indexing by algolia..."
+  # indexing
+
   if $_opt_dry_run; then
     exit 0
   fi
-
-  echo "indexing by algolia..."
-  indexing
 
   setup_gh
   backup
