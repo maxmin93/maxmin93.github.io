@@ -9,13 +9,16 @@ image: "https://i.ytimg.com/vi/Qnpce8hwn58/hqdefault.jpg"
 > Ben Davis 유투버의 SvelteKit + Supabase 심화학습을 따라한 클론 프로젝트입니다. 소스는 [깃허브](https://github.com/maxmin93/svltk-supabase-app) 에 있습니다.
 {: .prompt-tip }
 
+- [SvelteKit + Supabase 통합 - 1일차](/posts/2023-09-06-sveltekit-supabase-tutorial-day1/) : prisma 연동 &nbsp; &#10004;
+- [SvelteKit + Supabase 통합 - 2일차](/posts/2023-09-10-sveltekit-supabase-tutorial-day2/) : drizzle 연동
+- [SvelteKit + Supabase 통합 - 3일차](/posts/2023-09-12-sveltekit-supabase-tutorial-day3/) : Bun Docker 배포
+- [SvelteKit + Supabase 통합 - 4일차](/posts/2023-10-03-sveltekit-supabase-tutorial-day4/) : Auth.js 연동
+
 ## 0. 개요
 
 - [x] TailwindCSS 설정
 - [x] supabase 로컬 개발 환경 설정
-- [x] Prisma 설정 (postgresql)
-- [x] Prisma multi-schema
-- [x] Prisma client 로 데이터 가져오기
+- [x] Prisma (postgresql) + multi-schema
 
 > 화면 캡쳐
 

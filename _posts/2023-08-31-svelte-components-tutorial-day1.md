@@ -2,15 +2,16 @@
 date: 2023-08-31 00:00:00 +0900
 title: Svelte Component 만들기 - 1일차
 categories: ["frontend","svelte"]
-tags: ["component", "steeze-ui", "tutorial", "1st-day"]
+tags: ["component", "steeze-ui", "1st-day"]
 image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 ---
 
 > 필요한 컴포넌트를 만들기 위해 Svelte 관련 문법을 정리합니다. steeze-ui 컴포넌트 라이브러리의 소스를 보며 공부합니다.
 {: .prompt-tip }
 
-- [Svelte Component 만들기 - 1일차](/posts/2023-08-31-svelte-components-tutorial-day1/) : Tutorial &#9839;1 &nbsp; &#10004;
-- [Svelte Component 만들기 - 2일차](/posts/2023-10-03-svelte-components-tutorial-day2/) : Tutorial &#9839;2
+- [Svelte Component 만들기 - 1일차](/posts/2023-08-31-svelte-components-tutorial-day1/) : Steeze UI &nbsp; &#10004;
+- [Svelte Component 만들기 - 2일차](/posts/2023-10-03-svelte-components-tutorial-day2/) : Twitter Clone
+- [Svelte Component 만들기 - 3일차](/posts/2023-10-08-svelte-components-tutorial-day3/) : Flowbite Svelte
 
 > 참고문서
 

@@ -9,6 +9,11 @@ image: "https://i.ytimg.com/vi/Qnpce8hwn58/hqdefault.jpg"
 > Ben Davis 유투버의 SvelteKit + Supabase 심화학습을 따라한 클론 프로젝트입니다. 소스는 [깃허브](https://github.com/maxmin93/svltk-drizzle-app) 에 있습니다.
 {: .prompt-tip }
 
+- [SvelteKit + Supabase 통합 - 1일차](/posts/2023-09-06-sveltekit-supabase-tutorial-day1/) : prisma 연동
+- [SvelteKit + Supabase 통합 - 2일차](/posts/2023-09-10-sveltekit-supabase-tutorial-day2/) : drizzle 연동 &nbsp; &#10004;
+- [SvelteKit + Supabase 통합 - 3일차](/posts/2023-09-12-sveltekit-supabase-tutorial-day3/) : Bun Docker 배포
+- [SvelteKit + Supabase 통합 - 4일차](/posts/2023-10-03-sveltekit-supabase-tutorial-day4/) : Auth.js 연동
+
 ## 0. 개요
 
 - [x] TailwindCSS + DaisyUI 설정
@@ -405,6 +410,7 @@ main().catch((e) => {
   + 잡다한 기능이 없어서 반쯤은 수동으로 DB 를 다룰수 있어서 편하다.
   + prisma 에 질린 개발자들 사이에서 인기가 높다. (동감)
   + drizzle-kit 기능이 아직 부족하다.
+  + 참고: [Seeding Database With Drizzle ORM](https://dev.to/anasrin/seeding-database-with-drizzle-orm-fga)
 
 
 ### Javascript with JSDoc

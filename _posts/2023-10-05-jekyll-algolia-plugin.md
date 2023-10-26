@@ -189,7 +189,7 @@ search.start();
 4. `deploy.sh` 작업에 indexing 단계 추가 (실패!!)
 5. algolia 대시보드에서 인덱싱 조회 (쿼리 테스트)
 
-```gem
+```text
 # Gemfile
 group :jekyll_plugins do
   gem 'jekyll-algolia', '~> 1.0'
@@ -221,7 +221,7 @@ main() {
 
 > github Action 에서 처리하도록 설정했는데, 실패했다. (Node v12 요구)
 
-```txt
+```text
 indexing by algolia...
 Error: Process completed with exit code 1.
 
@@ -331,6 +331,7 @@ search.start();
   - index.html 의 posts 리스트를 함께 조정해야 해서 복잡하고
   - 인덱싱 내용이 html 태그를 포함하고 있어서 후처리가 필요했다.
   - 이쁘게 출력하게 만들기가 어렵고 번거로워 포기
+  - algolia 붙이는 작업을 하려면 search.html 을 따로 만드는게 좋겠다.
 - 프론트엔드 실력이 좋으면 이거저거 해볼게 많은데, 참 안타깝다. 흐유~
 - Algolia 키워드 제안(search suggestion) 기능을 시험해보지 못했다.
 
