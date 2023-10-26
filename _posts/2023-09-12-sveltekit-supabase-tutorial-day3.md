@@ -17,7 +17,7 @@ image: "https://i.ytimg.com/vi/Qnpce8hwn58/hqdefault.jpg"
 ## 0. 개요
 
 - [x] Bun + SvelteKit
-- [x] TailwindCSS + Skeleton
+- [x] TailwindCSS + daisyUI
 - [x] supabase 로컬 개발 환경 설정
 - [x] Drizzle ORM (postgresql)
 
@@ -28,79 +28,7 @@ _users 리스트 출력_
 
 ## 1. 프로젝트 생성
 
-[Skeleton UI 툴킷](https://www.skeleton.dev/docs/get-started) 수동 설치를 시도하면 안된다. 할 수 없어 Skeleton CLI 를 사용했다.
-
-### [SvelteKit + Skeleton](https://www.skeleton.dev/docs/get-started)
-
-```console
-$ bun create skeleton-app@latest svltk-skeleton-app
-  - AppShell starter
-  - Wintry
-  - Tailwind forms
-  - Typescript
-
-$ cd svltk-skeleton-app
-
-# macOS 외장볼륨을 사용하고 있어서 강제 copyfile 옵션이 필요
-$ bun install --backend=copyfile
-
-$ bun run dev
-```
-
-#### Deploy : [adapter-bun](https://github.com/gornostay25/svelte-adapter-bun)
-
-- adapter-auto 를 adapter-bun 으로 변경
-- 환경변수와 함께 `build/index.js 실행` (기본 3000 포트)
-
-```console
-$ bun add -D svelte-adapter-bun
-# bun install --backend=copyfile
-
-$ sed -i "" "s/@sveltejs\/adapter-auto/svelte-adapter-bun/" svelte.config.js
-
-$ bun run build
-> Using svelte-adapter-bun
-  ✔ Start server with: bun ./build/index.js
-  ✔ done
-✓ built in 1.40s
-
-$ PORT=8000 bun build/index.js
-Listening on 0.0.0.0:8000
-```
-
-### Supabase
-
-```bash
-# .env
-DATABASE_URL="postgresql://postgres:postgres@localhost:54322/postgres"
-PUBLIC_SUPABASE_ANON_KEY="..."
-PUBLIC_SUPABASE_URL="http://localhost:54321"
-```
-
-
-## 2. 
-
-```bash
-bun add -D drizzle-kit zod
-bun add -D svelte-meta-tags sveltekit-superforms
-
-bun add @supabase/supabase-js
-bun add @supabase/auth-helpers-sveltekit
-bun add @supabase/auth-ui-shared @supabase/auth-ui-svelte
-
-bun add drizzle-orm postgres
-bun add twilio
-
-bun add @floating-ui/dom svelte-french-toast 
-bun add country-flag-icons
-
-# bun install --backend=copyfile
-```
-
-### [Drizzle ORM - postgresql](https://lucia-auth.com/guidebook/drizzle-orm#postgresql)
-
-
-## 4. [Bun &amp; SvelteKit](https://bun.sh/guides/ecosystem/sveltekit)
+### [Bun &amp; SvelteKit](https://bun.sh/guides/ecosystem/sveltekit)
 
 새로운 JS 런타임 도구가 나와서 사용해 보았다.
 
@@ -118,37 +46,239 @@ $ bun --version
 1.0.1
 ```
 
-### 설치 관리자 : 사용법이 pnpm 과 유사하다
+> 설치 관리자 : 사용법이 pnpm 과 유사하다
 
-> macOS 의 외장 볼륨에 대해 설치가 안되는 문제가 있음 [(임시조치)](https://github.com/oven-sh/bun/issues/876#issuecomment-1326083788)
-
-```console
-$ bun add figlet
-$ bun add -d @types/figlet 
-
-$ bun install
-Failed to install 3 packages
-error: Unexpected installing @types/figlet
-error: Unexpected installing bun-types
-error: Unexpected installing figlet
-
-$ bun install --backend=copyfile
- 3 packages installed [136.00ms]
-```
-
-### 프로젝트 생성
+### 1) [SvelteKit](https://kit.svelte.dev/) 프로젝트 생성
 
 ```console
-$ bun create svelte@latest my-app
-$ cd my-app
+$ bun create svelte@latest bun-tailwind-app
+  - Skeleton project
+  - TypeScript
 
+$ cd bun-tailwind-app
 $ bun install
-# bun install --backend=copyfile
 
-$ bun --bun run dev
+$ bun run dev
 ```
 
-### 빌드
+### 2) [TailwindCSS 설정](https://tailwindcss.com/docs/guides/sveltekit)
+
+1. Install TailwindCSS
+2. `tailwind.config.js` 에 template paths 추가
+3. `postcss.config.js` 에 nesting plugin 추가
+4. `app.css` 에 Tailwind directives 추가
+5. 최상위 `+layout.svelte` 에 `app.css` import
+6. `+page.svelte` 에서 TailwindCSS classes 를 사용해 작동 확인
+
+```bash
+bun add -d tailwindcss autoprefixer
+bunx tailwindcss init -p
+
+# (Mac 에서는) 첫번째 "" 인자가 필요하다
+sed -i "" "s/content: \[\]/content: \['\.\/src\/\*\*\/\*\.\{html,js,svelte,ts\}'\]/" tailwind.config.js
+
+cat <<EOF > postcss.config.js
+export default {
+  plugins: {
+    'tailwindcss/nesting': {}, 
+    tailwindcss: {}, 
+    autoprefixer: {},
+  },
+};
+EOF
+
+cat <<EOF > src/app.postcss
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+EOF
+
+cat <<EOF > src/routes/+layout.svelte
+<script lang="ts">
+  import '../app.postcss';
+</script>
+
+<slot />
+EOF
+
+cat <<EOF > src/routes/+page.svelte
+<h1 class="bg-green-300 hover:bg-red-600 border-green-600 border-b p-4 m-4 rounded text-3xl font-bold">Hello, SvelteKit!</h1>
+EOF
+
+bun run dev
+```
+
+### [daisyUI 설정](https://daisyui.com/docs/config/)
+
+```bash
+bun add -d daisyui@latest
+bun add -d @tailwindcss/typography
+```
+
+```js
+// tailwind.config.js
+module.exports = {
+  //...
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  daisyui: {
+    logs: false,
+    themes: ['light', 'dark'], // HTML[data-theme]
+  },
+};
+```
+
+```html
+<!-- +page.svelte -->
+<div class="card m-10 w-96 bg-base-100 shadow-xl" data-theme="lofi">
+  <figure>
+    <!-- 랜덤 이미지 -->
+    <img src="https://picsum.photos/200/300" alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">Shoes!</h2>
+    <p>If a dog chews shoes whose shoes does he choose?</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div>
+```
+
+## 2. [supabase 로컬 개발 환경 설정](https://supabase.com/docs/guides/cli/local-development)
+
+supabase local studio [http://localhost:54323](http://localhost:54323/project/default)
+
+```bash
+supabase status
+
+cat <<EOF > .env.local
+DATABASE_URL="postgresql://postgres:postgres@localhost:54322/postgres"
+SUPABASE_ANON_KEY="..."
+SUPABASE_URL="http://localhost:54321"
+EOF
+```
+
+### [SvelteKit 에서 Supabase 사용하기](https://supabase.com/docs/guides/getting-started/quickstarts/sveltekit)
+
+```bash
+bun add @supabase/supabase-js
+bun add @supabase/auth-helpers-sveltekit
+```
+
+```ts
+// src/lib/server/supabase.ts
+import { createClient } from '@supabase/supabase-js';
+import { SUPABASE_ANON_KEY, SUPABASE_URL } from '$env/static/private';
+
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  db: {
+    schema: 'public',
+  },
+  auth: {
+    persistSession: false,
+  },
+});
+```
+
+## 3. [Drizzle ORM + Supabase](https://orm.drizzle.team/docs/quick-postgresql/supabase) 설정
+
+### Drizzle Kit 설치 및 설정
+
+- DATABASE_URL 환경변수 설정
+- [`drizzle.config.ts` 파일 생성](https://orm.drizzle.team/kit-docs/conf)
+- `drizzle/schema.ts` 파일 생성
+  - postgresql 의 collate 는 아직 지원하지 않음 [(issue#638 open 상태)](https://github.com/drizzle-team/drizzle-orm/issues/638)
+
+```bash
+bun add drizzle-orm postgres
+bun add -d drizzle-kit
+
+# drizzle-kit 을 위한 config 파일
+cat <<EOF > drizzle.config.ts
+import type { Config } from 'drizzle-kit';
+
+export default {
+  schema: 'drizzle/schema.ts',
+  out: 'drizzle',
+  driver: 'pg',
+  dbCredentials: {
+    connectionString: process.env.DATABASE_URL!,
+  },
+  verbose: true, // Print all statements
+  // strict: true,  // Always ask for my confirmation
+} satisfies Config;
+EOF
+
+mkdir drizzle && cat <<EOF > drizzle/schema.ts
+import { pgTable, serial, text, varchar } from 'drizzle-orm/pg-core';
+
+export const countries = pgTable('country', {
+  id: serial('id').primaryKey(),
+  name: varchar('name', { length: 255 }),
+});
+
+/*
+CREATE TABLE countries (
+ id SERIAL PRIMARY KEY,
+ name VARCHAR(255) NOT NULL COLLATE "ko-x-icu"
+);
+*/
+EOF
+```
+
+### SvelteKit 에서 Drizzle ORM 사용하기
+
+1. `src/lib/server/db.ts` 에서 drizzle orm client 생성
+2. `src/routes/+page.server.ts` 에서 select 문 실행
+3. `src/routes/+page.svelte` 에서 데이터 출력
+
+```ts
+// src/lib/server/drizzle.ts
+import { drizzle } from 'drizzle-orm/postgres-js';
+import postgres from 'postgres';
+import { DATABASE_URL } from '$env/static/private';
+import * as schema from '../../../drizzle/schema';
+
+const client = postgres(DATABASE_URL);
+export const db = drizzle(client, { schema });
+```
+
+```ts
+// src/routes/+page.server.ts
+import type { PageServerLoad } from './$types';
+import { db } from '$lib/server/drizzle';
+import { countries } from '../../drizzle/schema';
+
+export const load: PageServerLoad = async () => {
+  const allCountries = await db.select().from(countries);
+
+  return {
+    users: allCountries ?? [],
+  };
+};
+```
+
+```html
+<!-- src/routes/+page.svelte -->
+<script lang="ts">
+  import type { PageData } from './$types';
+
+  export let data: PageData;
+</script>
+
+<div data-theme="cupcake" class="mt-4">
+  <h2>Countries</h2>
+  <ul class="list-disc ml-4 mt-4">
+    {#each data.countries as country (country.id)}
+    <li>{country.name} ({country.id})</li>
+    {/each}
+  </ul>
+</div>
+```
+
+## 4. Docker 배포
+
+### adapter-bun 빌드
 
 - adapter-auto 를 adapter-bun 으로 변경
 - 환경변수와 함께 `build/index.js 실행` (기본 3000 포트)
@@ -156,7 +286,6 @@ $ bun --bun run dev
 
 ```console
 $ bun add -D svelte-adapter-bun
-# bun install --backend=copyfile
 
 $ sed -i "" "s/@sveltejs\/adapter-auto/svelte-adapter-bun/" svelte.config.js
 
@@ -229,8 +358,8 @@ docker compose down -v
 
 ## 9. Summary
 
-
-### 참고문서
+- 잘 된다. 정말로 bun 이 node 를 대체할거 같다.
+  - node 의 번거롭던 작은 문제들이 해결되고, 안쓰는 기능들이 깔끔하게 정리된 버전
 
 > 참고문서
 
@@ -238,7 +367,6 @@ docker compose down -v
 - [유튜브 - SvelteKit and Supabase Deep Dive](https://www.youtube.com/watch?v=1tsUB58KX2s)
 - [깃허브 - SikandarJODD/SvelteKit-Drizzle](https://github.com/SikandarJODD/SvelteKit-Drizzle)
 - [깃허브 - gustavocadev/sveltekit-drizzle-orm-planetscale-lucia](https://github.com/gustavocadev/sveltekit-drizzle-orm-planetscale-lucia)
-
   
 &nbsp; <br />
 &nbsp; <br />
