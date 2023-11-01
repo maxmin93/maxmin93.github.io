@@ -75,6 +75,17 @@ export default {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    font-family: Noto Sans, Noto Color Emoji, -apple-system, Arial;
+    line-height: 1.5;
+  }
+  body {
+    @apply bg-white dark:bg-gray-800;
+  }
+}
 ```
 
 ```html

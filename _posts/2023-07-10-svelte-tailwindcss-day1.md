@@ -75,6 +75,14 @@ html {
 }
 
 @layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    font-family: Noto Sans, Noto Color Emoji, -apple-system, Arial;
+    line-height: 1.5;
+  }  
+  body {
+    @apply bg-white dark:bg-gray-800;
+  }  
   h1 {
     @apply text-2xl;
   }

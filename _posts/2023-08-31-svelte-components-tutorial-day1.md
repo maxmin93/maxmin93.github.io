@@ -10,6 +10,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 {: .prompt-tip }
 
 - [Svelte Component 만들기 - 1일차](/posts/2023-08-31-svelte-components-tutorial-day1/) : Steeze UI &nbsp; &#10004;
+- [Svelte Component 만들기 - 2일차](/posts/2023-10-08-svelte-components-tutorial-day2/) : Flowbite Svelte
 
 > 참고문서
 
