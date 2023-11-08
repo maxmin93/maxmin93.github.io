@@ -483,7 +483,7 @@ Admin, 운영툴 만드는 정도의 디자인이다.
 - 템플릿 개발사 Themesberg 는 [flowbite](https://github.com/themesberg/flowbite) 도 만들었다.
   + Tailwind 템플릿도 다수 있음. 어쨌든 모두 유료
 
-## 9. Summary
+## 9. Review
 
 - MUI, React Bootstrap, Antd, Pico 정도로 압축된다.
   + 혼자서 간단히 해보려면 Pico 를 추천

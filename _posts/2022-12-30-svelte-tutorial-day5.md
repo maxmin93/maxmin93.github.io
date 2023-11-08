@@ -396,7 +396,7 @@ const { data, error } = await supabase
 - [Appwrite Console](https://github.com/appwrite/console) : SvelteKit 으로 만든 콘솔
 - [깃허브/skeleton](https://github.com/skeletonlabs/skeleton) : SvelteKit 으로 만든 제품 페이지
 
-## 9. Summary
+## 9. Review
 
 - 인증을 하려면, Auth.js 와 Supabase 의 Users 를 연동해야 한다
   + 국내 서비스는 Google, Kakao, Naver 소셜 인증이 꼭 필요하다

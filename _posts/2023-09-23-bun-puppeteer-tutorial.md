@@ -555,7 +555,7 @@ $ curl -X GET "http://localhost:8000/search?q=경포대%20일식"
 }%
 ```
 
-## 9. Summary
+## 9. Review
 
 - 삼천포로 빠진거 같다.
 - 요즘 게으름을 피우고 있다.

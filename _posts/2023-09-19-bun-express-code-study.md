@@ -405,7 +405,7 @@ export interface BunRequest {
   }
 ```
 
-## 9. Summary
+## 9. Review
 
 - express 서버 메카니즘을 본다는 것이 typescript 공부가 되어 버렸다.
   - 코드로부터 공부하는 것이 제일 탄탄하다.

@@ -717,7 +717,7 @@ func newsFeed(ch chan string) {
 // Timeout: News feed finished
 ```
 
-## 9. Summary
+## 9. Review
 
 - go-lint 짜증나는군. 이름 가지고 이래라 저래라 잔소리가 많다.
 

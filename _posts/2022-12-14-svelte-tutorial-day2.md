@@ -339,7 +339,7 @@ $ pnpm vite dev -- --open
         ╵              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-## 9. Summary
+## 9. Review
 
 - 처음에는 어렵겠지만 Skeleton 을 써보자. 무엇보다 이쁘다.
 - `a11y` 란? [웹접근성(accessibility)](https://studio-jt.co.kr/a11y-level-up-%EC%9B%B9%EC%A0%91%EA%B7%BC%EC%84%B1-%EB%A0%88%EB%B2%A8%EC%97%85/) 을 가리키는 축약어

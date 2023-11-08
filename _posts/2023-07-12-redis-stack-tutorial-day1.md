@@ -409,7 +409,7 @@ router.get('/pub/:text', async (req, res) => {
 
 > 채널로 전달된 메시지는 모든 수신자에서 동일하게 출력된다.
 
-## 9. Summary
+## 9. Review
 
 - `appendonly yes` 설정을 하면 서버를 재시작 해도 상태 유지가 된다.
 - Redis Stack 이거 하나로 인메모리와 검색, 채널 알림 처리가 가능하다.

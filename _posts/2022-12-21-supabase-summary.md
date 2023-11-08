@@ -152,7 +152,7 @@ _supabase storage architecture_
 
 - 소스 코드: [깃허브 - sveltemaster/sveltekit-supabase-realtime-blog](https://github.com/sveltemaster/sveltekit-supabase-realtime-blog)
 
-## 9. Summary
+## 9. Review
 
 - 웹애플리케이션보다 Flutter 같은 모바일 개발자들에게 인기가 높은듯
 - 여러차례 노력했지만, 셀프 호스팅 시도에 실패했다. (클라우드 쓰기 싫어서)

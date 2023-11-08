@@ -181,7 +181,7 @@ docker build -t scrapy-playwright-example .
 docker run -it --rm --name example01 scrapy-playwright-example:latest
 ```
 
-## 9. Summary
+## 9. Review
 
 - nodejs 직접 설치가 안되고, nvm 을 통해 설치하도록 가이드 하고 있다.
   + 이때문에 playwright 설치가 안된다.

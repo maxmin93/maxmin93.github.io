@@ -449,7 +449,7 @@ $ curl http://localhost:3000/todos \
  {"id":3,"done":true,"task":"learn how to auth","due":null}]%  
 ```
 
-## 9. Summary
+## 9. Review
 
 - GraphQL 서버 설치까지 하려다 분량이 많아 다음 포스트로 넘긴다.
   + Hasura 서버를 사용할 계획이다.

@@ -32,6 +32,32 @@ $ npm install  # 설치
 $ npm run dev  # 실행
 ```
 
+> default font 설정
+
+```bash
+# D2Coding 폰트 추가 (Mac 에서는 첫번째 "" 인자가 필요하다)
+sed -i '' 's/favicon.png" \/>/favicon.png" \/>\n    <link href="http:\/\/cdn.jsdelivr.net\/gh\/joungkyun\/font-d2coding\/d2coding.css" rel="stylesheet" type="text\/css">/' src/app.html
+
+cat <<EOF > tailwind.config.js
+const defaultTheme = require('tailwindcss/defaultTheme');
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.{html,js,svelte,ts}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
+        serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
+        mono: ['D2Coding', ...defaultTheme.fontFamily.mono],
+      },
+    },
+  },
+  plugins: [],
+};
+EOF
+```
+
 ### 설정: svelte.config
 
 `defaults 옵션` 은 [deprecated](https://github.com/sveltejs/svelte-preprocess/pull/393) 되었다. (사용 예: `style: 'postcss'`)
@@ -56,18 +82,17 @@ const config = {
 ```css
 @charset "UTF-8";
 
-/* Import fonts: Noto Sans KR, sans & serif */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&family=Noto+Serif+KR&display=swap');
+/* fonts: Noto Color Emoji, Noto Sans KR, Noto Serif KR */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap');
 
-/* Write your global styles here, in PostCSS syntax */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* || VARIABLES */
 :root {
-  --theme-font-family-base: 'Noto Sans KR', sans-serif;
-  --theme-font-family-heading: 'Noto Sans KR', sans;
+  --theme-font-family-base: 'Noto Sans KR', sans;
+  --theme-font-family-heading: 'Noto Serif KR', serif;
 }
 
 html {
@@ -75,11 +100,6 @@ html {
 }
 
 @layer base {
-  html {
-    -webkit-text-size-adjust: 100%;
-    font-family: Noto Sans, Noto Color Emoji, -apple-system, Arial;
-    line-height: 1.5;
-  }  
   body {
     @apply bg-white dark:bg-gray-800;
   }  
@@ -291,7 +311,7 @@ _Clone Coding = Grid layout website_
 </div>
 ```
 
-## 9. Summary
+## 9. Review
 
 - 두려움이 있었는데, 해보니깐 생각보다 할만하다는 느낌이 든다.
   + 현타가 오기 전까진 클론 코딩이 자신감 형성에 도움될듯

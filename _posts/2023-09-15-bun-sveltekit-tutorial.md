@@ -266,7 +266,7 @@ docker compose down -v
 ```
 
 
-## 9. Summary
+## 9. Review
 
 - 잘 된다. 앞으로 node 대신 bun 으로 배포하자.
 - node 보다 빠르다는데 더 가벼운 느낌정도? 부하가 걸려야 체감할 수 있겠다.

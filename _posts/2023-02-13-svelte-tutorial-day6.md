@@ -347,7 +347,7 @@ _The Timeline element presented on the Flowbite website._
 <button class="btn variant-ghost-surface" on:click={modalComponentForm}>Form</button>
 ```
 
-## 9. Summary
+## 9. Review
 
 - Skeleton 이 유용하긴 한데, HTML 요소들이 다양하지 않아 불편했다.
   + Flowbite 가 필요하던 차에 업데이트가 되어 반갑다.

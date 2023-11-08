@@ -322,7 +322,7 @@ console.log(constantPalette.green);
 ```
 {: file="src/routes/lesson03/+page.svelte"}
 
-## 9. Summary
+## 9. Review
 
 - 모르는 함수가 나오면 [모듈 레퍼런스](https://kit.svelte.dev/docs/modules) 에서 찾아라.
 - 소스 코드 : [깃허브/svltk-tutorial](https://github.com/maxmin93/svltk-tutorial)

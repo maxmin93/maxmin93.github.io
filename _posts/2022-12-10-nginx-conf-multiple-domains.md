@@ -546,7 +546,7 @@ server {
 }
 ```
 
-## 9. Summary
+## 9. Review
 
 - Docker 돌아가는거 보면 굳이 events, http 블럭이 없어도 되던데
   + 최상단에 옵션이 설정되면서 http > server 의 계층이 생성된듯 

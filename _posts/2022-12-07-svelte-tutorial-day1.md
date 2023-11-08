@@ -705,7 +705,7 @@ server {
 - React Native 같은 크로스 플랫폼 앱은 불가능
   + 어차피 Flutter 사용할거니깐
 
-## 9. Summary
+## 9. Review
 
 - Vue 와 유사점이 많다. [참고](https://blog.logrocket.com/svelte-vs-vue-comparing-framework-internals/)
   + 일단 해보고, 필요하면 Vue 로 갈아타자.

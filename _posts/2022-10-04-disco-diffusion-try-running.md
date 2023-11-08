@@ -169,7 +169,7 @@ text_prompts = {
 | &lt;그림&gt; stable diffusion - 제주도 감귤밭 사진 찍기 |
 
 
-## 9. Summary
+## 9. Review
 
 - 파라미터를 조정해도 최소 30~40분 걸린다.
 - 원하는 이미지를 생성하기 위한 제어가 쉽지 않다. 

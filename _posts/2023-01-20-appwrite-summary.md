@@ -213,7 +213,7 @@ const createTodos = () => {
 - [How to secure pages with HTTP Basic Auth using SvelteKit](https://dev.to/danawoodman/how-to-secure-pages-with-http-basic-auth-using-sveltekit-1iod)
 - [Simplify Authentication in SvelteKit](https://javascript.plainenglish.io/how-to-use-authjs-in-sveltekit-eab6aa18a2ca)
 
-## 9. Summary
+## 9. Review
 
 - 아, 설명서와 예제가 너무 부실하다. 
   + 참고할 코드 조각들이 없어서 뭘 해보려고 해도 답답하다.

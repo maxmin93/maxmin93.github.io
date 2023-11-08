@@ -664,7 +664,7 @@ func main() {
 }
 ```
 
-## 9. Summary
+## 9. Review
 
 - 방심할 수 없네. C + Python 과 같은 듯 하면서 다른 Go 언어
 - 고루틴은 nodejs, python 의 event-loop 와 다르다.

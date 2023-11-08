@@ -416,7 +416,7 @@ export interface NewBook {
       .returning({ affectedId: schema.books.id });
 ```
 
-## 9. Summary
+## 9. Review
 
 - 중간에 `Table is locked` 오류가 있었는데, 재로그인 하니깐 해결되었다.
   - 개발중이라 오류로 중단되는 경우가 많았는데 그 탓에 close 처리가 안되어 발생 

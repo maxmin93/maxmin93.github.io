@@ -421,7 +421,7 @@ _css-inline-vs-inlineblock-vs-block_
 ```
 
 
-## 9. Summary
+## 9. Review
 
 - 답답하지만, 조금씩 나아진다는 생각으로 위안을 삼자.
 

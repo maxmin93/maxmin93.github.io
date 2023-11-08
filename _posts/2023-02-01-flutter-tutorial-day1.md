@@ -404,7 +404,7 @@ void main() async {
 }
 ```
 
-## 9. Summary
+## 9. Review
 
 - 언어들이 서로 베끼기를 해서 짬뽕이다. 유사하면서도 헷갈린다.
   + Java, Kotlin, Go, Python, Typescript 등등의 혼합

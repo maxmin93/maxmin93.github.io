@@ -325,7 +325,7 @@ search.start();
 ```
 
 
-## 9. Summary
+## 9. Review
 
 - 작동되는 것까지는 확인했는데, 다시 simple-jekyll-search 로 원상복구했다.
   - index.html 의 posts 리스트를 함께 조정해야 해서 복잡하고

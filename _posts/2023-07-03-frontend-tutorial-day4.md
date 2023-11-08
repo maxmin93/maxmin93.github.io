@@ -456,7 +456,7 @@ _pull-down menu - close button animation_
 ```
 
 
-## 9. Summary
+## 9. Review
 
 - CSS Grid 는 레이아웃용 (2차원), Flexbox 는 정렬용 (1차원)
 - 자바스크립트 없이 css 만으로 동작을 제어하는 것은 어렵네 (되긴 하는데)

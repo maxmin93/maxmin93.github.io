@@ -499,7 +499,7 @@ currfn("고랭")
 
 - [Effective Go](https://go.dev/doc/effective_go)
 
-## 9. Summary
+## 9. Review
 
 - C 언어와 Python 언어를 짬뽕시켜 놓은거 같다.
   - 두가지 언어를 다 아는 개발자라면 Go 를 안배울 이유가 없다.

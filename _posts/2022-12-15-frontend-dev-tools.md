@@ -2,7 +2,7 @@
 date: 2022-12-15 00:00:00 +0900
 title: 프론트엔드 생산성 도구들
 categories: ["software","trends"]
-tags: ["library","frontend","component","validation"]
+tags: ["library","frontend","ui-components","validation"]
 image: "https://vitejs.dev/ecosystem-vite4.png"
 ---
 
@@ -88,7 +88,7 @@ package.json 의 개발 도구로 포함하여 쓸 수 있다.
 
 랜덤 이미지 API 는 무척 다양하다. 검색하면 바로 나옴.
 
-## 9. Summary
+## 9. Review
 
 - 일단 업로드하고, 계속 업데이트 하자!
 

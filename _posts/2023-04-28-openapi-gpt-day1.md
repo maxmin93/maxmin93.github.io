@@ -359,7 +359,7 @@ print(transcript["text"].encode('utf-8').decode('utf-8'))
 어떤 사람이 돈을 받지 못해서 문제가 있어서 이야기가 나왔어요. 그 사람은 빌려준 돈을 갚으려고 노력하고 있고, 그 돈을 빌렸던 사람들은 그 사람을 믿고 기다리고 있어요. 하지만 그 돈을 벌기 위해 불법적인 일을 하거나 손님들을 속이기도 했어요. 그래서 그 일을 하는 것은 좋지 않다는 것을 알아야 해요.
 ```
 
-## 9. Summary
+## 9. Review
 
 - 만일을 위해 꼭 API 사용량 최대치를 설정하자
   + [OpenAI API 사용량 및 요금 조회](https://platform.openai.com/account/usage) : 

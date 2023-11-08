@@ -70,7 +70,7 @@ _chatgpt-plugins-support-postgres_
 #### 6단계: 플러그인 실행!
 
 
-## 9. Summary
+## 9. Review
 
 ### 참고문서
 

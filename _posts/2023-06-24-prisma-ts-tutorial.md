@@ -315,7 +315,7 @@ console.log(result?.[0])
 export default db;
 ```
 
-## 9. Summary
+## 9. Review
 
 - Nextjs, Nuxt, SvelteKit 등은 server 기능을 포함하기 때문에, prisma 를 연결하여 직접 데이터를 다룰 수 있다. 이럴 경우, 애플리케이션만 시작하면 되기 때문에 유지보수 측면에서 관리 포인트가 줄어든다는 장점이 있다.
   + 만약, 서버 기능이 커진다면 [Graphile](https://www.graphile.org/postgraphile/introduction/), [Hasura](https://hasura.io/docs/latest/index/), [Nestjs](https://docs.nestjs.com/) 등을 미들웨어로 쓰는 방법을 고려할 수 있다.

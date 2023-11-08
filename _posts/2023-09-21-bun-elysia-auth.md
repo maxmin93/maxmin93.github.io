@@ -332,7 +332,7 @@ isAuthenticated 플러그인에 의해 보호된 경로
   - createHash('md5') 로 text 변환
 
 
-## 9. Summary
+## 9. Review
 
 - 익숙해질 때까지 반복 숙달할 목적으로 auth 구현 코드를 살펴보았다.
 

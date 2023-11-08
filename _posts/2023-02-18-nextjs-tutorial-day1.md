@@ -77,6 +77,8 @@ $ pnpx tailwindcss init -p
 tailwind.config.js 설정
 
 ```js
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -88,7 +90,13 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
+        serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
+        mono: ['D2Coding', ...defaultTheme.fontFamily.mono],
+      },      
+    },
   },
   plugins: [],
 }
@@ -97,6 +105,9 @@ module.exports = {
 global.css 설정
 
 ```css
+/* fonts: Noto Color Emoji, Noto Sans KR, Noto Serif KR */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -266,7 +277,7 @@ function Profile() {
 }
 ```
 
-## 9. Summary
+## 9. Review
 
 - 일단 업로드 하고 나중에 필요한 부분을 업데이트 하자.
 - SvelteKit 의 예제가 부족하기도 하고, 코드 확보를 위해 Nextjs 를 공부한다.

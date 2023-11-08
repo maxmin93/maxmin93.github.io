@@ -191,7 +191,7 @@ r.raise_for_status()  # 401 Unauthorized, 404 Not Found
 - 기본 endpoint 로 이동 또는 메시지 반환
 
 
-## 9. Summary
+## 9. Review
 
 - DB 없이 간단하게 처리할 방법을 검색해 보았는데 못찾았다.
   + 정석적인 예제들은 모두 DB 를 사용하고, oauth2 에 집중해서 설명하니깐

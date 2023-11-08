@@ -690,7 +690,7 @@ export const actions = {
 };
 ```
 
-## 9. Summary
+## 9. Review
 
 - TS 의 타입 선언 때문에 귀찮다. JS 를 사용하면 이런 문제를 신경쓰지 않아도 될텐데
   + TS 를 사용하는 한 일종의 세금같은 거다.

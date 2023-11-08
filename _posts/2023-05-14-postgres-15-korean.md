@@ -415,7 +415,7 @@ to_tsvector 함수로 gin 인덱스 생성 후 to_tsquery 로 검색
 - index 생성시 tablespace 지정 안됨
 
 
-## 9. Summary
+## 9. Review
 
 - UTF-8 인코딩은 필수이다.
 - 영문 및 한글 텍스트가 쿼리의 주 대상이라면 LC_COLLATE=`C.UTF-8` 가 적합

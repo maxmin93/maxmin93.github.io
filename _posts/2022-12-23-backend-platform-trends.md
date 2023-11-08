@@ -113,7 +113,7 @@ _Headless Commerce 개념도_
 
 > 테라폼은 독점 기술이며 코드형 언어와 환경에 대한 적응이 필요하다
 
-## 9. Summary
+## 9. Review
 
 출처 [2022년 웹 개발을 재정의할 오픈소스 프로젝트들](https://news.hada.io/topic?id=5859)
 

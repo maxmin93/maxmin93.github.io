@@ -517,7 +517,7 @@ productVersion 이 출력되도록 했다.
 ![wails-demo-app-setup-wizard](/2023/08/13-wails-demo-app-setup-wizard-w560.png){: width="480"}
 
 
-## 9. Summary
+## 9. Review
 
 - Svelte 의 장점은 Vanilla JS 로 완벽하게 변환해 준다는 점이다.
   + Vanilla 템플릿을 지원하는 플랫폼이라면 연결에 문제가 없다.

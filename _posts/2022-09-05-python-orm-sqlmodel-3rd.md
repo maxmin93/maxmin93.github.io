@@ -1308,7 +1308,7 @@ session.query(Address).filter(
 
 ```
 
-## 9. Summary
+## 9. Review
 
 - 차이점을 익히고 classic 버전 코드를 future 버전으로 바꿔서 작성하자.
 - 원치 않는 형태로 SQL 작성되지는 않는지 생성되는 Query 를 확인하자.

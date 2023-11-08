@@ -386,7 +386,7 @@ CMD poetry run uvicorn $APP_MAIN --app-dir $APP_ROOT --reload --host 0.0.0.0 --p
 #CMD ["/bin/bash"]
 ```
 
-## 9. Summary
+## 9. Review
 
 - 앞으로는 bullseye-slim 버전으로 갑시다!
 

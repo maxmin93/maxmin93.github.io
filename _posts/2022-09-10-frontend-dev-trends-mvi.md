@@ -159,7 +159,7 @@ export const App = (props) => {
 // display(state): View => User
 ```
 
-## 9. Summary
+## 9. Review
 
 - View 컴포넌트가 비대해진다면, 상태관리 라이브러리를 도입하자.
   + 덩치 큰 View 컴포넌트가 다 처리하는 방식은 MVC 패턴이다.

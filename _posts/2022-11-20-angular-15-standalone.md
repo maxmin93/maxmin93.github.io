@@ -473,7 +473,7 @@ myObj[myKey] = 'All is great now!';  // title, content 만 가능
 }
 ```
 
-## 9. Summary
+## 9. Review
 
 - 갈수록 좋아지는 앵귤러인데, 국내에서는 왜 찬밥인지..
 - 앵귤러가 다이어트 하려고 노력중이다. (트리 쉐이킹, 코드 분리)

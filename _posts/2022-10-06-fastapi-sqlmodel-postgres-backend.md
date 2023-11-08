@@ -375,7 +375,7 @@ $ docker compose down -v
   + FastAPI 및 postgresql 의 Docker 이미지
 
 
-## 9. Summary
+## 9. Review
 
 - 휴, 진짜 오래묵은 숙제를 해치웠다.
 - SQLModel 의 (Advanced) 비동기 예제는 아직 없다. 언제 올려주려나.

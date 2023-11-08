@@ -15,7 +15,7 @@ hidden: true
 아직 한줄도 안썼다.
 
 
-## 9. Summary
+## 9. Review
 
 ### 참고문서
 

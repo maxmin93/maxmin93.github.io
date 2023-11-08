@@ -373,7 +373,7 @@ $ yarn global add @nestjs/cli
 $ yarn global add @angular/cli
 ```
 
-## 9. Summary
+## 9. Review
 
 - 웹서비스는 24시간이 정석이다.
 - 장맛도 찍어 먹어봐야 아는 법이니, 일단 사용해보자.

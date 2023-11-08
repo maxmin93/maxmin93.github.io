@@ -304,7 +304,7 @@ let result = getArea(circle);
 console.log(result);
 ```
 
-## 9. Summary
+## 9. Review
 
 - never 키워드는 무슨 용도로 써야 하는지 감이 안잡힌다. 
 - 공식문서의 함수편은 다음 포스트로 미룬다. (양이 많다)

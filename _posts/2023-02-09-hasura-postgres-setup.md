@@ -327,7 +327,7 @@ Postgres connection - OK
 
 Datadog 은 일단 나중에 필요하면 설치하도록 하자. 일단은 여기서 중단.
 
-## 9. Summary
+## 9. Review
 
 - 구독과 스트리밍은 사용 안해봐서 잘 모르겠다.
   + 구독은 데이터를 1초마다 계속 push 한다는 것인지

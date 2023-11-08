@@ -440,7 +440,7 @@ div 이지만 버튼으로 사용한다는 의미를 부여한 예제이다. 클
 - role="list" 보다는 `<ul>`, `<li>` 를 사용
 - [등등 ...](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles#aria_role_types) 
 
-## 9. Summary
+## 9. Review
 
 - 몰랐던 새로운 태그가 많다. 공부하게 되어서 다행이다.
 - Dave Gray 쌤은 문서의 포맷과 계층 구조 규칙을 지키라고 말한다.

@@ -333,7 +333,7 @@ if __name__ == "__main__":
     uvicorn.run(app, host="127.0.0.1", port=8000)
 ```
 
-## 9. Summary
+## 9. Review
 
 > 비동기를 사용하는 경우 psycopg3 가 asyncpg 보다 더 사용자 친화적이다. [&lt;출처&gt;](https://www.reddit.com/r/learnpython/comments/vi59dk/comment/ie41lfj/?utm_source=share&utm_medium=web2x&context=3)
 

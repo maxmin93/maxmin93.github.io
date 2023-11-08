@@ -601,7 +601,7 @@ func (m MapT) Filter(keys []string) map[string]interface{} {
 }
 ```
 
-## 9. Summary
+## 9. Review
 
 [깃허브/Source](https://github.com/maxmin93/gofiber-gorm-sqlite-api.git)
 

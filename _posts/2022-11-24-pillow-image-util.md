@@ -293,7 +293,7 @@ imagekit = ImageKit(
 )
 ```
 
-## 9. Summary
+## 9. Review
 
 - 일단 업로드. 내일 마져 수정하자.
 - 이것보다는 AWS Lambda 에서 Pillow 사용하기를 해봐야지

@@ -197,7 +197,7 @@ $ npm run dev
 2장과 유사한 내용이라 생략!
 
 
-## 9. Summary
+## 9. Review
 
 - 도커 이미지 선택시 최신 데미안(릴리즈 12) 을 담은 bookworm 를 사용하자
   + 기왕이면 bookworm 의 slim 버전을 사용하자

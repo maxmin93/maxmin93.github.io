@@ -377,7 +377,7 @@ username = page.frame_locator('.frame-class').get_by_label('User Name')
 username.fill('John')
 ```
 
-## 9. Summary
+## 9. Review
 
 - HTTP Proxy 유료 서비스는 한국은 한달에 약 6만원, 외국은 50달러나 한다.
 - [ScrapeOps](https://scrapeops.io/) 의 IP Proxy 서비스를 이용해 보았는데, 440여건이 나올 출력이 60건 밖에 나오지 않았다.

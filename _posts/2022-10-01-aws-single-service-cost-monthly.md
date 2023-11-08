@@ -153,7 +153,7 @@ HTTP/HTTPS 에 대한 리스너 정의
 | &lt;그림&gt; AWS 구성 - Route 53 Record |
 
 
-## 9. Summary
+## 9. Review
 
 - 전에 AWS 작업하면서 글을 안올렸나보네. 그때그때 기록하자.
 - Draw.io 로 AWS 구성도를 그려봤는데, 그림자는 빼자.

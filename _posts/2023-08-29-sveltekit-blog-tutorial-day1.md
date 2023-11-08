@@ -383,7 +383,7 @@ pnpm i -D @sveltejs/adapter-vercel
 - github 에 push
 - [Vercel](https://vercel.com/docs/deployments/overview) 에 git 연결
 
-## 9. Summary
+## 9. Review
 
 - Mdsvex 관련 플러그인들이 많은데 무슨 기능들인지 제대로 보지 못했다.
 - [한글로 작성된 블로그 문서](https://mycodings.fly.dev/blog/2023-07-30-tutorial-how-to-make-sveltekit-markdown-blog-site)가 있는데 tailwindcss 를 적용했다는 점만 다르고 동일한 내용이다.

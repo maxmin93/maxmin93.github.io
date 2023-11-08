@@ -413,7 +413,7 @@ drwxr-xr-x  4 bgmin  staff   128 12 15 15:28 _app
 -rw-r--r--  1 bgmin  staff  3882 12 15 15:28 vite-manifest.json
 ```
 
-## 9. Summary
+## 9. Review
 
 - SvelteKit 공식 문서를 보는게 정답이다. (많이 헷갈렸다. 쉑~)
   + 검색에 나오는 자료는 이전 [Sapper](https://sapper.svelte.dev/docs/) 의 내용을 담고 있다.

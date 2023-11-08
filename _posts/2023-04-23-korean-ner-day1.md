@@ -76,7 +76,7 @@ _mecab 사전 품사 태그_
 - ['한국어 임베딩' 저자의 NER 관련 포스트](https://ratsgo.github.io/nlpbook/docs/ner/train/)
 
 
-## 9. Summary
+## 9. Review
 
 - 
 

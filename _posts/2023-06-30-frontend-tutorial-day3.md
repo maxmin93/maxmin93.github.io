@@ -552,7 +552,7 @@ Ch17 의 미니 프로젝트로 profile card 를 만들어 본다. (미디어쿼
   }  
 ```
 
-## 9. Summary
+## 9. Review
 
 - global 설정이 필요하다 : `*`, `img`, `body`
 - classes 들을 분류하자 : 유틸리티, 레이아웃, 컴포넌트

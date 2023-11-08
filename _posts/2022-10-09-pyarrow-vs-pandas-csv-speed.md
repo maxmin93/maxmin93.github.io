@@ -225,7 +225,7 @@ plt.grid(axis='y')
 plt.savefig('temp/09-pyarrow-vs-pandas-csv-read.png')
 ```
 
-## 9. Summary
+## 9. Review
 
 - Pandas 외에 PyArrow 를 익히자.
 - Spark 없이 대량의 데이터를 가공할 때에는 PyArrow 가 유용하다.

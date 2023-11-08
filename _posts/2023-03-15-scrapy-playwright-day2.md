@@ -282,7 +282,7 @@ echo "Next month: $n_first_date to $n_last_date"
 
 데이터 용량 관리를 위해 postgresql 테이블 파티션을 사용했고, 매월 다음달 파티션을 생성하도록 crontab 설정을 했다. 
 
-## 9. Summary
+## 9. Review
 
 - 자동화를 하려니 작업 사항이 계속 생기더라. 대책 1,2,3,...
 - 그래도 일단 설정해 두니 신경쓰지 않아도 되어 너무 좋다.

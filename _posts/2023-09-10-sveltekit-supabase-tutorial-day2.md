@@ -48,39 +48,49 @@ pnpm run dev
 
 ### [TailwindCSS 설정](https://tailwindcss.com/docs/guides/sveltekit)
 
-1. Install TailwindCSS
+1. Install TailwindCSS, tailwind-merge
 2. `tailwind.config.js` 에 template paths 추가
-3. `postcss.config.js` 에 nesting plugin 추가
+3. noto sans, d2coding 한글 폰트 추가
 4. `app.css` 에 Tailwind directives 추가
 5. 최상위 `+layout.svelte` 에 `app.css` import
 6. `+page.svelte` 에서 TailwindCSS classes 를 사용해 작동 확인
 
 ```bash
-pnpm add -D tailwindcss autoprefixer
+pnpm add -D tailwindcss autoprefixer tailwind-merge
 pnpx tailwindcss init -p
 
-# (Mac 에서는) 첫번째 "" 인자가 필요하다
-sed -i "" "s/content: \[\]/content: \['\.\/src\/\*\*\/\*\.\{html,js,svelte,ts\}'\]/" tailwind.config.js
+# D2Coding 폰트 추가 (Mac 에서는 첫번째 "" 인자가 필요하다)
+sed -i '' 's/favicon.png" \/>/favicon.png" \/>\n    <link href="http:\/\/cdn.jsdelivr.net\/gh\/joungkyun\/font-d2coding\/d2coding.css" rel="stylesheet" type="text\/css">/' src/app.html
 
-cat <<EOF > postcss.config.js
+# default font 설정
+cat <<EOF > tailwind.config.js
+const defaultTheme = require('tailwindcss/defaultTheme');
+
+/** @type {import('tailwindcss').Config} */
 export default {
-  plugins: {
-    'tailwindcss/nesting': {}, tailwindcss: {}, autoprefixer: {},
+  content: ['./src/**/*.{html,js,svelte,ts}'],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
+        serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
+        mono: ['D2Coding', ...defaultTheme.fontFamily.mono],        
+      },
+    },
   },
+  plugins: [],
 };
 EOF
 
 cat <<EOF > src/app.css
+/* fonts: Noto Color Emoji, Noto Sans KR, Noto Serif KR */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  html {
-    -webkit-text-size-adjust: 100%;
-    font-family: Noto Sans, Noto Color Emoji, -apple-system, Arial;
-    line-height: 1.5;
-  }
   body {
     @apply bg-white dark:bg-gray-800;
   }
@@ -412,7 +422,7 @@ main().catch((e) => {
 ```
 
 
-## 9. Summary
+## 9. Review
 
 - 아직도 본론은 안들어 갔다. (이제 시작 2)
 - daisyUI 는 색감이 이쁘다. 설치도 아주 간편하다.
