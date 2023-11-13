@@ -2,7 +2,7 @@
 date: 2023-11-01 00:00:00 +0900
 title: Svelte Component 만들기 - 3일차
 categories: ["frontend","svelte"]
-tags: ["flowbite","ui-components","3rd-day"]
+tags: ["flowbite","tailwindcss","ui-components","3rd-day"]
 image: "https://raw.githubusercontent.com/themesberg/flowbite-svelte/main/static/images/flowbite-svelte.png"
 ---
 
@@ -11,7 +11,7 @@ image: "https://raw.githubusercontent.com/themesberg/flowbite-svelte/main/static
 
 - [Svelte Component 만들기 - 1일차](/posts/2023-08-31-svelte-components-tutorial-day1/) : Steeze UI
 - [Svelte Component 만들기 - 2일차](/posts/2023-10-08-svelte-components-tutorial-day2/) : Flowbite Svelte
-- [Svelte Component 만들기 - 3일차](/posts/2023-11-01-svelte-components-tutorial-day3/) : Flowbite 예제들 &nbsp; &#10004;
+- [Svelte Component 만들기 - 3일차](/posts/2023-11-01-svelte-components-tutorial-day3/) : Flowbite Blocks &nbsp; &#10004;
 
 ## 0. 개요
 
@@ -27,7 +27,7 @@ image: "https://raw.githubusercontent.com/themesberg/flowbite-svelte/main/static
 
 ## 1. 프로젝트 생성
 
-### 1) [SvelteKit](https://kit.svelte.dev/) 프로젝트 생성
+### [SvelteKit](https://kit.svelte.dev/) 프로젝트 생성
 
 ```bash
 bun create svelte@latest bun-tailwind-app
@@ -40,7 +40,7 @@ bun install
 bun run dev
 ```
 
-### 2) [TailwindCSS 및 flowbite-svelte 설정](https://tailwindcss.com/docs/guides/sveltekit) 
+### [TailwindCSS 및 flowbite-svelte 설정](https://tailwindcss.com/docs/guides/sveltekit) 
 
 1. TailwindCSS, tailwind-merge 설치
 2. flowbite-svelte 관련 라이브러리 설치
@@ -167,10 +167,10 @@ bun run dev
 
 나중에 사용할 경우를 위해 찾아보려고 작성해 두긴 했는데, 왜 정리했나 싶다. 어차피 필요하면 해당 페이지 가서 동작되는 것을 보고 찾아 쓰면 된다.
 
-### 1) [Application UI 그룹](https://flowbite-svelte-blocks.vercel.app/application) : 애플리케이션을 만들기 위한 CRUD 관련 컴포넌트
+### [Application UI 그룹](https://flowbite-svelte-blocks.vercel.app/application) : 애플리케이션을 만들기 위한 CRUD 관련 컴포넌트
 
 - Table
-  - [Advanced Tables](/posts/2023-10-08-svelte-components-tutorial-day2/#1-%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8) : 이전 post 에서 다루었음
+  - [Advanced Tables](/posts/2023-10-08-svelte-components-tutorial-day2/#advanced-테이블-컴포넌트) : 이전 post 에서 다루었음
   - [Table Headers](https://flowbite-svelte-blocks.vercel.app/application/table-headers) : 검색창, 액션 버튼, 필터 드랍다운 선택
   - Table Footers
 
@@ -200,7 +200,7 @@ bun run dev
   - Dashboard Navbars : 헤더
   - Dashboard Footers : 푸터 (메시지, 아이콘)
 
-### 2) [Marketing UI](https://flowbite-svelte-blocks.vercel.app/marketing) : 마케팅용 페이지 및 컴포넌트
+### [Marketing UI](https://flowbite-svelte-blocks.vercel.app/marketing) : 마케팅용 페이지 및 컴포넌트
 
 - Pages
   - 404 Pages, 500 Pages (서버 에러), Maintenace Pages (공사중)
@@ -264,7 +264,7 @@ bun run dev
         - 슬롯 : social
 
 
-### 3) [Publisher UI](https://flowbite-svelte-blocks.vercel.app/publisher) : 콘텐츠 발행용 페이지와 컴포넌트
+### [Publisher UI](https://flowbite-svelte-blocks.vercel.app/publisher) : 콘텐츠 발행용 페이지와 컴포넌트
 
 - [Blog Templates](https://flowbite-svelte-blocks.vercel.app/publisher/blog-templates) : 저자 및 날짜, 제목과 본문, 하단에 코멘트
   - [Comments Sections](https://flowbite-svelte-blocks.vercel.app/publisher/comments) : 코멘트 입력폼과 트리형 리스트
@@ -274,7 +274,7 @@ bun run dev
 
 작은 단위부터 제작되어 쌓아올린 형태라서 일부를 뜯어 사용하기가 어렵다. 예를 들어, Navbar 의 경우 메뉴 아이템 NavLi, NavUl 부터 작성되어 있어서 Navbar 를 사용하려면 일부를 수정하기 어렵다. 이에 반해, daisyUI 는 태그 생성을 줄이고 기본 태그에 스타일을 입힌 형태라 이해가 쉽다. (Bootstrap 스타일이라 그런지도)
 
-### 1) 라이브러리
+### 라이브러리
 
 flowbite 는 사전 작성된 template 의 class 를 사용자가 prop 로 변경할 수 있도록 해 두었기 때문에, twMerge 등의 함수를 사용할 필요가 있다. 그리고, flowbite-svelte-blocks 페이지에 사용된 SEO 라이브러리가 유용해 보여 기록해 둔다.
 
@@ -346,7 +346,7 @@ Svelte 프로젝트에 SEO 메타 태그를 제공하는 라이브러리
 </head>
 ```
 
-### 2) [Marketing UI - Maintenance Pages](https://flowbite-svelte-blocks.vercel.app/marketing/maintenance)
+### [Marketing UI - Maintenance Pages](https://flowbite-svelte-blocks.vercel.app/marketing/maintenance)
 
 1. 템플릿 내에서 정해진 슬롯에 html 작성
 2. 설정 가능한 Props 에 값 작성 : 아이콘, 특정 요소에 대한 class 등..

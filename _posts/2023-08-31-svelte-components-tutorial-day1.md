@@ -21,7 +21,7 @@ image: "https://blog.hyper.io/content/images/2021/03/SvelteLogo.png"
 
 보통은 Tag 를 선택자로 삼고 스타일을 기술하는데, Tag 없이 Attribute 로만 선택자를 표기하는 경우 새삼 생소해서 다시 한번 살펴보려고 한다.
 
-### 1) [Attribute selector - 7가지 유형](https://css-tricks.com/almanac/selectors/a/attribute/#aa-the-seven-different-types)
+### [Attribute selector - 7가지 유형](https://css-tricks.com/almanac/selectors/a/attribute/#aa-the-seven-different-types)
 
 ```css
 [data-value] {

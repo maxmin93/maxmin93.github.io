@@ -2,7 +2,7 @@
 date: 2023-10-08 00:00:00 +0900
 title: Svelte Component 만들기 - 2일차
 categories: ["frontend","svelte"]
-tags: ["flowbite","ui-components","2nd-day"]
+tags: ["flowbite","tailwindcss","ui-components","2nd-day"]
 image: "https://raw.githubusercontent.com/themesberg/flowbite-svelte/main/static/images/flowbite-svelte.png"
 ---
 
@@ -11,7 +11,7 @@ image: "https://raw.githubusercontent.com/themesberg/flowbite-svelte/main/static
 
 - [Svelte Component 만들기 - 1일차](/posts/2023-08-31-svelte-components-tutorial-day1/) : Steeze UI
 - [Svelte Component 만들기 - 2일차](/posts/2023-10-08-svelte-components-tutorial-day2/) : Flowbite Svelte &nbsp; &#10004;
-- [Svelte Component 만들기 - 3일차](/posts/2023-11-01-svelte-components-tutorial-day3/) : Flowbite 예제들
+- [Svelte Component 만들기 - 3일차](/posts/2023-11-01-svelte-components-tutorial-day3/) : Flowbite Blocks
 
 ## 0. 개요
 
@@ -22,7 +22,7 @@ image: "https://raw.githubusercontent.com/themesberg/flowbite-svelte/main/static
 
 ## 1. 프로젝트 생성
 
-### 1) [SvelteKit](https://kit.svelte.dev/) 프로젝트 생성
+### [SvelteKit](https://kit.svelte.dev/) 프로젝트 생성
 
 ```bash
 bun create svelte@latest bun-tailwind-app
@@ -35,7 +35,7 @@ bun install
 bun run dev
 ```
 
-### 2) [TailwindCSS 설정](https://tailwindcss.com/docs/guides/sveltekit)
+### [TailwindCSS 설정](https://tailwindcss.com/docs/guides/sveltekit)
 
 1. Install TailwindCSS, tailwind-merge
 2. `tailwind.config.js` 에 template paths 추가
@@ -100,7 +100,7 @@ EOF
 bun run dev
 ```
 
-### 3) [Flowbite Svelte 설정](https://flowbite-svelte.com/docs/pages/quickstart)
+### [Flowbite Svelte 설정](https://flowbite-svelte.com/docs/pages/quickstart)
 
 - icons, svelte, flowbite 라이브러리 임포트
 - 옵션 : 고급 컴포넌트 blocks 임포트
@@ -209,7 +209,7 @@ _초기 설정이 완료된 페이지_
 
 ## 2. SvelteKit 에서 [HTML DOM API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API) 로 HTML Element 다루기
 
-### 1) [Bindings](https://joyofcode.xyz/svelte-for-beginners#bindings)
+### [Bindings](https://joyofcode.xyz/svelte-for-beginners#bindings)
 
 - input Element 의 이벤트 input 과 filterList 함수를 연결
 - input Element 의 속성 value 과 searchQuery 변수를 연결
@@ -237,7 +237,7 @@ _초기 설정이 완료된 페이지_
 </ul>
 ```
 
-### 2) HTMLElement 와 bind
+### HTMLElement 와 bind
 
 `document.querySelector` 의 결과는 `Element` 로 인식된다. 따라서 타입 지정이 필요하다.
 
@@ -359,7 +359,7 @@ const $input5 = document.querySelector('.foo');
 /** @type {HTMLInputElement} */ ($input5).value = 'hello';
 ```
 
-### 3) [svelte:element](https://svelte.dev/tutorial/svelte-element) 로 Element 변경
+### [svelte:element](https://svelte.dev/tutorial/svelte-element) 로 Element 변경
 
 - 조건에 따라 링크(A) 또는 버튼(Button)으로 element 를 생성
   - svelte 의 `if 블록`을 이용해 다른 html 블록을 출력하는 것과 같다
@@ -408,7 +408,7 @@ const $input5 = document.querySelector('.foo');
 <canvas bind:this="{canvasElement}" />
 ```
 
-### 4) [element 의 action 을 직접 만들기](https://svelte.dev/docs/element-directives)
+### [element 의 action 을 직접 만들기](https://svelte.dev/docs/element-directives)
 
 #### [beomy 블로그 - Svelte 액션](https://beomy.github.io/tech/svelte/action/#svelte-%EC%98%88%EC%A0%9C)
 
@@ -591,7 +591,12 @@ export function pannable(node) {
 - 라이브러리 `flowbite-svelte-blocks` 설치되어 있고 (icons, svelte 등도 포함)
 - `tailwind.config.js` 의 content 에 `flowbite-svelte-blocks` 경로가 포함되어 한다.
 
-### 1) [테이블 컴포넌트](https://flowbite-svelte-blocks.vercel.app/application/advanced-tables)
+### [Advanced 테이블 컴포넌트](https://flowbite-svelte-blocks.vercel.app/application/advanced-tables)
+
+> 화면 캡쳐
+
+<img alt="svltk-flowbite-table" src="/2023/10/08-svltk-flowbite-table.png" width="600px" />
+_고급 테이블 예제 캡쳐_
 
 #### 태그 설명
 
@@ -630,11 +635,6 @@ export function pannable(node) {
   - currentPosition 변경시, startRange 와 endRange 변경
   - paginationData 변경시, currentPageItems 와 filteredItems 변경
 
-> 화면 캡쳐
-
-<img alt="svltk-flowbite-table" src="/2023/10/08-svltk-flowbite-table.png" width="600px" />
-_고급 테이블 예제 캡쳐_
-
 > 참고 : Array.from 으로 정수 배열 생성하는 법
 
 ```js
@@ -646,7 +646,7 @@ console.log(Array.from({ length: 5 }, (_, i) => 1 + i));
 const intArr = Array.from(new Int32Array(5)).map((_, i) => 1 + i);
 ```
 
-### 2) 그 외 컴포넌트들 소개
+### 그 외 컴포넌트들 소개
 
 너무 많아서, 이번 글에서는 테이블만 작성하고 다음 글에서 이어가기로 하자.
 
