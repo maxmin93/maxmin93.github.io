@@ -2,7 +2,7 @@
 date: 2023-11-09 00:00:00 +0900
 title: Svelte Component 만들기 - 5일차
 categories: ["frontend","svelte"]
-tags: ["skeleton","tailwindcss","ui-components","5th-day"]
+tags: ["skeleton","tailwindcss","a11y","5th-day"]
 image: "https://i.ytimg.com/vi/tHzVyChDuyo/maxresdefault.jpg"
 hidden: true
 ---
@@ -40,11 +40,11 @@ bun install
 bun run dev
 ```
 
-### 2) [TailwindCSS 및 flowbite-svelte 설정](https://tailwindcss.com/docs/guides/sveltekit) 
+### 2) [TailwindCSS 및 skeleton 설정](https://www.skeleton.dev/docs/get-started) 
 
 1. skeleton, tw-plugin 설치
 2. tailwindcss, postcss 설치
-3. `postcss.config.cjs ` 추가
+3. `postcss.config.cjs ` 추가 (cjs 확장자)
 4. `tailwind.config.js` 에 skeleton 설정
 5. `app.postcss` 에 directives 와 noto 폰트 추가
 6. `+layout.svelte` 에 전역 css 추가
@@ -164,7 +164,59 @@ export default defineConfig({
 EOF
 ```
 
+### [svelte 에서 a11y warning 비활성화 시키기](https://github.com/sveltejs/language-tools/issues/650#issuecomment-1729917996)
 
+a11y 의 좋은 목적은 알겠지만, 신경 쓰이는 경우가 많아 disable 시키고 싶었다.
+
+> vscode 의 settings.json 에서 설정
+
+```json
+"svelte.plugin.svelte.compilerWarnings": {
+    "a11y-aria-attributes": "ignore",
+    "a11y-incorrect-aria-attribute-type": "ignore",
+    "a11y-unknown-aria-attribute": "ignore",
+    "a11y-hidden": "ignore",
+    "a11y-misplaced-role": "ignore",
+    "a11y-unknown-role": "ignore",
+    "a11y-no-abstract-role": "ignore",
+    "a11y-no-redundant-roles": "ignore",
+    "a11y-role-has-required-aria-props": "ignore",
+    "a11y-accesskey": "ignore",
+    "a11y-autofocus": "ignore",
+    "a11y-misplaced-scope": "ignore",
+    "a11y-positive-tabindex": "ignore",
+    "a11y-invalid-attribute": "ignore",
+    "a11y-missing-attribute": "ignore",
+    "a11y-img-redundant-alt": "ignore",
+    "a11y-label-has-associated-control": "ignore",
+    "a11y-media-has-caption": "ignore",
+    "a11y-distracting-elements": "ignore",
+    "a11y-structure": "ignore",
+    "a11y-mouse-events-have-key-events": "ignore",
+    "a11y-missing-content": "ignore",
+    "a11y-no-static-element-interactions":"ignore"
+}
+```
+
+> `sveltekit.config.js` 에서 컴파일 옵션 설정
+
+```js
+const config = {
+  preprocess: vitePreprocess(),
+  onwarn: (warning, handler) => {
+    if (warning.code.startsWith('a11y-')) {
+      return;
+    }
+    handler(warning);
+  },
+  // ...
+}
+```
+
+
+## 2. [Skeleton.dev/blog](https://www.skeleton.dev/blog) 클론 코딩
+
+- 작성중
 
 ## 9. Review
 

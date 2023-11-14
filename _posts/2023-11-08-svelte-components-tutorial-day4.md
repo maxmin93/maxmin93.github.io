@@ -2,7 +2,7 @@
 date: 2023-11-08 00:00:00 +0900
 title: Svelte Component 만들기 - 4일차
 categories: ["frontend","svelte"]
-tags: ["daisyui","tailwindcss","a11y","4th-day"]
+tags: ["daisyui","tailwindcss","4th-day"]
 image: "https://s3-alpha.figma.com/hub/file/3709321768/b28165db-1eed-4f6a-9027-8f3317357e55-cover.png"
 ---
 
@@ -18,8 +18,11 @@ image: "https://s3-alpha.figma.com/hub/file/3709321768/b28165db-1eed-4f6a-9027-8
 
 - [x] Bun 1.0.10 + SvelteKit 1.20.4
 - [x] TailwindCSS 3.3.5
-  + daisyUI 3.9.4
+  - daisyUI 3.9.4
+  - theme-change
 - [x] Etc
+  - heroicons
+  - purgecss
 
 > svelte 와 daisyui 로 구현한 tabs 컴포넌트
 
@@ -30,11 +33,11 @@ image: "https://s3-alpha.figma.com/hub/file/3709321768/b28165db-1eed-4f6a-9027-8
 ### [SvelteKit](https://kit.svelte.dev/) 프로젝트 생성
 
 ```bash
-bun create svelte@latest bun-tailwind-app
+bun create svelte@latest bun-daisyui-app
   # - Skeleton project
   # - Typescript
 
-cd bun-tailwind-app
+cd bun-daisyui-app
 bun install
 
 bun run dev
@@ -634,63 +637,31 @@ onDestroy(subcriber)
 - [label 의 for 과 input 의 id 가 일치해야 matching 되지만](https://stackoverflow.com/a/62211160/6811653)
 - [label 안에 input 을 넣을 경우 for, id 가 없어도 된다.](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/label#try_it)
 
+
+## 3. [daisyUI 를 이용한 svelte blog starter](https://github.com/spences10/sveltekit-mdsvex-starter-blog)
+
+> [Live Preview](https://sveltekit-mdsvex-starter-blog.vercel.app/)
+
+글이 너무 길어졌다. 나중에 하자.
+
+
 ## 9. Review
+
+- React 버전 예제 : [Daisy UI Admin Dashboard Template - DashWind]
+  - [CalendarView](https://github.com/srobbin01/daisyui-admin-dashboard-template/blob/master/src/components/CalendarView/index.js) 컴포넌트를 svelte 버전으로 바꾸고 싶다.
+    - [Live Preview - Calendar](https://tailwind-dashboard-template-dashwind.vercel.app/app/calendar)
+
+<img src="/2023/11/08-daisyui-react-calendar.png" alt="daisyui-react-calendar" width="80%" />
 
 - Tabs 를 기준으로 flowbite 와 skeleton 의 소스를 살펴보았다. 
   - flowbite 는 프로그래밍 요소가 많다.
   - skeleton 은 aria 및 a11y 규격을 신경썼다.
+
 - daisyUI 가 스타일이 제일 깔끔하고 이쁘다. 내 입맛대로 쓸 수 있으면 좋겠다.
   - 가볍고, 단순하게 필요한 만큼만 기능을 정의해서 쓰면 최고
   - 조만간 4.0 이 나온다고 한다. 클래스가 더 깔끔해졌다.
 
-### [svelte 에서 a11y warning 비활성화 시키기](https://github.com/sveltejs/language-tools/issues/650#issuecomment-1729917996)
 
-a11y 의 좋은 목적은 알겠지만, 신경 쓰이는 경우가 많아 disable 시키고 싶었다.
-
-> vscode 의 settings.json 에서 설정
-
-```json
-"svelte.plugin.svelte.compilerWarnings": {
-    "a11y-aria-attributes": "ignore",
-    "a11y-incorrect-aria-attribute-type": "ignore",
-    "a11y-unknown-aria-attribute": "ignore",
-    "a11y-hidden": "ignore",
-    "a11y-misplaced-role": "ignore",
-    "a11y-unknown-role": "ignore",
-    "a11y-no-abstract-role": "ignore",
-    "a11y-no-redundant-roles": "ignore",
-    "a11y-role-has-required-aria-props": "ignore",
-    "a11y-accesskey": "ignore",
-    "a11y-autofocus": "ignore",
-    "a11y-misplaced-scope": "ignore",
-    "a11y-positive-tabindex": "ignore",
-    "a11y-invalid-attribute": "ignore",
-    "a11y-missing-attribute": "ignore",
-    "a11y-img-redundant-alt": "ignore",
-    "a11y-label-has-associated-control": "ignore",
-    "a11y-media-has-caption": "ignore",
-    "a11y-distracting-elements": "ignore",
-    "a11y-structure": "ignore",
-    "a11y-mouse-events-have-key-events": "ignore",
-    "a11y-missing-content": "ignore",
-    "a11y-no-static-element-interactions":"ignore"
-}
-```
-
-> `sveltekit.config.js` 에서 컴파일 옵션 설정
-
-```js
-const config = {
-  preprocess: vitePreprocess(),
-  onwarn: (warning, handler) => {
-    if (warning.code.startsWith('a11y-')) {
-      return;
-    }
-    handler(warning);
-  },
-  // ...
-}
-```
 
 &nbsp; <br />
 &nbsp; <br />
