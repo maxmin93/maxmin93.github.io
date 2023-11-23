@@ -647,7 +647,7 @@ onDestroy(subcriber)
 
 ## 9. Review
 
-- React 버전 예제 : [Daisy UI Admin Dashboard Template - DashWind]
+- React 버전 예제 : [Daisy UI Admin Dashboard Template - DashWind](https://github.com/srobbin01/daisyui-admin-dashboard-template)
   - [CalendarView](https://github.com/srobbin01/daisyui-admin-dashboard-template/blob/master/src/components/CalendarView/index.js) 컴포넌트를 svelte 버전으로 바꾸고 싶다.
     - [Live Preview - Calendar](https://tailwind-dashboard-template-dashwind.vercel.app/app/calendar)
 

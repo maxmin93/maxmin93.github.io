@@ -229,6 +229,7 @@ export function Todos() {
 
 #### [동작 연결 및 동기화](https://joyofcode.xyz/svelte-for-react-developers#synchronization)
 
+- `$:` 은 상태를 추적하는 `useEffect` 를 의미한다. (대부분 커버 가능)
 - `useEffect` (연결 동작)는 script 영역의 적절한 함수로 옮겨 적는다.
   - handleClick 에서 직접 pause 또는 play 를 수행하도록 수정
 
@@ -614,6 +615,19 @@ function Outer(props) {
   - 동영상에서는 쉬운 부분만 가르쳐는 경향이 있어서 금방 따라할 수 있을듯 싶지만, 실제 React 코드를 보면 각종 변종이 판친다. 특히 오버 엔지니어링 이라는 일컷는 부분들이 있다.
 - Svelte 에서는 최대한 단순하게 구현하라고 방향을 제시한다.
   - 개발자가 누구냐에 따라 언어와 프레임워크를 막론하고 스파게티 코드가 나올 수 있다.
+
+### `$:` 는 `$effect` 로 기억할 것!
+
+`useEffect` 는 대부분 `$:` 로 대체 가능하다.
+
+- 그러나 분명하게 드러나는 변수만 관찰하기 때문에 미세 조정은 불가능 (svelte 한계)
+  - 예를 들어, 함수 안에 변수가 둘러쌓인 경우 관찰이 불가능함
+  - 또는 Array 의 추가만 추적하고, Array item 내용 변경은 구분하지 못함
+    - Object, Array 변수는 복제와 재생성을 통해 추적이 가능하도록 하고 있다.
+- 그래서 최근 **Svelte 5** 에서 `Runes` 이라는 연산자들을 만들고 있다.
+  - 그런데 그 형태가 React, Vue 와 유사해서 반대파의 공격을 많이 받고 있다.
+  - Runes 연산자로 인해 코딩 방식이 복잡해지면 Svelte 의 장점을 잃는다는 주장
+
 
 &nbsp; <br />
 &nbsp; <br />
