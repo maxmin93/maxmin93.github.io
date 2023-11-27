@@ -47,14 +47,18 @@ bun run dev
 
 1. TailwindCSS, tailwind-merge 설치
 2. 한글 폰트, daisyUI 라이브러리 설치
-3. `tailwind.config.js` 에 daisyUI 설정 추가
-4. `app.postcss` 에 Tailwind directives 추가
-5. 최상위 `+layout.svelte` 에 전역 css 추가 
-6. `+page.svelte` 에 데모 코드를 넣어 daisyUI 작동 확인
+3. heroicons 설치 (MIT 라이센스), fontawesome-free 설치 (무료)
+4. `tailwind.config.js` 에 daisyUI 설정 추가
+5. `app.postcss` 에 Tailwind directives 추가
+6. 최상위 `+layout.svelte` 에 전역 css 추가 
+7. `+page.svelte` 에 데모 코드를 넣어 daisyUI 작동 확인
 
 ```bash
 bun add -d tailwindcss autoprefixer tailwind-merge
 bun add -d @tailwindcss/typography daisyui@latest
+bun add -d svelte-hero-icons
+bun add @fortawesome/fontawesome-free
+
 bunx tailwindcss init -p
 
 # D2Coding 폰트 추가 (Mac 에서는 첫번째 "" 인자가 필요하다)
@@ -98,6 +102,7 @@ EOF
 
 cat <<EOF > src/routes/+layout.svelte
 <script lang="ts">
+  import '@fortawesome/fontawesome-free/css/all.min.css';
   import '../app.postcss';
 </script>
 

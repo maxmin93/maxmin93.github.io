@@ -43,15 +43,19 @@ bun run dev
 ### [TailwindCSS 및 flowbite-svelte 설정](https://tailwindcss.com/docs/guides/sveltekit) 
 
 1. TailwindCSS, tailwind-merge 설치
-2. flowbite-svelte 관련 라이브러리 설치
-3. `tailwind.config.js` 에 flowbite 설정 추가
-4. `app.postcss` 에 Tailwind directives 추가
-5. 최상위 `+layout.svelte` 에 전역 css 및 DarkMode 버튼 추가 
-6. `+page.svelte` 에 데모 코드를 넣어 flowbite 작동 확인
+2. heroicons 설치 (MIT 라이센스), fontawesome-free 설치 (무료)
+3. flowbite-svelte 관련 라이브러리 설치
+4. `tailwind.config.js` 에 flowbite 설정 추가
+5. `app.postcss` 에 Tailwind directives 추가
+6. 최상위 `+layout.svelte` 에 전역 css 및 DarkMode 버튼 추가 
+7. `+page.svelte` 에 데모 코드를 넣어 flowbite 작동 확인
 
 ```bash
 # tailwindcss 설치
 bun add -d tailwindcss autoprefixer tailwind-merge
+bun add -d svelte-hero-icons
+bun add @fortawesome/fontawesome-free
+
 bunx tailwindcss init -p
 
 # flowbite-svelte 설치
@@ -118,6 +122,7 @@ EOF
 
 cat <<EOF > src/routes/+layout.svelte
 <script lang="ts">
+  import '@fortawesome/fontawesome-free/css/all.min.css';
   import '../app.postcss';
 
   import { DarkMode } from 'flowbite-svelte';

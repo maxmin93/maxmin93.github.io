@@ -23,7 +23,9 @@ image: "https://i.ytimg.com/vi/tHzVyChDuyo/maxresdefault.jpg"
   - vite-plugin-tailwind-purgecss 0.1.3
 - [x] Etc
   - heroicons
+  - fontawesome-free
   - purgecss
+
 
 
 ## 1. 프로젝트 생성
@@ -45,16 +47,20 @@ bun run dev
 
 1. skeleton, tw-plugin 설치
 2. tailwindcss, postcss 설치 (typography, forms 추가)
-3. `postcss.config.cjs ` 추가 (cjs 확장자)
-4. `tailwind.config.js` 에 skeleton 설정
-5. `app.postcss` 에 directives 와 noto 폰트 추가
-6. `+layout.svelte` 에 전역 css 추가
-7. `+page.svelte` 에 데모 코드를 넣어 작동 확인
+3. heroicons 설치 (MIT 라이센스), fontawesome-free 설치 (무료)
+4. `postcss.config.cjs ` 추가 (cjs 확장자)
+5. `tailwind.config.js` 에 skeleton 설정
+6. `app.postcss` 에 directives 와 noto 폰트 추가
+7. `+layout.svelte` 에 전역 css 추가
+8. `+page.svelte` 에 데모 코드를 넣어 작동 확인
 
 ```bash
 bun add -d @skeletonlabs/skeleton @skeletonlabs/tw-plugin
 bun add -d tailwindcss postcss autoprefixer
 bun add -d @tailwindcss/typography @tailwindcss/forms
+bun add -d svelte-hero-icons
+bun add @fortawesome/fontawesome-free
+
 bunx tailwindcss init
 
 # postcss 는 CommonJS 확장자를 필요로 한다!
@@ -70,6 +76,8 @@ EOF
 # skeleton, fonts, 기본 theme 설정
 cat <<EOF > tailwind.config.js
 import { skeleton } from '@skeletonlabs/tw-plugin';
+import forms from '@tailwindcss/forms';
+import typography from '@tailwindcss/typography';
 
 const defaultTheme = require('tailwindcss/defaultTheme');
 
@@ -106,8 +114,8 @@ export default {
 }
 EOF
 
-# skeleton theme 기본 적용 (Mac 에서는 첫번째 "" 인자가 필요하다)
-sed -i '' 's/hover">/hover" data-theme="skeleton">/' src/app.html
+# hover 빼고 skeleton theme 기본 적용 (Mac 에서는 첫번째 인자 ''가 필요하다)
+sed -i '' 's/data-sveltekit-preload-data="hover"/data-theme="skeleton"/' src/app.html
 
 # 전역 css 에 directives 와 noto 폰트 설정
 cat <<EOF > src/app.postcss
@@ -129,6 +137,7 @@ sed -i '' 's/favicon.png" \/>/favicon.png" \/>\n    <link href="http:\/\/cdn.jsd
 
 cat <<EOF > src/routes/+layout.svelte
 <script lang="ts">
+  import '@fortawesome/fontawesome-free/css/all.min.css';
   import '../app.postcss';
 </script>
 
@@ -152,13 +161,12 @@ EOF
 bun run dev
 ```
 
-#### [heroicons](https://heroicons.com/) 와 [purgecss](https://www.skeleton.dev/docs/purgecss) 설치
+#### [fontawesome-free](https://heroicons.com/) 와 [purgecss](https://www.skeleton.dev/docs/purgecss) 설치
 
-- svelte 용 heroicons 설치 (MIT 라이센스)
+- fontawesome-free 아이콘 (무료)
 - tailwindcss 최적화를 위한 vite 전용 purgecss 플러그인 설치
 
 ```bash
-bun add -d svelte-hero-icons
 bun add -d vite-plugin-tailwind-purgecss
 
 cat <<EOF > vite.config.ts
