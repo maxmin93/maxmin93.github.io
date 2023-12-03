@@ -6,7 +6,7 @@ tags: ["primic","cms","slicemachine","tutorial"]
 image: "https://mma.prnewswire.com/media/1519349/prismic_logo_Logo.jpg?w=200"
 ---
 
-> prismic.io 헤드레스 CMS 를 소개하는 Youtube 동영상이 있어서 따라해 보았습니다. slice machine 이라는 프리뷰 도구가 페이지 개발을 돕는 특징이 있습니다.
+> prismic.io 헤드레스 CMS 를 소개하는 Youtube 동영상이 있어서 따라해 보았습니다. slice machine 이라는 프리뷰 도구가 페이지 개발을 돕는 특징이 있습니다. (UI를 배치하며 꾸미는 WYSIWYG 방식은 아님)
 {: .prompt-tip }
 
 ## 0. 개요
@@ -121,6 +121,49 @@ Continue with next steps in Slice Machine.
   - 정적 페이지를 만들 때 조금은 도움이 될지 모르겠지만,
   - 급 실망해서 깃허브 코드 실행해보고 접었다.
 - 생성형 AI로 HTML 코드를 자동 생성하는 도구들을 찾아봐야겠다.
+  - [Framer](https://www.framer.com/) : 2D 웹페이지 저작도구, SaaS 퍼블리싱, ChatGPT 자동생성, 템플릿 제공
+    - 랜딩 페이지 만들기가 무척 쉽고, 마우스로 UI를 조작할 수 있다.
+    - Figma 와의 결합이 잘 되어 있어서, 디자이너가 직접 개발도 할 수 있다.
+    - 자체 CMS 를 제공하고, 외부 API 호출 코드를 끼워넣을 수 있다.
+    - 중소업체, 자영업 등의 브랜드, 마케팅 목적을 모두 충족시킬 수 있다.    
+  - [Dora](https://www.dora.run/) : 3D 웹페이지 저작도구, SaaS 퍼블리싱, ChatGPT 자동생성
+    - 최신 스타일의 움직이는 웹페이지 개발이 가능하다. (꽤 멋지다)
+
+> Framer 는 [외부로 HTML 을 내보낼 수는 없다.](https://www.framer.community/c/faq/can-i-export-my-website-to-html) (Dora 도 마찬가지)
+
+소스 보기를 하면 대충 살펴볼 수는 있지만, 가져다 쓰기는 불가능하다. (CSS 참고는 가능)
+
+```html
+<body class="framer-body-XXXXXXXX">
+  <script async="" src="https://events.framer.com/script" data-fid="4474e4946cd529b8de3d91dfabb53e46fa6be7570749b7118f8bbd97b9c0f0e0"></script>  
+  <!-- End of bodyStart -->
+  <div id="main" 
+    data-framer-hydrate-v2="{&quot;routeId&quot;:&quot;XXXXXXXX&quot;,&quot;localizationId&quot;:&quot;default&quot;,&quot;localeId&quot;:&quot;default&quot;}"
+    data-framer-ssr-released-at="2023-11-07T11:04:20.666Z" 
+    data-framer-page-optimized-at="2023-11-28T06:38:26.560Z"
+    >
+    <!--$-->
+    <div class="framer-dT8nf framer-7lfvm framer-uB14M framer-DV2gX" style="display:contents">
+      <!-- (생략) -->
+    </div>
+    <!--/$-->
+  </div>
+  <div id="svg-templates" style="position: absolute; overflow: hidden; top: 0; left: 0; width: 0; height: 0">
+  </div>
+  <div id="__framer-badge-container"></div>
+  <script>"use strict";var animator=(()=>{
+      // (생략)
+    })();
+  </script>
+  <script data-framer-appear-animation="no-preference">
+    requestAnimationFrame(() => {
+      // (생략)
+    })
+  </script>
+  <script type="module" data-framer-bundle="" src="https://framerusercontent.com/sites/ZpwiLRpByJXdoGtj2f7te/preview_script0.KUDGNH4S.mjs"></script>  
+  <!-- End of bodyEnd -->
+</body>
+```
 
 ### ChatGPT4 로 텍스트 떨어뜨리는 HTML 코드 생성시키기
 
