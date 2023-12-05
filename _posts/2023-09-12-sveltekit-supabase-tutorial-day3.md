@@ -71,7 +71,7 @@ $ bun run dev
 6. `+page.svelte` 에서 TailwindCSS classes 를 사용해 작동 확인
 
 ```bash
-bun add -d tailwindcss autoprefixer tailwind-merge
+bun add -d tailwindcss postcss autoprefixer tailwind-merge
 bunx tailwindcss init -p
 
 # D2Coding 폰트 추가 (Mac 에서는 첫번째 "" 인자가 필요하다)

@@ -56,7 +56,7 @@ pnpm run dev
 6. `+page.svelte` 에서 TailwindCSS classes 를 사용해 작동 확인
 
 ```bash
-pnpm add -D tailwindcss autoprefixer tailwind-merge
+pnpm add -D tailwindcss postcss autoprefixer tailwind-merge
 pnpx tailwindcss init -p
 
 # D2Coding 폰트 추가 (Mac 에서는 첫번째 "" 인자가 필요하다)

@@ -54,7 +54,7 @@ bun run dev
 7. `+page.svelte` 에 데모 코드를 넣어 daisyUI 작동 확인
 
 ```bash
-bun add -d tailwindcss autoprefixer tailwind-merge
+bun add -d tailwindcss postcss autoprefixer tailwind-merge
 bun add -d @tailwindcss/typography daisyui@latest
 bun add -d svelte-hero-icons
 bun add @fortawesome/fontawesome-free

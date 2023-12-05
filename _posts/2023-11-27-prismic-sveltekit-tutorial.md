@@ -131,7 +131,7 @@ Continue with next steps in Slice Machine.
 
 > Framer 는 [외부로 HTML 을 내보낼 수는 없다.](https://www.framer.community/c/faq/can-i-export-my-website-to-html) (Dora 도 마찬가지)
 
-소스 보기를 하면 대충 살펴볼 수는 있지만, 가져다 쓰기는 불가능하다. (CSS 참고는 가능)
+소스 보기를 하면 대충 살펴볼 수는 있지만, 가져다 쓰기는 불가능하다. hidden 처리를 해 놓아서 코드를 복사해도 출력되지 않는다. (react 코드로 스타일을 변경시키는듯 하다)
 
 ```html
 <body class="framer-body-XXXXXXXX">

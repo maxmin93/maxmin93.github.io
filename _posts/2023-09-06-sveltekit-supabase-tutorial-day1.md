@@ -52,7 +52,7 @@ pnpm run dev
 5. `+page.svelte` 에서 TailwindCSS classes 를 사용해 작동 확인
 
 ```bash
-pnpm install -D tailwindcss autoprefixer tailwind-merge
+pnpm install -D tailwindcss postcss autoprefixer tailwind-merge
 pnpx tailwindcss init -p
 
 pnpm run dev

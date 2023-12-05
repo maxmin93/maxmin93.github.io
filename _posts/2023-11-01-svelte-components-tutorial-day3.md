@@ -52,7 +52,7 @@ bun run dev
 
 ```bash
 # tailwindcss 설치
-bun add -d tailwindcss autoprefixer tailwind-merge
+bun add -d tailwindcss postcss autoprefixer tailwind-merge
 bun add -d svelte-hero-icons
 bun add @fortawesome/fontawesome-free
 
