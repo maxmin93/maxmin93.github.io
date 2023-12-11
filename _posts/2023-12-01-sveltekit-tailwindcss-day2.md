@@ -1,13 +1,17 @@
 ---
 date: 2023-12-01 00:00:00 +0900
-title: Tailwind 도구 조사 - 1일차
+title: SvelteKit Tailwind 튜토리얼 - 2일차
 categories: ["frontend","tailwind"]
-tags: ["wysiwyg","tips","tailscan","1st-day"]
+tags: ["wysiwyg","plugins","tailscan","2nd-day"]
 image: "https://www.tailscan.com/og.png"
 ---
 
-> Tailwind 를 사용에 어려움이 많아 도구의 힘을 빌리려고 합니다. Tailwind 관련한 wysiwyg 도구로 유명한 Shuffle, Tailscan 등을 공부합니다.
+> Tailwind 를 사용에 어려움이 많아 도구의 힘을 빌리려고 합니다. Tailwind 관련한 Plugin 과 Tailscan 등의 도구들을 공부합니다.
 {: .prompt-tip }
+
+- [SvelteKit Tailwind 튜토리얼 - 1일차](/posts/2023-07-10-sveltekit-tailwindcss-day1/) : Tailwind Labs &ndash; [Insta UI](https://www.youtube.com/watch?v=v74SZBVMPa0)
+- [SvelteKit Tailwind 튜토리얼 - 2일차](/posts/2023-12-01-sveltekit-tailwindcss-day2/) : Plugins &amp; Tools &nbsp; &#10004;
+- [SvelteKit Tailwind 튜토리얼 - 3일차](/posts/2023-12-05-sveltekit-tailwindcss-day3/) : Builders(Shuffle)
 
 ## 0. 개요
 

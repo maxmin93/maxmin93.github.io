@@ -1,15 +1,17 @@
 ---
 date: 2023-07-10 00:00:00 +0900
-title: Svelte TailwindCSS &ndash; 1일차 클론코딩
-categories: ["frontend","css"]
-tags: ["svelte", "tailwindcss","clone-coding","1st-day"]
+title: SvelteKit Tailwind 튜토리얼 - 1일차
+categories: ["frontend","tailwind"]
+tags: ["svelte", "css","clone-coding","1st-day"]
 image: "https://miro.medium.com/v2/resize:fit:1000/0*XE6qPC63JoXPkwRL.png"
 ---
 
 > 프론트엔드 개발을 배우기 위해 TailwindCSS 를 공부합니다. 실습 환경은 SvelteKit + PostCSS 을 사용합니다. 일단 감을 익히기 위해 클론코딩을 해봅니다.(1일차)
 {: .prompt-tip }
 
-- [Svelte TailwindCSS &ndash; 1일차](/posts/2023-07-10-svelte-tailwindcss-day1/) : Tailwind Labs &ndash; [Insta UI](https://www.youtube.com/watch?v=v74SZBVMPa0) &nbsp; &#10004;
+- [SvelteKit Tailwind 튜토리얼 - 1일차](/posts/2023-07-10-sveltekit-tailwindcss-day1/) : Tailwind Labs &ndash; [Insta UI](https://www.youtube.com/watch?v=v74SZBVMPa0) &nbsp; &#10004;
+- [SvelteKit Tailwind 튜토리얼 - 2일차](/posts/2023-12-05-sveltekit-tailwindcss-day3/) : Plugins &amp; Tools
+- [SvelteKit Tailwind 튜토리얼 - 3일차](/posts/2023-12-05-sveltekit-tailwindcss-day3/) : Builders(Shuffle)
 
 ## 1. SvelteKit &amp; TailwindCSS Setup
 
