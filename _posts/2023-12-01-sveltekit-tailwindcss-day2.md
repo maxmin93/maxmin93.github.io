@@ -11,7 +11,6 @@ image: "https://www.tailscan.com/og.png"
 
 - [SvelteKit Tailwind 튜토리얼 - 1일차](/posts/2023-07-10-sveltekit-tailwindcss-day1/) : Tailwind Labs &ndash; [Insta UI](https://www.youtube.com/watch?v=v74SZBVMPa0)
 - [SvelteKit Tailwind 튜토리얼 - 2일차](/posts/2023-12-01-sveltekit-tailwindcss-day2/) : Plugins &amp; Tools &nbsp; &#10004;
-- [SvelteKit Tailwind 튜토리얼 - 3일차](/posts/2023-12-05-sveltekit-tailwindcss-day3/) : Builders(Shuffle)
 
 ## 0. 개요
 

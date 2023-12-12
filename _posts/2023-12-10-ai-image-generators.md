@@ -164,12 +164,32 @@ macro photography of kids toy camper and bear, photo, product photography high r
 
 <img src="https://cdn.midjourney.com/bcd21f1d-8346-454f-8770-4179e2322a42/0_1.webp" alt="cute and adorable mouse" width="80%" />
 
+## 4. [MidJourney 로 자신만의 logo 만들기](https://www.logoai.com/blog/design-logo-with-midjourney-and-logoai)
+
+### logo 디자인
+
+> The letter"J" logo for a travel guide company, serif, flat, reminiscent of an island, mountain in center, green to blue gradient, vector art, whitebackground --s 250 --v 5.2
+
+<img src="https://cdn.midjourney.com/6ba83f24-39e4-499e-a12b-2ee7a6904dc6/0_0.webp" alt="jejusari logo" width="50%" />
+
+### [logoai 이용해 로고 디자인](https://www.logoai.com/make)
+
+- logo 이미지에 텍스트까지 입혀서 실제적인 logo 디자인을 완료한다. (워터마크)
+- 본격적으로 사용하려면 29달러를 내야한다. SVG 출력하려면 59달러 (일시불)
+
+<img src="/2023/12/10-jejusari-logoai-canvas.png" alt="jejusari-logoai-canvas" width="80%" />
+
+> 결과물
+
+<img src="/2023/12/10-jejusari-logo-text-horizon.png" alt="jejusari-logo-text-horizon" width="50%" />
+
+
 ## 9. Review
 
 - 킵콴 작가분이 말씀하신 것처럼, 예술적 감각을 더하면 더 강력한 도구가 될 수 있다.
 - 원하는 이미지를 뽑아내려면 프롬프트 예제를 보고, 방향성을 잡아가는 연습이 필요하다.
-- 이미지에 각종 태그가 추가되어 학습된 AI 이기 때문에, 미드저니의 학습된 방향이나 키워드에 신경써서 프롬프트를 작성해야 한다.
-- 옵션 기능이 갈수록 늘어나면 세밀하게 조정이 가능할 
+  - 옵션 기능으로 더 세밀하게 조정할 수 있지만, 일단은 스토리를 잡는게 우선이다.
+- 한번에 안된다. variation 버튼을 눌러 여러번 시도해야 그중에 하나 나온다.
 
 &nbsp; <br />
 &nbsp; <br />
