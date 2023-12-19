@@ -19,7 +19,7 @@ image: "https://www.tailscan.com/og.png"
 - [Tailscan](https://tailscan.com/) : TW 도구
   - [크롬 확장프로그램 - Tailscan](https://chromewebstore.google.com/detail/tailscan/ehlgpljoffpijelfiegjpkfanlfhgeae) : 라이센스 필요
 
-## 2. 프로젝트 생성
+## 1. 프로젝트 생성
 
 ### [SvelteKit](https://kit.svelte.dev/) 프로젝트 생성
 
@@ -79,7 +79,7 @@ import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [
-    sveltekit(), 
+    sveltekit(),
     purgeCss({ safelist: {greedy: [/^hljs-/] }}),
   ],
   ssr: {
@@ -129,7 +129,7 @@ cat <<EOF > src/app.pcss
 
 html,
 body {
-  @apply h-full overflow-hidden;
+  @apply h-full sm:scroll-smooth;
 }
 EOF
 
@@ -167,7 +167,7 @@ EOF
 bun run dev
 ```
 
-### turso `@libsql/client` &plus; drizzle
+### turso `@libsql/client` + drizzle
 
 참고 : [build-a-poll-making-website-using-sveltekit-turso-drizzle](https://blog.turso.tech/build-a-poll-making-website-using-sveltekit-turso-drizzle-and-deploy-it-to-vercel.-2d766286)
 
