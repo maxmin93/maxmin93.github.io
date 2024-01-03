@@ -420,11 +420,13 @@ to_tsvector 함수로 gin 인덱스 생성 후 to_tsquery 로 검색
 - UTF-8 인코딩은 필수이다.
 - 영문 및 한글 텍스트가 쿼리의 주 대상이라면 LC_COLLATE=`C.UTF-8` 가 적합
   + 한글이라도 코드값 성격으로 사용한다면 `C.UTF-8` 로 충분
-  + 한글을 컬럼 단위로 제어하고 싶다면 `collate "ko_KR"` 키워드를 활용하자
+  + 한글을 컬럼 단위로 제어하고 싶다면 `collate "ko-x-icu"` 키워드를 활용하자
 - 한글 인덱스는 full-text search 기반의 gin 인덱스가 좋다.
 - mecab-ko 를 이용한 tsvector 검색을 어떻게 이용할지 성공사례가 필요하다.
   + 명사만 뽑아서 trigram 색인 되도록 하고 싶다. 좀 더 공부하자.
   + 참고 [Indexing for full text search in PostgreSQL](https://www.compose.com/articles/indexing-for-full-text-search-in-postgresql/)
+
+> 참고: 중국어, 일본어, 한국어 (CJK)를 위한 [pg_cjk_parser](https://github.com/huangjimmy/pg_cjk_parser) 도 있다. (pg12부터)
 
 ### dblink : 원격 데이터베이스 쿼리 모듈 [(참고)](https://stackoverflow.com/a/27054140)
 

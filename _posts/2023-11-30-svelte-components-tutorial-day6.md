@@ -1,6 +1,6 @@
 ---
 date: 2023-11-30 00:00:00 +0900
-title: Svelte Component 만들기 - 6일차
+title: Svelte Component 라이브러리 - 6일차
 categories: ["frontend","svelte"]
 tags: ["open-props","postcss","6th-day"]
 image: "https://repository-images.githubusercontent.com/402643958/641eff02-6323-4414-8f16-a579dd497e0f"
@@ -9,12 +9,12 @@ image: "https://repository-images.githubusercontent.com/402643958/641eff02-6323-
 > 원하는 UI 구성을 위해 유틸리티 CSS 라이브러리인 Open Props 공부합니다. 웹프레임워크로 SveltKit 을 사용하고 bun 런타임 위에서 실행합니다.
 {: .prompt-tip }
 
-- [Svelte Component 만들기 - 1일차](/posts/2023-08-31-svelte-components-tutorial-day1/) : Steeze UI
-- [Svelte Component 만들기 - 2일차](/posts/2023-10-08-svelte-components-tutorial-day2/) : Flowbite Svelte
-- [Svelte Component 만들기 - 3일차](/posts/2023-11-01-svelte-components-tutorial-day3/) : Flowbite Blocks
-- [Svelte Component 만들기 - 4일차](/posts/2023-11-08-svelte-components-tutorial-day4/) : daisyUI Svelte
-- [Svelte Component 만들기 - 5일차](/posts/2023-11-09-svelte-components-tutorial-day5/) : Skeleton
-- [Svelte Component 만들기 - 6일차](/posts/2023-11-30-svelte-components-tutorial-day6/) : Open Props &nbsp; &#10004;
+- [Svelte Component 라이브러리 - 1일차](/posts/2023-08-31-svelte-components-tutorial-day1/) : Steeze UI
+- [Svelte Component 라이브러리 - 2일차](/posts/2023-10-08-svelte-components-tutorial-day2/) : Flowbite Svelte
+- [Svelte Component 라이브러리 - 3일차](/posts/2023-11-01-svelte-components-tutorial-day3/) : Flowbite Blocks
+- [Svelte Component 라이브러리 - 4일차](/posts/2023-11-08-svelte-components-tutorial-day4/) : daisyUI Svelte
+- [Svelte Component 라이브러리 - 5일차](/posts/2023-11-09-svelte-components-tutorial-day5/) : Skeleton
+- [Svelte Component 라이브러리 - 6일차](/posts/2023-11-30-svelte-components-tutorial-day6/) : Open Props &nbsp; &#10004;
 
 svelte-components 시리즈는 여기까지만 한다. 본래 컴포넌트 만드는 연습을 하기 위해 작성하기 시작한 것인데, css 프레임워크를 한번씩 살펴보는 시리즈가 되어 버렸다. (실패다) 여러 기술들을 살펴보는 것은 좋으나, 깊이 없이 기웃거리기만 하고 있으니 실망스럽다. 어느 분야이든 깊이 파고든다는 것은 중요하다. 기웃거리더라도 넘치면 지식이 된다는데, 그런 방식으로는 굳건한 줄기를 만드는데 너무 많은 시간이 걸릴 것이다. 효율적으로 공부하자.
 

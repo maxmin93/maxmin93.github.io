@@ -1,6 +1,6 @@
 ---
 date: 2023-10-08 00:00:00 +0900
-title: Svelte Component 만들기 - 2일차
+title: Svelte Component 라이브러리 - 2일차
 categories: ["frontend","svelte"]
 tags: ["flowbite","tailwindcss","ui-components","2nd-day"]
 image: "https://raw.githubusercontent.com/themesberg/flowbite-svelte/main/static/images/flowbite-svelte.png"
@@ -9,9 +9,9 @@ image: "https://raw.githubusercontent.com/themesberg/flowbite-svelte/main/static
 > 원하는 UI 구성을 위해 유틸리티 CSS 라이브러리인 TailwindCSS 와 Flowbite 를 공부합니다. 웹프레임워크로 SveltKit 을 사용하고 bun 런타임 위에서 실행합니다.
 {: .prompt-tip }
 
-- [Svelte Component 만들기 - 1일차](/posts/2023-08-31-svelte-components-tutorial-day1/) : Steeze UI
-- [Svelte Component 만들기 - 2일차](/posts/2023-10-08-svelte-components-tutorial-day2/) : Flowbite Svelte &nbsp; &#10004;
-- [Svelte Component 만들기 - 3일차](/posts/2023-11-01-svelte-components-tutorial-day3/) : Flowbite Blocks
+- [Svelte Component 라이브러리 - 1일차](/posts/2023-08-31-svelte-components-tutorial-day1/) : Steeze UI
+- [Svelte Component 라이브러리 - 2일차](/posts/2023-10-08-svelte-components-tutorial-day2/) : Flowbite Svelte &nbsp; &#10004;
+- [Svelte Component 라이브러리 - 3일차](/posts/2023-11-01-svelte-components-tutorial-day3/) : Flowbite Blocks
 
 ## 0. 개요
 

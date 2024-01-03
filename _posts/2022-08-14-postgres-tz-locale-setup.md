@@ -59,9 +59,9 @@ $ cat $PGDATA/pg_hba.conf
 #### 데이터베이스 생성
 
 ```shell
-createdb --lc-collate="en_US.UTF-8" --lc-ctype="en_US.UTF-8" --template="template0" testdb
+createdb --lc-collate="C.utf8" --lc-ctype="C.utf8" --template="template0" testdb
 
-psql -c "CREATE DATABASE testdb LC_COLLATE 'en_US.UTF-8' LC_CTYPE 'en_US.UTF-8' TEMPLATE template0;"
+psql -c "CREATE DATABASE testdb LC_COLLATE 'C.utf8' LC_CTYPE 'C.utf8' TEMPLATE template0;"
 ```
 
 - 참고: [데이터베이스 템플릿](https://www.postgresql.kr/docs/10/manage-ag-templatedbs.html)
@@ -189,7 +189,7 @@ $ psql -h localhost -p 55432 -U postgres -d postgres
 
 #### bullseye 시스템의 locale 정보
 
-> 문자셋이 en_US.utf8, C.UTF-8 밖에 없어서 ko_KR.utf8 설정을 못함
+> 문자셋이 en_US.utf8, C.utf8 밖에 없어서 ko_KR.utf8 설정을 못함
 
 ```shell
 $ locale
@@ -265,13 +265,15 @@ dynamic_shared_memory_type = posix  # the default is the first option
 max_wal_size = 1GB
 min_wal_size = 80MB
 log_timezone = 'Asia/Seoul'
-datestyle = 'iso, mdy'
+datestyle = 'iso, ymd'      # YYYY-mm-dd
 timezone = 'Asia/Seoul'
-lc_messages = 'en_US.utf8'      # locale for system error message
-lc_monetary = 'en_US.utf8'      # locale for monetary formatting
-lc_numeric = 'en_US.utf8'      # locale for number formatting
-lc_time = 'en_US.utf8'        # locale for time formatting
-default_text_search_config = 'pg_catalog.english'
+lc_messages = 'C.utf8'      # locale for system error message
+lc_monetary = 'C.utf8'      # locale for monetary formatting
+lc_numeric = 'C.utf8'      # locale for number formatting
+lc_time = 'C.utf8'        # locale for time formatting
+
+default_text_search_config = 'pg_catalog.simple'
+# default_text_search_config = 'pg_catalog."ko-x-icu"'
 ```
 
 #### 실행된 컨테이너의 pg_hba.conf
@@ -298,7 +300,7 @@ postgres 계정 없이, USER 계정을 SUPER_USER 로 사용
 - volume 설정 없음 
 - 환경변수 설정 `-e`
   - POSTGRES_DB : 새로운 DB 생성
-    + encoding=UTF8, locale=en_US.utf8
+    + encoding=UTF8, locale=C.utf8
   - POSTGRES_USER : 관리자 계정 생성
     + postgres 계정은 없음
 
@@ -320,10 +322,10 @@ $ psql -h localhost -p 55432 -U tonyne -d postgres -W
 $ select datname, datdba, encoding, datcollate, datctype, datistemplate from pg_database;
   datname  | datdba | encoding | datcollate |  datctype  | datistemplate
 -----------+--------+----------+------------+------------+---------------
- postgres  |     10 |        6 | en_US.utf8 | en_US.utf8 | f
- nfp_db    |     10 |        6 | en_US.utf8 | en_US.utf8 | f
- template1 |     10 |        6 | en_US.utf8 | en_US.utf8 | t
- template0 |     10 |        6 | en_US.utf8 | en_US.utf8 | t
+ postgres  |     10 |        6 | C.utf8 | C.utf8 | f
+ nfp_db    |     10 |        6 | C.utf8 | C.utf8 | f
+ template1 |     10 |        6 | C.utf8 | C.utf8 | t
+ template0 |     10 |        6 | C.utf8 | C.utf8 | t
 (4 rows)
 ```
 
@@ -545,8 +547,8 @@ $ pg_dump testdb -t 'temp_tbl' --schema-only -U postgres
 CREATE TABLE public.temp_tbl (
     name character varying(100)
 );
-ALTER TABLE public.temp_tbl OWNER TO postgres;
 
+ALTER TABLE public.temp_tbl OWNER TO postgres;
 ```
 
 ### 2) docker-entrypoint-initdb 스크립트 사용
