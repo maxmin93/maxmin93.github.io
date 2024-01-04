@@ -4,10 +4,9 @@ title: Svelte Component 라이브러리 - 7일차
 categories: ["frontend","svelte"]
 tags: ["melt-ui","ui-components","tailwindcss","7th-day"]
 image: "https://www.melt-ui.com/banner.png"
-hidden: true
 ---
 
-> 원하는 UI 구성을 위해 headless 컴포넌트 라이브러리인 melt-UI 를 공부합니다. 웹프레임워크로 SveltKit 을 사용하고 bun 런타임 위에서 실행합니다.
+> 원하는 UI 구성을 위해 headless 컴포넌트 라이브러리인 melt-UI 를 공부합니다. 이와 함께 daisyUI 를 사용할 방법을 찾아봅니다. 웹프레임워크로 SveltKit 을 사용하고 bun 런타임 위에서 실행합니다.
 {: .prompt-tip }
 
 - [Svelte Component 라이브러리 - 1일차](/posts/2023-08-31-svelte-components-tutorial-day1/) : Steeze UI
@@ -59,7 +58,8 @@ bun create svelte@latest svltk2-meltui-app
 cd svltk2-meltui-app
 bun install
 
-bun run dev
+# bun runtime
+bun --bun dev
 ```
 
 ### [TailwindCSS 및 plugins 설정](https://www.skeleton.dev/docs/get-started) 
@@ -206,6 +206,54 @@ cat <<EOF > src/routes/+layout.svelte
 
 <slot />
 EOF
+```
+
+#### tailwind 유틸리티
+
+```bash
+bun add tailwind-variants clsx tailwind-merge
+```
+
+> `$lib/utils.ts`
+
+`cn` 함수를 이용하면, join 과 merge 가 적용된 tailwind 클래스 문자열을 얻게 된다.
+
+- clsx 는 모든 클래스 이름을 결합하고 단일 문자열을 출력 (dict 형태도 다룬다)
+- twMerge 는 같은 종류의 tailwind 클래스들을 overlay 하여 출력
+- 참고
+  - [Simplify Your Tailwind CSS Class Management with Merge and Clsx](https://medium.com/@nomanfareed681/simplify-your-tailwind-css-class-management-with-merge-and-clsx-42f1e2458fd8)
+  - [Tailwind와 React에서 클래스 이름을 병합하는 방법](https://korayguler.medium.com/how-to-merge-react-and-tailwind-css-class-names-f5faeb10ed24)
+
+```ts
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+
+export function cn(...inputs: ClassValue[]) {
+    return twMerge(clsx(inputs));
+}
+```
+
+> [tailwind variants 사용법](https://www.tailwind-variants.org/docs/getting-started#usage) 
+
+```html
+<script>
+import { tv } from 'tailwind-variants';
+ 
+const button = tv({
+  // 공통
+  base: 'font-semibold text-white text-sm py-1 px-4 rounded-full active:opacity-80',
+  // 옵션
+  variants: {
+    color: {
+      primary: 'bg-blue-500 hover:bg-blue-700',
+      secondary: 'bg-purple-500 hover:bg-purple-700',
+      success: 'bg-green-500 hover:bg-green-700'
+    }
+  }
+});
+</script>
+
+<button class={button({ color:'primary' })}>Outline</button>
 ```
 
 #### 데모 `src/+page.svelte`
