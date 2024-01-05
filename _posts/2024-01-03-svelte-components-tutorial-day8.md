@@ -4,10 +4,9 @@ title: Svelte Component 라이브러리 - 8일차
 categories: ["frontend","svelte"]
 tags: ["melt-ui","bits-ui","tailwindcss","8th-day"]
 image: "https://opengraph.githubassets.com/46bfeda8337cd995f0b3d5f4f11f469cb06bbbd421e8f650c53f48d54d8145c2/huntabyte/bits-ui"
-hidden: true
 ---
 
-> bits-ui 는 melt-ui 를 기반으로 작성된 headless UI 이다. melt-ui 사용시 작성할 부분이 많아 한번 더 감싸진 형태이고, 이를 다시 tailwind 변수들과 결합한 shadch-svelte 라이브러리를 살펴본다. 컴포넌트 코드를 보면서 같은 방식으로 melt-ui 를 daisyUI 와 효과적으로 결합해 사용할 방법을 찾아보려고 한다.
+> bits-ui 는 melt-ui 를 기반으로 작성된 headless UI 이다. 이를 다시 tailwind 변수들과 스타일 속성을 결합한 shadch-svelte 라이브러리를 살펴본다. 이와 함께 웹사이트 레이아웃을 추출하여 분석해본다.
 {: .prompt-tip }
 
 - [Svelte Component 라이브러리 - 1일차](/posts/2023-08-31-svelte-components-tutorial-day1/) : Steeze UI
@@ -16,7 +15,7 @@ hidden: true
 - [Svelte Component 라이브러리 - 4일차](/posts/2023-11-08-svelte-components-tutorial-day4/) : daisyUI Svelte
 - [Svelte Component 라이브러리 - 5일차](/posts/2023-11-09-svelte-components-tutorial-day5/) : Skeleton
 - [Svelte Component 라이브러리 - 6일차](/posts/2023-11-30-svelte-components-tutorial-day6/) : Open Props
-- [Svelte Component 라이브러리 - 7일차](/posts/2023-12-15-svelte-components-tutorial-day7/) : Melt-UI &nbsp; &#10004;
+- [Svelte Component 라이브러리 - 7일차](/posts/2023-12-15-svelte-components-tutorial-day7/) : Melt-UI
 - [Svelte Component 라이브러리 - 8일차](/posts/2024-01-03-svelte-components-tutorial-day8/) : Bits-UI &nbsp; &#10004;
 
 bits-ui, shadcn-svelte 라이브러리는 [유튜버 Huntabyte](https://www.youtube.com/@Huntabyte) 가 작성했다.
@@ -211,8 +210,8 @@ Accordion 컴포넌트를 기준으로 비교해 본다.
 
 - melt-ui 는 UI 를 위한 동작과 이벤트, 스타일을 모두 코드로 다루고 있다.
   - 참고: [깃허브 - melt-ui/builders/accordion](https://github.com/melt-ui/melt-ui/tree/develop/src/lib/builders/accordion)
-  - 이 때문에 브라우저 상에서 첫 동작시 느려진다는 문제가 있다. (두번째 동작시는 괜춘)
-  - 굳이 이렇게까지 headless 를 사용할 필요가 있을지 회의감이 든다.
+  - 이 때문에 브라우저에서 첫 동작시 느려진다는 문제가 있다. (두번째 동작시는 잘됨)
+  - 소스를 보면 굳이 이렇게까지 headless 를 사용할 필요가 있는지 회의감이 든다.
 
 - 색상에 사용된 `bg-neutral-100` 등은 사용자 칼라 설정이 필요하다.
   - 참고: [tailwind 커스텀 칼라 설정](https://tailwindcss.com/docs/customizing-colors#using-custom-colors)
@@ -308,7 +307,7 @@ Accordion 컴포넌트를 기준으로 비교해 본다.
 #### [bits-ui 의 Accordion](https://www.bits-ui.com/docs/components/accordion)
 
 - 사용 코드는 melt-ui 의 계층을 개별적으로 svelte 파일을 만들어 조립한 형태이다.
-- 그러나 컴포넌트 자체의 소스를 보면 melt-ui 원본보다 엄청 복잡하다.
+- 컴포넌트 자체의 소스를 보면 melt-ui 원본에 스타일 속성을 넣어 엄청 복잡하다.
   - 참고 : [깃허브 - accordion/components](https://github.com/huntabyte/bits-ui/tree/main/src/lib/bits/accordion/components)
 
 ```html
@@ -453,26 +452,55 @@ Accordion 컴포넌트를 기준으로 비교해 본다.
 </div>
 ```
 
+#### 추가 : [skeleton 의 accordion](https://www.skeleton.dev/components/accordions)
+
+- 사용된 형태는 shacdn-svelte 와 비슷하다.
+  - skeleton 이 svelte fragment 기능을 잘 활용한다. (가볍고 잘 움직임)
+- 컴포넌트 소스의 복잡함은 비등비등한데, props 등의 문서 정리가 잘 되어 있다.
+  - 참고 : [accordion 컴포넌트 소스](https://github.com/skeletonlabs/skeleton/tree/dev/packages/skeleton/src/lib/components/Accordion)
+
+```html
+<Accordion>
+  <AccordionItem open>
+    <svelte:fragment slot="lead">(icon)</svelte:fragment>
+    <svelte:fragment slot="summary">(summary)</svelte:fragment>
+    <svelte:fragment slot="content">(content)</svelte:fragment>
+  </AccordionItem>
+  <AccordionItem>
+    <svelte:fragment slot="lead">(icon)</svelte:fragment>
+    <svelte:fragment slot="summary">(summary)</svelte:fragment>
+    <svelte:fragment slot="content">(content)</svelte:fragment>
+  </AccordionItem>
+  <!-- ... -->
+</Accordion>
+```
+
+
 ## 3. [shacdn-svelte 설치](https://www.shadcn-svelte.com/docs/installation)
 
-shadcn-svelte 는 bits-ui 를 tailwind 변수들로 잘 짜집기 한 코드들을 필요한 요소들만 추출하여 가져오는 방식으로 설치한다. (`components.json`에 가져올 코드셋에 대한 정보가 설정된다)
+shadcn-svelte 는 bits-ui 를 tailwind 변수들과 잘 짜집기 한 컴포넌트 파일셋 중 필요한 파일들만 추출하여 가져오는 방식으로 설치한다. (`components.json`에 가져올 코드셋에 대한 정보가 설정된다)
 
 ### 수동 설정
 
+bits-ui 를 설치하고, 필요한 components/ui 파일들을 복사해 와도 된다.
+
 1. sveltekit 프로젝트 생성
-2. tailwind 설정, tailwind 라이브러리 설치
+2. tailwind, bits-ui 라이브러리 설치
 3. `tailwind.config.js` 설정 : theme, colors, font
 4. `src/app.pcss` 설정 : color 변수값, base 레이어
 5. `$lib/utils.ts` 생성 : 코드 복사
 6. `src/routes/+layout.svelte` : app.pcss 연결
 
-> `default` 스타일인 경우 lucid icon 을 사용한다.
-
 ```bash
+bun add bits-ui
+
+# 필수 tailwind 라이브러리
 bun add tailwind-variants clsx tailwind-merge
 ```
 
 #### CLI 이용한 자동 설정
+
+`default` 스타일인 경우 lucid icon 을 사용한다.
 
 ```console
 $ bunx shadcn-svelte@latest init
@@ -499,32 +527,103 @@ Don't forget to add the aliases you configured to your svelte.config.js!
 $ _
 ```
 
-### 비교 : [skeleton 의 accordion](https://www.skeleton.dev/components/accordions)
+### 웹사이트 레이아웃
 
-- 사용된 형태는 shacdn-svelte 와 비슷하다.
-  - skeleton 이 svelte fragment 기능을 잘 활용한다. (가볍고 잘 움직임)
-- 컴포넌트 소스의 복잡함은 비등비등한데, props 등의 문서 정리가 잘 되어 있다.
-  - 참고 : [accordion 컴포넌트 소스](https://github.com/skeletonlabs/skeleton/tree/dev/packages/skeleton/src/lib/components/Accordion)
+> desktop 스크린샷
+
+<img src="/2024/01/03-shadcn-svelte-dashboard-desktop.png" alt="03-shadcn-svelte-dashboard-desktop" width="80%" />
+
+> mobile 스크린샷
+
+<img src="/2024/01/03-shadcn-svelte-dashboard-mobile.png" alt="03-shadcn-svelte-dashboard-mobile" width="60%" />
+
+> sidebar 메뉴 스크린샷
+
+<img src="/2024/01/03-shadcn-svelte-dashboard-sidebar.png" alt="03-shadcn-svelte-dashboard-sidebar" width="60%" />
+
+> search dialog 스크린샷
+
+<img src="/2024/01/03-shadcn-svelte-dashboard-search.png" alt="03-shadcn-svelte-dashboard-search" width="60%" />
+
+
+#### `+layout.svelte`
+
+- ModeWatcher : light/black 모드 관리
+- Metadata : head 영역에 검색 최적화 정보 삽입
+- DefaultSonner : 메시지 Toast 출력 영역
+- div#page : 페이지 영역
+  - SiteHeader : 헤더 (sticky top-0 w-full)
+  - slot : 콘텐츠 영역 (flex-1)
+  - SiteFooter : 푸터
 
 ```html
-<Accordion>
-  <AccordionItem open>
-    <svelte:fragment slot="lead">(icon)</svelte:fragment>
-    <svelte:fragment slot="summary">(summary)</svelte:fragment>
-    <svelte:fragment slot="content">(content)</svelte:fragment>
-  </AccordionItem>
-  <AccordionItem>
-    <svelte:fragment slot="lead">(icon)</svelte:fragment>
-    <svelte:fragment slot="summary">(summary)</svelte:fragment>
-    <svelte:fragment slot="content">(content)</svelte:fragment>
-  </AccordionItem>
-  <!-- ... -->
-</Accordion>
+<script lang="ts">
+  import { page } from '$app/stores';
+  import { dev, browser } from '$app/environment';
+  import { Metadata, SiteFooter, SiteHeader } from '$lib/components/docs';
+  import { updateTheme } from '$lib/utils';
+  import '../app.pcss';
+  import { config } from '$lib/stores';
+  import { ModeWatcher } from 'mode-watcher';
+  import { Toaster as DefaultSonner } from '$lib/components/ui/sonner';
+
+  $: updateTheme($config.theme, $page.url.pathname);
+</script>
+
+<ModeWatcher />
+<Metadata />
+<DefaultSonner />
+
+<div class="relative flex min-h-screen flex-col" id="page">
+  <SiteHeader />
+  <div class="flex-1">
+    <slot />
+  </div>
+  <SiteFooter />
+</div>
 ```
+
+#### SiteHeader
+
+- MainNav : 데스크탑 헤더
+- MobileNav : 모바일 헤더
+- CommandMenu : 문서/명령 검색 (dialog), Ctrl+K 단축키
+- 링크 아이콘 : 깃허브, 트위터
+- ModeToggle : 테마 모드 변경 (Light/Dark/System)
+
+> MainNav
+
+- 로고
+- 데스크탑 메뉴
+
+> MobileNav
+
+- 햄버거 메뉴 아이콘
+- Sheet : 사이드바 메뉴
+  - Root, Trigger, Content
+
+> CommandMenu
+
+- onMount 에서 keydown 이벤트 등록 (소멸시 이벤트 삭제)
+- 메인 메뉴, 사이드바 메뉴 포함
+- 모드 Toggle 명령 연결
+
+#### SiteFooter
+
+- right, about 문구
 
 ## 9. Review
 
-- 작성중
+- 레이아웃만 뽑아놓고 보니 동작도 빠릿하고, 깔끔한게 세련되어 보인다.
+- markdown 과 테이블 등 몇가지 예제를 추가해서 더 다루어보려고 한다.
+- 몰랐던 유틸리티들이 여럿 포함되어 있어서 유익했다.
+
+> svelte 유틸리티
+
+- [svelte-sonner](https://github.com/wobsoriano/svelte-sonner) : 겹침 상태로 보여지는 Toast (세련된 스타일)
+- [svelte-persisted-store](https://www.npmjs.com/package/svelte-persisted-store) : local storage 관리 (구독/갱신/설정/읽기)
+- [Mode Watcher](https://www.npmjs.com/package/mode-watcher) : sveltekit 위한 light/dark 모드 관리
+- [lodash.template](https://lodash.com/docs/4.17.15#template) : 템플릿 기반 문자열 생성 (eval 기능)
 
 &nbsp; <br />
 &nbsp; <br />
