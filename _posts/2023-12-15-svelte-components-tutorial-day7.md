@@ -379,7 +379,7 @@ bun 런타임을 실행하기 위해 `--bun` 옵션을 사용한다.
 
 ```bash
 bun add drizzle-orm
-bun add -D drizzle-kit
+bun add -d drizzle-kit
 
 # bun:sqlite 위해 bun 런타임 실행
 bun --bun run dev

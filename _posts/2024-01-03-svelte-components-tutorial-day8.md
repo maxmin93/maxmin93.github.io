@@ -198,6 +198,8 @@ EOF
 
 ## 2. [bits-ui 설정](https://www.bits-ui.com/docs/getting-started)
 
+bits-ui 는 shacdn-svelte 으로 가기 위한 중간 개발물 같은 존재다. shacdn-svelte 에서 bits-ui 샘플 코드를 넣어도 tailwind 내용이 조금 틀리지만 잘 돌아간다.
+
 ```bash
 bun add bits-ui
 ```
@@ -210,8 +212,8 @@ Accordion 컴포넌트를 기준으로 비교해 본다.
 
 - melt-ui 는 UI 를 위한 동작과 이벤트, 스타일을 모두 코드로 다루고 있다.
   - 참고: [깃허브 - melt-ui/builders/accordion](https://github.com/melt-ui/melt-ui/tree/develop/src/lib/builders/accordion)
-  - 이 때문에 브라우저에서 첫 동작시 느려진다는 문제가 있다. (두번째 동작시는 잘됨)
   - 소스를 보면 굳이 이렇게까지 headless 를 사용할 필요가 있는지 회의감이 든다.
+  - 다른 css 라이브러리에 구애받지 않고 동일한 기능을 사용할 수 있다는 것은 장점이다.
 
 - 색상에 사용된 `bg-neutral-100` 등은 사용자 칼라 설정이 필요하다.
   - 참고: [tailwind 커스텀 칼라 설정](https://tailwindcss.com/docs/customizing-colors#using-custom-colors)
@@ -306,8 +308,7 @@ Accordion 컴포넌트를 기준으로 비교해 본다.
 
 #### [bits-ui 의 Accordion](https://www.bits-ui.com/docs/components/accordion)
 
-- 사용 코드는 melt-ui 의 계층을 개별적으로 svelte 파일을 만들어 조립한 형태이다.
-- 컴포넌트 자체의 소스를 보면 melt-ui 원본에 스타일 속성을 넣어 엄청 복잡하다.
+- 사용 코드는 melt-ui 의 태그 레이어를 개별적인 svelte 요소로 만들어 조립한 형태이다.
   - 참고 : [깃허브 - accordion/components](https://github.com/huntabyte/bits-ui/tree/main/src/lib/bits/accordion/components)
 
 ```html
@@ -614,16 +615,19 @@ $ _
 
 ## 9. Review
 
+- tailwind 설정을 잘하게 되면 해결될 문제가 많다. 변수라던지, 테마, 칼라 등..
 - 레이아웃만 뽑아놓고 보니 동작도 빠릿하고, 깔끔한게 세련되어 보인다.
-- markdown 과 테이블 등 몇가지 예제를 추가해서 더 다루어보려고 한다.
+  - markdown 과 테이블 등 몇가지 예제를 추가해서 더 다루어보려고 한다.
 - 몰랐던 유틸리티들이 여럿 포함되어 있어서 유익했다.
 
-> svelte 유틸리티
+> svelte 유틸리티 컴포넌트
 
 - [svelte-sonner](https://github.com/wobsoriano/svelte-sonner) : 겹침 상태로 보여지는 Toast (세련된 스타일)
 - [svelte-persisted-store](https://www.npmjs.com/package/svelte-persisted-store) : local storage 관리 (구독/갱신/설정/읽기)
 - [Mode Watcher](https://www.npmjs.com/package/mode-watcher) : sveltekit 위한 light/dark 모드 관리
 - [lodash.template](https://lodash.com/docs/4.17.15#template) : 템플릿 기반 문자열 생성 (eval 기능)
+- [cmdk-sv](https://github.com/huntabyte/cmdk-sv) : 검색창 (목록 필터링)
+- [svelte-infinite-loading](https://github.com/skayo/svelte-infinite-loading) : 무한 스크롤
 
 &nbsp; <br />
 &nbsp; <br />
