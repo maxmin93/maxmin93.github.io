@@ -132,7 +132,13 @@ const config = {
   preprocess: sequence([vitePreprocess(), preprocessMeltUI()]),
   kit: {
     adapter: adapter()
-  }
+  },
+  onwarn: (warning, handler) => {
+    if (warning.code.startsWith('a11y-')) {
+      return;
+    }
+    handler(warning);
+  }  
 };
 export default config;
 EOF

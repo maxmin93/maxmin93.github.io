@@ -59,7 +59,7 @@ bun add -d vite-plugin-tailwind-purgecss prettier-plugin-tailwindcss
 bun add tailwind-variants clsx tailwind-merge lucide-svelte
 
 # melt-ui 설치
-bun add -d @melt-ui/svelte @melt-ui/pp
+bun add -d @melt-ui/svelte @melt-ui/pp @internationalized/date
 
 # utilities 설치
 bun add @faker-js/faker  # 가짜 데이터
@@ -104,7 +104,13 @@ const config = {
   preprocess: sequence([vitePreprocess(), preprocessMeltUI()]),
   kit: {
     adapter: adapter()
-  }
+  },
+  onwarn: (warning, handler) => {
+    if (warning.code.startsWith('a11y-')) {
+      return;
+    }
+    handler(warning);
+  }  
 };
 export default config;
 EOF
@@ -354,6 +360,21 @@ cat <<EOF > src/routes/+layout.svelte
 EOF
 
 
+cat <<EOF > src/routes/+error.svelte 
+<script lang="ts">
+  import { page } from '\$app/stores';
+</script>
+
+<article class="prose p-8 lg:prose-xl">
+  <h1 class="text-error">Error</h1>
+  <p>
+    Even though you're on the <b>{\$page.url.pathname}</b> route this is not the
+    <code>+page.svelte</code> component but the <code>+error.svelte</code> component.
+  </p>
+</article>
+EOF
+
+
 # tailwind container 데모
 cat <<EOF > src/routes/+page.svelte
 <script>
@@ -370,7 +391,7 @@ cat <<EOF > src/routes/+page.svelte
     <div class="my-4 h-2 w-44 bg-green-700"></div>
     <p class="mb-10 text-xl">{faker.lorem.paragraph(5)}</p>
     <button
-      class="hover:bg-primary/90 inline-flex items-center rounded bg-primary px-4 py-2 text-2xl font-medium text-primary-foreground shadow"
+      class="hover:brightness-150 inline-flex items-center rounded bg-primary px-4 py-2 text-2xl font-medium text-primary-foreground shadow"
     >
       <BookOpen size="2rem" />
       <span class="ml-2">Learn more</span>
@@ -384,7 +405,7 @@ bun run dev
 
 ### DB & ORM 설정 (bun:sqlite)
 
-bun 런타임을 실행하기 위해 `--bun` 옵션을 사용한다.
+bun:sqlite 을 내장한 bun 런타임을 실행하기 위해 `--bun` 옵션을 사용한다.
 
 ```bash
 bun add drizzle-orm
@@ -398,7 +419,7 @@ DB_URL=db.sqlite
 EOF
 
 cat <<EOF > src/lib/server/schema.ts
-import { sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text, real } from 'drizzle-orm/sqlite-core';
 
 export const users = sqliteTable('users', {
   id: text('id', { length: 36 })
@@ -455,6 +476,7 @@ EOF
 
 cat <<EOF > drizzle/seed.ts
 import { drizzle } from 'drizzle-orm/bun-sqlite';
+import { count } from 'drizzle-orm';
 // @ts-ignore
 import { Database } from 'bun:sqlite';
 import { faker } from '@faker-js/faker';
@@ -495,6 +517,30 @@ EOF
 bun run drizzle:generate  # 1. DDL sql 생성 
 bun run drizzle:migrate  # 2. db 적용
 bun run drizzle:seed  # 3. data 추가
+
+
+cat <<EOF > src/routes/+page.server.ts
+import { db } from '\$lib/server/index.js';
+import { users } from '\$lib/server/schema';
+import type { PageServerData } from './\$types.js';
+
+const pageSize = 10;
+
+export const load: PageServerData = async ({ params }) => {
+  console.log('params:', params);  
+  const pageUsers = await db.select().from(users).orderBy(users.id).limit(pageSize);
+  // for DEBUG
+  for (let index = 0; index < pageUsers.length; index++) {
+    const element = pageUsers[index];
+    console.log(\`[\${index}] \${element.id} \${element.email}\`);
+  }
+  return {
+    pageSize,
+    pageUsers
+  };
+};
+EOF
+
 
 # bun:sqlite 위해 bun 런타임 실행
 bun --bun run dev
