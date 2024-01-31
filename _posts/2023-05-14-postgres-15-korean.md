@@ -371,7 +371,7 @@ SET
 to_tsvector 함수 결과에 대해 to_tsquery 함수를 사용한다.
 
 - 특징 필드를 to_tsvector 로 분석한 후 
-- 토큰에 대해 to_tsquery 로 매칭
+- 토큰에 대해 to_tsquery 로 매칭 : [Text Search Operators](https://www.postgresql.org/docs/current/functions-textsearch.html)
   + 여러 단어를 결합하고 싶으면 `&`, `|`, `!` 논리 연산자 이용
 
 ```sql

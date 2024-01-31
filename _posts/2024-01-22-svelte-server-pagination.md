@@ -2,9 +2,8 @@
 date: 2024-01-22 00:00:00 +0900
 title: Svelte Server Pagination
 categories: ["frontend","svelte"]
-tags: ["daisyui","drizzle","sqlite","component"]
+tags: ["daisyui","drizzle","sqlite","ui-components"]
 image: "https://img.youtube.com/vi/G-tafjJzfQo/0.jpg"
-
 ---
 
 > DaisyUI 와 Sqlite 를 이용해 테이블과 페이지네이션 컴포넌트를 구현합니다. Svelte 의 load 기능과 drizzle 의 select 문을 이용해 server 모드에서 작동합니다.
@@ -38,7 +37,7 @@ bun run dev
 3. `.prettierrc` 설정 : tailwind 플러그인
 4. `vite.config.ts` 설정 : purgeCss (highlight.js 클래스 제거 방지)
 5. `svelte.config.js` 설정 : melt-ui 전처리기
-6. `tailwind.config.js` 설정 : Noto 폰트, plugins
+6. `tailwind.config.js` 설정 : Noto 폰트, daisyui
 7. `app.html` : D2Coding 폰트, lang 설정
 8. `app.pcss` : tailwind 테마 설정
 9. `+layout.svelte` : 전역 css 연결
@@ -232,9 +231,7 @@ cat <<EOF > "src/routes/(base)/+layout.svelte"
   <!-- /SiteHeader -->
 
   <!-- SiteContent -->
-  <div class="flex-1">
-    <slot />
-  </div>
+  <slot />
   <!-- /SiteContent -->
 </div>
 EOF
@@ -245,8 +242,8 @@ cat <<EOF > "src/routes/(base)/+page.svelte"
   import { faker } from '@faker-js/faker/locale/ko';
 </script>
 
-<div class="hero min-h-[calc(100vh-80px)] bg-base-200">
-  <div class="hero-content text-center">
+<main class="hero min-h-[calc(100vh-64px)]">
+  <section class="hero-content">
     <div class="max-w-md">
       <h1 class="text-5xl font-bold">안녕, daisyUI</h1>
       <p class="py-6">{faker.lorem.paragraph(4)}</p>
@@ -255,8 +252,8 @@ cat <<EOF > "src/routes/(base)/+page.svelte"
         <span class="text-2xl">Get Started</span>
       </button>
     </div>
-  </div>
-</div>
+  </section>
+</main>
 EOF
 
 bun run dev
@@ -651,10 +648,10 @@ export const load = async ({ params }) => {
 
 ## 9. Review
 
-- daisyUI 에는 tailwind 컴포넌트만 있지, 로직과 함께 있는 pagination 코드가 없어서 스스로 작성해 보았다.
+- tailwind 컴포넌트만 있지, 로직과 함께 있는 pagination 코드가 없어서 스스로 작성해 보았다.
 - 페이지 변경시 페이지 reload 가 발생하지 않도록 form & action 을 사용해 보자.
 - pagination 버튼들을 어떻게 구성할지도 고민해 볼 거리다. (UX 문제)
-  - page slide 를 옮기는 버튼이 다음&이전 버튼 조합보다 낫지않나 싶고.
+  - page slide 를 옮기는 버튼이 다음&이전 버튼 조합보다 낫지않나 싶다.
 
 &nbsp; <br />
 &nbsp; <br />
