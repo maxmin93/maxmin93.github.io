@@ -6,7 +6,7 @@ tags: ["extension", "korean", "collate", "rum", "gin"]
 image: "https://dyclassroom.com/image/topic/postgresql/postgresql.jpg"
 ---
 
-> Postgresql 에서 한글 검색을 위한 gin 과 rum 인덱스를 살펴보고, 예제 데이터로 검색 사례들을 테스트 한다.
+> Postgresql 에서 한글 검색을 위한 gin 과 rum 인덱스를 살펴보고, 한글 텍스트 데이터로 검색 사례들을 테스트 합니다.
 {: .prompt-tip }
 
 - [PostgreSQL 15 한글 검색 설정](/posts/2023-05-14-postgres-15-korean/) : ko-x-icu, mecab
@@ -16,7 +16,7 @@ image: "https://dyclassroom.com/image/topic/postgresql/postgresql.jpg"
 
 ### 데이터베이스 설정
 
-> 기본 collate 는 'C.utf8' 이지만, 필요시 한글 텍스트 컬럼은 'ko-x-icu' 를 지정하면 된다.
+> 기본 collate 는 'C.utf8' 이지만, 한글 정렬 필요시 컬럼별로 'ko-x-icu' 를 지정하면 된다.
 
 ```sql
 -- 데이터베이스 생성: tablespace, owner, collate
@@ -93,20 +93,20 @@ limit 5;
 ### [textsearch 함수 및 연산자](https://www.postgresql.org/docs/current/functions-textsearch.html)
 
 ```sql
-# '제주시' 검색
-> select content from {DB} 
+-- '제주시' 검색
+select content from {DB} 
   where to_tsvector('korean', content) 
         @@ to_tsquery('korean','제주시')
   limit 5;
 
-# not '제주' 검색
-> select content from {DB} 
+-- not '제주' 검색
+select content from {DB} 
   where to_tsvector('korean', content) 
         @@ to_tsquery('korean','!제주')
   limit 5;
 
-# '서귀포 & 모슬포' 검색
-> select content from {DB} 
+-- '서귀포 & 모슬포' 검색
+select content from {DB} 
   where to_tsvector('korean', content) 
         @@ to_tsquery('korean','서귀포 & 모슬포') 
   order by content limit 5;
@@ -127,7 +127,7 @@ limit 5;
 - `websearch_to_tsquery('english', '"fat rat" or cat dog') → 'fat' <-> 'rat' | 'cat' & 'dog'` : <br/>
   웹검색처럼 텍스트를 tsquery 로 변환 (구절 검색, or/and 연산자)
   - `plainto_tsquery('english', 'The Fat Rats') → 'fat' & 'rat'` : <br/>
-    텍스트를 term 들의 tsquery 로 변환
+    텍스트를 '&'로 연결된 tsquery 로 변환
   - `phraseto_tsquery('english', 'The Fat Rats') → 'fat' <-> 'rat'` <br/>
     `phraseto_tsquery('english', 'The Cat and Rats') → 'cat' <2> 'rat'` : <br/>
     텍스트 문장을 term 들과 연결관계를 포함된 tsquery 로 변환  
@@ -136,13 +136,36 @@ limit 5;
   우선순위 문자(A/B/C/D) 를 tsvector 에 부여
 - `ts_headline('The fat cat ate the rat.', 'cat') → The fat <b>cat</b> ate the rat.` : <br/>
   (tsvector 가 아니라) raw 문자열에서 매칭된 단어를 강조하여 출력
-- `ts_rank(to_tsvector('raining cats and dogs'), 'cat') → 0.06079271` : <br/>
-  tf 기반 매칭 점수를 반환 (비교: `ts_rank_cd` 는 밀도 기반이라 더 정확하다)
-  - [가중치 A/B/C/D 사용시 기본 가중치 사용](https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-RANKING) : `{A:1.0, B:0.4 C:0.2 D:0.1}`
 - `tsvector_to_array ( tsvector ) → text[]` : <br/>
   tsvector 로부터 token 배열을 출력
 - `ts_stat('SELECT vector FROM apod')` : <br/>
   문서(record)의 document statistics 출력 (word, 문서수, 총 TF)
+- `ts_rank(to_tsvector('raining cats and dogs'), 'cat') → 0.06079271` : <br/>
+  tf 기반 매칭 점수를 반환 (비교: `ts_rank_cd` 는 밀도 기반 랭킹을 사용)
+  - [가중치 A/B/C/D 사용시 기본 가중치 사용](https://www.postgresql.org/docs/current/textsearch-controls.html#TEXTSEARCH-RANKING) : `{A:1.0, B:0.4 C:0.2 D:0.1}`
+
+> ts_rank 함수의 normalization 옵션 (flag bit)
+
+- 기본값 0 : 문서 길이를 무시 
+- 1 : `1 + log(문서길이)` 로 나누기 (짧은 문서에서 우위)
+- 4 : 근접우선인 조화평균거리로 나누기 (ts_rank_cd 에서만 사용)
+- 8 : 문서의 유일 단어수로 나누기 (문서의 정보성)
+- 32 : `rank / (rank+1)` (백분율 환산)
+
+```sql
+SELECT title, 
+  ts_rank_cd(textsearch, query, 32 /* rank/(rank+1) */ ) AS rank
+FROM apod, to_tsquery('neutrino|(dark & matter)') query
+WHERE  query @@ textsearch
+ORDER BY rank DESC
+LIMIT 10;
+--                      title               |        rank
+-- -----------------------------------------+-------------------
+--  Neutrinos in the Sun                    | 0.756097569485493
+--  The Sudbury Neutrino Detector           | 0.705882361190954
+--  A MACHO View of Galactic Dark Matter    | 0.668123210574724
+--  Hot Gas and Dark Matter                 |  0.65655958650282
+```
 
 #### 단어별 [document statistics](https://www.postgresql.org/docs/current/textsearch-features.html#TEXTSEARCH-STATISTICS) 출력
 
@@ -154,9 +177,9 @@ limit 5;
 
 ```sql
 SELECT * FROM ts_stat('SELECT gin_vec FROM public.test_gin')
-where length(word) > 2
-ORDER BY nentry DESC, ndoc DESC, word
-LIMIT 10;
+  where length(word) > 2
+  ORDER BY nentry DESC, ndoc DESC, word
+  LIMIT 10;
 -- ------------------------
 -- | word | ndoc | nentry |
 -- ------------------------
@@ -273,7 +296,7 @@ explain (analyze)
 -- | "title" | "rnk" |
 -- --------------------
 -- "고성림 서귀포해경서장 취임 ‘희망의 서귀포 바다 만들겠다’"  1.064899
--- "고성림 서귀포해양경찰서장 취임...‘안전하고 깨끗한 서귀포 바다 만들 것’"  1.0530303
+-- "고성림 서귀포해양경찰서장 취임...‘안전하고 깨끗한 서귀포...’"  1.0530303
 -- "서귀포시, ‘제25회 서귀포 겨울바다 국제펭귄수영대회’ 개최"  0.6617919
 -- "문화재청, 서귀포 문섬 바다 관광잠수함 운항 재허가 '불허'"  0.60041153
 -- "제주 거점 여성 문학인 동백문학회, ‘동백문학 3호’ 발간"  0.05  
@@ -315,7 +338,7 @@ insert into rum_test
     ) t(c1);
 
 -- 20만건 생성
-$ pgbench -M prepared -n -r -P 1 -f ./test.sql -c 50 -j 50 -t 200000
+-- $ pgbench -M prepared -n -r -P 1 -f ./test.sql -c 50 -j 50 -t 200000
 
 -- 색인 생성
 set maintenance_work_mem ='64GB';
@@ -330,10 +353,14 @@ explain analyze
 ------------------------------------------
 QUERY PLAN
 ------------------------------------------
- Limit  (cost=18988.45..19088.30 rows=100 width=1391) (actual time=58.912..59.165 rows=100 loops=1)
-   ->  Index Scan using rumidx on rum_test  (cost=16.00..99620.35 rows=99749 width=1391) (actual time=16.426..57.892 rows=19100 loops=1)
-         Index Cond: (c1 @@ '''1'' | ''2'''::tsquery)
-         Order By: (c1 <=> '''1'' | ''2'''::tsquery)
+  Limit  
+  (cost=18988.45..19088.30 rows=100 width=1391) 
+  (actual time=58.912..59.165 rows=100 loops=1)
+  -> Index Scan using rumidx on rum_test  
+    (cost=16.00..99620.35 rows=99749 width=1391) 
+    (actual time=16.426..57.892 rows=19100 loops=1)
+      Index Cond: (c1 @@ '''1'' | ''2'''::tsquery)
+      Order By: (c1 <=> '''1'' | ''2'''::tsquery)
  Planning time: 0.133 ms
  Execution time: 59.220 ms
 (6 rows)
@@ -363,6 +390,11 @@ sudo -u postgres psql -d {DB} -c `create extension rum`;
 ```
 
 ### rum 검색 테스트 (예제)
+
+RUM 은 ts_rank 와 ts_tank_cd 을 결합한 새로운 ranking 함수를 사용한다. ([출처](https://pgconf.ru/media/2017/04/03/20170316H3_Korotkov-rum.pdf))
+
+- ts_rank 는 논리 연산자를 지원하지 않고
+- ts_rank_cd 는 OR 쿼리에서 잘 작동하지 않는다.
 
 > 더 많은 내용은 RUM 깃허브 [readme 문서](https://github.com/postgrespro/rum/blob/master/README.md) 참조
 
