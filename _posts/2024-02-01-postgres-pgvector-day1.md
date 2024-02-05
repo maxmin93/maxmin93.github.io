@@ -122,7 +122,7 @@ CREATE INDEX ON items USING hnsw (embedding vector_cosine_ops);
 
 ## 2. openai 임베딩으로 vector 변환
 
-### foot 리뷰 데이터 
+### food reviews 데이터 
 
 - 1천건
 - CSV 다운로드 : [fine_food_reviews_1k.csv](https://github.com/openai/openai-cookbook/blob/main/examples/data/fine_food_reviews_1k.csv)
@@ -142,14 +142,6 @@ create table foodreview1k (
 
 -- psql 에서 실행
 \copy foodreview1k(id, regdt, productid, userid, score, summary, body) from '$HOME/Downloads/fine_food_reviews_1k.csv' delimiter ',' csv header;
-
--- supabase : Row Level Security
-alter table foodreview1k enable row level security;
--- supabase : policy
-create policy "foodreview1k are viewable by everyone"
-on foodreview1k for select
-to authenticated, anon
-using ( true );
 
 -------------------------------------------
 
@@ -192,7 +184,7 @@ limit 5;
 
 ### openai api 로 임베딩하기
 
-- 0번 리뷰 문서의 summary(제목) 만으로 임베딩 벡터 변환 요청
+- id=0 리뷰 문서의 summary(제목) 만으로 임베딩 벡터 변환 요청
 - postgresql 에서 api 를 요청해서 임베딩 벡터를 가져오기
   - json 의 텍스트 결과에서 new-lines, spaces 등을 제거
   - vector 타입으로 변환
@@ -316,6 +308,12 @@ limit 5;
   - 일단 생각대로 잘 되었다. 한글 데이터에서는 어떻게 될지 모르겠지만.
 - 여기까지 하고 다음 문서에서 계속하자.
 
+> 참고문서
+
+- [유튜브 - What's next in pgvector: Building AI-enabled apps with PostgreSQL](https://www.youtube.com/watch?v=CzeTgNoHXN0)
+  - [AWS 블로그 - Leverage pgvector and Amazon Aurora PostgreSQL for Natural Language Processing, Chatbots and Sentiment Analysis](https://aws.amazon.com/ko/blogs/database/leverage-pgvector-and-amazon-aurora-postgresql-for-natural-language-processing-chatbots-and-sentiment-analysis/)
+  - [깃허브 - aws-samples/aurora-postgresql-pgvector](https://github.com/aws-samples/aurora-postgresql-pgvector/tree/main/apgpgvector-langchain-auroraml)
+  
 &nbsp; <br />
 &nbsp; <br />
 
