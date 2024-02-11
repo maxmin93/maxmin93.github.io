@@ -36,7 +36,7 @@ hidden: true
   - [drizzle-orm](https://orm.drizzle.team/docs/) 0.29.3
   - [svelte-persisted-store](https://www.npmjs.com/package/svelte-persisted-store) 0.9.0
 
-## 1. 프로젝트 생성
+## 0. 프로젝트 생성
 
 ### [SvelteKit](https://kit.svelte.dev/) 프로젝트 생성
 
@@ -66,6 +66,10 @@ bun run dev
       - +layout.svelte : main(content)
       - checkbox
         - +page.svelte
+
+## 1. Tailwind CSS - Grid
+
+
 
 ## 2. melt-ui vs daisyUI 
 
