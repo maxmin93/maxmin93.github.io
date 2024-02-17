@@ -248,6 +248,15 @@ limit 5;
 - [airbnb 숙박정보 csv](https://github.com/YugabyteDB-Samples/openai-pgvector-lodging-service/blob/main/sql/airbnb_listings_with_embeddings.csv) : description 의 embedding 벡터 포함
   - [테이블 airbnb_listing](https://github.com/YugabyteDB-Samples/openai-pgvector-lodging-service/blob/main/sql/airbnb_listings.sql)
 
+```js
+const embeddingResp = await openai.embeddings.create(
+  {
+    model: "text-embedding-ada-002",
+    input: prompt
+  }
+);
+```
+
 <img src="/2024/02/05-airbnb-recommend-with-pgvector.png" alt="airbnb-recommend-with-pgvector" width="70%" />
 
 #### [embedding models](https://platform.openai.com/docs/guides/embeddings/embedding-models)
