@@ -1,5 +1,5 @@
 ---
-date: 2024-02-05 00:00:00 +0900
+date: 2024-02-12 00:00:00 +0900
 title: supabase pgvector - 3일차
 categories: ["database", "postgres"]
 tags: ["supabase", "openai", "embedding", "3nd-day"]
@@ -255,51 +255,7 @@ alter table airbnb_lodging add column n_tokens int;
 
 ## 3. 한글 뉴스 임베딩
 
-### [DBLink](https://www.postgresql.org/docs/current/dblink.html) 사용법
-
-- 연결명 등록 dblink_connect
-  - 탐색경로(스키마) 지정시 추가 `접속정보... options=-csearch_path=`
-- 연결명 조회 dblink_get_connections
-- 연결명 해제 dblink_disconnect
-- 원격 쿼리 dblink
-- 원격 명령(insert/update/delete) dblink_exec
-
-```sql
-CREATE EXTENSION dblink;
-
--- 연결명 등록
-select dblink_connect(
-  'jnewsdb',
-  'hostaddr=아이피 port=포트 dbname=데이터베이스 user=사용자 password=패스워드'
-);
--- OK
-
--- 등록된 연결명 조회 (text[])
-SELECT dblink_get_connections() as conns;
--- {jnewsdb}
-
--- 연결명 제거
-select dblink_disconnect('jnewsdb');
--- OK
-
--- 연결 테스트 (원격쿼리에 대한 레코드 정의가 꼭 필요하다)
--- 참고 : 멀티라인 작성시 $$ 부호를 사용
-select *
-from dblink('jnewsdb', $$
-    select domain, pub_dt, url, title, content 
-    from jnews.article 
-    limit 2  
-  $$)
-  as jnews(
-    domain text, 
-    pub_dt timestamp, 
-    url text, 
-    title text, 
-    content text
-  );
-```
-
-#### [postgres_fdw 원격 테이블 연결](https://towardsdatascience.com/how-to-set-up-a-foreign-data-wrapper-in-postgresql-ebec152827f3)
+### [postgres_fdw 원격 테이블 연결](https://towardsdatascience.com/how-to-set-up-a-foreign-data-wrapper-in-postgresql-ebec152827f3)
 
 dblink 는 세션 생성시마다 매번 패스워드를 등록해줘야 하는데 반해, `postgres_fdw` 는 로컬 스키마에 외부 테이블이 등록되어 로컬처럼 사용할 수 있어 더 편리하다.
 

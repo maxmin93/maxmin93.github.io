@@ -336,6 +336,51 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY,
 const { data: todos, error } = await supabase.from('todos').select('*')
 ```
 
+### 참고: [dblink](https://www.postgresql.org/docs/current/dblink.html) 사용법
+
+- 연결명 등록 dblink_connect
+  - 탐색경로(스키마) 지정시 추가 `접속정보... options=-csearch_path=`
+- 연결명 조회 dblink_get_connections
+- 연결명 해제 dblink_disconnect
+- 원격 쿼리 dblink
+- 원격 명령(insert/update/delete) dblink_exec
+
+```sql
+CREATE EXTENSION dblink;
+
+-- 연결명 등록
+select dblink_connect(
+  'jnewsdb',
+  'hostaddr=아이피 port=포트 dbname=데이터베이스 user=사용자 password=패스워드'
+);
+-- OK
+
+-- 등록된 연결명 조회 (text[])
+SELECT dblink_get_connections() as conns;
+-- {jnewsdb}
+
+-- 연결명 제거
+select dblink_disconnect('jnewsdb');
+-- OK
+
+-- 연결 테스트 (원격쿼리에 대한 레코드 정의가 꼭 필요하다)
+-- 참고 : 멀티라인 작성시 $$ 부호를 사용
+select *
+from dblink('jnewsdb', $$
+    select domain, pub_dt, url, title, content 
+    from jnews.article 
+    limit 2  
+  $$)
+  as jnews(
+    domain text, 
+    pub_dt timestamp, 
+    url text, 
+    title text, 
+    content text
+  );
+```
+
+
 &nbsp; <br />
 &nbsp; <br />
 

@@ -654,7 +654,13 @@ export const load = async ({ params }) => {
 - tailwind 컴포넌트만 있지, 로직과 함께 있는 pagination 코드가 없어서 스스로 작성해 보았다.
 - 페이지 변경시 페이지 reload 가 발생하지 않도록 form & action 을 사용해 보자.
 - pagination 버튼들을 어떻게 구성할지도 고민해 볼 거리다. (UX 문제)
-  - page slide 를 옮기는 버튼이 다음&이전 버튼 조합보다 낫지않나 싶다.
+
+> jekyll blog pagination
+
+첫 페이지와 마지막 페이지 버튼 좌우로 이동 버튼을 놓고, 중간에 페이지 번호를 배치 (좋다!)
+
+<img src="/2024/01/22-jekyll-blog-pagination-example.png" alt="jekyll-blog-pagination-example" width="40%" />
+
 
 &nbsp; <br />
 &nbsp; <br />
