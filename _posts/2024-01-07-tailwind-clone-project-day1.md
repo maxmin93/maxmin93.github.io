@@ -2,7 +2,7 @@
 date: 2024-01-07 00:00:00 +0900
 title: Tailwind 클론 프로젝트 - 1일차
 categories: ["frontend","template"]
-tags: ["tailwindcss","melt-ui","clone-coding","1st-day"]
+tags: ["tailwind","melt-ui","clone-coding","1st-day"]
 image: "https://cdn.taildashboards.com/media/screenshots/tailadmin.png"
 ---
 

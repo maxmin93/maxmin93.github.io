@@ -2,7 +2,7 @@
 date: 2023-12-15 00:00:00 +0900
 title: Svelte Component 라이브러리 - 7일차
 categories: ["frontend","svelte"]
-tags: ["melt-ui","ui-components","tailwindcss","7th-day"]
+tags: ["melt-ui","ui-components","tailwind","7th-day"]
 image: "https://www.melt-ui.com/banner.png"
 ---
 

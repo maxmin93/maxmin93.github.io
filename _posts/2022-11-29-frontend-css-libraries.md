@@ -2,7 +2,7 @@
 date: 2022-11-29 00:00:00 +0900
 title: 프론트엔드 CSS 라이브러리 비교
 categories: ["frontend","css"]
-tags: ["style","react","material","picocss","tailwindcss"]
+tags: ["style","react","material","picocss","tailwind"]
 image: "https://stackdiary.com/wp-content/uploads/2022/03/average-bundle-size-for-CSS-frameworks.png"
 ---
 

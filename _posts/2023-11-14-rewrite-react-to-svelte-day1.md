@@ -2,7 +2,7 @@
 date: 2023-11-14 00:00:00 +0900
 title: React 를 Svelte 로 변환하기 - 1일차
 categories: ["frontend","svelte"]
-tags: ["react","tailwindcss","ui-components","1st-day"]
+tags: ["react","tailwind","ui-components","1st-day"]
 image: "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/v7e3wmv98ql24smnwhe0.png"
 ---
 

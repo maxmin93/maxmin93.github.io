@@ -2,7 +2,7 @@
 date: 2024-01-03 00:00:00 +0900
 title: Svelte Component 라이브러리 - 8일차
 categories: ["frontend","svelte"]
-tags: ["melt-ui","bits-ui","tailwindcss","8th-day"]
+tags: ["melt-ui","bits-ui","tailwind","8th-day"]
 image: "https://opengraph.githubassets.com/46bfeda8337cd995f0b3d5f4f11f469cb06bbbd421e8f650c53f48d54d8145c2/huntabyte/bits-ui"
 ---
 

@@ -2,7 +2,7 @@
 date: 2023-11-08 00:00:00 +0900
 title: Svelte Component 라이브러리 - 4일차
 categories: ["frontend","svelte"]
-tags: ["daisyui","tailwindcss","4th-day"]
+tags: ["daisyui","tailwind","4th-day"]
 image: "https://s3-alpha.figma.com/hub/file/3709321768/b28165db-1eed-4f6a-9027-8f3317357e55-cover.png"
 ---
 

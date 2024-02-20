@@ -2,7 +2,7 @@
 date: 2023-11-09 00:00:00 +0900
 title: Svelte Component 라이브러리 - 5일차
 categories: ["frontend","svelte"]
-tags: ["skeleton","ui-components","tailwindcss","a11y","5th-day"]
+tags: ["skeleton","ui-components","tailwind","a11y","5th-day"]
 image: "https://i.ytimg.com/vi/tHzVyChDuyo/maxresdefault.jpg"
 ---
 

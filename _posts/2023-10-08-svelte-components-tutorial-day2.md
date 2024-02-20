@@ -2,7 +2,7 @@
 date: 2023-10-08 00:00:00 +0900
 title: Svelte Component 라이브러리 - 2일차
 categories: ["frontend","svelte"]
-tags: ["flowbite","tailwindcss","ui-components","2nd-day"]
+tags: ["flowbite","tailwind","ui-components","2nd-day"]
 image: "https://raw.githubusercontent.com/themesberg/flowbite-svelte/main/static/images/flowbite-svelte.png"
 ---
 
