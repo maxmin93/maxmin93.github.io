@@ -554,6 +554,7 @@ server {
     + events 블록 필요
     + server 블록 바깥에 http 블록 필요
 
+
 &nbsp; <br />
 &nbsp; <br />
 
