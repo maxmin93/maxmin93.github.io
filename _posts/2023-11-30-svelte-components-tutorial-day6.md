@@ -50,7 +50,7 @@ bun install
 bun run dev
 ```
 
-### 2) [TailwindCSS 및 skeleton 설정](https://www.skeleton.dev/docs/get-started) 
+### 2) [Open Props 설정](https://open-props.style/#getting-started) 
 
 1. postcss 설치 및 구성 (svelte-add)
 2. postcss-preset-env (autoprefixer, nested 포함)
@@ -91,6 +91,7 @@ EOF
 cat <<EOF > src/app.pcss
 /* fonts: Noto Color Emoji, Noto Sans KR, Noto Serif KR */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap');
+@import url("//cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-ligature-full.css");
 
 /* the props */
 @import 'open-props/postcss/style';
@@ -109,9 +110,6 @@ cat <<EOF > src/app.pcss
   font-family: 'Noto Sans KR', var(--font-sans);
 }
 EOF
-
-# D2Coding 폰트 추가 
-sed -i '' 's/favicon.png" \/>/favicon.png" \/>\n    <link href="http:\/\/cdn.jsdelivr.net\/gh\/joungkyun\/font-d2coding\/d2coding.css" rel="stylesheet" type="text\/css">/' src/app.html
 
 cat <<EOF > src/routes/+layout.svelte
 <script>

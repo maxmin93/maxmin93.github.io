@@ -60,7 +60,7 @@ bun install
 bun --bun dev
 ```
 
-### [TailwindCSS 및 plugins 설정](https://www.skeleton.dev/docs/get-started) 
+### [TailwindCSS 설정](https://tailwindcss.com/docs/installation/using-postcss)
 
 > 작업 목록
 
@@ -78,8 +78,7 @@ bun --bun dev
 
 ```bash
 # tailwind 설치
-bun add -d tailwindcss postcss autoprefixer
-# bun add -d @tailwindcss/typography @tailwindcss/forms
+bun add -d tailwindcss postcss autoprefixer @tailwindcss/typography
 bun add tailwind-variants clsx tailwind-merge
 
 # tailwind plugins, icons, faker 설치
@@ -91,7 +90,7 @@ bun add -d @faker-js/faker
 bunx tailwindcss init -p
 
 # prettier 에 tailwind 플러그인 추가
-sed -i '' 's/"prettier-plugin-svelte"\]/"prettier-plugin-svelte","prettier-plugin-tailwindcss"\]/' .prettierrc
+sed -i '' 's/"prettier-plugin-svelte"\]/"prettier-plugin-svelte","prettier-plugin-tailwindcss"\]\n"overrides": [\n{\n"files": "*.svelte",\n"options": {\n"parser": "svelte"\n}\n},\n{\n"files": "*.md",\n"options": {\n"tabWidth": 2,\n"useTabs": false,\n"printWidth": 79\n}\n}\n]/' .prettierrc
 
 # purgecss 설정
 cat <<EOF > vite.config.ts
@@ -130,19 +129,18 @@ export default {
 };
 EOF
 
-# lang, D2Coding 폰트 추가
+# lang, body.class 추가
 cat <<EOF > src/app.html
 <!doctype html>
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%sveltekit.assets%/favicon.png" />
-    <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     %sveltekit.head%
   </head>
-  <body data-sveltekit-preload-data="hover">
-    <div style="display: contents">%sveltekit.body%</div>
+  <body data-sveltekit-preload-data="hover" class="min-h-screen bg-background font-sans antialiased">
+    <div style="display: contents" class="relative flex min-h-screen flex-col">%sveltekit.body%</div>
   </body>
 </html>
 EOF
@@ -151,6 +149,7 @@ EOF
 cat <<EOF > src/app.pcss
 /* fonts: Noto Color Emoji, Noto Sans KR, Noto Serif KR */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap');
+@import url("//cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-ligature-full.css");
 
 @tailwind base;
 @tailwind components;

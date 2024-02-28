@@ -62,7 +62,7 @@ bun install
 bun --bun dev
 ```
 
-### [TailwindCSS 및 plugins 설정](https://www.skeleton.dev/docs/get-started) 
+### [TailwindCSS 설정](https://tailwindcss.com/docs/installation/using-postcss)
 
 > 작업 목록
 
@@ -172,7 +172,7 @@ export default {
 };
 EOF
 
-# lang, daisyUI theme 설정, D2Coding 폰트 추가
+# lang, daisyUI theme 설정
 # svelte preload 설정 지우고, debug-screens 설정
 cat <<EOF > src/app.html
 <!doctype html>
@@ -180,7 +180,6 @@ cat <<EOF > src/app.html
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%sveltekit.assets%/favicon.png" />
-    <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     %sveltekit.head%
   </head>
@@ -194,6 +193,7 @@ EOF
 cat <<EOF > src/app.pcss
 /* fonts: Noto Color Emoji, Noto Sans KR, Noto Serif KR */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap');
+@import url("//cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-ligature-full.css");
 
 @tailwind base;
 @tailwind components;

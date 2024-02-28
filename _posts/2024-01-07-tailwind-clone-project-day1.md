@@ -194,19 +194,18 @@ export default {
 EOF
 
 
-# 기본 언어 설정, D2Coding 폰트 추가
+# 기본 언어 설정
 cat <<EOF > src/app.html
 <!doctype html>
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%sveltekit.assets%/favicon.png" />
-    <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     %sveltekit.head%
   </head>
-  <body data-sveltekit-preload-data="hover">
-    <div style="display: contents">%sveltekit.body%</div>
+  <body data-sveltekit-preload-data="hover" class="min-h-screen bg-background font-sans antialiased">
+    <div style="display: contents" class="relative flex min-h-screen flex-col">%sveltekit.body%</div>
   </body>
 </html>
 EOF
@@ -216,6 +215,7 @@ EOF
 cat <<EOF > src/app.pcss
 /* fonts: Noto Color Emoji, Noto Sans KR, Noto Serif KR */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap');
+@import url("//cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-ligature-full.css");
 
 @tailwind base;
 @tailwind components;

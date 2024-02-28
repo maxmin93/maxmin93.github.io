@@ -61,9 +61,6 @@ bun add @fortawesome/fontawesome-free
 
 bunx tailwindcss init -p
 
-# D2Coding 폰트 추가 (Mac 에서는 첫번째 "" 인자가 필요하다)
-sed -i '' 's/favicon.png" \/>/favicon.png" \/>\n    <link href="http:\/\/cdn.jsdelivr.net\/gh\/joungkyun\/font-d2coding\/d2coding.css" rel="stylesheet" type="text\/css">/' src/app.html
-
 # lang, daisyUI theme 설정
 sed -i '' 's/html lang="en"/html lang="ko" data-theme="dark"/' src/app.html
 
@@ -94,6 +91,7 @@ EOF
 cat <<EOF > src/app.postcss
 /* fonts: Noto Color Emoji, Noto Sans KR, Noto Serif KR */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap');
+@import url("//cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-ligature-full.css");
 
 @tailwind base;
 @tailwind components;
