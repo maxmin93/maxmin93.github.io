@@ -120,13 +120,11 @@ export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   safelist: ['dark'],  // purge 제외 대상
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['"Noto Sans KR"', ...fontFamily.sans],
-        serif: ['"Noto Serif KR"', ...fontFamily.serif],
-        mono: ['D2Coding', ...fontFamily.mono],
-      },
-    },
+    fontFamily: {
+      sans: ['"Noto Sans KR"', ...fontFamily.sans],
+      serif: ['"Noto Serif KR"', ...fontFamily.serif],
+      mono: ['D2Coding', ...fontFamily.mono],
+    },  
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
   daisyui: {

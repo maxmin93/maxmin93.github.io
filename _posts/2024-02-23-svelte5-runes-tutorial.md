@@ -1,6 +1,6 @@
 ---
 date: 2024-02-23 00:00:00 +0900
-title: Svelte 5 Runes 연습
+title: Svelte 5 Runes
 categories: ["frontend","svelte"]
 tags: ["svelte5","runes","tutorial"]
 image: "https://i.ytimg.com/vi/RVnxF3j3N8U/sddefault.jpg"
@@ -8,6 +8,9 @@ image: "https://i.ytimg.com/vi/RVnxF3j3N8U/sddefault.jpg"
 
 > Svelte 5 의 Rune 기능을 공부합니다. 변경은 확정적인것 같고 충분히 검토를 거친 기능들이기 때문에 미리 익숙해지는 것이 좋다고 생각합니다.
 {: .prompt-tip }
+
+- [Svelte 5 Runes](/posts/2024-02-23-svelte5-runes-tutorial/) : features &nbsp; &#10004;
+- [Svelte 5 Runes Example](/posts/2024-02-26-svelte5-runes-example/) : Todo App
 
 
 ## 0. 개요

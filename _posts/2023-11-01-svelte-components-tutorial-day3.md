@@ -76,12 +76,12 @@ export default {
   plugins: [require('flowbite/plugin'), require('flowbite-typography')],
   darkMode: 'class',
   theme: {
+    fontFamily: {
+      sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
+      serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
+      mono: ['D2Coding', ...defaultTheme.fontFamily.mono],        
+    },
     extend: {
-      fontFamily: {
-        sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
-        serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
-        mono: ['D2Coding', ...defaultTheme.fontFamily.mono],        
-      },
       colors: {
         // flowbite-svelte
         primary: {

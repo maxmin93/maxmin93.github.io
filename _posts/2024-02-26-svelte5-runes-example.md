@@ -9,6 +9,9 @@ image: "https://i.ytimg.com/vi/uOI77E8Y95Q/sddefault.jpg"
 > Svelte 5 기능을 연습하기 위해 Todo 앱 만들기를 연습합니다. JoyOfCode 유튜버의 코드를 참고하여 DaisyUI 컴포넌트로 작성합니다.
 {: .prompt-tip }
 
+- [Svelte 5 Runes](/posts/2024-02-23-svelte5-runes-tutorial/) : features
+- [Svelte 5 Runes Example](/posts/2024-02-26-svelte5-runes-example/) : Todo App &nbsp; &#10004;
+
 
 ## 0. 개요
 
@@ -43,6 +46,10 @@ bunx --bun vite dev
 ```
 
 ### [TailwindCSS 설정](https://tailwindcss.com/docs/installation/using-postcss)
+
+- tailwind 설정의 theme.extend 는 기본값에 추가한다는 의미이다.
+- tailwind 컨테이너 container 를 theme 파라미터로 재정의 했다.
+- 기존 스크린 외에 모바일, 태블릿, 데스크탑 스크린을 추가했다.
 
 ```bash
 # tailwind, plugins 설치
@@ -86,7 +93,7 @@ export default defineConfig({
 });
 EOF
 
-# default font, daisyUI 설정 (background, foreground 색상 추가)
+# font & screen & color 추가 (extend), daisyUI 설정
 cat <<EOF > tailwind.config.js
 const defaultTheme = require('tailwindcss/defaultTheme');
 
@@ -94,12 +101,30 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
-        serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
-        mono: ['D2Coding', ...defaultTheme.fontFamily.mono],
+    container: (theme) => ({
+      center: true,
+      padding: {
+        DEFAULT: theme('spacing.4'),
+        sm: theme('spacing.5'),
+        lg: theme('spacing.6'),
+        xl: theme('spacing.8'),
       },
+      screens: {
+        '2xl': '1400px',
+      },
+    }),
+    screens: {
+      mobile: '640px',
+      tablet: '960px',
+      desktop: '1280px',
+      ...defaultTheme.screens,
+    },
+    fontFamily: {
+      sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
+      serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
+      mono: ['D2Coding', ...defaultTheme.fontFamily.mono],
+    },
+    extend: {
       colors: {
         background: 'var(--background, oklch(var(--b2)/<alpha-value>))',
         foreground: 'var(--foreground, oklch(var(--bc)/<alpha-value>))',
@@ -161,7 +186,12 @@ cat <<EOF > src/app.pcss
 @tailwind components;
 @tailwind utilities;
 
-/* begin Reset */
+@layer components {
+  .container {
+    @apply mobile:max-w-[600px] tablet:max-w-[900px] desktop:max-w-[1200px];
+  }
+}
+
 *,
 *::before,
 *::after {
@@ -169,7 +199,6 @@ cat <<EOF > src/app.pcss
   padding: 0;
   box-sizing: border-box;
 }
-/* end Reset */
 
 html {
   scroll-behavior: smooth; /* 부드러운 스크롤 */
@@ -474,6 +503,10 @@ EOF
 - writable 에서 `$state` 변수로 바로 넣는 방법은 없는거 같다. (get 사용)
 - todosStorage 를 onMount 시점에서 읽고, onDestroy 시점에서 저장했다. 
 
+> localStroage 초기화
+
+콘솔창에서 `localStorage.clear()` 실행, 또는 `localStorage.removeItem(key)`
+
 ```html
 <script lang="ts">
   import type { Todo, Filters } from '$lib/stores/todos';
@@ -499,7 +532,7 @@ EOF
 ```
 
 ```ts
-// $lib/stroes/todos.ts
+// $lib/stores/todos.ts
 import { persisted } from 'svelte-persisted-store';
 
 export type Todo = {
@@ -532,8 +565,8 @@ export const todos = persisted<Todo[]>('todos', [
 
 - svelte 4 에 비해 편하고 직관적이라 이해하기 쉽다.
   - javascript 바닐라 문법에 좀 더 다가간 느낌이다. 이질감은 적다.
-- daisyUI 에 변수도 추가해 보고, 컴포넌트도 사용해 보았다.
-  - 익숙해지면 사용해 볼 만한데, 프론트엔드 개발은 여전히 두렵다.
+- daisyUI 에 변수도 추가해 보고, 컴포넌트도 사용해 보았다. (일보 전진)
+  - 익숙해지면 사용해 볼 만한데, 프론트엔드 디자인은 여전히 두렵다.
 - 처음에 body 상단이 1rem 만큼 내려 앉아서 스크롤이 생겼다. 그래서 당황했다.
   - 마이너스 mt-4 도 소용없어서, hero 클래스를 넣어보니 되었고 이후 flex 로 바꿨다.
 

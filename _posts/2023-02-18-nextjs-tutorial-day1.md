@@ -90,13 +90,11 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      fontFamily: {
-        sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
-        serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
-        mono: ['D2Coding', ...defaultTheme.fontFamily.mono],
-      },      
-    },
+    fontFamily: {
+      sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
+      serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
+      mono: ['D2Coding', ...defaultTheme.fontFamily.mono],
+    },      
   },
   plugins: [],
 }

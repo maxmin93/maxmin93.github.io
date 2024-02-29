@@ -132,6 +132,11 @@ export default {
         '2xl': '1400px'
       }
     },    
+    fontFamily: {
+      sans: ['"Noto Sans KR"', ...fontFamily.sans],
+      serif: ['"Noto Serif KR"', ...fontFamily.serif],
+      mono: ['D2Coding', ...fontFamily.mono],
+    },  
     extend: {
       colors: {
         border: 'oklch(var(--border) / <alpha-value>)',
@@ -178,11 +183,6 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
-      },
-      fontFamily: {
-        sans: ['"Noto Sans KR"', ...fontFamily.sans],
-        serif: ['"Noto Serif KR"', ...fontFamily.serif],
-        mono: ['D2Coding', ...fontFamily.mono],
       },
     },
   },
