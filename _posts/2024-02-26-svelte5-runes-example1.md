@@ -1,8 +1,8 @@
 ---
 date: 2024-02-26 00:00:00 +0900
-title: Svelte 5 Runes Example
+title: Svelte 5 Runes - Todo App
 categories: ["frontend","svelte"]
-tags: ["svelte5","runes","tutorial"]
+tags: ["svelte5","example","daisyui"]
 image: "https://i.ytimg.com/vi/uOI77E8Y95Q/sddefault.jpg"
 ---
 
@@ -10,7 +10,8 @@ image: "https://i.ytimg.com/vi/uOI77E8Y95Q/sddefault.jpg"
 {: .prompt-tip }
 
 - [Svelte 5 Runes](/posts/2024-02-23-svelte5-runes-tutorial/) : features
-- [Svelte 5 Runes Example](/posts/2024-02-26-svelte5-runes-example/) : Todo App &nbsp; &#10004;
+- [Svelte 5 Runes - Todo App](/posts/2024-02-26-svelte5-runes-example1/) : Example #1 &nbsp; &#10004;
+- [Svelte 5 Runes - Supabase Auth](/posts/2024-02-29-svelte5-runes-example2/) : Example #2
 
 
 ## 0. 개요
@@ -30,7 +31,7 @@ image: "https://i.ytimg.com/vi/uOI77E8Y95Q/sddefault.jpg"
 
 <img src="/2024/02/26-svelte5-daisyui-home.png" alt="svelte5-daisyui-home" width="60%" />
 
-### [SvelteKit](https://kit.svelte.dev/) 프로젝트 생성
+### [Svelte 5 runes](https://kit.svelte.dev/) 프로젝트 생성
 
 ```bash
 bun create svelte@latest svlt5-todo-app
@@ -169,10 +170,9 @@ cat <<EOF > src/app.html
   </head>
   <body
     data-sveltekit-preload-data="hover"
-    class="min-h-screen bg-background font-sans antialiased">
-    <div style="display: contents" class="relative flex min-h-screen flex-col">
-      %sveltekit.body%
-    </div>
+    class="flex min-h-screen flex-col items-center justify-center bg-base-100"
+  >
+    <div style="display: contents">%sveltekit.body%</div>
   </body>
 </html>
 EOF
