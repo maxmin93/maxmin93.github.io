@@ -6,11 +6,12 @@ tags: ["svelte5","runes","tutorial"]
 image: "https://i.ytimg.com/vi/RVnxF3j3N8U/sddefault.jpg"
 ---
 
-> Svelte 5 의 Rune 기능을 공부합니다. 변경은 확정적인것 같고 충분히 검토를 거친 기능들이기 때문에 미리 익숙해지는 것이 좋다고 생각합니다.
+> Svelte 5 의 Rune 기능을 공부합니다. 2024년 1분기 출시는 확정적인 것 같고 충분히 검토를 거친 기능들이기 때문에 미리 익숙해지는 것이 좋다고 생각합니다.
 {: .prompt-tip }
 
 - [Svelte 5 Runes](/posts/2024-02-23-svelte5-runes-tutorial/) : features &nbsp; &#10004;
-- [Svelte 5 Runes Example](/posts/2024-02-26-svelte5-runes-example1/) : Todo App
+- [Svelte 5 Runes - Todo App](/posts/2024-02-26-svelte5-runes-example1/) &nbsp; &#10004;
+- [Svelte 5 Runes - Supabase Auth](/posts/2024-02-29-svelte5-runes-example2/) 
 
 
 ## 0. 개요
@@ -28,6 +29,12 @@ image: "https://i.ytimg.com/vi/RVnxF3j3N8U/sddefault.jpg"
 
 - Runes 의 문법이 React 따라하는 것 아니냐? 다른게 뭐냐? Svelte 장점을 훼손한다는 불만들이 많았지만 1년 넘도록 Svelte 5 로의 작업을 계속하고 있습니다.
 - 나보다 머리 좋은 형님들이 머리를 맞대고 여러 사항에 대한 검토까지 마친 기능들이기 때문에 겸허히 받아들이고 감사히 쓰면 된다고 생각합니다.
+
+### [SvelteKit 로드맵](https://sveltekit.io/blog/sveltekit-roadmap)
+
+- SvelteKit 3 출시 : 2024년 12월 14일 예정
+  - 웹소켓 통합 (아직 개발중)
+- Svelte 5 출시 : 2024년 1분기 예정
 
 
 ## 1. 프로젝트 생성
@@ -56,8 +63,33 @@ bunx --bun vite build
 bunx --bun vite preview
 ```
 
+### runes 활성화 옵션
+
+프로젝트 생성시에 `svelte5 preview` 선택했으면 설정 안해도 되긴 한다.
+
+> 전체 프로젝트 수준에서 사용할 때 `svelte.config.ts` 에 설정
+
+이거 쓰면 거의 대부분의 라이브러리들을 못쓰게 된다. 심지어 icons 라이브러리까지.
+
+```ts
+export default {
+  // ...,
+  compilerOptions: {
+    runes: true
+  }
+};
+```
+
+> 특정 영역에서 사용할 때 해당 svelte 파일 내에서 선언
+
+```html
+<svelte:options runes={true} />
+```
+
 
 ## 2. Runes
+
+**읽어보기** : [SvelteKit 블로그 - 스벨트 5가 온다](https://sveltekit.io/blog/svelte-5)
 
 ### 특징과 이점 (by Gemini)
 
@@ -351,6 +383,8 @@ let { a, b, c, ...everythingElse } = $props<MyProps>();
 ## 3. 그밖의 기능들
 
 ### [snippets](https://svelte-5-preview.vercel.app/docs/snippets)
+
+**읽어보기** : [SvelteKit 블로그 - Slot 은 이제 안녕](https://sveltekit.io/blog/snippets)
 
 - slot 대신에 @render 를 사용하고
 - 템플릿을 snippet 키워드로 감싸서 함수처럼 재사용 할 수 있다.

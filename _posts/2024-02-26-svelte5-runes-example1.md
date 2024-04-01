@@ -10,8 +10,8 @@ image: "https://i.ytimg.com/vi/uOI77E8Y95Q/sddefault.jpg"
 {: .prompt-tip }
 
 - [Svelte 5 Runes](/posts/2024-02-23-svelte5-runes-tutorial/) : features
-- [Svelte 5 Runes - Todo App](/posts/2024-02-26-svelte5-runes-example1/) : Example #1 &nbsp; &#10004;
-- [Svelte 5 Runes - Supabase Auth](/posts/2024-02-29-svelte5-runes-example2/) : Example #2
+- [Svelte 5 Runes - Todo App](/posts/2024-02-26-svelte5-runes-example1/) &nbsp; &#10004;
+- [Svelte 5 Runes - Supabase Auth](/posts/2024-02-29-svelte5-runes-example2/)
 
 
 ## 0. 개요
@@ -23,7 +23,8 @@ image: "https://i.ytimg.com/vi/uOI77E8Y95Q/sddefault.jpg"
 - 유틸리티
   - theme-change : light/dark 테마 변경
   - svelte-persisted-store : localStorage 읽기/쓰기
-
+  - [svelte-remixicon](https://remixicon.com/) : 리믹스 아이콘 (MIT 라이센스)
+    - lucide 아이콘은 1444개로 line 스타일만 있는데, remix 아이콘은 2850개 (filled 스타일 포함)
 
 ## 1. 프로젝트 생성
 
@@ -49,6 +50,7 @@ bunx --bun vite dev
 ### [TailwindCSS 설정](https://tailwindcss.com/docs/installation/using-postcss)
 
 - tailwind 설정의 theme.extend 는 기본값에 추가한다는 의미이다.
+  - 주의 : color 를 직접 추가하지 말자. 안된다. 변수를 바로 사용해야 작동한다.
 - tailwind 컨테이너 container 를 theme 파라미터로 재정의 했다.
 - 기존 스크린 외에 모바일, 태블릿, 데스크탑 스크린을 추가했다.
 
@@ -94,7 +96,7 @@ export default defineConfig({
 });
 EOF
 
-# font & screen & color 추가 (extend), daisyUI 설정
+# font & screen & 변수 추가, daisyUI 설정
 cat <<EOF > tailwind.config.js
 const defaultTheme = require('tailwindcss/defaultTheme');
 
@@ -125,30 +127,11 @@ export default {
       serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
       mono: ['D2Coding', ...defaultTheme.fontFamily.mono],
     },
-    extend: {
-      colors: {
-        background: 'var(--background, oklch(var(--b2)/<alpha-value>))',
-        foreground: 'var(--foreground, oklch(var(--bc)/<alpha-value>))',
-      },
-    },
   },
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
   daisyui: {
     logs: false,
-    themes: [
-      {
-        light: {
-          ...require('daisyui/src/theming/themes')['light'],
-          '--background': '#e4d8b4', // retro
-          '--foreground': '#732438', // retro
-        },
-        dark: {
-          ...require('daisyui/src/theming/themes')['dark'],
-          '--background': '#171618', // luxury
-          '--foreground': '#dca54c', // luxury
-        },
-      },
-    ],
+    themes: false,
   },
 };
 EOF
@@ -192,14 +175,6 @@ cat <<EOF > src/app.pcss
   }
 }
 
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 html {
   scroll-behavior: smooth; /* 부드러운 스크롤 */
   font-family: font-sans;
@@ -212,9 +187,11 @@ EOF
 
 ```bash
 # plugins, icons, faker 설치
-bun add -d @faker-js/faker
+bun add -d @faker-js/faker svelte-remixicon
 bun add tailwind-variants clsx tailwind-merge
-bun add theme-change nanoid lucide-svelte svelte-persisted-store
+bun add theme-change nanoid svelte-persisted-store
+
+mkdir src/lib/utils
 
 # A simple indicator to show current breakpoint
 cat <<EOF > src/lib/utils/tw-indicator.svelte
@@ -267,15 +244,18 @@ cat <<EOF > src/routes/+error.svelte
 </div>
 EOF
 
+# 기존 첫페이지를 지우고 '(home)' 아래에 생성
+rm "src/routes/+page.svelte"
 mkdir "src/routes/(home)"
 
 # daisyUI 확인용 demo 페이지 (theme 변경 스위치 포함)
 cat <<EOF > "src/routes/(home)/+page.svelte"
 <script>
-  import { SunIcon, MoonIcon } from 'lucide-svelte';
-
+  import { RiSunLine, RiMoonLine } from 'svelte-remixicon';
+  import { onMount } from 'svelte';
+  
   let isDark = \$state(false);
-  \$effect(() => {
+  onMount(() => {
     isDark = localStorage.getItem('theme') === 'dark';
   });
 </script>
@@ -286,14 +266,14 @@ cat <<EOF > "src/routes/(home)/+page.svelte"
       <h1 class="text-5xl font-bold">안녕, daisyUI</h1>
       <p class="py-6 font-mono text-foreground">구성 : TailwindCSS + SvelteKit + Bun</p>
       <label class="flex cursor-pointer gap-2">
-        <SunIcon size="20px" />
+        <RiSunLine size="20px"></RiSunLine>
         <input
           type="checkbox"
           bind:checked={isDark}
           data-toggle-theme="light,dark"
           class="theme-controller toggle"
         />
-        <MoonIcon size="20px" />
+        <RiMoonLine size="20px"></RiMoonLine>
       </label>
     </div>
   </div>
