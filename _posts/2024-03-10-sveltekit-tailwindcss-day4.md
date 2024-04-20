@@ -2,14 +2,14 @@
 date: 2024-03-10 00:00:00 +0900
 title: SvelteKit Tailwind 튜토리얼 - 4일차
 categories: ["frontend","tailwind"]
-tags: ["tutorial","css","4th-day"]
+tags: ["tutorial","svelte5","4th-day"]
 image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170649.png"
 ---
 
 > Tailwind CSS 튜토리얼들을 공부합니다. 같은 내용이 반복되는 것 같지만 익숙해질 때까지 다른 방법은 없다고 생각합니다. 유튜브의 좋은 강좌들을 하나씩 정복하려고 합니다.
 {: .prompt-tip }
 
-- [SvelteKit Tailwind 튜토리얼 - 1일차](/posts/2023-07-10-sveltekit-tailwindcss-day1/) : Tailwind Labs &ndash; [Insta UI](https://www.youtube.com/watch?v=v74SZBVMPa0)
+- [SvelteKit Tailwind 튜토리얼 - 1일차](/posts/2023-07-10-sveltekit-tailwindcss-day1/) : Tailwind Labs
 - [SvelteKit Tailwind 튜토리얼 - 2일차](/posts/2023-12-01-sveltekit-tailwindcss-day2/) : Plugins &amp; Tools
 - [SvelteKit Tailwind 튜토리얼 - 3일차](/posts/2023-12-13-sveltekit-tailwindcss-day3/) : Tutorial &#35;1
 - [SvelteKit Tailwind 튜토리얼 - 4일차](/posts/2024-03-10-sveltekit-tailwindcss-day4/) : Tutorial &#35;2 &nbsp; &#10004;
@@ -152,7 +152,7 @@ html {
 }
 ```
 
-## 2. [Agency Site Template](https://tailgrids.com/templates)
+## 2. 템플릿 구성요소 만들기
 
 ### Svelte &amp; Kakao Map 예제
 
@@ -251,11 +251,6 @@ declare global {
     kakao: any;
   }
   namespace App {
-    // interface Error {}
-    // interface Locals {}
-    // interface PageData {}
-    // interface PageState {}
-    // interface Platform {}
   }
 }
 
@@ -347,32 +342,40 @@ export {};
 
 ### [Flex 로 반응형 컬럼 Grid 구현하기](https://laravelnews.s3.amazonaws.com/images/grid-system-equal-height-buttons-1643380450.png)
 
+- wrapper 의 `flex flex-wrap` 이 핵심 포인트
+  - wrapper 에서 `-mx-4` 한 후에, column 에서 `p-4` 으로 채운다. 
+- column 에서 콘텐츠의 너비를 지정 : 1/2 또는 1/3  
+
 ```html
 <!-- Container -->
 <div class="max-w-screen-xl mx-auto px-4">
   <!-- Grid wrapper -->
   <div class="-mx-4 flex flex-wrap">
-    <!-- Grid column -->
+
+    <!-- Grid column 1 -->
     <div class="w-full p-4 sm:w-1/2 lg:w-1/3">
       <!-- Column contents -->
       <div class="px-10 py-12 bg-white rounded-lg shadow-lg">
         <!-- Card contents -->
       </div>
     </div>
-    <!-- Grid column -->
+
+    <!-- Grid column 2 -->
     <div class="w-full p-4 sm:w-1/2 lg:w-1/3">
       <!-- Column contents -->
       <div class="px-10 py-12 bg-white rounded-lg shadow-lg">
         <!-- Card contents -->
       </div>
     </div>
-    <!-- Grid column -->
+
+    <!-- Grid column 3 -->
     <div class="w-full p-4 sm:w-1/2 lg:w-1/3">
       <!-- Column contents -->
       <div class="px-10 py-12 bg-white rounded-lg shadow-lg">
         <!-- Card contents -->
       </div>
     </div>
+
   </div>
 </div>
 ```
@@ -459,57 +462,23 @@ export {};
   let { data } = $props();
 </script>
 
+<!-- || 윈도우 이벤트 연결 -->
 <svelte:window bind:scrollY={y} />
 
-<!-- || Navbar Section Start -->
 <NavbarSection {scrolledFromTop} {navController} />
-<!-- || Navbar Section End -->
-
-<!-- || Hero Section Start -->
 <HeroSection />
-<!-- || Hero Section End -->
-
-<!-- || Brands Section Start -->
 <BrandSection />
-<!-- || Brands Section End -->
-
-<!-- || Services Section Start -->
 <ServiceSection />
-<!-- || Services Section End -->
-
-<!-- || About Section Start -->
 <AboutSection />
-<!-- || About Section End -->
-
-<!-- || Team Section Start -->
 <TeamSection members={data.members ?? []} />
-<!-- || Team Section End -->
-
-<!-- || Testimonials Section Start -->
 <TestimonialsSection />
-<!-- || Testimonials Section End -->
-
-<!-- || Pricing Section Start -->
 <PricingSection />
-<!-- || Pricing Section End -->
-
-<!-- || Call To Action Section Start -->
 <CtaSection />
-<!-- || Call To Action Section End -->
-
-<!-- || Contact Section Start -->
 <ContactSection />
-<!-- || Contact Section End -->
-
-<!-- || Blog Section Start -->
 <BlogSection />
-<!-- || Blog Section End -->
-
-<!-- || Footer Section Start -->
 <FooterSection />
-<!-- || Footer Section End -->
 
-<!-- Back to top button -->
+<!-- || Back to top button -->
 <button
   onclick={scrollToTop}
   type="button"
@@ -531,7 +500,14 @@ export {};
 </button>
 ```
 
+> top 화면
+
 <img src="/2024/03/10-tailgrid-template-agency.png" alt="Agency - Tailwind CSS Agency Site Template" width="80%" />
+
+> 전체 화면
+
+<img src="/2024/03/10-tailgrid-templates-site1-whole.png" alt="Agency - Tailwind CSS Agency Site Template" width="200px" />
+
 
 
 ## 9. Review
@@ -541,7 +517,7 @@ export {};
 - Svelte Action 을 이용해 splidejs 와 kakaomap 을 연결했다.
   - Agency 템플릿에 지도와 carousel 기능이 구현되어 있지 않아서 채워 넣었다.
 - window 전역객체에 property 를 정의해서 빨간줄을 안보게 되니 속이 시원하다.
-
+  - 인터페이스로 `Window` 선언 후 `window.kakao = window.kakao || {};` 초기화
 
 &nbsp; <br />
 &nbsp; <br />
