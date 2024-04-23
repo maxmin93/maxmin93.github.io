@@ -508,6 +508,16 @@ export {};
 
 <img src="/2024/03/10-tailgrid-templates-site1-whole.png" alt="Agency - Tailwind CSS Agency Site Template" width="200px" />
 
+> Template Section and Pages:
+
+- Home Page
+- About Us
+- Our Team
+- Features
+- Pricing
+- Support
+- Blog
+- 404 Page
 
 
 ## 9. Review

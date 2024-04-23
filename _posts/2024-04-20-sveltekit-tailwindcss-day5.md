@@ -44,6 +44,23 @@ image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170
 
 <img src="/2024/04/20-tailgrid-templates-site2-whole.png" alt="TailGrids - Startup Site Template" width="200px" />
 
+> Template Section and Pages:
+
+- Home
+- Pricing
+- Features
+- Team Section
+- FAQ
+- Call to Action
+- Testimonials
+- Contacts Us
+- Newsletter
+- Log In & Sign Up
+- Privacy Policy Page
+- Legal Notice Page
+- Terms of Service Page
+- 404 Page
+
 
 ## 2. `+page.svelte`
 
