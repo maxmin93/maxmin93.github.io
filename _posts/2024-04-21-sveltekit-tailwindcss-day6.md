@@ -257,17 +257,182 @@ image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170
 
 ## 4. 컴포넌트
 
-### 차트
+### 스코어 카드
 
-### 테이블
+<img src="/2024/04/21-site3-component-score-card.png" alt="component-score-card.png" width="70%" />
 
-### 다이얼로그 입력창
+숫자값 등을 출력하는 대시보드용 스코어 카드 컴포넌트에 대한 코드이다. 동일한 형태를 갖지만 내용물만 다른 경우 프로퍼티를 전달하여 재사용하도록 작성할 수 있다.
 
+- svgIcon : 이전에 slot 으로 작성되던 위치에 snippet 으로 대치하여 작성
+  - 컴포넌트 내부에 정의될 경우 attribute 로 지정 안해도 `$props` 로 받게 된다.
+- 고정 개수이면 each loop 로 생성하는 것보다 물리적으로 반복하는 것이 보기 편하다.
+  - 동적 개수이면 loop 로 처리하지만, 고정 형태라면 중복 작성이 옳다.
+- 각 카드의 DropDown 메뉴 핸들러는 createDropdownHandle 로 생성시마다 호출
+  - 상태 변수 open 과 toggle 함수를 각각 별개의 객체로 전달
+
+> Parent Component
+
+```html
+<script>
+  // create handler of dropdown menu
+  const createDropdownHandle = () => {
+    /** @type {boolean} */
+    let isOpen = $state(false);
+    return {
+      /** @param {boolean=} value */
+      toggle: (value = undefined) => {
+        if (value === undefined) {
+          isOpen = !isOpen;
+        } else {
+          isOpen = value;
+        }
+      },
+      get open() {
+        return isOpen;
+      },
+    };
+  };
+
+  /** @type { {
+   *    value: string,
+   *    description: string,
+   *  }[] }
+   */
+  let scoreItems = [
+    { value: '$4,350', description: 'Earned this month' },
+    { value: '583', description: 'New Clients' },
+    { value: '1289', description: 'New Sales' },
+  ];
+
+  import ChartCard from './chart-card.svelte';
+  import ScoreCard from './score-card.svelte';
+</script>
+
+<ScoreCard
+  value={scoreItems[0].value}
+  description={scoreItems[0].description}
+  handler={createDropdownHandle()}
+>
+  {#snippet svgIcon()}
+    <svg
+      width="30"
+      height="31"
+      viewBox="0 0 30 31"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="fill-current"
+    >
+      <path d="M18.5156 ... 14.4688Z" />
+    </svg>
+  {/snippet}
+</ScoreCard>
+
+<ScoreCard ... />
+<ScoreCard ... />
+```
+
+> ScoreCard (Child)
+
+```html
+<script>
+  /** @type { {
+   *    value: string,
+   *    description: string,
+   *    handler: {
+   *      open: boolean,
+   *      toggle: (val?: boolean) => void,
+   *    },
+   *    svgIcon: import('svelte').Snippet,
+   *  } }
+   */
+  let { value, description, handler, svgIcon } = $props();
+</script>
+
+<div
+  class="relative mb-8 flex items-center rounded-[10px] px-6 py-10 shadow-sm sm:px-10 md:px-6 xl:px-10"
+>
+  <div
+    class="mr-4 flex h-[50px] w-full max-w-[50px] items-center justify-center rounded-full bg-primary text-primary-content sm:mr-6 sm:h-[60px] sm:max-w-[60px] md:mr-4 md:h-[50px] md:max-w-[50px] xl:mr-6 xl:h-[60px] xl:max-w-[60px]"
+  >
+    {@render svgIcon()}
+  </div>
+  <div>
+    <p class="text-2xl font-bold text-primary-content xl:text-[28px] xl:leading-[35px]">
+      {value}
+    </p>
+    <p class="mt-1 text-base text-base-content">{description}</p>
+  </div>
+</div>
+```
+
+### chart.js 차트
+21-site3-component-score-card.png
+<img src="/2024/04/21-chartjs-barchart-demo.png" alt="chartjs-barchart-demo" width="70%" />
+
+- `onMount` 를 사용할 수도 있지만, use 지시자를 이용해 단순화했다.
+- Svelte 에서는 `chart.js/auto` 를 참조해야 차트가 나타난다. [(매뉴얼 참고)](https://www.chartjs.org/docs/latest/getting-started/integration.html#quick-start)
+  - chartjs 는 tree-shakeable 이라서, 번들링에 모두 포함되도록 auto 를 사용한다.
+  - 예제 : [Create Beautiful Charts with Svelte and Chart js](https://dev.to/wesleymutwiri/create-beautiful-charts-with-svelte-and-chart-js-512n)
+
+> `+page.svelte`
+
+```html
+<script>
+  import { bindBarChart } from './chartjs-bar.svelte';
+</script>
+
+<section class="container mx-auto">
+  <h1 class="pb-4 text-xl">Bar Chart</h1>
+  <div class="w-[800px] border">
+    <canvas use:bindBarChart></canvas>
+  </div>
+</section>
+```
+
+> `chartjs-bar.svelte.js`
+
+```js
+import { Chart as ChartJS } from 'chart.js/auto';
+
+/** @param { HTMLCanvasElement } node */
+export function bindBarChart(node) {
+  /** @type { import('chart.js').Chart | undefined } */
+  let barChart = new ChartJS(node, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [
+        {
+          label: '# of Votes',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+        },
+      },
+    },
+  });
+
+  return {
+    destroy() {
+      if (barChart) barChart.destroy();
+      barChart = undefined;
+    },
+  };
+}
+```
 
 
 ## 9. Review
 
-- 나머지는 다음에..
+- 테이블, 다이얼로그 입력박스 등 나머지는 다음에..
+- 차트 컴포넌트 구현시 [svelte-chartjs](https://github.com/SauravKanchan/svelte-chartjs) 를 써도 되지만, svelte5 연습을 위해 wrapper 라이브러리를 사용하지 않았다.
+  - 본래 Svelte 의 장점은 js 라이브러리들을 자유롭게 사용할 수 있다는 점이었다.
 
 
 &nbsp; <br />
