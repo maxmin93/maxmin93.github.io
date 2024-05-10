@@ -45,7 +45,7 @@ image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170
 
 > 전체 화면
 
-<!-- img src="/2024/04/21-tailgrids-templates-site3-whole.png" alt="TailGrids - Dashboard and Admin Template" width="200px" /-->
+<img src="/2024/04/21-site3-full-screen-shot.png" alt="TailGrids - Dashboard and Admin Template" width="200px" />
 
 > Template Section and Pages
 
@@ -77,26 +77,17 @@ image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170
 3. 상단 메뉴바 보다 우선순위를 갖는 사이드 메뉴바를 작성하여 끼워넣기
 4. 사이드바 토글 버튼을 만들고 open 상태 변수를 작성하여 translate 클래스와 연결
 5. 사이드바 open 때에 전체 화면을 반투명하게 가리는 outside 영역을 작성하고 닫기 연결
-6. ...
+6. Body 부분 (HeaderSection 과 ContentSection) 작성
 
-### 전체 코드
+### Admin 레이아웃
 
-```html
+- 사이드바와 사이드바 핸들러(열고 닫기)를 먼저 작성하고
+  - 사이드바는 초기에 회면 왼쪽(마이너스 x 위치)에 숨겨진 상태로 존재하다 나타난다.
+- Body 영역에서 Header 와 Content 섹션을 작성한다.
+  - HeaderSection 은 상단에 고정이지만,
+  - ContentSection 은 메뉴 선택에 따라 내용이 바뀐다.
 
-```
-
-
-## 3. 레이아웃
-
-> 사이드바 close 상태 (light 테마)
-
-<img src="/2024/04/21-site3-mobile-sidebar-close-light.png" alt="Admin Template - Sidebar Layout - Close" width="40%" />
-
-> 사이드바 open 상태 (dark 테마)
-
-<img src="/2024/04/21-site3-mobile-sidebar-open-dark.png" alt="Admin Template - Sidebar Layout - Open" width="40%" />
-
-### `+page.svelte`
+#### 전체 코드
 
 - 생략가능(optional) 함수 파라미터의 JSDoc 표현식 : `@param {boolean=} value`
 
@@ -144,13 +135,80 @@ image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170
       : '-translate-x-full'} fixed left-0 top-0 z-30 h-screen w-full bg-neutral bg-opacity-80 xl:hidden"
   ></div>
 
-  <!-- Content Area -->
+  <!-- Body Area -->
   <div class="w-full xl:pl-[90px]">
     <!-- || Header Menu Section Start -->
     <HeaderSection {sidebarController} />
     <!-- || Header Menu Section End -->
-  </div>
+
+    <!-- Content Area -->
+    <div class="p-[30px]">
+      <SalesSection />
+    </div>    
+  </div>  
 </section>
+```
+
+
+## 3. 레이아웃
+
+### 사이드바 
+
+- 로고 이미지 (링크)
+- 툴바 : 홈, 대시보드, 오더, 메시지, 판매, 이벤트, 차트, 문서
+- 툴바 분리선
+- 툴바 : 메시지, 설정, 로그아웃
+- 프로파일 아바타
+
+> 사이드바 close 상태 (light 테마)
+
+<img src="/2024/04/21-site3-mobile-sidebar-close-light.png" alt="Admin Template - Sidebar Layout - Close" width="40%" />
+
+> 사이드바 open 상태 (dark 테마)
+
+<img src="/2024/04/21-site3-mobile-sidebar-open-dark.png" alt="Admin Template - Sidebar Layout - Open" width="40%" />
+
+> `sidebar-section.svelte`
+
+```html
+<script>
+  import LogoSvg from '$lib/assets/images/logo/logo.svg';
+  import Avatar5Img from '$lib/assets/images/avatar/image-05.jpg';
+</script>
+
+<aside>
+  <!-- 로고(Home) -->
+  <div class="px-7 pb-7 pt-9">
+    <a href={undefined}>
+      <img src={LogoSvg} alt="logo" class="h-8 w-8" />
+    </a>
+  </div>
+
+  <!-- 툴바 -->
+  <nav>
+    <ul>
+      <!-- Home 버튼 -->
+      <li class="group relative">
+        <!-- 아이콘 링크 -->
+        <a
+          href={undefined}
+          class="relative flex items-center justify-center border-r-4 border-transparent px-9 py-3 text-base font-medium text-base-content duration-200 hover:border-primary hover:bg-primary/5 hover:text-primary"
+        >...</a>
+        <!-- 라벨 (hover 할 때 translate 로 출력) -->
+        <span
+          class="invisible absolute left-[115%] top-1/2 -translate-y-1/2 whitespace-nowrap rounded-[5px] bg-base-100 px-[14px] py-[6px] text-sm text-base-content shadow-md group-hover:visible"
+        >...</span>
+      </li>
+      <!-- 나머지 툴바 버튼들... -->
+      <li class="group relative">...</li>
+    </ul>
+  </nav>
+
+  <!-- Profile : Avatar(image) -->
+  <div class="px-6 py-10">
+    <div class="flex items-center">...</div>
+  </div>
+</aside>
 ```
 
 ### 상단 메뉴바 
@@ -201,57 +259,6 @@ image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170
 
   </div>
 </header>  
-```
-
-### 사이드바 
-
-- 로고 이미지 (링크)
-- 툴바 : 홈, 대시보드, 오더, 메시지, 판매, 이벤트, 차트, 문서
-- 툴바 분리선
-- 툴바 : 메시지, 설정, 로그아웃
-- 프로파일 아바타
-
-> `sidebar-section.svelte`
-
-```html
-<script>
-  import LogoSvg from '$lib/assets/images/logo/logo.svg';
-  import Avatar5Img from '$lib/assets/images/avatar/image-05.jpg';
-</script>
-
-<aside>
-  <!-- 로고(Home) -->
-  <div class="px-7 pb-7 pt-9">
-    <a href={undefined}>
-      <img src={LogoSvg} alt="logo" class="h-8 w-8" />
-    </a>
-  </div>
-
-  <!-- 툴바 -->
-  <nav>
-    <ul>
-      <!-- Home 버튼 -->
-      <li class="group relative">
-        <!-- 아이콘 링크 -->
-        <a
-          href={undefined}
-          class="relative flex items-center justify-center border-r-4 border-transparent px-9 py-3 text-base font-medium text-base-content duration-200 hover:border-primary hover:bg-primary/5 hover:text-primary"
-        >...</a>
-        <!-- 라벨 (hover 할 때 translate 로 출력) -->
-        <span
-          class="invisible absolute left-[115%] top-1/2 -translate-y-1/2 whitespace-nowrap rounded-[5px] bg-base-100 px-[14px] py-[6px] text-sm text-base-content shadow-md group-hover:visible"
-        >...</span>
-      </li>
-      <!-- 나머지 툴바 버튼들... -->
-      <li class="group relative">...</li>
-    </ul>
-  </nav>
-
-  <!-- Profile : Avatar(image) -->
-  <div class="px-6 py-10">
-    <div class="flex items-center">...</div>
-  </div>
-</aside>
 ```
 
 
@@ -366,7 +373,7 @@ image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170
 ```
 
 ### chart.js 차트
-21-site3-component-score-card.png
+
 <img src="/2024/04/21-chartjs-barchart-demo.png" alt="chartjs-barchart-demo" width="70%" />
 
 - `onMount` 를 사용할 수도 있지만, use 지시자를 이용해 단순화했다.
@@ -396,19 +403,21 @@ import { Chart as ChartJS } from 'chart.js/auto';
 
 /** @param { HTMLCanvasElement } node */
 export function bindBarChart(node) {
-  /** @type { import('chart.js').Chart | undefined } */
-  let barChart = new ChartJS(node, {
+
+  const data = {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [
+      {
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const config = {
     type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [
-        {
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1,
-        },
-      ],
-    },
+    data: data,
     options: {
       scales: {
         y: {
@@ -416,7 +425,10 @@ export function bindBarChart(node) {
         },
       },
     },
-  });
+  };
+
+  /** @type { import('chart.js').Chart | undefined } */
+  let barChart = new ChartJS(node, config);
 
   return {
     destroy() {
@@ -427,12 +439,176 @@ export function bindBarChart(node) {
 }
 ```
 
+#### Canvas 바탕색상 변경
+
+비슷한 방법으로 dark mode 에서 chart 의 색상, 스타일 등을 변경하는데 사용할 수 있다.
+
+> 참고
+
+- [How to Change the Background Color of Canvas in Chart JS 4](https://www.youtube.com/watch?v=_kXfsPxZOYQ)
+- [How to Implement Dark Mode in Chart JS](https://www.youtube.com/watch?v=NV-8--_w1wY)
+
+```js
+const canvasBgColorConfig = {
+  id: 'customCanvasBackgroundColor',
+  beforeDraw: (chart, args, options) => {
+    const { ctx } = chart;
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.fillStyle = options.color || '#99ffff';
+    ctx.fillRect(0, 0, chart.width, chart.height);
+    ctx.restore();
+  },
+};
+
+let barChart = new ChartJS(ctx, {
+  type: 'bar',
+  data: { /* ... */ },
+  options: {
+    plugins: {
+      customCanvasBackgroundColor: {
+        color: 'lightGreen',
+      },
+    },
+  },
+  plugins: [canvasBgColorConfig]
+});
+```
+
+#### Chart.js Actions 추가
+
+차트 canvas 아래에 여러 action 버튼들을 추가해 동작하도록 작성해보았다.
+
+- chartjs 생성 함수에서 차트 생성 후 emit 이벤트를 발신
+- 차트 컴포넌트에서 chart 객체를 event.detail 로 받아 $state 변수에 저장
+- 차트 컴포넌트에서 chart 객체를 파라미터로 넣어 다양한 action 함수들을 연결
+
+참고 : [공식문서 - Line Chart with Actions](https://www.chartjs.org/docs/latest/samples/line/line.html)
+
+> 화면캡쳐
+
+<img src="/2024/04/21-svelte5-chartjs-line-actions.gif" alt="chartjs-line-with-actions" width="80%" />
+
+> sales-section.svelte (Parent 컴포넌트)
+
+```html
+<script>
+  import { bindLineChart, lineChartActions } from './chartjs-line.svelte';
+</script>
+
+<!-- Chart #3 (with Actions) -->
+<ChartCard
+  title="$35,8K"
+  description="Overall Revenue"
+  options={[
+    { value: 'monthly', name: 'Monthly' },
+    { value: 'yearly', name: 'Yearly' },
+  ]}
+  chartfn={bindLineChart}
+  class="2xl:w-5/12"
+  actions={lineChartActions}
+></ChartCard>
+```
+
+> chartjs-line.svelte.js (js 모듈)
+
+```js
+import { Chart as ChartJS } from 'chart.js/auto';
+import * as Utils from '$lib/utils/chartjs-utils';
+
+export const lineChartActions = [
+  {
+    name: 'Randomize',
+    /** @param { import('chart.js').Chart } chart */
+    handler(chart) {
+      chart.data.datasets.forEach((dataset) => {
+        if (chart.data.labels)
+          dataset.data = Utils.numbers({ count: chart.data.labels.length, min: -100, max: 100 });
+      });
+      chart.update();
+    },
+  },
+  { name: 'Add Dataset', handler(chart) {...} },
+  { name: 'Add Data', handler(chart) {...} },
+  { name: 'Remove Dataset', handler(chart) {...} },
+  { name: 'Remove Data', handler(chart) {...} },
+];
+
+////////////////////////////////////////////////
+
+/** @param { HTMLCanvasElement } node */
+export function bindLineChart(node) {
+  // create chartjs
+  // ...
+
+  // 차트가 생성되면 emit 이벤트를 발신(dispatch)
+  node.dispatchEvent(new CustomEvent('emit', { detail: lineChart }));
+
+  return {...};
+}  
+```
+
+> chart-card.svelte (Child 컴포넌트)
+
+- 상위 컴포넌트에서 actions 를 전달받고 action 버튼 생성
+- chart 생성 함수에서 전달한 chart 객체를 저장하고 action handler 함수에 전달
+
+```html
+<script>
+  /** @type { {
+   *    title: string,
+   *    description: string,
+   *    options: any[],
+   *     chartfn: (node: HTMLCanvasElement) => {destroy(): void;} | undefined,
+   *     actions?: {name:string, handler(chart:import('chart.js').Chart):void}[],
+   *     class?: string,
+   *  } }
+   * */
+  let { title, description, options, chartfn, actions, ...restProps } = $props();
+  let customClass = restProps.class ?? 'lg:w-1/2 xl:w-7/12 2xl:w-5/12';
+  let chart = $state(undefined);
+
+  /**
+   * chart 하위 컴포넌트에서 emit 이벤트 발생시 실행되는 함수
+   * @param {CustomEvent} event
+   */
+  function handleEmit(event) {
+    /** @type { import('chart.js').Chart | undefined } */
+    chart = event.detail ?? undefined;
+  }
+</script>
+
+<!-- Line 차트 -->
+<div class="flex h-[380px] items-center justify-center">
+  {#if chartfn !== undefined}
+    <canvas class="my-4" on:emit={handleEmit} use:chartfn></canvas>
+  {/if}
+</div>
+
+<!-- Actions 버튼 그룹 -->
+{#if actions}
+  <div class="join mt-6 flex place-content-center gap-2">
+    {#each actions as action}
+      <button
+        class="btn join-item bg-primary-content {!chart && 'btn-disabled'}"
+        onclick={() => {
+          console.log('action clicked:', action.name, !!chart);
+          if (chart) action.handler(chart);
+        }}>{action.name}</button
+      >
+    {/each}
+  </div>
+{/if}
+```
 
 ## 9. Review
 
 - 테이블, 다이얼로그 입력박스 등 나머지는 다음에..
-- 차트 컴포넌트 구현시 [svelte-chartjs](https://github.com/SauravKanchan/svelte-chartjs) 를 써도 되지만, svelte5 연습을 위해 wrapper 라이브러리를 사용하지 않았다.
+  - 테이블 코드는 daisyui 샘플 코드를 붙여 넣었다.
+  - 테이블에 thead 와 tbody 만 있는줄 알았는데, tfoot 도 있었다.
+- 차트 컴포넌트 구현시 [svelte-chartjs](https://github.com/SauravKanchan/svelte-chartjs) 를 써도 되지만, svelte5 연습을 위해 사용하지 않았다.
   - 본래 Svelte 의 장점은 js 라이브러리들을 자유롭게 사용할 수 있다는 점이었다.
+- 화면을 동영상 캡쳐해서 animated GIF 파일로 변환하는게 번거롭다. (쉬운 방법 없나?)
 
 
 &nbsp; <br />
