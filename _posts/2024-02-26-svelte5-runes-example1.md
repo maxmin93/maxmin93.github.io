@@ -82,16 +82,16 @@ cat <<EOF > .prettierrc
 }
 EOF
 
-# purgecss 설정 (제외 대상)
+# CSS 최적화를 위한 purgecss 설정은 배포단계에서 해제할것
 cat <<EOF > vite.config.ts
-import { purgeCss } from 'vite-plugin-tailwind-purgecss';
+// import { purgeCss } from 'vite-plugin-tailwind-purgecss';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [
     sveltekit(),
-    purgeCss({ safelist: {greedy: [/^hljs-/] }}),
+    // purgeCss({ safelist: {greedy: [/^hljs-/] }}),
   ]
 });
 EOF
@@ -116,12 +116,6 @@ export default {
         '2xl': '1400px',
       },
     }),
-    screens: {
-      mobile: '640px',
-      tablet: '960px',
-      desktop: '1280px',
-      ...defaultTheme.screens,
-    },
     fontFamily: {
       sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
       serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
@@ -131,7 +125,20 @@ export default {
   plugins: [require('@tailwindcss/typography'), require('daisyui')],
   daisyui: {
     logs: false,
-    themes: false,
+    themes: [
+      {
+        light: {
+          ...require('daisyui/src/theming/themes')['light'],
+          neutral: 'white',
+          'neutral-content': 'black',
+        },
+        dark: {
+          ...require('daisyui/src/theming/themes')['dark'],
+          neutral: 'black',
+          'neutral-content': 'white',
+        },
+      },
+    ],
   },
 };
 EOF
@@ -151,10 +158,7 @@ cat <<EOF > src/app.html
       } catch (e) {}
     </script>
   </head>
-  <body
-    data-sveltekit-preload-data="hover"
-    class="flex min-h-screen flex-col items-center justify-center bg-base-100"
-  >
+  <body data-sveltekit-preload-data="hover">
     <div style="display: contents">%sveltekit.body%</div>
   </body>
 </html>
@@ -169,16 +173,10 @@ cat <<EOF > src/app.pcss
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .container {
-    @apply mobile:max-w-[600px] tablet:max-w-[900px] desktop:max-w-[1200px];
-  }
-}
-
 html {
   scroll-behavior: smooth; /* 부드러운 스크롤 */
   font-family: font-sans;
-  font-size: clamp(1rem, 2.2vh, 1.5rem);
+  /* font-size: clamp(1rem, 2.2vh, 1.5rem); */
 }
 EOF
 ```
@@ -189,7 +187,9 @@ EOF
 # plugins, icons, faker 설치
 bun add -d @faker-js/faker svelte-remixicon
 bun add tailwind-variants clsx tailwind-merge
-bun add theme-change nanoid svelte-persisted-store
+
+# utils (옵션)
+# bun add nanoid svelte-persisted-store 
 
 mkdir src/lib/utils
 
@@ -213,18 +213,113 @@ cat <<EOF > src/lib/utils/tw-indicator.svelte
 {/if}
 EOF
 
+# TW Utilities
+cat <<EOF > src/lib/utils/tw-util.js
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+/** @param {...(import('clsx').ClassValue)} inputs  */
+export function cn(...inputs) {
+  return twMerge(clsx(inputs));
+}
+
+/** @type {boolean} isBrowser */
+export const isBrowser = typeof document !== 'undefined';
+
+/**
+ * @param {string} hex
+ * @returns {[number, number, number]}
+ */
+export function hexToHsl(hex) {
+  if (!hex) [0, 0, 0];
+
+  const sanitizedHex = hex.replace('#', '');
+
+  const red = Number.parseInt(sanitizedHex.substring(0, 2), 16);
+  const green = Number.parseInt(sanitizedHex.substring(2, 4), 16);
+  const blue = Number.parseInt(sanitizedHex.substring(4, 6), 16);
+
+  const normalizedRed = red / 255;
+  const normalizedGreen = green / 255;
+  const normalizedBlue = blue / 255;
+
+  const max = Math.max(normalizedRed, normalizedGreen, normalizedBlue);
+  const min = Math.min(normalizedRed, normalizedGreen, normalizedBlue);
+
+  let hue, saturation, lightness;
+
+  if (max === min) {
+    hue = 0;
+  } else if (max === normalizedRed) {
+    hue = ((normalizedGreen - normalizedBlue) / (max - min)) % 6;
+  } else if (max === normalizedGreen) {
+    hue = (normalizedBlue - normalizedRed) / (max - min) + 2;
+  } else {
+    hue = (normalizedRed - normalizedGreen) / (max - min) + 4;
+  }
+
+  hue = Math.round(hue * 60);
+  if (hue < 0) {
+    hue += 360;
+  }
+
+  lightness = (max + min) / 2;
+
+  if (max === min) {
+    saturation = 0;
+  } else if (lightness <= 0.5) {
+    saturation = (max - min) / (max + min);
+  } else {
+    saturation = (max - min) / (2 - max - min);
+  }
+
+  saturation = Math.round(saturation * 100);
+  lightness = Math.round(lightness * 100);
+
+  return [hue, saturation, lightness];
+}
+
+/**
+ * @param {string} hex
+ * @returns {[number, number, number]}
+ */
+export function hexToRgb(hex) {
+  if (!hex) [0, 0, 0];
+
+  const sanitizedHex = hex.replace('#', '');
+
+  const red = Number.parseInt(sanitizedHex.substring(0, 2), 16);
+  const green = Number.parseInt(sanitizedHex.substring(2, 4), 16);
+  const blue = Number.parseInt(sanitizedHex.substring(4, 6), 16);
+
+  return [red, green, blue];
+}
+
+/**
+ * @param { boolean } isDark
+ * @param { string[] } themes (default: light/dark)
+ */
+export function toggleTheme(isDark, themes = ['light', 'dark']) {
+  if (isBrowser) {
+    const rootEl = document.querySelector('html');
+    if (rootEl) {
+      rootEl.dataset.theme = isDark ? themes.at(-1) : themes.at(0);
+      localStorage.setItem('theme', rootEl.dataset.theme);
+    }
+  }
+}
+EOF
+
 cat <<EOF > src/routes/+layout.svelte
 <script lang="ts">
   import '../app.pcss';
-  import { themeChange } from 'theme-change';
   import TwIndicator from '\$lib/utils/tw-indicator.svelte';
 
-  \$effect(() => {
-    themeChange(false);
-  });
+  let { children } = \$props();
 </script>
 
-<slot />
+{@render children()}
+
 <TwIndicator />
 EOF
 
@@ -253,10 +348,14 @@ cat <<EOF > "src/routes/(home)/+page.svelte"
 <script>
   import { RiSunLine, RiMoonLine } from 'svelte-remixicon';
   import { onMount } from 'svelte';
-  
-  let isDark = \$state(false);
-  onMount(() => {
+  import { toggleTheme } from '\$lib/utils/tw-util.js';
+
+  let isDark = \$state(true);  // html[data-theme="dark"]
+  onMount(()=>{
     isDark = localStorage.getItem('theme') === 'dark';
+  });
+  \$effect(() => {
+    toggleTheme(isDark);  // default themes : light/dark
   });
 </script>
 
@@ -267,12 +366,7 @@ cat <<EOF > "src/routes/(home)/+page.svelte"
       <p class="py-6 font-mono text-foreground">구성 : TailwindCSS + SvelteKit + Bun</p>
       <label class="flex cursor-pointer gap-2">
         <RiSunLine size="20px"></RiSunLine>
-        <input
-          type="checkbox"
-          bind:checked={isDark}
-          data-toggle-theme="light,dark"
-          class="theme-controller toggle"
-        />
+        <input type="checkbox" bind:checked={isDark} class="toggle" />
         <RiMoonLine size="20px"></RiMoonLine>
       </label>
     </div>
