@@ -2,7 +2,7 @@
 date: 2023-07-13 00:00:00 +0900
 title: RedisGraph 수명 종료 발표
 categories: ["database","graphdb"]
-tags: ["redis", "end-of-life", "redisgraph", "review"]
+tags: ["redis","end-of-life","redisgraph","review"]
 image: "https://redis.com/wp-content/uploads/2022/04/redisgraph-two-point-eight-1200x628-1.jpg"
 ---
 

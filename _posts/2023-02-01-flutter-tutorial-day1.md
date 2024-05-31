@@ -1,8 +1,8 @@
 ---
 date: 2023-02-01 00:00:00 +0900
 title: Dart 공부하기 - 1일차
-categories: ["language","dart"]
-tags: ["flutter", "tutorial","1st-day"]
+categories: ["language"]
+tags: ["dart","tutorial","1st-day"]
 image: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Dart_programming_language_logo.svg/2560px-Dart_programming_language_logo.svg.png"
 ---
 

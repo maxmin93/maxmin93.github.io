@@ -2,7 +2,7 @@
 date: 2024-05-29 00:00:00 +0900
 title: SvelteKit Tailwind 튜토리얼 - 7일차
 categories: ["frontend","tailwind"]
-tags: ["tutorial","svelte5","7th-day"]
+tags: ["tutorial","svelte5","supabase","7th-day"]
 image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170649.png"
 ---
 

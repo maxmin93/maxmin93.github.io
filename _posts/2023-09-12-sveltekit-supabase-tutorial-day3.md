@@ -1,8 +1,8 @@
 ---
 date: 2023-09-12 00:00:00 +0900
 title: SvelteKit + Supabase 통합 - 3일차
-categories: ["frontend","svelte"]
-tags: ["bun", "auth", "supabase", "skeleton", "3rd-day"]
+categories: ["backend","supabase"]
+tags: ["bun", "auth", "svelte", "skeleton", "3rd-day"]
 image: "https://i.ytimg.com/vi/Qnpce8hwn58/hqdefault.jpg"
 ---
 

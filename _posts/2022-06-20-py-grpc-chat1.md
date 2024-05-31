@@ -1,7 +1,7 @@
 ---
 date: 2022-06-20 00:00:00 +0900
 title: Python - gRPC 기반 Chat 1st
-categories: ["backend","api"]
+categories: ["backend"]
 tags: ["python", "grpc", "stream", "proto3"]
 image: "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8susytd9w6lxe9sreqvd.jpg"
 ---

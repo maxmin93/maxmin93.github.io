@@ -1,8 +1,8 @@
 ---
 date: 2023-07-24 00:00:00 +0900
 title: Svelte PWA 튜토리얼 - 1일차
-categories: ["frontend","pwa"]
-tags: ["sveltekit", "vite", "ionic", "1st-day"]
+categories: ["frontend","svelte"]
+tags: ["pwa", "vite", "ionic", "1st-day"]
 image: "https://twenty-tech.com/wp-content/uploads/2019/01/PWA-696x467.png"
 hidden: true
 ---

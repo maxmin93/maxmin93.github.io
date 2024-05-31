@@ -1,7 +1,7 @@
 ---
 date: 2023-09-21 00:00:00 +0900
 title: Bun 1.0 + Elysia.js Auth 따라하기
-categories: ["backend","bun"]
+categories: ["backend","webframework"]
 tags: ["elysia", "prisma", "auth", "tutorial"]
 image: "https://user-images.githubusercontent.com/35027979/205498891-b75dc404-3232-4929-b216-823aa7373b71.png"
 ---

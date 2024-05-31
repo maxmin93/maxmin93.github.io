@@ -1,7 +1,7 @@
 ---
 date: 2023-09-28 00:00:00 +0900
 title: Bun 1.0 + Turso + Drizzle 튜토리얼
-categories: ["database","sqlite"]
+categories: ["backend","orm"]
 tags: ["bun", "drizzle", "turso", "elysia"]
 image: "https://turso.tech/open-graph/turso3.png"
 ---

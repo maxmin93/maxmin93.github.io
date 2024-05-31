@@ -1,8 +1,8 @@
 ---
 date: 2022-12-21 00:00:00 +0900
 title: Backend 오픈소스 Supabase
-categories: ["backend"]
-tags: ["supabase","postgresql","headless","cms"]
+categories: ["backend","supabase"]
+tags: ["postgresql","headless","cms"]
 image: "https://supabase.com/_next/image?url=%2Fimages%2Fblog%2F2023-01-05-december-beta-update%2Fdocs.jpg&w=3840&q=75"
 ---
 

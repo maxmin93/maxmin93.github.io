@@ -1,8 +1,8 @@
 ---
 date: 2023-09-10 00:00:00 +0900
 title: SvelteKit + Supabase 통합 - 2일차
-categories: ["frontend","svelte"]
-tags: ["drizzle", "supabase", "2nd-day"]
+categories: ["backend","supabase"]
+tags: ["drizzle", "svelte", "2nd-day"]
 image: "https://i.ytimg.com/vi/Qnpce8hwn58/hqdefault.jpg"
 ---
 

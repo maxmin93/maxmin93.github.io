@@ -1,8 +1,8 @@
 ---
 date: 2023-10-03 00:00:00 +0900
 title: SvelteKit + Supabase 통합 - 4일차
-categories: ["frontend","svelte"]
-tags: ["authjs","twitter","supabase","4th-day"]
+categories: ["backend","supabase"]
+tags: ["authjs","twitter","svelte","4th-day"]
 image: "https://authjs.dev/img/og-image.png"
 ---
 

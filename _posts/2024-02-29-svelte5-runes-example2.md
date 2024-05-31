@@ -1,8 +1,8 @@
 ---
 date: 2024-02-29 00:00:00 +0900
 title: Svelte 5 Runes - Supabase Auth
-categories: ["frontend","svelte"]
-tags: ["svelte5","example","supabase","auth"]
+categories: ["backend","supabase"]
+tags: ["svelte5","example","auth"]
 image: "https://i.ytimg.com/vi/uOI77E8Y95Q/sddefault.jpg"
 ---
 

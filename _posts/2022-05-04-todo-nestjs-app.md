@@ -1,8 +1,8 @@
 ---
 date: 2022-05-04 00:00:00 +0900
 title: "NestJS 로 Todo App 만들기"
-categories: ["backend", "nestjs"]
-tags: ["full-stack", "typeorm", "todo", "sqlite", "angular"]
+categories: ["backend","webframework"]
+tags: ["full-stack","nestjs","todo-app","sqlite","angular"]
 image: https://github.com/maxmin93/wisely-todo/raw/main/docs/todo-list.png
 ---
 
