@@ -1,0 +1,391 @@
+<!DOCTYPE html><html lang="ko-KR" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="prefer-datetime-locale" content="ko"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="Best API 프레임워크와 Benchmark (2022년)" /><meta property="og:locale" content="ko_KR" /><meta name="description" content="언어에 상관 없이 API 용 웹 프레임워크에 대해 조사하고 성능 벤치마킹 자료를 살펴봅니다." /><meta property="og:description" content="언어에 상관 없이 API 용 웹 프레임워크에 대해 조사하고 성능 벤치마킹 자료를 살펴봅니다." /><link rel="canonical" href="https://taejoone.jeju.onl/posts/2022-09-06-best-api-frameworks-benchmark/" /><meta property="og:url" content="https://taejoone.jeju.onl/posts/2022-09-06-best-api-frameworks-benchmark/" /><meta property="og:site_name" content="태주네 블로그" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2022-09-06T00:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Best API 프레임워크와 Benchmark (2022년)" /><meta name="twitter:site" content="@twitter_username" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-11-08T11:27:22+09:00","datePublished":"2022-09-06T00:00:00+09:00","description":"언어에 상관 없이 API 용 웹 프레임워크에 대해 조사하고 성능 벤치마킹 자료를 살펴봅니다.","headline":"Best API 프레임워크와 Benchmark (2022년)","mainEntityOfPage":{"@type":"WebPage","@id":"https://taejoone.jeju.onl/posts/2022-09-06-best-api-frameworks-benchmark/"},"url":"https://taejoone.jeju.onl/posts/2022-09-06-best-api-frameworks-benchmark/"}</script><title>Best API 프레임워크와 Benchmark (2022년) | 태주네 블로그</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name="apple-mobile-web-app-title" content="태주네 블로그"><meta name="application-name" content="태주네 블로그"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href=""><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get MODE_ATTR() { return "data-mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } static get ID() { return "mode-toggle"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } let self = this; /* always follow the system prefers */ this.sysDarkPrefers.addEventListener("change", () => { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.notify(); }); } /* constructor() */ get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; } get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } setDark() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_ATTR); sessionStorage.removeItem(ModeToggle.MODE_KEY); } /* Notify another plugins that the theme mode has changed */ notify() { window.postMessage({ direction: ModeToggle.ID, message: this.modeStatus }, "*"); } } /* ModeToggle */ const toggle = new ModeToggle(); function flipMode() { if (toggle.hasMode) { if (toggle.isSysDarkPrefer) { if (toggle.isLightMode) { toggle.clearMode(); } else { toggle.setLight(); } } else { if (toggle.isDarkMode) { toggle.clearMode(); } else { toggle.setDark(); } } } else { if (toggle.isSysDarkPrefer) { toggle.setLight(); } else { toggle.setDark(); } } toggle.notify(); } /* flipMode() */ </script><body data-spy="scroll" data-target="#toc" data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" class="mx-auto"> <img src="/assets/img/icons/tonyne-icon.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">태주네 블로그</a></div><div class="site-subtitle font-italic">제주 개발자, 풀스택 웹개발<br>데이터 수집/분석/검색</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>홈</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>카테고리</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>태그</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>아카이브</span> </a><li class="nav-item"> <a href="/portfolio/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>포트폴리오</span> </a><li class="nav-item"> <a href="/projects/" class="nav-link"> <i class="fa-fw fas fa-building ml-xl-3 mr-xl-3 unloaded"></i> <span>프로젝트</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>정보</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <button class="mode-toggle btn" aria-label="Switch Mode"> <i class="fas fa-adjust"></i> </button> <span class="icon-border"></span> <a href="https://github.com/maxmin93" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://www.facebook.com/tonyne.jeju" aria-label="Facebook" target="_blank" rel="noopener"> <i class="fab fa-facebook-square"></i> </a> <a href="https://www.linkedin.com/in/maxmin93" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper"><div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4"> <span id="breadcrumb"> <span> <a href="/"> 홈 </a> </span> <span>Best API 프레임워크와 Benchmark (2022년)</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> 포스트</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="검색..."> </span> <span id="search-cancel" >취소</span></div></div><div id="main-wrapper" class="d-flex justify-content-center"><div id="main" class="container pl-xl-4 pr-xl-4"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4"><div class="post pl-1 pr-1 pl-md-2 pr-md-2"><h1 data-toc-skip>Best API 프레임워크와 Benchmark (2022년)</h1><div class="post-meta text-muted"> <span> 게시 <em class="" data-ts="1662390000" data-df="YYYY-MM-DD" data-toggle="tooltip" data-placement="bottom"> 2022-09-06 </em> </span> <span> 업데이트 <em class="" data-ts="1699410442" data-df="YYYY-MM-DD" data-toggle="tooltip" data-placement="bottom"> 2023-11-08 </em> </span><div class="d-flex justify-content-between"> <span> By <em> <a href="https://github.com/maxmin93">태주아빠</a> </em> </span><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="3048 단어"> <em>16 분&nbsp;</em>읽는 시간</span></div></div></div><div class="post-content"><blockquote class="prompt-tip"><div><p>언어에 상관 없이 API 용 웹 프레임워크에 대해 조사하고 성능 벤치마킹 자료를 살펴봅니다.</p></div></blockquote><h2 id="최고의-웹-프레임워크-api-서버"><span class="mr-2">최고의 웹 프레임워크 (API 서버)</span><a href="#최고의-웹-프레임워크-api-서버" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>원글에 더해 별 개수 조사와 프레임워크를 추가했습니다.</p><p>출처: <a href="https://www.snapt.net/blog/best-api-frameworks-for-fast-performance">Best API Frameworks For Fast Performance</a> (2022.7)</p><h3 id="1위-gin-web-framework---별-626k-개"><span class="mr-2">1위. <a href="https://github.com/gin-gonic/gin"><span class="mr-2">Gin Web Framework</a> - 별 62.6k 개</span><a href="#1위-gin-web-framework---별-626k-개" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>마이크로서비스 바람이 불더니, Express.js 를 넘어섰네요. 백엔드 개발의 대세가 된 Go 언어는 도커와 쿠버네티스와도 잘 어울립니다.</p><blockquote><p>예제 코드</p></blockquote><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="c">// example.go</span>
+
+<span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+  <span class="s">"net/http"</span>
+
+  <span class="s">"github.com/gin-gonic/gin"</span>
+<span class="p">)</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">r</span> <span class="o">:=</span> <span class="n">gin</span><span class="o">.</span><span class="n">Default</span><span class="p">()</span>
+  <span class="n">r</span><span class="o">.</span><span class="n">GET</span><span class="p">(</span><span class="s">"/ping"</span><span class="p">,</span> <span class="k">func</span><span class="p">(</span><span class="n">c</span> <span class="o">*</span><span class="n">gin</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">JSON</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">StatusOK</span><span class="p">,</span> <span class="n">gin</span><span class="o">.</span><span class="n">H</span><span class="p">{</span>
+      <span class="s">"message"</span><span class="o">:</span> <span class="s">"pong"</span><span class="p">,</span>
+    <span class="p">})</span>
+  <span class="p">})</span>
+  <span class="n">r</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>  <span class="c">// listen and serve on 0.0.0.0:8080</span>
+<span class="p">}</span>
+</pre></table></code></div></div><blockquote><p>설치 및 실행</p></blockquote><div class="language-shell highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="c"># 라이브러리 다운로드</span>
+<span class="nv">$ </span>go get <span class="nt">-u</span> github.com/gin-gonic/gin
+
+<span class="c"># 예제 실행 =&gt; 0.0.0.0:8080/ping</span>
+<span class="nv">$ </span>go run example.go
+</pre></table></code></div></div><h3 id="go-fastapi-a-library-to-quickly-build-apis"><span class="mr-2"><a href="https://golangexample.com/go-fastapi-a-library-to-quickly-build-apis-it-is-inspired-by-pythons-popular-fastapi/"><span class="mr-2">Go-fastapi: a library to quickly build APIs</a></span><a href="#go-fastapi-a-library-to-quickly-build-apis" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>go-fastapi is a library to quickly build APIs. It is inspired by Python’s popular FastAPI library.</p><blockquote><p>예제 코드</p></blockquote><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="p">(</span>
+    <span class="s">"github.com/gin-gonic/gin"</span>
+    <span class="s">"github.com/sashabaranov/fastapi"</span>
+
+    <span class="s">"encoding/json"</span>
+    <span class="s">"fmt"</span>
+<span class="p">)</span>
+
+<span class="k">type</span> <span class="n">EchoInput</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">Phrase</span> <span class="kt">string</span> <span class="s">`json:"phrase"`</span>
+<span class="p">}</span>
+
+<span class="k">type</span> <span class="n">EchoOutput</span> <span class="k">struct</span> <span class="p">{</span>
+    <span class="n">OriginalInput</span> <span class="n">EchoInput</span> <span class="s">`json:"original_input"`</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">EchoHandler</span><span class="p">(</span><span class="n">ctx</span> <span class="o">*</span><span class="n">gin</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">in</span> <span class="n">EchoInput</span><span class="p">)</span> <span class="p">(</span><span class="n">out</span> <span class="n">EchoOutput</span><span class="p">,</span> <span class="n">err</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">OriginalInput</span> <span class="o">=</span> <span class="n">in</span>
+    <span class="k">return</span>
+<span class="p">}</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">r</span> <span class="o">:=</span> <span class="n">gin</span><span class="o">.</span><span class="n">Default</span><span class="p">()</span>
+
+    <span class="n">myRouter</span> <span class="o">:=</span> <span class="n">fastapi</span><span class="o">.</span><span class="n">NewRouter</span><span class="p">()</span>
+    <span class="n">myRouter</span><span class="o">.</span><span class="n">AddCall</span><span class="p">(</span><span class="s">"/echo"</span><span class="p">,</span> <span class="n">EchoHandler</span><span class="p">)</span>
+
+    <span class="c">// for OpenAPI/Swagger</span>
+    <span class="n">swagger</span> <span class="o">:=</span> <span class="n">myRouter</span><span class="o">.</span><span class="n">EmitOpenAPIDefinition</span><span class="p">()</span>
+    <span class="n">swagger</span><span class="o">.</span><span class="n">Info</span><span class="o">.</span><span class="n">Title</span> <span class="o">=</span> <span class="s">"My awesome API"</span>
+    <span class="n">jsonBytes</span><span class="p">,</span> <span class="n">_</span> <span class="o">:=</span> <span class="n">json</span><span class="o">.</span><span class="n">MarshalIndent</span><span class="p">(</span><span class="n">swagger</span><span class="p">,</span> <span class="s">""</span><span class="p">,</span> <span class="s">"    "</span><span class="p">)</span>
+    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="kt">string</span><span class="p">(</span><span class="n">jsonBytes</span><span class="p">))</span>
+
+    <span class="c">// 라우터 url 맵핑</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">POST</span><span class="p">(</span><span class="s">"/api/*path"</span><span class="p">,</span> <span class="n">myRouter</span><span class="o">.</span><span class="n">GinHandler</span><span class="p">)</span> <span class="c">// must have *path parameter</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">Run</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></table></code></div></div><blockquote><p>설치 및 실행</p></blockquote><div class="language-shell highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>go get github.com/sashabaranov/go-fastapi
+
+<span class="nv">$ </span>go run example.go
+
+<span class="c"># Try it:</span>
+<span class="nv">$ </span>curl <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="nt">-X</span> POST <span class="nt">--data</span> <span class="s1">'{"phrase": "hello"}'</span> localhost:8080/api/echo
+<span class="c"># ==&gt; {"response":{"original_input":{"phrase":"hello"}}}</span>
+</pre></table></code></div></div><h3 id="2위-expressjs--nodejs---별-582k"><span class="mr-2">2위. <a href="https://github.com/expressjs/express"><span class="mr-2">Express.js + Node.js</a> - 별 58.2k</span><a href="#2위-expressjs--nodejs---별-582k" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>가장 대중적인 javascript 언어에 오랜 시간 사용되어 온 웹 프레임워크</p><blockquote><p>예제 코드</p></blockquote><div class="language-js highlighter-rouge"><div class="code-header"> <span data-label-text="JavaScript"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">express</span><span class="dl">'</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">()</span>
+<span class="kd">const</span> <span class="nx">port</span> <span class="o">=</span> <span class="mi">3000</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="dl">'</span><span class="s1">Hello World!</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`Example app listening on port </span><span class="p">${</span><span class="nx">port</span><span class="p">}</span><span class="s2">`</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></table></code></div></div><blockquote><p>설치 및 실행</p></blockquote><div class="language-shell highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>npm <span class="nb">install </span>express <span class="nt">--save</span>
+
+<span class="nv">$ </span>node app.js
+</pre></table></code></div></div><h3 id="3위-fastapi---별-49k"><span class="mr-2">3위. <a href="https://github.com/tiangolo/fastapi"><span class="mr-2">FastAPI</a> - 별 49k</span><a href="#3위-fastapi---별-49k" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>Python 생태계가 커지면서 빠르게 사용자층이 늘어난 FastAPI. Nodejs 의 비동기 방식을 채택하여 성능을 높였다.</p><blockquote><p>예제 코드</p></blockquote><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">"Hello"</span><span class="p">:</span> <span class="s">"World"</span><span class="p">}</span>
+
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"/items/{item_id}"</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">read_item</span><span class="p">(</span><span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">"item_id"</span><span class="p">:</span> <span class="n">item_id</span><span class="p">,</span> <span class="s">"q"</span><span class="p">:</span> <span class="n">q</span><span class="p">}</span>
+
+
+<span class="c1">#######################################
+##  또는 async 호출로
+##
+</span>
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"/"</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">read_root</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">"Hello"</span><span class="p">:</span> <span class="s">"World"</span><span class="p">}</span>
+
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"/items/{item_id}"</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">read_item</span><span class="p">(</span><span class="n">item_id</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">q</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="bp">None</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s">"item_id"</span><span class="p">:</span> <span class="n">item_id</span><span class="p">,</span> <span class="s">"q"</span><span class="p">:</span> <span class="n">q</span><span class="p">}</span>
+</pre></table></code></div></div><blockquote><p>설치 및 실행</p></blockquote><div class="language-shell highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>pip <span class="nb">install </span>fastapi
+<span class="nv">$ </span>pip <span class="nb">install</span> <span class="s2">"uvicorn[standard]"</span>
+
+<span class="nv">$ </span>uvicorn main:app <span class="nt">--reload</span>
+</pre></table></code></div></div><h3 id="4위-fastify---별-248k"><span class="mr-2">4위. <a href="https://github.com/fastify/fastify"><span class="mr-2">Fastify</a> - 별 24.8k</span><a href="#4위-fastify---별-248k" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>Express.js 만 알고 있었는데, 훨씬 뛰어난 성능을 가진 Fastify 가 있었다. Nestjs 의 http 엔진을 Fastify 로 바꿔서 사용할 수 있다.</p><ul><li><a href="https://docs.nestjs.com/techniques/performance">Nestjs - Performance (Fastify)</a><ul><li>Express 엔진보다 2배 정도 빠르다고<li>그럼에도 공식적으로 Express 를 채택하는 이유는 호환성과 서드파티가 많아서</ul></ul><blockquote><p>예제 코드</p></blockquote><div class="language-js highlighter-rouge"><div class="code-header"> <span data-label-text="JavaScript"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre><td class="rouge-code"><pre><span class="c1">// ESM</span>
+<span class="k">import</span> <span class="nx">Fastify</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">fastify</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">fastify</span> <span class="o">=</span> <span class="nx">Fastify</span><span class="p">({</span>
+  <span class="na">logger</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">})</span>
+
+<span class="c1">// sync 호출</span>
+<span class="nx">fastify</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/sync</span><span class="dl">'</span><span class="p">,</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">reply</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">reply</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span> <span class="na">hello</span><span class="p">:</span> <span class="dl">'</span><span class="s1">world</span><span class="dl">'</span> <span class="p">})</span>
+<span class="p">})</span>
+
+<span class="c1">// async 호출</span>
+<span class="nx">fastify</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/async</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">request</span><span class="p">,</span> <span class="nx">reply</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">reply</span><span class="p">.</span><span class="nx">type</span><span class="p">(</span><span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">).</span><span class="nx">code</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+  <span class="k">return</span> <span class="p">{</span> <span class="na">hello</span><span class="p">:</span> <span class="dl">'</span><span class="s1">world</span><span class="dl">'</span> <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="c1">// Run the server!</span>
+<span class="nx">fastify</span><span class="p">.</span><span class="nx">listen</span><span class="p">({</span> <span class="na">port</span><span class="p">:</span> <span class="mi">3000</span> <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">address</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span>
+  <span class="c1">// Server is now listening on ${address}</span>
+<span class="p">})</span>
+</pre></table></code></div></div><blockquote><p>설치 및 실행</p></blockquote><div class="language-shell highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="nv">$ </span>yarn add fastify
+
+<span class="nv">$ </span>npm init fastify
+
+<span class="nv">$ </span>npm start
+</pre></table></code></div></div><h4 id="fastify-에서-제시하는-benchmarks"><span class="mr-2">Fastify 에서 제시하는 Benchmarks</span><a href="#fastify-에서-제시하는-benchmarks" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><p><strong>Machine:</strong> EX41S-SSD, Intel Core i7, 4Ghz, 64GB RAM, 4C/8T, SSD.</p><p><strong>Method:</strong>: <code class="language-console highlighter-rouge"><span class="go">autocannon -c 100 -d 40 -p 10 localhost:3000</span></code> * 2, taking the second average</p><div class="table-wrapper"><table><thead><tr><th style="text-align: left">Framework<th style="text-align: left">Version<th style="text-align: center">Router?<th style="text-align: right">Requests/sec<tbody><tr><td style="text-align: left">Express<td style="text-align: left">4.17.3<td style="text-align: center">✓<td style="text-align: right">14,200<tr><td style="text-align: left">hapi<td style="text-align: left">20.2.1<td style="text-align: center">✓<td style="text-align: right">42,284<tr><td style="text-align: left">Restify<td style="text-align: left">8.6.1<td style="text-align: center">✓<td style="text-align: right">50,363<tr><td style="text-align: left">Koa<td style="text-align: left">2.13.0<td style="text-align: center">✗<td style="text-align: right">54,272<tr><td style="text-align: left"><strong>Fastify</strong><td style="text-align: left"><strong>4.0.0</strong><td style="text-align: center"><strong>✓</strong><td style="text-align: right"><strong>77,193</strong><tbody><tr><td style="text-align: left"><code class="language-console highlighter-rouge"><span class="go">http.Server</span></code><td style="text-align: left">16.14.2<td style="text-align: center">✗<td style="text-align: right">74,513</table></div><h3 id="5위-fiber---별-222k"><span class="mr-2">5위. <a href="https://github.com/gofiber/fiber"><span class="mr-2">Fiber</a> - 별 22.2k</span><a href="#5위-fiber---별-222k" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>Fiber 는 Go 언어에서 가장 빠른 <code class="language-console highlighter-rouge"><span class="go">Fasthttp</span></code> 엔진 기반으로 만들어진 웹 프레임워크. 빠른 개발과 최적의 메모리 활용을 제공한다.</p><p><img data-src="https://raw.githubusercontent.com/gofiber/docs/master/.gitbook/assets/benchmark-pipeline.png" alt="Golang WebFrameworks Performance Benchmark" width="600" data-proofer-ignore></p><blockquote><p>예제 코드</p></blockquote><div class="language-go highlighter-rouge"><div class="code-header"> <span data-label-text="Go"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="k">package</span> <span class="n">main</span>
+
+<span class="k">import</span> <span class="s">"github.com/gofiber/fiber/v2"</span>
+
+<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">app</span> <span class="o">:=</span> <span class="n">fiber</span><span class="o">.</span><span class="n">New</span><span class="p">()</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">Get</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="k">func</span><span class="p">(</span><span class="n">c</span> <span class="o">*</span><span class="n">fiber</span><span class="o">.</span><span class="n">Ctx</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">c</span><span class="o">.</span><span class="n">SendString</span><span class="p">(</span><span class="s">"Hello, World 👋!"</span><span class="p">)</span>
+    <span class="p">})</span>
+
+    <span class="n">app</span><span class="o">.</span><span class="n">Listen</span><span class="p">(</span><span class="s">":3000"</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></table></code></div></div><h3 id="6위-phoenix--elixir---별-185k"><span class="mr-2">6위. <a href="https://github.com/phoenixframework/phoenix"><span class="mr-2">Phoenix + Elixir</a> - 별 18.5k</span><a href="#6위-phoenix--elixir---별-185k" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>몰랐던 웹 프레임워크인데, 성능상 최고의 웹 프레임워크이다. 분산시스템을 기반으로 동작하기 때문에 무한히 수평확장을 할 수 있다. 별도의 소켓 기반 클라이언트가 필요하다.</p><h4 id="elixir-엘릭서-언어란"><span class="mr-2"><a href="https://velog.io/@gudrb33333/Elixir엘릭서-Erlang얼랭"><span class="mr-2">Elixir (엘릭서) 언어란?</a></span><a href="#elixir-엘릭서-언어란" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><p>Elixir는 José Valim이 개발한 함수형 프로그래밍 언어로, 고성능 분산 Erlang VM (BEAM)에서 돌아갑니다. 따라서 엘릭서 컴파일러는 소스코드를 Erlang VM 바이트 코드로 컴파일합니다.</p><ul><li>Elixir 창시자인 José Valim은 이러한 Erlang에 특징에서 메타프로그래밍, 다형성, 프로덕션 환경에서 사용할 수 있는 툴과 같이 일상적으로 사용하는 기능에 대한 지원을 추가하여 Elixir를 만들었습니다.<li>동시성과 메시지 전달은 언어의 기본입니다. Erlang으로 작성된 애플리케이션은 종종 수백 또는 수천 개의 경량 프로세스로 구성됩니다. Erlang 프로세스 간의 컨텍스트 전환은 일반적으로 C 프로그램의 스레드 간 전환보다 1-2배 저렴합니다.<li>Erlang으로 작성된 애플리케이션은 통신,메시징과 관련된 서버에 강점이 있고 서로 메시지를 주고 받는 수백,수천개의 경량 프로세스로 돌아간다고 할 수 있습니다.</ul><h4 id="phoenix-channels-javascript-client-v1611"><span class="mr-2"><a href="https://hexdocs.pm/phoenix/js/index.html"><span class="mr-2">Phoenix Channels JavaScript client</a> v1.6.11</span><a href="#phoenix-channels-javascript-client-v1611" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><blockquote><p>예제 코드</p></blockquote><div class="language-js highlighter-rouge"><div class="code-header"> <span data-label-text="JavaScript"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="kd">let</span> <span class="nx">socket</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Socket</span><span class="p">(</span><span class="dl">"</span><span class="s2">/socket</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">params</span><span class="p">:</span> <span class="p">{</span><span class="na">userToken</span><span class="p">:</span> <span class="dl">"</span><span class="s2">123</span><span class="dl">"</span><span class="p">}})</span>
+<span class="nx">socket</span><span class="p">.</span><span class="nx">connect</span><span class="p">()</span>
+
+<span class="kd">let</span> <span class="nx">channel</span> <span class="o">=</span> <span class="nx">socket</span><span class="p">.</span><span class="nx">channel</span><span class="p">(</span><span class="dl">"</span><span class="s2">room:123</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">token</span><span class="p">:</span> <span class="nx">roomToken</span><span class="p">})</span>
+
+<span class="nx">channel</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">new_msg</span><span class="dl">"</span><span class="p">,</span> <span class="nx">msg</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Got message</span><span class="dl">"</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="nx">$input</span><span class="p">.</span><span class="nx">onEnter</span><span class="p">(</span> <span class="nx">e</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">channel</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">new_msg</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span><span class="na">body</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">val</span><span class="p">},</span> <span class="mi">10000</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">receive</span><span class="p">(</span><span class="dl">"</span><span class="s2">ok</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">msg</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">created message</span><span class="dl">"</span><span class="p">,</span> <span class="nx">msg</span><span class="p">)</span> <span class="p">)</span>
+    <span class="p">.</span><span class="nx">receive</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">reasons</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">create failed</span><span class="dl">"</span><span class="p">,</span> <span class="nx">reasons</span><span class="p">)</span> <span class="p">)</span>
+    <span class="p">.</span><span class="nx">receive</span><span class="p">(</span><span class="dl">"</span><span class="s2">timeout</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Networking issue...</span><span class="dl">"</span><span class="p">)</span> <span class="p">)</span>
+<span class="p">})</span>
+
+<span class="nx">channel</span><span class="p">.</span><span class="nx">join</span><span class="p">()</span>
+  <span class="p">.</span><span class="nx">receive</span><span class="p">(</span><span class="dl">"</span><span class="s2">ok</span><span class="dl">"</span><span class="p">,</span> <span class="p">({</span><span class="nx">messages</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">catching up</span><span class="dl">"</span><span class="p">,</span> <span class="nx">messages</span><span class="p">)</span> <span class="p">)</span>
+  <span class="p">.</span><span class="nx">receive</span><span class="p">(</span><span class="dl">"</span><span class="s2">error</span><span class="dl">"</span><span class="p">,</span> <span class="p">({</span><span class="nx">reason</span><span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">failed join</span><span class="dl">"</span><span class="p">,</span> <span class="nx">reason</span><span class="p">)</span> <span class="p">)</span>
+  <span class="p">.</span><span class="nx">receive</span><span class="p">(</span><span class="dl">"</span><span class="s2">timeout</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Networking issue. Still waiting...</span><span class="dl">"</span><span class="p">))</span>
+
+</pre></table></code></div></div><hr /><h2 id="벤치마크--fastapi-fastify-spring-gin"><span class="mr-2">벤치마크 : FastAPI, Fastify, Spring, Gin</span><a href="#벤치마크--fastapi-fastify-spring-gin" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>출처: <a href="https://www.travisluong.com/fastapi-vs-fastify-vs-spring-boot-vs-gin-benchmark/">FastAPI vs. Fastify vs. Spring Boot vs. Gin Benchmark</a> (01.10.2022)</p><p>저자는 Node.js와 동등하다는 FastAPI의 주장을 확인하기 위해 이 벤치마크를 수행했다고 합니다.</p><h3 id="1-저자의-결론"><span class="mr-2">1) 저자의 결론</span><a href="#1-저자의-결론" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><ul><li>FastAPI는 기본적으로 빠르지 않습니다. FastAPI의 속도를 최대한 활용하려면 asyncpg와 같은 올바른 데이터베이스 드라이버를 사용해야 합니다.<li>asyncpg를 사용하더라도 FastAPI와 함께 더 빠른 json 라이브러리를 사용하여 성능을 Node.js 수준까지 끌어올려야 합니다.<li>원시 sql 쿼리에서 json으로 이동하는 것은 ORM을 사용하는 것보다 훨씬 빠르며, 이는 개체 매핑 프로세스를 건너뛰므로 의미가 있습니다.<li>직접 확인하지는 않았지만 컴파일된 언어가 인터프리터 언어보다 빠르다는 말을 항상 들었습니다. Java/Go는 해석된 언어의 유사한 설정에 비해 실제로 더 빠릅니다.<li>Node.js에는 Node.js 프로세스 클러스터를 시작하여 멀티 코어 시스템을 활용할 수 있는 클러스터 모듈이 있습니다.<li>로깅은 성능에 영향을 줍니다.</ul><blockquote><p>최적의 조합 구성시 Node 와 Python 프레임워크의 성능이 비등</p><p>04) FastAPI + asyncpg + ujson + gunicorn 8w (4831 req/sec)<br /> 05) Fastify + pg + cluster mode 8w (without logging) (4622 req/sec)</p></blockquote><h3 id="2-the-rankings"><span class="mr-2">2) The Rankings</span><a href="#2-the-rankings" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><ul><li>01) Spring Boot + jdbc (7886 req/sec)<ul><li>20) SpringBoot + JPA (844 req/sec)</ul><li>02) Go + pgx (7517 req/sec)<ul><li>03) Go + pg + SetMaxOpenConns + SetMaxIdleConns (7388 req/sec)</ul><li>04) FastAPI + asyncpg + ujson + gunicorn 8w (4831 req/sec)<ul><li>06) FastAPI + asyncpg + ujson + gunicorn 4w (4401 req/sec)<li>07) FastAPI + asyncpg + gunicorn 4w + orjson (4193 req/sec)<li>14) FastAPI + asyncpg + uvicorn + orjson (1885 req/sec)<li>15) FastAPI + asyncpg + uvicorn + ujson (1711 req/sec)<li>18) FastAPI + psycopg2 + gunicorn 4w (989 req/sec)<li>19) FastAPI + asyncpg + gunicorn 4w (952 req/sec)<li>21) FastAPI + psycopg2 + uvicorn + orjson (827 req/sec)<li>23) FastAPI + SQLModel + gunicorn 4w (569 req/sec)<li>25) FastAPI + asyncpg + uvicorn (314 req/sec)<li>26) FastAPI + psycopg2 + uvicorn (308 req/sec)<li>27) FastAPI + databases + uvicorn (267 req/sec)<li>28) FastAPI + SQLModel + uvicorn (182 req/sec)</ul><li>05) Fastify + pg + cluster mode 8w (without logging) (4622 req/sec)<ul><li>09) Fastify + pg + cluster mode 8w (3417 req/sec)<li>11) Fastify + pg (without logging) (2750 req/sec)<li>12) Fastify + pg (2184 req/sec)</ul><li>08) Express.js + pg + cluster mode 8w (4145 req/sec)<ul><li>13) Express.js + pg (1931 req/sec)<li>17) Nest.js + Prisma (1184 req/sec)</ul><li><p>10) Gin + database/sql + lib/pq (2966 req/sec)</p><li>16) Flask + psycopg2 + gunicorn 4w (1478 req/sec)<ul><li>22) Flask + psycopg2 + flask run (705 req/sec)<li>24) Flask + psycopg2 + gunicorn 1w (536 req/sec)</ul></ul><h3 id="3-제-나름의-정리"><span class="mr-2">3) 제 나름의 정리</span><a href="#3-제-나름의-정리" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><h4 id="복잡한-비즈니스-요구가-아니면-jdbc--json-조합-고려"><span class="mr-2">복잡한 비즈니스 요구가 아니면 JDBC + json 조합 고려</span><a href="#복잡한-비즈니스-요구가-아니면-jdbc--json-조합-고려" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><ul><li>어떤 프레임워크이든 ORM 이 붙게되면 1/4 로 성능 저하 (심지어 10배까지)<li>성능이 우선되어야 한다면 JDBC 와 SQL + Json Mapper 조합이 좋겠다는 것<ul><li>코드의 유지보수, 모델부터 일체화된 디자인 등의 정석적 이득을 다소 희생<ul><li>사실 정석은 어디까지나 정석일뿐이고<li>ORM 은 JSON 변환 뿐만 아니라 sql 관련 기능이 많아 무겁다</ul><li>비교적 단순한 스키마와 참조 테이블이 얼마 안되면 ORM 안써도 된다</ul><li>ORM 을 써야 한다면 JPA 말고 대체제를 찾아보자<ul><li>iBatis 가 좋겠다</ul></ul><h4 id="웹-프레임워크-orm-등-차세대-버전들은-async-이전-중"><span class="mr-2">웹 프레임워크, ORM 등 차세대 버전들은 async 이전 중</span><a href="#웹-프레임워크-orm-등-차세대-버전들은-async-이전-중" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><blockquote><p>07) FastAPI + asyncpg + gunicorn 4w + orjson (4193 req/sec)<br /> 18) FastAPI + psycopg2 + gunicorn 4w (989 req/sec)</p></blockquote><ul><li>SQLAlchemy 도 2.0 으로 가면서 asynio 기반으로 변환중<li>DB 어댑터들도 asyncpg, aiomysql 등으로 교체중<li>이러한 이슈는 한 5~7년 전에도 나왔었는데, 지금이 그 타이밍인듯<ul><li>많은 부분이 함께 async 를 지원해야 제성능이 나오니깐</ul></ul><h4 id="javaspring-boot-gogin-gofiber"><span class="mr-2">Java/Spring-boot, Go/Gin (Go/Fiber)</span><a href="#javaspring-boot-gogin-gofiber" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><blockquote><p>01) Spring Boot + jdbc (7886 req/sec)<br /> 20) SpringBoot + JPA (844 req/sec)</p></blockquote><ul><li>기본적인 구성으로도 가장 좋은 성능을 보이는 프레임워크<ul><li>컴파일 언어 특성탓</ul><li>Java 가 싫거나 싫증났다면 Go 로 가보자<ul><li>Go 계열 스택을 알아보자 (JPA 보다는. 낫겠지)<ul><li><a href="https://betterprogramming.pub/building-a-rest-api-with-go-gin-framework-and-gorm-38cb2d6353da">Building a REST API With Go, Gin Framework, and GORM</a><li><a href="https://gorm.io/ko_KR/index.html">GORM: Golang을 위한 최고의 ORM 라이브러리</a></ul></ul><li>Go/Gin (별 62.6k) 프레임워크가 가장 대중적이긴 한데, 차세대 프레임워크가 있다.<ul><li><a href="https://github.com/gofiber/fiber">Go/Fiber</a> - 별 22.2k</ul></ul><h4 id="nodefastify"><span class="mr-2">Node/Fastify</span><a href="#nodefastify" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><blockquote><p>12) Fastify + pg (2184 req/sec)<br /> 13) Express.js + pg (1931 req/sec)<br /> 17) Nest.js + Prisma (1184 req/sec)</p></blockquote><ul><li>Node 계열에서는 확실히 Fastify 를 선택하는게 좋겠다는 것<li>Fastify 의 ORM 으로 <a href="https://www.prisma.io/docs/">prisma</a> 를 써봐야겠다는 것<ul><li><a href="https://www.prisma.io/fastify">Easy Database Access in Fastify servers</a><li>Nest.js + Prisma 조합에서 ORM 에 의한 페널티가 크지 않았음</ul></ul><h4 id="pythonfastapi"><span class="mr-2">Python/FastAPI</span><a href="#pythonfastapi" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><blockquote><p>Node 구성</p><p>12) Fastify + pg (2184 req/sec)<br /> 13) Express.js + pg (1931 req/sec)<br /></p></blockquote><blockquote><p>Python 구성</p><p>21) FastAPI + psycopg2 + uvicorn + orjson (827 req/sec)<br /> 26) FastAPI + psycopg2 + uvicorn (308 req/sec)</p></blockquote><ul><li>기본 구성에서는 Node 성능에 비해 Python 의 프레임워크가 열악하고<li>FastAPI 를 쓸거면 orjson 을 꼭 쓰자 (2배 성능 향상)<ul><li><a href="https://fastapi.tiangolo.com/advanced/custom-response/#use-orjsonresponse">Custom Response - use ORJSON Response</a><ul><li>추가: <a href="https://fastapi.tiangolo.com/advanced/custom-response/#ujsonresponse">ujson</a></ul></ul></ul><blockquote><p>ORJSON 예제 코드</p></blockquote><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span> <span class="nn">fastapi.responses</span> <span class="kn">import</span> <span class="n">ORJSONResponse</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"/items/"</span><span class="p">,</span> <span class="n">response_class</span><span class="o">=</span><span class="n">ORJSONResponse</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">read_items</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">ORJSONResponse</span><span class="p">([{</span><span class="s">"item_id"</span><span class="p">:</span> <span class="s">"Foo"</span><span class="p">}])</span>
+</pre></table></code></div></div><blockquote><p>UJSON 예제 코드</p></blockquote><div class="language-python highlighter-rouge"><div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span> <span class="nn">fastapi.responses</span> <span class="kn">import</span> <span class="n">UJSONResponse</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+
+
+<span class="o">@</span><span class="n">app</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="s">"/items/"</span><span class="p">,</span> <span class="n">response_class</span><span class="o">=</span><span class="n">UJSONResponse</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">read_items</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">[{</span><span class="s">"item_id"</span><span class="p">:</span> <span class="s">"Foo"</span><span class="p">}]</span>
+</pre></table></code></div></div><h2 id="9-review"><span class="mr-2">9. Review</span><a href="#9-review" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><ul><li>성능이 뛰어나다는 것과 생산성이 뛰어난 것은 의미가 다르다.<ul><li>python 버전은 성능은 느릴지라도, 빨리 개발할 수 있어 인기가 높다.<li>투자 대비 효과는 단연 nodejs 계열이다.</ul><li>풀스택 개발 언어로는 nodejs 가 적절하다. 수많은 사용 사례가 있다.<ul><li>반면에 go 언어는 백엔드 전용, 동시성 처리, 성능 중심이다.</ul><li>Spring 은 과거에도, 현재도 가장 사랑받는 백엔드 프레임워크이다.</ul><p>  <br />   <br /></p><blockquote class="prompt-info"><div><p><strong>끝!</strong>   읽어주셔서 감사합니다.</p></div></blockquote></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/backend/'>backend</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/api/" class="post-tag no-text-decoration" >api</a> <a href="/tags/framework/" class="post-tag no-text-decoration" >framework</a> <a href="/tags/benchmark/" class="post-tag no-text-decoration" >benchmark</a> <a href="/tags/performance/" class="post-tag no-text-decoration" >performance</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> 이 기사는 저작권자의 <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> 라이센스를 따릅니다.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">공유하기</span> <span class="share-icons"> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftaejoone.jeju.onl%2Fposts%2F2022-09-06-best-api-frameworks-benchmark%2F" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Best+API+%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%EC%99%80+Benchmark+%282022%EB%85%84%29+-+%ED%83%9C%EC%A3%BC%EB%84%A4+%EB%B8%94%EB%A1%9C%EA%B7%B8&u=https%3A%2F%2Ftaejoone.jeju.onl%2Fposts%2F2022-09-06-best-api-frameworks-benchmark%2F" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://twitter.com/intent/tweet?text=Best+API+%ED%94%84%EB%A0%88%EC%9E%84%EC%9B%8C%ED%81%AC%EC%99%80+Benchmark+%282022%EB%85%84%29+-+%ED%83%9C%EC%A3%BC%EB%84%A4+%EB%B8%94%EB%A1%9C%EA%B7%B8&url=https%3A%2F%2Ftaejoone.jeju.onl%2Fposts%2F2022-09-06-best-api-frameworks-benchmark%2F" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="링크 복사하기" data-title-succeed="링크가 복사되었습니다!"> </i> </span></div></div></div><section id="utteranc_box"><div id="light-mode"> <script src="https://utteranc.es/client.js" repo="maxmin93/my-blog-comments" issue-term="pathname" label="comment" theme="github-light" crossorigin="anonymous" async> </script></div><div id="dark-mode"> <script src="https://utteranc.es/client.js" repo="maxmin93/my-blog-comments" issue-term="pathname" label="comment" theme="github-dark" crossorigin="anonymous" async> </script></div></section><script src="/assets/js/custom.js"></script> <script type="text/javascript"> $(function(){ console.log("post.html: utteranc comments"); (window.customScripts.customUtteranc)(); }); </script></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted"><div class="access"><div id="access-lastmod" class="post"><div class="panel-heading">최근 업데이트</div><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/2024-02-26-svelte5-runes-example1/">Svelte 5 Runes - Todo App</a><li><a href="/posts/2022-11-21-react-tutorial-day1/">React 공부하기 - 1일차</a><li><a href="/posts/2022-12-21-supabase-summary/">Backend 오픈소스 Supabase</a><li><a href="/posts/2023-02-01-flutter-tutorial-day1/">Dart 공부하기 - 1일차</a><li><a href="/posts/2023-02-09-hasura-postgres-setup/">Hasura 사용법 (GraphQL Engine)</a></ul></div><div id="access-tags"><div class="panel-heading">인기 태그</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/tutorial/">tutorial</a> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/1st-day/">1st-day</a> <a class="post-tag" href="/tags/book/">book</a> <a class="post-tag" href="/tags/effective-java/">effective-java</a> <a class="post-tag" href="/tags/2nd-day/">2nd-day</a> <a class="post-tag" href="/tags/effective-python/">effective-python</a> <a class="post-tag" href="/tags/svelte5/">svelte5</a> <a class="post-tag" href="/tags/svelte/">svelte</a> <a class="post-tag" href="/tags/ui-components/">ui-components</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"><div class="panel-heading pl-3 pt-2 mb-2">바로가기</div><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>관련된 글</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/2022-10-02-python-http-client-sync-async/"><div class="card-body"> <em class="small" data-ts="1664636400" data-df="YYYY-MM-DD" > 2022-10-02 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>HTTP Client 성능 비교 - httpx, aiohttp, requests</h3><div class="text-muted small"><p> 대표적인 HTTP Client 라이브러리의 성능을 비교하고 특징을 공부합니다. 참고문서: requests, aiohttp, httpx comparison 1. Python 용 HTTP Client API 서비스를 개발할 때, 또 다른 API 의 결과를 받아 전달하여야 할 경우 사용하는 라이브러리를 HTTP Client 라고 합니다. ...</p></div></div></a></div><div class="card"> <a href="/posts/2022-10-09-pyarrow-vs-pandas-csv-speed/"><div class="card-body"> <em class="small" data-ts="1665241200" data-df="YYYY-MM-DD" > 2022-10-09 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>PyArrow vs. Pandas - CSV 읽기 쓰기 성능 비교</h3><div class="text-muted small"><p> PyArrow 와 Pandas 의 CSV 읽기 쓰기 속도를 비교합니다. (유튜브 강좌 따라하기) 1. PyArrow import pyarrow.csv as csv csv.read_csv csv.write_csv 2. PyArrow vs. Pandas : CSV 읽기 쓰기 시간 측정 출처: PyArrow vs. Pandas f...</p></div></div></a></div><div class="card"> <a href="/posts/2022-11-08-golang-tutorial-day3/"><div class="card-body"> <em class="small" data-ts="1667833200" data-df="YYYY-MM-DD" > 2022-11-08 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Go 언어 배우기 - 3일차 GIN, GORM</h3><div class="text-muted small"><p> Go 언어의 대표적인 웹프레임워크 gin 과 ORM 프레임워크 gorm 을 공부합니다. 스케줄러 cron 도 살펴봅니다. (3일차) Go 언어 배우기 - 1일차 개요, 특징 Go 언어 배우기 - 2일차 문법, 고루틴 Go 언어 배우기 - 3일차 GIN, GORM   ✔ Go 언어 배우기 - 4일차 유틸리티 코드 Go 언어 ...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/2022-09-05-python-orm-sqlmodel-3rd/" class="btn btn-outline-primary" prompt="이전 글"><p>python ORM - SQLModel - 3일차</p></a> <a href="/posts/2022-09-07-network-diagram-libraries/" class="btn btn-outline-primary" prompt="다음 글"><p>네트워크 다이어그램 시각화 라이브러리</p></a></div></div></div><footer class="row pl-3 pr-3"><div class="col-12 d-flex justify-content-between align-items-center text-muted pl-0 pr-0"><div class="footer-left"><p class="mb-0"> © 2024 <a href="https://github.com/maxmin93">태주아빠</a>. <span data-toggle="tooltip" data-placement="top" title="명시되지 않는 한 이 사이트의 블로그 게시물은 작성자의 Creative Commons Attribution 4.0 International(CC BY 4.0) 라이선스에 따라 사용이 허가되었습니다.">일부 권리 보유</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">인기 태그</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/tutorial/">tutorial</a> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/1st-day/">1st-day</a> <a class="post-tag" href="/tags/book/">book</a> <a class="post-tag" href="/tags/effective-java/">effective-java</a> <a class="post-tag" href="/tags/2nd-day/">2nd-day</a> <a class="post-tag" href="/tags/effective-python/">effective-python</a> <a class="post-tag" href="/tags/svelte5/">svelte5</a> <a class="post-tag" href="/tags/svelte/">svelte</a> <a class="post-tag" href="/tags/ui-components/">ui-components</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a><div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false"><div class="toast-header"> <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="toast-body text-center pt-0"><p class="pl-2 pr-2 mb-3">새 버전의 콘텐츠를 사용할 수 있습니다.</p><button type="button" class="btn btn-primary" aria-label="Update"> 업데이트 </button></div></div><script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">검색 결과가 없습니다.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/lozad/dist/lozad.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1/dayjs.min.js,npm/dayjs@1/locale/ko.min.js,npm/dayjs@1/plugin/relativeTime.min.js,npm/dayjs@1/plugin/localizedFormat.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=G-65FR6C9XJJ"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-65FR6C9XJJ', { 'cookie_prefix': 'TaejooneBlogCookie', 'cookie_domain': 'taejoone.jeju.onl', 'cookie_expires': 28 * 24 * 60 * 60, 'cookie_update': true, }); /** page.collection : 비어있는 경우가 많다 page.categories.join(), page.tags.join(): 빈문자열 출력 --> jekyll 에서는 for 루프를 돌려서 출력 **/ gtag('set', 'content_group', 'post'); gtag('set', 'content_type', 'backend'); gtag('event', 'screen_view', { 'app_name': 'post', 'screen_name': 'backend', }); }); </script>
