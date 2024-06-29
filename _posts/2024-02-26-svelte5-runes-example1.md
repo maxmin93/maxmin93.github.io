@@ -98,44 +98,78 @@ EOF
 
 # font & screen & 변수 추가, daisyUI 설정
 cat <<EOF > tailwind.config.js
+const baseColors = require('tailwindcss/colors');
 const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin');
+const daisyuiTheme = require('daisyui/src/theming/themes');
+const { parseColor } = require('tailwindcss/lib/util/color');
+
+/* Converts HEX color to RGB */
+const toRGB = (value) => parseColor(value).color.join(' ');
 
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    container: (theme) => ({
-      center: true,
+    container: {
+      center: true, // mx-auto
       padding: {
-        DEFAULT: theme('spacing.4'),
-        sm: theme('spacing.5'),
-        lg: theme('spacing.6'),
-        xl: theme('spacing.8'),
+        DEFAULT: '1rem', // px-4
+        sm: '2rem',
+        lg: '4rem',
+        xl: '5rem',
+        '2xl': '6rem',
       },
-      screens: {
-        '2xl': '1400px',
-      },
-    }),
+    },
     fontFamily: {
       sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
       serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
       mono: ['D2Coding', ...defaultTheme.fontFamily.mono],
     },
+    extend: {
+      colors: {
+        section: 'rgb(var(--section) / <alpha-value>)',
+        magnum: {
+          50: '#fff9ed',
+          100: '#fef2d6',
+          200: '#fce0ac',
+          300: '#f9c978',
+          400: '#f7b155',
+          500: '#f38d1c',
+          600: '#e47312',
+          700: '#bd5711',
+          800: '#964516',
+          900: '#793a15',
+          950: '#411c09',
+        },
+      },
+    },    
   },
-  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('daisyui'),
+    plugin(function ({ addVariant, matchUtilities, theme }) {
+      // pseudo-class custom variants
+      addVariant('not-last', '&:not(:last-child)');
+      addVariant('hocus', ['&:hover', '&:focus']);
+    }),
+  ],
+  darkMode: ['class', '[data-theme="dark"]'],
   daisyui: {
     logs: false,
     themes: [
       {
         light: {
-          ...require('daisyui/src/theming/themes')['light'],
-          neutral: 'white',
-          'neutral-content': 'black',
+          ...daisyuiTheme['light'],
+          neutral: baseColors.neutral[50], // white
+          'neutral-content': baseColors.neutral[950],
+          '--section': toRGB(daisyuiTheme['business']['success']),
         },
         dark: {
-          ...require('daisyui/src/theming/themes')['dark'],
-          neutral: 'black',
-          'neutral-content': 'white',
+          ...daisyuiTheme['dark'],
+          neutral: baseColors.neutral[950], // black
+          'neutral-content': baseColors.neutral[50],
+          '--section': toRGB(daisyuiTheme['business']['accent']),
         },
       },
     ],
