@@ -6,7 +6,7 @@ tags: ["tutorial","svelte5","mdsvex","1st-day"]
 image: "https://i.ytimg.com/vi/UFSmNnWPvrM/sddefault.jpg"
 ---
 
-> Svelte 5 기반의 markdown blog 개발을 시작합니다. 기존 자료를 참고하며 나름대로 만들어 보겠습니다.
+> 기존의 jekyll 기반의 블로그를 대체하기 위해 Svelte 5 기반의 markdown blog 개발을 시작합니다. 기존 자료를 참고하며 나름대로 만들어 보겠습니다.
 {: .prompt-tip }
 
 ## 0. 개요
@@ -30,8 +30,8 @@ image: "https://i.ytimg.com/vi/UFSmNnWPvrM/sddefault.jpg"
 ### 라이브러리
 
 - [x] Bun 1.1.7 + Svelte 5 preview
-  - prettier
-  - [prettier-plugin-svelte](https://www.npmjs.com/package/prettier-plugin-svelte)
+  - Typescript
+  - prettier, [prettier-plugin-svelte](https://www.npmjs.com/package/prettier-plugin-svelte)
 - [x] TailwindCSS 3.4.1 + typography
   - [prettier-plugin-tailwindcss](https://www.npmjs.com/package/prettier-plugin-tailwindcss)
   - [vite-plugin-tailwind-purgecss](https://www.npmjs.com/package/vite-plugin-tailwind-purgecss) 0.1.3
@@ -55,12 +55,12 @@ image: "https://i.ytimg.com/vi/UFSmNnWPvrM/sddefault.jpg"
 > SvelteKit + Svelte 5 preview
 
 ```bash
-bun create svelte@latest svlt5-mdsvex-app
+bun create svelte@latest svlt5-markdown-app
   # - Skeleton project
   # - Typescript
   # - Prettier, Svelte5 preview
 
-cd svlt5-mdsvex-app
+cd svlt5-markdown-app
 bun install
 
 # bun runtime
@@ -68,8 +68,9 @@ bun --bun run dev --host 0.0.0.0
 
 # (선택사항) 최신 버전으로 업데이트
 # 주의 : bun update --latest 실행하면 svelte 4.x 최신버전이 된다.
-bun add -d svelte@next @sveltejs/adapter-auto tslib typescript
-bun add -d prettier prettier-plugin-svelte
+bun add -d svelte@next
+# bun add -d @sveltejs/adapter-auto tslib typescript
+# bun add -d prettier prettier-plugin-svelte
 ```
 
 > tailwindCSS + daisyUI + meltUI
