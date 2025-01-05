@@ -13,6 +13,8 @@ image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 
 - [ziglang 공식문서](https://ziglang.org/documentation/master/)
 - [zig.guide](https://zig.guide/getting-started/hello-world)
+- [Introduction to Zig](https://pedropark99.github.io/zig-book/)
+- [Learning Zig](https://www.openmymind.net/learning_zig/), [Learning Zig 한글 번역판](https://faultnote.github.io/posts/learning-zig/)
 - [유튜브 - zig 비디오 강좌 (2023년)](https://www.youtube.com/playlist?list=PLtB7CL7EG7pCw7Xy1SQC53Gl8pI7aDg9t)
 
 

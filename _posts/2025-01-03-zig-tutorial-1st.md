@@ -22,16 +22,26 @@ brew install zig
 # 0.13.0
 ```
 
-### VSCode 의 Zig 확장 모듈 설치
+#### VSCode 의 Zig 확장 모듈 설치
 
 `Zig Language` 를 검색하여 선택한다.
 
 <img src="/2025/01/03-vscode-ext-ziglang.png" alt="vscode-ext-ziglang" width="60%" />
 
+### [Zig 언어 특징](https://www.openmymind.net/learning_zig/language_overview_1/)
+
+- 강력하게 타입이 지정된 컴파일 언어
+- 제네릭을 지원하고, 강력한 컴파일 타임 메타 프로그래밍 기능이 있고
+- 가비지 수집을 포함하지 않습니다.
+- 많은 사람들이 Zig 를 C 의 현대적인 대안으로 생각합니다.
+  - 문법도 C 와 유사 (중괄호 블록을 사용하고 세미콜론으로 문장 구분)
+
 ### 튜토리얼 문서
 
 - [ziglang 공식문서](https://ziglang.org/documentation/master/)
 - [zig.guide](https://zig.guide/getting-started/hello-world)
+- [Introduction to Zig](https://pedropark99.github.io/zig-book/)
+- [Learning Zig](https://www.openmymind.net/learning_zig/), [Learning Zig 한글 번역판](https://faultnote.github.io/posts/learning-zig/)
 - [유튜브 - zig 비디오 강좌 (2023년)](https://www.youtube.com/playlist?list=PLtB7CL7EG7pCw7Xy1SQC53Gl8pI7aDg9t)
 
 
