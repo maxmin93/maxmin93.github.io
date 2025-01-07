@@ -121,6 +121,25 @@ std.debug.print("{s}, {s}! ({d})\n", .{ arr_a, arr_b, length_ab });
 // Hello, World! (10)
 ```
 
+### 슬라이싱
+
+`시작..끝` 표기로 배열의 일부 범위를 지정할 수 있다. 
+
+```zig
+const a = [_]i32{1, 2, 3, 4, 5};
+const b = a[1..4];
+var c = a[1..4];
+
+b[2] = 5;  // <== 컴파일 오류
+```
+
+### const 와 var 
+
+const 로 생성된 배열은 원소의 값을 바꿀 수 없다.
+
+- b 는 `[]const i32` 로 정의된다. (immutable)
+- `var` 로 생성된 c 는 `[]i32` 로 정의된다. (mutable)
+
 
 ## 9. Review
 
