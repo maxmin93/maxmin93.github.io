@@ -77,6 +77,10 @@ pub fn main() !void {
 
 ### [switch 문](https://pedropark99.github.io/zig-book/Chapters/03-structs.html#sec-switch)
 
+`if` 보다 빡빡한 조건을 다루기 때문에 `else` 키워드를 사용해서라도 모든 경우를 포함해야 한다. 그렇지 않으면 컴파일 타임 오류가 발생한다.
+
+- 에러 메시지 `switch must handle all possibilities`
+
 ```zig
 const stdout = std.io.getStdOut().writer();
 const Role = enum { SE, DPE, DE, DA, PM, PO, KS };
@@ -98,6 +102,7 @@ pub fn switch_exam() !void {
         .KS => {
             area = "Sales";
         },
+        else => {},  // 모든 경우를 다루어서 없어도 됨
     }
     try stdout.print("{s}\n", .{area});
 }

@@ -2,7 +2,7 @@
 date: 2025-01-06 00:00:00 +0900
 title: Zig Tutorial - 4일차
 categories: ["language","zig"]
-tags: ["tutorial","install","4th-day"]
+tags: ["tutorial","4th-day"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---
 
@@ -102,15 +102,6 @@ pub const User = struct {
 
 const user = User{.name = "Goku"}; // no power assigned
 ```
-
-## 문자열
-
-(String 타입이 없고) `u8` 의 배열로 정의하고 문자코드는 UTF-8 을 사용한다.
-
-- `*const [4:0]u8` : null 로 종료되는 길이 4의 문자열 타입
-  - `[길이:센티넬]` : **_센티넬_** 은 배열 끝에서 발견되는 특수값을 의미
-- 문자열은 보통 이렇게 정의해 사용한다. ==> `[]const u8`
-  - 문자열의 null 종결자를 찾을 필요가 없어서 효율적이다.
 
 
 ## 9. Review
