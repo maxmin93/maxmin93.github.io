@@ -104,9 +104,70 @@ const user = User{.name = "Goku"}; // no power assigned
 ```
 
 
+## 2. 문자열
+
+(String 타입이 없고) `u8` 의 배열로 정의하고 문자코드는 UTF-8 을 사용한다.
+
+- `*const [4:0]u8` : null 로 종료되는 길이 4의 문자열 타입
+  - `[길이:센티넬]` : **_센티넬_** 은 배열 끝에서 발견되는 특수값을 의미
+- 문자열은 보통 이렇게 정의해 사용한다. ==> `[]const u8`
+  - 문자열의 null 종결자를 찾을 필요가 없어서 효율적이다.
+
+```zig
+const hello: []const u8 = "Hello";
+
+const c_style: [*:0]const u8 = "Null-terminated";
+const slice_style: []const u8 = "Just a slice";
+const sentinel_slice: [:0]const u8 = "Sentinel-terminated slice";
+```
+
+참고자료 : [The Comprehensive Guide to Strings in Zig: From Bytes to Unicode](https://gencmurat.com/en/posts/zig-strings/)
+
+- `*const [N:0]u8` : N+1 바이트 배열의 포인터 (null 종결자 보장)
+- `[]const u8` : 바이트 배열의 조각 (null 종결자 보장 안함)
+- `[:0]const u8` : 바이트 배열의 조각 (null 종결자 보장)
+
+### 문자열 슬라이싱
+
+```zig
+const full_name = "Zig Ziglar";
+const first_name = full_name[0..3];
+const last_name = full_name[4..];
+
+std.debug.print("First: {s}, Last: {s}\n", .{first_name, last_name});
+// 출력
+// First: Zig, Last: Ziglar
+```
+
+### utf8 문자열
+
+참고자료 : [Unicode Basics in Zig](https://zig.news/dude_the_builder/unicode-basics-in-zig-dj3)
+
+```zig
+const greeting = "Hello, 월드 世界!";
+var utf8 = (try std.unicode.Utf8View.init(greeting)).iterator();
+var char_count: usize = 0;
+while (utf8.nextCodepoint()) |code_point| : (char_count += 1) {
+    std.debug.print("0x{x} is {u} \n", .{ code_point, code_point });
+}
+std.debug.print("Character count: {}\n", .{char_count});
+
+// 출력
+// ...
+// 0x20 is   
+// 0xc6d4 is 월 
+// 0xb4dc is 드 
+// 0x20 is   
+// 0x4e16 is 世 
+// 0x754c is 界 
+// 0x21 is ! 
+// Character count: 13
+```
+
+
 ## 9. Review
 
-- 문자열 정의 방법이 많이 이상하다. (불편하다)
+- 문자열 사용 방법이 많이 불편하다. String 타입을 만들주면 좋겠다.
 
 
 &nbsp; <br />

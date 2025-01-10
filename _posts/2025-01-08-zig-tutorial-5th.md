@@ -17,67 +17,7 @@ image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 - [Learning Zig 한글 번역판](https://faultnote.github.io/posts/learning-zig/)
 
 
-## 1. 문자열
-
-(String 타입이 없고) `u8` 의 배열로 정의하고 문자코드는 UTF-8 을 사용한다.
-
-- `*const [4:0]u8` : null 로 종료되는 길이 4의 문자열 타입
-  - `[길이:센티넬]` : **_센티넬_** 은 배열 끝에서 발견되는 특수값을 의미
-- 문자열은 보통 이렇게 정의해 사용한다. ==> `[]const u8`
-  - 문자열의 null 종결자를 찾을 필요가 없어서 효율적이다.
-
-```zig
-const hello: []const u8 = "Hello";
-
-const c_style: [*:0]const u8 = "Null-terminated";
-const slice_style: []const u8 = "Just a slice";
-const sentinel_slice: [:0]const u8 = "Sentinel-terminated slice";
-```
-
-참고자료 : [The Comprehensive Guide to Strings in Zig: From Bytes to Unicode](https://gencmurat.com/en/posts/zig-strings/)
-
-- `*const [N:0]u8` : N+1 바이트 배열의 포인터 (null 종결자 보장)
-- `[]const u8` : 바이트 배열의 조각 (null 종결자 보장 안함)
-- `[:0]const u8` : 바이트 배열의 조각 (null 종결자 보장)
-
-### 문자열 슬라이싱
-
-```zig
-const full_name = "Zig Ziglar";
-const first_name = full_name[0..3];
-const last_name = full_name[4..];
-
-std.debug.print("First: {s}, Last: {s}\n", .{first_name, last_name});
-// 출력
-// First: Zig, Last: Ziglar
-```
-
-### utf8 문자열
-
-참고자료 : [Unicode Basics in Zig](https://zig.news/dude_the_builder/unicode-basics-in-zig-dj3)
-
-```zig
-const greeting = "Hello, 월드 世界!";
-var utf8 = (try std.unicode.Utf8View.init(greeting)).iterator();
-var char_count: usize = 0;
-while (utf8.nextCodepoint()) |code_point| : (char_count += 1) {
-    std.debug.print("0x{x} is {u} \n", .{ code_point, code_point });
-}
-std.debug.print("Character count: {}\n", .{char_count});
-
-// 출력
-// ...
-// 0x20 is   
-// 0xc6d4 is 월 
-// 0xb4dc is 드 
-// 0x20 is   
-// 0x4e16 is 世 
-// 0x754c is 界 
-// 0x21 is ! 
-// Character count: 13
-```
-
-## 2. Zig Package Manager
+## 1. Zig Package Manager
 
 1. `zip fetch --save [URL]` 을 이용해 라이브러리를 다운로드 한다.
 2. `build.zig` 에 `addImport` 코드를 추가한다.
@@ -87,9 +27,9 @@ std.debug.print("Character count: {}\n", .{char_count});
 
 ### 시도한 라이브러리들
 
-- [ziglyph](https://codeberg.org/dude_the_builder/ziglyph)
-- [zig-json](https://github.com/berdon/zig-json)
-- [zig-sqlite](https://github.com/vrischmann/zig-sqlite)
+- [ziglyph](https://codeberg.org/dude_the_builder/ziglyph) : OK
+- [zig-json](https://github.com/berdon/zig-json) : 로컬로 받아서 성공
+- [zig-sqlite](https://github.com/vrischmann/zig-sqlite) 안됨! (소스 문제?)
 
 ### 라이브러리 설치
 
@@ -101,7 +41,7 @@ zig fetch --save https://codeload.github.com/berdon/zig-json/tar.gz/master
 zig fetch --save git+https://github.com/vrischmann/zig-sqlite
 ```
 
-File **build.zig.zon**
+#### File **build.zig.zon**
 
 ```zon
 .ziglyph = .{
@@ -114,23 +54,26 @@ File **build.zig.zon**
 },
 ```
 
-File **build.zig**
+#### File **build.zig**
 
 ```zig
 const exe = ...
 
+// ziglyph 등록
 const ziglyph = b.dependency("ziglyph", .{
     .target = target,
     .optimize = optimize,
 });
 exe.root_module.addImport("ziglyph", ziglyph.module("ziglyph"));
 
-const zigJson = b.dependency("zig-json", .{
-    .target = target,
-    .optimize = optimize
+// zig-json 등록
+// deps 아래에 zig-json 을 다운로드 받아 path 를 연결했다
+const json_module = b.addModule("json", .{
+    .root_source_file = b.path("deps/zig-json/src/main.zig"),
 });
-exe.root_module.addImport("json", zigJson.module("zig-json"));
+exe.root_module.addImport("json", json_module);
 
+// zig-sqlite 등록
 const sqlite = b.dependency("sqlite", .{
     .target = target,
     .optimize = optimize,
@@ -138,44 +81,61 @@ const sqlite = b.dependency("sqlite", .{
 exe.root_module.addImport("sqlite", sqlite.module("sqlite"));
 ```
 
-이 중에 `zig-json` 만 로컬에 다운로드해서 사용하는데 성공했다.
+#### 참고 : `zig-json` 빌드 에러
 
-- deps 디렉토리를 생성하고
-- git clone 으로 직접 소스를 다운로드하고
-- 라이브러리 소스 파일을 모듈로 등록시키고 사용할 수 있었다.
+`zig fetch` 로 다운로드 후, 코드를 작성해 build 하면 error 가 나온다.
+
+```bash
+zig build run                  
+# build.zig:6:71: error: no field named 'path' in union 'Build.LazyPath'
+#    const module = b.addModule("zig-json", .{ .root_source_file = .{ .path = "src/main.zig" } });
+```
+
+`zig-json` 의 [소스 파일](https://github.com/berdon/zig-json/blob/1d7abd208fa9f73a1664ebad300ed8e703c89406/build.zig#L11)을 살펴보니
 
 ```zig
-// build.zig
-
-const json_module = b.addModule("json", .{
-    .root_source_file = b.path("deps/zig-json/src/main.zig"),
+const lib = b.addStaticLibrary(.{
+    .name = "zig-json",
+    .root_source_file = .{ .path = "src/main.zig" },
+    .target = target,
+    .optimize = optimize,
 });
-exe.root_module.addImport("json", json_module);
 ```
+
+이런 표기 방식은 구버전이라 안되는거 같다. (참고: [ziggit.dev](https://ziggit.dev/t/random-build-errors/5638/2))
+
+```zig
+// .root_source_file = .{ .path = "src/hello.zig" },
+.root_source_file = b.path("src/hello.zig"),  // OK!
+```
+
+`zig-json` 소스를 로컬에 다운로드해서 사용하는데 성공했다.
+
+- deps 디렉토리를 생성하고
+- git clone 으로 직접 소스를 'deps/zig-json' 에 다운로드하고
+- 라이브러리 소스 파일을 모듈로 등록시켜서 사용할 수 있었다.
 
 ### 샘플 코드
 
-```bash
-zip build run
-# error:
-# no module named 'sqlite' available within module root
-# error: 
-# no module named 'ziglyph' available within module root
-```
-
-#### [ziglyph](https://codeberg.org/dude_the_builder/ziglyph#using-the-ziglyph-namespace)
+#### [ziglyph](https://codeberg.org/dude_the_builder/ziglyph#using-the-ziglyph-namespace) : 정상 작동
 
 ```zig
 const ziglyph = @import("ziglyph");
 const expect = @import("std").testing.expect;
 
-test "ziglyph namespace" {
+pub fn main() !void {
+    std.debug.print("Hello {s}!\n", .{"World"});
+
     const z = 'z';
-    try expect(ziglyph.isLetter(z));
+    std.debug.print("ziglyph: '{c}' is isLetter = {}!\n", .{ z, ziglyph.isLetter(z) });
 }
+
+// 출력
+// Hello World!
+// ziglyph: 'z' is isLetter = true!
 ```
 
-#### [zig-json](https://github.com/berdon/zig-json?tab=readme-ov-file#usage)
+#### [zig-json](https://github.com/berdon/zig-json?tab=readme-ov-file#usage) : 정상 작동
 
 ```zig
 const json = @import("json");
@@ -207,9 +167,15 @@ pub fn main() !void {
 
     defer value.deinit(allocator);
 }
+
+// 출력
+// Hello World!
+// {
+//   "baz": -130000000000000000000000000000000000000
+// }
 ```
 
-#### [zig-sqlite](https://github.com/vrischmann/zig-sqlite-demo/blob/master/src/main.zig)
+#### [zig-sqlite](https://github.com/vrischmann/zig-sqlite-demo/blob/master/src/main.zig) : 실패!
 
 ```zig
 const sqlite = @import("sqlite");
@@ -230,18 +196,23 @@ pub fn main() anyerror!void {
 
     try db.exec("CREATE TABLE user(id integer primary key, age integer, name text)", .{}, .{});
 
-    const user_name: []const u8 = "Vincent";
-
-    // Insert some data
-    try db.exec("INSERT INTO user(id, age, name) VALUES($id{usize}, $age{u32}, $name{[]const u8})", .{}, .{ @as(usize, 10), @as(u32, 34), user_name });
-    try db.exec("INSERT INTO user(id, age, name) VALUES($id{usize}, $age{u32}, $name{[]const u8})", .{}, .{ @as(usize, 20), @as(u32, 84), @as([]const u8, "José") });
+    // 생략..
 }
 ```
 
+패키지 소스가 잘못된 것 같다. 뭔가 구버전 스타일 문법이 들어간듯
+
+```bash
+zig build run 
+# sqlite.zig:36:26: error: no field named 'struct' in enum '@typeInfo(builtin.Type).Union.tag_type.?'
+#     return type_info == .@"struct";
+#                         ~^~~~~~~~~
+```
 
 ## 9. Review
 
-- 패키지 설치가 이렇게 힘들어서야 제대로 사용할 수가 없네. 내일 다시 해보자.
+- zig 언어 자체는 안정화 상태라는데, 패키지들은 그렇지 않은가 보다.
+- 계속 참고문서들을 살펴보자. (뭔가 판단하기엔 성급하지)
 
 
 &nbsp; <br />
