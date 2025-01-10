@@ -57,6 +57,14 @@ zig init
 
 src 와 zig-out 디렉토리와 기본 파일들이 생성된다.
 
+- `build.zig` : 빌드를 위한 작업
+- `build.zig.zon` : 스펙 데이터
+- `src`
+  - `main.zig` : 실행되는 코드
+  - `root.zig` : 정적 라이브러리 코드 (일종의 컨벤션이다)
+- `zig-out` : 실행파일 빌드시 생성된다
+
+
 ### 빌드 및 실행
 
 ```bash
@@ -90,7 +98,7 @@ zig build-exe src/main.zig -femit-bin=target/hello
 ```zig
 const std = @import("std");
 
-pub fn main() void {
+pub fn main() !void {
     std.debug.print("Hello, {s}!\n", .{"World"});
 }
 ```
@@ -102,6 +110,25 @@ zig build run
 # Hello, World!
 ./zig-out/bin/hello-world 
 # Hello, World!
+```
+
+### src/root.zig 파일
+
+`zig init` 실행시 생성되고 정적 라이브러리 작성을 위한 별도의 파일이다.
+
+- 이름을 다른 것으로 변경해도 된다. 단, `build.zig` 에 명기해야 함
+  - 참고 : [What is root.zig?](https://ziggit.dev/t/what-is-root-zig/5319/2)
+
+```zig
+// build.zig
+
+// root_source_file 에 root.zig 를 명기하고 있다.
+const lib = b.addStaticLibrary(.{
+    .name = "hello-world",
+    .root_source_file = b.path("src/root.zig"),
+    .target = target,
+    .optimize = optimize,
+});
 ```
 
 

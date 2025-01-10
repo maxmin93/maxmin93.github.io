@@ -107,6 +107,14 @@ const a: i32 = undefined;
 var b: u32 = undefined;
 ```
 
+### unused 에러 대응하기 
+
+`_` 을 사용하면 var 또는 const 변수 사용 여부를 무시하게 된다.
+
+```zig
+_ = 10;
+```
+
 
 ## 2. [Arrays](https://zig.guide/language-basics/arrays)
 

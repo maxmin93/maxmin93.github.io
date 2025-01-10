@@ -135,6 +135,11 @@ pub fn main() !void {
 // ziglyph: 'z' is isLetter = true!
 ```
 
+그러나, test 블럭에서 실행하면 ziglyph 를 못찾아서 오류가 난다. test 수행을 위한 별도의 라이브러리 등록 절차가 필요한 것 같다.
+
+- exe 의 root_module 에 등록한 것으로 봐서 test 와는 관련 없는듯
+
+
 #### [zig-json](https://github.com/berdon/zig-json?tab=readme-ov-file#usage) : 정상 작동
 
 ```zig
