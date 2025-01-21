@@ -1,7 +1,7 @@
 ---
 date: 2025-01-03 00:00:00 +0900
 title: Zig Tutorial - 1일차
-categories: ["language","zig"]
+categories: ["language","zig","hello-world"]
 tags: ["tutorial","install","1st-day"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---
@@ -61,7 +61,7 @@ src 와 zig-out 디렉토리와 기본 파일들이 생성된다.
 - `build.zig.zon` : 스펙 데이터
 - `src`
   - `main.zig` : 실행되는 코드
-  - `root.zig` : 정적 라이브러리 코드 (일종의 컨벤션이다)
+  - `root.zig` : 정적 라이브러리 코드 (root 란 이름은 일종의 컨벤션이다)
 - `zig-out` : 실행파일 빌드시 생성된다
 
 
@@ -120,15 +120,84 @@ zig build run
   - 참고 : [What is root.zig?](https://ziggit.dev/t/what-is-root-zig/5319/2)
 
 ```zig
+const std = @import("std");
+const testing = std.testing;
+
+// export 라고 된 키워드를 pub 로 변경했다
+pub fn add(a: i32, b: i32) i32 {
+    return a + b;
+}
+
+test "basic add functionality" {
+    try testing.expect(add(3, 7) == 10);
+}
+```
+
+`zig test` 로 파일을 개별적으로 테스트 할 수 있다.
+
+```console
+$ zig test src/root.zig    
+All 1 tests passed.
+```
+
+### build.zig 파일
+
+빌드시 필요한 외부 라이브러리 파일들을 빌더에게 등록하는 역활을 한다.
+
+- 외부 라이브러리를 사용하고 싶으면 아래와 같은 등록이 필요하다.
+
+```zig
 // build.zig
 
-// root_source_file 에 root.zig 를 명기하고 있다.
+// root.zig 를 정적 라이브러리로 등록 (이름과 위치)
 const lib = b.addStaticLibrary(.{
     .name = "hello-world",
     .root_source_file = b.path("src/root.zig"),
     .target = target,
     .optimize = optimize,
 });
+
+b.installArtifact(lib);
+```
+
+#### main.zig 에서 root.zig 불러오기
+
+`pub` 키워드가 붙어 있어야 외부로 노출할 수 있다.
+
+- 그런데 이건 정적 라이브러리를 사용하는 방식은 아니다.
+  - root 정적 라이브러리를 사용하는 올바른 방법을 못 찾았다.
+  - 대다수 코드들에서 extern 을 사용하는 경우는 C 모듈과 인터페이스 할 때다.
+- `@import` 는 build.zig 에서 addImport 하는 방식과 같다.
+  - 써 놓은게 아까워서 놔두긴 하지만, 나중에 알게되면 수정할 생각이다.
+
+```zig
+const root = @import("root.zig");
+
+pub fn main() !void {
+    std.debug.print("Hello {s}!\n", .{"World"});
+    std.debug.print("add(2,3) = {d}\n", .{root.add(2, 3)});
+}
+```
+
+빌드와 실행을 한꺼번에 수행한다. 또는 개별 파일을 실행할 수도 있다.
+
+```console
+# build.zig 에 명시된 exe 모듈인 main.zig 를 호출
+$ zig build run  
+Hello World!
+add(2,3) = 5
+
+# 명시적으로 main.zig 를 실행
+$ zig run src/main.zig          
+Hello world!
+add = 5
+```
+
+별도로 라이브러리 binary 를 생성하는 빌드도 있다.
+
+```
+# 라이브러리 생성 => libroot.a
+$ zig build-lib src/root.zig
 ```
 
 

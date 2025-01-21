@@ -1,7 +1,7 @@
 ---
 date: 2025-01-11 00:00:00 +0900
 title: Zig Tutorial - 7일차
-categories: ["language","zig"]
+categories: ["language","zig","data-types"]
 tags: ["tutorial","7th-day"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---

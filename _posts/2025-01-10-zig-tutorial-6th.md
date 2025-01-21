@@ -1,7 +1,7 @@
 ---
 date: 2025-01-10 00:00:00 +0900
 title: Zig Tutorial - 6일차
-categories: ["language","zig"]
+categories: ["language","zig","syntax"]
 tags: ["tutorial","6th-day"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---
@@ -22,10 +22,10 @@ image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 - 함수는 이름, 파라미터, 반환 타입으로 선언하고
 - 재귀호출(recursive call)이 가능하다.
 
-```bash
-touch src/fn-exam.zig     # 새로운 zig 파일을 만들고
-zig test src/fn-exam.zig  # 테스트 수행
-# All 2 tests passed.
+```console
+$ touch src/fn-exam.zig     # 새로운 zig 파일을 만들고
+$ zig test src/fn-exam.zig  # 테스트 수행
+All 2 tests passed.
 ```
 
 별도의 zig 파일에 functions 예제 파일을 작성하고 실행해보았다.

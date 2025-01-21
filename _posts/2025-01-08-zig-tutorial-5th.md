@@ -1,7 +1,7 @@
 ---
 date: 2025-01-08 00:00:00 +0900
 title: Zig Tutorial - 5일차
-categories: ["language","zig"]
+categories: ["language","zig","import"]
 tags: ["tutorial","5th-day"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---
@@ -85,10 +85,10 @@ exe.root_module.addImport("sqlite", sqlite.module("sqlite"));
 
 `zig fetch` 로 다운로드 후, 코드를 작성해 build 하면 error 가 나온다.
 
-```bash
-zig build run                  
-# build.zig:6:71: error: no field named 'path' in union 'Build.LazyPath'
-#    const module = b.addModule("zig-json", .{ .root_source_file = .{ .path = "src/main.zig" } });
+```console
+$ zig build run                  
+build.zig:6:71: error: no field named 'path' in union 'Build.LazyPath'
+const module = b.addModule("zig-json", .{ .root_source_file = .{ .path = "src/main.zig" } });
 ```
 
 `zig-json` 의 [소스 파일](https://github.com/berdon/zig-json/blob/1d7abd208fa9f73a1664ebad300ed8e703c89406/build.zig#L11)을 살펴보니
@@ -207,11 +207,11 @@ pub fn main() anyerror!void {
 
 패키지 소스가 잘못된 것 같다. 뭔가 구버전 스타일 문법이 들어간듯
 
-```bash
-zig build run 
-# sqlite.zig:36:26: error: no field named 'struct' in enum '@typeInfo(builtin.Type).Union.tag_type.?'
-#     return type_info == .@"struct";
-#                         ~^~~~~~~~~
+```console
+$ zig build run 
+sqlite.zig:36:26: error: no field named 'struct' in enum '@typeInfo(builtin.Type).Union.tag_type.?'
+    return type_info == .@"struct";
+                        ~^~~~~~~~~
 ```
 
 ## 9. Review

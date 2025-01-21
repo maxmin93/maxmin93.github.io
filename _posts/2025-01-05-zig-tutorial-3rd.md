@@ -1,7 +1,7 @@
 ---
 date: 2025-01-05 00:00:00 +0900
 title: Zig Tutorial - 3일차
-categories: ["language","zig"]
+categories: ["language","zig","control-flow"]
 tags: ["tutorial","3rd-day"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---

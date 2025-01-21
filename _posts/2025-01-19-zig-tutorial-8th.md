@@ -1,8 +1,8 @@
 ---
 date: 2025-01-19 00:00:00 +0900
 title: Zig Tutorial - 8일차
-categories: ["language","zig"]
-tags: ["tutorial","8th-day"]
+categories: ["language","zig","build"]
+tags: ["tutorial","8th-day","wasm","wasi"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---
 
@@ -75,7 +75,7 @@ pub fn main() !void {
 
 빌드하면 `std/heap/general_purpose_allocator.zig` 에서 오류가 뜬다. 
 
-```bash
+```console
 $ zig build-exe src/wasi_args_old.zig -target wasm32-wasi
 src/wasi_args_old.zig:4:77: error: expected type 'heap.general_purpose_allocator.GeneralPurposeAllocator(.{ .stack_trace_frames = 0, .enable_memory_limit = false, .safety = true, .thread_safe = false, .MutexType = null, .never_unmap = false, .retain_metadata = false, .verbose_log = false })', found '@TypeOf(.enum_literal)'
     var general_purpose_allocator: std.heap.GeneralPurposeAllocator(.{}) = .init;
@@ -85,7 +85,7 @@ src/wasi_args_old.zig:4:77: error: expected type 'heap.general_purpose_allocator
 
 `zig run` 명령에 args 를 추가하려면 `--` 다음에 붙이면 된다. [(출처)](https://stackoverflow.com/a/72558768)
 
-```bash
+```console
 $ zig run src/wasi_args.zig -- 123 hello
 Print args example: len=3
 0: /Users/bgmin/.cache/zig/o/fcdbc87fdd24476dce088641df04e9d8/wasi_args
@@ -100,7 +100,7 @@ Print args example: len=3
 - 빌드시 `-O` 최적화 옵션을 사용하면 빠르게 또는 작게 만들기 등을 할 수 있다.
 - `-O ReleaseSmall` 사용시 1/10 수준으로 크기가 작아진다.
 
-```zig
+```console
 $ zig build-exe src/wasi_args.zig
 
 $ ./wasi_args 123 hello
@@ -187,7 +187,7 @@ pub fn main() !void {
 
 args 를 바로 추가하여 실행하거나, 표준 입력으로 받아서 실행할 수 있다.
 
-```bash
+```console
 $ zig run src/fibonacci.zig -- 10
 Zig - Fibonacci sequence example
 Fibonacci sequence number at index 10 is 55
@@ -219,7 +219,7 @@ Fibonacci sequence number at index 10 is 55
 - `wasmtime` 는 `brew install wasmtime` 으로 설치
 - 참고: [wasmtime Introduction](https://docs.wasmtime.dev/introduction.html)
 
-```bash
+```console
 # wasm 바이너리 빌드
 $ zig build-exe src/fibonacci.zig -target wasm32-wasi
 
