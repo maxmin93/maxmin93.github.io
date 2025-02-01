@@ -1,8 +1,8 @@
 ---
 date: 2025-01-03 00:00:00 +0900
 title: Zig Tutorial - 1일차
-categories: ["language","zig","hello-world"]
-tags: ["tutorial","install","1st-day"]
+categories: ["language","zig"]
+tags: ["tutorial","hello-world","1st-day"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---
 

@@ -1,8 +1,8 @@
 ---
 date: 2025-01-04 00:00:00 +0900
 title: Zig Tutorial - 2일차
-categories: ["language","zig","data-types"]
-tags: ["tutorial","2nd-day"]
+categories: ["language","zig"]
+tags: ["tutorial","2nd-day","data-types"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---
 

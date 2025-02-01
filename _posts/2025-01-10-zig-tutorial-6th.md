@@ -1,8 +1,8 @@
 ---
 date: 2025-01-10 00:00:00 +0900
 title: Zig Tutorial - 6일차
-categories: ["language","zig","syntax"]
-tags: ["tutorial","6th-day"]
+categories: ["language","zig"]
+tags: ["tutorial","6th-day","syntax"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---
 

@@ -1,7 +1,7 @@
 ---
 date: 2025-01-19 00:00:00 +0900
 title: Zig Tutorial - 8일차
-categories: ["language","zig","build"]
+categories: ["language","zig"]
 tags: ["tutorial","8th-day","wasm","wasi"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---

@@ -1,8 +1,8 @@
 ---
 date: 2025-01-06 00:00:00 +0900
 title: Zig Tutorial - 4일차
-categories: ["language","zig","tips"]
-tags: ["tutorial","4th-day"]
+categories: ["language","zig"]
+tags: ["tutorial","4th-day","tips"]
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---
 
