@@ -24,7 +24,7 @@ Zig 와 WASM 에 관련된 예제를 검색해 보면 [Minimal zig-wasm-canvas e
 
 아래 동영상은 [TinyGo & WASM 의 WebGL 데모](https://github.com/semanser/tinygo-wasm-webgl-demo/tree/main) 이다.
 
-<video src="https://github.com/semanser/tinygo-wasm-webgl-demo/assets/4020045/2047caee-491a-4db6-bb49-8e24ec42bb43" controls="controls" style="max-width: 640px;">
+<video src="https://github.com/semanser/tinygo-wasm-webgl-demo/assets/4020045/2047caee-491a-4db6-bb49-8e24ec42bb43" controls="controls" style="max-width: 90%;">
 </video>
 
 ### WASM 의 장점
@@ -116,7 +116,7 @@ AssemblyScript 또는 TinyGo, Rust 등의 WASM 데모를 찾으면 비교적 쉽
 
 여러 언어와 여러 아키텍처의 조합에 대해 적합하게 코드를 컴파일 할 수 있는 재사용성이 높은 컴파일러 아키텍처이다. 프론트, 미들, 백엔드 세부분으로 나누어지고 LLVM 을 통과하면 주어진 조건에 navtive 가까운 코드를 생산해 낼 수 있다.
 
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fna2N0%2FbtsIygyAg99%2FzOa38EV7WcZ0RuKWkHb8F1%2Fimg.png" alt="LLVM Architecture" width="640px" />
+<img src="https://blog.kakaocdn.net/dn/bBg3Jn/btrH1z7cVLT/7NKkToRNIqxah9FmKysR00/img.png" alt="LLVM Architecture" width="80%" />
 
 Zig 도 빌드할 때 LLVM 을 사용하고, Rust/Python 등등의 여타 언어들도 LLVM 을 사용해 특정 머신의 바이너리 파일을 컴파일 할 수 있다.
 
