@@ -1,0 +1,1394 @@
+<!DOCTYPE html><html lang="ko-KR" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="prefer-datetime-locale" content="ko"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="Effective PYTHON 2nd - Ch07" /><meta property="og:locale" content="ko_KR" /><meta name="description" content="Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다." /><meta property="og:description" content="Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다." /><link rel="canonical" href="https://taejoone.jeju.onl/posts/2021-01-08-effective-py-2nd-ch07/" /><meta property="og:url" content="https://taejoone.jeju.onl/posts/2021-01-08-effective-py-2nd-ch07/" /><meta property="og:site_name" content="태주네 블로그" /><meta property="og:image" content="https://effectivepython.com/images/cover_2ed.jpg" /><meta property="og:image:width" content="300" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-01-08T00:00:00+09:00" /><meta name="twitter:card" content="summary_large_image" /><meta property="twitter:image" content="https://effectivepython.com/images/cover_2ed.jpg" /><meta property="twitter:title" content="Effective PYTHON 2nd - Ch07" /><meta name="twitter:site" content="@twitter_username" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-07-13T16:14:02+09:00","datePublished":"2021-01-08T00:00:00+09:00","description":"Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.","headline":"Effective PYTHON 2nd - Ch07","image":{"width":300,"url":"https://effectivepython.com/images/cover_2ed.jpg","@type":"imageObject"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://taejoone.jeju.onl/posts/2021-01-08-effective-py-2nd-ch07/"},"url":"https://taejoone.jeju.onl/posts/2021-01-08-effective-py-2nd-ch07/"}</script><title>Effective PYTHON 2nd - Ch07 | 태주네 블로그</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name="apple-mobile-web-app-title" content="태주네 블로그"><meta name="application-name" content="태주네 블로그"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href=""><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get MODE_ATTR() { return "data-mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } static get ID() { return "mode-toggle"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } let self = this; /* always follow the system prefers */ this.sysDarkPrefers.addEventListener("change", () => { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.notify(); }); } /* constructor() */ get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; } get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } setDark() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_ATTR); sessionStorage.removeItem(ModeToggle.MODE_KEY); } /* Notify another plugins that the theme mode has changed */ notify() { window.postMessage({ direction: ModeToggle.ID, message: this.modeStatus }, "*"); } } /* ModeToggle */ const toggle = new ModeToggle(); function flipMode() { if (toggle.hasMode) { if (toggle.isSysDarkPrefer) { if (toggle.isLightMode) { toggle.clearMode(); } else { toggle.setLight(); } } else { if (toggle.isDarkMode) { toggle.clearMode(); } else { toggle.setDark(); } } } else { if (toggle.isSysDarkPrefer) { toggle.setLight(); } else { toggle.setDark(); } } toggle.notify(); } /* flipMode() */ </script><body data-spy="scroll" data-target="#toc" data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end">
+<div class="profile-wrapper text-center">
+<div id="avatar"> <a href="/" class="mx-auto"> <img src="/assets/img/icons/tonyne-icon.png" alt="avatar" onerror="this.style.display='none'"> </a>
+</div>
+<div class="site-title mt-3"> <a href="/">태주네 블로그</a>
+</div>
+<div class="site-subtitle font-italic">제주 개발자, 풀스택 웹개발<br>데이터 수집/분석/검색</div>
+</div>
+<ul class="w-100">
+<li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>홈</span> </a>
+</li>
+<li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>카테고리</span> </a>
+</li>
+<li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>태그</span> </a>
+</li>
+<li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>아카이브</span> </a>
+</li>
+<li class="nav-item"> <a href="/portfolio/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>포트폴리오</span> </a>
+</li>
+<li class="nav-item"> <a href="/projects/" class="nav-link"> <i class="fa-fw fas fa-building ml-xl-3 mr-xl-3 unloaded"></i> <span>프로젝트</span> </a>
+</li>
+<li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>정보</span> </a>
+</li>
+</ul>
+<div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <button class="mode-toggle btn" aria-label="Switch Mode"> <i class="fas fa-adjust"></i> </button> <span class="icon-border"></span> <a href="https://github.com/maxmin93" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://www.facebook.com/tonyne.jeju" aria-label="Facebook" target="_blank" rel="noopener"> <i class="fab fa-facebook-square"></i> </a> <a href="https://www.linkedin.com/in/maxmin93" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href="/feed.xml" aria-label="rss"> <i class="fas fa-rss"></i> </a>
+</div>
+</div><div id="topbar-wrapper"><div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4"> <span id="breadcrumb"> <span> <a href="/"> 홈 </a> </span> <span>Effective PYTHON 2nd - Ch07</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> 포스트</div>
+<i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="검색..."> </span> <span id="search-cancel">취소</span>
+</div></div><div id="main-wrapper" class="d-flex justify-content-center">
+<div id="main" class="container pl-xl-4 pr-xl-4">
+<div class="row">
+<div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4"><div class="post pl-1 pr-1 pl-md-2 pr-md-2">
+<h1 data-toc-skip>Effective PYTHON 2nd - Ch07</h1>
+<div class="post-meta text-muted"> <span> 게시 <em class="" data-ts="1610031600" data-df="YYYY-MM-DD" data-toggle="tooltip" data-placement="bottom"> 2021-01-08 </em> </span> <span> 업데이트 <em class="" data-ts="1689232442" data-df="YYYY-MM-DD" data-toggle="tooltip" data-placement="bottom"> 2023-07-13 </em> </span><div class="mt-3 mb-3"> <img data-src="https://effectivepython.com/images/cover_2ed.jpg" class="preview-img bg" alt="Preview Image" width="300" data-proofer-ignore>
+</div>
+<div class="d-flex justify-content-between"> <span> By <em> <a href="https://github.com/maxmin93">태주아빠</a> </em> </span><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="3542 단어"> <em>19 분 </em>읽는 시간</span>
+</div>
+</div>
+</div>
+<div class="post-content">
+<blockquote class="prompt-tip"><div><p>Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다.</p></div></blockquote>
+<h2 id="7장-동시성과-병렬성">
+<span class="mr-2">7장 동시성과 병렬성</span><a href="#7%EC%9E%A5-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-%EB%B3%91%EB%A0%AC%EC%84%B1" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h2>
+<h3 id="52-자식-프로세스를-관리하기-위해-subprocess를-사용하라-">
+<span class="mr-2">52) 자식 프로세스를 관리하기 위해 subprocess를 사용하라 <a id="item52"><span class="mr-2"></span></a></span><a href="#52-%EC%9E%90%EC%8B%9D-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EB%A5%BC-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%B4-subprocess%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<ul>
+<li>subprocess 모듈을 사용해 자식 프로세스를 실행하고 입력과 출력 스트림을 관리할 수 있다.</li>
+<li>자식 프로세스는 파이썬 인터프리터와 병렬로 실행되므로 CPU 코어를 최대로 쓸 수 있다.</li>
+<li>간단하게 자식 프로세스를 실행하고 싶은 경우에는 run 함수를 사용하라<ul><li>유닉스 스타일의 파이프라인이 필요하면 Popen 클래스를 사용하라</li></ul>
+</li>
+<li>자식 프로세스가 멈추는 경우나 교착 상태를 방지하려면 communicate 메서드에 대해 timeout 파라미터를 사용하라.</li>
+</ul>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+</pre></td>
+<td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">run</span><span class="p">([</span><span class="s">'echo'</span><span class="p">,</span> <span class="s">'hello from subprocess!'</span><span class="p">],</span>
+        <span class="n">capture_output</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+        <span class="n">encoding</span><span class="o">=</span><span class="s">'utf-8'</span>
+        <span class="p">)</span>
+<span class="n">result</span><span class="p">.</span><span class="n">check_returncode</span><span class="p">()</span>   <span class="c1"># 예외가 발생하지 않으면 정상 종료임
+</span><span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">stdout</span><span class="p">)</span>
+
+
+<span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">Popen</span><span class="p">([</span><span class="s">'sleep'</span><span class="p">,</span> <span class="s">'1'</span><span class="p">])</span>
+<span class="k">while</span> <span class="n">proc</span><span class="p">.</span><span class="n">poll</span><span class="p">()</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'on working...'</span><span class="p">)</span>
+    <span class="c1"># 시간이 걸리는 작업
+</span>    <span class="p">...</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'종료 상태:'</span><span class="p">,</span> <span class="n">proc</span><span class="p">.</span><span class="n">poll</span><span class="p">())</span>    <span class="c1"># =&gt; 0
+</span>
+
+<span class="c1"># 자식 프로세스와 부모 프로세스를 분리하면
+# 원하는 개수만큼 많은 자식 프로세스를 병렬로 실행할 수 있다
+</span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">sleep_procs</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">proc</span> <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">Popen</span><span class="p">([</span><span class="s">'sleep'</span><span class="p">,</span> <span class="s">'1'</span><span class="p">])</span>
+    <span class="n">sleep_procs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">proc</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">proc</span> <span class="ow">in</span> <span class="n">sleep_procs</span><span class="p">:</span>
+    <span class="n">proc</span><span class="p">.</span><span class="n">communicate</span><span class="p">()</span>      <span class="c1"># 순차 실행시 10초 이상 걸림
+</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">delta</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="si">}</span><span class="s"> 초 만에 끝남'</span><span class="p">)</span>   <span class="c1"># 1.04 초 만에 끝남
+</span>
+
+<span class="c1"># 유닉스 파이프라인처럼 프로세스의 출력을 다음 프로세스 입력으로 연결시켜서
+# 여러 병렬 프로세스를 연쇄적으로 실행할 수 있다
+</span><span class="n">encrypt_procs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">hash_procs</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">urandom</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">encrypt_proc</span> <span class="o">=</span> <span class="n">run_encrypt</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>            <span class="c1"># PIPE =&gt; subprocess.Popen =&gt; PIPE
+</span>    <span class="n">encrypt_procs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">encrypt_proc</span><span class="p">)</span>
+                                                <span class="c1"># encrypt_proc 의 output 을 입력으로 연결
+</span>    <span class="n">hash_proc</span> <span class="o">=</span> <span class="n">run_hash</span><span class="p">(</span><span class="n">encrypt_proc</span><span class="p">.</span><span class="n">stdout</span><span class="p">)</span>   <span class="c1"># stdin =&gt; subprocess.Popen =&gt; PIPE
+</span>    <span class="n">hash_procs</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">hash_proc</span><span class="p">)</span>
+
+    <span class="n">encript_proc</span><span class="p">.</span><span class="n">stdout</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">encript_proc</span><span class="p">.</span><span class="n">stdout</span> <span class="o">=</span> <span class="bp">None</span>
+
+<span class="k">for</span> <span class="n">proc</span> <span class="ow">in</span> <span class="n">encrypt_procs</span><span class="p">:</span>
+    <span class="n">proc_communicate</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">proc</span><span class="p">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">proc</span> <span class="ow">in</span> <span class="n">hash_procs</span><span class="p">:</span>
+    <span class="n">out</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">proc</span><span class="p">.</span><span class="n">communicate</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:])</span>
+
+<span class="k">assert</span> <span class="n">proc</span><span class="p">.</span><span class="n">returncode</span> <span class="o">==</span> <span class="mi">0</span>
+
+
+<span class="c1"># 블록되는 경우가 우려된다면, timeout 파라미터를 사용한다
+</span><span class="n">proc</span>  <span class="o">=</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">Popen</span><span class="p">([</span><span class="s">'sleep'</span><span class="p">,</span> <span class="s">'10'</span><span class="p">])</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">proc</span><span class="p">.</span><span class="n">communicate</span><span class="p">(</span><span class="n">timeout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">subprocess</span><span class="p">.</span><span class="n">TimeoutExpired</span><span class="p">:</span>
+    <span class="n">proc</span><span class="p">.</span><span class="n">terminate</span><span class="p">()</span>
+    <span class="n">proc</span><span class="p">.</span><span class="n">wait</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'종료 상태:'</span><span class="p">,</span> <span class="n">proc</span><span class="p">.</span><span class="n">poll</span><span class="p">())</span>     <span class="c1"># =&gt; 종료 상태: -15
+</span>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="53-블로킹-io의-경우-스레드를-사용하고-병렬성을-피하라-">
+<span class="mr-2">53) 블로킹 I/O의 경우 스레드를 사용하고 병렬성을 피하라 <a id="item53"><span class="mr-2"></span></a></span><a href="#53-%EB%B8%94%EB%A1%9C%ED%82%B9-io%EC%9D%98-%EA%B2%BD%EC%9A%B0-%EC%8A%A4%EB%A0%88%EB%93%9C%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B3%A0-%EB%B3%91%EB%A0%AC%EC%84%B1%EC%9D%84-%ED%94%BC%ED%95%98%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<ul>
+<li>파이썬 스레드는 GIL(전역 인터프리터 락)로 인해 멀티 CPU 코어에서 병렬로 실행될 수 없다.</li>
+<li>GIL 이 있음에도 파이썬 스레드는 여전히 유효하다.<ul><li>스레드를 사용하면 여러 job 을 동시에 진행하는 작업을 쉽게 기술할 수 있기 때문이다.</li></ul>
+</li>
+<li>파이썬 스레드를 사용해 여러 시스템 콜을 병렬로 수행할 수 있다.<ul><li>이를 활용하면 블로킹 I/O 와 계산을 동시에 수행할 수 있다.</li></ul>
+</li>
+</ul>
+<blockquote><p>스레드를 사용하지 않는 경우</p></blockquote>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td>
+<td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">factorize</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">number</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">i</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2139079</span><span class="p">,</span> <span class="mi">1214759</span><span class="p">,</span> <span class="mi">1516637</span><span class="p">,</span> <span class="mi">1852285</span><span class="p">]</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># 스레드 1개만 사용
+</span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="s">'==&gt;'</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">factorize</span><span class="p">(</span><span class="n">number</span><span class="p">)))</span>
+
+<span class="c1"># total 0.253 sec elapsed
+</span><span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'total </span><span class="si">{</span><span class="n">delta</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s"> sec elapsed'</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<blockquote><p>스레드를 사용한 경우 (비슷. 성능향상이 없다)</p></blockquote>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+</pre></td>
+<td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+
+<span class="k">class</span> <span class="nc">FactorizeThread</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">factors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span> <span class="n">factorize</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">number</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="c1"># 각 수마다 스레드를 시작해 병렬로 인수를 찾을 수 있다.
+</span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">FactorizedThread</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+    <span class="n">thread</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+
+<span class="c1"># 모든 스레드가 끝날 때까지 기다린다
+</span><span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="p">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>                           <span class="c1"># 단순 순차 실행시 0.256초
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'총 </span><span class="si">{</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s"> 초 걸림'</span><span class="p">)</span>      <span class="c1"># &gt;&gt;&gt; 0.446초 걸림
+</span>
+<span class="c1"># 놀랍게도 스레드를 하나만 써서 순차적으로 factorize를 실행할 때보다
+# 시간이 더 오래 걸린다. ==&gt; GIL 의 영향
+</span>
+<span class="c1"># 그럼에도 파이썬이 스레드를 지원하는 이유는?
+# 1) 다중 스레드를 사용하면 프로그램이 동시에 여러 일을 하는 것처럼 보이게 만들기 쉽다.
+#    - CPython 어느 정도 균일하게 각 스레드를 실행시킨다
+# 2) 블로킹 I/O 를 다루기 위해서다.
+#    - 운영체제가 시스템 콜 요청에 응답하는데 걸리는 시간 동안 파이썬 프로그램이 다른 일을 할 수 있다
+</span>
+<span class="kn">import</span> <span class="nn">select</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="c1"># 순차 실행시 수행시간이 선형으로 늘어나는 작업
+# ==&gt; 총 0.503초 걸림
+</span><span class="k">def</span> <span class="nf">slow_systemcall</span><span class="p">():</span>
+    <span class="n">select</span><span class="p">.</span><span class="n">select</span><span class="p">([</span><span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">()],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="c1"># 블로킹 I/O를 병렬로 실행한다
+</span><span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">slow_systemcall</span><span class="p">)</span>
+    <span class="n">thread</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">threads</span><span class="p">)</span>
+
+<span class="c1"># 스레드를 시작한 후 다른 코드를 수행한다
+</span><span class="k">def</span> <span class="nf">compute_another</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+    <span class="p">...</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>                          <span class="c1"># 다른 작업을 수행하고도
+</span>    <span class="n">compute_another</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>                      <span class="c1"># 순차 실행보다 시간이 1/5로 줄어든다
+</span>
+<span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="p">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>                           <span class="c1"># 단순 순차 실행시 0.503초
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'총 </span><span class="si">{</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s"> 초 걸림'</span><span class="p">)</span>      <span class="c1"># &gt;&gt;&gt; 총 0.102초 걸림
+</span>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<blockquote><p>블로킹 I/O를 다루는 코드 (non-Thread)</p></blockquote>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td>
+<td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">select</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="k">def</span> <span class="nf">slow_systemcall</span><span class="p">():</span>
+    <span class="n">select</span><span class="p">.</span><span class="n">select</span><span class="p">([</span><span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">()],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">slow_systemcall</span><span class="p">()</span>
+
+<span class="c1"># total 0.520 sec elapsed
+</span><span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'total </span><span class="si">{</span><span class="n">delta</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s"> sec elapsed'</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<blockquote><p>블로킹 I/O를 다루는 코드 (Thread 사용: <strong>성능향상!!</strong>)</p></blockquote>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre></td>
+<td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">select</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="c1"># 블로킹 I/O 작업 (병렬성이 필요한 작업)
+</span><span class="k">def</span> <span class="nf">slow_systemcall</span><span class="p">():</span>
+    <span class="c1"># 시스템 콜 (select)
+</span>    <span class="n">select</span><span class="p">.</span><span class="n">select</span><span class="p">([</span><span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">()],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">compute_something</span><span class="p">(</span><span class="n">pre_val</span><span class="p">,</span> <span class="n">cur_val</span><span class="p">):</span>
+    <span class="c1"># doing other job (print 사용해도 지장 없음)
+</span>    <span class="c1"># print( pre_val + cur_val )
+</span>    <span class="k">return</span> <span class="n">pre_val</span> <span class="o">+</span> <span class="n">cur_val</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">slow_systemcall</span><span class="p">)</span>
+    <span class="n">thread</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">compute_something</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># 모든 스레드가 끝날 때까지 기다린다
+</span><span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="p">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="c1"># total 0.107 sec elapsed (non-thread: 0.520 sec)
+</span><span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'total </span><span class="si">{</span><span class="n">delta</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s"> sec elapsed'</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="54-스레드에서-데이터-경합을-피하기-위해-lock을-사용하라-">
+<span class="mr-2">54) 스레드에서 데이터 경합을 피하기 위해 Lock을 사용하라 <a id="item54"><span class="mr-2"></span></a></span><a href="#54-%EC%8A%A4%EB%A0%88%EB%93%9C%EC%97%90%EC%84%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EA%B2%BD%ED%95%A9%EC%9D%84-%ED%94%BC%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%B4-lock%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<ul>
+<li>GIL은 여러 스레드 사이에 일어나는 데이터 경합으로부터 데이터를 보호하지 못한다</li>
+<li>여러 스레드가 상호배제 락(뮤텍스) 없이 동일 객체를 다루면 데이터를 오염시킨다<ul><li>threading 내장 모듈의 Lock 클래스를 활용하라</li></ul>
+</li>
+</ul>
+<blockquote><p>Lock 없이 동일 개체를 다수의 Thread 가 다룬 경우 (데이터 오염)</p></blockquote>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+</pre></td>
+<td class="rouge-code"><pre><span class="c1"># 동일 객체를 대상으로 여러 스레드가 값을 갱신해서 데이터가 오염됨
+# ==&gt; Lock 필요
+</span><span class="k">class</span> <span class="nc">Counter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">increment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">count</span> <span class="o">+=</span> <span class="n">offset</span>
+
+<span class="c1"># how_many 만큼 숫자를 증가
+</span><span class="k">def</span> <span class="nf">worker</span><span class="p">(</span><span class="n">sensor_index</span><span class="p">,</span> <span class="n">how_many</span><span class="p">,</span> <span class="n">counter</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many</span><span class="p">):</span>
+        <span class="c1"># 센서를 읽는다
+</span>        <span class="n">counter</span><span class="p">.</span><span class="n">increment</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+
+<span class="n">how_many</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">5</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">how_many</span><span class="p">,</span> <span class="n">counter</span><span class="p">))</span>
+    <span class="n">thread</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+
+<span class="c1"># 모든 스레드가 끝날 때까지 기다린다
+</span><span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="p">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="c1"># how_many 만큼 증가시키는 작업을 5번 실행한 결과 (0.085 sec elapsed)
+# expected value = 500000, but found value = 367540
+</span><span class="n">expected</span> <span class="o">=</span> <span class="n">how_many</span><span class="o">*</span><span class="mi">5</span>
+<span class="n">found</span> <span class="o">=</span> <span class="n">counter</span><span class="p">.</span><span class="n">count</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'expected value = </span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="s">, but found value = </span><span class="si">{</span><span class="n">found</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'total </span><span class="si">{</span><span class="n">delta</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s"> sec elapsed'</span><span class="p">)</span>
+
+<span class="c1"># 결과
+# expected value = 500000, but found value = 450379
+# total 0.085 sec elapsed
+</span></pre></td>
+</tr></tbody></table></code></div>
+</div>
+<blockquote><p>Lock 으로 보호된 객체를 다루는 경우 (올바른 결과)</p></blockquote>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+</pre></td>
+<td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Lock</span>
+
+<span class="c1"># 데이터 오염 방지
+</span><span class="k">class</span> <span class="nc">LockingCounter</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">increment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="p">.</span><span class="n">lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">count</span> <span class="o">+=</span> <span class="n">offset</span>
+
+<span class="c1"># how_many 만큼 숫자를 증가
+</span><span class="k">def</span> <span class="nf">worker</span><span class="p">(</span><span class="n">sensor_index</span><span class="p">,</span> <span class="n">how_many</span><span class="p">,</span> <span class="n">counter</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">how_many</span><span class="p">):</span>
+        <span class="c1"># 센서를 읽는다
+</span>        <span class="n">counter</span><span class="p">.</span><span class="n">increment</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+
+<span class="n">how_many</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">5</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="n">LockingCounter</span><span class="p">()</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">worker</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">how_many</span><span class="p">,</span> <span class="n">counter</span><span class="p">))</span>
+    <span class="n">thread</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="n">threads</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">thread</span><span class="p">)</span>
+
+<span class="c1"># 모든 스레드가 끝날 때까지 기다린다
+</span><span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="p">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="c1"># how_many 만큼 증가시키는 작업을 5번 실행한 결과 (0.143 sec elapsed)
+# expected value = 500000, but found value = 500000
+</span><span class="n">expected</span> <span class="o">=</span> <span class="n">how_many</span><span class="o">*</span><span class="mi">5</span>
+<span class="n">found</span> <span class="o">=</span> <span class="n">counter</span><span class="p">.</span><span class="n">count</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'expected value = </span><span class="si">{</span><span class="n">expected</span><span class="si">}</span><span class="s">, but found value = </span><span class="si">{</span><span class="n">found</span><span class="si">}</span><span class="s">'</span><span class="p">)</span>
+
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="p">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">delta</span> <span class="o">=</span> <span class="n">end</span> <span class="o">-</span> <span class="n">start</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'total </span><span class="si">{</span><span class="n">delta</span><span class="si">:</span><span class="p">.</span><span class="mi">3</span><span class="n">f</span><span class="si">}</span><span class="s"> sec elapsed'</span><span class="p">)</span>
+
+<span class="c1"># 결과
+# expected value = 500000, but found value = 500000
+# total 0.143 sec elapsed
+</span></pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="55-queue를-사용해-스레드-사이의-작업을-조율하라-">
+<span class="mr-2">55) Queue를 사용해 스레드 사이의 작업을 조율하라 <a id="item55"><span class="mr-2"></span></a></span><a href="#55-queue%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EC%8A%A4%EB%A0%88%EB%93%9C-%EC%82%AC%EC%9D%B4%EC%9D%98-%EC%9E%91%EC%97%85%EC%9D%84-%EC%A1%B0%EC%9C%A8%ED%95%98%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<ul>
+<li>순차적인 작업을 동시에 여러 스레드에서 실행되도록 조직하고 싶을 때라면 <code class="language-console highlighter-rouge"><span class="go">파이프라인</span></code>이 유용하다<ul><li>특히 I/O 위주의 작업</li></ul>
+</li>
+<li>동시성 파이프라인을 만들 때 발생할 수 있는 여러 문제를 잘 알아두어야 한다<ul><li>바쁜 대기, 작업자에게 종료를 알리는 방법, 잠재적인 메모리 사용량 폭발 등</li></ul>
+</li>
+<li>Queue 클래스는 튼튼한 파이프라인을 구축할 때 필요한 블로킹, 버퍼크기 지정, join을 통한 완료 대기를 모두 제공한다</li>
+</ul>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+</pre></td>
+<td class="rouge-code"><pre><span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'downloaded:'</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">item</span>
+<span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'resizeed:'</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">item</span>
+<span class="k">def</span> <span class="nf">upload</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'uploaded:'</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">item</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Lock</span>
+
+<span class="k">class</span> <span class="nc">MyQueue</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">items</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">lock</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="p">.</span><span class="n">lock</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">items</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="bp">self</span><span class="p">.</span><span class="n">lock</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="p">.</span><span class="n">items</span><span class="p">.</span><span class="n">popleft</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">class</span> <span class="nc">Worker</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">in_queue</span><span class="p">,</span> <span class="n">out_queue</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">in_queue</span> <span class="o">=</span> <span class="n">in_queue</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">out_queue</span> <span class="o">=</span> <span class="n">out_queue</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">polled_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">work_done</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">polled_count</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">in_queue</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="k">except</span> <span class="nb">IndexError</span><span class="p">:</span>
+                <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>  <span class="c1"># 할 일이 없음 (잠시 대기)
+</span>            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">func</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">out_queue</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">work_done</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="n">download_queue</span> <span class="o">=</span> <span class="n">MyQueue</span><span class="p">()</span>
+<span class="n">resize_queue</span> <span class="o">=</span> <span class="n">MyQueue</span><span class="p">()</span>
+<span class="n">upload_queue</span> <span class="o">=</span> <span class="n">MyQueue</span><span class="p">()</span>
+
+<span class="n">done_queue</span> <span class="o">=</span> <span class="n">MyQueue</span><span class="p">()</span>
+<span class="n">threads</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Worker</span><span class="p">(</span><span class="n">download</span><span class="p">,</span> <span class="n">download_queue</span><span class="p">,</span> <span class="n">resize_queue</span><span class="p">),</span>
+    <span class="n">Worker</span><span class="p">(</span><span class="n">resize</span><span class="p">,</span> <span class="n">resize_queue</span><span class="p">,</span> <span class="n">upload_queue</span><span class="p">),</span>
+    <span class="n">Worker</span><span class="p">(</span><span class="n">upload</span><span class="p">,</span> <span class="n">upload_queue</span><span class="p">,</span> <span class="n">done_queue</span><span class="p">),</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+    <span class="n">thread</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">download_queue</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">done_queue</span><span class="p">.</span><span class="n">items</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+    <span class="c1"># 기다리는 동안 다른 작업을 수행할 수 있다
+</span>    <span class="k">pass</span>
+
+<span class="n">processed</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">done_queue</span><span class="p">.</span><span class="n">items</span><span class="p">)</span>
+<span class="n">polled</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">t</span><span class="p">.</span><span class="n">polled_count</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">processed</span><span class="si">}</span><span class="s"> 개의 아이템을 처리,'</span><span class="p">,</span><span class="sa">f</span><span class="s">'이때 폴링을 </span><span class="si">{</span><span class="n">polled</span><span class="si">}</span><span class="s"> 번 했습니다.'</span><span class="p">)</span>
+
+<span class="c1"># 결과
+# 1000 개의 아이템을 처리, 이때 폴링을 3010 번 했습니다.
+</span></pre></td>
+</tr></tbody></table></code></div>
+</div>
+<blockquote><p>Queue 를 사용하면 기아 상태로 인한 바쁜 대기를 방지할 수 있다</p></blockquote>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+</pre></td>
+<td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">queue</span> <span class="kn">import</span> <span class="n">Queue</span>
+
+<span class="n">my_queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">consumer</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'consumer ready'</span><span class="p">)</span>
+    <span class="c1"># 비어 있으면 대기 (불필요한 polling을 막아줌)
+</span>    <span class="n">my_queue</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'consumer done'</span><span class="p">)</span>
+
+<span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">consumer</span><span class="p">)</span>
+<span class="n">thread</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s">'producer add data'</span><span class="p">)</span>
+<span class="n">my_queue</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="nb">object</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'producer done'</span><span class="p">)</span>
+<span class="n">thread</span><span class="p">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="c1"># 결과
+# consumer ready
+# producer add data
+# producer done
+# consumer done
+</span>
+<span class="c1">########################################
+</span>
+<span class="n">my_queue</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># 버퍼 크기
+</span>
+<span class="k">def</span> <span class="nf">consumer</span><span class="p">():</span>
+    <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">my_queue</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'consumer#1'</span><span class="p">)</span>
+    <span class="n">my_queue</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'consumer#2'</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'consumer done'</span><span class="p">)</span>
+
+<span class="n">thread</span> <span class="o">=</span> <span class="n">Thread</span><span class="p">(</span><span class="n">target</span><span class="o">=</span><span class="n">consumer</span><span class="p">)</span>
+<span class="n">thread</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="n">my_queue</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="nb">object</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'producer#1'</span><span class="p">)</span>
+<span class="n">my_queue</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="nb">object</span><span class="p">())</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'producer#2'</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s">'producer done'</span><span class="p">)</span>
+
+<span class="n">thread</span><span class="p">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="c1"># 결과
+# producer#1
+# consumer#1
+# producer#2
+# producer done
+# consumer#2
+# consumer done
+</span></pre></td>
+</tr></tbody></table></code></div>
+</div>
+<blockquote><p>선형적인 파이프라인의 경우 <code class="language-console highlighter-rouge"><span class="go">Queue</span></code> 가 잘 작동한다</p></blockquote>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+</pre></td>
+<td class="rouge-code"><pre><span class="kn">import</span> <span class="nn">select</span>
+<span class="kn">import</span> <span class="nn">socket</span>
+
+<span class="c1"># 블로킹 I/O 작업 (병렬성이 필요한 작업)
+</span><span class="k">def</span> <span class="nf">slow_systemcall</span><span class="p">():</span>
+    <span class="n">select</span><span class="p">.</span><span class="n">select</span><span class="p">([</span><span class="n">socket</span><span class="p">.</span><span class="n">socket</span><span class="p">()],</span> <span class="p">[],</span> <span class="p">[],</span> <span class="mf">0.1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">download</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'downloaded:'</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="n">slow_systemcall</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">item</span>
+<span class="k">def</span> <span class="nf">resize</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'resizeed:'</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="n">slow_systemcall</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">item</span>
+<span class="k">def</span> <span class="nf">upload</span><span class="p">(</span><span class="n">item</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'uploaded:'</span><span class="p">,</span> <span class="n">item</span><span class="p">)</span>
+    <span class="n">slow_systemcall</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">item</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Lock</span>
+
+<span class="k">class</span> <span class="nc">ClosableQueue</span><span class="p">(</span><span class="n">Queue</span><span class="p">):</span>
+    <span class="n">SENTINEL</span> <span class="o">=</span> <span class="nb">object</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="bp">self</span><span class="p">.</span><span class="n">SENTINEL</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="n">item</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">item</span> <span class="ow">is</span> <span class="bp">self</span><span class="p">.</span><span class="n">SENTINEL</span><span class="p">:</span>
+                    <span class="k">return</span>  <span class="c1"># 스레드 종료
+</span>                <span class="k">yield</span> <span class="n">item</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="bp">self</span><span class="p">.</span><span class="n">task_done</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Thread</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">class</span> <span class="nc">StoppableWorker</span><span class="p">(</span><span class="n">Thread</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">in_queue</span><span class="p">,</span> <span class="n">out_queue</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">func</span> <span class="o">=</span> <span class="n">func</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">in_queue</span> <span class="o">=</span> <span class="n">in_queue</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">out_queue</span> <span class="o">=</span> <span class="n">out_queue</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="bp">self</span><span class="p">.</span><span class="n">in_queue</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">func</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+            <span class="bp">self</span><span class="p">.</span><span class="n">out_queue</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">start_threads</span><span class="p">(</span><span class="n">count</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">threads</span> <span class="o">=</span> <span class="p">[</span><span class="n">StoppableWorker</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">count</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+        <span class="n">thread</span><span class="p">.</span><span class="n">start</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">threads</span>
+
+<span class="k">def</span> <span class="nf">stop_threads</span><span class="p">(</span><span class="n">closable_queue</span><span class="p">,</span> <span class="n">threads</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+        <span class="n">closable_queue</span><span class="p">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">closable_queue</span><span class="p">.</span><span class="n">join</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">thread</span> <span class="ow">in</span> <span class="n">threads</span><span class="p">:</span>
+        <span class="n">thread</span><span class="p">.</span><span class="n">join</span><span class="p">()</span>
+
+<span class="n">download_queue</span> <span class="o">=</span> <span class="n">ClosableQueue</span><span class="p">()</span>
+<span class="n">resize_queue</span> <span class="o">=</span> <span class="n">ClosableQueue</span><span class="p">()</span>
+<span class="n">upload_queue</span> <span class="o">=</span> <span class="n">ClosableQueue</span><span class="p">()</span>
+<span class="n">done_queue</span> <span class="o">=</span> <span class="n">ClosableQueue</span><span class="p">()</span>
+
+<span class="n">download_threads</span> <span class="o">=</span> <span class="n">start_threads</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">download</span><span class="p">,</span> <span class="n">download_queue</span><span class="p">,</span> <span class="n">resize_queue</span><span class="p">)</span>
+<span class="n">resize_threads</span> <span class="o">=</span> <span class="n">start_threads</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">resize</span><span class="p">,</span> <span class="n">resize_queue</span><span class="p">,</span> <span class="n">upload_queue</span><span class="p">)</span>
+<span class="n">upload_threads</span> <span class="o">=</span> <span class="n">start_threads</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">upload</span><span class="p">,</span> <span class="n">upload_queue</span><span class="p">,</span> <span class="n">done_queue</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+    <span class="n">download_queue</span><span class="p">.</span><span class="n">put</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+
+<span class="n">stop_threads</span><span class="p">(</span><span class="n">download_queue</span><span class="p">,</span> <span class="n">download_threads</span><span class="p">)</span>
+<span class="n">stop_threads</span><span class="p">(</span><span class="n">resize_queue</span><span class="p">,</span> <span class="n">resize_threads</span><span class="p">)</span>
+<span class="n">stop_threads</span><span class="p">(</span><span class="n">upload_queue</span><span class="p">,</span> <span class="n">upload_threads</span><span class="p">)</span>
+
+<span class="c1"># 기다리는 동안 다른 작업을 수행할 수 있을줄 알았는데 실행 안된다 (왜지??)
+# ==&gt; qsize() 에 대해 Lock 이 걸리나?
+</span><span class="k">while</span> <span class="n">done_queue</span><span class="p">.</span><span class="n">qsize</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'--'</span><span class="o">*</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">'</span><span class="si">{</span><span class="n">done_queue</span><span class="p">.</span><span class="n">qsize</span><span class="p">()</span><span class="si">}</span><span class="s"> 개의 아이템을 처리했습니다.'</span><span class="p">)</span>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="56-언제-동시성이-필요할지-인식하는-방법을-알아두라-">
+<span class="mr-2">56) 언제 동시성이 필요할지 인식하는 방법을 알아두라 <a id="item56"><span class="mr-2"></span></a></span><a href="#56-%EC%96%B8%EC%A0%9C-%EB%8F%99%EC%8B%9C%EC%84%B1%EC%9D%B4-%ED%95%84%EC%9A%94%ED%95%A0%EC%A7%80-%EC%9D%B8%EC%8B%9D%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95%EC%9D%84-%EC%95%8C%EC%95%84%EB%91%90%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="57-요구에-따라-팬아웃을-진행하려면-새로운-스레드를-생성하지-말라-">
+<span class="mr-2">57) 요구에 따라 팬아웃을 진행하려면 새로운 스레드를 생성하지 말라 <a id="item57"><span class="mr-2"></span></a></span><a href="#57-%EC%9A%94%EA%B5%AC%EC%97%90-%EB%94%B0%EB%9D%BC-%ED%8C%AC%EC%95%84%EC%9B%83%EC%9D%84-%EC%A7%84%ED%96%89%ED%95%98%EB%A0%A4%EB%A9%B4-%EC%83%88%EB%A1%9C%EC%9A%B4-%EC%8A%A4%EB%A0%88%EB%93%9C%EB%A5%BC-%EC%83%9D%EC%84%B1%ED%95%98%EC%A7%80-%EB%A7%90%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="58-동시성과-queue를-사용하기-위해-코드를-어떻게-리팩터링해야-하는지-이해하라-">
+<span class="mr-2">58) 동시성과 Queue를 사용하기 위해 코드를 어떻게 리팩터링해야 하는지 이해하라 <a id="item58"><span class="mr-2"></span></a></span><a href="#58-%EB%8F%99%EC%8B%9C%EC%84%B1%EA%B3%BC-queue%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0-%EC%9C%84%ED%95%B4-%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%A6%AC%ED%8C%A9%ED%84%B0%EB%A7%81%ED%95%B4%EC%95%BC-%ED%95%98%EB%8A%94%EC%A7%80-%EC%9D%B4%ED%95%B4%ED%95%98%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="59-동시성을-위해-스레드가-필요한-경우에는-threadpoolexecutor를-사용하라-">
+<span class="mr-2">59) 동시성을 위해 스레드가 필요한 경우에는 <code class="language-console highlighter-rouge"><span class="mr-2"><span class="go"><span class="mr-2">ThreadpoolExecutor</span></span></span></code>를 사용하라 <a id="item59"><span class="mr-2"></span></a></span><a href="#59-%EB%8F%99%EC%8B%9C%EC%84%B1%EC%9D%84-%EC%9C%84%ED%95%B4-%EC%8A%A4%EB%A0%88%EB%93%9C%EA%B0%80-%ED%95%84%EC%9A%94%ED%95%9C-%EA%B2%BD%EC%9A%B0%EC%97%90%EB%8A%94-threadpoolexecutor%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="60-io를-할-때는-코루틴을-사용해-동시성을-높여라-">
+<span class="mr-2">60) I/O를 할 때는 코루틴을 사용해 동시성을 높여라 <a id="item60"><span class="mr-2"></span></a></span><a href="#60-io%EB%A5%BC-%ED%95%A0-%EB%95%8C%EB%8A%94-%EC%BD%94%EB%A3%A8%ED%8B%B4%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%8F%99%EC%8B%9C%EC%84%B1%EC%9D%84-%EB%86%92%EC%97%AC%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="61-스레드를-사용한-io를-어떻게-asyncio로-포팅할-수-있는지-알아두라-">
+<span class="mr-2">61) 스레드를 사용한 I/O를 어떻게 asyncio로 포팅할 수 있는지 알아두라 <a id="item61"><span class="mr-2"></span></a></span><a href="#61-%EC%8A%A4%EB%A0%88%EB%93%9C%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%9C-io%EB%A5%BC-%EC%96%B4%EB%96%BB%EA%B2%8C-asyncio%EB%A1%9C-%ED%8F%AC%ED%8C%85%ED%95%A0-%EC%88%98-%EC%9E%88%EB%8A%94%EC%A7%80-%EC%95%8C%EC%95%84%EB%91%90%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="62-asyncio로-쉽게-옮겨갈-수-있도록-스레드와-코루틴을-함께-사용하라-">
+<span class="mr-2">62) asyncio로 쉽게 옮겨갈 수 있도록 스레드와 코루틴을 함께 사용하라 <a id="item62"><span class="mr-2"></span></a></span><a href="#62-asyncio%EB%A1%9C-%EC%89%BD%EA%B2%8C-%EC%98%AE%EA%B2%A8%EA%B0%88-%EC%88%98-%EC%9E%88%EB%8F%84%EB%A1%9D-%EC%8A%A4%EB%A0%88%EB%93%9C%EC%99%80-%EC%BD%94%EB%A3%A8%ED%8B%B4%EC%9D%84-%ED%95%A8%EA%BB%98-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="63-응답성을-최대로-높이려면-asyncio-이벤트-루프를-블록하지-말라-">
+<span class="mr-2">63) 응답성을 최대로 높이려면 asyncio 이벤트 루프를 블록하지 말라 <a id="item63"><span class="mr-2"></span></a></span><a href="#63-%EC%9D%91%EB%8B%B5%EC%84%B1%EC%9D%84-%EC%B5%9C%EB%8C%80%EB%A1%9C-%EB%86%92%EC%9D%B4%EB%A0%A4%EB%A9%B4-asyncio-%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%A3%A8%ED%94%84%EB%A5%BC-%EB%B8%94%EB%A1%9D%ED%95%98%EC%A7%80-%EB%A7%90%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<h3 id="64-진정한-병렬성을-살리려면-concurrentfutures를-사용하라-">
+<span class="mr-2">64) 진정한 병렬성을 살리려면 <code class="language-console highlighter-rouge"><span class="mr-2"><span class="go"><span class="mr-2">concurrent.futures</span></span></span></code>를 사용하라 <a id="item64"><span class="mr-2"></span></a></span><a href="#64-%EC%A7%84%EC%A0%95%ED%95%9C-%EB%B3%91%EB%A0%AC%EC%84%B1%EC%9D%84-%EC%82%B4%EB%A6%AC%EB%A0%A4%EB%A9%B4-concurrentfutures%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC-" class="anchor text-muted"><i class="fas fa-hashtag"></i></a>
+</h3>
+<div class="language-python highlighter-rouge">
+<div class="code-header"> <span data-label-text="Python"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button>
+</div>
+<div class="highlight"><code><table class="rouge-table"><tbody><tr>
+<td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td>
+<td class="rouge-code"><pre>
+</pre></td>
+</tr></tbody></table></code></div>
+</div>
+<p>  <br>   <br></p>
+<blockquote class="prompt-info"><div><p><strong>끝!</strong>   읽어주셔서 감사합니다.</p></div></blockquote>
+</div>
+<div class="post-tail-wrapper text-muted">
+<div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href="/categories/language/">language</a>, <a href="/categories/python/">python</a>
+</div>
+<div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/effective-python/" class="post-tag no-text-decoration">effective-python</a> <a href="/tags/book/" class="post-tag no-text-decoration">book</a>
+</div>
+<div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
+<div class="license-wrapper"> 이 기사는 저작권자의 <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> 라이센스를 따릅니다.</div>
+<div class="share-wrapper"> <span class="share-label text-muted mr-1">공유하기</span> <span class="share-icons"> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftaejoone.jeju.onl%2Fposts%2F2021-01-08-effective-py-2nd-ch07%2F" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Effective+PYTHON+2nd+-+Ch07+-+%ED%83%9C%EC%A3%BC%EB%84%A4+%EB%B8%94%EB%A1%9C%EA%B7%B8&amp;u=https%3A%2F%2Ftaejoone.jeju.onl%2Fposts%2F2021-01-08-effective-py-2nd-ch07%2F" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://twitter.com/intent/tweet?text=Effective+PYTHON+2nd+-+Ch07+-+%ED%83%9C%EC%A3%BC%EB%84%A4+%EB%B8%94%EB%A1%9C%EA%B7%B8&amp;url=https%3A%2F%2Ftaejoone.jeju.onl%2Fposts%2F2021-01-08-effective-py-2nd-ch07%2F" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="링크 복사하기" data-title-succeed="링크가 복사되었습니다!"> </i> </span>
+</div>
+</div>
+</div>
+<section id="utteranc_box"><div id="light-mode"> <script src="https://utteranc.es/client.js" repo="maxmin93/my-blog-comments" issue-term="pathname" label="comment" theme="github-light" crossorigin="anonymous" async> </script>
+</div>
+<div id="dark-mode"> <script src="https://utteranc.es/client.js" repo="maxmin93/my-blog-comments" issue-term="pathname" label="comment" theme="github-dark" crossorigin="anonymous" async> </script>
+</div></section><script src="/assets/js/custom.js"></script> <script type="text/javascript"> $(function(){ console.log("post.html: utteranc comments"); (window.customScripts.customUtteranc)(); }); </script>
+</div></div>
+<div id="panel-wrapper" class="col-xl-3 pl-2 text-muted">
+<div class="access">
+<div id="access-lastmod" class="post">
+<div class="panel-heading">최근 업데이트</div>
+<ul class="post-content pl-0 pb-1 ml-1 mt-2">
+<li><a href="/posts/2025-01-30-wasm-tutorial-1st/">WASM Tutorial - 1일차</a></li>
+<li><a href="/posts/2025-01-03-zig-tutorial-1st/">Zig Tutorial - 1일차</a></li>
+<li><a href="/posts/2025-01-04-zig-tutorial-2nd/">Zig Tutorial - 2일차</a></li>
+<li><a href="/posts/2025-01-05-zig-tutorial-3rd/">Zig Tutorial - 3일차</a></li>
+<li><a href="/posts/2025-01-06-zig-tutorial-4th/">Zig Tutorial - 4일차</a></li>
+</ul>
+</div>
+<div id="access-tags">
+<div class="panel-heading">인기 태그</div>
+<div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/tutorial/">tutorial</a> <a class="post-tag" href="/tags/1st-day/">1st-day</a> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/book/">book</a> <a class="post-tag" href="/tags/2nd-day/">2nd-day</a> <a class="post-tag" href="/tags/effective-java/">effective-java</a> <a class="post-tag" href="/tags/effective-python/">effective-python</a> <a class="post-tag" href="/tags/svelte5/">svelte5</a> <a class="post-tag" href="/tags/svelte/">svelte</a> <a class="post-tag" href="/tags/ui-components/">ui-components</a>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5">
+<div class="panel-heading pl-3 pt-2 mb-2">바로가기</div>
+<nav id="toc" data-toggle="toc"></nav>
+</div>
+</div>
+</div>
+<div class="row"><div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4">
+<div id="related-posts" class="mt-5 mb-2 mb-sm-4">
+<h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>관련된 글</h3>
+<div class="card-deck mb-4">
+<div class="card"> <a href="/posts/2021-01-01-effective-py-2nd-ch00/"><div class="card-body"> <em class="small" data-ts="1609426800" data-df="YYYY-MM-DD"> 2021-01-01 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Effective PYTHON 2nd - Contents</h3>
+<div class="text-muted small"><p> Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다. 책소개 출처 : 도서 파이썬 코딩의 기술 예제 파일 내려받기 길벗출판사 웹사이트 길벗출판사 깃허브 저자 깃허브 목차 1장 파이썬답게 생각하기 사용중인 파이썬의 버전을 알아두라 ►link ...</p></div>
+</div></a>
+</div>
+<div class="card"> <a href="/posts/2021-01-02-effective-py-2nd-ch01/"><div class="card-body"> <em class="small" data-ts="1609513200" data-df="YYYY-MM-DD"> 2021-01-02 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Effective PYTHON 2nd - Ch01</h3>
+<div class="text-muted small"><p> Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다. 1장 파이썬답게 생각하기 01) 사용중인 파이썬의 버전을 알아두라 <img class="emoji" title=":bangbang:" alt=":bangbang:" src="https://github.githubassets.com/images/icons/emoji/unicode/203c.png" height="20" width="20">   2020년 1월1일부터 파이썬2는 더이상 지원되지 않는다. 파이썬3를 사용할 것! <img class="emoji" title=":bangbang:" alt=":bangbang:" src="https://github.githubassets.com/images/icons/emoji/unicode/203c.png" height="20" width="20">   Pyspark 는 python 3.8 이상과 호환되지 않는다. 3.7 ...</p></div>
+</div></a>
+</div>
+<div class="card"> <a href="/posts/2021-01-03-effective-py-2nd-ch02/"><div class="card-body"> <em class="small" data-ts="1609599600" data-df="YYYY-MM-DD"> 2021-01-03 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Effective PYTHON 2nd - Ch02</h3>
+<div class="text-muted small"><p> Python 기초를 다지기 위해 효과적인 파이썬이란 책을 공부 중입니다. 2장 리스트와 딕셔너리 11) 시퀀스를 슬라이싱하는 방법을 익혀라 슬라이싱 할 때는 간결하게 하라. 시작 인덱스 에 0을 넣거나, 끝 인덱스 에 시퀀스 길이를 넣지 말라! 슬라이싱은 범위를 넘어가는 시작 인덱스나 끝 인덱스도 허용한다. ex) a[:20],...</p></div>
+</div></a>
+</div>
+</div>
+</div>
+<div class="post-navigation d-flex justify-content-between"> <a href="/posts/2021-01-07-effective-py-2nd-ch06/" class="btn btn-outline-primary" prompt="이전 글"><p>Effective PYTHON 2nd - Ch06</p></a> <a href="/posts/2021-01-09-effective-py-2nd-ch08/" class="btn btn-outline-primary" prompt="다음 글"><p>Effective PYTHON 2nd - Ch08</p></a>
+</div>
+</div></div>
+<footer class="row pl-3 pr-3"><div class="col-12 d-flex justify-content-between align-items-center text-muted pl-0 pr-0">
+<div class="footer-left"><p class="mb-0"> © 2025 <a href="https://github.com/maxmin93">태주아빠</a>. <span data-toggle="tooltip" data-placement="top" title="명시되지 않는 한 이 사이트의 블로그 게시물은 작성자의 Creative Commons Attribution 4.0 International(CC BY 4.0) 라이선스에 따라 사용이 허가되었습니다.">일부 권리 보유</span></p></div>
+<div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div>
+</div></footer>
+</div>
+<div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content">
+<div id="search-hints"><div id="access-tags">
+<div class="panel-heading">인기 태그</div>
+<div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/tutorial/">tutorial</a> <a class="post-tag" href="/tags/1st-day/">1st-day</a> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/book/">book</a> <a class="post-tag" href="/tags/2nd-day/">2nd-day</a> <a class="post-tag" href="/tags/effective-java/">effective-java</a> <a class="post-tag" href="/tags/effective-python/">effective-python</a> <a class="post-tag" href="/tags/svelte5/">svelte5</a> <a class="post-tag" href="/tags/svelte/">svelte</a> <a class="post-tag" href="/tags/ui-components/">ui-components</a>
+</div>
+</div></div>
+<div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div>
+</div></div>
+</div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a><div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false">
+<div class="toast-header"> <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">×</span> </button>
+</div>
+<div class="toast-body text-center pt-0">
+<p class="pl-2 pr-2 mb-3">새 버전의 콘텐츠를 사용할 수 있습니다.</p>
+<button type="button" class="btn btn-primary" aria-label="Update"> 업데이트 </button>
+</div>
+</div><script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">검색 결과가 없습니다.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/lozad/dist/lozad.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1/dayjs.min.js,npm/dayjs@1/locale/ko.min.js,npm/dayjs@1/plugin/relativeTime.min.js,npm/dayjs@1/plugin/localizedFormat.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=G-65FR6C9XJJ"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-65FR6C9XJJ', { 'cookie_prefix': 'TaejooneBlogCookie', 'cookie_domain': 'taejoone.jeju.onl', 'cookie_expires': 28 * 24 * 60 * 60, 'cookie_update': true, }); /** page.collection : 비어있는 경우가 많다 page.categories.join(), page.tags.join(): 빈문자열 출력 --> jekyll 에서는 for 루프를 돌려서 출력 **/ gtag('set', 'content_group', 'post'); gtag('set', 'content_type', 'language'); gtag('event', 'screen_view', { 'app_name': 'post', 'screen_name': 'language', }); }); </script>
