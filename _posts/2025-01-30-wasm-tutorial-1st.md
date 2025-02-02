@@ -109,6 +109,50 @@ AssemblyScript 또는 TinyGo, Rust 등의 WASM 데모를 찾으면 비교적 쉽
 - [WASM by Example](https://wasmbyexample.dev/examples/reading-and-writing-graphics/reading-and-writing-graphics.go.en-us.html) : 캔버스 렌더링 예제
   - 구현 언어(선택) : AssemblyScript, TinyGo, C++, Rust
 
+### [WASM Freestanding 예제](https://ziglang.org/documentation/master/#Freestanding)
+
+1. math.zig 작성하고
+2. wasm32-freestanding 를 위한 wasm 목표코드를 생성하고
+3. math.wasm 을 로딩하여 실행하는 test.js 작성해서
+4. node 로 실행한다.
+
+```zig
+// math.zig
+
+// js 의 env 에서 print 개체를 매핑할거다 (extern)
+extern fn print(i32) void;
+
+// 덧셈과 (외부 함수로) 출력까지 수행
+export fn add(a: i32, b: i32) void {
+    print(a + b);
+}
+```
+
+```console
+$ zig build-exe math.zig -target wasm32-freestanding -fno-entry --export=add
+```
+
+```js
+// test.js
+
+const fs = require('fs');
+const source = fs.readFileSync("./math.wasm");
+const typedArray = new Uint8Array(source);
+
+WebAssembly.instantiate(typedArray, {
+  env: {
+    print: (result) => { console.log(`The result is ${result}`); }
+  }}).then(result => {
+  const add = result.instance.exports.add;
+  add(1, 2);  // wasm 의 add 호출
+});
+```
+
+```console
+$ node test.js
+The result is 3
+```
+
 
 ## 3. 참고 사항
 
