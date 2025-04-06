@@ -243,7 +243,7 @@ WebAssembly(WASM) 모듈이 브라우저 외부 환경에서 시스템 리소스
   - OS 독립성
 - 서버 사이드 활용
 
-#### 참고 : [WASM-Freestanding](https://ziglang.org/documentation/master/#Freestanding)
+> 참고 : [WASM-Freestanding](https://ziglang.org/documentation/master/#Freestanding)
 
 표준 인터페이스인 WASI 를 사용하지 않고, 웹브라우저와 nodejs 만 사용한다면 OS 와 상관없이 간단하게 WASM 을 작성할 수 있다. 다음 문서에서 작성해 보자.
 

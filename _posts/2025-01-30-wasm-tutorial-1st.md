@@ -109,7 +109,7 @@ AssemblyScript 또는 TinyGo, Rust 등의 WASM 데모를 찾으면 비교적 쉽
 - [WASM by Example](https://wasmbyexample.dev/examples/reading-and-writing-graphics/reading-and-writing-graphics.go.en-us.html) : 캔버스 렌더링 예제
   - 구현 언어(선택) : AssemblyScript, TinyGo, C++, Rust
 
-### [WASM Freestanding 예제](https://ziglang.org/documentation/master/#Freestanding)
+### [Zig - WASM Freestanding 예제](https://ziglang.org/documentation/master/#Freestanding)
 
 1. math.zig 작성하고
 2. wasm32-freestanding 를 위한 wasm 목표코드를 생성하고
@@ -164,7 +164,7 @@ The result is 3
 
 Zig 도 빌드할 때 LLVM 을 사용하고, Rust/Python 등등의 여타 언어들도 LLVM 을 사용해 특정 머신의 바이너리 파일을 컴파일 할 수 있다.
 
-참고 자료
+> 참고 자료
 
 - [블로그 - LLVM 컴파일러](https://etst.tistory.com/385)
 - [위키 - LLVM](https://ko.wikipedia.org/wiki/LLVM)
