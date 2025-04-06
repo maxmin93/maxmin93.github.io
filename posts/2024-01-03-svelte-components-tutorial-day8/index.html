@@ -1,0 +1,773 @@
+<!DOCTYPE html><html lang="ko-KR" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="prefer-datetime-locale" content="ko"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="Svelte Component 라이브러리 - 8일차" /><meta property="og:locale" content="ko_KR" /><meta name="description" content="bits-ui 는 melt-ui 를 기반으로 작성된 headless UI 이다. 이를 다시 tailwind 변수들과 스타일 속성을 결합한 shadch-svelte 라이브러리를 살펴본다. 이와 함께 웹사이트 레이아웃을 추출하여 분석해본다." /><meta property="og:description" content="bits-ui 는 melt-ui 를 기반으로 작성된 headless UI 이다. 이를 다시 tailwind 변수들과 스타일 속성을 결합한 shadch-svelte 라이브러리를 살펴본다. 이와 함께 웹사이트 레이아웃을 추출하여 분석해본다." /><link rel="canonical" href="https://taejoone.jeju.onl/posts/2024-01-03-svelte-components-tutorial-day8/" /><meta property="og:url" content="https://taejoone.jeju.onl/posts/2024-01-03-svelte-components-tutorial-day8/" /><meta property="og:site_name" content="태주네 블로그" /><meta property="og:image" content="https://opengraph.githubassets.com/46bfeda8337cd995f0b3d5f4f11f469cb06bbbd421e8f650c53f48d54d8145c2/huntabyte/bits-ui" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2024-01-03T00:00:00+09:00" /><meta name="twitter:card" content="summary_large_image" /><meta property="twitter:image" content="https://opengraph.githubassets.com/46bfeda8337cd995f0b3d5f4f11f469cb06bbbd421e8f650c53f48d54d8145c2/huntabyte/bits-ui" /><meta property="twitter:title" content="Svelte Component 라이브러리 - 8일차" /><meta name="twitter:site" content="@twitter_username" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-02-29T14:25:44+09:00","datePublished":"2024-01-03T00:00:00+09:00","description":"bits-ui 는 melt-ui 를 기반으로 작성된 headless UI 이다. 이를 다시 tailwind 변수들과 스타일 속성을 결합한 shadch-svelte 라이브러리를 살펴본다. 이와 함께 웹사이트 레이아웃을 추출하여 분석해본다.","headline":"Svelte Component 라이브러리 - 8일차","image":"https://opengraph.githubassets.com/46bfeda8337cd995f0b3d5f4f11f469cb06bbbd421e8f650c53f48d54d8145c2/huntabyte/bits-ui","mainEntityOfPage":{"@type":"WebPage","@id":"https://taejoone.jeju.onl/posts/2024-01-03-svelte-components-tutorial-day8/"},"url":"https://taejoone.jeju.onl/posts/2024-01-03-svelte-components-tutorial-day8/"}</script><title>Svelte Component 라이브러리 - 8일차 | 태주네 블로그</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name="apple-mobile-web-app-title" content="태주네 블로그"><meta name="application-name" content="태주네 블로그"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="dns-prefetch" href="https://fonts.gstatic.com" crossorigin><link rel="preconnect" href="https://fonts.googleapis.com" ><link rel="dns-prefetch" href="https://fonts.googleapis.com" ><link rel="preconnect" href="https://cdn.jsdelivr.net" ><link rel="dns-prefetch" href="https://cdn.jsdelivr.net" ><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato&family=Source+Sans+Pro:wght@400;600;700;900&display=swap"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css"><link rel="stylesheet" href=""><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get MODE_ATTR() { return "data-mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } static get ID() { return "mode-toggle"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } let self = this; /* always follow the system prefers */ this.sysDarkPrefers.addEventListener("change", () => { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.notify(); }); } /* constructor() */ get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode === ModeToggle.DARK_MODE; } get isLightMode() { return this.mode === ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer)) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } setDark() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_ATTR, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_ATTR); sessionStorage.removeItem(ModeToggle.MODE_KEY); } /* Notify another plugins that the theme mode has changed */ notify() { window.postMessage({ direction: ModeToggle.ID, message: this.modeStatus }, "*"); } } /* ModeToggle */ const toggle = new ModeToggle(); function flipMode() { if (toggle.hasMode) { if (toggle.isSysDarkPrefer) { if (toggle.isLightMode) { toggle.clearMode(); } else { toggle.setLight(); } } else { if (toggle.isDarkMode) { toggle.clearMode(); } else { toggle.setDark(); } } } else { if (toggle.isSysDarkPrefer) { toggle.setLight(); } else { toggle.setDark(); } } toggle.notify(); } /* flipMode() */ </script><body data-spy="scroll" data-target="#toc" data-topbar-visible="true"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" class="mx-auto"> <img src="/assets/img/icons/tonyne-icon.png" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">태주네 블로그</a></div><div class="site-subtitle font-italic">제주 개발자, 풀스택 웹개발<br>데이터 수집/분석/검색</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>홈</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>카테고리</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tag ml-xl-3 mr-xl-3 unloaded"></i> <span>태그</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>아카이브</span> </a><li class="nav-item"> <a href="/portfolio/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>포트폴리오</span> </a><li class="nav-item"> <a href="/projects/" class="nav-link"> <i class="fa-fw fas fa-building ml-xl-3 mr-xl-3 unloaded"></i> <span>프로젝트</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info-circle ml-xl-3 mr-xl-3 unloaded"></i> <span>정보</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center align-items-center"> <button class="mode-toggle btn" aria-label="Switch Mode"> <i class="fas fa-adjust"></i> </button> <span class="icon-border"></span> <a href="https://github.com/maxmin93" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://www.facebook.com/tonyne.jeju" aria-label="Facebook" target="_blank" rel="noopener"> <i class="fab fa-facebook-square"></i> </a> <a href="https://www.linkedin.com/in/maxmin93" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper"><div id="topbar" class="container d-flex align-items-center justify-content-between h-100 pl-3 pr-3 pl-md-4 pr-md-4"> <span id="breadcrumb"> <span> <a href="/"> 홈 </a> </span> <span>Svelte Component 라이브러리 - 8일차</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> 포스트</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="검색..."> </span> <span id="search-cancel" >취소</span></div></div><div id="main-wrapper" class="d-flex justify-content-center"><div id="main" class="container pl-xl-4 pr-xl-4"><div class="row"><div id="core-wrapper" class="col-12 col-lg-11 col-xl-9 pr-xl-4"><div class="post pl-1 pr-1 pl-md-2 pr-md-2"><h1 data-toc-skip>Svelte Component 라이브러리 - 8일차</h1><div class="post-meta text-muted"> <span> 게시 <em class="" data-ts="1704207600" data-df="YYYY-MM-DD" data-toggle="tooltip" data-placement="bottom"> 2024-01-03 </em> </span> <span> 업데이트 <em class="" data-ts="1709184344" data-df="YYYY-MM-DD" data-toggle="tooltip" data-placement="bottom"> 2024-02-29 </em> </span><div class="d-flex justify-content-between"> <span> By <em> <a href="https://github.com/maxmin93">태주아빠</a> </em> </span><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="3050 단어"> <em>16 분&nbsp;</em>읽는 시간</span></div></div></div><div class="post-content"><blockquote class="prompt-tip"><div><p>bits-ui 는 melt-ui 를 기반으로 작성된 headless UI 이다. 이를 다시 tailwind 변수들과 스타일 속성을 결합한 shadch-svelte 라이브러리를 살펴본다. 이와 함께 웹사이트 레이아웃을 추출하여 분석해본다.</p></div></blockquote><ul><li><a href="/posts/2023-08-31-svelte-components-tutorial-day1/">Svelte Component 라이브러리 - 1일차</a> : Steeze UI<li><a href="/posts/2023-10-08-svelte-components-tutorial-day2/">Svelte Component 라이브러리 - 2일차</a> : Flowbite Svelte<li><a href="/posts/2023-11-01-svelte-components-tutorial-day3/">Svelte Component 라이브러리 - 3일차</a> : Flowbite Blocks<li><a href="/posts/2023-11-08-svelte-components-tutorial-day4/">Svelte Component 라이브러리 - 4일차</a> : daisyUI Svelte<li><a href="/posts/2023-11-09-svelte-components-tutorial-day5/">Svelte Component 라이브러리 - 5일차</a> : Skeleton<li><a href="/posts/2023-11-30-svelte-components-tutorial-day6/">Svelte Component 라이브러리 - 6일차</a> : Open Props<li><a href="/posts/2023-12-15-svelte-components-tutorial-day7/">Svelte Component 라이브러리 - 7일차</a> : Melt-UI<li><a href="/posts/2024-01-03-svelte-components-tutorial-day8/">Svelte Component 라이브러리 - 8일차</a> : Bits-UI   ✔</ul><p>bits-ui, shadcn-svelte 라이브러리는 <a href="https://www.youtube.com/@Huntabyte">유튜버 Huntabyte</a> 가 작성했다.</p><h2 id="0-개요"><span class="mr-2">0. 개요</span><a href="#0-개요" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><ul class="task-list"><li class="task-list-item" hide-bullet><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />웹프레임워크 및 개발도구<ul><li>Bun 1.0.21 + Vite 5.0.3 + SvelteKit 2.0.0<li>typescript 5.0.0<li>prettier 3.1.1<li><a href="https://www.npmjs.com/package/prettier-plugin-svelte">prettier-plugin-svelte</a> 3.1.2</ul><li class="task-list-item" hide-bullet><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />CSS 유틸리티<ul><li>TailwindCSS 3.3.6 + postcss 8.4.32<li>Tailwind: forms + typography<li><a href="https://www.npmjs.com/package/prettier-plugin-tailwindcss">prettier-plugin-tailwindcss</a> 0.5.9<li><a href="https://www.npmjs.com/package/vite-plugin-tailwind-purgecss">vite-plugin-tailwind-purgecss</a> 0.1.4<li><a href="https://www.npmjs.com/package/tailwind-merge">tailwind-merge</a> 2.1.0</ul><li class="task-list-item" hide-bullet><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />UI 라이브러리<ul><li><a href="https://www.shadcn-svelte.com/">shadcn-svelte</a> 0.5.0<li><a href="https://unovis.dev/docs/quick-start">unovis/svelte</a> 1.3.1 (시각화 라이브러리)</ul><li class="task-list-item" hide-bullet><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" />유틸리티<ul><li>fonts : D2Coding, Noto Sans/Serif KR, Noto Color Emoji<li><a href="https://www.npmjs.com/package/@faker-js/faker">faker-js</a> 8.3.1<li><a href="https://www.npmjs.com/package/lucide-svelte">lucide-svelte</a> 0.295.0 (아이콘 1346개, ISC 라이센스)</ul></ul><h2 id="1-프로젝트-생성"><span class="mr-2">1. 프로젝트 생성</span><a href="#1-프로젝트-생성" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><h3 id="sveltekit--shadcn-프로젝트-생성"><span class="mr-2"><a href="https://kit.svelte.dev/"><span class="mr-2">SvelteKit</a> + shadcn 프로젝트 생성</span><a href="#sveltekit--shadcn-프로젝트-생성" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>bun create svelte@latest svltk2-shadcn-app
+  <span class="c"># - Skeleton project</span>
+  <span class="c"># - Typescript</span>
+  <span class="c"># - Prettier</span>
+
+<span class="nb">cd </span>svltk2-shadcn-app
+bun <span class="nb">install</span>
+
+<span class="c"># bun runtime</span>
+bun <span class="nt">--bun</span> dev
+</pre></table></code></div></div><h3 id="tailwindcss-설정"><span class="mr-2"><a href="https://tailwindcss.com/docs/installation/using-postcss"><span class="mr-2">TailwindCSS 설정</a></span><a href="#tailwindcss-설정" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><blockquote><p>작업 목록</p></blockquote><ol><li>Tailwind, Components, 개발도구 설치<li>한글 폰트, 아이콘, 유틸리티 설치<li><code class="language-console highlighter-rouge"><span class="go">.prettierrc</span></code> 설정 : svelte, tailwind<li><code class="language-console highlighter-rouge"><span class="go">vite.config.ts</span></code> 설정 (highlight.js 클래스 제거 방지)<li><code class="language-console highlighter-rouge"><span class="go">tailwind.config.js</span></code> 설정 : 폰트, plugins<li><code class="language-console highlighter-rouge"><span class="go">src/app.html</span></code> 설정 : 폰트, theme<li><code class="language-console highlighter-rouge"><span class="go">src/app.pcss</span></code> 설정 : 폰트, Tailwind directives<li><code class="language-console highlighter-rouge"><span class="go">src/+layout.svelte</span></code> : app.pcss 연결<li><code class="language-console highlighter-rouge"><span class="go">src/+page.svelte</span></code> : 데모 코드 작성후 확인</ol><blockquote><p>작업 로그</p></blockquote><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+</pre><td class="rouge-code"><pre><span class="c"># tailwind 설치</span>
+bun add <span class="nt">-d</span> tailwindcss postcss autoprefixer @tailwindcss/typography
+bun add tailwind-variants clsx tailwind-merge
+
+<span class="c"># tailwind plugins, icons, faker 설치</span>
+bun add <span class="nt">-d</span> vite-plugin-tailwind-purgecss
+bun add <span class="nt">-d</span> prettier-plugin-tailwindcss
+bun add <span class="nt">-d</span> lucide-svelte
+bun add <span class="nt">-d</span> @faker-js/faker
+
+bunx tailwindcss init <span class="nt">-p</span>
+
+<span class="c"># prettier 에 tailwind 플러그인 추가</span>
+<span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">''</span> <span class="s1">'s/"prettier-plugin-svelte"\]/"prettier-plugin-svelte","prettier-plugin-tailwindcss"\]\n"overrides": [\n{\n"files": "*.svelte",\n"options": {\n"parser": "svelte"\n}\n},\n{\n"files": "*.md",\n"options": {\n"tabWidth": 2,\n"useTabs": false,\n"printWidth": 79\n}\n}\n]/'</span> .prettierrc
+
+<span class="c"># purgecss 설정</span>
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; vite.config.ts
+import { purgeCss } from 'vite-plugin-tailwind-purgecss';
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+  plugins: [
+    sveltekit(),
+    purgeCss({ safelist: {greedy: [/^hljs-/] }}),
+  ]
+});
+</span><span class="no">EOF
+
+</span><span class="c"># default fonts, typography, forms 설정</span>
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; tailwind.config.js
+const defaultTheme = require('tailwindcss/defaultTheme');
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.{html,js,svelte,ts}'],
+  theme: {
+    fontFamily: {
+      sans: ['"Noto Sans KR"', ...defaultTheme.fontFamily.sans],
+      serif: ['"Noto Serif KR"', ...defaultTheme.fontFamily.serif],
+      mono: ['D2Coding', ...defaultTheme.fontFamily.mono],
+    },      
+  },
+  plugins: [
+    // require('@tailwindcss/typography'), 
+    // require('@tailwindcss/forms'),
+  ],
+};
+</span><span class="no">EOF
+
+</span><span class="c"># lang, body.class 추가</span>
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; src/app.html
+&lt;!doctype html&gt;
+&lt;html lang="ko"&gt;
+  &lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;link rel="icon" href="%sveltekit.assets%/favicon.png" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1" /&gt;
+    %sveltekit.head%
+  &lt;/head&gt;
+  &lt;body data-sveltekit-preload-data="hover" class="min-h-screen bg-background font-sans antialiased"&gt;
+    &lt;div style="display: contents" class="relative flex min-h-screen flex-col"&gt;%sveltekit.body%&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</span><span class="no">EOF
+
+</span><span class="c"># Tailwind 설정, 폰트 추가 (Noto 한글 및 Emoji)</span>
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; src/app.pcss
+/* fonts: Noto Color Emoji, Noto Sans KR, Noto Serif KR */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&amp;family=Noto+Sans+KR:wght@300;400;500;700&amp;family=Noto+Serif+KR:wght@400;700&amp;display=swap');
+@import url("//cdn.jsdelivr.net/gh/wan2land/d2coding/d2coding-ligature-full.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+</span><span class="no">EOF
+
+</span><span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; src/routes/+layout.svelte
+&lt;script lang="ts"&gt;
+  import '../app.pcss';
+&lt;/script&gt;
+
+&lt;slot /&gt;
+</span><span class="no">EOF
+</span></pre></table></code></div></div><h4 id="데모-srcpagesvelte"><span class="mr-2">데모 <code class="language-console highlighter-rouge"><span class="mr-2"><span class="go"><span class="mr-2">src/+page.svelte</span></code></span><a href="#데모-srcpagesvelte" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><ul><li>lucide : 아이콘<li>faker : lorem 더미 문장</ul><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre><td class="rouge-code"><pre><span class="c"># tailwind container 데모</span>
+<span class="nb">cat</span> <span class="o">&lt;&lt;</span><span class="no">EOF</span><span class="sh"> &gt; src/routes/+page.svelte
+&lt;script&gt;
+  import { BookOpen } from 'lucide-svelte';
+  import { faker } from '@faker-js/faker/locale/ko';
+&lt;/script&gt;
+
+&lt;header class="container px-4 lg:flex mt-10 items-center h-full lg:mt-0"&gt;
+  &lt;div class="w-full"&gt;
+    &lt;h1 class="text-4xl lg:text-6xl font-bold"&gt;
+      Hello,
+      &lt;span class="text-green-700"&gt;SvelteKit &amp;plus; TailwindCSS&lt;/span&gt;
+    &lt;/h1&gt;
+    &lt;div class="w-40 h-2 bg-green-700 my-4"&gt;&lt;/div&gt;
+    &lt;p class="text-xl mb-10"&gt;{faker.lorem.paragraph(5)}&lt;/p&gt;
+    &lt;button class="bg-green-500 hover:bg-green-700 text-white text-2xl font-medium px-4 py-2 rounded shadow inline-flex items-center"&gt;
+      &lt;BookOpen size="2rem" /&gt;
+      &lt;span class="ml-2"&gt;Learn more&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+</span><span class="no">EOF
+</span></pre></table></code></div></div><h2 id="2-bits-ui-설정"><span class="mr-2">2. <a href="https://www.bits-ui.com/docs/getting-started"><span class="mr-2">bits-ui 설정</a></span><a href="#2-bits-ui-설정" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>bits-ui 는 shacdn-svelte 으로 가기 위한 중간 개발물 같은 존재다. shacdn-svelte 에서 bits-ui 샘플 코드를 넣어도 tailwind 내용이 조금 틀리지만 잘 돌아간다.</p><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>bun add bits-ui
+</pre></table></code></div></div><h3 id="비교--melt-ui-vs-bits-ui-vs-shadcn-svelte-vs-daisyui"><span class="mr-2">비교 : melt-ui vs bits-ui vs shadcn-svelte vs daisyUI</span><a href="#비교--melt-ui-vs-bits-ui-vs-shadcn-svelte-vs-daisyui" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>Accordion 컴포넌트를 기준으로 비교해 본다.</p><h4 id="melt-ui-의-accordion"><span class="mr-2"><a href="https://melt-ui.com/docs/builders/accordion"><span class="mr-2">melt-ui 의 Accordion</a></span><a href="#melt-ui-의-accordion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><ul><li>melt-ui 는 UI 를 위한 동작과 이벤트, 스타일을 모두 코드로 다루고 있다.<ul><li>참고: <a href="https://github.com/melt-ui/melt-ui/tree/develop/src/lib/builders/accordion">깃허브 - melt-ui/builders/accordion</a><li>소스를 보면 굳이 이렇게까지 headless 를 사용할 필요가 있는지 회의감이 든다.<li>다른 css 라이브러리에 구애받지 않고 동일한 기능을 사용할 수 있다는 것은 장점이다.</ul><li>색상에 사용된 <code class="language-console highlighter-rouge"><span class="go">bg-neutral-100</span></code> 등은 사용자 칼라 설정이 필요하다.<ul><li>참고: <a href="https://tailwindcss.com/docs/customizing-colors#using-custom-colors">tailwind 커스텀 칼라 설정</a></ul></ul><div class="language-html highlighter-rouge"><div class="code-header"> <span data-label-text="HTML"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+</pre><td class="rouge-code"><pre><span class="nt">&lt;script </span><span class="na">lang=</span><span class="s">"ts"</span><span class="nt">&gt;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">cn</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">$docs/utils</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">createAccordion</span><span class="p">,</span> <span class="nx">melt</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@melt-ui/svelte</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">slide</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">svelte/transition</span><span class="dl">'</span><span class="p">;</span>
+ 
+  <span class="kd">const</span> <span class="p">{</span>
+    <span class="na">elements</span><span class="p">:</span> <span class="p">{</span> <span class="nx">content</span><span class="p">,</span> <span class="nx">item</span><span class="p">,</span> <span class="nx">trigger</span><span class="p">,</span> <span class="nx">root</span> <span class="p">},</span>
+    <span class="na">helpers</span><span class="p">:</span> <span class="p">{</span> <span class="nx">isSelected</span> <span class="p">},</span>
+  <span class="p">}</span> <span class="o">=</span> <span class="nx">createAccordion</span><span class="p">({</span>
+    <span class="na">defaultValue</span><span class="p">:</span> <span class="dl">'</span><span class="s1">item-1</span><span class="dl">'</span><span class="p">,</span>
+  <span class="p">});</span>
+ 
+  <span class="kd">const</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">item-1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">What is it?</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span>
+        <span class="dl">'</span><span class="s1">A collection of accessible &amp; unstyled component builders for Svelte applications.</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">item-2</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Can I customize it?</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Totally, it is 100% stylable and overridable.</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">item-3</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Svelte is awesome, huh?</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Yes, and so are you!</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">];</span>
+ 
+  <span class="kd">let</span> <span class="nx">className</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+  <span class="k">export</span> <span class="p">{</span> <span class="nx">className</span> <span class="k">as</span> <span class="kd">class</span> <span class="p">};</span>
+<span class="nt">&lt;/script&gt;</span>
+ 
+<span class="nt">&lt;div</span>
+  <span class="na">class=</span><span class="s">{cn(</span>
+    <span class="err">'</span><span class="na">mx-auto</span> <span class="na">w-</span><span class="err">[18</span><span class="na">rem</span><span class="err">]</span> <span class="na">max-w-full</span> <span class="na">rounded-xl</span> <span class="na">bg-white</span> <span class="na">shadow-lg</span> <span class="na">sm:w-</span><span class="err">[25</span><span class="na">rem</span><span class="err">]',</span>
+    <span class="na">className</span><span class="err">,</span>
+  <span class="err">)}</span>
+  <span class="err">{...$</span><span class="na">root</span><span class="err">}</span>
+<span class="nt">&gt;</span>
+  {#each items as { id, title, description }, i}
+    <span class="nt">&lt;div</span>
+      <span class="na">use:melt=</span><span class="s">{$item(id)}</span>
+      <span class="na">class=</span><span class="s">"overflow-hidden transition-colors first:rounded-t-xl
+            last:rounded-b-xl"</span>
+    <span class="nt">&gt;</span>
+      <span class="nt">&lt;h2</span> <span class="na">class=</span><span class="s">"flex"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span>
+          <span class="na">use:melt=</span><span class="s">{$trigger(id)}</span>
+          <span class="na">class=</span><span class="s">{cn(</span>
+            <span class="err">'</span><span class="na">flex</span> <span class="na">flex-1</span> <span class="na">cursor-pointer</span> <span class="na">items-center</span> <span class="na">justify-between</span> <span class="err">',</span>
+            <span class="err">'</span><span class="na">bg-white</span> <span class="na">px-5</span> <span class="na">py-5</span> <span class="na">text-base</span> <span class="na">font-medium</span> <span class="na">leading-none</span><span class="err">',</span>
+            <span class="err">'</span><span class="na">text-black</span> <span class="na">transition-colors</span> <span class="na">hover:bg-neutral-100</span> <span class="na">focus:</span><span class="err">!</span><span class="na">ring-0</span><span class="err">',</span>
+            <span class="err">'</span><span class="na">focus-visible:text-magnum-800</span><span class="err">',</span>
+            <span class="na">i</span> <span class="err">!==</span> <span class="err">0</span> <span class="err">&amp;&amp;</span> <span class="err">'</span><span class="na">border-t</span> <span class="na">border-t-neutral-300</span><span class="err">',</span>
+          <span class="err">)}</span>
+        <span class="nt">&gt;</span>
+          {title}
+        <span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/h2&gt;</span>
+      {#if $isSelected(id)}
+        <span class="nt">&lt;div</span>
+          <span class="na">class=</span><span class="s">{cn(</span>
+            <span class="err">'</span><span class="na">content</span><span class="err">',</span>
+            <span class="err">'</span><span class="na">overflow-hidden</span> <span class="na">bg-neutral-100</span> <span class="na">text-sm</span> <span class="na">text-neutral-600</span><span class="err">',</span>
+          <span class="err">)}</span>
+          <span class="na">use:melt=</span><span class="s">{$content(id)}</span>
+          <span class="na">transition:slide</span>
+        <span class="nt">&gt;</span>
+          <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"px-5 py-4"</span><span class="nt">&gt;</span>
+            {description}
+          <span class="nt">&lt;/div&gt;</span>
+        <span class="nt">&lt;/div&gt;</span>
+      {/if}
+    <span class="nt">&lt;/div&gt;</span>
+  {/each}
+<span class="nt">&lt;/div&gt;</span>
+ 
+<span class="nt">&lt;style </span><span class="na">lang=</span><span class="s">"postcss"</span><span class="nt">&gt;</span>
+  <span class="nc">.content</span> <span class="p">{</span>
+    <span class="nl">box-shadow</span><span class="p">:</span> <span class="nb">inset</span> <span class="m">0px</span> <span class="m">1px</span> <span class="m">0px</span> <span class="n">theme</span><span class="p">(</span><span class="s2">'colors.neutral.300'</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/style&gt;</span>
+</pre></table></code></div></div><h4 id="bits-ui-의-accordion"><span class="mr-2"><a href="https://www.bits-ui.com/docs/components/accordion"><span class="mr-2">bits-ui 의 Accordion</a></span><a href="#bits-ui-의-accordion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><ul><li>사용 코드는 melt-ui 의 태그 레이어를 개별적인 svelte 요소로 만들어 조립한 형태이다.<ul><li>참고 : <a href="https://github.com/huntabyte/bits-ui/tree/main/src/lib/bits/accordion/components">깃허브 - accordion/components</a></ul></ul><div class="language-html highlighter-rouge"><div class="code-header"> <span data-label-text="HTML"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+</pre><td class="rouge-code"><pre><span class="nt">&lt;script </span><span class="na">lang=</span><span class="s">"ts"</span><span class="nt">&gt;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">Accordion</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">$lib</span><span class="dl">"</span><span class="p">;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">CaretDown</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">phosphor-svelte</span><span class="dl">"</span><span class="p">;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">slide</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">svelte/transition</span><span class="dl">"</span><span class="p">;</span>
+ 
+  <span class="kd">const</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Feature Overview</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">content</span><span class="p">:</span>
+        <span class="dl">"</span><span class="s2">Task management, messaging, file sharing, progress tracking, and reporting for your team.</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Platform Advantages</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">content</span><span class="p">:</span>
+        <span class="dl">"</span><span class="s2">Experience improved productivity, enhanced communication, and customizable project views for project execution.</span><span class="dl">"</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">title</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Implementation Strategies</span><span class="dl">"</span><span class="p">,</span>
+      <span class="na">content</span><span class="p">:</span>
+        <span class="dl">"</span><span class="s2">Define clear goals, provide training, encourage adoption, and iterate based on feedback.</span><span class="dl">"</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+<span class="nt">&lt;/script&gt;</span>
+ 
+<span class="nt">&lt;Accordion.Root</span> <span class="na">class=</span><span class="s">"w-full sm:max-w-[70%]"</span> <span class="na">multiple</span><span class="nt">&gt;</span>
+  {#each items as item, i}
+    <span class="nt">&lt;Accordion.Item</span> <span class="na">value=</span><span class="s">"${i}"</span> <span class="na">class=</span><span class="s">"group border-b border-dark-10 px-1.5"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;Accordion.Header&gt;</span>
+        <span class="nt">&lt;Accordion.Trigger</span>
+          <span class="na">class=</span><span class="s">"flex w-full flex-1 items-center justify-between py-5 text-[15px] font-medium transition-all [&amp;[data-state=open]&gt;span&gt;svg]:rotate-180 "</span>
+        <span class="nt">&gt;</span>
+          {item.title}
+          <span class="nt">&lt;span</span>
+            <span class="na">class=</span><span class="s">"inline-flex items-center justify-center rounded-[7px] bg-transparent transition-all sq-8 hover:bg-dark-10"</span>
+          <span class="nt">&gt;</span>
+            <span class="nt">&lt;CaretDown</span> <span class="na">class=</span><span class="s">"transition-all duration-200 sq-[18px]"</span> <span class="nt">/&gt;</span>
+          <span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;/Accordion.Trigger&gt;</span>
+      <span class="nt">&lt;/Accordion.Header&gt;</span>
+      <span class="nt">&lt;Accordion.Content</span>
+        <span class="na">transition=</span><span class="s">{slide}</span>
+        <span class="na">transitionConfig=</span><span class="s">{_{</span> <span class="na">duration:</span> <span class="err">200</span> <span class="err">}</span><span class="na">_</span><span class="err">}</span>
+        <span class="na">class=</span><span class="s">"pb-[25px] text-sm tracking-[-0.01em]"</span>
+      <span class="nt">&gt;</span>
+        {item.content}
+      <span class="nt">&lt;/Accordion.Content&gt;</span>
+    <span class="nt">&lt;/Accordion.Item&gt;</span>
+  {/each}
+<span class="nt">&lt;/Accordion.Root&gt;</span>
+</pre></table></code></div></div><h4 id="shadcn-svelte-의-accordion"><span class="mr-2"><a href="https://www.shadcn-svelte.com/docs/components/accordion"><span class="mr-2">shadcn-svelte 의 Accordion</a></span><a href="#shadcn-svelte-의-accordion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><ul><li>bits-ui 코드에서 tailwind 클래스들이 제거되어 매우 깔끔해졌다.<ul><li>대신에 tailwind 테마 설정을 잘 해야 한다.<li>bits-ui 코드가 있고, 그 뒤에 melt-ui 가 돌아간다.</ul></ul><div class="language-html highlighter-rouge"><div class="code-header"> <span data-label-text="HTML"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre><td class="rouge-code"><pre><span class="nt">&lt;script </span><span class="na">lang=</span><span class="s">"ts"</span><span class="nt">&gt;</span>
+  <span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">Accordion</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">$lib/components/ui/accordion</span><span class="dl">"</span><span class="p">;</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;Accordion.Root</span> <span class="na">class=</span><span class="s">"w-full sm:max-w-[70%]"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Accordion.Item</span> <span class="na">value=</span><span class="s">"item-1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Accordion.Trigger&gt;</span>Is it accessible?<span class="nt">&lt;/Accordion.Trigger&gt;</span>
+    <span class="nt">&lt;Accordion.Content&gt;</span>
+      Yes. It adheres to the WAI-ARIA design pattern.
+    <span class="nt">&lt;/Accordion.Content&gt;</span>
+  <span class="nt">&lt;/Accordion.Item&gt;</span>
+  <span class="nt">&lt;Accordion.Item</span> <span class="na">value=</span><span class="s">"item-2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Accordion.Trigger&gt;</span>Is it styled?<span class="nt">&lt;/Accordion.Trigger&gt;</span>
+    <span class="nt">&lt;Accordion.Content&gt;</span>
+      Yes. It comes with default styles that matches the other components'
+      aesthetic.
+    <span class="nt">&lt;/Accordion.Content&gt;</span>
+  <span class="nt">&lt;/Accordion.Item&gt;</span>
+  <span class="nt">&lt;Accordion.Item</span> <span class="na">value=</span><span class="s">"item-3"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Accordion.Trigger&gt;</span>Is it animated?<span class="nt">&lt;/Accordion.Trigger&gt;</span>
+    <span class="nt">&lt;Accordion.Content&gt;</span>
+      Yes. It's animated by default, but you can disable it if you prefer.
+    <span class="nt">&lt;/Accordion.Content&gt;</span>
+  <span class="nt">&lt;/Accordion.Item&gt;</span>
+<span class="nt">&lt;/Accordion.Root&gt;</span>
+</pre></table></code></div></div><h4 id="daisyui-의-accordion"><span class="mr-2"><a href="https://daisyui.com/components/accordion/"><span class="mr-2">daisyUI 의 Accordion</a></span><a href="#daisyui-의-accordion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><ul><li>선택된 패널을 인식하기 위해 update_accordion 함수가 필요하다<li><code class="language-console highlighter-rouge"><span class="go">svelte/transition</span></code> 의 slide 효과를 주고 싶었지만, 작동하지 않는다<ul><li>daisyUI 의 <code class="language-console highlighter-rouge"><span class="go">collapse-content</span></code> 에 이미 transition 지시자가 있다</ul></ul><div class="language-html highlighter-rouge"><div class="code-header"> <span data-label-text="HTML"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+</pre><td class="rouge-code"><pre><span class="nt">&lt;script </span><span class="na">lang=</span><span class="s">"ts"</span><span class="nt">&gt;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">slide</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">svelte/transition</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">cn</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">$lib/utils</span><span class="dl">'</span><span class="p">;</span>
+  <span class="kd">const</span> <span class="nx">items</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">item-1</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">What is it?</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span>
+        <span class="dl">'</span><span class="s1">A collection of accessible &amp; unstyled component builders for Svelte applications.</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">item-2</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Can I customize it?</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Totally, it is 100% stylable and overridable.</span><span class="dl">'</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="na">id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">item-3</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">title</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Svelte is awesome, huh?</span><span class="dl">'</span><span class="p">,</span>
+      <span class="na">description</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Yes, and so are you!</span><span class="dl">'</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+  <span class="kd">let</span> <span class="nx">className</span> <span class="o">=</span> <span class="dl">''</span><span class="p">;</span>
+  <span class="k">export</span> <span class="p">{</span> <span class="nx">className</span> <span class="k">as</span> <span class="kd">class</span> <span class="p">};</span>
+
+  <span class="kd">let</span> <span class="nx">selected_accordion</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span>
+  <span class="kd">function</span> <span class="nx">update_accordion</span><span class="p">(</span><span class="nx">selected_id</span><span class="p">:</span> <span class="nx">string</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">selected_accordion</span> <span class="o">===</span> <span class="nx">selected_id</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">selected_accordion</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">none</span><span class="dl">'</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">selected_accordion</span> <span class="o">=</span> <span class="nx">selected_id</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">{cn('mx-auto</span> <span class="na">w-</span><span class="err">[18</span><span class="na">rem</span><span class="err">]</span> <span class="na">max-w-full</span> <span class="na">rounded-xl</span> <span class="na">shadow-lg</span> <span class="na">sm:w-</span><span class="err">[25</span><span class="na">rem</span><span class="err">]',</span> <span class="na">className</span><span class="err">)}</span><span class="nt">&gt;</span>
+  {#each items as { id, title, description }, i}
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse bg-base-200"</span> <span class="na">on:click=</span><span class="s">{()</span> <span class="err">=</span><span class="nt">&gt;</span> update_accordion(id)}&gt;
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="err">{</span><span class="na">id</span><span class="err">}</span> <span class="na">checked=</span><span class="s">{selected_accordion</span> <span class="err">===</span> <span class="na">id</span><span class="err">}</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse-title text-xl font-medium"</span><span class="nt">&gt;</span>{title}<span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse-content bg-gray-600 pt-2"</span>
+        <span class="na">transition:slide=</span><span class="s">{_{</span> <span class="na">delay:</span> <span class="err">250,</span> <span class="na">duration:</span> <span class="err">3000</span> <span class="err">}</span><span class="na">_</span><span class="err">}</span>
+      <span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>{description}<span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  {/each}
+<span class="nt">&lt;/div&gt;</span>
+</pre></table></code></div></div><h4 id="추가--skeleton-의-accordion"><span class="mr-2">추가 : <a href="https://www.skeleton.dev/components/accordions"><span class="mr-2">skeleton 의 accordion</a></span><a href="#추가--skeleton-의-accordion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><ul><li>사용된 형태는 shacdn-svelte 와 비슷하다.<ul><li>skeleton 이 svelte fragment 기능을 잘 활용한다. (가볍고 잘 움직임)</ul><li>컴포넌트 소스의 복잡함은 비등비등한데, props 등의 문서 정리가 잘 되어 있다.<ul><li>참고 : <a href="https://github.com/skeletonlabs/skeleton/tree/dev/packages/skeleton/src/lib/components/Accordion">accordion 컴포넌트 소스</a></ul></ul><div class="language-html highlighter-rouge"><div class="code-header"> <span data-label-text="HTML"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="nt">&lt;Accordion&gt;</span>
+  <span class="nt">&lt;AccordionItem</span> <span class="na">open</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;svelte:fragment</span> <span class="na">slot=</span><span class="s">"lead"</span><span class="nt">&gt;</span>(icon)<span class="nt">&lt;/svelte:fragment&gt;</span>
+    <span class="nt">&lt;svelte:fragment</span> <span class="na">slot=</span><span class="s">"summary"</span><span class="nt">&gt;</span>(summary)<span class="nt">&lt;/svelte:fragment&gt;</span>
+    <span class="nt">&lt;svelte:fragment</span> <span class="na">slot=</span><span class="s">"content"</span><span class="nt">&gt;</span>(content)<span class="nt">&lt;/svelte:fragment&gt;</span>
+  <span class="nt">&lt;/AccordionItem&gt;</span>
+  <span class="nt">&lt;AccordionItem&gt;</span>
+    <span class="nt">&lt;svelte:fragment</span> <span class="na">slot=</span><span class="s">"lead"</span><span class="nt">&gt;</span>(icon)<span class="nt">&lt;/svelte:fragment&gt;</span>
+    <span class="nt">&lt;svelte:fragment</span> <span class="na">slot=</span><span class="s">"summary"</span><span class="nt">&gt;</span>(summary)<span class="nt">&lt;/svelte:fragment&gt;</span>
+    <span class="nt">&lt;svelte:fragment</span> <span class="na">slot=</span><span class="s">"content"</span><span class="nt">&gt;</span>(content)<span class="nt">&lt;/svelte:fragment&gt;</span>
+  <span class="nt">&lt;/AccordionItem&gt;</span>
+  <span class="c">&lt;!-- ... --&gt;</span>
+<span class="nt">&lt;/Accordion&gt;</span>
+</pre></table></code></div></div><h2 id="3-shacdn-svelte-설치"><span class="mr-2">3. <a href="https://www.shadcn-svelte.com/docs/installation"><span class="mr-2">shacdn-svelte 설치</a></span><a href="#3-shacdn-svelte-설치" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><p>shadcn-svelte 는 bits-ui 를 tailwind 변수들과 잘 짜집기 한 컴포넌트 파일셋 중 필요한 파일들만 추출하여 가져오는 방식으로 설치한다. (<code class="language-console highlighter-rouge"><span class="go">components.json</span></code>에 가져올 코드셋에 대한 정보가 설정된다)</p><h3 id="수동-설정"><span class="mr-2">수동 설정</span><a href="#수동-설정" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><p>bits-ui 를 설치하고, 필요한 components/ui 파일들을 복사해 와도 된다.</p><ol><li>sveltekit 프로젝트 생성<li>tailwind, bits-ui 라이브러리 설치<li><code class="language-console highlighter-rouge"><span class="go">tailwind.config.js</span></code> 설정 : theme, colors, font<li><code class="language-console highlighter-rouge"><span class="go">src/app.pcss</span></code> 설정 : color 변수값, base 레이어<li><code class="language-console highlighter-rouge"><span class="gp">$</span>lib/utils.ts</code> 생성 : 코드 복사<li><code class="language-console highlighter-rouge"><span class="go">src/routes/+layout.svelte</span></code> : app.pcss 연결</ol><div class="language-bash highlighter-rouge"><div class="code-header"> <span data-label-text="Shell"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>bun add bits-ui
+
+<span class="c"># 필수 tailwind 라이브러리</span>
+bun add tailwind-variants clsx tailwind-merge
+</pre></table></code></div></div><h4 id="cli-이용한-자동-설정"><span class="mr-2">CLI 이용한 자동 설정</span><a href="#cli-이용한-자동-설정" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><p><code class="language-console highlighter-rouge"><span class="go">default</span></code> 스타일인 경우 lucid icon 을 사용한다.</p><div class="language-console highlighter-rouge"><div class="code-header"> <span data-label-text="Console"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre><td class="rouge-code"><pre><span class="gp">$</span><span class="w"> </span>bunx shadcn-svelte@latest init
+<span class="go">This command assumes a SvelteKit project with TypeScript and Tailwind CSS.
+If you don't have these, follow the manual steps at https://shadcn-svelte.com/docs/installation.
+
+✔ Running this command will install dependencies and overwrite your existing tailwind.config.[cjs|js|ts] &amp; app.pcss file. Proceed? … yes
+✔ Which style would you like to use? › Default
+✔ Which color would you like to use as base color? › Slate
+✔ Where is your global CSS file? … src/app.pcss
+✔ Where is your tailwind.config.[cjs|js|ts] located? … tailwind.config.js
+</span><span class="gp">✔ Configure the import alias for components: … $</span>lib/components
+<span class="gp">✔ Configure the import alias for utils: … $</span>lib/utils
+<span class="go">✔ Write configuration to components.json. Proceed? … yes
+
+✔ Writing components.json...
+✔ Initializing project...
+✔ Installing dependencies...
+
+Success! Project initialization completed.
+
+Don't forget to add the aliases you configured to your svelte.config.js!
+
+</span><span class="gp">$</span><span class="w"> </span>_
+</pre></table></code></div></div><h3 id="웹사이트-레이아웃"><span class="mr-2">웹사이트 레이아웃</span><a href="#웹사이트-레이아웃" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h3><blockquote><p>desktop 스크린샷</p></blockquote><p><img data-src="/assets/img/2024/01/03-shadcn-svelte-dashboard-desktop.png" alt="03-shadcn-svelte-dashboard-desktop" width="80%" data-proofer-ignore></p><blockquote><p>mobile 스크린샷</p></blockquote><p><img data-src="/assets/img/2024/01/03-shadcn-svelte-dashboard-mobile.png" alt="03-shadcn-svelte-dashboard-mobile" width="60%" data-proofer-ignore></p><blockquote><p>sidebar 메뉴 스크린샷</p></blockquote><p><img data-src="/assets/img/2024/01/03-shadcn-svelte-dashboard-sidebar.png" alt="03-shadcn-svelte-dashboard-sidebar" width="60%" data-proofer-ignore></p><blockquote><p>search dialog 스크린샷</p></blockquote><p><img data-src="/assets/img/2024/01/03-shadcn-svelte-dashboard-search.png" alt="03-shadcn-svelte-dashboard-search" width="60%" data-proofer-ignore></p><h4 id="layoutsvelte"><span class="mr-2"><code class="language-console highlighter-rouge"><span class="mr-2"><span class="go"><span class="mr-2">+layout.svelte</span></code></span><a href="#layoutsvelte" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><ul><li>ModeWatcher : light/black 모드 관리<li>Metadata : head 영역에 검색 최적화 정보 삽입<li>DefaultSonner : 메시지 Toast 출력 영역<li>div#page : 페이지 영역<ul><li>SiteHeader : 헤더 (sticky top-0 w-full)<li>slot : 콘텐츠 영역 (flex-1)<li>SiteFooter : 푸터</ul></ul><div class="language-html highlighter-rouge"><div class="code-header"> <span data-label-text="HTML"><i class="fas fa-code small"></i></span> <button aria-label="copy" data-title-succeed="복사되었습니다!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+</pre><td class="rouge-code"><pre><span class="nt">&lt;script </span><span class="na">lang=</span><span class="s">"ts"</span><span class="nt">&gt;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">page</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">$app/stores</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">dev</span><span class="p">,</span> <span class="nx">browser</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">$app/environment</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">Metadata</span><span class="p">,</span> <span class="nx">SiteFooter</span><span class="p">,</span> <span class="nx">SiteHeader</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">$lib/components/docs</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">updateTheme</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">$lib/utils</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="dl">'</span><span class="s1">../app.pcss</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">config</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">$lib/stores</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">ModeWatcher</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">mode-watcher</span><span class="dl">'</span><span class="p">;</span>
+  <span class="k">import</span> <span class="p">{</span> <span class="nx">Toaster</span> <span class="k">as</span> <span class="nx">DefaultSonner</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">$lib/components/ui/sonner</span><span class="dl">'</span><span class="p">;</span>
+
+  <span class="nl">$</span><span class="p">:</span> <span class="nx">updateTheme</span><span class="p">(</span><span class="nx">$config</span><span class="p">.</span><span class="nx">theme</span><span class="p">,</span> <span class="nx">$page</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">pathname</span><span class="p">);</span>
+<span class="nt">&lt;/script&gt;</span>
+
+<span class="nt">&lt;ModeWatcher</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Metadata</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;DefaultSonner</span> <span class="nt">/&gt;</span>
+
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"relative flex min-h-screen flex-col"</span> <span class="na">id=</span><span class="s">"page"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;SiteHeader</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"flex-1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;slot</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;SiteFooter</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</pre></table></code></div></div><h4 id="siteheader"><span class="mr-2">SiteHeader</span><a href="#siteheader" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><ul><li>MainNav : 데스크탑 헤더<li>MobileNav : 모바일 헤더<li>CommandMenu : 문서/명령 검색 (dialog), Ctrl+K 단축키<li>링크 아이콘 : 깃허브, 트위터<li>ModeToggle : 테마 모드 변경 (Light/Dark/System)</ul><blockquote><p>MainNav</p></blockquote><ul><li>로고<li>데스크탑 메뉴</ul><blockquote><p>MobileNav</p></blockquote><ul><li>햄버거 메뉴 아이콘<li>Sheet : 사이드바 메뉴<ul><li>Root, Trigger, Content</ul></ul><blockquote><p>CommandMenu</p></blockquote><ul><li>onMount 에서 keydown 이벤트 등록 (소멸시 이벤트 삭제)<li>메인 메뉴, 사이드바 메뉴 포함<li>모드 Toggle 명령 연결</ul><h4 id="sitefooter"><span class="mr-2">SiteFooter</span><a href="#sitefooter" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h4><ul><li>right, about 문구</ul><h2 id="9-review"><span class="mr-2">9. Review</span><a href="#9-review" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2><ul><li>tailwind 설정을 잘하게 되면 해결될 문제가 많다. 변수라던지, 테마, 칼라 등..<li>레이아웃만 뽑아놓고 보니 동작도 빠릿하고, 깔끔한게 세련되어 보인다.<ul><li>markdown 과 테이블 등 몇가지 예제를 추가해서 더 다루어보려고 한다.</ul><li>몰랐던 유틸리티들이 여럿 포함되어 있어서 유익했다.</ul><blockquote><p>svelte 유틸리티 컴포넌트</p></blockquote><ul><li><a href="https://github.com/wobsoriano/svelte-sonner">svelte-sonner</a> : 겹침 상태로 보여지는 Toast (세련된 스타일)<li><a href="https://www.npmjs.com/package/svelte-persisted-store">svelte-persisted-store</a> : local storage 관리 (구독/갱신/설정/읽기)<li><a href="https://www.npmjs.com/package/mode-watcher">Mode Watcher</a> : sveltekit 위한 light/dark 모드 관리<li><a href="https://lodash.com/docs/4.17.15#template">lodash.template</a> : 템플릿 기반 문자열 생성 (eval 기능)<li><a href="https://github.com/huntabyte/cmdk-sv">cmdk-sv</a> : 검색창 (목록 필터링)<li><a href="https://github.com/skayo/svelte-infinite-loading">svelte-infinite-loading</a> : 무한 스크롤</ul><p>  <br />   <br /></p><blockquote class="prompt-info"><div><p><strong>끝!</strong>   읽어주셔서 감사합니다.</p></div></blockquote></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/frontend/'>frontend</a>, <a href='/categories/svelte/'>svelte</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/melt-ui/" class="post-tag no-text-decoration" >melt-ui</a> <a href="/tags/bits-ui/" class="post-tag no-text-decoration" >bits-ui</a> <a href="/tags/tailwind/" class="post-tag no-text-decoration" >tailwind</a> <a href="/tags/8th-day/" class="post-tag no-text-decoration" >8th-day</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> 이 기사는 저작권자의 <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> 라이센스를 따릅니다.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">공유하기</span> <span class="share-icons"> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Ftaejoone.jeju.onl%2Fposts%2F2024-01-03-svelte-components-tutorial-day8%2F" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Svelte+Component+%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC+-+8%EC%9D%BC%EC%B0%A8+-+%ED%83%9C%EC%A3%BC%EB%84%A4+%EB%B8%94%EB%A1%9C%EA%B7%B8&u=https%3A%2F%2Ftaejoone.jeju.onl%2Fposts%2F2024-01-03-svelte-components-tutorial-day8%2F" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://twitter.com/intent/tweet?text=Svelte+Component+%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC+-+8%EC%9D%BC%EC%B0%A8+-+%ED%83%9C%EC%A3%BC%EB%84%A4+%EB%B8%94%EB%A1%9C%EA%B7%B8&url=https%3A%2F%2Ftaejoone.jeju.onl%2Fposts%2F2024-01-03-svelte-components-tutorial-day8%2F" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <i id="copy-link" class="fa-fw fas fa-link small" data-toggle="tooltip" data-placement="top" title="링크 복사하기" data-title-succeed="링크가 복사되었습니다!"> </i> </span></div></div></div><section id="utteranc_box"><div id="light-mode"> <script src="https://utteranc.es/client.js" repo="maxmin93/my-blog-comments" issue-term="pathname" label="comment" theme="github-light" crossorigin="anonymous" async> </script></div><div id="dark-mode"> <script src="https://utteranc.es/client.js" repo="maxmin93/my-blog-comments" issue-term="pathname" label="comment" theme="github-dark" crossorigin="anonymous" async> </script></div></section><script src="/assets/js/custom.js"></script> <script type="text/javascript"> $(function(){ console.log("post.html: utteranc comments"); (window.customScripts.customUtteranc)(); }); </script></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted"><div class="access"><div id="access-lastmod" class="post"><div class="panel-heading">최근 업데이트</div><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/2025-01-19-zig-tutorial-8th/">Zig Tutorial - 8일차</a><li><a href="/posts/2025-01-30-wasm-tutorial-1st/">WASM Tutorial - 1일차</a><li><a href="/posts/2025-01-04-zig-tutorial-2nd/">Zig Tutorial - 2일차</a><li><a href="/posts/2025-01-05-zig-tutorial-3rd/">Zig Tutorial - 3일차</a><li><a href="/posts/2025-01-06-zig-tutorial-4th/">Zig Tutorial - 4일차</a></ul></div><div id="access-tags"><div class="panel-heading">인기 태그</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/tutorial/">tutorial</a> <a class="post-tag" href="/tags/1st-day/">1st-day</a> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/book/">book</a> <a class="post-tag" href="/tags/2nd-day/">2nd-day</a> <a class="post-tag" href="/tags/effective-java/">effective-java</a> <a class="post-tag" href="/tags/svelte5/">svelte5</a> <a class="post-tag" href="/tags/effective-python/">effective-python</a> <a class="post-tag" href="/tags/svelte/">svelte</a> <a class="post-tag" href="/tags/ui-components/">ui-components</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"><div class="panel-heading pl-3 pt-2 mb-2">바로가기</div><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 pl-3 pr-3 pr-xl-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>관련된 글</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/2023-12-15-svelte-components-tutorial-day7/"><div class="card-body"> <em class="small" data-ts="1702566000" data-df="YYYY-MM-DD" > 2023-12-15 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Svelte Component 라이브러리 - 7일차</h3><div class="text-muted small"><p> 원하는 UI 구성을 위해 headless 컴포넌트 라이브러리인 melt-UI 를 공부합니다. 이와 함께 daisyUI 를 사용할 방법을 찾아봅니다. 웹프레임워크로 SveltKit 을 사용하고 bun 런타임 위에서 실행합니다. Svelte Component 라이브러리 - 1일차 : Steeze UI Svelte Component 라이브...</p></div></div></a></div><div class="card"> <a href="/posts/2023-10-08-svelte-components-tutorial-day2/"><div class="card-body"> <em class="small" data-ts="1696690800" data-df="YYYY-MM-DD" > 2023-10-08 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Svelte Component 라이브러리 - 2일차</h3><div class="text-muted small"><p> 원하는 UI 구성을 위해 유틸리티 CSS 라이브러리인 TailwindCSS 와 Flowbite 를 공부합니다. 웹프레임워크로 SveltKit 을 사용하고 bun 런타임 위에서 실행합니다. Svelte Component 라이브러리 - 1일차 : Steeze UI Svelte Component 라이브러리 - 2일차 : Flowbite S...</p></div></div></a></div><div class="card"> <a href="/posts/2023-11-01-svelte-components-tutorial-day3/"><div class="card-body"> <em class="small" data-ts="1698764400" data-df="YYYY-MM-DD" > 2023-11-01 </em><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Svelte Component 라이브러리 - 3일차</h3><div class="text-muted small"><p> 원하는 UI 구성을 위해 유틸리티 CSS 라이브러리인 TailwindCSS 와 Flowbite 를 공부합니다. 웹프레임워크로 SveltKit 을 사용하고 bun 런타임 위에서 실행합니다. Svelte Component 라이브러리 - 1일차 : Steeze UI Svelte Component 라이브러리 - 2일차 : Flowbite S...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/2023-12-15-svelte-components-tutorial-day7/" class="btn btn-outline-primary" prompt="이전 글"><p>Svelte Component 라이브러리 - 7일차</p></a> <a href="/posts/2024-01-07-tailwind-clone-project-day1/" class="btn btn-outline-primary" prompt="다음 글"><p>Tailwind 클론 프로젝트 - 1일차</p></a></div></div></div><footer class="row pl-3 pr-3"><div class="col-12 d-flex justify-content-between align-items-center text-muted pl-0 pr-0"><div class="footer-left"><p class="mb-0"> © 2025 <a href="https://github.com/maxmin93">태주아빠</a>. <span data-toggle="tooltip" data-placement="top" title="명시되지 않는 한 이 사이트의 블로그 게시물은 작성자의 Creative Commons Attribution 4.0 International(CC BY 4.0) 라이선스에 따라 사용이 허가되었습니다.">일부 권리 보유</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><div id="access-tags"><div class="panel-heading">인기 태그</div><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/tutorial/">tutorial</a> <a class="post-tag" href="/tags/1st-day/">1st-day</a> <a class="post-tag" href="/tags/python/">python</a> <a class="post-tag" href="/tags/book/">book</a> <a class="post-tag" href="/tags/2nd-day/">2nd-day</a> <a class="post-tag" href="/tags/effective-java/">effective-java</a> <a class="post-tag" href="/tags/svelte5/">svelte5</a> <a class="post-tag" href="/tags/effective-python/">effective-python</a> <a class="post-tag" href="/tags/svelte/">svelte</a> <a class="post-tag" href="/tags/ui-components/">ui-components</a></div></div></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a><div id="notification" class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true" data-autohide="false"><div class="toast-header"> <button type="button" class="ml-2 ml-auto close" data-dismiss="toast" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div><div class="toast-body text-center pt-0"><p class="pl-2 pr-2 mb-3">새 버전의 콘텐츠를 사용할 수 있습니다.</p><button type="button" class="btn btn-primary" aria-label="Update"> 업데이트 </button></div></div><script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">검색 결과가 없습니다.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/magnific-popup@1/dist/jquery.magnific-popup.min.js,npm/lozad/dist/lozad.min.js,npm/clipboard@2/dist/clipboard.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/dayjs@1/dayjs.min.js,npm/dayjs@1/locale/ko.min.js,npm/dayjs@1/plugin/relativeTime.min.js,npm/dayjs@1/plugin/localizedFormat.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.bundle.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=G-65FR6C9XJJ"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-65FR6C9XJJ', { 'cookie_prefix': 'TaejooneBlogCookie', 'cookie_domain': 'taejoone.jeju.onl', 'cookie_expires': 28 * 24 * 60 * 60, 'cookie_update': true, }); /** page.collection : 비어있는 경우가 많다 page.categories.join(), page.tags.join(): 빈문자열 출력 --> jekyll 에서는 for 루프를 돌려서 출력 **/ gtag('set', 'content_group', 'post'); gtag('set', 'content_type', 'frontend'); gtag('event', 'screen_view', { 'app_name': 'post', 'screen_name': 'frontend', }); }); </script>
