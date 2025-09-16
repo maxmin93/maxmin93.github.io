@@ -208,7 +208,7 @@ Ran on 41 files!
 HTML-Proofer found 124 failures!
 ```
 
-> 수정사항
+> test.sh 수정사항
 
 - `--allow-missing-href` 추가
 - `--no-enforce-https` 추가
@@ -226,6 +226,21 @@ main() {
 }
 ```
 {: file='tools/test.sh'}
+
+> github action 에서 한번 더 수정
+
+```yml
+      - name: Test site
+        run: |
+          bundle exec htmlproofer _site \
+            \-\-allow-missing-href \
+            \-\-no-enforce-https \
+            \-\-disable-external \
+            \-\-ignore-urls "/^http:\/\/127.0.0.1/,/^http:\/\/0.0.0.0/,/^http:\/\/localhost/"
+```
+{: file='.github/workflows/pages-deploy.yml'}
+
+이거 수정 안하면 github action 의 build 단계에서 실패한다.
 
 
 &nbsp; <br />
