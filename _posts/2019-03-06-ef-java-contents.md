@@ -1,8 +1,9 @@
 ---
 date: 2019-03-06 00:00:00 +0900
 title: Effective Java 3rd - Contents
+description: 요약, 공부
 categories: ["language","java"]
-tags: ["effective-java", "book"]
+tags: [TIL, book]
 image: http://image.yes24.com/goods/65551284/800x0
 ---
 

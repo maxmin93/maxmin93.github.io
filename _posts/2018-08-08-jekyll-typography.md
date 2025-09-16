@@ -1,5 +1,5 @@
 ---
-title: Jekyll Typography
+title: Jekyll Typography 사용법
 description: Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.
 author: cotes
 date: 2018-08-08 11:33:00 +0800

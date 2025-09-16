@@ -1,8 +1,9 @@
 ---
 date: 2019-03-04 00:00:00 +0900
 title: AgensBrowser 튜토리얼 - northwind
+description: 추천, CF 알고리즘, 실습, sql
 categories: [Database, GraphDB]
-tags: [agensgraph, 추천, 튜토리얼]
+tags: [agensgraph, tutorial]
 image: /2019/03/04-ab-web-tutorial.webp
 ---
 

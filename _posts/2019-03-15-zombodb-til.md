@@ -1,8 +1,9 @@
 ---
 date: 2019-03-15 00:00:00 +0900
-title: Zombodb - pg10 plugin for es6
-categories: ["elasticsearch","plugin"]
-tags: ["zombodb", "postgresql"]
+title: Zombodb - pg10 plugin for ES6
+description: es 검색을 위한 pg 플러그인
+categories: [Backend, ThirdParty]
+tags: [elasticsearch, postgresql]
 image: /2019/03/15-zombodb-logo.png
 ---
 

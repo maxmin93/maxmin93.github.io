@@ -1,8 +1,10 @@
 ---
 date: 2019-03-14 00:00:00 +0900
 title: Learning Elastic Stack 6
-categories: [elasticsearch]
-tags: [TIL]
+description: 요약, 공부
+categories: [Backend, Platform]
+tags: [TIL, book, elasticsearch]
+image: https://image.aladin.co.kr/product/14709/83/cover500/k422532050_1.jpg
 ---
 
 > 대용량 데이터 탐색에 Elasticsearch 를 사용하려고 튜토리얼 공부 중입니다.
@@ -220,7 +222,7 @@ tags: [TIL]
 }
 ```
 
-#### 별첨 : _*nori analyzer*_ 테스트
+#### 별첨 : _nori analyzer_ 테스트
 
 ```jsonc
 // DELETE nori_sample
