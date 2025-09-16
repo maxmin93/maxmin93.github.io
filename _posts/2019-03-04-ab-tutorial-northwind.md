@@ -1,8 +1,8 @@
 ---
 date: 2019-03-04 00:00:00 +0900
-title: AgensBrowser tutorial - northwind
-categories: ["database", "graphdb"]
-tags: ["agensgraph", "recommendation", "추천", "tutorial"]
+title: AgensBrowser 튜토리얼 - northwind
+categories: [Database, GraphDB]
+tags: [agensgraph, 추천, 튜토리얼]
 image: /2019/03/04-ab-web-tutorial.webp
 ---
 

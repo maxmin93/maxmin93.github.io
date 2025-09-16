@@ -1,0 +1,39 @@
+---
+---
+
+/* prettier-ignore */
+@use 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+/* append your custom style below */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+@font-face {
+  font-family: 'D2Coding';
+  src: url('/assets/lib/fonts/D2Coding.woff2') format('woff2'),
+       url('/assets/lib/fonts/D2Coding.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'D2CodingBold';
+  src: url('/assets/lib/fonts/D2CodingBold.woff2') format('woff2'),
+       url('/assets/lib/fonts/D2CodingBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* 필요 없음 : .highlighter-rouge */
+pre, code, kbd {
+  font-family: 'JetBrains Mono', 'D2Coding', monospace;
+}
+
+body, header, h1, h2, h3, h4, h5 {
+  font-family: "Noto Sans KR", sans-serif;
+}
