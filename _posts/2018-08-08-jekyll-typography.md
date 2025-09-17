@@ -3,9 +3,8 @@ title: Jekyll Typography 사용법
 description: Examples of text, typography, math equations, diagrams, flowcharts, pictures, videos, and more.
 author: cotes
 date: 2018-08-08 11:33:00 +0800
-categories: [Blogging, Demo]
-tags: [typography]
-# pin: true
+categories: [Frontend, Jekyll]
+tags: [examples]
 math: true
 mermaid: true
 image: /2018/08/08-devices-mockup.webp
@@ -33,6 +32,16 @@ hidden: true
 ## Paragraph
 
 Quisque egestas convallis ipsum, ut sollicitudin risus tincidunt a. Maecenas interdum malesuada egestas. Duis consectetur porta risus, sit amet vulputate urna facilisis ac. Phasellus semper dui non purus ultrices sodales. Aliquam ante lorem, ornare a feugiat ac, finibus nec mauris. Vivamus ut tristique nisi. Sed vel leo vulputate, efficitur risus non, posuere mi. Nullam tincidunt bibendum rutrum. Proin commodo ornare sapien. Vivamus interdum diam sed sapien blandit, sit amet aliquam risus mattis. Nullam arcu turpis, mollis quis laoreet at, placerat id nibh. Suspendisse venenatis eros eros.
+
+### Text Color
+
+```diff
+- text in red
++ text in green
+! text in orange
+# text in gray
+@@ text in purple (and bold)@@
+```
 
 ## Lists
 

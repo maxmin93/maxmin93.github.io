@@ -1,14 +1,11 @@
 ---
 date: 2019-03-04 00:00:00 +0900
 title: AgensBrowser 튜토리얼 - northwind
-description: 추천, CF 알고리즘, 실습, sql
-categories: [Database, GraphDB]
-tags: [agensgraph, tutorial]
+description: 그래프 데이터베이스 제품의 튜토리얼 과정을 Northwind 상품추천 내용으로 만들었습니다.
+categories: [Backend, Database]
+tags: [graphdb, agensgraph, tutorial]
 image: /2019/03/04-ab-web-tutorial.webp
 ---
-
-> 그래프 데이터베이스 제품의 튜토리얼 과정을 Northwind 상품추천 내용으로 만들었습니다.
-{: .prompt-tip }
 
 ## [유튜브 - Northwind 튜토리얼](https://youtu.be/4WI1DkADBN4)
 
@@ -17,7 +14,7 @@ image: /2019/03/04-ab-web-tutorial.webp
 ### 발표자료
 
 - 구글 PPT - [AgensBrowser tutorial](https://docs.google.com/presentation/d/1ng1Ln00-3qFWG91BOL9z7Ah6lKDqQQ-FgAoCq7E3bJA/edit?usp=sharing)
-- 예제 Script - [northwind_tutorial0_video.sql](https://github.com/bitnine-oss/ab-restapi-samples/blob/master/northwind/northwind_tutorial0_video.sql)
+- 예제 Script - [northwind_tutorial0_video.sql](https://drive.google.com/file/d/1gsXL8eWAt4vSFac_p4qzCfJE8Vlv5FPF/view?usp=sharing)
 
 ### 추천 알고리즘 관련 참고자료
 

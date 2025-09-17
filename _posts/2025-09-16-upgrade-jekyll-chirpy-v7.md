@@ -1,14 +1,11 @@
 ---
 date: 2025-09-16 00:00:00 +0900
 title: Jekyll Chirpy 7.3 버전 업그레이드 작업
-description: 작업 기록
+description: ruby 2.7 에 jekyll 5.x 버전이 너무 느려서 ruby 3.3 과 최신 7.3.1 버전으로 교체했다. 작업한 사항을 기록한다.
 categories: [Frontend, Jekyll]
 tags: [upgrade, jekyll]
+image: /2025/09/16-jekyll-chirpy-v7-screenshot.webp
 ---
-
-> ruby 2.7 에 jekyll 5.x 버전이 너무 느려서 ruby 3.3 과 최신 7.3.1 버전으로 교체했다. 작업한 사항을 기록한다.
-{: .prompt-tip }
-
 
 ## 작업순서
 
@@ -49,6 +46,8 @@ ERROR '/.well-known/appspecific/com.chrome.devtools.json' not found.
 
 ### upgrade 이후 큰 변경사항
 
+> 참고: 이전에 쓴 [Jekyll Chirpy 5.2.1 블로그 업그레이드](/posts/renewal-jekyll-github-pages)
+
 - 기존에는 포스트 링크의 포맷이 `/posts/YYYY-MM-DD-{post.title}/` 이었는데 `/posts/{post.title}/` 으로 변경되었다.
 	- 이 때문에 내부 링크들을 모두 수정해야만 했다.
 - 이전에는 퍼블리싱을 위한 `gh-pages` 브랜치가 별도로 있었다. 최신 버전에서는 `main` 브랜치에서 직접 복사해 가져간다.
@@ -69,7 +68,7 @@ ERROR '/.well-known/appspecific/com.chrome.devtools.json' not found.
 
 검색한 내용으로는 `_sass/abstracts/_variables.scss` 에서 `$font-family-base`, `$font-family-heading` 변수를 수정하면 적용된다고 하는데, 해보니깐 안된다.
 
-`$code-font-family` 는 사용하는 곳이 없다.
+또한, `$code-font-family` 는 사용하는 곳이 없다.
 
 ```scss
 /* fonts */
@@ -114,7 +113,7 @@ pre, code, kbd {
   font-family: 'JetBrains Mono', 'D2Coding', monospace;
 }
 
-// _sass 전체 복사 후에, 주석처리 함
+// _sass 전체 복사 후에, 필요 없어서 주석처리 함
 body, header, h1, h2, h3, h4, h5, p {
   font-family: "Noto Sans KR", sans-serif;
 }

@@ -1,28 +1,24 @@
 ---
 date: 2019-03-15 00:00:00 +0900
 title: Zombodb - pg10 plugin for ES6
-description: es 검색을 위한 pg 플러그인
-categories: [Backend, ThirdParty]
+description: Postgresql 과 Elasticsearch 를 연동시키는 Zombodb 라는 플러그인을 설치하는 방법을 설명합니다.
+categories: [Backend, Search]
 tags: [elasticsearch, postgresql]
 image: /2019/03/15-zombodb-logo.png
 ---
 
-> Postgresql 과 Elasticsearch 를 연동시키는 Zombodb 라는 플러그인을 설치하는 방법을 설명합니다.
-{: .prompt-tip }
+## Zombodb 설치
 
 > 출처 : Github [zombodb](https://github.com/zombodb/zombodb)
 
-## Zombodb install
+- Zombodb configuration
+- zombodb--10-1.0.3.sql
 
-## Zombodb configuration
-
-### zombodb--10-1.0.3.sql
-
-#### CentOS 6 (installed by yum)
+### CentOS 6 환경 (installed by yum)
 
 PATH `/usr/pgsql-10/share/extension/zombodb--10-1.0.3.sql`
 
-#### Mac OS (installed by brew)
+### Mac OS 환경 (installed by brew)
 
 PATH `/usr/local/Cellar/postgresql@10/10.6_1/share/postgresql@10/extension/zombodb--10-1.0.3.sql`
 
@@ -78,6 +74,34 @@ CREATE DOMAIN korean AS text;      -- nori_analyzer
   "status": 400
 }
 ```
+
+## ZomboDB 인덱스 생성 및 테스트
+
+ElasticSearch 서버 <http://localhost:9200> 에 인덱스 연결
+
+```sql
+create index idx_products on idx_products
+  using zombodb((products.*))
+  with (url='http://localhost:9200');
+```
+
+![create-zombodb-index](/2019/03/15-create-zombodb-index.png){: w="80%"}
+_ZomboDB 인덱스 생성 명령_
+
+ElasticSearch 의 쿼리 결과를 인덱스로 사용해 Postgresql 의 테이블을 쿼리한다.
+
+```sql
+-- 텍스트 통합 필드에 대해 키워드를 쿼리
+select * from products
+where products ==> 'mix';
+
+-- 특정 필드에 대해 값을 쿼리
+select * from products
+where products ==> 'productname:"chai"';
+```
+
+![create-zombodb-index-query](/2019/03/15-create-zombodb-index-exec.png){: w="80%"}
+_ZomboDB 인덱스 생성된 결과_
 
 &nbsp; <br />
 &nbsp; <br />

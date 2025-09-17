@@ -1,14 +1,11 @@
 ---
 date: 2019-03-06 00:00:00 +0900
 title: Effective Java 3rd - Contents
-description: 요약, 공부
-categories: ["language","java"]
-tags: [TIL, book]
+description: Java 기초를 다지기 위해 Effective Java 책을 공부 중입니다. 요약한 포스팅들의 링크를 모아둡니다.
+categories: [Language, Java]
+tags: [book]
 image: http://image.yes24.com/goods/65551284/800x0
 ---
-
-> Java 기초를 다지기 위해 효과적인 자바란 책을 공부 중입니다.
-{: .prompt-tip }
 
 ### 책소개
 

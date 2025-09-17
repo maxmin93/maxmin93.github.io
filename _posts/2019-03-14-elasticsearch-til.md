@@ -1,18 +1,15 @@
 ---
 date: 2019-03-14 00:00:00 +0900
 title: Learning Elastic Stack 6
-description: 요약, 공부
-categories: [Backend, Platform]
-tags: [TIL, book, elasticsearch]
+description: 대용량 데이터 탐색에 Elasticsearch 를 사용하려고 책의 튜토리얼을 공부 중입니다.
+categories: [Backend, Search]
+tags: [book, elasticsearch]
 image: https://image.aladin.co.kr/product/14709/83/cover500/k422532050_1.jpg
 ---
 
-> 대용량 데이터 탐색에 Elasticsearch 를 사용하려고 튜토리얼 공부 중입니다.
-{: .prompt-tip }
+## 튜토리얼 따라하기
 
 > 출처 : 도서 [Learning Elastic Stack 6](http://aladin.kr/p/e1tcY)
-
-## 튜토리얼 따라하기
 
 ### 2장 엘라스틱서치 따라하기
 
