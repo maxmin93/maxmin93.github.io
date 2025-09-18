@@ -2,7 +2,7 @@
 date: 2021-04-25 00:00:00 +0900
 title: Jupyter notebook 과 pyspark 연동 설정
 description: 데이터 분석을 위한 작업 환경을 개선하려고 주피터 노트북에 PySpark 를 연동한 작업을 기록합니다.
-categories: [Backend, Analysis]
+categories: [Backend]
 tags: [jupyter, pyspark]
 image: https://miro.medium.com/max/698/1*h7xQUkvB_dyJKpJ3EP_TvA.jpeg
 ---
@@ -73,7 +73,7 @@ In [3]:
 Do you really want to exit ([y]/n)? y
 ```
 
-![패스워드 생성 화면](/2021/04/ipython_password_sha1.png){: width="540"}
+![패스워드 생성 화면](/2021/04/ipython_password_sha1.png){: width="540" .w-75}
 _&lt;그림&gt; 패스워드 생성 화면_
 
 ### jupyter notebook 테스트
@@ -84,10 +84,10 @@ $ ipython notebook --config='~/.ipython/profile_pyspark/ipython_config.py'
 # browser 에서 새 노트 생성 후 파이썬 테스트
 ```
 
-![노트북 콘솔 화면](/2021/04/ipython_notebook_console_pyspark.png){: width="540"}
+![노트북 콘솔 화면](/2021/04/ipython_notebook_console_pyspark.png){: width="540" .w-75}
 _&lt;그림&gt; 노트북 콘솔 화면_
 
-![노트북 실행 화면](/2021/04/ipython_notebook_browser_pyspark.png){: width="540"}
+![노트북 실행 화면](/2021/04/ipython_notebook_browser_pyspark.png){: width="540" .w-75}
 _&lt;그림&gt; 노트북 실행 화면_
 
 ## ipython profile 설정 (5~7단계)
@@ -144,7 +144,7 @@ print(spark.version)
 # >>> 2.4.7
 ```
 
-![pyspark 실행 화면](/2021/04/ipython_pyspark-test.png){: width="540"}
+![pyspark 실행 화면](/2021/04/ipython_pyspark-test.png){: width="540" .w-75}
 _&lt;그림&gt; pyspark 실행 화면_
 
 ### alias 설정

@@ -255,7 +255,7 @@ second average
 
 Fiber 는 Go 언어에서 가장 빠른 `Fasthttp` 엔진 기반으로 만들어진 웹 프레임워크. 빠른 개발과 최적의 메모리 활용을 제공한다.
 
-![Golang WebFrameworks Performance Benchmark](https://raw.githubusercontent.com/gofiber/docs/master/.gitbook/assets/benchmark-pipeline.png){: width="600"}
+![Golang WebFrameworks Performance Benchmark](https://raw.githubusercontent.com/gofiber/docs/master/.gitbook/assets/benchmark-pipeline.png){: width="600" .w-75}
 
 > 예제 코드
 

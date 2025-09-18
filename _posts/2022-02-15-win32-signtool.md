@@ -49,7 +49,7 @@ pvk2pfx -pvk bitnine.pvk -pi bitnine -spc bitnine.spc -pfx bintine.pfx
 
 인증서 관리 도구에 등록된 AgensEnterprise
 
-![15_01-AgensEnterprise](/2022/02/15_01-AgensEnterprise.png){: width="540"}
+![15_01-AgensEnterprise](/2022/02/15_01-AgensEnterprise.png){: width="540" .w-75}
 
 ### 서명하기
 
@@ -91,15 +91,15 @@ signtool sign /t http://time.certum.pl /f .\pkg\win32\build_lib\bitnine.pfx /p b
 - `signtool signwizard` 실행
 - 안내대로 수행
 
-![15_02-SignWizard](/2022/02/15_02-SignWizard.png){: width="540"}
+![15_02-SignWizard](/2022/02/15_02-SignWizard.png){: width="540" .w-75}
 
-![15_03-SignWizard](/2022/02/15_03-SignWizard.png){: width="540"}
+![15_03-SignWizard](/2022/02/15_03-SignWizard.png){: width="540" .w-75}
 
-![15_04-SignWizard](/2022/02/15_04-SignWizard.png){: width="540"}
+![15_04-SignWizard](/2022/02/15_04-SignWizard.png){: width="540" .w-75}
 
 #### 서명 된 exe 파일의 디지털 서명 속성
 
-![15_05-SignWizard](/2022/02/15_05-SignWizard.png){: width="540"}
+![15_05-SignWizard](/2022/02/15_05-SignWizard.png){: width="540" .w-75}
 
 ## 패키징 예제 [pgAdmin4](https://github.com/postgres/pgadmin4)
 

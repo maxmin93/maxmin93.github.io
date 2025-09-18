@@ -2,8 +2,8 @@
 date: 2022-11-21 00:00:00 +0900
 title: React 공부하기 - 1일차
 description: 프론트엔드 개발시 View 구현의 필수 재료인 React 에 대해 공부한다. Nextjs/Gatsby, WebComponent 연계 (1일차)
-categories: [Frontend, React]
-tags: [1st-day]
+categories: [Frontend]
+tags: [1st-day, react]
 image: "https://ko.react.dev/images/uwu.png"
 ---
 
@@ -112,7 +112,7 @@ cd hello-react
 yarn && yarn run start
 ```
 
-![create-react-app files](/2022/11/21-react-package-json-crunch.png){: width="540"}
+![create-react-app files](/2022/11/21-react-package-json-crunch.png){: width="540" .w-75}
 
 - react, react-dom 필수 라이브러리 설치
 - react-script 설치 => `create-react-app`
@@ -193,7 +193,7 @@ React 는 단지 View 를 전문적으로 다루는 라이브러리임을 잊지
 - Board 에서 onClick 함수로 게임의 상태 변경을 처리
 - App 에서는 info 출력만 관리
 
-![TicTacToe ver1 Capture](https://github.com/maxmin93/react-square-board-game/raw/main/assets/react-tictactoe-ver1.png){: width="600"}
+![TicTacToe ver1 Capture](https://github.com/maxmin93/react-square-board-game/raw/main/assets/react-tictactoe-ver1.png){: width="600" .w-75}
 
 #### 버전2) Game 클래스에 게임 상태가 저장되는 형태
 
@@ -207,7 +207,7 @@ React 는 단지 View 를 전문적으로 다루는 라이브러리임을 잊지
 - Board 는 Square 의 위치 바인딩과 함수 전달자 역활만 수행
   - onClick 함수의 파라미터 i 값을 바인딩
 
-![TicTacToe ver2 Capture](https://github.com/maxmin93/react-square-board-game/raw/main/assets/react-tictactoe-ver2.png){: width="600"}
+![TicTacToe ver2 Capture](https://github.com/maxmin93/react-square-board-game/raw/main/assets/react-tictactoe-ver2.png){: width="600" .w-75}
 
 #### 버전3) History 이용해 이전 스텝으로 이동하는 기능 추가
 
@@ -217,7 +217,7 @@ React 는 단지 View 를 전문적으로 다루는 라이브러리임을 잊지
 - 렌더링 되는 대상은 컴포넌트에서 생성되도록 하는게 옳다
   + key 를 부여해도 `li` 가 최종 label 하나만 생성됨
 
-![TicTacToe ver3 Capture](https://github.com/maxmin93/react-square-board-game/raw/main/assets/react-tictactoe-ver3-signed.png){: width="600"}
+![TicTacToe ver3 Capture](https://github.com/maxmin93/react-square-board-game/raw/main/assets/react-tictactoe-ver3-signed.png){: width="600" .w-75}
 
 ### 4) 핵심 포인트
 

@@ -3,8 +3,8 @@ date: 2022-12-07 00:00:00 +0900
 title: Svelte 공부하기 - 1일차
 description: 프론트엔드 프레임워크인 Svelte 에 대해 공부한다. Svelte 는 Vite 를 사용한다. (1일차)
 categories: [Frontend, Svelte]
-tags: [1st-day]
-image: https://svelte.dev/_app/immutable/assets/svelte-machine-mobile.B0w2rScM.png
+tags: [1st-day, vite]
+image: "https://svelte.dev/_app/immutable/assets/svelte-machine-mobile.B0w2rScM.png"
 ---
 
 > 목록
@@ -684,7 +684,7 @@ server {
 
 > NPM Trends : React vs Angular vs Svelte vs Vue
 
-![React vs Angular vs Svelte vs Vue](https://procoders.tech/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2021/07/image4-3-1024x490.png.webp){: width="600"}
+![React vs Angular vs Svelte vs Vue](https://procoders.tech/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2021/07/image4-3-1024x490.png.webp){: width="600" .w-75}
 
 - 현시점에서 React, Angular, Vue 다음으로 4위를 차지하고 있다.
   + 하지만 개발자 호응도가 좋아 성장 가능성은 높다.

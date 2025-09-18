@@ -1,15 +1,13 @@
 ---
 date: 2022-10-01 00:00:00 +0900
 title: AWS 최소 서비스 - 한달간의 유지비용 측정
+description: AWS 싱글서비스 유지에 대한 최소비용을 한달간 실험했습니다. EC2 를 24시간 가동하면 대략 5만원 나옵니다.
 categories: [DevOps, Cloud]
 tags: ["elb", "한달비용", "ec2", "운영비용"]
 image: "/2022/10/01-aws-minimal-architecture-crunch.png"
 ---
 
-> AWS 싱글서비스 유지에 대한 최소비용을 한달간 실험했습니다. (5만원 소요)
-{: .prompt-tip }
-
-AWS 최소 운영비용이 최소 5만원이라는 말을 어디서 본 기억이 나서, 실제로 그런지 실험으로 측정해보았습니다. 할인이나 이벤트는 없는 상태로 최소 구성으로 한달간 운영한 결과, 대략 4만원 정도 나왔습니다. (EC2 를 24시간 가동하면 5만원 될 듯)
+AWS 최소 운영비용이 최소 5만원이라는 말을 어디서 본 기억이 나서, 실제로 그런지 실험으로 측정해보았습니다. 할인이나 이벤트는 없는 상태로 최소 구성으로 한달간 운영한 결과, 대략 4만원대 정도 나왔습니다.
 
 ## 1. AWS 구성: EC2 + LB + Route53 구성
 
@@ -65,7 +63,7 @@ AWS 를 이용해 1인 서비스를 운영할 때 비용이 어느정도 들지 
 
 AWS 운영 예산을 위한 베이스라인으로 활용
 
-![AWS 청구서 - 2022년9월](/2022/10/01-aws-bill-202209-crunch.png){: width="580"}
+![AWS 청구서 - 2022년9월](/2022/10/01-aws-bill-202209-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; AWS 청구서 - 2022년9월_
 
 - 2022년 9월 평일 22일 기준
@@ -84,7 +82,7 @@ _&lt;그림&gt; AWS 청구서 - 2022년9월_
 
 구성을 없애면서 나중에 작업에 참고하도록 기록해둔다.
 
-![AWS 최소 구성 - Draw.io ](/2022/10/01-aws-minimal-architecture-crunch.png){: width="480"}
+![AWS 최소 구성 - Draw.io ](/2022/10/01-aws-minimal-architecture-crunch.png){: width="480" .w-75}
 _&lt;그림&gt; AWS 최소 구성 - Draw.io_
 
 
@@ -92,14 +90,14 @@ _&lt;그림&gt; AWS 최소 구성 - Draw.io_
 
 #### EC2 속성
 
-![AWS 구성 - EC2 속성](/2022/10/01-aws-ec2-description-crunch.png){: width="580"}
+![AWS 구성 - EC2 속성](/2022/10/01-aws-ec2-description-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; AWS 구성 - EC2 속성_
 
 #### 보안그룹 인바운드 규칙
 
 사용되는 TCP 포트 등록 (아웃바운드는 모두 허용)
 
-![AWS 구성 - EC2 보안그룹 인바운드](/2022/10/01-aws-ec2-sg-inbounds-crunch.png){: width="580"}
+![AWS 구성 - EC2 보안그룹 인바운드](/2022/10/01-aws-ec2-sg-inbounds-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; AWS 구성 - EC2 보안그룹 인바운드_
 
 
@@ -107,21 +105,21 @@ _&lt;그림&gt; AWS 구성 - EC2 보안그룹 인바운드_
 
 #### LB 속성
 
-![AWS 구성 - LB 속성](/2022/10/01-aws-lb-description-crunch.png){: width="580"}
+![AWS 구성 - LB 속성](/2022/10/01-aws-lb-description-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; AWS 구성 - LB 속성_
 
 #### LB 목표그룹
 
 외부 접속을 어떤 AWS 자원에 연결할 것인지 정의
 
-![AWS 구성 - LB 목표그룹](/2022/10/01-aws-lb-targetgroup-crunch.png){: width="580"}
+![AWS 구성 - LB 목표그룹](/2022/10/01-aws-lb-targetgroup-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; AWS 구성 - LB 목표그룹_
 
 #### LB 리스너
 
 HTTP/HTTPS 에 대한 리스너 정의
 
-![AWS 구성 - LB 리스너](/2022/10/01-aws-lb-listeners-crunch.png){: width="580"}
+![AWS 구성 - LB 리스너](/2022/10/01-aws-lb-listeners-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; AWS 구성 - LB 리스너_
 
 #### LB 리스너 규칙 - HTTP:80
@@ -130,7 +128,7 @@ _&lt;그림&gt; AWS 구성 - LB 리스너_
 
 - 내부 nginx 에서 할 수도 있지만 LB 에서 하면 유지보수가 편하다
 
-![AWS 구성 - LB 리스너 규칙 ](/2022/10/01-aws-lb-rules-crunch.png){: width="580"}
+![AWS 구성 - LB 리스너 규칙 ](/2022/10/01-aws-lb-rules-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; AWS 구성 - LB 리스너 규칙_
 
 
@@ -140,7 +138,7 @@ _&lt;그림&gt; AWS 구성 - LB 리스너 규칙_
 
 리스너의 A 레코드 값을 지정한다 (LB가 전달하도록)
 
-![AWS 구성 - Route 53 Record](/2022/10/01-aws-route53-a-record-crunch.png){: width="580"}
+![AWS 구성 - Route 53 Record](/2022/10/01-aws-route53-a-record-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; AWS 구성 - Route 53 Record_
 
 

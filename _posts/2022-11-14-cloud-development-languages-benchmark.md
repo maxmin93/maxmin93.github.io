@@ -44,23 +44,23 @@ image: "https://stepmediasoftware.com/wp-content/uploads/2025/03/choosing-an-aws
 
 - 방법1) Go Serverless with AWS Lambda
 
-![Go Serverless with AWS Lambda](https://user-images.githubusercontent.com/6509926/52906603-cbb6cb80-3214-11e9-8a97-a5ea2d4036d3.png){: width="600"}
+![Go Serverless with AWS Lambda](https://user-images.githubusercontent.com/6509926/52906603-cbb6cb80-3214-11e9-8a97-a5ea2d4036d3.png){: width="600" .w-75}
 
 - 방법2) Skipping the middleman with API Gateway service proxy
 
-![Skipping the middleman](https://user-images.githubusercontent.com/6509926/53012281-249a8580-3408-11e9-91e6-c64cfc82a434.png){: width="600"}
+![Skipping the middleman](https://user-images.githubusercontent.com/6509926/53012281-249a8580-3408-11e9-91e6-c64cfc82a434.png){: width="600" .w-75}
 
 - 방법3) Containerizing your workload with Docker and AWS Fargate
 
-![Docker and AWS Fargate](https://user-images.githubusercontent.com/6509926/53013070-6f1d0180-340a-11e9-860a-4f9962a04792.png){: width="600"}
+![Docker and AWS Fargate](https://user-images.githubusercontent.com/6509926/53013070-6f1d0180-340a-11e9-860a-4f9962a04792.png){: width="600" .w-75}
 
 #### 초기 웜업 결과
 
-![Initial warmup results](https://user-images.githubusercontent.com/6509926/53103176-b7afea00-34f2-11e9-94e0-2d0dfd741397.png){: width="480"}
+![Initial warmup results](https://user-images.githubusercontent.com/6509926/53103176-b7afea00-34f2-11e9-94e0-2d0dfd741397.png){: width="480" .w-75}
 
 #### 풀테스트 결과
 
-![Full performance test results](https://user-images.githubusercontent.com/6509926/53103177-b7afea00-34f2-11e9-99b1-75732550056f.png){: width="480"}
+![Full performance test results](https://user-images.githubusercontent.com/6509926/53103177-b7afea00-34f2-11e9-99b1-75732550056f.png){: width="480" .w-75}
 
 #### 결론
 
@@ -81,11 +81,11 @@ image: "https://stepmediasoftware.com/wp-content/uploads/2025/03/choosing-an-aws
 
 - AWS lambda 테스트 구성도
 
-![AWS lambda 테스트 구성도](https://blog.thundra.io/hs-fs/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions-2.png){: width="480"}
+![AWS lambda 테스트 구성도](https://blog.thundra.io/hs-fs/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions-2.png){: width="480" .w-75}
 
 - AWS lambda 언어별 함수 배포 (zip, 런타임 설정)
 
-![AWS lambda 언어별 함수 배포](https://blog.thundra.io/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions-4.png){: width="480"}
+![AWS lambda 언어별 함수 배포](https://blog.thundra.io/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions-4.png){: width="480" .w-75}
 
 ### 2) 결론
 
@@ -104,19 +104,19 @@ Dotnet 이 느리고, Python / Node / Go 순으로 작다.
   + Go 의 경우 콜드 스타트 지속시간은 약 400ms 
   + Python(3.9) 과 Node(16.x) 는 콜드 스타트 영향이 거의 없는듯
 
-![Max Duration](https://blog.thundra.io/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions.gif){: width="600"}
+![Max Duration](https://blog.thundra.io/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions.gif){: width="600" .w-75}
 
 #### 평균 처리시간 (웜업)
 
 Java 가 가장 느리고, Python / Node / Go 순으로 작은데 거의 비슷
 
-![Average Duration](https://blog.thundra.io/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions-1.png){: width="600"}
+![Average Duration](https://blog.thundra.io/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions-1.png){: width="600" .w-75}
 
 #### 최대 메모리 사용량 (웜업)
 
 Dotnet 이 가장 많이 사용하고, Go / Node / Python 순으로 적게 사용
 
-![Max Memory Usages](https://blog.thundra.io/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions-3.png){: width="600"}
+![Max Memory Usages](https://blog.thundra.io/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions-3.png){: width="600" .w-75}
 
 #### 언어별 콜드스타트 시간 비교 [(출처-2021년)](https://mikhail.io/serverless/coldstarts/aws/languages/)
 
@@ -125,7 +125,7 @@ Dotnet 이 가장 많이 사용하고, Go / Node / Python 순으로 적게 사�
 - Python의 경우 0.2~0.25초 사이가 정점
 - Javascript의 시작 시간은 0.2~0.4초 사이가 정점
 
-![AWS lambda 콜드스타트 언어별 비교](/2022/11/14-AWS_Lambda-Cold_Start-Languages-crunch.png){: width="480"}
+![AWS lambda 콜드스타트 언어별 비교](/2022/11/14-AWS_Lambda-Cold_Start-Languages-crunch.png){: width="480" .w-75}
 
 ## 3. AWS SDK 에서 Go 언어와 다른 언어 코드 비교
 

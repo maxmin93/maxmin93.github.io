@@ -298,7 +298,7 @@ ag_sample_graph:
   - Cache Hit rate
   - Temp file, 등등..
 
-![15_01-PostgreSQL_Grafana](/2022/03/15_01-PostgreSQL_Grafana-w640.png){: width="540"}
+![15_01-PostgreSQL_Grafana](/2022/03/15_01-PostgreSQL_Grafana-w640.png){: width="540" .w-75}
 
 ### Grafana 대시보드 작성
 

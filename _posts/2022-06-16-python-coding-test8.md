@@ -583,11 +583,11 @@ print(PascalsTriangle(input()))
 - 왼쪽, 오른쪽 사선을 모두 '1'로 채우고
 - 아래 원소의 값은 위쪽 행에 인접된 두 원소의 합
 
-![파스칼의 삼각형1](https://javalab.org/lee/contents/pascals_triangle_1.jpg){: width="540"}
+![파스칼의 삼각형1](https://javalab.org/lee/contents/pascals_triangle_1.jpg){: width="540" .w-75}
 
 각 행의 합은 2의 거듭제곱과 같다.
 
-![파스칼의 삼각형2](https://javalab.org/lee/contents/pascals_triangle_2.jpg){: width="540"}
+![파스칼의 삼각형2](https://javalab.org/lee/contents/pascals_triangle_2.jpg){: width="540" .w-75}
 
 ### 문제 79
 

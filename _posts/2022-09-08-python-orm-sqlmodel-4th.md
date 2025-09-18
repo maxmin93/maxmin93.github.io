@@ -466,9 +466,8 @@ export default function Notes() {
   - Notes 에 아무말이나 작성 후, Submit 클릭!
   - 하단에 텍스트 박스 리스트로 잘 출력되면 정상
 
-| ![ 캡쳐 - nfp-boilerplate app ](/2022/09/08-nfp-frontend-app-crunch.png){: width="580"} |
-| :----: |
-| &lt;그림&gt; 캡쳐 - nfp-boilerplate app |
+![ 캡쳐 - nfp-boilerplate app ](/2022/09/08-nfp-frontend-app-crunch.png){: width="580" .w-75}
+_&lt;그림&gt; 캡쳐 - nfp-boilerplate app_
 
 ### 4) pm2 로 next app 실행
 
@@ -533,10 +532,10 @@ $ pm2 monit nfp-frontend
 $ pm2 monitor nfp-frontend
 ```
 
-![pm2.io - processes overview](/2022/09/08-pm2-monitor-overview-w640.png){: width="580"}
+![pm2.io - processes overview](/2022/09/08-pm2-monitor-overview-w640.png){: width="580" .w-75}
 _&lt;그림&gt; pm2.io - processes overview_
 
-![pm2.io - monitor realtime](/2022/09/08-pm2-monitor-realtime-w640.png){: width="580"}
+![pm2.io - monitor realtime](/2022/09/08-pm2-monitor-realtime-w640.png){: width="580" .w-75}
 _&lt;그림&gt; pm2.io - monitor realtime_
 
 

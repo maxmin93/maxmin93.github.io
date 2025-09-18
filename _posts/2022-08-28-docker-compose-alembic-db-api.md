@@ -105,9 +105,8 @@ $ docker compose down -v
     * nfp-api/app
       - fastapi 소스를 배치
 
-| ![docker-compose 프로젝트 구조](/2022/08/28-docker-compose-directory-structure-min.png){: width="580"} |
-| :--: |
-| &lt;그림&gt; 프로젝트의 디렉토리 구조 |
+![docker-compose 프로젝트 구조](/2022/08/28-docker-compose-directory-structure-min.png){: width="580" .w-75}
+_&lt;그림&gt; 프로젝트의 디렉토리 구조_
 
 
 ## 2. 시행착오 및 참고 내용

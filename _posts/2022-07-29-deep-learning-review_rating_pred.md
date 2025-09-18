@@ -151,11 +151,11 @@ image: "https://dacon-images.s3.ap-northeast-2.amazonaws.com/dacon20220919.png"
 
 #### 최종 순위 (2022-07-28 오후 11시)
 
-![최종순위](https://tonyne-public.s3.ap-northeast-2.amazonaws.com/images/aib-proj/dacon_review_ratings-submissions_20220729.png){: width="540"} <br />&nbsp;
+![최종순위](https://tonyne-public.s3.ap-northeast-2.amazonaws.com/images/aib-proj/dacon_review_ratings-submissions_20220729.png){: width="540" .w-75} <br />&nbsp;
 
 #### 순위 변화
 
-![순위변화](https://tonyne-public.s3.ap-northeast-2.amazonaws.com/images/aib-proj/dacon_review_ratings-ranking_20220729.png){: width="620"} <br />&nbsp;
+![순위변화](https://tonyne-public.s3.ap-northeast-2.amazonaws.com/images/aib-proj/dacon_review_ratings-ranking_20220729.png){: width="620" .w-75} <br />&nbsp;
 
 #### 제출자료 평가 (제출 13회)
 

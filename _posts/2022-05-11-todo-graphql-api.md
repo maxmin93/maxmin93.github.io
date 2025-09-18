@@ -8,7 +8,7 @@ image: https://www.apollographql.com/docs/_image/apollo-server/9b3731fe4dd2?w=80
 ---
 
 <div style="display: flex; justify-content: center;">
-  <img src="https://miro.medium.com/max/1400/1*y5Cb_lSRJCg1ixoHbMA_ZA.png" width="120" alt="Apollo GraphQL"/>&nbsp; &nbsp;
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI3Lf_uK3dm-BYl7H_7KrJ7i95Lm4EduV79A&s" width="120" alt="Apollo GraphQL"/>&nbsp; &nbsp;
   <img src="https://nestjs.com/img/logo-small.svg" width="130" alt="Nest Logo" />&nbsp;
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SQLite370.svg/1280px-SQLite370.svg.png" width="150" alt="Sqlite Logo" />
 </div>

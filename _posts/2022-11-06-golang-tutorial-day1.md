@@ -177,7 +177,7 @@ const newObject = { ...oldObject, foo: 'baz' }
 
 출처 : [codekru.com/data-types-in-golang](https://www.codekru.com/go/data-types-in-golang)
 
-![data-types-in-golang](https://www.codekru.com/wp-content/uploads/2021/08/data-types-in-golang.jpg){: width="600"}
+![data-types-in-golang](https://www.codekru.com/wp-content/uploads/2021/08/data-types-in-golang.jpg){: width="600" .w-75}
 
 #### 문자열 슬라이싱 : rune 사용 권장 (non-ASCII Unicode characters)
 

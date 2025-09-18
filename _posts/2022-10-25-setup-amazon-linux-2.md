@@ -38,7 +38,7 @@ AWS 세미나 홍보가 왔길래, 겸사겸사 예습을 위해 Lightsail 서�
 
 ### 2) 요금
 
-![AWS Lightsail 요금](https://swiftcoding.org/wp-content/uploads/amazon-lightsail-new-plan-2018.png){: width="600"}
+![AWS Lightsail 요금](https://swiftcoding.org/wp-content/uploads/amazon-lightsail-new-plan-2018.png){: width="600" .w-75}
 
 - 계정당 최대 20개의 인스턴스 유지
 - 5개의 고정 IP 
@@ -62,7 +62,7 @@ AWS 세미나 홍보가 왔길래, 겸사겸사 예습을 위해 Lightsail 서�
 - OS 이미지에서 Amazon Linux 2 선택
 - 그 외 설치 리전 등을 선택
 
-![생성된 인스턴스](/2022/10/25-tonyne-dev01-Instances-crunch.png){: width="620"}
+![생성된 인스턴스](/2022/10/25-tonyne-dev01-Instances-crunch.png){: width="620" .w-75}
 
 ### 2) 메뉴
 
@@ -78,7 +78,7 @@ AWS 세미나 홍보가 왔길래, 겸사겸사 예습을 위해 Lightsail 서�
 
 ### 3) 방화벽 설정
 
-![방화벽 규칙 추가 - Custom TCP](/2022/10/25-tonyne-dev01-Networking-crunch.png){: width="480"}
+![방화벽 규칙 추가 - Custom TCP](/2022/10/25-tonyne-dev01-Networking-crunch.png){: width="480" .w-75}
 
 백엔드 API 용도와 프론트엔드 WEB 용도로 TCP 포트를 추가했다.
 

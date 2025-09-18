@@ -11,7 +11,7 @@ image: "https://i0.wp.com/staceyoniot.com/wp-content/uploads/2019/05/IFTTT-Banne
 
 IFTTT 는 여러 별개의 서비스와 어플들을 임의로 연동시켜주는 서비스를 말한다. 대표적인 상용 서비스로 [ifttt.com](https://ifttt.com/) 이 있다.
 
-![IFTTT.com 프로세스 개요](https://web-assets.ifttt.com/packs/media/docs/architecture_diagram-8e8dd23e5d10e35cb94d.png){: width="600"}
+![IFTTT.com 프로세스 개요](https://web-assets.ifttt.com/packs/media/docs/architecture_diagram-8e8dd23e5d10e35cb94d.png){: width="600" .w-75}
 
 ### 1) IFTTT.com 서비스
 
@@ -51,7 +51,7 @@ IFTTT 는 여러 별개의 서비스와 어플들을 임의로 연동시켜주�
 
 출처: [Data Infrastructure at IFTTT](https://medium.com/engineering-at-ifttt/data-infrastructure-at-ifttt-35414841f9b5)
 
-![IFTTT 데이터 인프라스트럭쳐](https://miro.medium.com/max/1400/1*xYi4YQgPXWrVFXg7oZHMJw.jpeg){: width="600"}
+![IFTTT 데이터 인프라스트럭쳐](https://miro.medium.com/max/1400/1*xYi4YQgPXWrVFXg7oZHMJw.jpeg){: width="600" .w-75}
 
 **Lessons Learned**
 
@@ -128,7 +128,7 @@ CEP 의 엔진은 규칙(Rule)을 처리하는데, 규칙이 활성화 되기 �
 - 코드 없는 데이터 파이프라인을 사용하여 Webhook ETL 간소화
 - IFTTT 와 연결
 
-![IFTTT Webhook 페이지](https://lh5.googleusercontent.com/jQklI3C484U2Hxu2dZfrvOMHlT8woxWqJEmoUzReI5v9HukSq-6tkKoaZzxzLxkR-rIvi-L8EHJjxUGPuQVf-vsdmVewKe-hSWUxj5S8vSVvK1nlH817jYQjm64s79zvdLYpNdmv){: width="620"}
+![IFTTT Webhook 페이지](https://lh5.googleusercontent.com/jQklI3C484U2Hxu2dZfrvOMHlT8woxWqJEmoUzReI5v9HukSq-6tkKoaZzxzLxkR-rIvi-L8EHJjxUGPuQVf-vsdmVewKe-hSWUxj5S8vSVvK1nlH817jYQjm64s79zvdLYpNdmv){: width="620" .w-75}
 
 ### 2) [재피어(Zapier)](https://zapier.com/)
 

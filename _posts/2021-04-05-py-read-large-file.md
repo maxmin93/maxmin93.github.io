@@ -19,7 +19,7 @@ image: /2021/04/load_docs.py_type3.png
   - executor 작업을 위한 준비와 종료, 그리고 스위칭 시간 등으로 추가 시간 소요
   - [Process 와 Thread 차이][3]
 
-![Type3 실행결과 캡쳐](/2021/04/load_docs.py_type3.png){: width="540"}
+![Type3 실행결과 캡쳐](/2021/04/load_docs.py_type3.png){: width="540" .w-75}
 _&lt;그림&gt; Type3 실행결과 캡쳐_
 
 ```python

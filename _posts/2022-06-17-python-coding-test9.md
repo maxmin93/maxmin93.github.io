@@ -299,7 +299,7 @@ Purchase 테이블을 기준으로 Vendor 에 null 출력 (rows=4)
 - 복잡하지만 효율적인 방법
   - 퀵 정렬, 힙 정렬, 합병 정렬, 기수 정렬
 
-![정렬 시간복잡도 비교표](https://gmlwjd9405.github.io/images/algorithm-merge-sort/sort-time-complexity.png){: width="540"}
+![정렬 시간복잡도 비교표](https://gmlwjd9405.github.io/images/algorithm-merge-sort/sort-time-complexity.png){: width="540" .w-75}
 
 합병 정렬(merge sort) 알고리즘의 특징
 

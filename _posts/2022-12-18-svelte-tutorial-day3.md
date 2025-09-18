@@ -20,7 +20,7 @@ image: https://svelte.dev/_app/immutable/assets/svelte-machine-mobile.B0w2rScM.p
 
 참고 [JoyOfCode - How SvelteKit work](https://joyofcode.xyz/learn-how-sveltekit-works)
 
-![sveltekit-key-items](https://raw.githubusercontent.com/mattcroat/joy-of-code/main/posts/learn-how-sveltekit-works/images/sveltekit.webp){: width="600"}
+![sveltekit-key-items](https://raw.githubusercontent.com/mattcroat/joy-of-code/main/posts/learn-how-sveltekit-works/images/sveltekit.webp){: width="600" .w-75}
 
 ### 1) SvelteKit 의 구성요소
 
@@ -64,7 +64,7 @@ SvelteKit 프로젝트가 컴파일된 실제적인 결과물이 저장되는 �
 
 ### 4) SvelteKit 실행을 위한 구성요소
 
-![sveltekit-runtime-tools](https://raw.githubusercontent.com/mattcroat/joy-of-code/main/posts/learn-how-sveltekit-works/images/kit.webp){: width="600"}
+![sveltekit-runtime-tools](https://raw.githubusercontent.com/mattcroat/joy-of-code/main/posts/learn-how-sveltekit-works/images/kit.webp){: width="600" .w-75}
 
 - Vite plugin : SvelteKit (build, dev, preview)
 - Node : Web API 생성
@@ -76,7 +76,7 @@ SvelteKit 프로젝트가 컴파일된 실제적인 결과물이 저장되는 �
 
 ### 1) Hydration(용해) : Page 생성
 
-![sveltekit-page-hydration](https://raw.githubusercontent.com/mattcroat/joy-of-code/main/posts/learn-how-sveltekit-works/images/hydration.webp){: width="520"}
+![sveltekit-page-hydration](https://raw.githubusercontent.com/mattcroat/joy-of-code/main/posts/learn-how-sveltekit-works/images/hydration.webp){: width="520" .w-75}
 
 쿠키 반죽을 오븐에 넣어 완성된 쿠기를 얻는 개념으로 설명할 수 있다.
 

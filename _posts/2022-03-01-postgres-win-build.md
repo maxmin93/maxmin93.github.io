@@ -31,17 +31,17 @@ image: https://mblogthumb-phinf.pstatic.net/MjAxOTAxMjhfMjQz/MDAxNTQ4NjYwOTIwMTA
   - 환경변수 Path 에 `${MinGW_ROOT}/msys/1.0/bin` 등록
   - Perl 은 제거 (중요!) → 지우거나 확장명을 바꿔버릴것
 
-![01_01-cmd-option](/2022/03/01_01-cmd-option-w640.png){: width="540"}
+![01_01-cmd-option](/2022/03/01_01-cmd-option-w640.png){: width="540" .w-75}
 
-![01_02-sys-env](/2022/03/01_02-sys-env.png){: width="540"}
+![01_02-sys-env](/2022/03/01_02-sys-env.png){: width="540" .w-75}
 
-![01_03-mingw-msys](/2022/03/01_03-mingw-msys.png){: width="540"}
+![01_03-mingw-msys](/2022/03/01_03-mingw-msys.png){: width="540" .w-75}
 
 ### postgresql 소스 빌드
 
 pg 소스에는 Visual Studio 관련 프로젝트 파일이 없지만, build 실행시 perl 스크립트에 의해 vcproj 파일과 sln 파일이 자동으로 생성된다. 때문에 설치 환경 구성시 perl이 제일 중요하다.
 
-![01_06-pg_build_sources](/2022/03/01_06-pg_build_sources.png){: width="540"}
+![01_06-pg_build_sources](/2022/03/01_06-pg_build_sources.png){: width="540" .w-75}
 
 ```powershell
 # build 명령은 이 위치에서 실행해야 함
@@ -62,11 +62,11 @@ vcregress check
 
 빌드 성공 : `pgsql.snl` 생성
 
-![01_04-pg_build](/2022/03/01_04-pg_build.png){: width="540"}
+![01_04-pg_build](/2022/03/01_04-pg_build.png){: width="540" .w-75}
 
 생성된 exe 파일들
 
-![01_05-pg_built_files](/2022/03/01_05-pg_built_files.png){: width="540"}
+![01_05-pg_built_files](/2022/03/01_05-pg_built_files.png){: width="540" .w-75}
 
 ## 이후 작업
 

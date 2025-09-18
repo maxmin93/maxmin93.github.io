@@ -19,9 +19,9 @@ image: "https://uploads-ssl.webflow.com/5f30e5daeb0dcb58dd2da7d8/60eeb98c86f2453
 
 ## 2. 용어 정리
 
-참고 
+참고
 
-- [기고 | ‘헤드리스 아키텍처’와 ‘컴포저블 시스템’이란?](https://www.ciokorea.com/t/21999/개발자/268191)
+- [기고 ‘헤드리스 아키텍처’와 ‘컴포저블 시스템’이란?](https://www.ciokorea.com/t/21999/개발자/268191)
 - [백엔드 개발자 경험을 위한 솔루션 열전](https://www.ciokorea.com/insider/235799?page=0,2)
 
 ### 1) 헤드리스 아키텍처
@@ -31,7 +31,7 @@ ERP, CRM, CMS 분야처럼 복잡한 커스터마이징 또는 통합 작업을 
 - 과거의 경우 SAP, 세일즈포스 등의 솔루션을 도입하며 개발했다면
 - 최근 모바일 퍼스트와 채널 다양화 등을 위해 백엔드만 공통으로 사용하고 프론트엔드 개발을 통해 변화에 맞추는 양상
 
-![Headless Commerce](https://uploads-ssl.webflow.com/5f30e5daeb0dcb58dd2da7d8/60eeb98c86f24533fd3287e6_2.png){: width="600"}
+![Headless Commerce](https://uploads-ssl.webflow.com/5f30e5daeb0dcb58dd2da7d8/60eeb98c86f24533fd3287e6_2.png){: width="600" .w-75}
 _Headless Commerce 개념도_
 
 > 헤드리스 아키텍처를 통해 얻는 이익

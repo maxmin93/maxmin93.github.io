@@ -6,7 +6,7 @@ categories: [Language, Python]
 tags: [book]
 ---
 
-![Cover - Effective Java 3rd](https://effectivepython.com/images/cover_2ed.jpg){: width="50%" .w-75 .normal}
+![Cover - Effective Java 3rd](https://effectivepython.com/images/cover_2ed.jpg){: width="320" .w-75 .normal}
 _도서 - Effective PYTHON 2nd_
 
 ## 3장 함수

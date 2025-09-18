@@ -85,7 +85,7 @@ create index idx_products on idx_products
   with (url='http://localhost:9200');
 ```
 
-![create-zombodb-index](/2019/03/15-create-zombodb-index.png){: w="80%"}
+![create-zombodb-index](/2019/03/15-create-zombodb-index.png){: width="540" .w-75}
 _ZomboDB 인덱스 생성 명령_
 
 ElasticSearch 의 쿼리 결과를 인덱스로 사용해 Postgresql 의 테이블을 쿼리한다.
@@ -100,7 +100,7 @@ select * from products
 where products ==> 'productname:"chai"';
 ```
 
-![create-zombodb-index-query](/2019/03/15-create-zombodb-index-exec.png){: w="80%"}
+![create-zombodb-index-query](/2019/03/15-create-zombodb-index-exec.png){: width="540" .w-75}
 _ZomboDB 인덱스 생성된 결과_
 
 &nbsp; <br />

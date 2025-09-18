@@ -78,9 +78,8 @@ image: "https://yozm.wishket.com/media/news/1663/image025.png"
 - 데이터가 단방향으로 연결되고 전역적으로 구성됨
   + 컴포넌트 계층구조를 따라 전달하지 않음 => 일관성 있는 상태관리
 
-| ![MVI cyclic flow representation](https://yozm.wishket.com/media/news/1663/image025.png){: width="560"} |
-| :--: |
-| &lt;그림&gt; MVI cyclic flow representation - 테오의 프론트엔드 |
+![MVI cyclic flow representation](https://yozm.wishket.com/media/news/1663/image025.png){: width="560" .w-75}
+_&lt;그림&gt; MVI cyclic flow representation - 테오의 프론트엔드_
 
 ### 2) 아키텍처 방향성
 

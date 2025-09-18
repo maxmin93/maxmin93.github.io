@@ -2,7 +2,7 @@
 date: 2022-11-29 00:00:00 +0900
 title: 프론트엔드 CSS 라이브러리 비교
 description: CSS 라이브러리에 대해 조사합니다. Bootstrap, Material 및 최신 Tailwind, Pico 등에 대해 비교합니다.
-categories: [Frontend]
+categories: [Frontend, CSS]
 tags: [library, picocss, tailwind]
 image: "https://stackdiary.com/wp-content/uploads/2022/03/average-bundle-size-for-CSS-frameworks.png"
 ---
@@ -46,7 +46,7 @@ Minimal 또는 Lightweight 를 표방하는 라이브러리들은 Tailwind 와 �
 
 참고: [Lightweight CSS Frameworks - 2021년](https://dev.to/sm0ke/lightweight-css-framework-a-curated-list-4hc3)
 
-![CSS Framework Bundle Size](https://stackdiary.com/wp-content/uploads/2022/03/average-bundle-size-for-CSS-frameworks.png){: width="480"}
+![CSS Framework Bundle Size](https://stackdiary.com/wp-content/uploads/2022/03/average-bundle-size-for-CSS-frameworks.png){: width="480" .w-75}
 
 - [Pico.CSS](https://picocss.com/) - 제일 스타일리쉬 하다. 건드릴 부분이 거의 없다.
 - [FICTOAN](https://sujan-s.github.io/fictoan/) - intuitive, modular CSS Framework
@@ -92,7 +92,7 @@ Minimal 또는 Lightweight 를 표방하는 라이브러리들은 Tailwind 와 �
 - MUI 가 React 컴포넌트 스타일에 가장 많이 쓰인다.
 - 미니멀 CSS 과의 비교를 위해 PureCSS 를 넣었지만 바닥에 가깝다.
 
-![NPM Trends - Major CSS Libs](/2022/11/29-npmtrends-major-css-2022.png){: width="620"}
+![NPM Trends - Major CSS Libs](/2022/11/29-npmtrends-major-css-2022.png){: width="620" .w-75}
 
 ### 2) 미니멀 CSS 랭킹 비교 - [npm trends](https://npmtrends.com/@picocss/pico-vs-fictoan-react-vs-milligram-vs-picnic-vs-purecss-vs-spectre.css)
 
@@ -100,7 +100,7 @@ Minimal 또는 Lightweight 를 표방하는 라이브러리들은 Tailwind 와 �
 - Pico.CSS 가 상승세를 타고 올라오고 있다.
   + Spectre 의 개발 편이성을 Pico 역시 갖추고 있어서 상쇄하는 탓
 
-![NPM Trends - Minimal CSS Libs](/2022/11/29-npmtrends-minimal-css-2022.png){: width="620"}
+![NPM Trends - Minimal CSS Libs](/2022/11/29-npmtrends-minimal-css-2022.png){: width="620" .w-75}
 
 #### [Pico.CSS](https://picocss.com/) : HTML, 리액트와도 잘 맞는다.
 
@@ -109,7 +109,7 @@ Minimal 또는 Lightweight 를 표방하는 라이브러리들은 Tailwind 와 �
 
 ### 3) 리액트 UI 라이브러리 랭킹 비교 - [npm trends](https://npmtrends.com/@material-ui/core-vs-antd-vs-react-bootstrap-vs-semantic-ui-react-vs-tailwindcss)
 
-![NPM Trends - React UI CSS Libs](/2022/11/29-npmtrends-react-ui-css-2022.png){: width="620"}
+![NPM Trends - React UI CSS Libs](/2022/11/29-npmtrends-react-ui-css-2022.png){: width="620" .w-75}
 
 #### [Material UI (MUI)](https://mui.com/) : React + Material
 

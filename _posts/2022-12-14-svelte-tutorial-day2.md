@@ -48,7 +48,7 @@ Pico 기본 테마로 root 레이아웃을 만들어보자.
 
 참고 [Why Pico Is My Favorite CSS Framework For Svelte](https://www.youtube.com/watch?v=-n84EMKIXQM)
 
-![svelte-pico-layout-root](https://github.com/maxmin93/svelte-pico-tutorial/raw/main/static/svelte-pico-layout-crunch.png){: width="600"}
+![svelte-pico-layout-root](https://github.com/maxmin93/svelte-pico-tutorial/raw/main/static/svelte-pico-layout-crunch.png){: width="600" .w-75}
 _picocss 적용된 첫페이지_
 
 ### 1) $src/routes/+layout.svelte
@@ -149,7 +149,7 @@ For example: import pico from "@picocss/pico?inline"
 
 About 페이지가 추가된 화면
 
-![svelte-pico-layout-about](https://github.com/maxmin93/svelte-pico-tutorial/raw/main/static/svelte-pico-layout-about-crunch.png){: width="600"}
+![svelte-pico-layout-about](https://github.com/maxmin93/svelte-pico-tutorial/raw/main/static/svelte-pico-layout-about-crunch.png){: width="600" .w-75}
 _about 페이지 추가_
 
 ## 3. SvelteKit with Skeleton
@@ -324,7 +324,7 @@ pnpx apply supabase-community/svelte-supabase
 pnpx vite dev -- --open
 ```
 
-![14-svelte-skeleton-layout](/2022/12/14-svelte-skeleton-layout.png){: width="600"}
+![14-svelte-skeleton-layout](/2022/12/14-svelte-skeleton-layout.png){: width="600" .w-75}
 _skeleton 레이아웃 (테마 적용)_
 
 #### Issue: [New Vite requirements gives warning when building "for the first time"](https://github.com/sveltejs/kit/issues/5390#issuecomment-1176480653)

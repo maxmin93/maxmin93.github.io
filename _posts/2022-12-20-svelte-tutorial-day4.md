@@ -22,7 +22,7 @@ image: https://svelte.dev/_app/immutable/assets/svelte-machine-mobile.B0w2rScM.p
 
 - Ninja Tutorial 의 강좌중 하나를 기반으로 이것저것 참고해 추가했다.
 
-![svltk-tutorial-lesson01](https://github.com/maxmin93/svltk-tutorial/raw/main/static/sveltk-lesson01-crunch.png){: width="600px"}
+![svltk-tutorial-lesson01](https://github.com/maxmin93/svltk-tutorial/raw/main/static/sveltk-lesson01-crunch.png){: width="600" .w-75}
 _svltk-tutorial-lesson01 실행화면_
 
 ### 1) 구현 기능
@@ -46,7 +46,7 @@ _svltk-tutorial-lesson01 실행화면_
 
 - 소스 코드: [깃허브/mattcroat/sveltekit-for-beginners](https://github.com/mattcroat/sveltekit-for-beginners)
 
-![svltk-tutorial-lesson02](https://github.com/maxmin93/svltk-tutorial/raw/main/static/sveltk-lesson02-home-crunch.png){: width="600px"}
+![svltk-tutorial-lesson02](https://github.com/maxmin93/svltk-tutorial/raw/main/static/sveltk-lesson02-home-crunch.png){: width="600" .w-75}
 _svltk-tutorial-lesson02 실행화면_
 
 ### 1) 구현 기능
@@ -144,7 +144,7 @@ $ pnpx prisma db seed
 
 출처: [Progressive Enhancement in SvelteKit (use:enhance)](https://www.youtube.com/watch?v=jXtzWMhdI2U)
 
-![svltk-tutorial-lesson03](https://github.com/maxmin93/svltk-tutorial/raw/main/static/sveltk-lesson03-crunch.png){: width="600px"}
+![svltk-tutorial-lesson03](https://github.com/maxmin93/svltk-tutorial/raw/main/static/sveltk-lesson03-crunch.png){: width="600" .w-75}
 _svltk-tutorial-lesson03 실행화면_
 
 - 페이지 새로고침 없이 메모 추가/삭제

@@ -173,7 +173,7 @@ df_pd_1 = df_pa_1.to_pandas()
 
 ### 1) CSV 쓰기 성능 비교
 
-![CSV 쓰기 성능 비교](/2022/10/09-pyarrow-vs-pandas-csv-write-crunch.png){: width="580"}
+![CSV 쓰기 성능 비교](/2022/10/09-pyarrow-vs-pandas-csv-write-crunch.png){: width="580" .w-75}
 
 ```python
 import matplotlib.pyplot as plt
@@ -199,7 +199,7 @@ plt.savefig('temp/09-pyarrow-vs-pandas-csv-write.png')
 
 ### 2) CSV 읽기 성능 비교
 
-![CSV 읽기 성능 비교](/2022/10/09-pyarrow-vs-pandas-csv-read-crunch.png){: width="580"}
+![CSV 읽기 성능 비교](/2022/10/09-pyarrow-vs-pandas-csv-read-crunch.png){: width="580" .w-75}
 
 ```python
 import matplotlib.pyplot as plt

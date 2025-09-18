@@ -141,11 +141,11 @@ MDC 기반의 [Angular Material](https://material.angular.io/) 리팩토링 버�
 - 별 다른 설정 없이 이미지가 article 안에 맞춰서 꽉 차게 출력됨
   + 원래부터 이랬는지는 잘 모르겠음
   
-![예제 walk-my-dog 리스트](https://github.com/maxmin93/ng15-tutorials/blob/main/assets/20-WalkMyDog-list-crunch.png?raw=true){: width="640"}
+![예제 walk-my-dog 리스트](https://github.com/maxmin93/ng15-tutorials/blob/main/assets/20-WalkMyDog-list-crunch.png?raw=true){: width="640" .w-75}
 
 - 지연 로딩된 상세 페이지
 
-![예제 walk-my-dog 상세](https://github.com/maxmin93/ng15-tutorials/blob/main/assets/20-WalkMyDog-detail-crunch.png?raw=true){: width="640"}
+![예제 walk-my-dog 상세](https://github.com/maxmin93/ng15-tutorials/blob/main/assets/20-WalkMyDog-detail-crunch.png?raw=true){: width="640" .w-75}
 
 ### 1) 코딩
 
@@ -268,7 +268,7 @@ Build at: 2022-11-22T06:43:15.285Z - Time: 2018ms
 - `src_app_dog-view_component_ts.js` 파일이 따로 로딩됨
   + 함께 참조되는 assets 들도 지연 로딩
   
-![지연로딩 - 개발자도구 network](https://github.com/maxmin93/ng15-tutorials/blob/main/assets/20-WalkMyDog-lazy-loading-crunch.png?raw=true){: width="620"}
+![지연로딩 - 개발자도구 network](https://github.com/maxmin93/ng15-tutorials/blob/main/assets/20-WalkMyDog-lazy-loading-crunch.png?raw=true){: width="620" .w-75}
 
 ## 3. bootstrapApplication 예제 비교
 

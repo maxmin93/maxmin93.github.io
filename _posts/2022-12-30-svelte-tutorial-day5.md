@@ -106,7 +106,7 @@ Supabase SvelteKit 예제로 [Email 로그인 코드](https://supabase.com/docs/
 - 인증 예제 [깃허브 - huntabyte/sk-supabase-oauth](https://github.com/huntabyte/sk-supabase-oauth)
   + email 인증 및 google, discord, github 소셜 인증
 
-![huntabyte/sk-supabase-oauth 로그인 화면](/2022/12/30-supabase-login-page-crunch.png){: width="480"}
+![huntabyte/sk-supabase-oauth 로그인 화면](/2022/12/30-supabase-login-page-crunch.png){: width="480" .w-75}
 _huntabyte/sk-supabase-oauth 로그인 화면_
 
 > Social 로그인 작업 절차
@@ -124,14 +124,14 @@ _huntabyte/sk-supabase-oauth 로그인 화면_
 11. 매 호출마다 실행되는 hook 에서 Supabase session 갱신 
 12. 레이아웃에서 session 상태를 검사해 페이지 접근을 제어
 
-![Supabase Auth 제공자 리스트](/2022/12/30-supabase-auth-providers-crunch.png){: width="480"}
+![Supabase Auth 제공자 리스트](/2022/12/30-supabase-auth-providers-crunch.png){: width="480" .w-75}
 _Supabase Auth 제공자 리스트_
 
 ### 1) [github 로그인](https://supabase.com/docs/guides/auth/social-login/auth-github)
 
 Google 이나 Facebook 등에 비하면 따로 증명할 것도 없어, 매우 간편하다.
 
-![Supabase Social Login - Github](/2022/12/30-tonyneapp-auth-github-login.png){: width="480"}
+![Supabase Social Login - Github](/2022/12/30-tonyneapp-auth-github-login.png){: width="480" .w-75}
 _Supabase Social Login - Github_
 
 ### 2) [google 로그인](https://supabase.com/docs/guides/auth/social-login/auth-google)
@@ -140,17 +140,17 @@ _Supabase Social Login - Github_
 
 - 관련 이슈 [Google OAuth -- Change displayed redirect url #2925](https://github.com/supabase/supabase/discussions/2925#discussioncomment-1512962)
 
-![Supabase Social Login - Google](/2022/12/30-tonyneapp-auth-google-login.png){: width="480"}
+![Supabase Social Login - Google](/2022/12/30-tonyneapp-auth-google-login.png){: width="480" .w-75}
 _Supabase Social Login - Google_
 
-![Google Cloud - OAuth 설정 - 동의화면 설정](/2022/12/30-supabase-auth-google-settings-w640.png){: width="600"}
+![Google Cloud - OAuth 설정 - 동의화면 설정](/2022/12/30-supabase-auth-google-settings-w640.png){: width="600" .w-75}
 _Google Cloud - OAuth 설정 - 동의화면 설정_
 
 ### 3) [facebook 로그인](https://supabase.com/docs/guides/auth/social-login/auth-facebook)
 
 페이스북은 정말이지 비즈니스 기능이니 뭐니 너무 어렵다. (로그인은 됨)
 
-![Facebook Developer - App 설정 - 비즈니스 인증 요구](/2022/12/30-tonyneapp-auth-facebook-settings.png){: width="600"}
+![Facebook Developer - App 설정 - 비즈니스 인증 요구](/2022/12/30-tonyneapp-auth-facebook-settings.png){: width="600" .w-75}
 _Facebook Developer - App 설정 - 비즈니스 인증 요구_
 
 ### 4) 그 외 소셜 제공자 이용하려면

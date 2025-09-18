@@ -18,7 +18,7 @@ image: "https://joojae.com/content/images/2024/01/go-fiber-logo.webp"
 
 ## 1. REST API using Go Fiber and GORM
 
-![Performance Benchmark of Gofiber and Others](/2022/11/15-benchmark-requests-fiber-crunch.png){: width="560"}
+![Performance Benchmark of Gofiber and Others](/2022/11/15-benchmark-requests-fiber-crunch.png){: width="560" .w-75}
 
 최대 6~7배 정도 빠르다는데, 정말인지는 써보면서 알아보자.
 
@@ -182,7 +182,7 @@ func main() {
 </html>
 ```
 
-![gofiber-template-html](/2022/11/15-gofiber-template-html-crunch.png){: width="420"}
+![gofiber-template-html](/2022/11/15-gofiber-template-html-crunch.png){: width="420" .w-75}
 
 ### 3) 파라미터
 

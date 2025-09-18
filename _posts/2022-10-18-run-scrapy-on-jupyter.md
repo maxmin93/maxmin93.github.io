@@ -13,7 +13,7 @@ image: "https://repository-images.githubusercontent.com/529502/dab2bd00-0ed2-11e
 
 ### 1) Scrapy 구조
 
-![Scrapy - Data flow](https://docs.scrapy.org/en/latest/_images/scrapy_architecture_02.png){: width="580"}
+![Scrapy - Data flow](https://docs.scrapy.org/en/latest/_images/scrapy_architecture_02.png){: width="580" .w-75}
 _Scrapy - Data flow_
 
 - Engine

@@ -56,11 +56,11 @@ _create_dmg() {
 - 배경화면은 Finder 보기 옵션에서 ‘그림’ 항목을 선택후 Drag&Drop 하면 반영됨 (위치 확인용으로만 사용)
   - 실제 배경화면은 background 옵션으로 저장된 이미지가 적용됨
 
-![dmg-image-new](/2022/02/10_01-dmg-image-new.png){: width="540"}
+![dmg-image-new](/2022/02/10_01-dmg-image-new.png){: width="540" .w-75}
 
-![dmg-image-view](/2022/02/10_02-dmg-image-view-w640.png){: width="540"}
+![dmg-image-view](/2022/02/10_02-dmg-image-view-w640.png){: width="540" .w-75}
 
-![dmg-image-files](/2022/02/10_03-dmg-image-files-w640.png){: width="540"}
+![dmg-image-files](/2022/02/10_03-dmg-image-files-w640.png){: width="540" .w-75}
 
 &#91;주의&#93; `.DS_Store` 내용과 다른 파일명 변경 금지 <br>
 `.DS_Store` 파일은 파일의 이름까지 저장하기 때문에 dmg에 들어가는 파일의 이름을 변경하면 설치 화면이 깨지는 원인이 됩니다. 아니면 `.DS_Store` 을 다시 만들던지. (여기서 많이 헤맸음)<br>

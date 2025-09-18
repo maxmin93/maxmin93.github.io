@@ -10,7 +10,7 @@ image: "/2022/10/04-disco-diffusion-output_49-crunch.png"
 > 
 {: .prompt-tip }
 
-![disco diffusion - sample 이미지](https://replicate.com/api/models/nightmareai/disco-diffusion/files/5800f828-94d5-46a0-9eb2-96b51d7846e3/6af357b1-11dc-4954-ad45-4f17b3bc18890_0.png){: width="580"}
+![disco diffusion - sample 이미지](https://replicate.com/api/models/nightmareai/disco-diffusion/files/5800f828-94d5-46a0-9eb2-96b51d7846e3/6af357b1-11dc-4954-ad45-4f17b3bc18890_0.png){: width="580" .w-75}
 _&lt;그림&gt; disco diffusion - [sample images](https://replicate.com/nightmareai/disco-diffusion/examples)_
 
 ## 1. 초거대 AI 를 이용한 이미지 생성기
@@ -117,30 +117,30 @@ text_prompts = {
 
 원본 이미지 : [starwars docking bay](https://i.stack.imgur.com/QFhVX.jpg)
 
-![disco diffusion - 초기 이미지](/2022/10/04-starwars-docking-bay-crunch.png){: width="580"}
+![disco diffusion - 초기 이미지](/2022/10/04-starwars-docking-bay-crunch.png){: width="580" .w-75}
 &lt;그림&gt; disco diffusion - 초기 이미지
 
 ### 2) 스텝별 생성된 이미지
 
-![disco diffusion - step #00](/2022/10/04-disco-diffusion-output_00-crunch.png){: width="580"}
+![disco diffusion - step #00](/2022/10/04-disco-diffusion-output_00-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; disco diffusion - step #00_
 
-![disco diffusion - step #05](/2022/10/04-disco-diffusion-output_05-crunch.png){: width="580"}
+![disco diffusion - step #05](/2022/10/04-disco-diffusion-output_05-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; disco diffusion - step #05_
 
-![disco diffusion - step #11](/2022/10/04-disco-diffusion-output_11-crunch.png){: width="580"}
+![disco diffusion - step #11](/2022/10/04-disco-diffusion-output_11-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; disco diffusion - step #11_
 
-![disco diffusion - step #17](/2022/10/04-disco-diffusion-output_17-crunch.png){: width="580"}
+![disco diffusion - step #17](/2022/10/04-disco-diffusion-output_17-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; disco diffusion - step #17_
 
-![disco diffusion - step #29](/2022/10/04-disco-diffusion-output_29-crunch.png){: width="580"}
+![disco diffusion - step #29](/2022/10/04-disco-diffusion-output_29-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; disco diffusion - step #29_
 
-![disco diffusion - step #36](/2022/10/04-disco-diffusion-output_36-crunch.png){: width="580"}
+![disco diffusion - step #36](/2022/10/04-disco-diffusion-output_36-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; disco diffusion - step #36_
 
-![disco diffusion - step #49](/2022/10/04-disco-diffusion-output_49-crunch.png){: width="580"}
+![disco diffusion - step #49](/2022/10/04-disco-diffusion-output_49-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; disco diffusion - step #49_
 
 ## 4. 추가 : [Stable Diffusion 이미지 생성](https://keras.io/guides/keras_cv/generate_images_with_stable_diffusion/)
@@ -150,12 +150,12 @@ _&lt;그림&gt; disco diffusion - step #49_
 
 ### 1) "제주 판포리 항구에서 스노쿨링 즐기기"
 
-![stable diffusion - 판포리](/2022/10/04-stable_diffusion-panpori_snorkeling-crunch.png){: width="580"}
+![stable diffusion - 판포리](/2022/10/04-stable_diffusion-panpori_snorkeling-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; stable diffusion - 제주 판포리 스노쿨링_
 
 ### 2) "제주도 감귤밭에서 사진 찍기"
 
-![stable diffusion - 감귤밭](/2022/10/04-stable_diffusion-jeju-gamgyul-farm-picture-crunch.png){: width="580"}
+![stable diffusion - 감귤밭](/2022/10/04-stable_diffusion-jeju-gamgyul-farm-picture-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; stable diffusion - 제주도 감귤밭 사진 찍기_
 
 

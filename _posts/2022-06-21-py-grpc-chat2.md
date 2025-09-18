@@ -59,7 +59,7 @@ await main()
 
 ### Chat Demo
 
-![gRPC-Chat-Demo2](/2022/06/21-grpc-chat-demo2.png){: width="540"}
+![gRPC-Chat-Demo2](/2022/06/21-grpc-chat-demo2.png){: width="540" .w-75}
 
 1. Server 시작 : `python -m server`
 2. Client 시작 : `python console.py`
@@ -73,7 +73,7 @@ await main()
 
 #### 사용자와 서버간 관계
 
-![user-server-relation](https://github.com/ehei1/chatting/raw/master/user-server_relation.png){: width="540"}
+![user-server-relation](https://github.com/ehei1/chatting/raw/master/user-server_relation.png){: width="540" .w-75}
 
 - User 는 Agent 에 접속
   - Agent 로부터 Lobby 와 Heartbeat 주소를 받음
@@ -87,7 +87,7 @@ await main()
 
 #### 서버와 서버간 관계
 
-![server-server-relation](https://github.com/ehei1/chatting/raw/master/server-server_relation.png){: width="540"}
+![server-server-relation](https://github.com/ehei1/chatting/raw/master/server-server_relation.png){: width="540" .w-75}
 
 - Agent 는 로그인 사용자를 Lobby 에 전달
   - 동시에 Heartbeat 에게 사용자 정보를 전달

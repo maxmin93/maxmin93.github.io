@@ -159,9 +159,8 @@ async def async_main():
 asyncio.run(async_main())
 ```
 
-| ![psycopg3 비동기 접속, 실행](/2022/09/04-sqlalchemy2-async-test-w640.png){: width="560"} |
-| :-----------------------------------------------------------------------------------------: |
-|                           &lt;그림&gt; psycopg3 비동기 접속, 실행                           |
+![psycopg3 비동기 접속, 실행](/2022/09/04-sqlalchemy2-async-test-w640.png){: width="560" .w-75}
+_&lt;그림&gt; psycopg3 비동기 접속, 실행_
 
 ## 2. 접속 후 세션 생성
 

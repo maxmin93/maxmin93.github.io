@@ -35,15 +35,15 @@ image: "https://www.conceptdraw.com/solution-park/icons/CN_TOOL_COMPNETDIAGRMS/s
 - 두 개의 벤더에 의해 제공 : [OpenNMS Meridian](https://www.opennms.com/Meridian), [OpenNMS Horizon](https://www.opennms.com/Horizon)
 - 시각화 모듈은 내장
 
-![OpenNMS Horizon - Diagram](https://gdm-catalog-fmapi-prod.imgix.net/ProductScreenshot/be1b4c04-2f03-4371-b382-c9a930887f8e.png){: width="580"}
+![OpenNMS Horizon - Diagram](https://gdm-catalog-fmapi-prod.imgix.net/ProductScreenshot/be1b4c04-2f03-4371-b382-c9a930887f8e.png){: width="580" .w-75}
 _&lt;그림&gt; OpenNMS Horizon - Diagram_
 
 - 다른 Network 솔루션들 
 
-![SolarWinds Network Topology Mapper](https://logicalread.com/wp-content/uploads/2020/12/SolarWinds-Network-Topology-Mapper.png){: width="560"}
+![SolarWinds Network Topology Mapper](https://logicalread.com/wp-content/uploads/2020/12/SolarWinds-Network-Topology-Mapper.png){: width="560" .w-75}
 _&lt;그림&gt; SolarWinds Network Topology Mapper_
 
-![Datadog Network Performance Monitoring](https://logicalread.com/wp-content/uploads/2021/01/Datadog.png){: width="560"}
+![Datadog Network Performance Monitoring](https://logicalread.com/wp-content/uploads/2021/01/Datadog.png){: width="560" .w-75}
 _&lt;그림&gt; Datadog Network Performance Monitoring_
 
 ### 3) Architecture Diagram
@@ -55,21 +55,21 @@ _&lt;그림&gt; Datadog Network Performance Monitoring_
 - Docker, Kubernetes 등의 발달로 시스템 아키텍처 관리툴의 수요가 다시 증가
 - MS Azure, AWS 클라우드 기반 아키텍처를 지원하는 관리도구 개발도 활발
 
-![Mermaid Live Editor - Sharing](https://mermaid.ink/img/pako:eNpdkl9PwyAUxb8KwVdqZnyrZkY333QPrtEldA8MLivKnwao3bL43W1pl1V5aE7PPfd3aeGEuROAcyy1a3nFfEQvb6VF3QrNbu9ZXSFDX8EbpsT1Z9gONaE88KicRcXT4PRrTdE2u84uxoLuGqXF_c7PhWIdzYRetyp2VOa_hGvtFmXZ_NKypM5mWlnog1p9AwKhovPjYLBiEI_0ozoi5gFNyU0A2eiHxERmSJr0sqK36IAMxMqJFJXOI-6BRWX30w2Og1apq6DPB2ZqDWe7SPaGruNRj43Mpg_krO5_yDm4ScF3Wqj6bHXPQXDNQliCRDt3QFJpnV9JKUmI3n1BfjWbzUadtUrEKr-pD4Q77Xyq3f2DhJpxaCsV4cKa4i56xM3-4CY09EgWZElWZEMMKch7v79peT2ZhQk2w63oLs-pT5U4VmCgxHknRXe6JS7tT5drasEiPKdjxLlkOgDBrIlufbQc59E3cA4th0MYzJ9fdLXYzg){: width="580"}
+![Mermaid Live Editor - Sharing](https://mermaid.ink/img/pako:eNpdkl9PwyAUxb8KwVdqZnyrZkY333QPrtEldA8MLivKnwao3bL43W1pl1V5aE7PPfd3aeGEuROAcyy1a3nFfEQvb6VF3QrNbu9ZXSFDX8EbpsT1Z9gONaE88KicRcXT4PRrTdE2u84uxoLuGqXF_c7PhWIdzYRetyp2VOa_hGvtFmXZ_NKypM5mWlnog1p9AwKhovPjYLBiEI_0ozoi5gFNyU0A2eiHxERmSJr0sqK36IAMxMqJFJXOI-6BRWX30w2Og1apq6DPB2ZqDWe7SPaGruNRj43Mpg_krO5_yDm4ScF3Wqj6bHXPQXDNQliCRDt3QFJpnV9JKUmI3n1BfjWbzUadtUrEKr-pD4Q77Xyq3f2DhJpxaCsV4cKa4i56xM3-4CY09EgWZElWZEMMKch7v79peT2ZhQk2w63oLs-pT5U4VmCgxHknRXe6JS7tT5drasEiPKdjxLlkOgDBrIlufbQc59E3cA4th0MYzJ9fdLXYzg){: width="580" .w-75}
 _&lt;그림&gt; Mermaid Live Editor 에서 바로 공유한 다이어그램_
 
 #### 클라우드 제품별 다이어그램 스타일
 
-![쿠버네티스 아키텍처 다이어그램](https://cacoo.com/assets/site/img/templates/screenshots/kubernetes-architecture@2x.png){: width="560"}
+![쿠버네티스 아키텍처 다이어그램](https://cacoo.com/assets/site/img/templates/screenshots/kubernetes-architecture@2x.png){: width="560" .w-75}
 _&lt;그림&gt; 쿠버네티스 아키텍처 다이어그램_
 
-![AWS 아키텍처 다이어그램](https://cacoo.com/assets/site/img/templates/screenshots/aws-architecture@2x.png){: width="560"}
+![AWS 아키텍처 다이어그램](https://cacoo.com/assets/site/img/templates/screenshots/aws-architecture@2x.png){: width="560" .w-75}
 _&lt;그림&gt; AWS 아키텍처 다이어그램_
 
-![Azure 아키텍처 다이어그램](https://online.visual-paradigm.com/images/features/azure-architecture-diagram-tool/01-azure-architecture-diagram.png){: width="560"}
+![Azure 아키텍처 다이어그램](https://online.visual-paradigm.com/images/features/azure-architecture-diagram-tool/01-azure-architecture-diagram.png){: width="560" .w-75}
 _&lt;그림&gt; Azure 아키텍처 다이어그램_
 
-![GCP 아키텍처 다이어그램](https://cacoo.com/assets/site/img/templates/screenshots/gcp-architecture-diagram@2x.png){: width="560"}
+![GCP 아키텍처 다이어그램](https://cacoo.com/assets/site/img/templates/screenshots/gcp-architecture-diagram@2x.png){: width="560" .w-75}
 _&lt;그림&gt; GCP 아키텍처 다이어그램_
 
 ### 4) 시각화 라이브러리
@@ -150,12 +150,12 @@ C4_Elements.png
 sample-diagram.puml
 ```
 
-![C4_Elements.png](/2022/09/07-sample-diagram-crunch.png){: width="360"}
+![C4_Elements.png](/2022/09/07-sample-diagram-crunch.png){: width="360" .w-75}
 _&lt;그림&gt; 생성된 plantUML 이미지_
  
 - vscode, intellij 확장 모듈을 설치해 내부에서 사용 가능
 
-![VS Code 확장 모듈](https://github.com/plantuml-stdlib/C4-PlantUML/raw/master/images/vscode_c4plantuml_snippets.gif){: width="600"}
+![VS Code 확장 모듈](https://github.com/plantuml-stdlib/C4-PlantUML/raw/master/images/vscode_c4plantuml_snippets.gif){: width="600" .w-75}
 _&lt;그림&gt; VS Code 확장 모듈_
 
 
@@ -169,7 +169,7 @@ _&lt;그림&gt; VS Code 확장 모듈_
   + 마크다운 형태로도 공유 가능 (클릭하면 온라인 에디터로 이동)
 - 플로차트, UML, 간트차트, 깃플로, 시퀀스, 파이차트 등 작성 가능
 
-![Mermaid 실시간 에디터 화면](/2022/09/07-mermaid-live-editor-crunch.png){: width="580"}
+![Mermaid 실시간 에디터 화면](/2022/09/07-mermaid-live-editor-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; Mermaid 실시간 에디터 화면_
 
 #### 예제: [JS 방식](https://mermaid-js.github.io/mermaid/#/n00b-gettingStarted?id=_2-using-mermaid-plugins)
@@ -203,7 +203,7 @@ flowchart LR
     C --> D[Examples]
 ```
 
-![실시간 에디터 방식](https://mermaid.ink/img/pako:eNpFjstKA0EQRX-lKJhd4gc0EsEkO90o4mI6i3K6xmntR6iuRsMw_-7ERqzV5dxDcWccsmM02HWzT17NbFEnjmzRWExcVShYXJaus2kM-WuYSBQenmyC9e771-kCJAzO07tQLLdvsquFxxpgzAIuDzVyUlKf090Jttsd7PuXwvDIEsm7m49yar_2v-WhP35TPAe-4lbgBmOT153zlf1vXKMj-bRo07J69exI-ei8ZkEzUii8Qaqany9pQKNS-U86tMENLj_UjFj3){: width="580"}
+![실시간 에디터 방식](https://mermaid.ink/img/pako:eNpFjstKA0EQRX-lKJhd4gc0EsEkO90o4mI6i3K6xmntR6iuRsMw_-7ERqzV5dxDcWccsmM02HWzT17NbFEnjmzRWExcVShYXJaus2kM-WuYSBQenmyC9e771-kCJAzO07tQLLdvsquFxxpgzAIuDzVyUlKf090Jttsd7PuXwvDIEsm7m49yar_2v-WhP35TPAe-4lbgBmOT153zlf1vXKMj-bRo07J69exI-ei8ZkEzUii8Qaqany9pQKNS-U86tMENLj_UjFj3){: width="580" .w-75}
 _&lt;그림&gt; Mermaid 실시간 에디터 방식_
 
 ### 3) [app.diagrams.net](https://app.diagrams.net) 또는 [Draw.io](http://draw.io)
@@ -219,7 +219,7 @@ draw.io는 보안상의 이유로 2020년에 diagrams.net으로 천천히 전환
 - 템플릿 그룹에서 클라우드 선택하면 AWS, GCP, IBM 등 스타일 선택 가능
   + 그밖에도 네트워크 템플릿 등 다양함
 
-![app.diagrams.net](https://www.diagrams.net/assets/svg/home-dia1.svg){: width="580"}
+![app.diagrams.net](https://www.diagrams.net/assets/svg/home-dia1.svg){: width="580" .w-75}
 _&lt;그림&gt; app.diagrams.net_
 
 ### 4) [Figma](https://figma.com)
@@ -233,7 +233,7 @@ _&lt;그림&gt; app.diagrams.net_
 
 그라파나에서 drawio 를 이용해 복잡한 flowchart 를 그릴 수 있는 플러그인 
 
-![Technical schema example](https://github.com/algenty/flowcharting-repository/raw/master/images/fc_archi_example.png?raw=true){: width="580"}
+![Technical schema example](https://github.com/algenty/flowcharting-repository/raw/master/images/fc_archi_example.png?raw=true){: width="580" .w-75}
 _&lt;그림&gt; Technical schema example_
 
 ### 6) [mingrammer/diagrams](https://github.com/mingrammer/diagrams) - MIT license
@@ -242,10 +242,10 @@ _&lt;그림&gt; Technical schema example_
 
 - [diagrams 예제 페이지](https://diagrams.mingrammer.com/docs/getting-started/examples)
 
-![Stateful Architecture](https://camo.githubusercontent.com/6edbef505e428a2c20a078c2e746efa9253551e8b83510c3a9117561e280dff8/68747470733a2f2f6469616772616d732e6d696e6772616d6d65722e636f6d2f696d672f737461746566756c5f6172636869746563747572655f6469616772616d2e706e67){: width="560"}
+![Stateful Architecture](https://camo.githubusercontent.com/6edbef505e428a2c20a078c2e746efa9253551e8b83510c3a9117561e280dff8/68747470733a2f2f6469616772616d732e6d696e6772616d6d65722e636f6d2f696d672f737461746566756c5f6172636869746563747572655f6469616772616d2e706e67){: width="560" .w-75}
 _&lt;그림&gt; Stateful Architecture_
 
-![Advanced Web Service](https://camo.githubusercontent.com/f429d60fdaed78a9bc611349e620f5a8a74c2b5405bf93dd11d837808e903719/68747470733a2f2f6469616772616d732e6d696e6772616d6d65722e636f6d2f696d672f616476616e6365645f7765625f736572766963655f776974685f6f6e2d7072656d6973652e706e67){: width="560"}
+![Advanced Web Service](https://camo.githubusercontent.com/f429d60fdaed78a9bc611349e620f5a8a74c2b5405bf93dd11d837808e903719/68747470733a2f2f6469616772616d732e6d696e6772616d6d65722e636f6d2f696d672f616476616e6365645f7765625f736572766963655f776974685f6f6e2d7072656d6973652e706e67){: width="560" .w-75}
 _&lt;그림&gt; Advanced Web Service_
 
 #### [Diagrams.net](https://www.diagrams.net/) 에디터
@@ -255,7 +255,7 @@ _&lt;그림&gt; Advanced Web Service_
 - 저장 포맷: xml(.drawio), png, svg, html
 - 구글 드라이브로 저장됨
 
-![Diagrams editor](/2022/09/07-editor-diagrams-net-crunch.png){: width="560"}
+![Diagrams editor](/2022/09/07-editor-diagrams-net-crunch.png){: width="560" .w-75}
 _&lt;그림&gt; Diagrams Editor_
 
 
@@ -288,7 +288,7 @@ with Diagram("Clustered Web Services", show=False):
     svc_group >> memcached
 ```
 
-![Clustered Web Services](https://diagrams.mingrammer.com/img/clustered_web_services_diagram.png){: width="580"}
+![Clustered Web Services](https://diagrams.mingrammer.com/img/clustered_web_services_diagram.png){: width="580" .w-75}
 _&lt;그림&gt; 예제 - Clustered Web Services_
 
 #### 예제: 딥러닝(DL)의 신경망(MNN) 시각화에도 사용할 수 있음
@@ -296,7 +296,7 @@ _&lt;그림&gt; 예제 - Clustered Web Services_
 - 출처: [Neural Network Architecture Diagrams](https://github.com/kennethleungty/Neural-Network-Architecture-Diagrams)
   - Diagrams for visualizing neural network architecture (Created with diagrams.net)
   
-![VGG-16](https://github.com/kennethleungty/Neural-Network-Architecture-Diagrams/raw/main/vgg16_image.png?raw=true){: width="560"}
+![VGG-16](https://github.com/kennethleungty/Neural-Network-Architecture-Diagrams/raw/main/vgg16_image.png?raw=true){: width="560" .w-75}
 _&lt;그림&gt; VGG-16 구조_
 
 ### 7) [lucasepe/draft](https://github.com/lucasepe/draft) - MIT license
@@ -336,7 +336,7 @@ connections:
          color: transparent
 ```
 
-![Sample YAML file](https://github.com/lucasepe/draft/raw/master/examples/clients.png){: width="560"}
+![Sample YAML file](https://github.com/lucasepe/draft/raw/master/examples/clients.png){: width="560" .w-75}
 _&lt;그림&gt; Sample YAML file examples/clients.yml_
 
 ### 8) [dcasati/kubernetes-PlantUML](https://github.com/dcasati/kubernetes-PlantUML) - MIT license
@@ -345,14 +345,14 @@ _&lt;그림&gt; Sample YAML file examples/clients.yml_
 
 - plantUML 파일을 읽고 다이어그램 생성
 
-![Microservices](https://camo.githubusercontent.com/70ca7ce2d9cb29864602d0b5f6696183330cbf0416034bd439bff1bb8efa7a32/68747470733a2f2f646f63732e6d6963726f736f66742e636f6d2f656e2d75732f617a7572652f6172636869746563747572652f7265666572656e63652d617263686974656374757265732f6d6963726f73657276696365732f5f696d616765732f616b732e706e67){: width="560"}
+![Microservices](https://camo.githubusercontent.com/70ca7ce2d9cb29864602d0b5f6696183330cbf0416034bd439bff1bb8efa7a32/68747470733a2f2f646f63732e6d6963726f736f66742e636f6d2f656e2d75732f617a7572652f6172636869746563747572652f7265666572656e63652d617263686974656374757265732f6d6963726f73657276696365732f5f696d616765732f616b732e706e67){: width="560" .w-75}
 _&lt;그림&gt; Sample Microservices  Diagram from UML file_
 
 ### 9) [k1LoW/ndiag](https://github.com/k1LoW/ndiag)
 
 yaml 파일을 읽어서 Diagram 생성 (비슷한 것을 또 본것 같은데?)
 
-![ndiag](https://github.com/k1LoW/ndiag/raw/main/img/doc.png){: width="560"}
+![ndiag](https://github.com/k1LoW/ndiag/raw/main/img/doc.png){: width="560" .w-75}
 _&lt;그림&gt; ndiag sample_
 
 
@@ -364,7 +364,7 @@ AWS 클라우드 워크로드를 시각화하는 솔루션
 - 계정 및 리전 전반에 걸쳐 AWS 리소스의 인벤토리를 유지 관리하고, 관계를 매핑
 - 사용자를 지정해서 공유가능
 
-![aws-arch-diagram](https://d1.awsstatic.com/Solutions/Solutions%20Category%20Template%20Draft/Solution%20Architecture%20Diagrams/aws-perspective-architecture-diagram.9cc2f8ed5212705854c027f54bcc00221112db2c.png){: width="580"}
+![aws-arch-diagram](https://d1.awsstatic.com/Solutions/Solutions%20Category%20Template%20Draft/Solution%20Architecture%20Diagrams/aws-perspective-architecture-diagram.9cc2f8ed5212705854c027f54bcc00221112db2c.png){: width="580" .w-75}
 _&lt;그림&gt; aws-arch-diagram_
 
 ### 11) [openwisp-network-topology](https://github.com/openwisp/openwisp-network-topology) - BSD-3-Clause license
@@ -374,7 +374,7 @@ _&lt;그림&gt; aws-arch-diagram_
 - 최근 2022년 7월까지 관리중 확인
 - 최근 8개월 전에 django 지원 기능을 업데이트
 
-![openwisp-network-topology](https://github.com/openwisp/openwisp-network-topology/raw/docs/docs/demo_network_topology.gif){: width="580"}
+![openwisp-network-topology](https://github.com/openwisp/openwisp-network-topology/raw/docs/docs/demo_network_topology.gif){: width="580" .w-75}
 _&lt;그림&gt; openwisp-network-topology_
 
 
@@ -412,7 +412,7 @@ D3 는 모든 기능을 제공하는 데이터 시각화용 라이브러리이�
   - 단순 노드와 에지 모양만 있음
   - 지리공간 이나 시간축 기능이 없음
 
-![webgl with forced-directed layout](https://cylynx.imgix.net/uploads/graphvis_react_force_graph.png?ixlib=js-2.3.2&w=780){: width="580"}
+![webgl with forced-directed layout](https://cylynx.imgix.net/uploads/graphvis_react_force_graph.png?ixlib=js-2.3.2&w=780){: width="580" .w-75}
 _&lt;그림&gt; webgl with forced-directed layout_
 
 ### 4) [cytoscape.js](https://js.cytoscape.org/)
@@ -424,16 +424,16 @@ _&lt;그림&gt; webgl with forced-directed layout_
 
 - 데모 [cytoscape-sbgn-stylesheet](https://pathwaycommons.github.io/cytoscape-sbgn-stylesheet/)
 
-![ThreatConnect](https://camo.githubusercontent.com/3a80166edfc68bb0adf015bbe91cf213870293515ce877292f5e221cc5a6d729/68747470733a2f2f746872656174636f6e6e6563742e636f6d2f77702d636f6e74656e742f75706c6f6164732f546872656174436f6e6e6563742d5468726561742d496e74656c6c6967656e63652d506c6174666f726d2d43414c2e706e67){: width="560"}
+![ThreatConnect](https://camo.githubusercontent.com/3a80166edfc68bb0adf015bbe91cf213870293515ce877292f5e221cc5a6d729/68747470733a2f2f746872656174636f6e6e6563742e636f6d2f77702d636f6e74656e742f75706c6f6164732f546872656174436f6e6e6563742d5468726561742d496e74656c6c6967656e63652d506c6174666f726d2d43414c2e706e67){: width="560" .w-75}
 _&lt;그림&gt; ThreatConnect_
 
-![Bell Media](https://user-images.githubusercontent.com/7140406/137211233-d3a3a01c-3e4c-4e0a-88c7-eee6db0cecd9.jpg){: width="560"}
+![Bell Media](https://user-images.githubusercontent.com/7140406/137211233-d3a3a01c-3e4c-4e0a-88c7-eee6db0cecd9.jpg){: width="560" .w-75}
 _&lt;그림&gt; Bell Media_
 
-![StixView](https://raw.githubusercontent.com/traut/stixview/master/stixview-graph.png){: width="560"}
+![StixView](https://raw.githubusercontent.com/traut/stixview/master/stixview-graph.png){: width="560" .w-75}
 _&lt;그림&gt; StixView_
 
-![AgensBrowser 2.0 groupBy, filterBy](/2018/12/ab2-graphquery-groupby.png){: width="560"}
+![AgensBrowser 2.0 groupBy, filterBy](/2018/12/ab2-graphquery-groupby.png){: width="560" .w-75}
 _&lt;그림&gt; AgensBrowser 2.0 - groupBy, filterBy_
 
 ## 9. Review

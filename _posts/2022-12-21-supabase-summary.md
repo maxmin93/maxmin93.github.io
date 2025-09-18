@@ -11,7 +11,7 @@ image: "https://media2.dev.to/dynamic/image/width=1280,height=720,fit=cover,grav
 
 모든 백엔드 기능을 제공하는 Firebase 의 대체 오픈소스
 
-![Supabase Architecture](https://supabase.com/docs/img/supabase-architecture--light.svg){: width="600"}
+![Supabase Architecture](https://supabase.com/docs/img/supabase-architecture--light.svg){: width="600" .w-75}
 _Supabase Architecture_
 
 ### 1) 기능
@@ -91,7 +91,7 @@ docker compose up --build --force-recreate --remove-orphans
 
 ### 1) studio : 프로젝트 관리를 위한 웹애플리케이션
 
-![Supabase Studio](https://blog.logrocket.com/wp-content/uploads/2022/03/api-keys.png){: width="600"}
+![Supabase Studio](https://blog.logrocket.com/wp-content/uploads/2022/03/api-keys.png){: width="600" .w-75}
 _Supabase Studio_
 
 - Next.js, Tailwind, Supabase UI 등으로 만들어졌다. [참고](https://supabase.com/blog/supabase-studio)
@@ -116,7 +116,7 @@ _Supabase Studio_
 
 ### 6) storage : [S3](https://aws.amazon.com/s3/), [Wasabi](https://wasabi.com/), [Backblaze](https://www.backblaze.com/) 저장소 연결
 
-![supabase storage](https://supabase.com/images/blog/storage/infra.png){: width="600"}
+![supabase storage](https://supabase.com/images/blog/storage/infra.png){: width="600" .w-75}
 _supabase storage architecture_
 
 - 참고 [Storage is now available in Supabase](https://supabase.com/blog/supabase-storage)

@@ -566,7 +566,7 @@ DB(postgresql)에 이벤트 예약 정보를 쓰고, DB를 읽어 스케줄 수�
 
 #### database (polling) 방식 스케줄링
 
-![database (polling) 방식 스케줄링](https://miro.medium.com/max/1122/1*WVOKKAJBbWlmOL2dEgOCOQ.png){: width="580"}
+![database (polling) 방식 스케줄링](https://miro.medium.com/max/1122/1*WVOKKAJBbWlmOL2dEgOCOQ.png){: width="580" .w-75}
 
 #### 실행 결과
 

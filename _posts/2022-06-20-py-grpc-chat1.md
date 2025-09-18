@@ -13,7 +13,7 @@ image: "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8susytd9w6lxe9s
 
 ### Chat Demo
 
-![gRPC-Chat-Demo](/2022/06/20-grpc-chat-demo.png){: width="540"}
+![gRPC-Chat-Demo](/2022/06/20-grpc-chat-demo.png){: width="540" .w-75}
 
 클라이언트 UI에 파이썬 표준 인터페이스인 `Tk interface` 를 사용했다. (Tcl 8.6, Tk 8.6) `simpledialog.askstring` 로 사용자명을 입력받고, `Text/Label/Entry` 를 사용하여 간단하게 채팅창을 구성할 수 있다.
 
@@ -67,7 +67,7 @@ image: "https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8susytd9w6lxe9s
 
 gRPC 의 성능은 Java Socket 에 가깝습니다. [참조](https://medium.com/@safvan.kothawala/performance-test-grpc-vs-socket-vs-rest-api-9b9ac25ca3e5)
 
-![gRPC vs Java Socket](https://miro.medium.com/max/1400/1*0vrow4sdHQJMuiJQBkUGkw.png){: width="540"}
+![gRPC vs Java Socket](https://miro.medium.com/max/1400/1*0vrow4sdHQJMuiJQBkUGkw.png){: width="540" .w-75}
 
 > gRPC vs REST API : 개체 전송시간 비교
 
