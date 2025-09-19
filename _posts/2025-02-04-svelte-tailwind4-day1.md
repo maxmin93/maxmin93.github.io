@@ -60,7 +60,7 @@ bun update --latest
 
 ## 9. Review
 
-- 
+- 작성중
 
 &nbsp; <br />
 &nbsp; <br />

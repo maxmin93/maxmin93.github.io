@@ -56,6 +56,12 @@ ERROR '/.well-known/appspecific/com.chrome.devtools.json' not found.
 - 이미지 스타일 블록의 경우 `{: width="500" .w-75}` 형태 권장
   - 비율(%)을 사용하는게 아니라 `.w-75` 를 꼭 붙여야 한다.
   - 모바일에서 이미지가 창 너비를 넘어가지 않으려면 필요하다.
+- Chrome 호환성을 위해 H265 비디오 인코딩이 필요하다.
+  - 참고: [Embedding a video gallery in Jekyll websites](https://uthpalaherath.com/Embedding-a-video-gallery-in-Jekyll-websites/)
+
+```shell
+ffmpeg -i 05-css-ch24-taco-shop-350x720.mp4 -vcodec h264 -acodec aac 05-css-ch24-taco-shop-h264.mp4
+```
 
 ## 폰트 변경
 

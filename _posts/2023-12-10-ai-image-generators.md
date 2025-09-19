@@ -177,19 +177,19 @@ _cute and adorable mouse_
 
 > The letter"J" logo for a travel guide company, serif, flat, reminiscent of an island, mountain in center, green to blue gradient, vector art, whitebackground `--s 250 --v 5.2`
 
-![jejusari logo](https://cdn.midjourney.com/6ba83f24-39e4-499e-a12b-2ee7a6904dc6/0_0.webp){: width="560" .w-75}
+![jejusari logo](https://cdn.midjourney.com/6ba83f24-39e4-499e-a12b-2ee7a6904dc6/0_0.webp){: width="320" .w-75}
 _jejusari logo_
 
 - 참고 : [나눔가이드 - 미드저니 로고디자인 프롬프트 정리](https://www.nanumpress.com/ai%EC%A0%95%EB%B3%B4/midjourney/%EB%AF%B8%EB%93%9C%EC%A0%80%EB%8B%88-%EB%A1%9C%EA%B3%A0%EB%94%94%EC%9E%90%EC%9D%B8-%EB%AF%B8%EB%93%9C%EC%A0%80%EB%8B%88-%EB%A1%9C%EA%B3%A0-%ED%94%84%EB%A1%AC%ED%94%84%ED%8A%B8-%EC%A0%95%EB%A6%AC/)
 
 > simple logo for running pony, minimal, cubism, line, vector, white background `--s 250 --v 5.2`
 
-![running pony](https://cdn.midjourney.com/b2fe4d8a-087f-4c4a-9f84-341473bc265b/0_1.webp){: width="560" .w-75}
+![running pony](https://cdn.midjourney.com/b2fe4d8a-087f-4c4a-9f84-341473bc265b/0_1.webp){: width="320" .w-75}
 _running pony_
 
 > simple logo for yellow wild flower, line, vector, white background `--s 250 --v 5.2`
 
-![yellow wild flower](https://cdn.midjourney.com/7516aff8-6c1f-4519-9c33-fd179ae0aa7e/0_1.webp){: width="560" .w-75}
+![yellow wild flower](https://cdn.midjourney.com/7516aff8-6c1f-4519-9c33-fd179ae0aa7e/0_1.webp){: width="320" .w-75}
 _yellow wild flower_
 
 ### [logoai 이용해 로고 디자인](https://www.logoai.com/make)

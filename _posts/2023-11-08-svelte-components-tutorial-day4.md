@@ -127,7 +127,7 @@ bun run dev
 
 - 설치 : `bun add theme-change`
 
-```html
+```svelte
 <script>
   import { onMount } from 'svelte';
   import { themeChange } from 'theme-change';
@@ -191,7 +191,7 @@ EOF
 
 > `+page.svelte` : 탭 그룹이 출력될 페이지
 
-```html
+```svelte
 <!-- +page.svelte -->
 <script>
   import Tab1 from './Tab1.svelte';
@@ -221,7 +221,7 @@ EOF
   - TS 타입 선언시 `import('svelte').ComponentType` 사용
   - `svelte:component` 를 이용해 바인딩
 
-```html
+```svelte
 <!-- Tabs.svelte -->
 <script>
   /**
@@ -264,7 +264,7 @@ EOF
 - daisyUI 에서 typography 사용시 prose 클래스로 감싸야 함
 - context 로부터 count 초기값을 받고, 종료시 context 에 저장
 
-```html
+```svelte
 <!-- Tab2.svelte -->
 <script lang="ts">
   import { setContext, getContext, onDestroy } from 'svelte';
@@ -299,7 +299,7 @@ EOF
   - open 속성 : active 상태 여부
   - title 속성 : 탭 라벨
 
-```html
+```svelte
 <!-- +page.svelte -->
 <script>
   import { Tabs, TabItem } from 'flowbite-svelte';
@@ -330,7 +330,7 @@ EOF
 - 탭 내용이 출력될 div 에 액션 함수 init 를 연결
   - 선택 컴포넌트가 있으면 div 의 내용을 선택 컴포넌트로 교체
 
-```html
+```svelte
 <!-- Tabs.svelte -->
 <script context="module" lang="ts">
   import { writable, type Writable } from 'svelte/store';
@@ -378,7 +378,7 @@ EOF
   - 컴포넌트 소멸시, 현재 아이템 컴포넌트가 selected 가 아닐 경우
     - `open=false` 처리 (hidden 상태로 존재)
 
-```html
+```svelte
 <script lang="ts">
   import { getContext } from 'svelte';
   import type { TabCtxType } from './Tabs.svelte';
@@ -446,7 +446,7 @@ EOF
   - greet 함수에 **parameter** 가 연결되지 않으면 update 콜백도 실행 안됨 (오호!)
 - div 종료시 destory 콜백이 실행됨 ('bye' 출력)
 
-```html
+```svelte
 <script lang="ts">
   let content = ''
 
@@ -499,7 +499,7 @@ onDestroy(subcriber)
 
 > Tabs 사용 예시
 
-```html
+```svelte
 <script>
   import Tab from './Tab.svelte';
   import TabGroup from './TabGroup.svelte';
@@ -535,7 +535,7 @@ onDestroy(subcriber)
 - 탭 아이템을 출력할 slot 을 정의하고
 - panel slot 을 별도로 정의해서 탭 내용을 기술할 수 있도록 했다.
 
-```html
+```svelte
 <script>
   // context 로 active, hover, flex, padding 등 스타일 변수들을 저장
 </script>
@@ -562,7 +562,7 @@ onDestroy(subcriber)
   - mouse 이벤트는 어떻게 연결되는지를 이해하지 못했다.
     - [aria-controls](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-controls) 를 이용하는거 같은데 잘 모르겠다.
 
-```html
+```svelte
 <script>
   let elemInput: HTMLElement;
 
@@ -608,7 +608,7 @@ onDestroy(subcriber)
 
 - `bind:group` 가 value 와 일치하면 active 선택
 
-```html
+```svelte
 <script>
   const values = [
     { label: 'ten', price: 10 },

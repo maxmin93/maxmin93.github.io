@@ -319,7 +319,7 @@ _Nu HTML Validator_
 
 #### [HTML5 Outliner](https://chrome.google.com/webstore/detail/html5-outliner/afoibpobokebhgfnknfndkgemglggomo) - 크롬 확장프로그램
 
-![HTML5 Outliner - Chrome Extension](https://accessibility.mste.illinois.edu/sites/default/files/inline-images/outliner_demo.png){: width="500" .w-75}
+![HTML5 Outliner - Chrome Extension](https://lh3.googleusercontent.com/-TWsXKaYinDbxQ0IHIOx9wmG2OK8EDxeIs8mjnO4LXD-ItKAGLCmEhUIuVMDMsnV3SIcsUav7EB45ly5-QYwKRGgyJk=s1280-w1280-h800){: width="500" .w-75}
 _HTML5 Outliner - Chrome Extension_
 
 ## 2. 의사코드
@@ -391,12 +391,12 @@ _HTML5 Outliner - Chrome Extension_
 
 > HTML 태그 사용시 판단 방법 ([link](https://stackoverflow.com/a/54987353/6811653))
 
-![HTML5 Element Flowchart](https://i.stack.imgur.com/8Ruyj.png){: width="600" .w-75}
+![HTML5 Element Flowchart](/2023/02/24-html5-elem-flowchart.webp){: width="680" .w-75}
 _HTML5 Element Flowchart_
 
 > W3 wiki page about structing HTML5 
 
-![W3 - HTML5 struct](https://i.stack.imgur.com/L4qMt.png){: width="600" .w-75}
+![W3 - HTML5 struct](/2023/02/24-html5-structure.webp){: width="600" .w-75}
 _HTML5 structure - W3_
 
 ### 3) [aria-label](https://www.w3.org/TR/wai-aria-1.1/#aria-label), [aria-labelledby](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-labelledby) : 접근 가능한 설명용 텍스트

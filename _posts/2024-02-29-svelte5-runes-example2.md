@@ -35,7 +35,7 @@ image: "https://i.ytimg.com/vi/uOI77E8Y95Q/sddefault.jpg"
 
 > TS 버전으로 작성한 코드 구조 (빨간색 없음)
 
-![](/2024/02/29-svlt5-auth-app-files.png){: width="560" .w-75}
+![](/2024/02/29-svlt5-auth-app-files.png){: width="200" .w-75}
 _svlt5-auth-app-files_
 
 ### svelte 5 runes 프로젝트 생성
@@ -200,7 +200,7 @@ export const GET = async (event) => {
 - 1시간에 이메일 발송 4회 제한이라는데, 해보니깐 2번 정도면 막히는듯 싶다.
 - 좀 짜증나긴 했지만 간격을 두고 테스트하니 되긴 되더라.
 
-![](/2024/02/29-svlt5-auth-app-email.png){: width="560" .w-75}
+![](/2024/02/29-svlt5-auth-app-email.png){: width="440" .w-75}
 _svelte5-auth-app-signup-email_
 
 ### supabase 클라이언트 코드
@@ -261,7 +261,7 @@ export const load = async ({ fetch, data, depends }) => {
 - [onMount](https://svelte.dev/docs/svelte#onmount) 는 `$effect` 와는 다르게 DOM 에 마운트 되고 한번만 실행된다.
   - 참고 : [Svelte 5 preview - $effect 가 대체하는 것](https://svelte-5-preview.vercel.app/docs/runes#$effect-what-this-replaces)
 
-```html
+```svelte
 <script>
   import { enhance } from '$app/forms';
   import { invalidate, invalidateAll, goto } from '$app/navigation';
@@ -311,7 +311,7 @@ export const load = async ({ fetch, data, depends }) => {
 
 ## 2. Svelte 5 에서 활용
 
-![](/2024/02/29-svlt5-auth-app-home.png){: width="560" .w-75}
+![](/2024/02/29-svlt5-auth-app-home.png){: width="320" .w-75}
 _svelte5-auth-app-home_
 
 ### 로그인 페이지
@@ -363,7 +363,7 @@ export async function load({ locals: { getSession } }) {
 
 > `src/routes/login/+page.svelte`
 
-```html
+```svelte
 <script lang="ts">
   import { enhance } from '$app/forms';
   import type { ActionData } from './$types';
@@ -401,7 +401,7 @@ formData 다룰 때, 이런 메시지가 자주 나오는데 빨간줄까지 그
 - 해결방법 : ActionData 타입 정의에 확장 속성을 추가하여 타입 선언을 하면 된다.
   - [예시](https://stackoverflow.com/questions/39672807/types-in-object-destructuring) `const {foo} : {foo: IFoo[]} = bar;`
 
-![](/2024/02/29-svlt5-auth-app-signup.png){: width="560" .w-75}
+![](/2024/02/29-svlt5-auth-app-signup.png){: width="320" .w-75}
 _svelte5-auth-app-signup_
 
 ### 로그아웃 페이지
@@ -435,7 +435,7 @@ export async function load() {
 - session 이 있으면 login 된 것으로 판단한다.
 - 로그인 사용자의 경우, 합당한 데이터 또는 메뉴 링크를 노출하면 된다.
  
-```html
+```svelte
 <script>
   let { data } = $props();
   let { session } = $derived(data);
@@ -499,10 +499,10 @@ dropdown 형태의 Auth 메뉴를 구현하기 위해, 열린 후 바깥쪽을 �
 
 > `$inspect` 로깅을 보면 상태변경시 2번씩(초기값과 변경값) 찍힌다.
 
-![](/2024/02/29-svlt5-dropdown-close.png){: width="560" .w-75}
+![](/2024/02/29-svlt5-dropdown-close.png){: width="440" .w-75}
 _svelte-5-dropdown-close_
 
-```html
+```svelte
 <script>
   let menuAuthOpened = $state(false);
 
@@ -562,7 +562,7 @@ _svelte-5-dropdown-close_
 
 > parent
 
-```html
+```svelte
 <script>
   import { LoginDialog } from '$lib/components';
 
@@ -589,7 +589,7 @@ _svelte-5-dropdown-close_
 
 > child
 
-```html
+```svelte
 <script>
   /** @type {HTMLDialogElement} */
   let dialogEl;

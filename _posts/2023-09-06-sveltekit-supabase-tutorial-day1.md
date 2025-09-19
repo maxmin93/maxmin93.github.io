@@ -78,7 +78,7 @@ export default {
 EOF
 ```
 
-```css
+```scss
 /* src/app.css */
 
 /* fonts: Noto Color Emoji, Noto Sans KR, Noto Serif KR */
@@ -96,7 +96,7 @@ EOF
 }
 ```
 
-```html
+```svelte
 <!-- src/routes/+layout.svelte -->
 <script lang="ts">
   import '../app.css';
@@ -235,7 +235,7 @@ export const load: PageServerLoad = async ({ params }) => {
 };
 ```
 
-```html
+```svelte
 <!-- src/routes/+page.svelte -->
 <script lang="ts">
   import type { PageData } from './$types';

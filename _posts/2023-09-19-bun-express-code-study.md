@@ -52,7 +52,7 @@ console.log(`Listening on http://localhost:${server.port} ...`);
 
 `Bun.serve`(초당 15만건)가 `Node 16`(초당 6만건) 보다 약 2.5배 빠르다.
 
-![node16 vs bun benchmarks](https://user-images.githubusercontent.com/709451/162389032-fc302444-9d03-46be-ba87-c12bd8ce89a0.png"){: width="540" .w-75}
+![node16 vs bun benchmarks](/2023/09/19-benchmark-node-vs-bun.webp){: width="540" .w-75}
 _node16 vs bun benchmarks_
 
 

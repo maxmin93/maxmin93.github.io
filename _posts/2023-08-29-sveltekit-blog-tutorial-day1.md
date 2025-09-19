@@ -14,10 +14,10 @@ image: "https://i.ytimg.com/vi/BrkrOjknC_E/hqdefault.jpg"
 
 > 화면 캡쳐
 
-![svltk-blog-joyofcode-list](https://github.com/maxmin93/svltk-blog-joyofcode/raw/main/static/29-svltk-blog-joyofcode-list.png?raw=true){: width="540" .w-75}
+![svltk-blog-joyofcode-list](https://github.com/maxmin93/svltk-blog-joyofcode/raw/main/static/29-svltk-blog-joyofcode-list.png?raw=true){: width="440" .w-75}
 _블로그 포스트 리스트 (메인)_
 
-![svltk-blog-joyofcode-post1](https://github.com/maxmin93/svltk-blog-joyofcode/blob/main/static/29-svltk-blog-joyofcode-post1.png?raw=true){: width="540" .w-75}
+![svltk-blog-joyofcode-post1](https://github.com/maxmin93/svltk-blog-joyofcode/blob/main/static/29-svltk-blog-joyofcode-post1.png?raw=true){: width="440" .w-75}
 _블로그 포스트 페이지_
 
 ## 1. 프로젝트 생성
@@ -55,7 +55,7 @@ pnpm i shiki  # Syntax Highlighter
 
 > open-props 예시 (postcss)
 
-```css
+```scss
 @import 'https://unpkg.com/open-props';
 
 .card {
@@ -300,7 +300,7 @@ export const GET: RequestHandler = async ({ fetch }) => {
 
 - lazy 로딩
 
-```html
+```svelte
 <script lang="ts">
   export let src: string;
   export let alt: string;

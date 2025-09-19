@@ -83,7 +83,7 @@ export default {
 
 > 특정 영역에서 사용할 때 해당 svelte 파일 내에서 선언
 
-```html
+```svelte
 <svelte:options runes={true} />
 ```
 
@@ -117,7 +117,7 @@ Runes는 Svelte 5에서 도입된 핵심 개념으로, 이 반응성을 강화�
   - [`$derived.by`](https://svelte-5-preview.vercel.app/docs/runes#$derived-by) : 단문 형식이 맞지 않을 때 함수형으로 사용
 - 반응형 로깅 [`$inspect`](https://svelte-5-preview.vercel.app/docs/runes#$inspect)
 
-```html
+```svelte
 <script>
   let name = $state('John');
   name = 'Jane';
@@ -149,7 +149,7 @@ Runes는 Svelte 5에서 도입된 핵심 개념으로, 이 반응성을 강화�
 
 > object 생성시 property 로 사용한 예시
 
-```html
+```svelte
 <script>
   /**
    * $state 를 property 로 삼은 object 를 생성한다.
@@ -175,7 +175,7 @@ Runes는 Svelte 5에서 도입된 핵심 개념으로, 이 반응성을 강화�
 
 > class 생성시 member 로 사용한 예시
 
-```html
+```svelte
 <script>
   /**
    * 클래스에 $state 멤버를 포함할 수 있다.
@@ -217,7 +217,7 @@ export function createCounter() {
 
 > `test-page.svelte`
 
-```html
+```svelte
 <script>
   import { createCounter } from './counter.svelte.js';
 
@@ -242,7 +242,7 @@ export function createCounter() {
   - 별도의 이름은 `{#snippet}...{/snippet}` 으로 지정할 수 있다. [Demo](https://svelte-5-preview.vercel.app/#H4sIAAAAAAAAE41S247aMBD9lVFYCegGsiDxks1G7T_0bdkHJ3aI1cR27aEtsvzvtZ0LZeGhiiJ5js-cmTMemzS8YybJ320iSM-SPPmmVJImeFEhML9Yh8zHRp51HZDC1JorLI_iiLxXUiN8J1XHoNGyh-U2i9F2SFy-epon1lIY9IwzRwNv8B6wI1oIJXNYEqV8E8sUfuIlh0MKSvPaX-zBpZ-oFRH-m7m7l5m8uyfXLdOaX5X3V_bL9gAu0D98i0V2NSWKwQ4lSN7s0LKLbgtsyxgXmT9NiBe-iaP-DYISSTcj4bcLI7hSDEHL3yu6dkPfBdLS0m1o3nk-LW9gX-gBGss9ZsMXuLu32VjZBdfRaelft5eUN5zRJEd9Zi6dlyEy_ncdOm_IxsGlULe8o5qJNFgE5x_9SWmpzGp9N2-MXQxz4c2cOQ-lZWQyF0Jd2q_-mjI9U1fr4FBPE8iuKTbjjRt2sMBK0svIsQtG6jb2CsQAdQ_1x9f5R9tmIS-yPToK-tNkQRQGL6ObCIIdEpH9wQ3p-Enk0LEGXwe4ktoX2hhFai5Ofi0jPnYc9QF1LrDdRK-rvXjerSfNitQ_TlqeBc1hwRi7yY3F81MnK9KtsF2n8Amis44ilA7VtwfWTyr-kaKV-_X4cH8BTOhfRzcEAAA=)
   - 가끔 `Svelte SSR validation error` 이 나오는데 다시 시작하면 없어진다.
 
-```html
+```svelte
 <script>
   /**
    * @type { {
@@ -263,7 +263,7 @@ export function createCounter() {
 
 > `test-page.svelte`
 
-```html
+```svelte
 <script>
   import Child from './Child.svelte';
   import { createCounter } from './counter.svelte';
@@ -291,7 +291,7 @@ export function createCounter() {
   - `$effect.active` : effect 내부에서 실행되거나 템플릿에서 실행되는지 여부
   - `$effect.root` : effect 블럭을 감싸서 수동으로 처리할 때 사용
 
-```html
+```svelte
 <script>
   /** @type {HTMLInputElement} */
   let inputElement;
@@ -340,7 +340,7 @@ let { a, b, c, ...everythingElse } = $props<MyProps>();
 
 #### Using Props to Spread Event Handlers
 
-```html
+```svelte
 <!-- App.svelte -->
 <script>
   let data ={
@@ -355,7 +355,7 @@ let { a, b, c, ...everythingElse } = $props<MyProps>();
 <ChildComponent {data} />
 ```
 
-```html
+```svelte
 <!-- ChildComponent.svelte -->
 <script>
   let { name, ...attrs } = $props();
@@ -391,7 +391,7 @@ let { a, b, c, ...everythingElse } = $props<MyProps>();
 - 템플릿을 snippet 키워드로 감싸서 함수처럼 재사용 할 수 있다.
 - snippet 함수의 파라미터로 객체를 넣어서 값을 변경할 수 있다.
 
-```html
+```svelte
 {#snippet figure(image)}
   <figure>
     <img
@@ -420,7 +420,7 @@ let { a, b, c, ...everythingElse } = $props<MyProps>();
 - 데이터 fruits 와 snippet 템플릿인 header 와 row 를 Table 서브 컴포넌트에 전달
 - Table 서브 컴포넌트에서 `$props` 로 받아 `@render` 함수로 렌더링
 
-```html
+```svelte
 <!-- App.svelte -->
 <script>
   import Table from './Table.svelte';
@@ -449,7 +449,7 @@ let { a, b, c, ...everythingElse } = $props<MyProps>();
 <Table data={fruits} {header} {row} />
 ```
 
-```html
+```svelte
 <!-- Table.svelte -->
 <script>
   let { data, header, row } = $props();
@@ -481,7 +481,7 @@ let { a, b, c, ...everythingElse } = $props<MyProps>();
 - on 지시자 대신에 일반적인 속성으로서 handler 를 처리할 수 있다.
 - 이전에 context 를 사용하던 방식 대신에 `$props` 를 통해 서브 컴포넌트로 전달할 수 있다.
 
-```html
+```svelte
 <!-- App.svelte -->
 <script>
   import Pump from './Pump.svelte';
@@ -515,7 +515,7 @@ let { a, b, c, ...everythingElse } = $props<MyProps>();
 {/if}
 ```
 
-```html
+```svelte
 <!-- Pump.svelte -->
 <script>
   let { inflate, deflate } = $props();

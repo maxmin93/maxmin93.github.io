@@ -2,7 +2,7 @@
 date: 2022-01-30 00:00:00 +0900
 title: AgensKG 지식그래프를 이용한 질의응답
 description: 뉴스에서 추출한 지식그래프 DB를 대상으로 질의 응답을 하는 방법과 정답 선정을 위한 랭킹 알고리즘을 설명합니다. 질의응답 100건의 결과를 제시합니다.
-categories: [AI, 지식그래프]
+categories: [Application, 지식그래프]
 tags: [질의응답, 그래프유사도, pagerank]
 image: /2022/01/30-pic06.png
 ---

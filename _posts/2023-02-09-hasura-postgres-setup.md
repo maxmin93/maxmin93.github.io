@@ -11,7 +11,7 @@ image: "https://hasura.io/brand-assets/hasura-logo-primary-dark.svg"
 
 GraphQL 를 통해 앱/웹과 데이터를 주고 받을 수 있게 해주는 오픈소스 GraphQL API 엔진이다. 실시간 모니터링과 보안 기능도 제공한다. Hasura 를 이용하려면 도커를 통해 자체 호스팅을 하거나, Hasura Cloud 를 이용하면 된다.
 
-![hasura graphql-engine](https://shahidh.in/graphql-engine/assets/demo.gif){: width="600" .w-75}
+![hasura graphql-engine](/2023/02/09-hasura-demo.gif){: width="600" .w-75}
 _hasura graphql-engine demo_
 
 ### 1) 지원하는 데이터베이스

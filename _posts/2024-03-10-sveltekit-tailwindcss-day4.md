@@ -171,7 +171,7 @@ html {
   - HTMLElement 렌더링 때에 실행되는 Action 정의
   - onMount 를 통해 수행해도 되지만, 특정 element 에 종속시켜 세련되게 처리 가능
 
-```html
+```svelte
 <script>
   /**
    *  @type { {
@@ -276,7 +276,7 @@ export {};
     - pagenation : 원형 page 를 감싸는 container
     - page : 슬라이드 선택용 원형 버튼
 
-```html
+```svelte
 <script>
   import { onMount } from 'svelte';
   import { Splide } from '@splidejs/splide';
@@ -398,7 +398,7 @@ _Bootstrap-like responsive column grid with Tailwind CSS and flexbox_
 - 개발 편의를 위해 페이지 로딩시 자동으로 최하단으로 window.scrollTo 이동
 
 
-```html
+```svelte
 <script>
   import { onMount } from 'svelte';
   import TeamSection from './team-section.svelte';

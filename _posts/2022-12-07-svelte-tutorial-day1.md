@@ -89,7 +89,7 @@ $ npm run preview  # dist 실행
 - Nested 컴포넌트에 `props = {answer: 42}` 을 전달
   + 노출할 변수는 `export let answer` 와 같이 선언
 
-```html
+```svelte
 <script>
   // logic goes here
   let name = 'world';
@@ -136,7 +136,7 @@ $ npm run preview  # dist 실행
   + 대기 `{#await promise변수}`, `{:then 변수}`
     * 비동기 결과의 상태에 따라 출력 제어
 
-```html
+```svelte
 <script>
   let user = { loggedIn: false };
   function toggle() {
@@ -195,7 +195,7 @@ $ npm run preview  # dist 실행
   + 하부에서 상부로 : Inner -> Outer -> App
   + 상부에서 하부로 : App -> Outer -> Inner
 
-```html
+```svelte
 <script>
   let m = { x: 0, y: 0 };
 
@@ -228,7 +228,7 @@ $ npm run preview  # dist 실행
 - 포함된 하위 컴포넌트의 export 변수를 상위의 변수로 바인딩
   + `bind:value` 로 상위 컴포넌트의 변수에 연결
 
-```html
+```svelte
 <script>
   let name = '';
 </script>
@@ -296,7 +296,7 @@ $ npm run preview  # dist 실행
 - tick : 변경 사항이 즉시 반영되도록 작업 블럭을 다음으로 넘기기
   + ex) `await tick();` => 대문자로 변경된 문자열로 바뀜
 
-```html
+```svelte
 <script>
   import { onMount } from 'svelte';
   import { beforeUpdate, afterUpdate } from 'svelte';
@@ -342,7 +342,7 @@ export const count = writable(0);
 
 > 하위 컴포넌트에서 공유 데이터 변수의 update 로직을 작성
 
-```html
+```svelte
 <script>
   import { count } from './stores.js';
 
@@ -358,7 +358,7 @@ export const count = writable(0);
 
 > 상위 컴포넌트에서 subscribe 하여 변수에 바인딩한다.
 
-```html
+```svelte
 <script>
   import { count } from './stores.js';
   import Incrementer from './Incrementer.svelte';
@@ -401,7 +401,7 @@ export const count = writable(0);
 
 렌더링 될 때마다, console 창에 값을 출력
 
-```html
+```svelte
 <script>
   let user = {
     firstname: 'Ada',
@@ -485,7 +485,7 @@ const config = {
 
 > `lang=ts` 를 명시한 script 태그 안에 typescript 로 작성한다.
 
-```html
+```svelte
 <script lang="ts">
   import axios from 'axios';
 
@@ -602,7 +602,7 @@ type BookListItemProps = {
 
 > 1초마다 카운트 x 2 하는 예제 ($timer 에서 출력)
 
-```html
+```svelte
 <script lang="ts">
   import { interval } from 'rxjs';
   import { startWith, map } from 'rxjs/operators';

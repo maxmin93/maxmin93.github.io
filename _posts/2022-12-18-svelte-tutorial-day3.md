@@ -113,7 +113,7 @@ export const load = (({ params }) => {
 ```
 {: file="src/routes/blog/[slug]/+page.ts"}
 
-```html
+```svelte
 <script lang="ts">
   import type { PageData } from './$types';
 
@@ -167,7 +167,7 @@ export const load = (async () => {
 
 > 레이아웃 데이터 소비자(Consumer) 
 
-```html
+```svelte
 <script lang="ts">
   import type { LayoutData } from './$types';
 
@@ -300,7 +300,7 @@ export const actions: Actions = {
 ```
 {: file="src/routes/login/+page.server.ts"}
 
-```html
+```svelte
 <form method="POST">
   <label>
     Email

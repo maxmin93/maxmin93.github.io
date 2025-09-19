@@ -227,7 +227,7 @@ data='<product-item class="product-item " r...'>]
 
 > XPath 와 CSS 선택자 차이점
 
-![XPath and CSS Selector 차이점](https://res.cloudinary.com/practicaldev/image/fetch/s--b0AA4O7P--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/a6iz0mfocerlnregrbwg.png){: width="600" .w-75}
+![XPath and CSS Selector 차이점](https://oxylabs.io/_next/image?url=https%3A%2F%2Fimages.prismic.io%2Foxylabs-web%2FZpBeFB5LeNNTxEWQ_OWVlOWYxMjYtNDI5My00NjFjLWJiYzQtYWIwMWJmY2Y5YTc4_css_xpath.png%3Fauto%3Dformat%2Ccompress&w=3840&q=75){: width="600" .w-75}
 _XPath and CSS Selector 차이점_
 
 XPath 는 상위, 이웃, 이전 경로 등 경로상 이동이 보다 더 자유롭다.

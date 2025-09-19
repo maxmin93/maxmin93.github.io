@@ -57,7 +57,7 @@ _picocss 적용된 첫페이지_
 
 - `<slot />`에는 `+page.svelte`의 내용이 들어간다.
 
-```html
+```svelte
 <script>
   import '@picocss/pico';
 </script>

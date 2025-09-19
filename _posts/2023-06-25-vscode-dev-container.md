@@ -29,7 +29,8 @@ _dev-container architecture_
 - 컨테이너 생성 후 실행될 명령어를 설정
 - vscode server 의 확장 기능을 설정 (로컬 vscode 에 연결된다)
 - 리모트 유저 
-```json
+
+```jsonc
 {
   "name": "Node.js & TypeScript",
 

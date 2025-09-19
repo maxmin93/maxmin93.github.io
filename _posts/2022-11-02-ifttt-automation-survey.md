@@ -128,7 +128,7 @@ CEP 의 엔진은 규칙(Rule)을 처리하는데, 규칙이 활성화 되기 �
 - 코드 없는 데이터 파이프라인을 사용하여 Webhook ETL 간소화
 - IFTTT 와 연결
 
-![IFTTT Webhook 페이지](https://lh5.googleusercontent.com/jQklI3C484U2Hxu2dZfrvOMHlT8woxWqJEmoUzReI5v9HukSq-6tkKoaZzxzLxkR-rIvi-L8EHJjxUGPuQVf-vsdmVewKe-hSWUxj5S8vSVvK1nlH817jYQjm64s79zvdLYpNdmv){: width="620" .w-75}
+![IFTTT Webhook 페이지](https://miro.medium.com/v2/resize:fit:1400/1*F-AaqAEaDCIELPmpsCfRpA.png){: width="620" .w-75}
 
 ### 2) [재피어(Zapier)](https://zapier.com/)
 

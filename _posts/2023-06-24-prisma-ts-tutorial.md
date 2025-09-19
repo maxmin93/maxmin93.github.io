@@ -18,7 +18,7 @@ image: "https://seeklogo.com/images/P/prisma-logo-BE375CFB25-seeklogo.com.png"
 
 ### 2) 모델 생성 과정
 
-![prisma-client-generation-workflow](https://www.prisma.io/docs/static/0e7b01ad1504ad4b171484e55f71ba41/4c573/prisma-client-generation-workflow.png){: width="600" .w-75}
+![prisma-client-generation-workflow](https://res.cloudinary.com/prismaio/image/upload/v1628761155/docs/FensWfo.png){: width="560" .w-75}
 _prisma client generation workflow_
 
 - 초기에 migration 으로 DB 부터 테이블까지 자동 생성이 가능
@@ -73,7 +73,7 @@ datasource db {
 
 `.env` 파일도 생성되어 있다. DATABASE_URL 을 작성한다.
 
-```env
+```text
 DATABASE_URL="postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?schema=${DB_SCHEMA}"
 ```
 
@@ -271,7 +271,7 @@ const prisma = new PrismaClient().$extends({
   },
 })
 ```
-- 
+
 
 ## 3. 활용 케이스
 

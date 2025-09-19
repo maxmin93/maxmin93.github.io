@@ -76,7 +76,7 @@ const config = {
   + `@apply` 명령어로 tailwind 문법을 사용할 수 있다.
   + 일반 CSS 문법으로 클래스를 설정할 수도 있다.
 
-```css
+```scss
 @charset "UTF-8";
 
 /* fonts: Noto Color Emoji, Noto Sans KR, Noto Serif KR */
@@ -190,7 +190,7 @@ _Clone Coding = Instagram UI tutorial_
 
 #### 페이지 타이틀
 
-```html
+```svelte
 <svelte:head>
   <title>CloneCoding: Instagram UI</title>
 </svelte:head>
@@ -225,7 +225,7 @@ li 항목을 4개 만들면 상단 그림과 같은 화면이 나온다.
 - 복잡한 tailwind 설정을 class 로 따로 등록하여 재사용 할 수 있다.
   + sveltekit preprocess 에서 postcss 사용 설정을 해 두어야 함
 
-```html
+```svelte
 <button class="create-story">&plus;</button>
 
 <style lang="postcss">
@@ -239,7 +239,7 @@ li 항목을 4개 만들면 상단 그림과 같은 화면이 나온다.
 
 출처: Anna Blok - [Making Website Using Tailwind CSS (No CSS Used)](https://www.youtube.com/watch?v=0ZIh2QbdhAE)
 
-![Clone Coding = Website with Grid Layout](/2023/07/10-svelte-tailwindcss-gridlayout-w640.png){: width="600" .w-75}
+![Clone Coding = Website with Grid Layout](/2023/07/10-svelte-tailwindcss-gridlayout-w640.png){: width="560" .w-75}
 _Clone Coding = Grid layout website_
 
 ### 1) `+layout.svelte`

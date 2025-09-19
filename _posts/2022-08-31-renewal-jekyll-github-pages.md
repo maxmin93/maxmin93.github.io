@@ -1,13 +1,11 @@
 ---
 date: 2022-08-31 00:00:00 +0900
-title: 깃허브 블로그 jekyll 갱신하기 (Mac M1)
+title: Jekyll Chirpy 5.2 버전 업그레이드 작업
+description: Github pages를 chirpy 4.x 에서 5.2.1로 갱신하면서 발생한 오류들과 전체 과정을 설명합니다.
 categories: [Frontend, Jekyll]
 tags: ["git-blog", "utterances"]
 image: "/2022/08/31-jekyll-permanant-url-path-min.png"
 ---
-
-> Github pages를 chirpy 5.2.1로 갱신하면서 발생한 오류들과 전체 과정을 설명합니다.
-{: .prompt-tip }
 
 ## 1. 기존 블로그 상태와 문제들
 

@@ -39,7 +39,7 @@ $ pnpm run dev
 - 컴포넌트 파일 `components/button.js`
 - 참조 `import Button from '@/components/button'`
 
-```json
+```jsonc
 // tsconfig.json or jsconfig.json
 {
   "compilerOptions": {
@@ -255,7 +255,7 @@ const GuestbookEntries = () => {
 
 Discord OAuth 로 로그인을 하면, 텍스트 입력 박스로 멘트를 입력할 수 있다.
 
-![t3-app tutorial - Guestbook](/2023/02/18-t3-tutorial-guestbook-w640.png){: width="480" .w-75}
+![t3-app tutorial - Guestbook](/2023/02/18-t3-tutorial-guestbook-w640.png){: width="440" .w-75}
 _t3-app tutorial - Guestbook_
 
 ## 2. [데이터 처리](https://nextjs.org/docs/basic-features/layouts#data-fetching)

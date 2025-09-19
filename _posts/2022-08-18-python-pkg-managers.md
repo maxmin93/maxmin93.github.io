@@ -44,8 +44,6 @@ image: https://d33wubrfki0l68.cloudfront.net/e5bef992cd67b65cf04372ce4802620989c
 
 #### mamba
 
-![mamba-log](https://github.com/mamba-org/mamba/blob/master/docs/assets/mamba_header.png?raw=true){: width="600" .w-75} <br />&nbsp;
-
 (anaconda.com 소유의) `conda` 의 대안으로 [mamba](https://github.com/mamba-org/mamba) 가 있다.
 
 - conda 를 `C++`로 다시 개발한 버전 (더 빠른 크로스플랫폼 패키지 관리자)

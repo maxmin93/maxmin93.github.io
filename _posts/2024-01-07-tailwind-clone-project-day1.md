@@ -551,7 +551,7 @@ bun --bun run dev
 
 ## 2. Tailwind 템플릿을 Svelte 프로젝트로 바꾸기
 
-![admin-dashboard-mobile](/2024/01/07-admin-dashboard-mobile.png){: width="560" .w-75}
+![admin-dashboard-mobile](/2024/01/07-admin-dashboard-mobile.png){: width="320" .w-75}
 _admin-dashboard-mobile_
 
 ### 작업 절차
@@ -606,7 +606,7 @@ _admin-dashboard-mobile_
 - 가독성과 유지보수 편의성을 위해 블럭 단위로 컴포넌트를 분할
 - 일단 해당 디렉토리에서 하위 컴포넌트 파일들을 나누고, 나중에 `$lib` 로 이동
 
-```html
+```svelte
 <script>
   import { ModeToggle } from '$lib/components/ui';
   import { dropdownOpen, mobileNavOpen } from './open-handlers';
@@ -712,7 +712,7 @@ daisyUI 의 light, dark 테마 색상으로 변경
 - `<FlagIcon />` 사용시 정적 맵핑
   - 동적 맵핑 필요시엔 `<svelte:component this={컴포넌트} />` 활용
 
-```html
+```svelte
 <!-- flag-icon.svelte -->
 <script>
   import { twMerge } from 'tailwind-merge';
@@ -762,7 +762,7 @@ export const dropdownOpen = createOpenHandler(false);
 export const mobileNavOpen = createOpenHandler(false);
 ```
 
-```html
+```svelte
 <!-- parent 컴포넌트 -->
 <script>
   import { dropdownOpen, mobileNavOpen } from './open-handlers';
@@ -778,7 +778,7 @@ export const mobileNavOpen = createOpenHandler(false);
 </header>
 ```
 
-```html
+```svelte
 <!-- mobile-nav-button 컴포넌트 -->
 <script>
   import HamburgerIcon from '$lib/assets/icons/hamburger-icon.svelte';
@@ -793,7 +793,7 @@ export const mobileNavOpen = createOpenHandler(false);
 </div>
 ```
 
-```html
+```svelte
 <!-- mobile-nav-menu 컴포넌트 -->
 <script>
   import { getContext } from 'svelte';
@@ -814,7 +814,7 @@ value 값에 따라 적용되는 색상을 `tailwind-variants` 으로 설정하�
 
 > `{#if}..{/if}` 에 의한 html 중복 없이 간단하게 처리할 수 있다.
 
-```html
+```svelte
 <!-- table-cell-status.svelte -->
 <script lang="ts">
   import { tv } from 'tailwind-variants';
@@ -842,7 +842,7 @@ shadcn-svelte 의 [Data Table](https://www.shadcn-svelte.com/docs/components/dat
 
 > 컬럼 단위 정렬은 [Svelte Legos](https://sveltelegos.com/guides/actions/sortableTableAction) 에도 있다.
 
-```html
+```svelte
 <script lang="ts">
   import TableStatusCell from './table-cell-status.svelte';
   import { Subscribe, Render, createTable, createRender } from 'svelte-headless-table';

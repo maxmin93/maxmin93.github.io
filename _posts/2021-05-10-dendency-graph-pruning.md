@@ -2,7 +2,7 @@
 date: 2021-05-10 00:00:00 +0900
 title: 문서 의존그래프와 가지치기(pruning)
 description: 효과적인 그래프 분석을 위해 산만하게 형성된 의존그래프를 가지치기 하는 전처리 작업에 대해 설명합니다.
-categories: [AI, 지식그래프]
+categories: [Application, 지식그래프]
 tags: [nlp, 의존그래프, 전처리]
 image: /2021/05/dgraph-sample01-doc.png
 ---

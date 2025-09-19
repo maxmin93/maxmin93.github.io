@@ -1,13 +1,11 @@
 ---
 date: 2025-01-10 00:00:00 +0900
 title: Zig Tutorial - 6일차
+description: Zig 언어 공부를 시작합니다. 설치부터 문법 및 간단한 응용까지 다룹니다.
 categories: [Language, Zig]
-tags: [syntax]
+tags: []
 image: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Zig_logo_2020.svg"
 ---
-
-> Zig 언어 공부를 시작합니다. 설치부터 문법 및 간단한 응용까지 다룹니다.
-{: .prompt-tip }
 
 ## 0. 튜토리얼 참고문서
 

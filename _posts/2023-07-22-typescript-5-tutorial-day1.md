@@ -321,7 +321,7 @@ try {
 
 ### 3) 타입 계층 트리
 
-![Typescript 타입 계층 트리](https://blog.kakaocdn.net/dn/RFH1X/btrL5yYwuHz/N2HeWJGbAQ4kEMI39S1G3K/img.png){: width="600" .w-75}
+![Typescript 타입 계층 트리](https://velog.velcdn.com/images/bami/post/f3b873f5-f12d-4cec-b885-bd9c84c55ea1/image.png){: width="560" .w-75}
 _Typescript 타입 계층 트리_
 
 `unknown` 타입이 최상위 계층에 있다. &rArr; any 타입에만 할당 가능
@@ -332,7 +332,7 @@ _Typescript 타입 계층 트리_
 
 #### upcast vs downcast 개념 그림
 
-![타입 할당 - up, down](https://blog.kakaocdn.net/dn/coH7BT/btrxwYWLmLz/0gFKqQqfFE3SjzIR7RcEBk/img.png){: width="600" .w-75}
+![타입 할당 - up, down](https://prepbytes-misc-images.s3.ap-south-1.amazonaws.com/assets/1679461022151-1-01%20%2815%29.png){: width="600" .w-75}
 _타입 할당 - up, down_
 
 

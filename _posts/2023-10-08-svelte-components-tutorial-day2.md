@@ -187,7 +187,7 @@ _초기 설정이 완료된 페이지_
 
 #### Flowbite [dark 모드 스위치](https://flowbite-svelte.com/docs/components/darkmode#Mode_icon) 설정
 
-```html
+```svelte
 <!-- routes/+layout.svelte -->
 <script>
   import { DarkMode } from 'flowbite-svelte';
@@ -212,7 +212,7 @@ _초기 설정이 완료된 페이지_
 - input Element 의 속성 value 과 searchQuery 변수를 연결
   - 참고 : [Svelte 튜토리얼 - Bindings/Text inputs](https://learn.svelte.dev/tutorial/text-inputs)
 
-```html
+```svelte
 <script>
   let list = ['React', 'Vue', 'Svelte'];
   let filteredList = [];
@@ -245,7 +245,7 @@ _초기 설정이 완료된 페이지_
   - browser 상태 여부를 검사하고 foo 클래스 선택자를 HTMLSpanElement 타입 지정
   - onMount 내에서 forminput 클래스 선택자를 type guard 코드와 함께 사용
 
-```html
+```svelte
 <script>
   import { onMount } from 'svelte';
   import { browser } from '$app/environment';
@@ -362,7 +362,7 @@ const $input5 = document.querySelector('.foo');
   - svelte 의 `if 블록`을 이용해 다른 html 블록을 출력하는 것과 같다
   - 참고: [stackoverflow - svelte:component with DOM elements](https://stackoverflow.com/a/67274539/6811653)
 
-```html
+```svelte
 <script>
   export let href = '';
 
@@ -376,7 +376,7 @@ const $input5 = document.querySelector('.foo');
 
 #### [window 에 대한 bindings](https://svelte.dev/docs/special-elements#svelte-window) : Event, innerWidth(Height), scrollX(Y), ... 등
 
-```html
+```svelte
 <script>
   /** @param {KeyboardEvent} event */
   function handleKeydown(event) {
@@ -389,7 +389,7 @@ const $input5 = document.querySelector('.foo');
 
 #### [Element 를 this 로 binding](https://svelte.dev/docs/element-directives#bind-this)
 
-```html
+```svelte
 <script>
   import { onMount } from 'svelte';
 
@@ -463,7 +463,7 @@ export function pannable(node) {
 }
 ```
 
-```html
+```svelte
 <!-- App.svelte -->
 <script>
   import { pannable } from './pannable.js';
@@ -503,7 +503,7 @@ export function pannable(node) {
 
 `use:action` 에서 tooltip 라이브러리를 연결하는 예제
 
-```html
+```svelte
 <script>
   function tooltip(node, params = { content: 'Hello!' }) {
     let tip = tippy(node, params);
@@ -521,7 +521,7 @@ export function pannable(node) {
   - 실행 이후 매개변수를 업데이트할 방법이 없고 : update 이용
   - 요소가 제거될 때 tippy 를 파괴하지 않았다 : destroy 이용
 
-```html
+```svelte
 <script>
   import tippy from 'tippy.js';
 
@@ -551,7 +551,7 @@ export function pannable(node) {
 
 `use:action` 대신에 `onMount`, `$`, `onDestroy` 를 이용하는 방법
 
-```html
+```svelte
 <script>
   import tippy from 'tippy.js';
   import { onMount, onDestroy } from 'svelte';

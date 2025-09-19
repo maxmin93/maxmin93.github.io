@@ -184,6 +184,11 @@ _&lt;그림&gt; Mermaid 실시간 에디터 화면_
 </div>
 
 ```html
+<!--
+---
+Jekyll 헤더에 mermaid 설정을 true 로 하면 스크립트가 삽입된다.
+---
+  -->
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 
 <div class="mermaid">

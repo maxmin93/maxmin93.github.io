@@ -420,7 +420,7 @@ _daisyui-table-pagination-param_
 - `/users?skip=10` 에서 skip 파라미터를 기준으로 현재 페이지와 번호를 계산
   - skip=10 이면 pageSize=10 기준으로 2번재 페이지를 출력
 
-```html
+```svelte
 <script lang="ts">
   import TableCellStatus from './table-cell-status.svelte';
   import { sortableTableAction } from 'svelte-legos';
@@ -459,7 +459,7 @@ _daisyui-table-pagination-param_
 - daisyUI 의 badge 컴포넌트를 활용
 - tailwind-variants 로 조건부 스타일을 적용
 
-```html
+```svelte
 <script lang="ts">
   import { tv } from 'tailwind-variants';
   const status = tv({
@@ -495,7 +495,7 @@ _daisyui-table-pagination-last_
 - 이전 페이지 : 현재 페이지가 마지막 페이지인 경우 비활성화(disable) 
 - 마지막 페이지 : 현재 페이지가 마지막 페이지인 경우 제외
 
-```html
+```svelte
     <div class="join mt-4">
       {#if !visiblePages.includes(1)}
         <a
@@ -577,7 +577,7 @@ reactive 블럭을 이용해 값 변경시마다 pagination 변수들을 재계�
 - slideSize : pagination 에 보여질 페이지 번호 Array 크기를 지정
 - visiblePages : 총 페이지수와 현재 페이지, slideSize 를 이용해 pagination 에 보여질 페이지 번호 Arrary 를 생성
 
-```html
+```svelte
 <script lang="ts">
   import type { PageData } from '../$types';
   export let data: PageData;

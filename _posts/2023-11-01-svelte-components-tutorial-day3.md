@@ -295,7 +295,7 @@ twMerge('px-2 py-1 bg-red hover:bg-dark-red', 'p-3 bg-[#B91C1C]')
 
 > 단순 join 할 경우 twJoin 사용
 
-```html
+```svelte
 <script>
   import { twJoin } from 'tailwind-merge';
   let divClass = 'w-full mx-auto bg-gradient-to-r bg-white';
@@ -316,7 +316,7 @@ Svelte 프로젝트에 SEO 메타 태그를 제공하는 라이브러리
 
 > 최상위 `+page.svelte` 에 작성
 
-```html
+```svelte
 <script>
   import { MetaTags } from 'svelte-meta-tags';
 </script>
@@ -368,7 +368,7 @@ Svelte 프로젝트에 SEO 메타 태그를 제공하는 라이브러리
 - h1Class
 - pClass
 
-```html
+```svelte
 <script>
   import { Section, Maintenance } from 'flowbite-svelte-blocks';
 </script>
@@ -383,7 +383,7 @@ Svelte 프로젝트에 SEO 메타 태그를 제공하는 라이브러리
 
 #### 소스 : `src/lib/Maintenance.svelte`
 
-```html
+```svelte
 <script lang="ts">
   import type { SvelteComponent } from 'svelte';
   import { twMerge } from 'tailwind-merge';
@@ -423,17 +423,17 @@ Svelte 프로젝트에 SEO 메타 태그를 제공하는 라이브러리
 
 - Store : 값이 변경될 때마다 알림을 받을 수 있는 객체
 
-![svelte-store-diagram](https://raw.githubusercontent.com/mattcroat/joy-of-code/main/posts/svelte-state-management/images/stores.webp){: width="560" .w-75}
+![svelte-store-diagram](https://raw.githubusercontent.com/mattcroat/joy-of-code/main/posts/svelte-state-management/images/stores.webp){: width="440" .w-75}
 _svelte-store-diagram_
 
 - Context : 공유되는 개체(element)가 있을 경우 set/get 가능
 
-![svelte-context-diagram](https://raw.githubusercontent.com/mattcroat/joy-of-code/main/posts/svelte-state-management/images/context.webp){: width="560" .w-75}
+![svelte-context-diagram](https://raw.githubusercontent.com/mattcroat/joy-of-code/main/posts/svelte-state-management/images/context.webp){: width="440" .w-75}
 _svelte-context-diagram_
 
 > store 를 상위 context 에 저장하여 하위 요소에서 공유하는 방식이 권장됨
 
-```html
+```svelte
 <!-- mapbox.js -->
 <script type="module">
   import { setContext } from 'svelte'

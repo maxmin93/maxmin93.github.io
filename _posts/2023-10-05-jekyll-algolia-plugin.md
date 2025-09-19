@@ -2,7 +2,7 @@
 date: 2023-10-05 00:00:00 +0900
 title: jekyll 블로그에 Algolia 검색 기능 붙이기
 description: Jekyll 기반 깃허브 블로그의 검색기능을 Algolia 로 바꾸는 작업을 했습니다. plugin 을 이용해 손쉽게 변경할 수 있습니다.
-categories: [Backend]
+categories: [Backend, Search]
 tags: ["git-blog", "search", "algolia", "jekyll"]
 image: "https://global-uploads.webflow.com/637ca212d47966358b146792/639093ef3e8c0e5dba9e681d_Logo-Algolia-815x458-Color.webp"
 ---

@@ -148,7 +148,7 @@ bun run dev
 
 ### 코드
 
-```html
+```svelte
 <script lang="ts">
   import { createCheckbox, melt } from '@melt-ui/svelte';
   import { Minus } from 'lucide-svelte';

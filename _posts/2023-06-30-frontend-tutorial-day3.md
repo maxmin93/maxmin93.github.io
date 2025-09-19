@@ -69,7 +69,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-kQQloEDQ90MNQJP
 - `break-inside: avoid;` 블록의 짜투리가 다음 열로 넘어가지 않도록 한다
 - `white-space: nowrap;` wrapping 될 때 공백으로 짤리지 않도록 한다
 
-```css
+```scss
   .columns {
     columns: 4 240px;
     column-rule: 3px solid #333;  /* 분리선 */
@@ -187,7 +187,6 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-kQQloEDQ90MNQJP
 - 방법5: flex &brvbar; grid + margin
 
 ```css
-
   /* 방법1: table 이용한 중간 정렬 */
   .container-center {
     display: table;
@@ -233,7 +232,6 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-kQQloEDQ90MNQJP
   .container-center div {
     margin: auto;
   }    
-}
 ```
 
 ### Ch14. CSS Flexbox
@@ -250,7 +248,7 @@ _flex-direction-aligning-rows-columns_
 ![flex-wrap-visualization](https://blog.logrocket.com/wp-content/uploads/2023/01/align-self-property-1.png){: width="400" .w-75}
 _flex-wrap-visualization_
 
-```css
+```scss
  .container {
     display: flex; /* (주축: 수평) 열 방향으로 정렬 */
     gap: 1rem;
@@ -469,7 +467,7 @@ img {
     <!-- ... -->  
 ```
 
-```css
+```scss
 /* Media Query 문법 */
 @media not|only mediatype and (mediafeature and|or|not mediafeature) {
   /* CSS Rules */

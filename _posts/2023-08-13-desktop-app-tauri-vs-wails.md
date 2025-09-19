@@ -266,7 +266,7 @@ $ mkdir ui
 $ notepad ui\index.html  # index.html 작성
 ```
 
-![tauri-html-app-dev-run](/2023/08/13-tauri-html-app-dev-run.png){: width="560" .w-75}
+![tauri-html-app-dev-run](/2023/08/13-tauri-html-app-dev-run.png){: width="440" .w-75}
 
 - `Welcome from Tauri!` 문구가 `Hello, My App!` 으로 변경됨
   + js 스크립트에 setTimeout 적용하여 백엔드 Tauri 의 greet 함수 호출
@@ -291,11 +291,11 @@ $ notepad ui\index.html  # index.html 작성
 }  
 ```
 
-![tauri-svltk-static-dev-run](/2023/08/13-tauri-svltk-static-dev-run.png){: width="560" .w-75}
+![tauri-svltk-static-dev-run](/2023/08/13-tauri-svltk-static-dev-run.png){: width="440" .w-75}
 
 > Svelte Demo 앱도 적용해 보았다. (잘된다)
 
-![tauri-svltk-demo-dev-run](/2023/08/13-tauri-svltk-demo-dev-run.png){: width="400" .w-75}
+![tauri-svltk-demo-dev-run](/2023/08/13-tauri-svltk-demo-dev-run.png){: width="320" .w-75}
 
 
 ## 3. Wails 튜토리얼
@@ -425,7 +425,7 @@ wails 환경변수 설정은 `wails.json` 으로 한다.
 
 데모 앱의 실행 화면을 캡쳐했다.
 
-![wails-demo-app-dev-run](/2023/08/13-wails-demo-app-dev-run-w560.png){: width="560" .w-75}
+![wails-demo-app-dev-run](/2023/08/13-wails-demo-app-dev-run-w560.png){: width="440" .w-75}
 _wails-demo-app-dev-run_
 
 #### Svelte 템플릿 기반 프로젝트 생성
@@ -498,7 +498,7 @@ export default defineConfig({
 
 svelte 템플릿의 `App.svelte` 파일을 복사하여 `+page.svelte` 에 연결하였다.
 
-![wails-svltk-static-dev-run](/2023/08/13-wails-svltk-static-dev-run-w560.png){: width="560" .w-75}
+![wails-svltk-static-dev-run](/2023/08/13-wails-svltk-static-dev-run-w560.png){: width="440" .w-75}
 
 
 ### 3) Wails 빌드
@@ -512,7 +512,7 @@ $ wails build -nsis  # 설치파일 exe 도 생성
 
 productVersion 이 출력되도록 했다.
 
-![wails-demo-app-setup-wizard](/2023/08/13-wails-demo-app-setup-wizard-w560.png){: width="480" .w-75}
+![wails-demo-app-setup-wizard](/2023/08/13-wails-demo-app-setup-wizard-w560.png){: width="440" .w-75}
 
 
 ## 9. Review

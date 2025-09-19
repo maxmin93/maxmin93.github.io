@@ -1,13 +1,11 @@
 ---
 date: 2022-08-20 00:00:00 +0900
 title: Clojure 도 Jupyter notebook에서 사용하자
+description: 주피터 노트북에 clojupyter 클로저 커널을 설치해서 clojure 개발을 손쉽게 해보자.
 categories: [Language]
 tags: [jupyter, clojure]
 image: "/2022/08/20-clojupyter-main.png"
 ---
-
-> 주피터 노트북에 clojupyter 클로저 커널을 설치해서 clojure 개발을 손쉽게 해보자.
-{: .prompt-tip }
 
 ## 1. Clojure 설치
 

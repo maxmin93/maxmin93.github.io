@@ -272,7 +272,7 @@ async 함수의 Promise 배열을 받아와 Svelte 의 await 블록으로 처리
   }
 ```
 
-```html
+```svelte
 <div class="grid grid-cols-3 pb-4">
   <!-- 포켓몬 카드 3장 출력 -->
   {#each myPokemons as data}
@@ -296,7 +296,7 @@ async 함수의 Promise 배열을 받아와 Svelte 의 await 블록으로 처리
 
 Edit 다이얼로그에서 카드 선택할 때와 메인 화면 출력될 때의 pokemon_ids 배열을 각각 따로 사용해야 한다. 그렇치 않으면 선택시마다 메인 화면의 카드가 계속 바뀐다.
 
-```html
+```svelte
 <script>
   /**
    * Dialog 전체 리스트에서 선택시 사용될 pokemon_ids 복사본

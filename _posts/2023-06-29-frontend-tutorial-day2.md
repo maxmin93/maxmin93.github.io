@@ -94,7 +94,7 @@ module.exports = config;
 
 svelte 페이지에서 script 사용시 `lang="postcss"` 를 명시하면 된다.
 
-```css
+```scss
 <style lang="postcss">
   p {
     text-align: justify;
@@ -228,7 +228,7 @@ selectors 에 대해 설정을 재설정하게 됨 => 엉성한 스타일을 의
 
 ### Ch07. hypertext links styles: visited, hover, active and focus
 
-```css
+```scss
   a {
     text-decoration: none;
     cursor: pointer;
@@ -247,7 +247,7 @@ selectors 에 대해 설정을 재설정하게 됨 => 엉성한 스타일을 의
 
 ### Ch08. CSS List Styles
 
-```css
+```scss
   ul,
   ol {
     /* padding-left: 2ch; */
@@ -282,7 +282,7 @@ selectors 에 대해 설정을 재설정하게 됨 => 엉성한 스타일을 의
 
 ### Ch09. CSS Mini-project
 
-```css
+```scss
   nav {
     border: 2px solid #333;
     border-radius: 2rem;
@@ -345,7 +345,7 @@ _css-inline-vs-inlineblock-vs-block_
   + inline 처럼 나란히 배치되지만, block 처럼 높이와 너비 설정 가능
   + 대표적인 태그: button, input, select 등..
 
-```css
+```scss
   .opposite {
     display: inline-block; /* 안하면, margin 등은 효과 없음 */
     background-color: #333;
@@ -390,7 +390,7 @@ _css-inline-vs-inlineblock-vs-block_
   + `ul` 은 위치 고정 `position: absolute` + `top: 0` &amp; `left: 0`
   + `li` 항목은 nav 의 block 으로 visibility 조정
 
-```html
+```scss
   .container {
     min-height: 100vh;
 

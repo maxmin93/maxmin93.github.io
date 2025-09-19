@@ -4,7 +4,7 @@ title: Tailwind 웹페이지 빌더 조사
 description: Tailwind 를 사용에 어려움이 많아 도구의 힘을 빌리려고 합니다. Tailwind 의 Page Builer 도구로 유명한 Shuffle 등을 공부합니다.
 categories: [Frontend, CSS]
 tags: [wysiwyg, shuffle, tailwind]
-image: "https://i.ytimg.com/vi/_v3jR3BQeeM/maxresdefault.jpg"
+image: "https://shuffle.dev/static/img/made-in-shuffle/made-in-shuffle-artemis-main.webp"
 ---
 
 ## 0. 개요

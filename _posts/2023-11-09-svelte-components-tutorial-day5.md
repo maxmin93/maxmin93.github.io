@@ -251,7 +251,7 @@ const config = {
 
 > skeleton docs 설명에 쓰이는 페이지 템플릿
 
-```html
+```svelte
 <!-- DocsShell.svelte -->
 <script>
   export let settings;   // @type { DocsShellSettings }
@@ -276,7 +276,7 @@ const config = {
 
 > 특정 docs 페이지
 
-```html
+```svelte
 <script>
   import DocsShell from '$lib/layouts/DocsShell/DocsShell.svelte';
   // DocsShellSettings
@@ -304,7 +304,7 @@ const config = {
 - `section > a > article` 안에 이미지와 제목, 본문발췌를 출력
   - Blog 포스트는 a 태그로 감싸서 출력
 
-```html
+```svelte
 <script lang="ts">
   export let data: PageData;
 </script>
@@ -369,7 +369,7 @@ const config = {
 - [`w-full`](https://tailwindcss.com/docs/width#percentage-widths) : `flex` 아래에서 사용하며, 너비 전체를 사용
   - [`w-auto`](https://tailwindcss.com/docs/width#resetting-the-width) : 기존에 설정된 너비 설정을 무효화 (ex: `md:w-auto`)
 
-```css
+```scss
 .page-container-wide {
   @apply w-full max-w-7xl mx-auto space-y-10;
 }
@@ -426,7 +426,7 @@ export const actions = {
 - 이전, 이후 페이지에 대한 제한은 button 비활성화로 처리한다.
   - [ghost](https://ghost.org/docs/introduction/) 라는 오픈소스 CMS 에서는 다양한 [meta 데이터](https://ghost.org/docs/content-api/#pagination) 를 제공한다.
 
-```html
+```svelte
 <!-- +page.svelte -->
 <script lang="ts">
   import type { PageData, ActionData } from './$types';
@@ -473,7 +473,7 @@ export const actions = {
 - `aria-busy={loading}` 으로 관련 button 을 비활성화
   - 참고 : [codepen - `aria-busy` 예제](https://codepen.io/stevef/pen/OZwMqv/)
 
-```html
+```svelte
 <!-- +page.svelte -->
 <script lang="ts">
   import type { SubmitFunction } from './$types';
@@ -514,7 +514,7 @@ export const actions = {
 
 ### Blog 콘텐츠 페이지
 
-```html
+```svelte
 <script lang="ts">
   import hljs from 'highlight.js/lib/core';
   import { onMount } from 'svelte';
@@ -596,7 +596,7 @@ highlight.js 를 이용해 코드 블럭을 출력한다. ([지원하는 언어 
 bun add -d highlight.js
 ```
 
-```html
+```svelte
 <!-- +layout.svelte -->
 <script>
   // Dependency: Highlight JS
@@ -645,7 +645,7 @@ export default defineConfig({
 
 > 사용법
 
-```html
+```svelte
 <script>
   import { CodeBlock } from '@skeletonlabs/skeleton';
 </script>
@@ -678,7 +678,7 @@ bun add -d @floating-ui/dom
 - `use:popup` : popup 기능과 setttings 를 사용
 - `data-popup` : 컴파일 할 때 변환
 
-```html
+```svelte
 <script>
   import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
   const popupClick: PopupSettings = {

@@ -1,6 +1,6 @@
 ---
 date: 2021-02-01 00:00:00 +0900
-title: 뉴스 API
+title: 뉴스 데이터 API
 description: 뉴스 데이터를 API 로 제공하는 서비스를 알아보았습니다. 국내는 빅카인즈, 영어권에 NEWS API 가 있습니다. 국내의 경우 연구과제용으로 쓰지 못합니다.
 categories: [AI]
 tags: [api, data]

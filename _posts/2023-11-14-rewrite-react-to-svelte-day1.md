@@ -87,7 +87,7 @@ export function Counter(props) {
 
 > revision : **Svelte**
 
-```html
+```svelte
 <!-- CounterWithProps.svelte -->
 <script>
   export let count = 0
@@ -144,7 +144,7 @@ export function Grid({ children, columns }) {
 
 > revision : **Svelte**
 
-```html
+```svelte
 <script>
   export let columns
 </script>
@@ -198,7 +198,7 @@ export function Todos() {
 
 > revision : **Svelte**
 
-```html
+```svelte
 <script>
   const todos = [
     { id: 1, text: 'Todo 1', completed: true },
@@ -272,7 +272,7 @@ export function Player() {
 
 > revision : **Svelte**
 
-```html
+```svelte
 <script>
   import ein from '../assets/video.mp4'
 
@@ -396,7 +396,7 @@ export function RemoveItem() {
 
 > revision : **Svelte**
 
-```html
+```svelte
 <!-- List.svelte -->
 <script>
   import { setContext } from 'svelte'
@@ -423,7 +423,7 @@ export function RemoveItem() {
 </ul>
 ```
 
-```html
+```svelte
 <!-- items.svelte -->
 <script>
   import { getContext } from 'svelte'
@@ -488,7 +488,7 @@ React.useEffect(() => {
 
 - 관찰 대상이 여러개일 경우(Lots Of Deps), 함수를 만들어 일괄 처리한다.
 
-```html
+```svelte
 <script>
   onMount(() => {
     console.log('MOUNT');
@@ -548,7 +548,7 @@ function Outer(props) {
 
 - `svelte:fragment` : slot 이름을 특정하여 내용을 삽입할 수 있다.
 
-```html
+```svelte
 <TabControl tabs={[
   { label: 'Page 1', slot: 1},
   { label: 'Page 2', slot: 2},
@@ -579,7 +579,7 @@ function Outer(props) {
 - [window:unhandledrejection](https://developer.mozilla.org/en-US/docs/Web/API/Window/unhandledrejection_event) 이벤트를 이용한다.
   - 그러나 이런 경우는, 오류를 일으키는 하위 컴포넌트 사용시에 발생한다.
 
-```html
+```svelte
 <script>
   const onunhandledrejection = async e => {
     console.log('Unhandler error, checking whether crashed', e);

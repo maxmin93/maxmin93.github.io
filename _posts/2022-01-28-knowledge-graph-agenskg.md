@@ -2,7 +2,7 @@
 date: 2022-01-28 00:00:00 +0900
 title: AgensKG 지식그래프 소개
 description: 왜 그래프 기반 지식그래프인가? 지식그래프 생성 규칙 분석 및 적용에 대한 설명과 AgensKG 에 대해 소개합니다.
-categories: [AI, 지식그래프]
+categories: [Application, 지식그래프]
 tags: [의존그래프, 라벨링]
 image: /2022/01/28-pic05.png
 ---

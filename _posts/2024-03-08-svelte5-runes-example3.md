@@ -71,7 +71,7 @@ EOF
 
 > `$lib/assets/icons/ri-sun-line.svelte`
 
-```html
+```svelte
 <script>
   // $props() 하나만 존재할 수 있다. (중복 호출 안됨)
   let { size = '1em', color = 'currentColor', label = '', ...restProps } = $props();
@@ -97,7 +97,7 @@ EOF
 
 > `+page.svelte`
 
-```html
+```svelte
 <script>
   import { RiSunLine, RiMoonLine } from '$lib/assets';
 </script>
@@ -336,7 +336,7 @@ EOF
 
 > `components/mobile-frame.svelte`
 
-```html
+```svelte
 <script>
   /** @type { {
    *    children: import('svelte').Snippet,
@@ -372,7 +372,7 @@ EOF
 
 > `todos/+page.svelte`
 
-```html
+```svelte
 <script>
   import MobileLayout from '$lib/components/mobile-frame.svelte';
 </script>

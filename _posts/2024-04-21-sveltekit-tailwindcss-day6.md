@@ -94,7 +94,7 @@ _TailGrids - Dashboard and Admin Template 전체_
 
 - 생략가능(optional) 함수 파라미터의 JSDoc 표현식 : `@param {boolean=} value`
 
-```html
+```svelte
 <script>
   // 사이드 메뉴
   const sidebarController = (() => {
@@ -175,7 +175,7 @@ _Admin Template - Sidebar Layout - Open_
 
 > `sidebar-section.svelte`
 
-```html
+```svelte
 <script>
   import LogoSvg from '$lib/assets/images/logo/logo.svg';
   import Avatar5Img from '$lib/assets/images/avatar/image-05.jpg';
@@ -224,7 +224,7 @@ _Admin Template - Sidebar Layout - Open_
 
 > `header-section.svelte`
 
-```html
+```svelte
 <header class="w-full bg-base-100">
   <div
     class="relative flex items-center justify-end bg-base-200 py-3 pl-[70px] pr-3 sm:justify-between md:pl-20 md:pr-8 xl:pl-8"
@@ -285,7 +285,7 @@ _component-score-card.png_
 
 > Parent Component
 
-```html
+```svelte
 <script>
   // create handler of dropdown menu
   const createDropdownHandle = () => {
@@ -346,7 +346,7 @@ _component-score-card.png_
 
 > ScoreCard (Child)
 
-```html
+```svelte
 <script>
   /** @type { {
    *    value: string,
@@ -390,7 +390,7 @@ _chartjs-barchart-demo_
 
 > `+page.svelte`
 
-```html
+```svelte
 <script>
   import { bindBarChart } from './chartjs-bar.svelte';
 </script>
@@ -499,7 +499,7 @@ _chartjs-line-with-actions_
 
 > sales-section.svelte (Parent 컴포넌트)
 
-```html
+```svelte
 <script>
   import { bindLineChart, lineChartActions } from './chartjs-line.svelte';
 </script>
@@ -561,7 +561,7 @@ export function bindLineChart(node) {
 - 상위 컴포넌트에서 actions 를 전달받고 action 버튼 생성
 - chart 생성 함수에서 전달한 chart 객체를 저장하고 action handler 함수에 전달
 
-```html
+```svelte
 <script>
   /** @type { {
    *    title: string,

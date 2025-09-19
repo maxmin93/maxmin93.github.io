@@ -2,7 +2,7 @@
 date: 2022-01-29 00:00:00 +0900
 title: AgensKG 지식그래프 생성하기
 description: 지식 모델링을 위한 SPOC Triple 구조와 이를 NLP 로 시각화한 방법론을 설명합니다. 한국어 구문을 트래플 그래프로 생성한 샘플들을 제시합니다.
-categories: [AI, 지식그래프]
+categories: [Application, 지식그래프]
 tags: [트리플그래프, 라벨링, ner]
 image: /2022/01/29-pic03.png
 ---

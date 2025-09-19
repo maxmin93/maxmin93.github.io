@@ -251,7 +251,7 @@ console.log(constantPalette.green);
 - data: PageData (변수명을 바꾸면 안된다. 다른 타입과 연계되었음)
   + 서버에서 클라이언트로 전달되는 title, content 데이터 (note)
 
-```html
+```svelte
 <script lang="ts">
   import { enhance, type SubmitFunction } from '$app/forms';
   import type { ActionData, PageData } from './$types';

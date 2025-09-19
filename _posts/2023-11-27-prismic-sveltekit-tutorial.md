@@ -4,7 +4,7 @@ title: primic.io - SvelteKit Tutorial
 description: prismic.io 헤드레스 CMS 를 소개하는 Youtube 동영상이 있어서 따라해 보았습니다. slice machine 이라는 프리뷰 도구가 페이지 개발을 돕는 특징이 있습니다. (UI를 배치하며 꾸미는 WYSIWYG 방식은 아님)
 categories: [Frontend, Svelte]
 tags: ["primic","cms","slicemachine"]
-image: "https://mma.prnewswire.com/media/1519349/prismic_logo_Logo.jpg?w=200"
+image: "https://mma.prnewswire.com/media/1519349/prismic_logo_Logo.jpg?p=facebook"
 ---
 
 ## 0. 개요

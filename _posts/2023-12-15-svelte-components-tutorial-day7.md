@@ -240,7 +240,7 @@ export function cn(...inputs: ClassValue[]) {
 
 > [tailwind variants 사용법](https://www.tailwind-variants.org/docs/getting-started#usage) 
 
-```html
+```svelte
 <script>
 import { tv } from 'tailwind-variants';
  
@@ -269,7 +269,7 @@ const button = tv({
 - date-and-time : addDays
 - faker : 회사 이름
 
-```html
+```svelte
 <script>
   import { createCollapsible, melt } from '@melt-ui/svelte';
   import { slide } from 'svelte/transition';
@@ -501,7 +501,7 @@ main();
     "drizzle:generate": "drizzle-kit generate:sqlite --out ./drizzle/migrations --breakpoints --schema=./src/lib/server/schema.ts",
     "drizzle:migrate": "bun drizzle/migrate.ts",
     "drizzle:seed": "bun drizzle/seed.ts"
-  },
+  }
 ```
 
 
@@ -527,7 +527,7 @@ _users-infinite-table ending_
 
 > lg 이하 모바일 스크린샷 
 
-![daisyui-menu-drawer-mobile](/2023/12/15-daisyui-menu-drawer-mobile.png){: width="560" .w-75}
+![daisyui-menu-drawer-mobile](/2023/12/15-daisyui-menu-drawer-mobile.png){: width="200" .w-75}
 _daisyui-menu-drawer-mobile_
 
 ### bun:sqlite + drizzle 이용한 table 페이지
@@ -599,7 +599,7 @@ export const load: PageServerLoad = async () => {
 - [테이블 스타일은 daisyUI 를 이용](https://daisyui.com/components/table/)
   - [hover 클래스](https://daisyui.com/components/table/#table-with-a-row-that-highlights-on-hover) 덕분에 마우스 커서가 지나칠 때마다 테이블 행이 반전된다.
 
-```html
+```svelte
 <script lang="ts">
   import { pageTitle } from '$lib/stores';
   import { onMount } from 'svelte';
@@ -678,7 +678,7 @@ daisyUI 의 [Toast 스타일](https://daisyui.com/components/toast/)을 사용�
 - daisyUI 는 color 변수가 정의되어 있어서 지정하기 편하다.
   - primary, second, error, warning 등등..
 
-```html
+```svelte
 <script>
   const toastData: ToastData[] = [
     {

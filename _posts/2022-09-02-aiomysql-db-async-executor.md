@@ -40,7 +40,7 @@ image: "https://byline.network/wp-content/uploads/2017/10/mysql-logo.jpg"
 
 DB 서버와 클라이언트의 프로그램간 연결과 실행을 제어하는 모듈
 
-![DB-Adapter diagram](https://i.stack.imgur.com/A9E32.png){: width="560" .w-75}
+![DB-Adapter diagram](/2022/09/02-db-adapter-diagram.webp){: width="560" .w-75}
 
 DB Adapter 는 다음과 같은 기능을 지원한다 (역활)
 

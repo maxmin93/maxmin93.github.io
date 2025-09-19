@@ -538,8 +538,10 @@ SELECT *
 
 - postgresql full-textsearch 는 버전업에 따라 검색 응답시간이 향상되고 있고, elasticsearch 와 비교할 때 크게 차이가 나지 않습니다. 따라서 수백만개의 레코드나 대규모 데이터가 아니라면 pg full-textsearch 를 선택하는 것이 좋습니다.
   - 출처 : [postgresql full-textsearch 와 elasticsearch](https://stackoverflow.com/a/74927254/6811653)
+  - 이미지 출처 : <https://i.sstatic.net/LGUNe.png>
 
-![pg full-textsearch vs elasticsearch](https://i.stack.imgur.com/LGUNe.png){: width="560" .w-75}
+
+![pg full-textsearch vs elasticsearch](/2024/01/27-pg-vs-es-LGUNe.webp){: width="320" .w-75}
 _pg full-textsearch vs elasticsearch_
 
 &nbsp; <br />

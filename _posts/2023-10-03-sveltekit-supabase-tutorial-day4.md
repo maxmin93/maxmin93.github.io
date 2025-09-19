@@ -24,13 +24,13 @@ image: "https://authjs.dev/api/og?title=Auth.js%20%7C%20Discord"
 
 > 화면 캡쳐
 
-![twitter-clone-posts](https://raw.githubusercontent.com/maxmin93/bun-authjs-app/main/static/03-twitter-clone-posts.png?raw=true0){: width="640" .w-75}
+![twitter-clone-posts](https://raw.githubusercontent.com/maxmin93/bun-authjs-app/main/static/03-twitter-clone-posts.png?raw=true0){: width="440" .w-75}
 _twitter-clone-posts_
 
-![twitter-clone-auth-page](https://raw.githubusercontent.com/maxmin93/bun-authjs-app/main/static/03-twitter-clone-auth-page.png?raw=true){: width="640" .w-75}
+![twitter-clone-auth-page](https://raw.githubusercontent.com/maxmin93/bun-authjs-app/main/static/03-twitter-clone-auth-page.png?raw=true){: width="440" .w-75}
 _twitter-clone-auth-page_
 
-![twitter-clone-discord-login](https://raw.githubusercontent.com/maxmin93/bun-authjs-app/main/static/03-twitter-clone-discord-login.png?raw=true){: width="640" .w-75}
+![twitter-clone-discord-login](https://raw.githubusercontent.com/maxmin93/bun-authjs-app/main/static/03-twitter-clone-discord-login.png?raw=true){: width="440" .w-75}
 _twitter-clone-discord-login_
 
 > 참고문서
@@ -440,7 +440,7 @@ export const handle: Handle = sequence(auth, authorization);
 
 - signIn 호출시 callbackUrl 옵션을 사용 
 
-```html
+```svelte
 <button
       class="text-red-500"
       on:click={() => signIn('discord', { callbackUrl: '/page' })}
@@ -533,7 +533,7 @@ export {};
   - onClap 으로 client 자체적으로 카운트 증가
   - DB update 는 server 의 POST action 호출을 통해 처리 (ActionData 는 없음)
 
-```html
+```svelte
 <script lang="ts">
   import { onMount } from 'svelte';
   import { format } from 'timeago.js';
@@ -624,7 +624,7 @@ export const actions = {
   - `result` is an `ActionResult` object
   - 컴포넌트 함수를 호출하여 claps 값 변경
 
-```html
+```svelte
 <script lang="ts">
   export let post: PostType;
 

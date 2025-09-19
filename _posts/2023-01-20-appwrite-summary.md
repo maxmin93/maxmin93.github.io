@@ -84,7 +84,7 @@ Appwrite 의 Svelte 예제는 SvelteKit 을 사용하지 않았다. (router 만 
 - `/todos` 페이지 이동시 state.account 를 체크한다
   - conditionsFailed 인 경우, 루트(`/`) 경로로 이동
 
-```html
+```svelte
 <script lang="ts">
   import { onMount } from "svelte";
   import { state } from "./store";

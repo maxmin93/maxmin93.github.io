@@ -107,7 +107,7 @@ image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-kQQloEDQ90MNQJP
 
 개발자 도구 &gt; Elements &gt; Styles (하단) &gt; filter 옆의 페인트 아이콘
 
-![setup prefer-color-scheme](https://i.stack.imgur.com/b3yDU.png){: width="400" .w-75}
+![setup prefer-color-scheme](/2023/07/03-prefer-color-scheme.webp){: width="400" .w-75}
 _setup prefer-color-scheme_
 
 #### Classes 이름 명명법에서 `--` (더블 하이픈) 의미는 무엇인지?
@@ -244,7 +244,7 @@ data-tooltip 의 문자열이 (클릭시) 툴팁으로 표시된다.
 ### Ch22. CSS Animated Responsive NavBar
 
 <video width="600" controls>
-  <source src="/assets/img/2023/07/03-css-ch22-animations.mp4" type="video/mp4">
+  <source src="/assets/img/2023/07/03-css-ch22-animations-h264.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -283,7 +283,7 @@ Header 에 hover 시, 메뉴 icon 이 회전하여 'X' 표시가 된다.
 - 회전 `rotate(180deg)`
 - 햄버거 쌓기를 위한 위치 이동 `translate(-20px, +12px)`
 
-```css
+```scss
   header {
     background-color: var(--HEADER-BGCOLOR);
     color: var(--HEADER-COLOR);
@@ -338,7 +338,7 @@ Header 에 hover 시, 메뉴 icon 이 회전하여 'X' 표시가 된다.
 - Y축 방향으로 스케일을 0 에서 1.2배 살짝 늘렸다가 원래 길이로 복원시킨다
   + 애니메이션 `showMenu` 을 0.5초 동안 실행
 
-```css
+```scss
   nav {
     background-color: var(--HEADER-BGCOLOR);
     display: none; /* visibility: hidden; */

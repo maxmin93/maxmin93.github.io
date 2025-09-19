@@ -29,12 +29,12 @@ image: "https://stepmediasoftware.com/wp-content/uploads/2025/03/choosing-an-aws
 - AWS vs GCS 요청수 비교
   + Average number of requests per second under incremental load for 5 minutes
 
-![AWS vs GCS 요청수 비교](https://img.stackshare.io/stackups/lambda_vs_cloud_functions-requests-per-second.png){: width=440}
+![AWS vs GCS 요청수 비교](https://img.stackshare.io/stackups/lambda_vs_cloud_functions-requests-per-second.png){: width="440" .w-75}
 
 - AWS vs GCS 응답시간 비교
   + Average response time under incremental load for 5 minutes
 
-![AWS vs GCS 응답시간 비교](https://s3-us-west-2.amazonaws.com/stackshare-imgix1/stackups/lambda_vs_cloud_functions-response_time.png){: width=440}
+![AWS vs GCS 응답시간 비교](https://s3-us-west-2.amazonaws.com/stackshare-imgix1/stackups/lambda_vs_cloud_functions-response_time.png){: width="440" .w-75}
 
 ### 2) AWS SNS 와의 연계시 Lambda, API Gateway, ECS 간 성능 비교
 
@@ -104,19 +104,19 @@ Dotnet 이 느리고, Python / Node / Go 순으로 작다.
   + Go 의 경우 콜드 스타트 지속시간은 약 400ms 
   + Python(3.9) 과 Node(16.x) 는 콜드 스타트 영향이 거의 없는듯
 
-![Max Duration](https://blog.thundra.io/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions.gif){: width="600" .w-75}
+![Max Duration](https://miro.medium.com/v2/resize:fit:4800/format:webp/0*BWO2OdnNocbfn9qf.gif){: width="600" .w-75}
 
 #### 평균 처리시간 (웜업)
 
 Java 가 가장 느리고, Python / Node / Go 순으로 작은데 거의 비슷
 
-![Average Duration](https://blog.thundra.io/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions-1.png){: width="600" .w-75}
+![Average Duration](https://miro.medium.com/v2/resize:fit:4800/format:webp/0*XTe-ImbaE2718a0R.png){: width="600" .w-75}
 
 #### 최대 메모리 사용량 (웜업)
 
 Dotnet 이 가장 많이 사용하고, Go / Node / Python 순으로 적게 사용
 
-![Max Memory Usages](https://blog.thundra.io/hubfs/Google%20Drive%20Integration/Fastest%20Runtime%20For%20AWS%20Lambda%20Functions-3.png){: width="600" .w-75}
+![Max Memory Usages](https://miro.medium.com/v2/resize:fit:4800/format:webp/0*Uv-9ByQzGFrbxzNl.png){: width="600" .w-75}
 
 #### 언어별 콜드스타트 시간 비교 [(출처-2021년)](https://mikhail.io/serverless/coldstarts/aws/languages/)
 

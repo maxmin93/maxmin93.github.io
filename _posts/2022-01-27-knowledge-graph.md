@@ -2,7 +2,7 @@
 date: 2022-01-27 00:00:00 +0900
 title: 지식그래프란?
 description: 그래프 기반 지식그래프 R&D 과제 수행을 위해 지식그래프에 대한 개념부터 조사를 했습니다.
-categories: [AI, 지식그래프]
+categories: [Application, 지식그래프]
 tags: [시멘틱웹, 온톨로지, xAI, 인식론]
 image: /2022/01/27-pic05.png
 ---

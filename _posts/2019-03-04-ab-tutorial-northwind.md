@@ -2,7 +2,7 @@
 date: 2019-03-04 00:00:00 +0900
 title: AgensBrowser 튜토리얼 - northwind
 description: 그래프 데이터베이스 제품의 튜토리얼 과정을 Northwind 상품추천 내용으로 만들었습니다.
-categories: [Backend, Database]
+categories: [Application]
 tags: [graphdb, agensgraph, tutorial]
 image: /2019/03/04-ab-web-tutorial.webp
 ---

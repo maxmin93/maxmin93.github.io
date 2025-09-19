@@ -77,7 +77,7 @@ if *a != *b {panic("not equalt")}
 
 ### 3) 키워드와 연산자
 
-![Golang keywords](https://miro.medium.com/max/742/1*BmhM5w3Lp-jCwCn5R97JKA.png){: width=600}
+![Golang keywords](https://miro.medium.com/max/742/1*BmhM5w3Lp-jCwCn5R97JKA.png){: width="600" .w-75}
 
 #### 눈여겨볼 키워드
 

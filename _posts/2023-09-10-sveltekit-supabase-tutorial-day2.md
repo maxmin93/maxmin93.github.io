@@ -296,7 +296,7 @@ export default {
 } satisfies Config;
 ```
 
-```json
+```jsonc
 // package.json
 {
   "scripts": {
@@ -349,7 +349,7 @@ export const load: PageServerLoad = async () => {
 };
 ```
 
-```html
+```svelte
 <!-- src/routes/+page.svelte -->
 <script lang="ts">
   import type { PageData } from './$types';

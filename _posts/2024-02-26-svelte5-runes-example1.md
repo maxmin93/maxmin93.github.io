@@ -432,7 +432,7 @@ EOF
   - todo 완료 여부 체크박스 
     - 완료시 텍스트 입력필드의 border 색상 추가, opacity 적용
 
-```html
+```svelte
 <!-- src/routes/todos/+page.svelte -->
 <script lang="ts">
   type Todo = {
@@ -538,7 +538,7 @@ EOF
 - onkeydown, oninput 등의 event 속성에 함수를 바로 연결할 수 있다.  
   - 예전에는 on 지시자를 사용했다
 
-```html
+```svelte
 <script lang="ts">
   import type { Todo, Filters } from '$lib/stores/todos';
   import { todos as todosStorage } from '$lib/stores/todos';
@@ -617,7 +617,7 @@ EOF
 
 콘솔창에서 `localStorage.clear()` 실행, 또는 `localStorage.removeItem(key)`
 
-```html
+```svelte
 <script lang="ts">
   import type { Todo, Filters } from '$lib/stores/todos';
   import { todos as todosStorage } from '$lib/stores/todos';
@@ -664,12 +664,12 @@ export const todos = persisted<Todo[]>('todos', [
 
 > 초기 로딩 (all 출력)
 
-![](/2024/02/26-svelte5-todos-all.png){: width="560" .w-75}
+![](/2024/02/26-svelte5-todos-all.png){: width="320" .w-75}
 _svelte5-todos-all_
 
 > completed 필터 출력
 
-![](/2024/02/26-svelte5-todos-completed.png){: width="560" .w-75}
+![](/2024/02/26-svelte5-todos-completed.png){: width="320" .w-75}
 _svelte5-todos-completed_
 
 

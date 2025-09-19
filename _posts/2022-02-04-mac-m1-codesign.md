@@ -19,11 +19,11 @@ pgAdmin4는 postgresql을 위한 클라이언트로 다양한 OS에 설치하여
 
 `$PGADMIN4_SRC/pkg` 폴더에 OS별로 패키징 스크립트가 있습니다. 이중에서 mac용 패키징을 시도합니다.
 
-![pgadmin4_src_pkg](/2022/02/pgadmin4-pkgs.png){: width="540" .w-75}
+![pgadmin4_src_pkg](/2022/02/pgadmin4-pkgs.png){: width="200" .w-75}
 
 `make appbundle` 명령에 의해 생성된 Mac 용 App입니다.
 
-![pgadmin4_built_app](/2022/02/pgadmin4-built-app.png){: width="540" .w-75}
+![pgadmin4_built_app](/2022/02/pgadmin4-built-app.png){: width="340" .w-75}
 
 ## Mac용 App 패키징 절차
 

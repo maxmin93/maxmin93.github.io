@@ -227,6 +227,23 @@ The image below will toggle dark/light mode based on theme preference, notice it
 
 {% include embed/youtube.html id='Balreaj8Yqs' %}
 
+또는 로컬 embed video 출력할 때는 다음과 같이 작성한다.
+
+```html
+<video width="350" height="720" controls autoplay muted>
+  <source src="/assets/img/2023/07/05-css-ch24-taco-shop-h264.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+```
+
+> Chrome 호환성을 위해 `H265` 비디오 인코딩이 필요하다.
+
+```shell
+ffmpeg -i 05-css-ch24-taco-shop-350x720.mp4 -vcodec h264 -acodec aac 05-css-ch24-taco-shop-h264.mp4
+```
+
+참고: [Embedding a video gallery in Jekyll websites](https://uthpalaherath.com/Embedding-a-video-gallery-in-Jekyll-websites/)
+
 ## Reverse Footnote
 
 <!-- 각주(^) -->

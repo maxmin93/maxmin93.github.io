@@ -44,7 +44,7 @@ _TailGrids - Startup Site Template_
 
 > 전체 화면
 
-![](/2024/04/20-tailgrid-templates-site2-whole.png){: width="560" .w-75}
+![](/2024/04/20-tailgrid-templates-site2-whole.png){: width="200" .w-75}
 _TailGrids - Startup Site Template_
 
 > Template Section and Pages:
@@ -81,7 +81,7 @@ _TailGrids - Startup Site Template_
 
 ### 전체 코드
 
-```html
+```svelte
 <script>
   import NavbarSection from './navbar-section.svelte';
   import HeroSection from './hero-section.svelte';
@@ -200,7 +200,7 @@ _TailGrids - Startup Site Template_
   - close 상태이면 풀다운 메뉴를 hidden 처리
 - menuItems 로 풀다운 메뉴의 항목을 반복 처리
 
-```html
+```svelte
 <script>
   import { clickOutside } from '$lib/utils/click-outside';
   import LogoSvg from '$lib/assets/template2/images/logo/logo.svg';
@@ -309,7 +309,7 @@ _TailGrids - Startup Site Template_
   - `div > iframe` 으로 youtube 플레이 크기를 지정
   - youtube 링크 파라미터로 autoplay 와 mute 설정
 
-```html
+```svelte
 <script>
   import { clickOutside } from '$lib/utils/click-outside';
   import VideoImg01 from '$lib/assets/template2/images/videos/image-01.jpg';
@@ -375,7 +375,7 @@ _TailGrids - Startup Site Template_
 </section>
 ```  
 
-![](/2024/04/20-tailgrid-templates2-video.png){: width="560" .w-75}
+![](/2024/04/20-tailgrid-templates2-video.png){: width="320" .w-75}
 _Startup Site Template - Video Section_
 
 ### `testimonials-section.svelte`
@@ -385,7 +385,7 @@ _Startup Site Template - Video Section_
 - snippet 을 뒷부분에 정의하고 싶으면 script 블록이 존재해야 한다.
   - 안그러면 선언 전에 객체를 사용했다고 오류 메시지가 나온다. (작동은 됨)
 
-```html
+```svelte
 <script>
   import Testimonial5Img1 from '$lib/assets/template2/images/testimonials/testimonial-05/image-01.jpg';
   import Testimonial5Img2 from '$lib/assets/template2/images/testimonials/testimonial-05/image-02.jpg';
@@ -447,7 +447,7 @@ _Startup Site Template - Video Section_
 {/snippet}
 ```
 
-![](/2024/04/20-tailgrid-templates2-mobile.png){: width="560" .w-75}
+![](/2024/04/20-tailgrid-templates2-mobile.png){: width="320" .w-75}
 _Startup Site Template - Testimonials Section_
 
 
@@ -458,7 +458,7 @@ _Startup Site Template - Testimonials Section_
 - faq 항목 클릭시 상태를 toggle 시키고, `if` 블럭으로 출력 제어
 - snippet 에 onclick 함수까지 전달할 수 있다
 
-```html
+```svelte
 <script>
   import ArrowDownIcon from '$lib/assets/template2/icons/arrow-down-icon.svelte';
 

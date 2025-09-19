@@ -91,7 +91,7 @@ image: "https://cdn.icon-icons.com/icons2/2699/PNG/512/tailwindcss_logo_icon_170
   - grid 대신에 flex 를 넣고
   - 주축 정렬에 `justify-center`, 보조축 정렬에 `items-center` 를 사용
 
-```html
+```svelte
 <!-- +layout -->
 <div class="radial-blue grid min-h-screen place-content-center">
   <!-- +page -->
@@ -197,7 +197,7 @@ export default {
 }        
 ```
 
-```css
+```scss
 /* app.pcss */
 @tailwind utilities;
 
@@ -253,7 +253,7 @@ export default {
   - 햄버거 메뉴 모양의 가운데 가로선 div 를 두고, before 와 after 로 위/아래선 생성
   - 클릭시 'X' 버튼으로 before 와 after 를 변형시키기 `toggle-btn`
 
-```css
+```scss
 @layer utilities {
   .toggle-btn {
     @apply [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div]:rotate-[720deg] [&>div]:bg-transparent;
@@ -266,7 +266,7 @@ export default {
   - 햄버거 메뉴 클릭시 효과: toggle(hidden), toggle(flex)
     - 스크립트로 처리
 
-```html
+```svelte
 <script>
   /** @type { HTMLElement } */
   let hamburgerBtn; // button

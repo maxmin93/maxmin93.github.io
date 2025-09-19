@@ -216,7 +216,7 @@ Accordion 컴포넌트를 기준으로 비교해 본다.
 - 색상에 사용된 `bg-neutral-100` 등은 사용자 칼라 설정이 필요하다.
   - 참고: [tailwind 커스텀 칼라 설정](https://tailwindcss.com/docs/customizing-colors#using-custom-colors)
 
-```html
+```svelte
 <script lang="ts">
   import { cn } from '$docs/utils';
   import { createAccordion, melt } from '@melt-ui/svelte';
@@ -309,7 +309,7 @@ Accordion 컴포넌트를 기준으로 비교해 본다.
 - 사용 코드는 melt-ui 의 태그 레이어를 개별적인 svelte 요소로 만들어 조립한 형태이다.
   - 참고 : [깃허브 - accordion/components](https://github.com/huntabyte/bits-ui/tree/main/src/lib/bits/accordion/components)
 
-```html
+```svelte
 <script lang="ts">
   import { Accordion } from "$lib";
   import { CaretDown } from "phosphor-svelte";
@@ -367,7 +367,7 @@ Accordion 컴포넌트를 기준으로 비교해 본다.
   - 대신에 tailwind 테마 설정을 잘 해야 한다.
   - bits-ui 코드가 있고, 그 뒤에 melt-ui 가 돌아간다.
 
-```html
+```svelte
 <script lang="ts">
   import * as Accordion from "$lib/components/ui/accordion";
 </script>
@@ -401,7 +401,7 @@ Accordion 컴포넌트를 기준으로 비교해 본다.
 - `svelte/transition` 의 slide 효과를 주고 싶었지만, 작동하지 않는다
   - daisyUI 의 `collapse-content` 에 이미 transition 지시자가 있다 
 
-```html
+```svelte
 <script lang="ts">
   import { slide } from 'svelte/transition';
   import { cn } from '$lib/utils';
@@ -458,7 +458,7 @@ Accordion 컴포넌트를 기준으로 비교해 본다.
 - 컴포넌트 소스의 복잡함은 비등비등한데, props 등의 문서 정리가 잘 되어 있다.
   - 참고 : [accordion 컴포넌트 소스](https://github.com/skeletonlabs/skeleton/tree/dev/packages/skeleton/src/lib/components/Accordion)
 
-```html
+```svelte
 <Accordion>
   <AccordionItem open>
     <svelte:fragment slot="lead">(icon)</svelte:fragment>
@@ -530,22 +530,22 @@ $ _
 
 > desktop 스크린샷
 
-![shadcn-svelte-dashboard-desktop](/2024/01/03-shadcn-svelte-dashboard-desktop.png){: width="560" .w-75}
+![shadcn-svelte-dashboard-desktop](/2024/01/03-shadcn-svelte-dashboard-desktop.png){: width="440" .w-75}
 _shadcn-svelte-dashboard-desktop_
 
 > mobile 스크린샷
 
-![shadcn-svelte-dashboard-mobile](/2024/01/03-shadcn-svelte-dashboard-mobile.png){: width="560" .w-75}
+![shadcn-svelte-dashboard-mobile](/2024/01/03-shadcn-svelte-dashboard-mobile.png){: width="320" .w-75}
 _shadcn-svelte-dashboard-mobile_
 
 > sidebar 메뉴 스크린샷
 
-![shadcn-svelte-dashboard-sidebar](/2024/01/03-shadcn-svelte-dashboard-sidebar.png){: width="560" .w-75}
+![shadcn-svelte-dashboard-sidebar](/2024/01/03-shadcn-svelte-dashboard-sidebar.png){: width="320" .w-75}
 _shadcn-svelte-dashboard-sidebar_
 
 > search dialog 스크린샷
 
-![shadcn-svelte-dashboard-search](/2024/01/03-shadcn-svelte-dashboard-search.png){: width="560" .w-75}
+![shadcn-svelte-dashboard-search](/2024/01/03-shadcn-svelte-dashboard-search.png){: width="440" .w-75}
 _shadcn-svelte-dashboard-search_
 
 
@@ -559,7 +559,7 @@ _shadcn-svelte-dashboard-search_
   - slot : 콘텐츠 영역 (flex-1)
   - SiteFooter : 푸터
 
-```html
+```svelte
 <script lang="ts">
   import { page } from '$app/stores';
   import { dev, browser } from '$app/environment';

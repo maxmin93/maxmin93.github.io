@@ -58,7 +58,7 @@ image: https://svelte.dev/_app/immutable/assets/svelte-machine-mobile.B0w2rScM.p
 - edit 버튼에 setEditing 을 연결 => input 으로 편집 가능
 - delete 버튼에 deleteTodo 를 연결
 
-```html
+```svelte
 <script lang="ts">
   type ToDo = {
     content: string;
@@ -81,7 +81,7 @@ image: https://svelte.dev/_app/immutable/assets/svelte-machine-mobile.B0w2rScM.p
 - KeyboardEvent 이벤트의 `e.key === 'Enter'` 조건 검사
   + 일치하면 callback 함수 실행
 
-```html
+```svelte
 <script lang="ts">
   const onKeyPress = (e: KeyboardEvent, callback: () => void) => {
     if (e.key === 'Enter') {

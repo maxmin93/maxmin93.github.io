@@ -35,7 +35,23 @@ pre, code, kbd {
 }
 
 /*
-body, header, h1, h2, h3, h4, h5, p {
-  font-family: "Noto Sans KR", sans-serif;
+  비디오를 여러개 묶어 갤러리로 출력할 때만 사용
+  참고: Embedding a video gallery in Jekyll websites
+  https://uthpalaherath.com/Embedding-a-video-gallery-in-Jekyll-websites/
+ */
+.video-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between the videos */
+  justify-content: space-between;
 }
-*/
+
+.video-item {
+  flex: 1 1 calc(33.33% - 20px); /* 33.33% width for 3 items per row */
+  margin-bottom: 20px; /* Space between rows */
+}
+
+.video-item video {
+  width: 100%; /* Make videos responsive */
+  height: auto;
+}

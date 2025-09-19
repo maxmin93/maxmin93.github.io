@@ -323,7 +323,7 @@ form submit 후에 select 및 textarea 의 내용이 reset 되는 문제가 있�
 
 > `+page.svelte`
 
-```html
+```svelte
 <script>
   import { enhance } from '$app/forms';
 
@@ -399,7 +399,7 @@ export const actions = {
 - daisyUI 의 card 스타일을 이용해서, svelte each 구문으로 처리했다.
 - similarity 의 소수점 포맷은 `Number().toLocaleString({ .. })` 를 사용했다.
 
-```html
+```svelte
 <script>
   /** @type {import('./$types').ActionData} */
   export let form;

@@ -82,7 +82,7 @@ img[alt~="person"][src*="lorem"] {
 
 ### [Special elements - `$$slots`](https://svelte.dev/docs/special-elements#slot-$$slots)
 
-```html
+```svelte
 <!-- Card.svelte -->
 <div>
   <slot name="title" />
@@ -107,7 +107,7 @@ img[alt~="person"][src*="lorem"] {
 - `@const` : 로컬 상수를 선언 (논리 블록 내에서 사용)
   + 논리 블록 : if, else if, each, then, catch, svelte:fragment 등
 
-```html
+```svelte
 <script>
   export let boxes;
 </script>
@@ -131,7 +131,7 @@ img[alt~="person"][src*="lorem"] {
 - bind : clientWidth, clientHeight, offsetWidth, offsetHeight
 - bind : group
 
-```html
+```svelte
 <img
   bind:naturalWidth
   bind:naturalHeight
@@ -151,7 +151,7 @@ img[alt~="person"][src*="lorem"] {
 
 handler 호출 전에 event.preventDefault() 를 먼저 호출한다.
 
-```html
+```svelte
 <form on:submit|preventDefault={handleSubmit}>
   <input bind:value={name} />
   <textarea bind:value={text} />
@@ -164,7 +164,7 @@ handler 호출 전에 event.preventDefault() 를 먼저 호출한다.
 
 global 스코프로 지정하고 싶으면, `:global(...)` 수식어를 사용한다.
 
-```html
+```svelte
 <style>
   p {
     color: burlywood;
@@ -186,7 +186,7 @@ global 스코프로 지정하고 싶으면, `:global(...)` 수식어를 사용�
 
 ### 컴포넌트 prop 노출(export)
 
-```html
+```svelte
 <!-- Foo.svelte -->
 <script>
   /** @type {string} */  // <== ts-lint 를 위한 힌트 (error 제거)
@@ -208,7 +208,7 @@ global 스코프로 지정하고 싶으면, `:global(...)` 수식어를 사용�
 
 > 모든 props 는 `$$props`, 나머지 props 는 `$$restProps`
 
-```html
+```svelte
 <!-- TextField.svelte -->
 <script>
   export let value;  // props
@@ -271,7 +271,7 @@ global 스코프로 지정하고 싶으면, `:global(...)` 수식어를 사용�
 
 ### `$` : trigger 이후에 실행되는 callback 문
 
-```html
+```svelte
 <script>
   export let title;  // 외부 노출 속성1
   export let person; // 외부 노출 속성2
@@ -298,7 +298,7 @@ global 스코프로 지정하고 싶으면, `:global(...)` 수식어를 사용�
 
 > rxjs 스타일에서는 뒤에 붙이는데, svelte store 변수는 앞에 붙인다.
 
-```html
+```svelte
 <script>
   import { writable } from 'svelte/store';
 
@@ -355,7 +355,7 @@ SvelteKit 을 위한 component UI 라이브러리를 하나 살펴보며 공부�
 
 ### [Button](https://github.com/steeze-ui/components/tree/main/src/lib/button)
 
-```html
+```svelte
 <script lang="ts">
   import Icon from '@steeze-ui/svelte-icon/Icon.svelte'
   import type { IconSource } from '@steeze-ui/svelte-icon/types'
@@ -405,7 +405,7 @@ SvelteKit 을 위한 component UI 라이브러리를 하나 살펴보며 공부�
 
 #### [`style:{property}`](https://svelte.dev/docs/element-directives#style-property)
 
-```html
+```svelte
 <!-- 동일한 표현 -->
 <div style:color="red">...</div>
 <div style="color: red;">...</div>
@@ -422,7 +422,7 @@ SvelteKit 을 위한 component UI 라이브러리를 하나 살펴보며 공부�
 
 #### [Button 사용 예시](https://www.steeze-ui.com/docs/components/button)
 
-```html
+```svelte
 <script>
   import { Button } from '@steeze-ui/components'
 </script>

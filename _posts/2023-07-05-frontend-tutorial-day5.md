@@ -30,7 +30,7 @@ Dave Gray 의 CSS 강좌를 정리하는 마지막 실습 프로젝트이다.
 - about.html : 점포에 대한 대략적인 설명 페이지
 
 <video width="350" height="720" controls autoplay muted>
-  <source src="/assets/img/2023/07/05-css-ch24-taco-shop-350x720.mp4" type="video/mp4">
+  <source src="/assets/img/2023/07/05-css-ch24-taco-shop-h264.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 
@@ -160,7 +160,7 @@ textarea {
   + 연도는 time 태그를 사용하고, js 로 올해 연도를 계산하여 출력
 
 
-```html
+```svelte
 <div class="wrapper">
   <header class="header">
     <h1 class="header__h1">Little Taco Shop</h1>
@@ -226,7 +226,7 @@ textarea {
 
 - 큰 화면에서는 제목에 타코 아이콘이 좌우로 나타나도록 설정
 
-```css
+```scss
   @media screen and (min-width: 576px) {
     .header__h1 {
       &::before {
@@ -269,7 +269,7 @@ dark 모드를 위한 색상 변수를 정의
   + table : grid &amp; template-area 로 메뉴표 구획을 정의
     * 테이블 cell 의 내용은 gird &amp; center 로 가운데 위치하도록 설정
 
-```css
+```scss
   .menu {
     &__container {
       display: grid;
@@ -314,7 +314,7 @@ dark 모드를 위한 색상 변수를 정의
 
 테이블 header 성격의 텍스트는 큰 화면에서 조금 더 큰 글자로 표시되도록 설정
 
-```css
+```scss
   @media screen and (min-width: 576px) {
     .menu__header,
     .menu__cr,
@@ -424,7 +424,7 @@ _global 키워드 사용 예_
 ```
 {: file="App.svelte"}
 
-```html
+```svelte
 <a href={href} on:click={onClick} {...$$restProps}>
   <slot/>
 </a>
@@ -455,7 +455,7 @@ async function onClick (event) {
 
 > svelte-preprocess 에서 `style global` 옵션을 지원한다
 
-```html
+```svelte
 <script>
   export let data
 </script>

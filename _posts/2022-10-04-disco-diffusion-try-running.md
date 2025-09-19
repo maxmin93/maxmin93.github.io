@@ -7,9 +7,6 @@ tags: [python, diffusion, text-to-image, ai-art]
 image: "/2022/10/04-disco-diffusion-output_49-crunch.png"
 ---
 
-> 
-{: .prompt-tip }
-
 ![disco diffusion - sample 이미지](https://replicate.com/api/models/nightmareai/disco-diffusion/files/5800f828-94d5-46a0-9eb2-96b51d7846e3/6af357b1-11dc-4954-ad45-4f17b3bc18890_0.png){: width="580" .w-75}
 _&lt;그림&gt; disco diffusion - [sample images](https://replicate.com/nightmareai/disco-diffusion/examples)_
 
@@ -153,10 +150,16 @@ _&lt;그림&gt; disco diffusion - step #49_
 ![stable diffusion - 판포리](/2022/10/04-stable_diffusion-panpori_snorkeling-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; stable diffusion - 제주 판포리 스노쿨링_
 
+![](/2022/10/04-gpt4o-image-panpori.webp){: width="580" .w-75}
+_&lt;그림&gt; GPT-4o 모델 이미지 생성 - 판포리 (2025년 추가)_
+
 ### 2) "제주도 감귤밭에서 사진 찍기"
 
 ![stable diffusion - 감귤밭](/2022/10/04-stable_diffusion-jeju-gamgyul-farm-picture-crunch.png){: width="580" .w-75}
 _&lt;그림&gt; stable diffusion - 제주도 감귤밭 사진 찍기_
+
+![](/2022/10/04-gpt4o-image-gamgyul.webp){: width="580" .w-75}
+_&lt;그림&gt; GPT-4o 모델 이미지 생성 - 감귤 (2025년 추가)_
 
 
 ## 9. Review
@@ -167,6 +170,9 @@ _&lt;그림&gt; stable diffusion - 제주도 감귤밭 사진 찍기_
 - 데코라던지 흥미거리로 그림을 사용할 수준은 된다.
   + 이정도 발전 속도라면 웹소설이 웹툰으로 바뀌는 시대도 멀지 않을듯
 
+> 추가
+
+- GPT-4o 모델로 생성한 사진 2장을 추가했다. 판포리와 감귤밭 사진 모두 2022년 디퓨전 모델에 비하면 월등히 좋아졌다. 놀랍다.
 
 &nbsp; <br />
 &nbsp; <br />
