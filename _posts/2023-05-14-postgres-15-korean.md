@@ -468,6 +468,49 @@ $ psql -d postgres -c "SELECT name, setting FROM pg_settings WHERE name ILIKE '%
 오류:  article 테이블의 소유주여야만 합니다
 ```
 
+### Comments
+
+#### postgresql 팁 추가
+
+```shell
+# 데이터베이스 강제 삭제 (주의!!)
+$ sudo -u postgres dropdb -f tutorial
+```
+
+```sql
+-- 데이터베이스 리스트 (이름, 소유자)
+> select datname, pg_catalog.pg_get_userbyid(datdba) as owner from pg_database;
+```
+
+#### to_tsvector 함수로 두개 이상의 멀티 컬럼을 gin 인덱스(색인) 생성을 하려면
+
+- 참조 : [PostgreSQL full text search on many columns](https://dba.stackexchange.com/a/164081)
+
+1. 먼저 immutable 텍스트를 반환하는 concat 함수를 생성해야 한다.
+2. 사용자 정의 concat 함수로 컬럼을 연결하여 gin 인덱스 생성
+3. tsvector 와 tsquery 로 full-text search 사용
+
+```sql
+-- 사용자 정의 concat 함수 생성
+CREATE OR REPLACE FUNCTION f_concat_ws(text, VARIADIC text[])
+  RETURNS text
+  LANGUAGE sql IMMUTABLE PARALLEL SAFE AS
+'SELECT array_to_string($2, $1)';
+
+-- gin 인덱스 생성: section + " " + content
+CREATE INDEX ix_tbl_test_mecab
+    on tmp.tbl_test USING GIN (
+        to_tsvector('korean', f_concat_ws(' ', section, content))
+    );
+
+-- section, content 에 대해 쿼리 실행
+explain (analyze)
+select distinct section, content from tmp.tbl_test
+where to_tsvector('korean', f_concat_ws(' ', section, content))
+   @@ to_tsquery('korean','서귀포 & 모슬포')
+limit 5;
+```
+
 &nbsp; <br />
 &nbsp; <br />
 

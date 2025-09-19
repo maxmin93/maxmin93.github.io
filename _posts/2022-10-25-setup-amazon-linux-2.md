@@ -378,6 +378,55 @@ $ yarn global add @angular/cli
 - 고정IP로 깔끔하게 ssh 접속할 수 있어 정말 편하다
   + 전에는 켤 때마다 변하는 IP를 찾아 접속했다 (`awscli` 로 IP 조회)
 
+### Comments
+
+### [Stackoverflow - Certbot 도메인 재인증(renew) 하는 법](https://stackoverflow.com/a/73781129/6811653)
+
+1. nginx 정지
+2. certbot 인증 테스트 (dry-run)
+3. certbot 재인증 실행 (renew)
+    - 인증 방법 : 1번 standalone 선택
+    - Congratulations!
+4. nginx 시작
+5. 재인증 내용 확인 (90일간 유효)
+
+```bash
+# certbot v1.11 설치
+sudo yum update -y
+sudo yum install certbot python3-certbot-nginx
+
+# 테스트
+sudo systemctl stop nginx
+sudo certbot renew --dry-run
+
+# 재인증
+sudo certbot certonly --force-renew -d demo.jeju.onl
+# Select the appropriate number => 1
+
+# 재시작
+sudo systemctl start nginx
+sudo certbot certificates
+# ==> Certificate Name: demo.jeju.onl
+# ==> Expiry Date: 2023-01-25 02:16:45+00:00 (VALID: 89 days)
+```
+
+### [certbot 재인증 작업을 crontab 으로 스케줄 등록 해두기](https://www.nginx.com/blog/using-free-ssltls-certificates-from-lets-encrypt-with-nginx/#auto-renewal)
+
+- 매 홀수 달에만 실행 (month=1/2)
+  - 안됨! ==> `5 4 3 1/2 *`
+  - 대신에 스크립트로 조건문과 같이 사용하는 것은 됨
+
+> 크론탭 스케줄 위치는 '분, 시, 일, 월, 주(week)' 순서임
+
+```bash
+sudo crontab -e
+# 매달 3일 오전 4시 5분에 실행
+5 4 3 * * /usr/bin/certbot renew --quiet
+
+[ `expr $(date +'%m') % 2` -eq 1 ] && echo "odd" || echo "even"
+# ==> 홀수달이면 odd, 짝수달이면 even 출력
+```
+
 &nbsp; <br />
 &nbsp; <br />
 

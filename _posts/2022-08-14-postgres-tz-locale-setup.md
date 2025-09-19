@@ -792,6 +792,18 @@ The files belonging to this database system will be owned by user "jsmith".
 
 - 휴, 드디어 밀린 숙제를 해치웠다.
 
+### Comments
+
+## [Docker - MariaDB:10](https://hub.docker.com/_/mariadb)
+
+- port 3306
+
+```bash
+$ docker run -it --rm --name mdb-10 \
+    -e MARIADB_USER=tonyne -e MARIADB_PASSWORD=password \
+    -e MARIADB_ROOT_PASSWORD=root_password  \
+    mariadb:10
+```
 
 &nbsp; <br />
 &nbsp; <br />

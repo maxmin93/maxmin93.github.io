@@ -547,6 +547,11 @@ let { a, b, c, ...everythingElse } = $props<MyProps>();
   - 사용자 정의 이벤트 dispatch 기능을 쉽게 쓰질 못했는데 잘 되었다.
 - `$effect` 도 pre, active, root 등 고급 기능들이 있는데 잘 모르겠다.
 
+### Comments
+
+[understanding runes](https://www.infoworld.com/article/3712688/reactive-magic-in-svelte-5-understanding-runes.amp.html) : new class 이용한 state 변수 통합
+
+- 내부적으로 getter, setter 가 자동으로 생성된다
 
 &nbsp; <br />
 &nbsp; <br />

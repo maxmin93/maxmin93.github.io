@@ -384,6 +384,18 @@ from dblink('jnewsdb', $$
   );
 ```
 
+### Comments
+
+`kong.yml` 의 `basicauth_credentials` 에서 실패가 나는 경우 패스워드의 특수문자 제거
+
+- 출처 [Can not start kong container #18847](https://github.com/supabase/supabase/issues/18847#issuecomment-1821254438)
+
+JWT 키를 생성하여 정상적으로 도커가 작동했지만, 대시보드에서 사용자 생성에 실패한 경우
+
+- python 코드로 anon, service_role 키를 다시 생성해서 재시도하면 잘 됨 (웹페이지 키생성 오류)
+- 이슈 [Unable to create User from Studio (self-hosted) #19603](https://github.com/orgs/supabase/discussions/19603#discussioncomment-9333715)
+  - Failed to create user: invalid JWT: unable to parse or verify signature, signature is invalid
+
 
 &nbsp; <br />
 &nbsp; <br />

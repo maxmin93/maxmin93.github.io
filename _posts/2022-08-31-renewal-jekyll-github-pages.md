@@ -484,6 +484,23 @@ ERROR `/assets/webfonts/fa-brands-400.woff2' not found.
 - 커스터마이징을 어느 선에서 멈출지 잘 판단하자.
   + 블로그일뿐이다. 그래도 이쁜게 좋다. (애착 형성)
 
+### Comments
+
+댓글 기능 추가했습니다.
+
+- 그런데 수정, 삭제 기능이 없네요. (일반 사용자의 issue 변경 권한 없음)
+- 폰트 어썸 아이콘은 출력 안되고, 이모지만 가능
+
+github Theme 따라서 utterance theme 도 바뀌도록 했어요.
+
+- post.html 안에다가 스크립트를 넣으니 작동을 안합니다.
+- custom.js 로 옮기고, script 태그로 호출하도록 했더니 잘 되네요.
+
+구글 애널리틱스가 왜 데이터 수신을 못하나 했더니, 생성된 html 에 스크립트가 없네요.
+
+- google_analytics.html 을 프로젝트 _includes 로 복사해야 포함되어 생성됨
+- 수정사항이나 적용될 부분은 프로젝트 폴더로 끄집어 내야 하는군요.
+
 &nbsp; <br />
 &nbsp; <br />
 

@@ -363,6 +363,33 @@ _The Timeline element presented on the Flowbite website._
 - [SvelteKit Authentication Tutorial + Firebase Auth](https://www.youtube.com/watch?v=8NlUTFppJkU)
 - [SvelteKit + Firebase 9 Authentication Simple Tutorial](https://www.youtube.com/watch?v=PXf0t6Id7i0)
 
+
+### Comments
+
+json 의 결과인 Response 에 대해 setHeader 적용이 안된다.
+
+- immutable data : json 결과는 수정 불가능한 데이터
+- api 파라미터는 event.url.searchParams 를 사용한다.
+  + 예) `http://localhost:5173/api/people?page=1`
+
+```ts
+export const GET = (async (event) => {
+  // log all headers
+  // console.log(...event.request.headers);
+  console.log(event.url.searchParams);
+  const page = event.url.searchParams.get('page') || 1;
+
+  const url = `https://reqres.in/api/users?page=${page}`;
+  const response = await event.fetch(url);
+  const data = await response.json();
+
+  // immutable data : json 결과는 수정 불가능한 데이터
+  return json({
+    people: data.data || []
+  });
+}) satisfies RequestHandler;
+```
+
 &nbsp; <br />
 &nbsp; <br />
 

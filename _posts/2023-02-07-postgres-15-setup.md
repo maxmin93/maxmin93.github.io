@@ -469,6 +469,29 @@ ALTER ROLE `username` IN DATABASE `dbname` SET ROLE='<config_role>';
 ALTER ROLE `username` RESET ALL;
 ```
 
+### Comments
+
+#### **_TIP_** : 현재 적용된 role 과 로그인(세션) role 조회
+
+- current_user : 현재 적용된 role
+- session_user : 세션 생성시 사용된 role (로그인)
+
+```sql
+> select current_user, session_user;
+ current_user  | session_user
+---------------+--------------
+ tutorial_user | login_user
+(1개 행)
+
+> set role admin_user;
+
+> select current_user, session_user;
+ current_user  | session_user
+---------------+--------------
+ admin_user | login_user
+(1개 행)
+```
+
 &nbsp; <br />
 &nbsp; <br />
 
