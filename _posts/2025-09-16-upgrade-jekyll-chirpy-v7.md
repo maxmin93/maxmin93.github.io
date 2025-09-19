@@ -5,6 +5,7 @@ description: ruby 2.7 에 jekyll 5.x 버전이 너무 느려서 ruby 3.3 과 최
 categories: [Frontend, Jekyll]
 tags: [upgrade, jekyll]
 image: /2025/09/16-jekyll-chirpy-v7-screenshot.webp
+comments: true
 ---
 
 ## 작업순서
@@ -275,39 +276,16 @@ main() {
 
 ### jekyll disqus 플러그인 설치
 
-포스트마다 헤더에 comments 옵션을 넣거나
+- disqus 사이트에 무료 버전으로 가입 후 site 를 생성한다
+- `_config.yml` 의 comments.provider 과 disqus.shortname 을 작성
+- `_layouts/post.html` 하단에 `comment.html` 을 include 한다
 
-```md
----
-layout: default
-comments: true
-# other options
----
-```
+> 설치 했다가 도로 제거함!
 
-또는 `{% if page.comments %}` 와 `{% endif %}` 사이에 아래 Userversal Embed Code 를 넣는다.
+disqus 의 footer 가 너무 거슬려서 삭제를 하고 싶은데 방법이 없다. 또, CSS 로 가려지게 만들면 약관 위반이라고 한다.
 
-```html
-<div id="disqus_thread"></div>
-<script>
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-    /*
-    var disqus_config = function () {
-    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    */
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://taejoone.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-```
+이전에 utterances 썼을 때도 거의 사용하지 않았다. 그래서 삭제!
+
 
 &nbsp; <br />
 &nbsp; <br />
