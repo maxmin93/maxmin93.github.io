@@ -5,7 +5,6 @@ description: ruby 2.7 에 jekyll 5.x 버전이 너무 느려서 ruby 3.3 과 최
 categories: [Frontend, Jekyll]
 tags: [upgrade, jekyll]
 image: /2025/09/16-jekyll-chirpy-v7-screenshot.webp
-comments: true
 ---
 
 ## 작업순서
