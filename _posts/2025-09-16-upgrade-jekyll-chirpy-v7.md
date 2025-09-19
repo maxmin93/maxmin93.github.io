@@ -273,6 +273,41 @@ main() {
 - `Gemfile` 에 `gem 'jemoji'` 추가
 - `_config.yml` 에 plugin 추가
 
+### jekyll disqus 플러그인 설치
+
+포스트마다 헤더에 comments 옵션을 넣거나
+
+```md
+---
+layout: default
+comments: true
+# other options
+---
+```
+
+또는 `{% if page.comments %}` 와 `{% endif %}` 사이에 아래 Userversal Embed Code 를 넣는다.
+
+```html
+<div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://taejoone.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+```
 
 &nbsp; <br />
 &nbsp; <br />
