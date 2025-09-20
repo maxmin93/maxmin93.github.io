@@ -15,16 +15,16 @@
 
 @font-face {
   font-family: 'D2Coding';
-  src: url('/assets/lib/fonts/D2Coding.woff2') format('woff2'),
-       url('/assets/lib/fonts/D2Coding.woff') format('woff');
+  src: url('/assets/lib/fonts/D2Coding/D2Coding.woff2') format('woff2');
+  /* url('/assets/lib/fonts/D2Coding.woff') format('woff'); */
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'D2CodingBold';
-  src: url('/assets/lib/fonts/D2CodingBold.woff2') format('woff2'),
-       url('/assets/lib/fonts/D2CodingBold.woff') format('woff');
+  src: url('/assets/lib/fonts/D2Coding/D2CodingBold.woff2') format('woff2');
+  /* url('/assets/lib/fonts/D2CodingBold.woff') format('woff'); */
   font-weight: bold;
   font-style: normal;
 }
