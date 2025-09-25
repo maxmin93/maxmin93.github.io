@@ -3,7 +3,7 @@ date: 2025-09-23 00:00:00 +0900
 title: Ubuntu 에 Obsidian App 설치하기
 description: Ubuntu 에서 Obsidian.AppImage 를 Application 처럼 등록해서 사용하기 위한 방법입니다. Github 리포지토리와 연결하는 방법과 유용한 플러그인도 소개합니다.
 categories: [Application]
-tags: [utility]
+tags: [obsidian, tips]
 image: "https://is1-ssl.mzstatic.com/image/thumb/Purple211/v4/d9/9e/18/d99e18a7-9b82-4f54-3c7e-d20d351de81a/AppIcon-0-1x_U007epad-0-1-85-220-0.png/1200x630wa.png"
 ---
 
@@ -63,9 +63,9 @@ _Git 플러그인이 사용된 옵시디언_
 - 설정 > `Custom Git binary path` 에 리포지토리 url 을 넣는다.
   - `https://{git-token}@github.com/리포지토리`
 
-**안됨!!** -> iPhone 에 [iSH Shell](https://apps.apple.com/us/app/ish-shell/id1436902243) 이용해 연동하기
+**안됨!!** ➡ iPhone 에 [iSH Shell](https://apps.apple.com/us/app/ish-shell/id1436902243) 이용해 연동하기
 
-- iSH 에서 Git Vault 를 다운 받았지만, 폴더를 옮길 수 없다.
+- iSH 에서 Github 리포지토리를 다운 받았지만, Obsidian 앱 안으로 폴더를 옮길 수 없다.
 - 메시지 : `하위 프로그램과 통신이 되지 않습니다.`
 
 예전에는 되었던 모양이지만, 폴더간에 파일을 직접 옮기는 조작을 애플이 그냥 놔둘리 없을거라 생각하니 안되는 것이 납득이 된다.
@@ -79,6 +79,35 @@ _Git 플러그인이 사용된 옵시디언_
 ### [Smart Typography](https://github.com/mgmeyers/obsidian-smart-typography)
 
 - 화살표라던지 따옴표 등 몇가지 기호를 자동으로 변환해준다.
+
+### [Abbreviations expander](https://github.com/WoodenMaiden/obsidian-abbreviations)
+
+- 약어를 등록하면 자동으로 변환해 준다.
+  - `$snp` -> `S&P500`
+  - `$매수` -> `<font color="royalblue">**매수**</font>`
+  - `$매도` -> `<font color="crimson">**매도**</font>`
+
+### [Emoji Toolbar](https://github.com/oliveryh/obsidian-emoji-toolbar)
+
+- `설정 > 단축키` 에서 picker 단축키를 설정해서 실행한다.
+  - 'Emoji Toolbar: open emoji picker'
+
+### [Timeline](https://github.com/George-debug/obsidian-timeline)
+
+- 시간순으로 내용을 작성할 수 있는 포맷을 제공한다.
+- 첫번째 '+'가 왼쪽 date 영역, 두번째가 오른쪽 title 영역, 세번째가 오른쪽 content 영역이다.
+  - title 영역은 h3 를 사용하기 때문에, 먼저 닫고 열면 기본 텍스트를 작성할 수 있다. (꼼수)
+
+```md
+'''timeline
++ 9/11
++ </h3>📌 왜 샀는지 모르겠다.<h3>
++
+  <font color="royalblue">**매수**</font> ACE 미국10년국채액티브
+  50주, 10240원 → 51만2천원
+  <sub>(잘못 눌러서 매수가 되었다. 멍충이!)</sub>
+'''
+```
 
 
 ## Obsidian 태그
@@ -97,7 +126,7 @@ tags: [태그1]
 
 ### 외부 각주
 
-문서간에 링크는 heading 태그에 대해서 기본적으로 지원하지만, 특정 문장이나 블록에도 `^{tag}` 를 붙이면 외부문서에서 참조할 수 있다.
+문서간에 링크는 heading 태그에 대해서 기본적으로 지원하지만, 특정 문장이나 블록에도 `^{tag}` 를 붙이면 외부문서에서 참조할 수 있다. 단, 블록 당 하나만 지정할 수 있다.
 
 ```md
 <!-- 전기차.md -->
@@ -109,7 +138,7 @@ tags: [태그1]
 리비안에 대한 설명. 블라블라~~
 ```
 
-테슬라의 대한 별칭으로 외부 각주를 사용했다. 이러면 전기차 회사들마다 문서를 생성하지 않아도 된다. 전기차 문서의 특정 블록을 연결할 수 있다.
+테슬라의 대한 별칭으로 주식 티커를 외부 각주를 사용했다. 이러면 전기차 회사들마다 문서를 생성하지 않아도 된다. 전기차 문서의 특정 블록을 연결할 수 있다.
 
 AI 파티의 밤 10시 30분 ... <u>테슬라</u> <u>엔비디아</u> 사라
 
@@ -117,10 +146,24 @@ AI 파티의 밤 10시 30분 ... <u>테슬라</u> <u>엔비디아</u> 사라
 AI 파티의 밤 10시 30분 ... [[전기차#테슬라 TSLA|테슬라]] [[반도체#엔비디아 NVDA|엔비디아]] 사라
 ```
 
+### 템플릿으로 날짜를 자동으로 작성하기
+
+- template 노트에 `{{date}}` 또는 `{{time}}` 를 작성하면 템플릿으로 새 노트를 생성할 때 날짜 또는 시간이 자동으로 작성된다.
+  - daily 노트의 템플릿에 작성해 두면 편하다.
+- 그 밖에 다른 variables 들은 [설명문서](https://help.obsidian.md/web-clipper/variables)를 참조할 것
+
+```md
+오늘 날짜 : {{date:YYYY-MM-DD}}
+
+<!--
+오늘 날짜 : 2025-09-23
+  -->
+```
+
 ### 그 외 유용한 문법
 
 - 노란색 강조 표시 `=={강조영역}==`
-- 밑줄 `<b>{강조영역}</b>`
+- 밑줄 `<u>{강조영역}</u>`
 - `[!info]` 같은 CallOut 지원 태그를 사용하면 이쁘다.
 
 
