@@ -5,7 +5,7 @@ image_types=("*.jpeg" "*.jpg" "*.tiff" "*.tif" "*.png")
 
 # Define cwebp parameters (optional, adjust as needed)
 # -q: quality (0-100), -m: compression method (0-6), -mt: multi-threading
-CWEBP_PARAMS=("-q 80 -m 6 -mt")
+CWEBP_PARAMS=("-resize 800 0 -q 80 -m 6 -mt")
 
 # Iterate over each image type
 for type in "${image_types[@]}"; do

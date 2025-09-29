@@ -2,7 +2,7 @@
 date: 2024-01-27 00:00:00 +0900
 title: PostgreSQL 16 한글 검색 설정
 description: Postgresql 에서 한글 검색을 위한 gin 과 rum 인덱스를 살펴보고, 한글 텍스트 데이터로 검색 사례들을 테스트 합니다.
-categories: [Backend, Database]
+categories: [Backend, Search]
 tags: [extension, postgresql, locale, rum-index, gin-index]
 image: "https://postgrespro.com/media/2019/06/21/i8_000_800x450.jpg"
 ---

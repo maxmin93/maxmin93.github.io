@@ -136,12 +136,12 @@ This is a common code snippet, without syntax highlight and line number.
 나는 그대의 흰 그림자를 안고. 
 옥같이 그대의 뱃전에 부서지리다.
 
-{% raw %}{{date:YYYY-MM-DD}}{% endraw %}
+{% raw %}{{ date:YYYY-MM-DD }}{% endraw %}
 ```
 
 > liquid syntax(더블 '{' 또는 '}') 입력시 Warning 방지하는 법
 
-```{% raw %}```, ```{% endraw %}``` 으로 감싸주면 파서가 해당 영역을 skip 한다.
+`{_% raw %_}`, `{_% endraw %_}` 으로 감싸주면 파서가 해당 영역을 skip 한다.
 
 ### Specific Language
 

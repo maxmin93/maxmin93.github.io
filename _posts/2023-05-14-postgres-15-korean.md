@@ -2,7 +2,7 @@
 date: 2023-05-14 00:00:00 +0900
 title: PostgreSQL 15 한글 검색 설정
 description: Postgresql 에서 한글 검색을 위한 encode, collate, ctype 설정 및 gin 인덱스 설정에 대해 알아보자.
-categories: [Backend, Database]
+categories: [Backend, Search]
 tags: [postgresql, mecab-ko, utf8, gin-indexing]
 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLSQWTSCw2fR8lSdWXYWX3ht88kYXYV-oMYw&s"
 ---
