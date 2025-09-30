@@ -7,10 +7,17 @@ tags: [truenas, install, nginx]
 image: "https://forums.truenas.com/uploads/default/optimized/2X/3/39fe5131869649c438bf985b0228cefb42ccd20d_2_690x338.png"
 ---
 
-> TrueNAS 와 [OpenMediaVault](https://www.openmediavault.org/) 를 비교하는 글들이 많은데, 제품 완성도 측면에서 TrueNAS 가 나아 보인다. Docker 를 조금이라도 이해하는 사람이라면 TrueNAS 를 더 유용하게 쓸 수 있을 것이다.
+> 목록
+{: .prompt-tip }
+
+- [TrueNAS 와 Application 설치하기](/posts/truenas-install-applications/) &nbsp; &#10004;
+- [TrueNAS 에 Docker 로 Apache 설치하기](/posts/truenas-install-docker-apache/)
 
 
-## 작업순서
+TrueNAS 와 [OpenMediaVault](https://www.openmediavault.org/) 를 비교하는 글들이 많은데, 제품 완성도 측면에서 TrueNAS 가 나아 보인다. Docker 를 조금이라도 이해하는 사람이라면 TrueNAS 를 더 유용하게 쓸 수 있을 것이다.
+
+
+## 0. 작업순서
 
 ### TrueNAS 설치
 
@@ -50,7 +57,7 @@ _TrueNAS 네트워크 설정_
 _TrueNAS 서비스 제어_
 
 
-## SMB 설정
+## 1. SMB 설정
 
 SMB 서비스가 작동 중이고, 공유 폴더와 권한만 지정하면 된다.
 
@@ -73,7 +80,7 @@ SMB 서비스가 작동 중이고, 공유 폴더와 권한만 지정하면 된�
 ```
 
 
-## SSH 설정
+## 2. SSH 설정
 
 ### 사용자 설정
 
@@ -126,7 +133,7 @@ export PROMPT="${ret_status} %{$fg_bold[blue]%}%m %{$fg[cyan]%}%c%{$reset_color%
 _TrueNAS ssh 접속 (zsh+ohmyzsh)_
 
 
-## 애플리케이션 설치
+## 3. 애플리케이션 설치
 
 'Apps' 에서 원하는 항목을 검색해 설치한다.
 

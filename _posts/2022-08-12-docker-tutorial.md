@@ -7,16 +7,7 @@ tags: [aws, nginx]
 image: "https://miro.medium.com/1*pFeovQIrwG9HozjsLa0CtQ.png"
 ---
 
-## Docker Tutorial
-
-### Docker 설치 (Mac)
-
-`brew install` 또는 [Download 페이지](https://docs.docker.com/desktop/install/mac-install/) 통해 설치
-
-```shell
-# UI 애플리케이션도 설치됨
-$ brew install docker
-```
+## 0. Docker Tutorial
 
 ### 따라해 보기
 
@@ -27,13 +18,13 @@ $ brew install docker
 5. [nginx 이용해 고가용성 node app 연결하기](https://github.com/sowmenappd/load_balanced_nodejs_app)
 6. [AWS EC2에 배포 - ECR/ECS](https://www.freecodecamp.org/news/build-and-push-docker-images-to-aws-ecr/)
 
-#### 참고자료
+> 참고자료
 
 - [Deployment of SSL Encrypted Node.js App on AWS EC2 Using Nginx and Docker with LetsEncrypt](https://medium.com/techbeatly/deployment-of-ssl-encrypted-node-js-app-on-aws-ec2-using-nginx-and-docker-with-letsencrypt-ff727fa33f6b)
 - [Docker, NGINX, AWS ELB를 이용해 고가용성 Node.js 애플리케이션 빌드하기](https://smoh.tistory.com/439)
 - [AWS EC2 Container Registry(ECR) 어렵지 않아요](https://bluese05.tistory.com/51)
 
-#### TIP. docker 에 외부 접속(remote connection) 허용하기
+> TIP. docker 에 외부 접속(remote connection) 허용하기
 
 - Mac 버전의 docker 에서는 TCP(port=2375) 접근 기능을 제공 안함
   - 포트를 연결해주는 socat 을 사용하여 설정하는 방법이 있음<br/>
@@ -68,7 +59,16 @@ host2 $ DOCKER_HOST=minubt; docker ps -a
 ...
 ```
 
-### 1. docker/getting-started 실행해 보기
+## 1. docker/getting-started 실행해 보기
+
+### Docker 설치 (Mac)
+
+`brew install` 또는 [Download 페이지](https://docs.docker.com/desktop/install/mac-install/) 통해 설치
+
+```shell
+# UI 애플리케이션도 설치됨
+$ brew install docker
+```
 
 > 도커 실행 및 확인
 
@@ -132,7 +132,7 @@ $ docker stop $(docker ps -a -q)
 $ docker rm $(docker ps -aq)
 ```
 
-### 2. 깃허브(docker/getting-started) 다운받아 빌드해 보기
+## 2. 깃허브(docker/getting-started) 다운받아 빌드해 보기
 
 > [깃허브](https://github.com/docker/getting-started) 다운받기 getting-started repository.
 
@@ -154,9 +154,9 @@ app                       # nodejs application 루트
 docs                      #
 ```
 
-### 3. docker-compose 및 jenkins 를 이용한 자동화
+## 3. docker-compose 및 jenkins 를 이용한 자동화
 
-#### 1) docker-compose
+### 1) docker-compose
 
 docker-compose 는 여러 도커에 대한 작업을 배치로 수행할 수 있게 해주는 도구이다.
 
@@ -191,7 +191,7 @@ $ docker-compose up
 
 ```
 
-#### 2) jenkins
+### 2) jenkins
 
 참조: [Jenkins를 이용한 Docker 배포](https://dev-overload.tistory.com/40)
 
@@ -223,13 +223,13 @@ This may also be found at: /var/jenkins_home/secrets/initialAdminPassword
 
 ```
 
-### 4. Todo App(nodejs) 실행해 보기
+## 4. Todo App(nodejs) 실행해 보기
 
 ![Todo App](https://learn.microsoft.com/en-us/visualstudio/docker/tutorials/media/todo-list-sample.png){: width="440" .w-75} <br />&nbsp;
 
 참고: [Sample application - Todo (nodejs)](https://docs.docker.com/get-started/02_our_app/)
 
-#### Dockerfile
+### Dockerfile
 
 > 원본 Dockerfile
 
@@ -326,7 +326,7 @@ FROM nginx:alpine
 COPY --from=build /app/site /usr/share/nginx/html
 ```
 
-### 5. nginx 이용해 고가용성 node app 연결하기
+## 5. nginx 이용해 고가용성 node app 연결하기
 
 참고: [깃허브 - sowmenappd/load_balanced_nodejs_app](https://github.com/sowmenappd/load_balanced_nodejs_app/blob/main/docker-compose.yml)
 
@@ -368,7 +368,7 @@ services:
       - SERVER_ID=1
 ```
 
-### 6. AWS EC2에 배포 - ECR/ECS
+## 6. AWS EC2에 배포 - ECR/ECS
 
 참고: [How to Build and Push Docker Images to AWS ECR](https://www.freecodecamp.org/news/build-and-push-docker-images-to-aws-ecr/)
 
@@ -386,9 +386,11 @@ $ docker tag <source_image_tag> <target_ecr_repo_uri>
 $ docker push <ecr-repo-uri>
 ```
 
+
 ## 9. Review
 
 - 아직 다 못했다. 내용이 길어 쉬었다가 다시 작성하자.
+
 
 &nbsp; <br />
 &nbsp; <br />
