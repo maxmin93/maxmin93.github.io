@@ -26,7 +26,7 @@ Apache2 는 TrueNAS 공식 앱스토리지에 없다. Docker 를 이용해 별�
 3. ubuntu-apache2 를 위한 스택(yml) 작성
   - port 와 volume 설정
 4. ubuntu-apache2 스택 실행하고, 웹페이지 확인
-5. nginx proxy manager 에 등록하여 도메인 부여
+5. Tailscale 설치하고 VPN으로 접속하기
 
 
 ## 1. Portainer 설치
@@ -147,9 +147,9 @@ drwxrwxr-x  2 www-data www-data      4 Sep 30 16:17 html
 _TrueNAS에 생성되어 있는 계정들_
 
 
-## 3. Nginx proxy manager 에 등록
+## 3. Nginx proxy manager 에 웹페이지 등록
 
-`www.jeju.onl` 로 등록했다.
+도메인으로 접속할 수 있도록 `www.jeju.onl` 로 등록했다.
 
 ![](/2025/09/30-apache-index-html.webp){: width="380" .w-75}
 _도메인이 부여된 Apache2 웹페이지_
