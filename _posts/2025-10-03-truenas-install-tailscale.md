@@ -75,7 +75,7 @@ Tailscale 접속이 된 상태에서 TrueNAS 의 가상IP 를 복사하자.
 선택 메뉴가 따로 있는 줄 알았는데, 최근 변경된 것인지 찾아도 없다. Reddit 에서도 어디 있냐고 문의 글이 많다.
 
 - TrueNAS 에서 Tailscale 앱 설치시 Exit Node 옵션 체크했다면
-- [Tailscale 관리자 콘솔](https://login.tailscale.com/admin/machines)에서 TrueNAS 서버에 Exit Node 라는 표시가 있을텐데, `!` 표가 같이 붙어 있다. (비활성화 상태)
+- [Tailscale 관리자 콘솔](https://login.tailscale.com/admin/machines) 에서 TrueNAS 서버에 Exit Node 라는 표시가 있을텐데, `!` 표가 같이 붙어 있다. (비활성화 상태)
 - 활성화를 위해 우측 끝 `...` 메뉴 버튼을 눌러 활성화를 하자
   - Exit Node 표시에 `!` 표가 사라졌다. (활성화 상태)
 

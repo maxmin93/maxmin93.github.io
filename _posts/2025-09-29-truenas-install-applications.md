@@ -155,7 +155,7 @@ config 폴더를 요구하는 App 들이 있다. 한군데에 모아놓자.
 
 참고 : [잇츠 매거진 - TrueNAS 도메인 연결하기](https://www.youtube.com/watch?v=MLtAawrAVhQ)
 
-- UID=0, GID=0 으로 설정
+- UID=0, GID=0 으로 설정 (root 권한)
 - ID/PW : `admin@example.com` / `changeme`
   - 로그인 이후 패스워드 변경
 
@@ -167,10 +167,16 @@ _TrueNAS Nginx 프록시 매니저_
 
 참고 : [잇츠 매거진 - TrueNAS 파일브라우저 설치하기](https://www.youtube.com/watch?v=QzOy0apnkjk)
 
-- UID=0, GID=0 으로 설정
+- UID=0, GID=0 으로 설정 (root 권한)
+- 'Additional Storage' 추가하여 파일 공유를 위한 root 경로 지정
+  - 'Mount Path'는 앱에 표시될 root 경로의 이름
 - ID 는 `admin`
   - 최초 패스워드는 log 파일에 랜덤으로 생성되어 표시된다.
+    - log 아이콘은 앱 클릭시 상세 항목중 Workloads 에 있다.
   - 복사해서 로그인 하고, 이후 패스워드 변경
+  - 참고 : [FileBrowser 매뉴얼 - 첫번째 부팅](https://filebrowser.org/installation.html#first-boot)
+
+> 주의 : 패스워드는 최초 시작시에 stdout 으로 한번만 출력된다. 만일, 잊어버리거나 찾지 못하면 shell 에 들어가 `/config/filebrowser.db` 를 수동 삭제후 재시작하면 다시 출력된다.
 
 ```text
 # container logs
@@ -203,6 +209,7 @@ _TrueNAS PostgreSQL 테스트_
   - Handbrake : 영화 압축
   - Nextcloud : 사설 클라우드
   - Tailscale : VPN
+
 
 &nbsp; <br />
 &nbsp; <br />
