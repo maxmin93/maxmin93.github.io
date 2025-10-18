@@ -85,10 +85,12 @@ _TrueNAS 를 Exit Node 로 활성화하는 메뉴_
 
 ## 9. Reviews
 
-- 내부망으로 사용할 서비스는 인터넷 공유기에서 포트포워딩을 해서는 안된다.
-  - 포트포워딩 대상은 TrueNAS 의 NPM 을 위한 80(http), 443(https) 뿐이다.
 - Tailscale 설치는 정말 편하다. 매끄럽게 진행된다. 
   - 공짜라 더 좋다.
+- 그런데 Nginx Proxy Manager 가 Route 안됨.
+  - Tailscale 을 모두 제거한 후에는 다시 정상 작동한다.
+  - 관련된 글 [1](https://github.com/tailscale/tailscale/issues/14187), [2](https://github.com/NginxProxyManager/nginx-proxy-manager/discussions/4743) 을 찾아 읽기는 했는데 당장은 번거로워 보류다.
+    - 아, 이래서 Cloudflare 를 쓴건가? [PiHole](https://pi-hole.net/) 은 또 뭐지?
 - [Cloudflare](https://g.co/finance/NET:NYSE) 주가를 보니 엄청나다. 아--, 진즉 알았다면 샀을텐데
   - 2025년 1분기에 흑자 전환했고, 영업이익률은 11.7% 
 

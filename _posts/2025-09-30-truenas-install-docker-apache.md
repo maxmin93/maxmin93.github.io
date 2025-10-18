@@ -151,6 +151,9 @@ _TrueNAS에 생성되어 있는 계정들_
 
 도메인으로 접속할 수 있도록 `www.jeju.onl` 로 등록했다.
 
+- Proxy Host 등록할 때, https 를 설정한 것이 아니라서 아무것도 체크할 필요 없다.
+  - apache2 의 site_available 에서 도메인을 등록하지 않아서 더 그렇다.
+
 ![](/2025/09/30-apache-index-html.webp){: width="380" .w-75}
 _도메인이 부여된 Apache2 웹페이지_
 

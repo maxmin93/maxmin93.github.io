@@ -157,11 +157,18 @@ config 폴더를 요구하는 App 들이 있다. 한군데에 모아놓자.
 
 - UID=0, GID=0 으로 설정 (root 권한)
 - ID/PW : `admin@example.com` / `changeme`
-  - 로그인 이후 패스워드 변경
+  - 로그인 이후 이메일과 패스워드 변경
 
 ![](/2025/09/29-truenas-app-nginxproxy.webp){: width="580" .w-75}
 _TrueNAS Nginx 프록시 매니저_
 
+> 유튜브 동영상에서는 아래 포트를 연결하라는데 없어도 되더라. NPM 이 패킷 주소지를 변경시키기 때문이다.
+
+인터넷 공유기 포트포워딩 리스트
+
+- 80, 443, 30020-30022 : NPM
+- 8080, 8443 : TrueNAS
+- 30051 : File Browser
 
 ### File Browser
 

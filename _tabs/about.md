@@ -9,45 +9,11 @@ order: 4
 
 ## "데이터 수집/검색/분석 및 웹애플리케이션 풀스택 개발자"
 
-### 핵심 역량
-
 - 데이터 수집/검색/분석 및 시각화와 풀스택 웹애플리케이션 개발
 - Python, Java, Nodejs/Typescript 언어 사용 (최근 Python에 집중)
 - 딥러닝/NLP, Spring, FastAPI, Nestjs, Angular 프로젝트 경험
 - RDB/SQL, GDB/Tinkerpop, NoSQL, Spark, Elasticsearch, Docker 활용
 - 대기업 Duam/Kakao 7.5년, 스타트업 Bitnine 5.3년 등 개발조직 근무 경험
-
-### 보유 기술
-
-- 웹애플리케이션 개발 : 프론트엔드 + 백엔드/API + DB 모델링 + 배포
-  - 프론트엔드 : [Svelte](https://svelte.dev/), Nodejs/Typescript, [Style](https://npmtrends.com/@angular/material-vs-antd-vs-bootstrap-vs-emotion-vs-styled-components-vs-tailwindcss)
-  - 백엔드/API : [Nestjs](https://nestjs.com/)(Node), Spring(Java), FastAPI(Python)
-  - DB 핸들링 : Spring JPA/JDBC, TypeORM, SQLAlchemy/[SQLModel](https://sqlmodel.tiangolo.com/)
-  - 배포 : Docker
-
-- 클라우드 : 인프라, API 연동
-  + 인프라 : AWS EC2/DynamoDB/S3/LB
-  + API : GCS Map, GCS NLP, Google Login
-
-- 데이터 저장/SQL : RDB, NoSQL, GDB
-  - RDB : Postgresql, MySQL, [SQLite](https://www.sqlite.org/index.html)
-  - NoSQL : MongoDB, Redis, [Elasticsearch](https://www.elastic.co/kr/downloads/past-releases/elasticsearch-7-10-2)
-  - GDB : [Neo4j](https://neo4j.com/)(Cypher), [Tinkerpop](https://tinkerpop.apache.org/)/[Amazon Neptune](https://aws.amazon.com/ko/neptune/)(Gremlin)
-
-- 데이터 수집/가공 : 크롤링, 전처리, ETL
-  - 크롤링 : [Scrapy](https://scrapy.org/) + [Splash/Lua](https://splash.readthedocs.io/en/stable/scripting-overview.html)
-  + 전처리 : 중복제거, 필터링, 분류, 품질 관리
-  - 뉴스 200만건 전처리, 검색서비스 인덱싱, [Logstash](https://www.elastic.co/kr/logstash/)(PG 연동)
-
-- 데이터 분석 : Spark 프레임워크, 머신러닝, 딥러닝(활용)
-  + Spark 프레임워크 : Spark(Scala/PySpark), Hive, Livy
-  + 머신러닝 : 유사도, 분류/군집, NLP, Numpy/Pandas
-  + 딥러닝 : TF/PyTorch 모델 활용 가능, NodeVec
-
-- 그 외 분야
-  + 시각화 : [D3.js](https://d3js.org/), [vis.js](https://visjs.org/), [Chart.js](https://www.chartjs.org/), [Cytoscape.js](https://js.cytoscape.org/), [Elgrapho](https://github.com/ericdrowell/ElGrapho)
-  + Linux/Bash 스크립트, Arrow 약간, gRPC 약간, Grafana 약간, ...
-  - Kotlin 약간, Scala 약간, Go 약간, ...
 <br/>&nbsp;
 
 ***
