@@ -210,7 +210,8 @@ compress_html:
   ignore:
     envs: [development]
 
-exclude:
+exclude: 
+  - ruby/3.3.0/gems/jekyll-4.4.1/lib/site_template/_posts
   - "*.gem"
   - "*.gemspec"
   - docs
