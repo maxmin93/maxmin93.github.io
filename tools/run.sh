@@ -5,7 +5,7 @@
 prod=false
 command="bundle exec jekyll s -l"
 host="0.0.0.0"
-port="4001"
+port="4000"
 
 help() {
   echo "Usage:"
