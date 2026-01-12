@@ -3,7 +3,7 @@ date: 2026-01-08 00:00:00 +0900
 title: NginX 로 HTML 연습 환경 만들기
 description: Docker 와 NginX 를 이용하여 간단하게 웹서버를 만듭니다. TailwindCSS 도 CLI 의 watch 기능을 이용해 CSS 연습도 할 수 있습니다.
 categories: [DevOps]
-tags: [docker, nginx]
+tags: [docker, nginx, tailwind]
 image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5VHx44wSZ6wFp5AzwXtzexDqVd3MIumjzGQ&s"
 ---
 
@@ -188,6 +188,47 @@ index.html 에 아래 항목을 추가하고 새로고침 해보자.
 ```
 
 이제 간단한 tailwindcss 연습 환경이 만들어졌다.
+
+
+## 3. [daisyUI](https://daisyui.com) 적용하기
+
+tailwindcss 4 기반의 UI 라이브러리이다. 플러그인으로 연결하면 간편하게 사용할 수 있다.
+
+```css
+@import "tailwindcss";
+@plugin "daisyui";
+```
+{: file="html/input.css"}
+
+css 파일과 함께 아래 html 을 tailwindcss CLI 로 컴파일하면 깔끔한 UI 가 출력된다.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="./output.css" rel="stylesheet" />
+  </head>
+  <body>
+<div class="card bg-base-100 w-96 shadow-sm">
+  <figure>
+    <img
+      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+      alt="Shoes" />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">Card Title</h2>
+    <p>A card component has a figure, a body part, and inside body there are title and actions parts</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary">Buy Now</button>
+    </div>
+  </div>
+</div>
+  </body>
+</html>
+```
+{: file="html/index.html"}
 
 
 ## 9. Reviews
