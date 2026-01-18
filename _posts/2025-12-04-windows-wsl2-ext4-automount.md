@@ -35,6 +35,12 @@ image: "https://devpro.kr/assets/img/title/server/windows/wsl_design.png"
 - `wsl --mount` 명령으로 mount 하기
 
 ```console
+# wsl2 서브시스템 기본값 확인
+> wsl -l -v
+  NAME              STATE           VERSION
+* Debian            Running         2
+  docker-desktop    Running         2
+
 # 현재 작동중인 wsl 종료
 > wsl --shutdown
 
@@ -49,6 +55,7 @@ Size : 1000202273280
 참고: /etc/wsl.conf에서 automount.root 설정을 수정한 경우 위치가 달라집니다.
 디스크를 마운트 해제하고 분리하려면 'wsl.exe --unmount \\.\PHYSICALDRIVE1'을(를) 실행합니다.
 ```
+{: file="powershell.exe"}
 
 ### 1-2. WSL2 에서 드라이브의 하위경로를 bind 하기
 
@@ -77,24 +84,30 @@ drwxrwxrwt 5 root  root   120 12월  4일  12:40 ../
 drwxr-xr-x 2 bgmin bgmin 4096 12월  4일  19:19 downloads/
 drwxrwxr-x 5 bgmin bgmin 4096 12월  4일  13:23 public/
 ```
+{: file="WSL2 Terminal"}
 
 ## 2. 자동 설정
 
 ### 2-1. 작업 스케줄러로 자동실행 설정
 
-- 작업 스케줄러(Task Scheduler)를 검색해서 열고
-- 작업 만들기(Create Task)를 선택
-  - 일반(General) 탭에서 작업 이름을 지정하고
-    - 옵션의 '로그온 상태'든 또는 '관계 없이'든 상관 없다
-      - 로그온 관계 없이 실행하도록 할 때는 패스워드를 입력해야 함
+- 작업 스케줄러를 검색해서 열고
+- 작업 만들기를 선택
+  - 일반 탭에서 "WSL 시작" 작업 이름을 지정하고
+    - '로그온 여부에 관계 없이'를 선택
+      - 마지막으로 확인을 누를 때 패스워드를 입력한다
     - **가장 높은 권한으로 실행(Run with highest privileges)**을 체크
-      - 관리자 권한으로 cmd 를 실행하기 위해 필요하다
-  - 트리거(Triggers) 탭에서 새로 만들기(New...)를 클릭
-    - '시작 시(At startup)' 또는 '로그온 시(At logon)'를 선택
-  - 동작(Actions) 탭에서 새로 만들기(New...)를 클릭
-    - 프로그램/스크립트(Program/script) 필드에 `wsl` 를 입력
-    - 인수 추가(Add arguments (optional)) 필드에 마운트 명령의 인수를 입력
-      - ex: `--mount \\.\PHYSICALDRIVE1 --partition 1 -t ext4)`
+  - 트리거 탭에서 새로 만들기를 클릭
+    - '시작 시' 또는 '로그온 할 때'를 선택
+    - 고급설정에서 작업 지연 시간을 10초 지정
+  - 동작 탭에서 새로 만들기를 클릭
+    - 프로그램/스크립트 필드에 `powershell` 을 입력
+    - 인수 추가 필드에 `-Command "wsl ..."` 명령을 입력
+
+```console
+powersell -Command "wsl --mount \\.\PHYSICALDRIVE1 --partition 1 -t ext4"`
+powersell -WindowStyle Hidden -Command "& {wsl -d Debian}"
+```
+{: file="동작 스크립트 항목 (2개)"}
 
 ![](/2025/12/04-scheduler-task.webp){: width="380" .w-75}
 _작업 스케줄러에 생성한 태스크_
@@ -120,6 +133,7 @@ $ sudo vi /etc/fstab
 
 $ sudo mount -a
 ```
+{: file="WSL2 Terminal"}
 
 - 잘 작동하는지, 윈도우를 재시작 해서 확인하자
   - Good! 잘 된다.
