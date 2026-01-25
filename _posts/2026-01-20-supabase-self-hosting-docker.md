@@ -322,9 +322,18 @@ v0.95.2: Pulling from supabase/postgres-meta
 ...
 ```
 
-스키마 전체를 풀어내는 거라서 장황하다. 필요한 부분만 잘라서 사용하는 것이 좋다.
+스키마 전체를 풀어내는 거라서 장황하지만 그 내용은 Database, Tables, QueryResult 등을 정의한다.
 
 - 참고 : [공식문서 - typescript 스키마 예제](https://supabase.com/docs/reference/javascript/typescript-support)
+
+
+## 4. 참고문서
+
+유튜브에 관련 영상들이 많다.
+
+- [Self-Host Supabase Like a PRO in 2025 with Example Usage](https://youtu.be/Gyh0c8pMmhE?si=kjpaYHFEti4X6dtq)
+- [Complete Guide ⚡️ Supabase Self-Hosted ➕ Custom S3 ➕ Authelia](https://youtu.be/wyUr_U6Cma4?si=kHKU_OQVjYAVEbtj)
+- [How I Self-Hosted Supabase in 10 Minutes (No DevOps Needed)](https://youtu.be/tyx9TPnGIyc?si=V7wOU8HkII96s0Xp)
 
 
 ## 9. Reviews
