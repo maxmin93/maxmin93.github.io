@@ -4,7 +4,7 @@ title: Supabase 셀프 호스팅 가이드
 description: Supabase 는 백엔드를 위한 거의 모든 기능을 포함하고 있다. 클라우드에서 하나의 서비스를 사용할 수 있지만, 개발용으로 다루기 위해서는 셀프 호스팅이 편리하다. 요즘은 AI 애플리케이션을 개발하기 위해 인기가 더 높아졌다.
 categories: [Backend, Supabase]
 tags: [docker]
-image: "https://lsvp.com/wp-content/smush-webp/2023/03/Supabase-1024x198.png.webp"
+image: "https://supabase.com/_next/image?url=https%3A%2F%2Ffrontend-assets.supabase.com%2Fwww%2F3b7bba9a9aa5%2F_next%2Fstatic%2Fmedia%2Flogo-preview.50e72501.jpg&w=3840&q=75"
 ---
 
 오랜만에 다뤄 보려고 하니깐 기억도 안나고 해서, 초심자의 마음으로 정리합니다.
@@ -193,7 +193,7 @@ import { createClient } from '@supabase/supabase-js'
 console.log("Hello via Bun!");
 
 let SB_URL = 'http://localhost:8000'
-let SB_KEY = process.env.SB_ANON_KEY;
+let SB_KEY = process.env.SB_ANON_KEY ?? '';
 
 // Create a single supabase client for interacting with your database
 const supabase = createClient(SB_URL, SB_KEY);
@@ -228,10 +228,10 @@ Hello via Bun!
 ]
 ```
 
-plainObject 를 class 로 변형하는 코드도 추가해 봤다.
+plain Object 를 class Instance 로 변형하는 코드도 추가해 봤다.
 
 ```ts
-const isObjectArr = (value) => {
+const isObjectArr = (value: unknown) => {
   return (
     typeof value === 'object' &&
     value !== null && 
@@ -260,7 +260,9 @@ class Todo implements ITodo {
   task: string;  
 
   constructor(data: ITodo){
-    Object.assign(this, data);
+    // Object.assign(this, data);
+    this.id = data.id;
+    this.task = data.task;
   }
 
   getDisplayName(): string {
@@ -297,13 +299,41 @@ error: Error on typia.is(): no transform has been configured.
 Read and follow https://typia.io/docs/setup please.
 ```
 
+### Self Hosting 에서 Supabase CLI 사용하기
+
+`supabase gen types` 명령을 사용하는데 project_id 가 필요하다고 해서 넣었지만 작동하지 않았다.
+
+- project_id 는 다운로드 된 supabase 깃허브 소스에 있다.
+  - `supabase/supabase/config.toml` 파일
+
+```console
+$ bunx supabase gen types typescript --project-id xguihxuzqibwxjnimxev
+2026/01/25 13:58:57 Access token not provided. Supply an access token by running supabase login or setting the SUPABASE_ACCESS_TOKEN environment variable.
+```
+
+[공식문서](https://supabase.com/docs/reference/cli/supabase-gen-types) 설명에 따르면 `db-url` 을 대신 사용할 수 있다.
+
+- `db-url` 옵션은 `supabase db` 명령에도 사용된다.
+
+```console
+$ bunx supabase gen types typescript --db-url 'postgres://postgres.{테넌트ID}:{패스워드}@localhost:5432/postgres'
+Connecting to localhost 5432
+v0.95.2: Pulling from supabase/postgres-meta
+...
+```
+
+스키마 전체를 풀어내는 거라서 장황하다. 필요한 부분만 잘라서 사용하는 것이 좋다.
+
+- 참고 : [공식문서 - typescript 스키마 예제](https://supabase.com/docs/reference/javascript/typescript-support)
+
 
 ## 9. Reviews
 
 - 컴퓨터를 종료하기 전에 supabase 도커 스택도 종료해야 옳다.
   - 다시 켜면 자동으로 시작되는데 정상 시동되지 않는 경우가 있다.
-- 타입스크립트 오랜만에 만져보니 타이핑이 번거롭다.
-  - class-transformer 는 뭐고 typia 는 또 뭔가?
+- 타입스크립트를 오랜만에 만져보니 타이핑이 번거롭다. 잔소리도 많고.
+- Object 를 클래스 Instance 로 변환하는데 [class-transformer](https://github.com/typestack/class-transformer) 를 사용한다는데, 부하가 크지 않을까 염려된다.
+  - zod 보다는 심플해 보인다.
 
 
 &nbsp; <br />
